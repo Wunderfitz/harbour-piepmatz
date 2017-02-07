@@ -1,0 +1,9 @@
+# Rename this file as harbour-piepmatz.changes to include changelog
+# entries in your RPM file.
+#
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+* Sun Xxx yy 2017 Sebastian Wolf <sebastian@ygriega.de> 0.1
+- Let's see...
