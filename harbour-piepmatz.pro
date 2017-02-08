@@ -17,9 +17,7 @@ CONFIG += sailfishapp
 SOURCES += src/harbour-piepmatz.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
-    qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
+    qml/pages/CoverPage.qml \
     rpm/harbour-piepmatz.changes.in \
     rpm/harbour-piepmatz.spec \
     rpm/harbour-piepmatz.yaml \
@@ -28,12 +26,32 @@ OTHER_FILES += qml/harbour-piepmatz.qml \
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
-# to disable building translations every time, comment out the
-# following CONFIG line
 CONFIG += sailfishapp_i18n
 
-# German translation is enabled as an example. If you aren't
-# planning to localize your app, remember to comment out the
-# following TRANSLATIONS line. And also do not forget to
-# modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-piepmatz-de.ts
+
+gui.files = qml
+gui.path = /usr/share/$${TARGET}
+
+images.files = images
+images.path = /usr/share/$${TARGET}
+
+ICONPATH = /usr/share/icons/hicolor
+
+86.png.path = $${ICONPATH}/86x86/apps/
+86.png.files += icons/86x86/harbour-piepmatz.png
+
+108.png.path = $${ICONPATH}/108x108/apps/
+108.png.files += icons/108x108/harbour-piepmatz.png
+
+128.png.path = $${ICONPATH}/128x128/apps/
+128.png.files += icons/128x128/harbour-piepmatz.png
+
+256.png.path = $${ICONPATH}/256x256/apps/
+256.png.files += icons/256x256/harbour-piepmatz.png
+
+wunderfitz.desktop.path = /usr/share/applications/
+wunderfitz.desktop.files = harbour-piepmatz.desktop
+
+INSTALLS += 86.png 108.png 128.png 256.png \
+            piepmatz.desktop gui images

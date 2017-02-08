@@ -2,36 +2,53 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
-    <name>CoverPage</name>
+    <name>AboutPage</name>
     <message>
-        <source>My Cover</source>
-        <translation>Mein Cover</translation>
+        <source>About Piepmatz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>A Twitter client for Sailfish OS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>By Sebastian J. Wolf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send E-Mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Licensed under GNU GPLv3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sources on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Credits</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open OAuth for Qt on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-clause license!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
-    <name>FirstPage</name>
+    <name>TitlePage</name>
     <message>
-        <source>Show Page 2</source>
-        <translation>Zur Seite 2</translation>
+        <source>About Piepmatz</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UI Template</source>
-        <translation>UI-Vorlage</translation>
-    </message>
-    <message>
-        <source>Hello Sailors</source>
-        <translation>Hallo Matrosen</translation>
-    </message>
-</context>
-<context>
-    <name>SecondPage</name>
-    <message>
-        <source>Nested Page</source>
-        <translation>Unterseite</translation>
-    </message>
-    <message>
-        <source>Item</source>
-        <translation>Element</translation>
+        <source>Piepmatz</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
