@@ -14,6 +14,8 @@ TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp
 
+include(src/o2/o2.pri)
+
 SOURCES += src/harbour-piepmatz.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
