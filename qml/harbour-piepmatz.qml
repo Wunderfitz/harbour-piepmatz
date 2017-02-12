@@ -15,11 +15,11 @@ ApplicationWindow
     }
 
     Component {
-        id: titlePage
-        TitlePage {}
+        id: welcomePage
+        WelcomePage {}
     }
 
-    initialPage: titlePage
+    initialPage: welcomePage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

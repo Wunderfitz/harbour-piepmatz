@@ -17,7 +17,7 @@ Version:    0.1
 Release:    2
 Group:      Qt/Qt
 License:    LICENSE
-URL:        http://example.org/
+URL:        http://wunderfitz.org/
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-piepmatz.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9

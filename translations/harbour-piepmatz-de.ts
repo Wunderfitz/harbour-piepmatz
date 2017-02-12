@@ -41,13 +41,29 @@
     </message>
 </context>
 <context>
-    <name>TitlePage</name>
+    <name>WelcomePage</name>
     <message>
         <source>About Piepmatz</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Piepmatz</source>
+        <source>Welcome to Piepmatz!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Log in to Twitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please login to Twitter to continue.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sign up for Twitter</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
