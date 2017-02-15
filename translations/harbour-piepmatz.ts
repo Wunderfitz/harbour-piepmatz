@@ -51,11 +51,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Log in to Twitter</source>
+        <source>Please login to Twitter to continue.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Please login to Twitter to continue.</source>
+        <source>Log in to Twitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

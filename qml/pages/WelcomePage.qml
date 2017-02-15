@@ -5,6 +5,7 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import com.pipacs.o2 1.0
 
 
 Page {
@@ -12,6 +13,7 @@ Page {
     allowedOrientations: Orientation.All
 
     SilicaFlickable {
+        id: welcomeFlickable
         anchors.fill: parent
         contentHeight: column.height
 
@@ -19,6 +21,17 @@ Page {
             MenuItem {
                 text: qsTr("About Piepmatz")
                 onClicked: pageStack.push(aboutPage)
+            }
+        }
+
+        Connections {
+            target: accountModel
+            onPinRequestSuccessful: {
+                console.log("URL: " + url)
+                Qt.openUrlExternally(url)
+            }
+            onPinRequestError: {
+                console.log("Error Message: " + errorMessage)
             }
         }
 
@@ -58,6 +71,9 @@ Page {
                 text: qsTr("Log in to Twitter")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    accountModel.obtainPinUrl()
                 }
             }
 

@@ -14,6 +14,15 @@ public:
         setAuthorizeUrl(QUrl("https://api.twitter.com/oauth/authenticate"));
         setAccessTokenUrl(QUrl("https://api.twitter.com/oauth/access_token"));
     }
+    void obtainPinUrl();
+
+signals:
+    void pinRequestError(const QString &errorMessage);
+    void pinRequestSuccessful(const QUrl &url);
+
+private slots:
+    virtual void onPinRequestError(QNetworkReply::NetworkError error);
+    virtual void onPinRequestFinished();
 };
 
 #endif // O1TWITTER_H

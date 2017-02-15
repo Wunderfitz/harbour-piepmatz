@@ -8,18 +8,28 @@
 #endif
 
 #include <sailfishapp.h>
+#include <QScopedPointer>
+#include <QQuickView>
+#include <QtQml>
+#include <QQmlContext>
+#include <QGuiApplication>
 
+#include "o1.h"
+#include "o1twitter.h"
+#include "o1requestor.h"
+#include "accountmodel.h"
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/template.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-    return SailfishApp::main(argc, argv);
+    qmlRegisterType<O1Twitter>("com.pipacs.o2", 1, 0, "O1Twitter");
+    QQmlContext *ctxt = view.data()->rootContext();
+    AccountModel accountModel;
+    ctxt->setContextProperty("accountModel", &accountModel);
+
+    view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
+    view->show();
+    return app->exec();
 }
