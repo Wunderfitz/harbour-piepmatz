@@ -41,11 +41,18 @@
     </message>
 </context>
 <context>
-    <name>WelcomePage</name>
+    <name>OverviewPage</name>
     <message>
         <source>About Piepmatz</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Piepmatz is here!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
         <translation type="unfinished"></translation>
@@ -72,6 +79,18 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to authenticate you with the entered PIN.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter PIN again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart authentication</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

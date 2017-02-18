@@ -106,7 +106,62 @@ Page {
                 welcomeFlickable.visible = true;
             }
         }
+    }
 
+    Column {
+        y: ( parent.height - ( wunderfitzLinkingErrorImage.height + linkingErrorInfoLabel.height + errorOkButton.height + ( 3 * Theme.paddingSmall ) ) ) / 2
+        width: parent.width
+        id: linkingErrorColumn
+        spacing: Theme.paddingSmall
+
+        Behavior on opacity { NumberAnimation {} }
+        opacity: 0
+        visible: false
+
+        Image {
+            id: wunderfitzLinkingErrorImage
+            source: "../../images/piepmatz.svg"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            fillMode: Image.PreserveAspectFit
+            width: 1/2 * parent.width
+        }
+
+        InfoLabel {
+            id: linkingErrorInfoLabel
+            font.pixelSize: Theme.fontSizeLarge
+            text: qsTr("Unable to authenticate you with the entered PIN.")
+        }
+
+        Button {
+            id: enterPinAgainButton
+            text: qsTr("Enter PIN again")
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            onClicked: {
+                linkingErrorColumn.opacity = 0;
+                enterPinColumn.opacity = 1;
+                linkingErrorColumn.visible = false;
+                enterPinColumn.visible = true;
+            }
+        }
+
+        Button {
+            id: restartAuthenticationButton
+            text: qsTr("Restart authentication")
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            onClicked: {
+                linkingErrorColumn.opacity = 0;
+                welcomeFlickable.opacity = 1;
+                linkingErrorColumn.visible = false;
+                welcomeFlickable.visible = true;
+            }
+        }
     }
 
     SilicaFlickable {
@@ -114,13 +169,6 @@ Page {
         anchors.fill: parent
         contentHeight: column.height
         Behavior on opacity { NumberAnimation {} }
-
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("About Piepmatz")
-                onClicked: pageStack.push(aboutPage)
-            }
-        }
 
         Connections {
             target: accountModel
@@ -139,6 +187,18 @@ Page {
                 welcomeFlickable.opacity = 0
                 pinErrorColumn.opacity = 1
                 console.log("Error Message: " + errorMessage)
+            }
+            onLinkingSuccessful: {
+                console.log("Linking successful, moving on to my tweets...")
+                pageStack.clear()
+                pageStack.push(overviewPage)
+            }
+            onLinkingFailed: {
+                enterPinColumn.visible = false
+                linkingErrorColumn.visible = true
+                enterPinColumn.opacity = 0
+                linkingErrorColumn.opacity = 1
+                console.log("Linking error, proceeding to error page!")
             }
         }
 

@@ -19,7 +19,12 @@ ApplicationWindow
         WelcomePage {}
     }
 
-    initialPage: welcomePage
+    Component {
+        id: overviewPage
+        OverviewPage {}
+    }
+
+    initialPage: accountModel.isLinked() ? overviewPage : welcomePage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

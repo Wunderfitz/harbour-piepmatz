@@ -45,7 +45,16 @@ void AccountModel::obtainPinUrl()
 void AccountModel::enterPin(const QString &pin)
 {
     qDebug() << "PIN entered: " + pin;
-    o1->verifyPin(pin);
+    if (networkConfigurationManager->isOnline()) {
+        o1->verifyPin(pin);
+    } else {
+        emit linkingFailed("I'm sorry, your device is offline!");
+    }
+}
+
+bool AccountModel::isLinked()
+{
+    return o1->linked();
 }
 
 void AccountModel::handlePinRequestError(const QString &errorMessage)
@@ -62,11 +71,13 @@ void AccountModel::handlePinRequestSuccessful(const QUrl &url)
 void AccountModel::handleLinkingFailed()
 {
     qDebug() << "Linking failed! :(";
+    emit linkingFailed("Linking error");
 }
 
 void AccountModel::handleLinkingSucceeded()
 {
     qDebug() << "Linking successful! :)";
+    emit linkingSuccessful();
 }
 
 void AccountModel::obtainEncryptionKey()

@@ -19,10 +19,13 @@ public:
 
     Q_INVOKABLE void obtainPinUrl();
     Q_INVOKABLE void enterPin(const QString &pin);
+    Q_INVOKABLE bool isLinked();
 
 signals:
     void pinRequestError(const QString &errorMessage);
     void pinRequestSuccessful(const QString &url);
+    void linkingFailed(const QString &errorMessage);
+    void linkingSuccessful();
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);
