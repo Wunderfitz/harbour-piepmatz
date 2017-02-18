@@ -15,6 +15,7 @@ public:
         setAccessTokenUrl(QUrl("https://api.twitter.com/oauth/access_token"));
     }
     void obtainPinUrl();
+    void verifyPin(const QString &pin);
 
 signals:
     void pinRequestError(const QString &errorMessage);

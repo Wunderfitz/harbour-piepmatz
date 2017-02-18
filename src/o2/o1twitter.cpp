@@ -44,6 +44,12 @@ void O1Twitter::obtainPinUrl()
     connect(reply, SIGNAL(finished()), this, SLOT(onPinRequestFinished()));
 }
 
+void O1Twitter::verifyPin(const QString &pin)
+{
+    verifier_ = pin;
+    exchangeToken();
+}
+
 void O1Twitter::onPinRequestError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());

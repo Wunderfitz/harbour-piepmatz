@@ -17,6 +17,8 @@ AccountModel::AccountModel()
     o1->setClientSecret(TWITTER_CLIENT_SECRET);
     connect(o1, SIGNAL(pinRequestError(QString)), this, SLOT(handlePinRequestError(QString)));
     connect(o1, SIGNAL(pinRequestSuccessful(QUrl)), this, SLOT(handlePinRequestSuccessful(QUrl)));
+    connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
+    connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
 }
 QVariant AccountModel::data(const QModelIndex &index, int role) const {
     if(!index.isValid()) {
@@ -40,6 +42,12 @@ void AccountModel::obtainPinUrl()
     }
 }
 
+void AccountModel::enterPin(const QString &pin)
+{
+    qDebug() << "PIN entered: " + pin;
+    o1->verifyPin(pin);
+}
+
 void AccountModel::handlePinRequestError(const QString &errorMessage)
 {
     emit pinRequestError("I'm sorry, there was an error: " + errorMessage);
@@ -49,6 +57,16 @@ void AccountModel::handlePinRequestSuccessful(const QUrl &url)
 {
     emit pinRequestSuccessful(url.toString());
 
+}
+
+void AccountModel::handleLinkingFailed()
+{
+    qDebug() << "Linking failed! :(";
+}
+
+void AccountModel::handleLinkingSucceeded()
+{
+    qDebug() << "Linking successful! :)";
 }
 
 void AccountModel::obtainEncryptionKey()

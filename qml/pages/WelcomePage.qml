@@ -13,10 +13,10 @@ Page {
     allowedOrientations: Orientation.All
 
     Column {
-        y: ( parent.height - ( errorInfoLabel.height + wunderfitzErrorImage.height + errorOkButton.height + ( 3 * Theme.paddingLarge ) ) ) / 2
+        y: ( parent.height - ( errorInfoLabel.height + wunderfitzErrorImage.height + errorOkButton.height + ( 3 * Theme.paddingSmall ) ) ) / 2
         width: parent.width
         id: pinErrorColumn
-        spacing: Theme.paddingLarge
+        spacing: Theme.paddingSmall
 
         Behavior on opacity { NumberAnimation {} }
         opacity: 0
@@ -35,6 +35,7 @@ Page {
 
         InfoLabel {
             id: errorInfoLabel
+            font.pixelSize: Theme.fontSizeLarge
             text: ""
         }
 
@@ -51,6 +52,61 @@ Page {
                 welcomeFlickable.visible = true;
             }
         }
+    }
+
+    Column {
+        y: ( parent.height - ( wunderfitzPinImage.height + enterPinLabel.height + enterPinField.height + enterPinButton.height + ( 3 * Theme.paddingSmall ) ) ) / 2
+        width: parent.width
+        id: enterPinColumn
+        spacing: Theme.paddingSmall
+
+        Behavior on opacity { NumberAnimation {} }
+        opacity: 0
+        visible: false
+
+        Image {
+            id: wunderfitzPinImage
+            source: "../../images/piepmatz.svg"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            fillMode: Image.PreserveAspectFit
+            width: 1/2 * parent.width
+        }
+
+        InfoLabel {
+            id: enterPinLabel
+            font.pixelSize: Theme.fontSizeLarge
+            text: qsTr("Please enter the Twitter PIN:")
+        }
+
+        TextField {
+            id: enterPinField
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            inputMethodHints: Qt.ImhDigitsOnly
+            font.pixelSize: Theme.fontSizeExtraLarge
+            width: parent.width - 4 * Theme.paddingLarge
+            horizontalAlignment: TextInput.AlignHCenter
+        }
+
+        Button {
+            id: enterPinButton
+            text: qsTr("OK")
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            onClicked: {
+                accountModel.enterPin(enterPinField.text)
+                enterPinColumn.opacity = 0;
+                welcomeFlickable.opacity = 1;
+                enterPinColumn.visible = false;
+                welcomeFlickable.visible = true;
+            }
+        }
+
     }
 
     SilicaFlickable {
@@ -71,6 +127,10 @@ Page {
             onPinRequestSuccessful: {
                 console.log("URL: " + url)
                 Qt.openUrlExternally(url)
+                welcomeFlickable.visible = false
+                enterPinColumn.visible = true
+                welcomeFlickable.opacity = 0
+                enterPinColumn.opacity = 1
             }
             onPinRequestError: {
                 errorInfoLabel.text = errorMessage
@@ -148,6 +208,7 @@ Page {
             }
 
         }
+
     }
 }
 

@@ -70,5 +70,9 @@
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Please enter the Twitter PIN:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

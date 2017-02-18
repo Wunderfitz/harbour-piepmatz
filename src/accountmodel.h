@@ -18,6 +18,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE void obtainPinUrl();
+    Q_INVOKABLE void enterPin(const QString &pin);
 
 signals:
     void pinRequestError(const QString &errorMessage);
@@ -26,6 +27,8 @@ signals:
 public slots:
     void handlePinRequestError(const QString &errorMessage);
     void handlePinRequestSuccessful(const QUrl &url);
+    void handleLinkingFailed();
+    void handleLinkingSucceeded();
 
 private:
     QList<Account*> availableAccounts;
