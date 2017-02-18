@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <QUrl>
+#include <QNetworkConfigurationManager>
 #include "account.h"
 #include "o1twitter.h"
 #include "o1requestor.h"
@@ -28,7 +29,11 @@ public slots:
 
 private:
     QList<Account*> availableAccounts;
+    QNetworkConfigurationManager *networkConfigurationManager;
+    QString encryptionKey;
     O1Twitter *o1;
+
+    void obtainEncryptionKey();
 };
 
 #endif // ACCOUNTMODEL_H

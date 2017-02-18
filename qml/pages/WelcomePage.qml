@@ -12,10 +12,52 @@ Page {
     id: welcomePage
     allowedOrientations: Orientation.All
 
+    Column {
+        y: ( parent.height - ( errorInfoLabel.height + wunderfitzErrorImage.height + errorOkButton.height + ( 3 * Theme.paddingLarge ) ) ) / 2
+        width: parent.width
+        id: pinErrorColumn
+        spacing: Theme.paddingLarge
+
+        Behavior on opacity { NumberAnimation {} }
+        opacity: 0
+        visible: false
+
+        Image {
+            id: wunderfitzErrorImage
+            source: "../../images/piepmatz.svg"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            fillMode: Image.PreserveAspectFit
+            width: 1/2 * parent.width
+        }
+
+        InfoLabel {
+            id: errorInfoLabel
+            text: ""
+        }
+
+        Button {
+            id: errorOkButton
+            text: qsTr("OK")
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+            onClicked: {
+                pinErrorColumn.opacity = 0;
+                welcomeFlickable.opacity = 1;
+                pinErrorColumn.visible = false;
+                welcomeFlickable.visible = true;
+            }
+        }
+    }
+
     SilicaFlickable {
         id: welcomeFlickable
         anchors.fill: parent
         contentHeight: column.height
+        Behavior on opacity { NumberAnimation {} }
 
         PullDownMenu {
             MenuItem {
@@ -31,6 +73,11 @@ Page {
                 Qt.openUrlExternally(url)
             }
             onPinRequestError: {
+                errorInfoLabel.text = errorMessage
+                welcomeFlickable.visible = false
+                pinErrorColumn.visible = true
+                welcomeFlickable.opacity = 0
+                pinErrorColumn.opacity = 1
                 console.log("Error Message: " + errorMessage)
             }
         }
