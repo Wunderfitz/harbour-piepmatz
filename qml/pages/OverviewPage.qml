@@ -11,6 +11,10 @@ Page {
     id: overviewPage
     allowedOrientations: Orientation.All
 
+    Component.onCompleted: {
+        accountModel.verifyCredentials()
+    }
+
     SilicaFlickable {
         id: overviewContainer
         contentHeight: column.height

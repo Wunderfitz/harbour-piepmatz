@@ -1,5 +1,6 @@
 #include "accountmodel.h"
 #include "o1twitterglobals.h"
+#include "o0globals.h"
 #include "o0settingsstore.h"
 
 #include <QFile>
@@ -19,6 +20,9 @@ AccountModel::AccountModel()
     connect(o1, SIGNAL(pinRequestSuccessful(QUrl)), this, SLOT(handlePinRequestSuccessful(QUrl)));
     connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
     connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
+
+    manager = new QNetworkAccessManager(this);
+    requestor = new O1Requestor(manager, o1, this);
 }
 QVariant AccountModel::data(const QModelIndex &index, int role) const {
     if(!index.isValid()) {
@@ -57,6 +61,18 @@ bool AccountModel::isLinked()
     return o1->linked();
 }
 
+void AccountModel::verifyCredentials()
+{
+    qDebug() << "AccountModel::verifyCredentials";
+    QUrl url = QUrl("https://api.twitter.com/1.1/account/verify_credentials.json");
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onVerificationError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(onVerificationFinished()));
+}
+
 void AccountModel::handlePinRequestError(const QString &errorMessage)
 {
     emit pinRequestError("I'm sorry, there was an error: " + errorMessage);
@@ -65,7 +81,6 @@ void AccountModel::handlePinRequestError(const QString &errorMessage)
 void AccountModel::handlePinRequestSuccessful(const QUrl &url)
 {
     emit pinRequestSuccessful(url.toString());
-
 }
 
 void AccountModel::handleLinkingFailed()
@@ -129,6 +144,32 @@ void AccountModel::obtainEncryptionKey()
          encryptionKey = QString(TWITTER_STORE_DEFAULT_ENCRYPTION_KEY);
     }
     qDebug() << "Using encryption key: " + encryptionKey;
+}
+
+void AccountModel::onVerificationError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "AccountModel::onVerificationError:" << (int)error << reply->errorString() << reply->readAll();
+    emit verificationError(reply->errorString());
+}
+
+void AccountModel::onVerificationFinished()
+{
+    qDebug() << "AccountModel::onVerificationFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "AccountModel::onVerificationFinished: " << reply->errorString();
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        qDebug() << "Full Name: " << responseObject.value("name").toString();
+        qDebug() << "Twitter Handle: " << responseObject.value("screen_name").toString();
+    }
+    emit credentialsVerified(jsonDocument);
 }
 
 int AccountModel::rowCount(const QModelIndex&) const {
