@@ -24,14 +24,14 @@ public:
     Q_INVOKABLE void enterPin(const QString &pin);
     Q_INVOKABLE bool isLinked();
     Q_INVOKABLE void verifyCredentials();
+    Q_INVOKABLE void unlink();
 
 signals:
     void pinRequestError(const QString &errorMessage);
     void pinRequestSuccessful(const QString &url);
     void linkingFailed(const QString &errorMessage);
     void linkingSuccessful();
-    void credentialsVerified(const QJsonDocument accountDetails);
-    void credentialsInvalid();
+    void credentialsVerified();
     void verificationError(const QString &errorMessage);
 
 public slots:

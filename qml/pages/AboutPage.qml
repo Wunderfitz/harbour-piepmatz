@@ -103,7 +103,7 @@ Page {
             Label {
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                text: qsTr("This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-clause license!")
+                text: qsTr("This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 wrapMode: Text.Wrap
                 anchors {

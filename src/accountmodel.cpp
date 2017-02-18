@@ -73,6 +73,11 @@ void AccountModel::verifyCredentials()
     connect(reply, SIGNAL(finished()), this, SLOT(onVerificationFinished()));
 }
 
+void AccountModel::unlink()
+{
+    o1->unlink();
+}
+
 void AccountModel::handlePinRequestError(const QString &errorMessage)
 {
     emit pinRequestError("I'm sorry, there was an error: " + errorMessage);
@@ -168,8 +173,10 @@ void AccountModel::onVerificationFinished()
         QJsonObject responseObject = jsonDocument.object();
         qDebug() << "Full Name: " << responseObject.value("name").toString();
         qDebug() << "Twitter Handle: " << responseObject.value("screen_name").toString();
+        emit credentialsVerified();
+    } else {
+        emit verificationError("Piepmatz couldn't understand Twitter's response!");
     }
-    emit credentialsVerified(jsonDocument);
 }
 
 int AccountModel::rowCount(const QModelIndex&) const {

@@ -36,7 +36,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-clause license!</source>
+        <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -47,7 +47,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Piepmatz is here!</source>
+        <source>Verifying your account...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz could not verify your account!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Try again</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz is ready to go!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Authenticate</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
