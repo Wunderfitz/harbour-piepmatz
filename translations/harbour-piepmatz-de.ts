@@ -41,6 +41,17 @@
     </message>
 </context>
 <context>
+    <name>NewTweetPage</name>
+    <message>
+        <source>Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>About Piepmatz</source>
@@ -64,6 +75,10 @@
     </message>
     <message>
         <source>Authenticate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Tweet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

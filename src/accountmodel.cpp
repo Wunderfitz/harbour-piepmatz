@@ -2,6 +2,7 @@
 #include "o1twitterglobals.h"
 #include "o0globals.h"
 #include "o0settingsstore.h"
+#include "o0requestparameter.h"
 
 #include <QFile>
 #include <QUuid>
@@ -69,6 +70,7 @@ void AccountModel::verifyCredentials()
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     QNetworkReply *reply = requestor->get(request, requestParameters);
+
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onVerificationError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(onVerificationFinished()));
 }
@@ -76,6 +78,24 @@ void AccountModel::verifyCredentials()
 void AccountModel::unlink()
 {
     o1->unlink();
+}
+
+void AccountModel::tweet(const QString text)
+{
+    qDebug() << "AccountModel::tweet";
+    QUrl url = QUrl("https://api.twitter.com/1.1/statuses/update.json");
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QByteArray parameterName("status");
+    requestParameters.append(O0RequestParameter(parameterName, text.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onTweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(onTweetFinished()));
 }
 
 void AccountModel::handlePinRequestError(const QString &errorMessage)
@@ -176,6 +196,28 @@ void AccountModel::onVerificationFinished()
         emit credentialsVerified();
     } else {
         emit verificationError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void AccountModel::onTweetError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "AccountModel::onTweetError:" << (int)error << reply->errorString() << reply->readAll();
+}
+
+void AccountModel::onTweetFinished()
+{
+    qDebug() << "AccountModel::onTweetFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        qWarning() << "AccountModel::onTweetFinished: " << reply->errorString();
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        // to be continued...
     }
 }
 

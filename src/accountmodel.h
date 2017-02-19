@@ -26,6 +26,9 @@ public:
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void unlink();
 
+    // PoC - Can we tweet?
+    Q_INVOKABLE void tweet(const QString text);
+
 signals:
     void pinRequestError(const QString &errorMessage);
     void pinRequestSuccessful(const QString &url);
@@ -53,6 +56,8 @@ private:
 private slots:
     virtual void onVerificationError(QNetworkReply::NetworkError error);
     virtual void onVerificationFinished();
+    virtual void onTweetError(QNetworkReply::NetworkError error);
+    virtual void onTweetFinished();
 };
 
 #endif // ACCOUNTMODEL_H

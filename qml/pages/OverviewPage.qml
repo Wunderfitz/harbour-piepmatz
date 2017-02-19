@@ -151,6 +151,10 @@ Page {
                 text: qsTr("About Piepmatz")
                 onClicked: pageStack.push(aboutPage)
             }
+            MenuItem {
+                text: qsTr("New Tweet")
+                onClicked: pageStack.push(newTweetPage)
+            }
         }
 
         Column {

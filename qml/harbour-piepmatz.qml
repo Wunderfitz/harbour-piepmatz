@@ -24,6 +24,11 @@ ApplicationWindow
         OverviewPage {}
     }
 
+    Component {
+        id: newTweetPage
+        NewTweetPage {}
+    }
+
     initialPage: accountModel.isLinked() ? overviewPage : welcomePage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
