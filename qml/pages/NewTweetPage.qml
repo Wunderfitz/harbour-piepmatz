@@ -20,7 +20,7 @@ Page {
             MenuItem {
                 text: qsTr("Tweet")
                 onClicked: {
-                    accountModel.tweet(enterTweetTextArea.text)
+                    twitterApi.tweet(enterTweetTextArea.text)
                     pageStack.pop()
                 }
             }

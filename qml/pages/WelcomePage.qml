@@ -5,8 +5,6 @@
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-import com.pipacs.o2 1.0
-
 
 Page {
     id: welcomePage

@@ -20,7 +20,8 @@ include(src/o2/o2.pri)
 
 SOURCES += src/harbour-piepmatz.cpp \
     src/accountmodel.cpp \
-    src/account.cpp
+    src/account.cpp \
+    src/twitterapi.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -56,12 +57,13 @@ ICONPATH = /usr/share/icons/hicolor
 256.png.path = $${ICONPATH}/256x256/apps/
 256.png.files += icons/256x256/harbour-piepmatz.png
 
-wunderfitz.desktop.path = /usr/share/applications/
-wunderfitz.desktop.files = harbour-piepmatz.desktop
+piepmatz.desktop.path = /usr/share/applications/
+piepmatz.desktop.files = harbour-piepmatz.desktop
 
 INSTALLS += 86.png 108.png 128.png 256.png \
             piepmatz.desktop gui images
 
 HEADERS += \
     src/accountmodel.h \
-    src/account.h
+    src/account.h \
+    src/twitterapi.h

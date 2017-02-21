@@ -10,6 +10,7 @@
 #include "account.h"
 #include "o1twitter.h"
 #include "o1requestor.h"
+#include "twitterapi.h"
 
 class AccountModel : public QAbstractListModel
 {
@@ -26,8 +27,7 @@ public:
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void unlink();
 
-    // PoC - Can we tweet?
-    Q_INVOKABLE void tweet(const QString text);
+    TwitterApi *getTwitterApi();
 
 signals:
     void pinRequestError(const QString &errorMessage);
@@ -42,6 +42,8 @@ public slots:
     void handlePinRequestSuccessful(const QUrl &url);
     void handleLinkingFailed();
     void handleLinkingSucceeded();
+    void handleVerifyCredentialsSuccessful(const QVariantMap &result);
+    void handleVerifyCredentialsError(const QString &errorMessage);
 
 private:
     QList<Account*> availableAccounts;
@@ -50,14 +52,10 @@ private:
     O1Twitter *o1;
     QNetworkAccessManager *manager;
     O1Requestor *requestor;
+    TwitterApi *twitterApi;
 
     void obtainEncryptionKey();
 
-private slots:
-    virtual void onVerificationError(QNetworkReply::NetworkError error);
-    virtual void onVerificationFinished();
-    virtual void onTweetError(QNetworkReply::NetworkError error);
-    virtual void onTweetFinished();
 };
 
 #endif // ACCOUNTMODEL_H

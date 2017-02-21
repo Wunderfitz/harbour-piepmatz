@@ -18,16 +18,19 @@
 #include "o1twitter.h"
 #include "o1requestor.h"
 #include "accountmodel.h"
+#include "twitterapi.h"
 
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
-    qmlRegisterType<O1Twitter>("com.pipacs.o2", 1, 0, "O1Twitter");
-    QQmlContext *ctxt = view.data()->rootContext();
+    QQmlContext *context = view.data()->rootContext();
     AccountModel accountModel;
-    ctxt->setContextProperty("accountModel", &accountModel);
+    context->setContextProperty("accountModel", &accountModel);
+
+    TwitterApi* twitterApi = accountModel.getTwitterApi();
+    context->setContextProperty("twitterApi", twitterApi);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();
