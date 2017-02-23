@@ -35,10 +35,7 @@ QVariant AccountModel::data(const QModelIndex &index, int role) const {
         return QVariant();
     }
     if(role == Qt::DisplayRole) {
-        QMap<QString,QVariant> resultMap;
-        Account* account = availableAccounts.value(index.row());
-        //resultMap.insert("id", QVariant(availableAccounts->getId()));
-        return QVariant(resultMap);
+        return QVariant(availableAccounts.value(index.row()));
     }
     return QVariant();
 }
@@ -106,7 +103,10 @@ void AccountModel::handleLinkingSucceeded()
 
 void AccountModel::handleVerifyCredentialsSuccessful(const QVariantMap &result)
 {
-    // TODO: Update local model with results!
+    beginResetModel();
+    availableAccounts.clear();
+    availableAccounts.append(result);
+    endResetModel();
     emit credentialsVerified();
 }
 

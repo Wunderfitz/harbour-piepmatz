@@ -4,6 +4,7 @@
 
 
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 
 
@@ -141,7 +142,7 @@ Page {
 
     SilicaFlickable {
         id: overviewContainer
-        contentHeight: column.height
+        contentHeight: profileRepeater.height
         anchors.fill: parent
         visible: false
         opacity: 0
@@ -157,15 +158,61 @@ Page {
             }
         }
 
-        Column {
-            id: column
-            width: aboutPage.width
-            spacing: Theme.paddingLarge
+        Repeater {
+            id: profileRepeater
+            model: accountModel
 
-            PageHeader {
-                title: qsTr("Piepmatz is ready to go!")
+            delegate: Item {
+                id: profileComponent
+                anchors.fill: parent
+
+                Item {
+                    id: profilePicureItem
+                    anchors.fill: parent
+
+                    Rectangle {
+                        id: profilePictureBackground
+                        width: parent.width / 3 + parent.width / 30
+                        height: parent.width / 3 + parent.width / 30
+                        color: "white"
+                        radius: parent.width / 17
+                        anchors.margins: parent.width / 20 - parent.width / 60
+                        anchors.left: profilePicureItem.left
+                        anchors.top: profilePicureItem.top
+                    }
+
+                    Image {
+                        id: profilePicture
+                        source: display.profile_image_url_https
+                        width: parent.width / 3
+                        height: parent.width / 3
+                        anchors.margins: parent.width / 20
+                        anchors.left: profilePicureItem.left
+                        anchors.top: profilePicureItem.top
+                        visible: false
+                    }
+
+                    Rectangle {
+                        id: profilePictureMask
+                        width: parent.width / 3
+                        height: parent.width / 3
+                        color: "white"
+                        radius: parent.width / 20
+                        anchors.margins: parent.width / 20
+                        anchors.left: profilePicureItem.left
+                        anchors.top: profilePicureItem.top
+                        visible: false
+                    }
+
+                    OpacityMask {
+                        id: maskedProfilePicture
+                        anchors.fill: profilePicture
+                        source: profilePicture
+                        maskSource: profilePictureMask
+                    }
+
+                }
             }
-
         }
 
     }

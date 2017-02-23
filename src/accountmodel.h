@@ -7,7 +7,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
-#include "account.h"
 #include "o1twitter.h"
 #include "o1requestor.h"
 #include "twitterapi.h"
@@ -46,7 +45,7 @@ public slots:
     void handleVerifyCredentialsError(const QString &errorMessage);
 
 private:
-    QList<Account*> availableAccounts;
+    QList<QVariantMap> availableAccounts;
     QNetworkConfigurationManager *networkConfigurationManager;
     QString encryptionKey;
     O1Twitter *o1;

@@ -70,10 +70,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Piepmatz is ready to go!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Authenticate</source>
         <translation type="unfinished"></translation>
     </message>
