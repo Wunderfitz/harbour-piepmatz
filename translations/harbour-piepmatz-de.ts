@@ -77,6 +77,34 @@
         <source>New Tweet</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Joined on %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Following</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Followers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Tweets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Location: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>See more on the &lt;a href=&quot;https://twitter.com/%1&quot;&gt;Twitter Profile&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WelcomePage</name>

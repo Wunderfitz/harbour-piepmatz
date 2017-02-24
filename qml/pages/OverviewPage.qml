@@ -167,18 +167,22 @@ Page {
                 anchors.fill: parent
 
                 Item {
-                    id: profilePicureItem
-                    anchors.fill: parent
+                    id: profileTitleItem
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    anchors.right: parent.right
 
                     Rectangle {
                         id: profilePictureBackground
                         width: parent.width / 3 + parent.width / 30
                         height: parent.width / 3 + parent.width / 30
-                        color: "white"
+                        color: Theme.primaryColor
+                        border.color: "black"
+                        border.width: 1
                         radius: parent.width / 17
-                        anchors.margins: parent.width / 20 - parent.width / 60
-                        anchors.left: profilePicureItem.left
-                        anchors.top: profilePicureItem.top
+                        anchors.margins: Theme.horizontalPageMargin
+                        anchors.left: profileTitleItem.left
+                        anchors.top: profileTitleItem.top
                     }
 
                     Image {
@@ -186,9 +190,9 @@ Page {
                         source: display.profile_image_url_https
                         width: parent.width / 3
                         height: parent.width / 3
-                        anchors.margins: parent.width / 20
-                        anchors.left: profilePicureItem.left
-                        anchors.top: profilePicureItem.top
+                        anchors.margins: Theme.horizontalPageMargin + parent.width / 60
+                        anchors.left: profileTitleItem.left
+                        anchors.top: profileTitleItem.top
                         visible: false
                     }
 
@@ -196,11 +200,11 @@ Page {
                         id: profilePictureMask
                         width: parent.width / 3
                         height: parent.width / 3
-                        color: "white"
+                        color: Theme.primaryColor
                         radius: parent.width / 20
-                        anchors.margins: parent.width / 20
-                        anchors.left: profilePicureItem.left
-                        anchors.top: profilePicureItem.top
+                        anchors.margins: Theme.horizontalPageMargin + parent.width / 60
+                        anchors.left: profileTitleItem.left
+                        anchors.top: profileTitleItem.top
                         visible: false
                     }
 
@@ -211,7 +215,148 @@ Page {
                         maskSource: profilePictureMask
                     }
 
+                    Text {
+                        id: profileNameText
+                        text: display.name
+                        font.pixelSize: Theme.fontSizeLarge
+                        font.bold: true
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.horizontalPageMargin
+                        anchors.left: profilePictureBackground.right
+                        anchors.right: profileTitleItem.right
+                        anchors.top: profileTitleItem.top
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileScreenNameText
+                        text: "@" + display.screen_name
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.bold: true
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.left: profilePictureBackground.right
+                        anchors.right: profileTitleItem.right
+                        anchors.top: profileNameText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileFriendsText
+                        text: qsTr("%1 Following").arg(display.friends_count)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: profilePictureBackground.right
+                        anchors.right: profileTitleItem.right
+                        anchors.top: profileScreenNameText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileFollowersText
+                        text: qsTr("%1 Followers").arg(display.followers_count)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingSmall
+                        anchors.left: profilePictureBackground.right
+                        anchors.right: profileTitleItem.right
+                        anchors.top: profileFriendsText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileDescriptionText
+                        text: display.description
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: ( profileFriendsText.y + profileFriendsText.height ) > ( profilePictureBackground.y + profilePictureBackground.height ) ? profileFriendsText.bottom : profilePictureBackground.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileTweetsText
+                        text: qsTr("%1 Tweets").arg(display.statuses_count)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: profileDescriptionText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileFavoritesText
+                        text: qsTr("%1 Favorites").arg(display.favourites_count)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: profileTweetsText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileLocationText
+                        text: qsTr("Location: %1").arg(display.location)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: profileFavoritesText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileJoinedText
+                        text: qsTr("Joined on %1").arg((new Date(display.created_at)).toLocaleDateString())
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: profileLocationText.bottom
+                        wrapMode: Text.Wrap
+                    }
+
+                    Text {
+                        id: profileUrlText
+                        text: qsTr("See more on the <a href=\"https://twitter.com/%1\">Twitter Profile</a>").arg(display.screen_name)
+                        font.pixelSize: Theme.fontSizeSmall
+                        color: Theme.primaryColor
+                        anchors.leftMargin: Theme.horizontalPageMargin
+                        anchors.rightMargin: Theme.horizontalPageMargin
+                        anchors.topMargin: Theme.paddingLarge
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.top: profileJoinedText.bottom
+                        wrapMode: Text.Wrap
+                        linkColor: Theme.highlightColor
+                        onLinkActivated: Qt.openUrlExternally("https://twitter.com/" + display.screen_name)
+                    }
+
                 }
+
+
             }
         }
 

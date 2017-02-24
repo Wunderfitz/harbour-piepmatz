@@ -30,6 +30,7 @@ void TwitterApi::handleVerifyCredentialsSuccessful()
     qDebug() << jsonDocument.toJson(QJsonDocument::Compact);
     if (jsonDocument.isObject()) {
         QVariantMap responseMap = jsonDocument.object().toVariantMap();
+
         // Some additional tweaking...
         QString profilePictureRaw = responseMap.value("profile_image_url_https").toString();
         int suffixIndex = profilePictureRaw.indexOf("_normal");
@@ -38,6 +39,12 @@ void TwitterApi::handleVerifyCredentialsSuccessful()
             responseMap.remove("profile_image_url_https");
             responseMap.insert("profile_image_url_https", profilePicture);
         }
+
+        QString profileDateRaw = responseMap.value("created_at").toString();
+        QString profileDate = profileDateRaw.remove( QRegExp( "[\\+\\-][0-9]{1,4}" ) );
+        responseMap.remove("created_at");
+        responseMap.insert("created_at", profileDate.simplified());
+
         emit verifyCredentialsSuccessful(responseMap);
     } else {
         emit verifyCredentialsError("Piepmatz couldn't understand Twitter's response!");
