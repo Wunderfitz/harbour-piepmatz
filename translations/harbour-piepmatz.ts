@@ -54,10 +54,6 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <source>About Piepmatz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Verifying your account...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -74,11 +70,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>About Piepmatz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>New Tweet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Joined on %1</source>
+        <source>@%1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -94,7 +94,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Location: %1</source>
+        <source>|</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -102,7 +102,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>See more on the &lt;a href=&quot;https://twitter.com/%1&quot;&gt;Twitter Profile&lt;/a&gt;</source>
+        <source>Joined in %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
