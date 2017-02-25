@@ -157,229 +157,229 @@ Page {
             }
         }
 
-        Repeater {
-            id: profileRepeater
+        SilicaListView {
+            id: profileView
+            anchors.fill: parent
             model: accountModel
 
             delegate: Item {
                 id: profileComponent
-                width: overviewContainer.width
-
-                Rectangle {
-                    id: profilePictureBackground
-                    width: parent.width / 3 + parent.width / 30
-                    height: parent.width / 3 + parent.width / 30
-                    color: Theme.primaryColor
-                    border.color: "black"
-                    border.width: 1
-                    radius: parent.width / 17
-                    anchors.margins: Theme.horizontalPageMargin
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                }
-
-                Image {
-                    id: profilePicture
-                    source: display.profile_image_url_https
-                    width: parent.width / 3
-                    height: parent.width / 3
-                    anchors.margins: Theme.horizontalPageMargin + parent.width / 60
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    visible: false
-                }
-
-                Rectangle {
-                    id: profilePictureMask
-                    width: parent.width / 3
-                    height: parent.width / 3
-                    color: Theme.primaryColor
-                    radius: parent.width / 20
-                    anchors.margins: Theme.horizontalPageMargin + parent.width / 60
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    visible: false
-                }
-
-                OpacityMask {
-                    id: maskedProfilePicture
-                    anchors.fill: profilePicture
-                    source: profilePicture
-                    maskSource: profilePictureMask
-                }
+                height: profileColumn.height
+                width: parent.width
 
                 Column {
-                    id: provideOverviewColumn
-                    spacing: Theme.paddingMedium
-                    anchors {
-                        leftMargin: Theme.horizontalPageMargin
-                        topMargin: Theme.horizontalPageMargin
-                        left: profilePictureBackground.right
-                        right: parent.right
-                        top: parent.top
-                    }
-                    Text {
-                        id: profileNameText
-                        text: display.name
-                        font {
-                            pixelSize: Theme.fontSizeLarge
-                            bold: true
-                        }
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                    }
-                    Text {
-                        id: profileScreenNameText
-                        text: qsTr("@%1").arg(display.screen_name)
-                        font {
-                            pixelSize: Theme.fontSizeMedium
-                            bold: true
-                        }
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                    }
-                    Text {
-                        id: profileFriendsText
-                        text: qsTr("%1 Following").arg(display.friends_count)
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                    }
-                    Text {
-                        id: profileFollowersText
-                        text: qsTr("%1 Followers").arg(display.followers_count)
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                    }
-                }
-
-                Column {
-                    id: profileDetailsColumn
+                    id: profileColumn
+                    width: parent.width
                     spacing: Theme.paddingLarge
-                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                        leftMargin: Theme.horizontalPageMargin
-                        rightMargin: Theme.horizontalPageMargin
-                        topMargin: Theme.paddingLarge
-                        top: provideOverviewColumn.height > profilePictureBackground.height ? provideOverviewColumn.bottom : profilePictureBackground.bottom
-                    }
-                    Text {
-                        id: profileDescriptionText
-                        text: display.description
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                        width: parent.width
-                    }
-                    Row {
-                        id: profileMoreInformationRow
-                        spacing: Theme.horizontalPageMargin
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        Text {
-                            id: profileTweetsText
-                            text: qsTr("%1 Tweets").arg(display.statuses_count)
-                            font.pixelSize: Theme.fontSizeSmall
-                            color: Theme.primaryColor
-                        }
-                        Text {
-                            id: profileMoreInfoSeparatorText
-                            text: qsTr("|")
-                            font.pixelSize: Theme.fontSizeSmall
-                            color: Theme.primaryColor
-                        }
-                        Text {
-                            id: profileFavoritesText
-                            text: qsTr("%1 Favorites").arg(display.favourites_count)
-                            font.pixelSize: Theme.fontSizeSmall
-                            color: Theme.primaryColor
-                        }
-                    }
-                    Text {
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        id: profileJoinedText
-                        text: qsTr("Joined in %1").arg((new Date(display.created_at)).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                    }
 
                     Row {
-                        id: profileLocationRow
-                        visible: display.location.length === 0 ? false : true
+                        id: profileTitleRow
                         spacing: Theme.horizontalPageMargin
+                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        height: profilePictureColumn.height > profileOverviewColumn.height ? profilePictureColumn.height + Theme.paddingLarge : profileOverviewColumn.height + Theme.paddingLarge
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
-                        Image {
-                            id: profileLocationImage
-                            source: "image://theme/icon-m-location"
+
+                        Column {
+                            id: profilePictureColumn
+                            width: parent.width / 3
+                            anchors {
+                                leftMargin: Theme.horizontalPageMargin
+                                topMargin: Theme.horizontalPageMargin
+                                top: parent.top
+                            }
+                            Item {
+                                id: profilePictureItem
+                                width: profilePictureColumn.width
+                                height: profilePictureItem.width
+                                Rectangle {
+                                    id: profilePictureBackground
+                                    width: parent.width
+                                    height: parent.height
+                                    color: Theme.primaryColor
+                                    border.color: "black"
+                                    border.width: 1
+                                    radius: parent.width / 6
+                                    anchors {
+                                        margins: Theme.horizontalPageMargin
+                                    }
+                                }
+
+                                Image {
+                                    id: profilePicture
+                                    source: display.profile_image_url_https
+                                    width: parent.width - parent.width / 10
+                                    height: parent.height - parent.height / 10
+                                    anchors.margins: Theme.horizontalPageMargin + parent.width / 60
+                                    anchors.centerIn: profilePictureBackground
+                                    visible: false
+                                }
+
+                                Rectangle {
+                                    id: profilePictureMask
+                                    width: parent.width - parent.width / 10
+                                    height: parent.height - parent.height / 10
+                                    color: Theme.primaryColor
+                                    radius: parent.width / 7
+                                    anchors.margins: Theme.horizontalPageMargin + parent.width / 60
+                                    anchors.centerIn: profilePictureBackground
+                                    visible: false
+                                }
+
+                                OpacityMask {
+                                    id: maskedProfilePicture
+                                    source: profilePicture
+                                    maskSource: profilePictureMask
+                                    anchors.fill: profilePicture
+                                }
+                            }
+                        }
+
+                        Column {
+                            id: profileOverviewColumn
+                            width: parent.width * 2 / 3
+                            spacing: Theme.paddingSmall
+                            anchors {
+                                leftMargin: Theme.horizontalPageMargin
+                                topMargin: Theme.horizontalPageMargin
+                                top: parent.top
+                            }
+                            Text {
+                                id: profileNameText
+                                text: display.name
+                                font {
+                                    pixelSize: Theme.fontSizeLarge
+                                    bold: true
+                                }
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                            }
+                            Text {
+                                id: profileScreenNameText
+                                text: qsTr("@%1").arg(display.screen_name)
+                                font {
+                                    pixelSize: Theme.fontSizeMedium
+                                    bold: true
+                                }
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                            }
+                            Text {
+                                id: profileFriendsText
+                                text: qsTr("%1 Following").arg(display.friends_count)
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                            }
+                            Text {
+                                id: profileFollowersText
+                                text: qsTr("%1 Followers").arg(display.followers_count)
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                            }
+                        }
+                    }
+
+                    Column {
+                        id: profileDetailsColumn
+                        spacing: Theme.paddingLarge
+                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
                         }
                         Text {
-                            id: profileLocationText
-                            text: display.location
+                            id: profileDescriptionText
+                            text: display.description
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
-                            anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width
                         }
-                    }
-
-                    Row {
-                        id: profileUrlRow
-                        spacing: Theme.horizontalPageMargin
-                        visible: display.entities.url.urls.length === 0 ? false : true
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        Image {
-                            id: profileUrlImage
-                            source: "image://theme/icon-m-computer"
+                        Row {
+                            id: profileMoreInformationRow
+                            spacing: Theme.horizontalPageMargin
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            Text {
+                                id: profileTweetsText
+                                text: qsTr("%1 Tweets").arg(display.statuses_count)
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                            }
+                            Text {
+                                id: profileMoreInfoSeparatorText
+                                text: qsTr("|")
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                            }
+                            Text {
+                                id: profileFavoritesText
+                                text: qsTr("%1 Favorites").arg(display.favourites_count)
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                            }
                         }
                         Text {
-                            id: profileUrlText
-                            text: "<a href=\"" + display.entities.url.urls[0].url + "\">" + display.entities.url.urls[0].display_url + "</a>"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            id: profileJoinedText
+                            text: qsTr("Joined in %1").arg((new Date(display.created_at)).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
                             font.pixelSize: Theme.fontSizeSmall
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
-                            anchors.verticalCenter: parent.verticalCenter
-                            onLinkActivated: Qt.openUrlExternally(display.entities.url.urls[0].url)
-                            linkColor: Theme.highlightColor
                         }
+
+                        Row {
+                            id: profileLocationRow
+                            visible: display.location.length === 0 ? false : true
+                            spacing: Theme.horizontalPageMargin
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            Image {
+                                id: profileLocationImage
+                                source: "image://theme/icon-m-location"
+                            }
+                            Text {
+                                id: profileLocationText
+                                text: display.location
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+
+                        Row {
+                            id: profileUrlRow
+                            spacing: Theme.horizontalPageMargin
+                            visible: display.entities.url.urls.length === 0 ? false : true
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            Image {
+                                id: profileUrlImage
+                                source: "image://theme/icon-m-computer"
+                            }
+                            Text {
+                                id: profileUrlText
+                                text: "<a href=\"" + display.entities.url.urls[0].url + "\">" + display.entities.url.urls[0].display_url + "</a>"
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                                anchors.verticalCenter: parent.verticalCenter
+                                onLinkActivated: Qt.openUrlExternally(display.entities.url.urls[0].url)
+                                linkColor: Theme.highlightColor
+                            }
+                        }
+
                     }
-
-
-                    Text {
-                        text: display.description
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                        width: parent.width
-                    }
-
-                    Text {
-                        text: display.description
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                        width: parent.width
-                    }
-
-                    Text {
-                        text: display.description
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: Theme.primaryColor
-                        wrapMode: Text.Wrap
-                        width: parent.width
-                    }
-
                 }
+
             }
         }
     }
