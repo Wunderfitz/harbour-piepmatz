@@ -27,7 +27,6 @@ void TwitterApi::handleVerifyCredentialsSuccessful()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    qDebug() << jsonDocument.toJson(QJsonDocument::Compact);
     if (jsonDocument.isObject()) {
         QVariantMap responseMap = jsonDocument.object().toVariantMap();
 
