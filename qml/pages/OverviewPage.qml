@@ -41,36 +41,69 @@ Page {
     property string activeTabId: "profile"
 
     function toggleNavigationButton(tabId) {
-        if (tabId === activeTabId) {
-            return;
-        }
 
-        var newColor = Theme.primaryColor;
+        activeTabId = tabId;
+
         switch (tabId) {
         case "home":
-            newColor = homeButtonText.color === Theme.primaryColor ? Theme.highlightColor : Theme.primaryColor
-            homeButtonImage.icon.source = "image://theme/icon-m-home?" + newColor
-            homeButtonText.color = newColor
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.highlightColor
+            homeButtonText.color = Theme.highlightColor
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
+            notificationsButtonText.color = Theme.primaryColor
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
+            messagesButtonText.color = Theme.primaryColor
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
+            searchButtonText.color = Theme.primaryColor
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
+            profileButtonText.color = Theme.primaryColor
             break;
         case "notifications":
-            newColor = notificationsButtonText.color === Theme.primaryColor ? Theme.highlightColor : Theme.primaryColor
-            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + newColor
-            notificationsButtonText.color = newColor
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
+            homeButtonText.color = Theme.primaryColor
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.highlightColor
+            notificationsButtonText.color = Theme.highlightColor
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
+            messagesButtonText.color = Theme.primaryColor
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
+            searchButtonText.color = Theme.primaryColor
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
+            profileButtonText.color = Theme.primaryColor
             break;
         case "messages":
-            newColor = messagesButtonText.color === Theme.primaryColor ? Theme.highlightColor : Theme.primaryColor
-            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + newColor
-            messagesButtonText.color = newColor
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
+            homeButtonText.color = Theme.primaryColor
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
+            notificationsButtonText.color = Theme.primaryColor
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.highlightColor
+            messagesButtonText.color = Theme.highlightColor
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
+            searchButtonText.color = Theme.primaryColor
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
+            profileButtonText.color = Theme.primaryColor
             break;
         case "search":
-            newColor = searchButtonText.color === Theme.primaryColor ? Theme.highlightColor : Theme.primaryColor
-            searchButtonImage.icon.source = "image://theme/icon-m-search?" + newColor
-            searchButtonText.color = newColor
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
+            homeButtonText.color = Theme.primaryColor
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
+            notificationsButtonText.color = Theme.primaryColor
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
+            messagesButtonText.color = Theme.primaryColor
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.highlightColor
+            searchButtonText.color = Theme.highlightColor
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
+            profileButtonText.color = Theme.primaryColor
             break;
         case "profile":
-            newColor = profileButtonText.color === Theme.primaryColor ? Theme.highlightColor : Theme.primaryColor
-            profileButtonImage.icon.source = "image://theme/icon-m-person?" + newColor
-            profileButtonText.color = newColor
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
+            homeButtonText.color = Theme.primaryColor
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
+            notificationsButtonText.color = Theme.primaryColor
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
+            messagesButtonText.color = Theme.primaryColor
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
+            searchButtonText.color = Theme.primaryColor
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.highlightColor
+            profileButtonText.color = Theme.highlightColor
             break;
         default:
             console.log("Some strange navigation happened!")
@@ -87,8 +120,7 @@ Page {
             hideAccountVerificationColumn()
             overviewContainer.opacity = 1;
             overviewContainer.visible = true;
-            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.highlightColor
-            profileButtonText.color = Theme.highlightColor
+            toggleNavigationButton("profile")
         }
         onVerificationError: {
             hideAccountVerificationColumn()
@@ -200,6 +232,7 @@ Page {
                 text: qsTr("New Tweet")
                 onClicked: pageStack.push(newTweetPage)
             }
+
         }
 
         Column {
@@ -224,13 +257,12 @@ Page {
                     Column {
                         id: profileColumn
                         width: parent.width
-                        spacing: Theme.paddingLarge
+                        spacing: 2 * Theme.horizontalPageMargin
 
                         Row {
                             id: profileTitleRow
                             spacing: Theme.horizontalPageMargin
                             width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                            height: profilePictureColumn.height > profileOverviewColumn.height ? profilePictureColumn.height + Theme.paddingLarge : profileOverviewColumn.height + Theme.paddingLarge
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
@@ -238,6 +270,7 @@ Page {
                             Column {
                                 id: profilePictureColumn
                                 width: parent.width / 3
+                                height: parent.width / 3
                                 anchors {
                                     leftMargin: Theme.horizontalPageMargin
                                     topMargin: Theme.horizontalPageMargin
@@ -245,15 +278,13 @@ Page {
                                 }
                                 Item {
                                     id: profilePictureItem
-                                    width: profilePictureColumn.width
-                                    height: profilePictureItem.width
+                                    width: parent.width
+                                    height: parent.height
                                     Rectangle {
                                         id: profilePictureBackground
                                         width: parent.width
                                         height: parent.height
                                         color: Theme.primaryColor
-                                        border.color: "black"
-                                        border.width: 1
                                         radius: parent.width / 6
                                         anchors {
                                             margins: Theme.horizontalPageMargin
@@ -343,6 +374,7 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
+
                             Text {
                                 id: profileDescriptionText
                                 text: display.description
@@ -453,12 +485,6 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
-                        onPressed: {
-                            toggleNavigationButton("home")
-                        }
-                        onReleased: {
-                            toggleNavigationButton("home")
-                        }
                     }
                     Label {
                         id: homeButtonText
@@ -480,12 +506,6 @@ Page {
                         icon.source: "image://theme/icon-m-alarm"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
-                        }
-                        onPressed: {
-                            toggleNavigationButton("notifications")
-                        }
-                        onReleased: {
-                            toggleNavigationButton("notifications")
                         }
                     }
                     Label {
@@ -509,12 +529,6 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
-                        onPressed: {
-                            toggleNavigationButton("messages")
-                        }
-                        onReleased: {
-                            toggleNavigationButton("messages")
-                        }
                     }
                     Label {
                         id: messagesButtonText
@@ -537,12 +551,6 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
-                        onPressed: {
-                            toggleNavigationButton("search")
-                        }
-                        onReleased: {
-                            toggleNavigationButton("search")
-                        }
                     }
                     Label {
                         id: searchButtonText
@@ -564,12 +572,6 @@ Page {
                         icon.source: "image://theme/icon-m-person"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
-                        }
-                        onPressed: {
-                            toggleNavigationButton("profile")
-                        }
-                        onReleased: {
-                            toggleNavigationButton("profile")
                         }
                     }
                     Label {
