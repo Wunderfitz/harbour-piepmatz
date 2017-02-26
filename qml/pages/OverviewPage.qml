@@ -40,7 +40,7 @@ Page {
 
     property string activeTabId: "profile"
 
-    function toggleNavigationButton(tabId) {
+    function openTab(tabId) {
 
         activeTabId = tabId;
 
@@ -48,62 +48,112 @@ Page {
         case "home":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.highlightColor
             homeButtonText.color = Theme.highlightColor
+            homeColumn.visible = true
+            homeColumn.opacity = 1
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
+            notificationsColumn.opacity = 0
+            notificationsColumn.visible = false
             messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
             messagesButtonText.color = Theme.primaryColor
+            messagesColumn.opacity = 0
+            messagesColumn.visible = false
             searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
             searchButtonText.color = Theme.primaryColor
+            searchColumn.opacity = 0
+            searchColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
+            profileView.opacity = 0
+            profileView.visible = false
             break;
         case "notifications":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
+            homeColumn.opacity = 0
+            homeColumn.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.highlightColor
             notificationsButtonText.color = Theme.highlightColor
+            notificationsColumn.visible = true
+            notificationsColumn.opacity = 1
             messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
             messagesButtonText.color = Theme.primaryColor
+            messagesColumn.opacity = 0
+            messagesColumn.visible = false
             searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
             searchButtonText.color = Theme.primaryColor
+            searchColumn.opacity = 0
+            searchColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
+            profileView.opacity = 0
+            profileView.visible = false
             break;
         case "messages":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
+            homeColumn.opacity = 0
+            homeColumn.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
+            notificationsColumn.opacity = 0
+            notificationsColumn.visible = false
             messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.highlightColor
             messagesButtonText.color = Theme.highlightColor
+            messagesColumn.visible = true
+            messagesColumn.opacity = 1
             searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
             searchButtonText.color = Theme.primaryColor
+            searchColumn.opacity = 0
+            searchColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
+            profileView.opacity = 0
+            profileView.visible = false
             break;
         case "search":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
+            homeColumn.opacity = 0
+            homeColumn.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
+            notificationsColumn.opacity = 0
+            notificationsColumn.visible = false
             messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
             messagesButtonText.color = Theme.primaryColor
+            messagesColumn.opacity = 0
+            messagesColumn.visible = false
             searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.highlightColor
             searchButtonText.color = Theme.highlightColor
+            searchColumn.visible = true
+            searchColumn.opacity = 1
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
+            profileView.opacity = 0
+            profileView.visible = false
             break;
         case "profile":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
+            homeColumn.opacity = 0
+            homeColumn.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
+            notificationsColumn.opacity = 0
+            notificationsColumn.visible = false
             messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
             messagesButtonText.color = Theme.primaryColor
+            messagesColumn.opacity = 0
+            messagesColumn.visible = false
             searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
             searchButtonText.color = Theme.primaryColor
+            searchColumn.opacity = 0
+            searchColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.highlightColor
             profileButtonText.color = Theme.highlightColor
+            profileView.visible = true
+            profileView.opacity = 1
             break;
         default:
             console.log("Some strange navigation happened!")
@@ -118,9 +168,9 @@ Page {
         target: accountModel
         onCredentialsVerified: {
             hideAccountVerificationColumn()
-            overviewContainer.opacity = 1;
-            overviewContainer.visible = true;
-            toggleNavigationButton("profile")
+            overviewColumn.visible = true
+            overviewColumn.opacity = 1
+            openTab("profile")
         }
         onVerificationError: {
             hideAccountVerificationColumn()
@@ -220,8 +270,6 @@ Page {
     SilicaFlickable {
         id: overviewContainer
         anchors.fill: parent
-        visible: false
-        opacity: 0
 
         PullDownMenu {
             MenuItem {
@@ -237,12 +285,18 @@ Page {
 
         Column {
             id: overviewColumn
+            opacity: 0
+            visible: false
             anchors {
                 fill: parent
             }
+            Behavior on opacity { NumberAnimation {} }
 
             SilicaListView {
                 id: profileView
+                opacity: 0
+                Behavior on opacity { NumberAnimation {} }
+                visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 clip: true
@@ -251,11 +305,11 @@ Page {
 
                 delegate: Item {
                     id: profileComponent
-                    height: profileColumn.height
+                    height: profileItemColumn.height
                     width: parent.width
 
                     Column {
-                        id: profileColumn
+                        id: profileItemColumn
                         width: parent.width
                         spacing: 2 * Theme.horizontalPageMargin
 
@@ -469,6 +523,82 @@ Page {
                 VerticalScrollDecorator {}
             }
 
+            Column {
+                id: homeColumn
+                opacity: 0
+                visible: false
+                width: parent.width
+                height: parent.height - getNavigationRowSize()
+                Behavior on opacity { NumberAnimation {} }
+                Text {
+                    text: "Timeline not yet implemented"
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.primaryColor
+                    wrapMode: Text.Wrap
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
+
+            Column {
+                id: notificationsColumn
+                opacity: 0
+                visible: false
+                width: parent.width
+                height: parent.height - getNavigationRowSize()
+                Behavior on opacity { NumberAnimation {} }
+                Text {
+                    text: "Notifications not yet implemented"
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.primaryColor
+                    wrapMode: Text.Wrap
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
+
+            Column {
+                id: messagesColumn
+                opacity: 0
+                visible: false
+                width: parent.width
+                height: parent.height - getNavigationRowSize()
+                Behavior on opacity { NumberAnimation {} }
+                Text {
+                    text: "Messages not yet implemented"
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.primaryColor
+                    wrapMode: Text.Wrap
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
+
+            Column {
+                id: searchColumn
+                opacity: 0
+                visible: false
+                width: parent.width
+                height: parent.height - getNavigationRowSize()
+                Behavior on opacity { NumberAnimation {} }
+                Text {
+                    text: "Search not yet implemented"
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.primaryColor
+                    wrapMode: Text.Wrap
+                    width: parent.width - 2 * Theme.horizontalPageMargin
+                    anchors {
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                }
+            }
+
             Row {
                 id: navigationRow
                 width: parent.width
@@ -485,6 +615,7 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
+                        onClicked: openTab("home")
                     }
                     Label {
                         id: homeButtonText
@@ -507,6 +638,7 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
+                        onClicked: openTab("notifications")
                     }
                     Label {
                         id: notificationsButtonText
@@ -529,6 +661,7 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
+                        onClicked: openTab("messages")
                     }
                     Label {
                         id: messagesButtonText
@@ -551,6 +684,7 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
+                        onClicked: openTab("search")
                     }
                     Label {
                         id: searchButtonText
@@ -573,6 +707,7 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
+                        onClicked: openTab("profile")
                     }
                     Label {
                         id: profileButtonText
