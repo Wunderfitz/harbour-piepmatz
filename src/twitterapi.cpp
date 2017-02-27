@@ -137,10 +137,10 @@ void TwitterApi::handleHomeTimelineFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isObject()) {
-        QJsonObject responseObject = jsonDocument.object();
-        emit tweetSuccessful(responseObject.toVariantMap());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit homeTimelineSuccessful(responseArray.toVariantList());
     } else {
-        emit tweetError("Piepmatz couldn't understand Twitter's response!");
+        emit homeTimelineError("Piepmatz couldn't understand Twitter's response!");
     }
 }

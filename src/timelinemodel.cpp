@@ -5,7 +5,7 @@ TimelineModel::TimelineModel(TwitterApi *twitterApi)
     this->twitterApi = twitterApi;
 
     connect(twitterApi, SIGNAL(homeTimelineError(QString)), this, SLOT(handleHomeTimelineError(QString)));
-    connect(twitterApi, SIGNAL(homeTimelineSuccessful(QVariantMap)), this, SLOT(handleHomeTimelineSuccessful(QVariantMap)));
+    connect(twitterApi, SIGNAL(homeTimelineSuccessful(QVariantList)), this, SLOT(handleHomeTimelineSuccessful(QVariantList)));
 }
 
 int TimelineModel::rowCount(const QModelIndex &) const
@@ -29,8 +29,9 @@ void TimelineModel::update()
     twitterApi->homeTimeline();
 }
 
-void TimelineModel::handleHomeTimelineSuccessful(const QVariantMap &result)
+void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
 {
+    qDebug() << "TimelineModel::handleHomeTimelineSuccessful";
     beginResetModel();
     timelineTweets.clear();
     timelineTweets.append(result);

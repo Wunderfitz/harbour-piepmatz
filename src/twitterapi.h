@@ -9,7 +9,9 @@
 #include <QList>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QVariantMap>
+#include <QVariantList>
 #include "o1requestor.h"
 #include "o0requestparameter.h"
 #include "o0globals.h"
@@ -33,7 +35,7 @@ signals:
     void verifyCredentialsError(const QString &errorMessage);
     void tweetSuccessful(const QVariantMap &result);
     void tweetError(const QString &errorMessage);
-    void homeTimelineSuccessful(const QVariantMap &result);
+    void homeTimelineSuccessful(const QVariantList &result);
     void homeTimelineError(const QString &errorMessage);
 
 private:

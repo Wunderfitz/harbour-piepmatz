@@ -2,6 +2,7 @@
 #define TIMELINEMODEL_H
 
 #include <QAbstractListModel>
+#include <QVariantList>
 #include "twitterapi.h"
 
 class TimelineModel : public QAbstractListModel
@@ -20,11 +21,11 @@ signals:
     void homeTimelineError(const QString &errorMessage);
 
 public slots:
-    void handleHomeTimelineSuccessful(const QVariantMap &result);
+    void handleHomeTimelineSuccessful(const QVariantList &result);
     void handleHomeTimelineError(const QString &errorMessage);
 
 private:
-    QList<QVariantMap> timelineTweets;
+    QVariantList timelineTweets;
     TwitterApi *twitterApi;
 
 };

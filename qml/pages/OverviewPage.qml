@@ -48,8 +48,8 @@ Page {
         case "home":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.highlightColor
             homeButtonText.color = Theme.highlightColor
-            homeColumn.visible = true
-            homeColumn.opacity = 1
+            homeView.visible = true
+            homeView.opacity = 1
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
             notificationsColumn.opacity = 0
@@ -70,8 +70,8 @@ Page {
         case "notifications":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
-            homeColumn.opacity = 0
-            homeColumn.visible = false
+            homeView.opacity = 0
+            homeView.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.highlightColor
             notificationsButtonText.color = Theme.highlightColor
             notificationsColumn.visible = true
@@ -92,8 +92,8 @@ Page {
         case "messages":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
-            homeColumn.opacity = 0
-            homeColumn.visible = false
+            homeView.opacity = 0
+            homeView.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
             notificationsColumn.opacity = 0
@@ -114,8 +114,8 @@ Page {
         case "search":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
-            homeColumn.opacity = 0
-            homeColumn.visible = false
+            homeView.opacity = 0
+            homeView.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
             notificationsColumn.opacity = 0
@@ -136,8 +136,8 @@ Page {
         case "profile":
             homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
             homeButtonText.color = Theme.primaryColor
-            homeColumn.opacity = 0
-            homeColumn.visible = false
+            homeView.opacity = 0
+            homeView.visible = false
             notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
             notificationsButtonText.color = Theme.primaryColor
             notificationsColumn.opacity = 0
@@ -527,23 +527,29 @@ Page {
                 VerticalScrollDecorator {}
             }
 
-            Column {
-                id: homeColumn
+            SilicaListView {
+                id: homeView
                 opacity: 0
+                Behavior on opacity { NumberAnimation {} }
                 visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
-                Behavior on opacity { NumberAnimation {} }
-                Text {
-                    text: "Timeline not yet implemented"
-                    font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.primaryColor
-                    wrapMode: Text.Wrap
-                    width: parent.width - 2 * Theme.horizontalPageMargin
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
+                clip: true
+
+                model: timelineModel
+
+                delegate: ListItem {
+                    contentHeight: testText.height + Theme.paddingMedium
+                    contentWidth: parent.width
+
+                    Text {
+                        id: testText
+                        text: display.full_text
                     }
+
                 }
+
+                VerticalScrollDecorator {}
             }
 
             Column {
