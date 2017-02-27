@@ -20,7 +20,8 @@ include(src/o2/o2.pri)
 
 SOURCES += src/harbour-piepmatz.cpp \
     src/accountmodel.cpp \
-    src/twitterapi.cpp
+    src/twitterapi.cpp \
+    src/timelinemodel.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -64,4 +65,5 @@ INSTALLS += 86.png 108.png 128.png 256.png \
 
 HEADERS += \
     src/accountmodel.h \
-    src/twitterapi.h
+    src/twitterapi.h \
+    src/timelinemodel.h

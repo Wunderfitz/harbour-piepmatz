@@ -280,6 +280,10 @@ Page {
                 text: qsTr("New Tweet")
                 onClicked: pageStack.push(newTweetPage)
             }
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: timelineModel.update()
+            }
 
         }
 

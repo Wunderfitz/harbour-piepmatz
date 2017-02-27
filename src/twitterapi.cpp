@@ -75,6 +75,26 @@ void TwitterApi::tweet(const QString &text)
     connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
 }
 
+void TwitterApi::homeTimeline()
+{
+    qDebug() << "TwitterApi::homeTimeline";
+    QUrl url = QUrl(API_STATUSES_HOME_TIMELINE);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("exclude_replies", "false");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHomeTimelineError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
+}
+
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -84,7 +104,32 @@ void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 
 void TwitterApi::handleTweetFinished()
 {
-    qDebug() << "TwitterApi::handleVerifyCredentialsSuccessful";
+    qDebug() << "TwitterApi::handleTweetFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit tweetSuccessful(responseObject.toVariantMap());
+    } else {
+        emit tweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleHomeTimelineError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleHomeTimelineError:" << (int)error << reply->errorString() << reply->readAll();
+    emit homeTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleHomeTimelineFinished()
+{
+    qDebug() << "TwitterApi::handleHomeTimelineFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {

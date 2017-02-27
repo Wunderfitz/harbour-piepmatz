@@ -19,6 +19,7 @@
 #include "o1requestor.h"
 #include "accountmodel.h"
 #include "twitterapi.h"
+#include "timelinemodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -29,8 +30,11 @@ int main(int argc, char *argv[])
     AccountModel accountModel;
     context->setContextProperty("accountModel", &accountModel);
 
-    TwitterApi* twitterApi = accountModel.getTwitterApi();
+    TwitterApi *twitterApi = accountModel.getTwitterApi();
     context->setContextProperty("twitterApi", twitterApi);
+
+    TimelineModel timelineModel(twitterApi);
+    context->setContextProperty("timelineModel", &timelineModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();
