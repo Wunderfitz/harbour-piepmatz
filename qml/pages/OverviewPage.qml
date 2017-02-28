@@ -38,6 +38,19 @@ Page {
         return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingLarge
     }
 
+    function findHiResImage(url) {
+        var suffixIndex = url.indexOf("_normal");
+        if (suffixIndex !== -1) {
+            return url.substring(0, suffixIndex) + url.substring(suffixIndex + 7);
+        } else {
+            return url;
+        }
+    }
+
+    function getValidDate(twitterDate) {
+        return new Date(twitterDate.replace(/^(\w+) (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/,"$1, $2 $3 $5 $4 GMT"));
+    }
+
     property string activeTabId: "profile"
 
     function openTab(tabId) {
@@ -351,7 +364,7 @@ Page {
 
                                     Image {
                                         id: profilePicture
-                                        source: display.profile_image_url_https
+                                        source: findHiResImage(display.profile_image_url_https)
                                         width: parent.width - parent.width / 10
                                         height: parent.height - parent.height / 10
                                         anchors.margins: Theme.horizontalPageMargin + parent.width / 60
@@ -471,7 +484,7 @@ Page {
                                     horizontalCenter: parent.horizontalCenter
                                 }
                                 id: profileJoinedText
-                                text: qsTr("Joined in %1").arg((new Date(display.created_at)).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
+                                text: qsTr("Joined in %1").arg(getValidDate(display.created_at).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
                                 font.pixelSize: Theme.fontSizeSmall
                                 color: Theme.primaryColor
                                 wrapMode: Text.Wrap
@@ -539,12 +552,48 @@ Page {
                 model: timelineModel
 
                 delegate: ListItem {
-                    contentHeight: testText.height + Theme.paddingMedium
+                    contentHeight: homeTweetRow.height + Theme.paddingMedium
                     contentWidth: parent.width
 
-                    Text {
-                        id: testText
-                        text: display.full_text
+                    Row {
+                        id: homeTweetRow
+                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        Item {
+                            id: homeTweetAuthorItem
+                            width: parent.width / 6
+                            height: parent.width / 6
+                            Image {
+                                id: homeTweetAuthorPicture
+                                source: findHiResImage(display.user.profile_image_url_https)
+                                width: parent.width
+                                height: parent.height
+                                sourceSize {
+                                    width: parent.width
+                                    height: parent.height
+                                }
+                                visible: false
+                            }
+
+                            Rectangle {
+                                id: homeTweetAuthorPictureMask
+                                width: parent.width
+                                height: parent.height
+                                color: Theme.primaryColor
+                                radius: parent.width / 7
+                                visible: false
+                            }
+
+                            OpacityMask {
+                                id: maskedhomeTweetAuthorPicture
+                                source: homeTweetAuthorPicture
+                                maskSource: homeTweetAuthorPictureMask
+                                anchors.fill: homeTweetAuthorPicture
+                            }
+                        }
                     }
 
                 }

@@ -28,23 +28,7 @@ void TwitterApi::handleVerifyCredentialsSuccessful()
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
-        QVariantMap responseMap = jsonDocument.object().toVariantMap();
-
-        // Some additional tweaking...
-        QString profilePictureRaw = responseMap.value("profile_image_url_https").toString();
-        int suffixIndex = profilePictureRaw.indexOf("_normal");
-        if (suffixIndex != -1) {
-            QString profilePicture = profilePictureRaw.left(suffixIndex) + profilePictureRaw.right( profilePictureRaw.length() - suffixIndex - 7);
-            responseMap.remove("profile_image_url_https");
-            responseMap.insert("profile_image_url_https", profilePicture);
-        }
-
-        QString profileDateRaw = responseMap.value("created_at").toString();
-        QString profileDate = profileDateRaw.remove( QRegExp( "[\\+\\-][0-9]{1,4}" ) );
-        responseMap.remove("created_at");
-        responseMap.insert("created_at", profileDate.simplified());
-
-        emit verifyCredentialsSuccessful(responseMap);
+        emit verifyCredentialsSuccessful(jsonDocument.object().toVariantMap());
     } else {
         emit verifyCredentialsError("Piepmatz couldn't understand Twitter's response!");
     }
@@ -93,6 +77,17 @@ void TwitterApi::homeTimeline()
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHomeTimelineError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
+}
+
+QString TwitterApi::getHiResPictureUrl(QString &url)
+{
+    int suffixIndex = url.indexOf("_normal");
+    if (suffixIndex != -1) {
+        return url.left(suffixIndex) + url.right( url.length() - suffixIndex - 7);
+    } else {
+        return url;
+    }
+
 }
 
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
