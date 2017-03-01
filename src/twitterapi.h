@@ -41,8 +41,6 @@ signals:
 private:
     O1Requestor *requestor;
 
-    QString getHiResPictureUrl(QString &url);
-
 private slots:
     void handleVerifyCredentialsSuccessful();
     void handleVerifyCredentialsError(QNetworkReply::NetworkError error);

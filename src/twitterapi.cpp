@@ -66,6 +66,7 @@ void TwitterApi::homeTimeline()
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("exclude_replies", "false");
+    urlQuery.addQueryItem("count", "200");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -73,22 +74,13 @@ void TwitterApi::homeTimeline()
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHomeTimelineError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
 }
 
-QString TwitterApi::getHiResPictureUrl(QString &url)
-{
-    int suffixIndex = url.indexOf("_normal");
-    if (suffixIndex != -1) {
-        return url.left(suffixIndex) + url.right( url.length() - suffixIndex - 7);
-    } else {
-        return url;
-    }
-
-}
 
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
