@@ -13,29 +13,29 @@ Page {
     allowedOrientations: Orientation.All
 
     function hideAccountVerificationColumn() {
-        accountVerificationColumn.opacity = 0
-        accountVerificationIndicator.running = false
+        accountVerificationColumn.opacity = 0;
+        accountVerificationIndicator.running = false;
         accountVerificationColumn.visible = false;
     }
 
     function showAccountVerificationColumn() {
-        accountVerificationColumn.opacity = 1
-        accountVerificationIndicator.running = true
+        accountVerificationColumn.opacity = 1;
+        accountVerificationIndicator.running = true;
         accountVerificationColumn.visible = true;
     }
 
     function hideBackgroundColumn() {
-        backgroundColumn.opacity = 0
+        backgroundColumn.opacity = 0;
         backgroundColumn.visible = false;
     }
 
     function showBackgroundColumn() {
-        backgroundColumn.opacity = 1
+        backgroundColumn.opacity = 1;
         backgroundColumn.visible = true;
     }
 
     function getNavigationRowSize() {
-        return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingLarge
+        return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingLarge;
     }
 
     function findHiResImage(url) {
@@ -49,6 +49,43 @@ Page {
 
     function getValidDate(twitterDate) {
         return new Date(twitterDate.replace(/^(\w+) (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/,"$1, $2 $3 $5 $4 GMT"));
+    }
+
+    function enhanceText(tweet) {
+        var tweetText = tweet.full_text;
+        // URLs
+        for (var i = 0; i < tweet.entities.urls.length; i++ ) {
+            tweetText = tweetText.replace(tweet.entities.urls[i].url, "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>");
+        }
+        // Remove media links - will become own QML entities
+        if (tweet.extended_entities) {
+            for (var j = 0; j < tweet.extended_entities.media.length; j++ ) {
+                tweetText = tweetText.replace(tweet.extended_entities.media[j].url, "");
+            }
+        }
+        return tweetText;
+    }
+
+    function hasImage(tweet) {
+        if (tweet.extended_entities) {
+            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+                if (tweet.extended_entities.media[i].type === "photo" ) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function getTweetImageUrl(tweet) {
+        if (tweet.extended_entities) {
+            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+                if (tweet.extended_entities.media[i].type === "photo" ) {
+                    return tweet.extended_entities.media[i].media_url_https;
+                }
+            }
+        }
+        return "";
     }
 
     property string activeTabId: "home"
@@ -213,7 +250,7 @@ Page {
 
         InfoLabel {
             id: accountVerificationLabel
-            text: qsTr("Verifying your account...")
+            text: qsTr("Saying hello to Twitter...")
         }
 
         BusyIndicator {
@@ -616,6 +653,7 @@ Page {
                         Column {
                             id: homeTweetContentColumn
                             width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+                            spacing: Theme.paddingSmall
 
                             Text {
                                 id: homeTweetRetweetedText
@@ -636,63 +674,30 @@ Page {
                                     font.bold: true
                                     color: Theme.primaryColor
                                     text: display.retweeted_status ? display.retweeted_status.user.name : display.user.name
+                                    elide: Text.ElideRight
+                                    maximumLineCount: 1
                                 }
                                 Text {
                                     id: homeTweetUserHandleText
-                                    font.pixelSize: Theme.fontSizeTiny
+                                    font.pixelSize: Theme.fontSizeExtraSmall
                                     color: Theme.secondaryColor
                                     anchors.bottom: homeTweetUserNameText.bottom
                                     text: qsTr("@%1").arg(display.retweeted_status ? display.retweeted_status.user.screen_name : display.user.screen_name)
+                                    elide: Text.ElideRight
+                                    maximumLineCount: 1
                                 }
                             }
 
                             Text {
                                 width: parent.width
                                 id: homeTweetContentText
-                                text: display.retweeted_status ? display.retweeted_status.full_text : display.full_text
+                                text: enhanceText(display.retweeted_status ? display.retweeted_status : display)
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 color: Theme.primaryColor
                                 wrapMode: Text.Wrap
                                 textFormat: Text.StyledText
-                            }
-
-                            Row {
-                                id: homeTweetSocialStatusRow
-                                width: parent.width
-                                spacing: Theme.paddingMedium
-
-                                Column {
-                                    Image {
-                                        id: homeTweetRetweetedCountImage
-                                        anchors.right: parent.right
-                                        source: "image://theme/icon-s-retweet"
-                                    }
-                                }
-                                Column {
-                                    Text {
-                                        id: homeTweetRetweetedCountText
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        anchors.left: parent.left
-                                        color: Theme.secondaryColor
-                                        text: display.retweeted_status ? ( display.retweeted_status.retweet_count ? display.retweeted_status.retweet_count : "" ) : ( display.retweet_count ? display.retweet_count : "" )
-                                    }
-                                }
-                                Column {
-                                    Image {
-                                        id: homeTweetFavoritesCountImage
-                                        anchors.right: parent.right
-                                        source: "image://theme/icon-s-favorite"
-                                    }
-                                }
-                                Column {
-                                    Text {
-                                        id: homeTweetFavoritesCountText
-                                        font.pixelSize: Theme.fontSizeExtraSmall
-                                        anchors.left: parent.left
-                                        color: Theme.secondaryColor
-                                        text: display.retweeted_status ? ( display.retweeted_status.favorite_count ? display.retweeted_status.favorite_count : "" ) : ( display.favorite_count ? display.favorite_count : "" )
-                                    }
-                                }
+                                onLinkActivated: Qt.openUrlExternally(link)
+                                linkColor: Theme.highlightColor
                             }
 
                             Row {
@@ -700,29 +705,78 @@ Page {
                                 width: parent.width
                                 spacing: Theme.paddingSmall
 
-                                Text {
-                                    id: homeTweetDateText
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    color: Theme.secondaryColor
-                                    text:  getValidDate(display.retweeted_status ? display.retweeted_status.created_at : display.created_at).toLocaleString(Qt.locale(), Locale.ShortFormat)
+                                Row {
+                                    width: parent.width / 2
+                                    Text {
+                                        id: homeTweetDateText
+                                        font.pixelSize: Theme.fontSizeTiny
+                                        color: Theme.secondaryColor
+                                        text:  getValidDate(display.retweeted_status ? display.retweeted_status.created_at : display.created_at).toLocaleString(Qt.locale(), Locale.ShortFormat)
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
+                                    }
                                 }
-                                Text {
-                                    id: homeTweetInfoSeparatorText
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    color: Theme.secondaryColor
-                                    text:  "|"
-                                }
-                                Text {
-                                    id: homeTweetClientText
-                                    font.pixelSize: Theme.fontSizeTiny
-                                    font.underline: false
-                                    color: Theme.secondaryColor
-                                    text: display.retweeted_status ? display.retweeted_status.source : display.source
-                                    textFormat: Text.StyledText
-                                    linkColor: Theme.secondaryColor
-                                    onLinkActivated: Qt.openUrlExternally(link)
+
+                                Row {
+                                    width: parent.width / 2
+                                    spacing: Theme.paddingSmall
+                                    Column {
+                                        width: parent.width / 6
+                                        Image {
+                                            id: homeTweetRetweetedCountImage
+                                            anchors.right: parent.right
+                                            source: "image://theme/icon-s-retweet"
+                                            width: Theme.fontSizeExtraSmall
+                                            height: Theme.fontSizeExtraSmall
+                                        }
+                                    }
+                                    Column {
+                                        width: parent.width / 3
+                                        Text {
+                                            id: homeTweetRetweetedCountText
+                                            font.pixelSize: Theme.fontSizeTiny
+                                            anchors.left: parent.left
+                                            color: Theme.secondaryColor
+                                            text: display.retweeted_status ? ( display.retweeted_status.retweet_count ? display.retweeted_status.retweet_count : " " ) : ( display.retweet_count ? display.retweet_count : " " )
+                                            elide: Text.ElideRight
+                                            maximumLineCount: 1
+                                        }
+                                    }
+                                    Column {
+                                        width: parent.width / 6
+                                        Image {
+                                            id: homeTweetFavoritesCountImage
+                                            anchors.right: parent.right
+                                            source: "image://theme/icon-s-favorite"
+                                            width: Theme.fontSizeExtraSmall
+                                            height: Theme.fontSizeExtraSmall
+                                        }
+                                    }
+                                    Column {
+                                        width: parent.width / 3
+                                        Text {
+                                            id: homeTweetFavoritesCountText
+                                            font.pixelSize: Theme.fontSizeTiny
+                                            anchors.left: parent.left
+                                            color: Theme.secondaryColor
+                                            text: display.retweeted_status ? ( display.retweeted_status.favorite_count ? display.retweeted_status.favorite_count : " " ) : ( display.favorite_count ? display.favorite_count : " " )
+                                            elide: Text.ElideRight
+                                            maximumLineCount: 1
+                                        }
+                                    }
                                 }
                             }
+                            Image {
+                                id: homeTweetImage
+                                source: getTweetImageUrl(display.retweeted_status ? display.retweeted_status : display)
+                                visible: hasImage(display.retweeted_status ? display.retweeted_status : display)
+                                width: parent.width
+                                height: parent.width / 2
+                                sourceSize.width: parent.width
+                                sourceSize.height: parent.width / 2
+                                fillMode: Image.PreserveAspectCrop
+                            }
+
                         }
                     }
 

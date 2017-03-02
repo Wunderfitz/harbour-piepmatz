@@ -54,10 +54,6 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <source>Verifying your account...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Piepmatz could not verify your account!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -131,6 +127,10 @@
     </message>
     <message>
         <source>Retweeted by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saying hello to Twitter...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
