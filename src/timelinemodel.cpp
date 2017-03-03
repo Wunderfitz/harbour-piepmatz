@@ -3,9 +3,15 @@
 TimelineModel::TimelineModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
+    this->coverModel = new CoverModel();
 
     connect(twitterApi, SIGNAL(homeTimelineError(QString)), this, SLOT(handleHomeTimelineError(QString)));
     connect(twitterApi, SIGNAL(homeTimelineSuccessful(QVariantList)), this, SLOT(handleHomeTimelineSuccessful(QVariantList)));
+}
+
+TimelineModel::~TimelineModel()
+{
+    delete this->coverModel;
 }
 
 int TimelineModel::rowCount(const QModelIndex &) const
@@ -36,6 +42,13 @@ void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
     timelineTweets.clear();
     timelineTweets.append(result);
     endResetModel();
+
+    QVariantList coverList;
+    for (int i = 0; i < 4; i++) {
+        coverList.append(timelineTweets.at(i));
+    }
+    this->coverModel->setCoverTweets(coverList);
+
     emit homeTimelineUpdated();
 }
 

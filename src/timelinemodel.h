@@ -4,17 +4,21 @@
 #include <QAbstractListModel>
 #include <QVariantList>
 #include "twitterapi.h"
+#include "covermodel.h"
 
 class TimelineModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
     TimelineModel(TwitterApi *twitterApi);
+    ~TimelineModel();
 
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE void update();
+
+    CoverModel *coverModel;
 
 signals:
     void homeTimelineUpdated();

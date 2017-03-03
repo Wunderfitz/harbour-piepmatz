@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 
     TimelineModel timelineModel(twitterApi);
     context->setContextProperty("timelineModel", &timelineModel);
+    context->setContextProperty("coverModel", timelineModel.coverModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();

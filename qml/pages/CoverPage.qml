@@ -41,7 +41,7 @@ CoverBackground {
             rightMargin: Theme.paddingMedium
             bottom: parent.bottom
         }
-        model: timelineModel
+        model: coverModel
         delegate: ListItem {
             anchors {
                 topMargin:  Theme.paddingMedium

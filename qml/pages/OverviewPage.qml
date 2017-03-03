@@ -596,6 +596,7 @@ Page {
                     Row {
                         id: homeTweetRow
                         width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                        height: homeTweetAuthorColumn.height > homeTweetContentColumn.height ? homeTweetAuthorColumn.height + Theme.paddingSmall : homeTweetContentColumn.height + Theme.paddingSmall
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                             verticalCenter: parent.verticalCenter
@@ -771,9 +772,9 @@ Page {
                                 source: getTweetImageUrl(display.retweeted_status ? display.retweeted_status : display)
                                 visible: hasImage(display.retweeted_status ? display.retweeted_status : display)
                                 width: parent.width
-                                height: parent.width / 2
+                                height: parent.width * 2 / 3
                                 sourceSize.width: parent.width
-                                sourceSize.height: parent.width / 2
+                                sourceSize.height: parent.width * 2 / 3
                                 fillMode: Image.PreserveAspectCrop
                             }
 
