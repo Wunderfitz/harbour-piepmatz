@@ -133,6 +133,10 @@
         <source>Saying hello to Twitter...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WelcomePage</name>

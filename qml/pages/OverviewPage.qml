@@ -88,6 +88,21 @@ Page {
         return "";
     }
 
+    function getUserNameById(userId, currentUser, userMentions) {
+        if (typeof userId !== "undefined") {
+            console.log("Function executed!");
+            if (userId === currentUser.id) {
+                return currentUser.name;
+            }
+            for (var i = 0; i < userMentions.length ; i++) {
+                if (userMentions[i].id === userId) {
+                    return userMentions[i].name;
+                }
+            }
+        }
+        return "";
+    }
+
     property string activeTabId: "home"
 
     function openTab(tabId) {
@@ -616,6 +631,14 @@ Page {
                                 width: Theme.fontSizeExtraSmall
                                 height: Theme.fontSizeExtraSmall
                             }
+                            Image {
+                                id: homeTweetInReplyToImage
+                                source: "image://theme/icon-s-repost"
+                                visible: display.in_reply_to_user_id_str ? true : false
+                                anchors.right: parent.right
+                                width: Theme.fontSizeExtraSmall
+                                height: Theme.fontSizeExtraSmall
+                            }
 
                             Item {
                                 id: homeTweetAuthorItem
@@ -662,6 +685,14 @@ Page {
                                 color: Theme.secondaryColor
                                 text: qsTr("Retweeted by %1").arg(display.user.name)
                                 visible: display.retweeted_status ? true : false
+                            }
+
+                            Text {
+                                id: homeTweetInReplyToText
+                                font.pixelSize: Theme.fontSizeTiny
+                                color: Theme.secondaryColor
+                                text: qsTr("In reply to %1").arg(getUserNameById(display.in_reply_to_user_id, display.user, display.entities.user_mentions))
+                                visible: display.in_reply_to_user_id_str ? true : false
                             }
 
                             Row {
@@ -781,6 +812,12 @@ Page {
                         }
                     }
 
+                    Separator {
+                        id: homeTweetSeparator
+                        width: parent.width
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                    }
                 }
 
                 VerticalScrollDecorator {}
