@@ -21,7 +21,7 @@ QVariant CoverModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-void CoverModel::setCoverTweets(const QVariantList coverTweets)
+void CoverModel::setCoverTweets(const QVariantList &coverTweets)
 {
     beginResetModel();
     this->coverTweets.clear();

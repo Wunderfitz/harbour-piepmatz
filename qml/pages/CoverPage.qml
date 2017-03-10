@@ -56,7 +56,7 @@ CoverBackground {
                     spacing: Theme.paddingSmall
                     Image {
                         id: resultTitlePicture
-                        source: display.retweeted_status ? display.retweeted_status.user.profile_image_url_https : display.user.profile_image_url_https
+                        source: display.image
                         width: Theme.fontSizeExtraSmall
                         height: Theme.fontSizeExtraSmall
                         sourceSize {
@@ -70,8 +70,7 @@ CoverBackground {
                         color: Theme.primaryColor
                         font.pixelSize: Theme.fontSizeTiny
                         font.bold: true
-                        text: display.retweeted_status ? display.retweeted_status.user.name : display.user.name
-                        width: parent.width
+                        text: display.name
                     }
                 }
                 Text {
@@ -79,7 +78,7 @@ CoverBackground {
                     maximumLineCount: 2
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeTiny
-                    text: display.retweeted_status ? display.retweeted_status.full_text : display.full_text
+                    text: display.text
                     width: parent.width
                     wrapMode: Text.Wrap
                     elide: Text.ElideRight

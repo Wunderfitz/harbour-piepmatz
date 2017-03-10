@@ -13,7 +13,7 @@ public:
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
 
-    void setCoverTweets(const QVariantList coverTweets);
+    void setCoverTweets(const QVariantList &coverTweets);
 
 private:
     QVariantList coverTweets;

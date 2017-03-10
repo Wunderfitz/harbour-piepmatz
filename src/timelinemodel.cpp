@@ -45,7 +45,16 @@ void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
 
     QVariantList coverList;
     for (int i = 0; i < 4; i++) {
-        coverList.append(timelineTweets.at(i));
+        QMap<QString, QVariant> coverTweet;
+        QMap<QString, QVariant> originalTweet = timelineTweets.at(i).toMap();
+        if (originalTweet.contains("retweeted_status")) {
+            originalTweet = originalTweet.value("retweeted_status").toMap();
+        }
+        QMap<QString,QVariant> userInfo = originalTweet.value("user").toMap();
+        coverTweet.insert("image", userInfo.value("profile_image_url_https"));
+        coverTweet.insert("name", userInfo.value("name"));
+        coverTweet.insert("text", originalTweet.value("full_text"));
+        coverList.append(coverTweet);
     }
     this->coverModel->setCoverTweets(coverList);
 
