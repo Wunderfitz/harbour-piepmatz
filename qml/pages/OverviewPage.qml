@@ -7,7 +7,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
-
+import "../components"
 
 Page {
     id: overviewPage
@@ -78,18 +78,6 @@ Page {
         return false;
     }
 
-    function containsVideo(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    console.log("Video detected! " + tweet.full_text)
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     function getTweetImageUrl(tweet) {
         if (tweet.extended_entities) {
             for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
@@ -99,44 +87,6 @@ Page {
             }
         }
         return "";
-    }
-
-    function getTweetVideoUrl(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    for (var j = 0; j < tweet.extended_entities.media[i].video_info.variants.length; j++) {
-                        if (tweet.extended_entities.media[i].video_info.variants[j].content_type === "video/mp4") {
-                            return tweet.extended_entities.media[i].video_info.variants[j].url;
-                        }
-                    }
-                }
-            }
-        }
-        return "";
-    }
-
-    function getTweetVideoPlaceholderImageUrl(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    return tweet.extended_entities.media[i].media_url_https;
-                }
-            }
-        }
-        return "";
-    }
-
-    function getVideoHeight(videoWidth, tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    var videoHeight = Math.round(videoWidth * tweet.extended_entities.media[i].video_info.aspect_ratio[1] / tweet.extended_entities.media[i].video_info.aspect_ratio[0]);
-                    return videoHeight;
-                }
-            }
-        }
-        return 1;
     }
 
     function getUserNameById(userId, currentUser, userMentions) {
@@ -151,6 +101,30 @@ Page {
             }
         }
         return "";
+    }
+
+    function containsVideo(tweet) {
+        if (tweet.extended_entities) {
+            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
+                    console.log("Video detected! " + tweet.full_text)
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    function getVideoHeight(videoWidth, tweet) {
+        if (tweet.extended_entities) {
+            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
+                    var videoHeight = Math.round(videoWidth * tweet.extended_entities.media[i].video_info.aspect_ratio[1] / tweet.extended_entities.media[i].video_info.aspect_ratio[0]);
+                    return videoHeight;
+                }
+            }
+        }
+        return 1;
     }
 
     property string activeTabId: "home"
@@ -859,53 +833,18 @@ Page {
                                 fillMode: Image.PreserveAspectCrop
                             }
 
-                            Image {
-                                id: homeTweetVideoPlaceholderImage
-                                source: getTweetVideoPlaceholderImageUrl(display.retweeted_status ? display.retweeted_status : display)
-                                visible: containsVideo(display.retweeted_status ? display.retweeted_status : display)
+                            Loader {
+                                id: videoLoader
+                                active: containsVideo(display.retweeted_status ? display.retweeted_status : display)
                                 width: parent.width
                                 height: getVideoHeight(parent.width, display.retweeted_status ? display.retweeted_status : display)
-                                sourceSize.width: parent.width
-                                sourceSize.height: getVideoHeight(parent.width, display.retweeted_status ? display.retweeted_status : display)
-                                fillMode: Image.PreserveAspectCrop
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if (homeTweetVideo.error === MediaPlayer.NoError) {
-                                            homeTweetVideo.visible = true
-                                            homeTweetVideoPlaceholderImage.visible = false
-                                            homeTweetVideo.play()
-                                        } else {
-                                            homeTweetVideoErrorText.text = qsTr("Error loading video! " + homeTweetVideo.errorString)
-                                            homeTweetVideoErrorText.visible = true
-                                        }
-                                    }
-                                }
+                                sourceComponent: tweetVideoComponent
                             }
 
-                            Text {
-                                id: homeTweetVideoErrorText
-                                visible: false
-                                width: parent.width
-                                color: Theme.primaryColor
-                                font.pixelSize: Theme.fontSizeExtraSmall
-                                text: ""
-                            }
-
-                            Video {
-                                id: homeTweetVideo
-                                visible: false
-                                muted: true
-                                width: parent.width
-                                height: getVideoHeight(parent.width, display.retweeted_status ? display.retweeted_status : display)
-                                source: getTweetVideoUrl(display.retweeted_status ? display.retweeted_status : display)
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: homeTweetVideo.playbackState === MediaPlayer.PlayingState ? homeTweetVideo.pause() : homeTweetVideo.play()
-                                }
-                                onStopped: {
-                                    homeTweetVideo.visible = false
-                                    homeTweetVideoPlaceholderImage.visible = true
+                            Component {
+                                id: tweetVideoComponent
+                                TweetVideoComponent {
+                                    tweet: display
                                 }
                             }
 
