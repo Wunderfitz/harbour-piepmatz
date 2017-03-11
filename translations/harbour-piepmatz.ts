@@ -41,6 +41,28 @@
     </message>
 </context>
 <context>
+    <name>ImageProgressIndicator</name>
+    <message>
+        <source>%1 %</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>LoadingIndicator</name>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>NewTweetPage</name>
     <message>
         <source>Tweet</source>
@@ -53,10 +75,6 @@
 </context>
 <context>
     <name>OverviewPage</name>
-    <message>
-        <source>Piepmatz could not verify your account!</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Try again</source>
         <translation type="unfinished"></translation>
@@ -135,6 +153,14 @@
     </message>
     <message>
         <source>In reply to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Loading timeline...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz could not log you in!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

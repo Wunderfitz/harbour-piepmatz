@@ -137,6 +137,11 @@ Page {
         return 1;
     }
 
+    function updatePiepmatz() {
+        homeView.reloading = true;
+        timelineModel.update();
+    }
+
     property string activeTabId: "home"
 
     function openTab(tabId) {
@@ -267,6 +272,7 @@ Page {
         target: accountModel
         onCredentialsVerified: {
             hideAccountVerificationColumn()
+            overviewContainer.visible = true
             overviewColumn.visible = true
             overviewColumn.opacity = 1
             openTab("home")
@@ -334,7 +340,7 @@ Page {
         InfoLabel {
             id: verificationFailedInfoLabel
             font.pixelSize: Theme.fontSizeLarge
-            text: qsTr("Piepmatz could not verify your account!")
+            text: qsTr("Piepmatz could not log you in!")
         }
 
         Button {
@@ -370,6 +376,7 @@ Page {
     SilicaFlickable {
         id: overviewContainer
         anchors.fill: parent
+        visible: false
 
         PullDownMenu {
             MenuItem {
@@ -382,9 +389,23 @@ Page {
             }
             MenuItem {
                 text: qsTr("Refresh")
-                onClicked: timelineModel.update()
+                onClicked: updatePiepmatz()
             }
+        }
 
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("About Piepmatz")
+                onClicked: pageStack.push(aboutPage)
+            }
+            MenuItem {
+                text: qsTr("New Tweet")
+                onClicked: pageStack.push(newTweetPage)
+            }
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: updatePiepmatz()
+            }
         }
 
         Column {
@@ -476,6 +497,7 @@ Page {
                                         maskSource: profilePictureMask
                                         anchors.fill: profilePicture
                                     }
+
                                 }
                             }
 
@@ -627,261 +649,355 @@ Page {
                 VerticalScrollDecorator {}
             }
 
-            SilicaListView {
+            Item {
                 id: homeView
-                opacity: 0
-                Behavior on opacity { NumberAnimation {} }
-                visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
-                clip: true
+                visible: false
 
-                model: timelineModel
+                property bool loaded : false;
+                property bool error : false;
+                property bool reloading: false;
 
-                delegate: ListItem {
-                    contentHeight: homeTweetRow.height + 2 * Theme.paddingMedium
-                    contentWidth: parent.width
+                Connections {
+                    target: timelineModel
+                    onHomeTimelineUpdated: {
+                        homeView.loaded = true;
+                        homeView.reloading = false;
+                    }
+                    onHomeTimelineError: {
+                        homeView.loaded = true;
+                        homeView.error = true;
+                        homeView.reloading = false;
+                        homeErrorLabel.text = errorMessage;
+                    }
+                }
 
-                    Row {
-                        id: homeTweetRow
-                        width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                        height: homeTweetAuthorColumn.height > homeTweetContentColumn.height ? homeTweetAuthorColumn.height + Theme.paddingSmall : homeTweetContentColumn.height + Theme.paddingSmall
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                            verticalCenter: parent.verticalCenter
-                        }
-                        spacing: Theme.paddingMedium
+                Column {
+                    width: parent.width
+                    height: homeProgressLabel.height + homeProgressIndicator.height + Theme.paddingSmall
+                    visible: !homeView.loaded
+                    opacity: homeView.loaded ? 0 : 1
+                    id: homeProgressColumn
+                    spacing: Theme.paddingSmall
+                    Behavior on opacity { NumberAnimation {} }
+                    anchors.verticalCenter: parent.verticalCenter
 
-                        Column {
-                            id: homeTweetAuthorColumn
-                            width: parent.width / 6
-                            height: parent.width / 6
-                            spacing: Theme.paddingSmall
-                            Image {
-                                id: homeTweetRetweetedImage
-                                source: "image://theme/icon-s-retweet"
-                                visible: display.retweeted_status ? true : false
-                                anchors.right: parent.right
-                                width: Theme.fontSizeExtraSmall
-                                height: Theme.fontSizeExtraSmall
+                    InfoLabel {
+                        id: homeProgressLabel
+                        text: qsTr("Loading timeline...")
+                    }
+
+                    BusyIndicator {
+                        id: homeProgressIndicator
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        running: !homeView.loaded
+                        size: BusyIndicatorSize.Large
+                    }
+                }
+
+                Column {
+                    width: parent.width
+                    height: homeProgressLabel.height + homeProgressIndicator.height + Theme.paddingSmall
+                    visible: homeView.loaded && homeView.error
+                    opacity: homeView.loaded && homeView.error ? 0 : 1
+                    id: homeErrorColumn
+                    spacing: Theme.paddingSmall
+                    Behavior on opacity { NumberAnimation {} }
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    InfoLabel {
+                        id: homeErrorLabel
+                        text: ""
+                    }
+                }
+
+                SilicaListView {
+                    id: homeListView
+                    opacity: homeView.loaded && !homeView.error ? 1 : 0
+                    Behavior on opacity { NumberAnimation {} }
+                    visible: homeView.loaded && !homeView.error
+                    width: parent.width
+                    height: parent.height
+                    clip: true
+
+                    model: timelineModel
+
+                    delegate: ListItem {
+                        contentHeight: homeTweetRow.height + 2 * Theme.paddingMedium
+                        contentWidth: parent.width
+
+                        Row {
+                            id: homeTweetRow
+                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                            height: homeTweetAuthorColumn.height > homeTweetContentColumn.height ? homeTweetAuthorColumn.height + Theme.paddingSmall : homeTweetContentColumn.height + Theme.paddingSmall
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
                             }
-                            Image {
-                                id: homeTweetInReplyToImage
-                                source: "image://theme/icon-s-repost"
-                                visible: display.in_reply_to_user_id_str ? true : false
-                                anchors.right: parent.right
-                                width: Theme.fontSizeExtraSmall
-                                height: Theme.fontSizeExtraSmall
-                            }
+                            spacing: Theme.paddingMedium
 
-                            Item {
-                                id: homeTweetAuthorItem
-                                width: parent.width
-                                height: parent.width
+                            Column {
+                                id: homeTweetAuthorColumn
+                                width: parent.width / 6
+                                height: parent.width / 6
+                                spacing: Theme.paddingSmall
                                 Image {
-                                    id: homeTweetAuthorPicture
-                                    source: findHiResImage(display.retweeted_status ? display.retweeted_status.user.profile_image_url_https : display.user.profile_image_url_https )
+                                    id: homeTweetRetweetedImage
+                                    source: "image://theme/icon-s-retweet"
+                                    visible: display.retweeted_status ? true : false
+                                    anchors.right: parent.right
+                                    width: Theme.fontSizeExtraSmall
+                                    height: Theme.fontSizeExtraSmall
+                                }
+                                Image {
+                                    id: homeTweetInReplyToImage
+                                    source: "image://theme/icon-s-repost"
+                                    visible: display.in_reply_to_user_id_str ? true : false
+                                    anchors.right: parent.right
+                                    width: Theme.fontSizeExtraSmall
+                                    height: Theme.fontSizeExtraSmall
+                                }
+
+                                Item {
+                                    id: homeTweetAuthorItem
                                     width: parent.width
-                                    height: parent.height
-                                    sourceSize {
+                                    height: parent.width
+                                    Image {
+                                        id: homeTweetAuthorPicture
+                                        source: findHiResImage(display.retweeted_status ? display.retweeted_status.user.profile_image_url_https : display.user.profile_image_url_https )
                                         width: parent.width
                                         height: parent.height
+                                        sourceSize {
+                                            width: parent.width
+                                            height: parent.height
+                                        }
+                                        visible: false
                                     }
-                                    visible: false
-                                }
 
-                                Rectangle {
-                                    id: homeTweetAuthorPictureMask
-                                    width: parent.width
-                                    height: parent.height
-                                    color: Theme.primaryColor
-                                    radius: parent.width / 7
-                                    visible: false
-                                }
+                                    Rectangle {
+                                        id: homeTweetAuthorPictureMask
+                                        width: parent.width
+                                        height: parent.height
+                                        color: Theme.primaryColor
+                                        radius: parent.width / 7
+                                        visible: false
+                                    }
 
-                                OpacityMask {
-                                    id: maskedhomeTweetAuthorPicture
-                                    source: homeTweetAuthorPicture
-                                    maskSource: homeTweetAuthorPictureMask
-                                    anchors.fill: homeTweetAuthorPicture
+                                    OpacityMask {
+                                        id: maskedhomeTweetAuthorPicture
+                                        source: homeTweetAuthorPicture
+                                        maskSource: homeTweetAuthorPictureMask
+                                        anchors.fill: homeTweetAuthorPicture
+                                        visible: homeTweetAuthorPicture.status === Image.Ready ? true : false
+                                        opacity: homeTweetAuthorPicture.status === Image.Ready ? 1 : 0
+                                        Behavior on opacity { NumberAnimation {} }
+                                    }
+
+                                    ImageProgressIndicator {
+                                        image: homeTweetAuthorPicture
+                                        withPercentage: false
+                                    }
+
                                 }
                             }
-                        }
 
-                        Column {
-                            id: homeTweetContentColumn
-                            width: parent.width * 5 / 6 - Theme.horizontalPageMargin
-                            spacing: Theme.paddingSmall
-
-                            Text {
-                                id: homeTweetRetweetedText
-                                font.pixelSize: Theme.fontSizeTiny
-                                color: Theme.secondaryColor
-                                text: qsTr("Retweeted by %1").arg(display.user.name)
-                                visible: display.retweeted_status ? true : false
-                            }
-
-                            Text {
-                                id: homeTweetInReplyToText
-                                font.pixelSize: Theme.fontSizeTiny
-                                color: Theme.secondaryColor
-                                text: qsTr("In reply to %1").arg(getUserNameById(display.in_reply_to_user_id, display.user, display.entities.user_mentions))
-                                visible: display.in_reply_to_user_id_str ? true : false
-                            }
-
-                            Row {
-                                id: homeTweetUserRow
-                                width: parent.width
+                            Column {
+                                id: homeTweetContentColumn
+                                width: parent.width * 5 / 6 - Theme.horizontalPageMargin
                                 spacing: Theme.paddingSmall
 
                                 Text {
-                                    id: homeTweetUserNameText
-                                    font.pixelSize: Theme.fontSizeExtraSmall
-                                    font.bold: true
-                                    color: Theme.primaryColor
-                                    text: display.retweeted_status ? display.retweeted_status.user.name : display.user.name
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
-                                }
-                                Text {
-                                    id: homeTweetUserHandleText
-                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    id: homeTweetRetweetedText
+                                    font.pixelSize: Theme.fontSizeTiny
                                     color: Theme.secondaryColor
-                                    anchors.bottom: homeTweetUserNameText.bottom
-                                    text: qsTr("@%1").arg(display.retweeted_status ? display.retweeted_status.user.screen_name : display.user.screen_name)
-                                    elide: Text.ElideRight
-                                    maximumLineCount: 1
+                                    text: qsTr("Retweeted by %1").arg(display.user.name)
+                                    visible: display.retweeted_status ? true : false
                                 }
-                            }
 
-                            Text {
-                                width: parent.width
-                                id: homeTweetContentText
-                                text: enhanceText(display.retweeted_status ? display.retweeted_status : display)
-                                font.pixelSize: Theme.fontSizeExtraSmall
-                                color: Theme.primaryColor
-                                wrapMode: Text.Wrap
-                                textFormat: Text.StyledText
-                                onLinkActivated: Qt.openUrlExternally(link)
-                                linkColor: Theme.highlightColor
-                            }
-
-                            Row {
-                                id: homeTweetInfoRow
-                                width: parent.width
-                                spacing: Theme.paddingSmall
+                                Text {
+                                    id: homeTweetInReplyToText
+                                    font.pixelSize: Theme.fontSizeTiny
+                                    color: Theme.secondaryColor
+                                    text: qsTr("In reply to %1").arg(getUserNameById(display.in_reply_to_user_id, display.user, display.entities.user_mentions))
+                                    visible: display.in_reply_to_user_id_str ? true : false
+                                }
 
                                 Row {
-                                    width: parent.width / 2
+                                    id: homeTweetUserRow
+                                    width: parent.width
+                                    spacing: Theme.paddingSmall
+
                                     Text {
-                                        id: homeTweetDateText
-                                        font.pixelSize: Theme.fontSizeTiny
+                                        id: homeTweetUserNameText
+                                        font.pixelSize: Theme.fontSizeExtraSmall
+                                        font.bold: true
+                                        color: Theme.primaryColor
+                                        text: display.retweeted_status ? display.retweeted_status.user.name : display.user.name
+                                        elide: Text.ElideRight
+                                        maximumLineCount: 1
+                                    }
+                                    Text {
+                                        id: homeTweetUserHandleText
+                                        font.pixelSize: Theme.fontSizeExtraSmall
                                         color: Theme.secondaryColor
-                                        text:  getValidDate(display.retweeted_status ? display.retweeted_status.created_at : display.created_at).toLocaleString(Qt.locale(), Locale.ShortFormat)
+                                        anchors.bottom: homeTweetUserNameText.bottom
+                                        text: qsTr("@%1").arg(display.retweeted_status ? display.retweeted_status.user.screen_name : display.user.screen_name)
                                         elide: Text.ElideRight
                                         maximumLineCount: 1
                                     }
                                 }
 
-                                Row {
-                                    width: parent.width / 2
-                                    spacing: Theme.paddingSmall
-                                    Column {
-                                        width: parent.width / 6
-                                        Image {
-                                            id: homeTweetRetweetedCountImage
-                                            anchors.right: parent.right
-                                            source: "image://theme/icon-s-retweet"
-                                            width: Theme.fontSizeExtraSmall
-                                            height: Theme.fontSizeExtraSmall
-                                        }
-                                    }
-                                    Column {
-                                        width: parent.width / 3
-                                        Text {
-                                            id: homeTweetRetweetedCountText
-                                            font.pixelSize: Theme.fontSizeTiny
-                                            anchors.left: parent.left
-                                            color: Theme.secondaryColor
-                                            text: display.retweeted_status ? ( display.retweeted_status.retweet_count ? display.retweeted_status.retweet_count : " " ) : ( display.retweet_count ? display.retweet_count : " " )
-                                            elide: Text.ElideRight
-                                            maximumLineCount: 1
-                                        }
-                                    }
-                                    Column {
-                                        width: parent.width / 6
-                                        Image {
-                                            id: homeTweetFavoritesCountImage
-                                            anchors.right: parent.right
-                                            source: "image://theme/icon-s-favorite"
-                                            width: Theme.fontSizeExtraSmall
-                                            height: Theme.fontSizeExtraSmall
-                                        }
-                                    }
-                                    Column {
-                                        width: parent.width / 3
-                                        Text {
-                                            id: homeTweetFavoritesCountText
-                                            font.pixelSize: Theme.fontSizeTiny
-                                            anchors.left: parent.left
-                                            color: Theme.secondaryColor
-                                            text: display.retweeted_status ? ( display.retweeted_status.favorite_count ? display.retweeted_status.favorite_count : " " ) : ( display.favorite_count ? display.favorite_count : " " )
-                                            elide: Text.ElideRight
-                                            maximumLineCount: 1
-                                        }
-                                    }
-                                }
-                            }
-
-                            ListModel {
-                                id: tweetImageListModel
-                            }
-
-                            SlideshowView {
-                                id: homeTweetImageSlideshow
-                                visible: hasImage(display.retweeted_status ? display.retweeted_status : display)
-                                width: parent.width
-                                height: parent.width * 2 / 3
-                                model: getTweetImageModel(display.retweeted_status ? display.retweeted_status : display, tweetImageListModel)
-                                delegate: Image {
-                                    id: homeTweetImage
-                                    source: media_url_https
+                                Text {
                                     width: parent.width
-                                    height: parent.height
-                                    sourceSize.width: parent.width
-                                    sourceSize.height: parent.height
-                                    fillMode: Image.PreserveAspectCrop
+                                    id: homeTweetContentText
+                                    text: enhanceText(display.retweeted_status ? display.retweeted_status : display)
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.primaryColor
+                                    wrapMode: Text.Wrap
+                                    textFormat: Text.StyledText
+                                    onLinkActivated: Qt.openUrlExternally(link)
+                                    linkColor: Theme.highlightColor
                                 }
-                            }
 
-                            Loader {
-                                id: videoLoader
-                                active: containsVideo(display.retweeted_status ? display.retweeted_status : display)
-                                width: parent.width
-                                height: getVideoHeight(parent.width, display.retweeted_status ? display.retweeted_status : display)
-                                sourceComponent: tweetVideoComponent
-                            }
+                                Row {
+                                    id: homeTweetInfoRow
+                                    width: parent.width
+                                    spacing: Theme.paddingSmall
 
-                            Component {
-                                id: tweetVideoComponent
-                                TweetVideoComponent {
-                                    tweet: display
+                                    Row {
+                                        width: parent.width / 2
+                                        Text {
+                                            id: homeTweetDateText
+                                            font.pixelSize: Theme.fontSizeTiny
+                                            color: Theme.secondaryColor
+                                            text:  getValidDate(display.retweeted_status ? display.retweeted_status.created_at : display.created_at).toLocaleString(Qt.locale(), Locale.ShortFormat)
+                                            elide: Text.ElideRight
+                                            maximumLineCount: 1
+                                        }
+                                    }
+
+                                    Row {
+                                        width: parent.width / 2
+                                        spacing: Theme.paddingSmall
+                                        Column {
+                                            width: parent.width / 6
+                                            Image {
+                                                id: homeTweetRetweetedCountImage
+                                                anchors.right: parent.right
+                                                source: "image://theme/icon-s-retweet"
+                                                width: Theme.fontSizeExtraSmall
+                                                height: Theme.fontSizeExtraSmall
+                                            }
+                                        }
+                                        Column {
+                                            width: parent.width / 3
+                                            Text {
+                                                id: homeTweetRetweetedCountText
+                                                font.pixelSize: Theme.fontSizeTiny
+                                                anchors.left: parent.left
+                                                color: Theme.secondaryColor
+                                                text: display.retweeted_status ? ( display.retweeted_status.retweet_count ? display.retweeted_status.retweet_count : " " ) : ( display.retweet_count ? display.retweet_count : " " )
+                                                elide: Text.ElideRight
+                                                maximumLineCount: 1
+                                            }
+                                        }
+                                        Column {
+                                            width: parent.width / 6
+                                            Image {
+                                                id: homeTweetFavoritesCountImage
+                                                anchors.right: parent.right
+                                                source: "image://theme/icon-s-favorite"
+                                                width: Theme.fontSizeExtraSmall
+                                                height: Theme.fontSizeExtraSmall
+                                            }
+                                        }
+                                        Column {
+                                            width: parent.width / 3
+                                            Text {
+                                                id: homeTweetFavoritesCountText
+                                                font.pixelSize: Theme.fontSizeTiny
+                                                anchors.left: parent.left
+                                                color: Theme.secondaryColor
+                                                text: display.retweeted_status ? ( display.retweeted_status.favorite_count ? display.retweeted_status.favorite_count : " " ) : ( display.favorite_count ? display.favorite_count : " " )
+                                                elide: Text.ElideRight
+                                                maximumLineCount: 1
+                                            }
+                                        }
+                                    }
                                 }
-                            }
 
+                                ListModel {
+                                    id: tweetImageListModel
+                                }
+
+                                SlideshowView {
+                                    id: homeTweetImageSlideshow
+                                    visible: hasImage(display.retweeted_status ? display.retweeted_status : display)
+                                    width: parent.width
+                                    height: parent.width * 2 / 3
+                                    model: getTweetImageModel(display.retweeted_status ? display.retweeted_status : display, tweetImageListModel)
+                                    delegate: Item {
+                                        width: parent.width
+                                        height: parent.height
+                                        Image {
+                                            id: homeTweetImage
+                                            source: media_url_https
+                                            width: parent.width
+                                            height: parent.height
+                                            sourceSize.width: parent.width
+                                            sourceSize.height: parent.height
+                                            fillMode: Image.PreserveAspectCrop
+                                            visible: status === Image.Ready ? true : false
+                                            opacity: status === Image.Ready ? 1 : 0
+                                            Behavior on opacity { NumberAnimation {} }
+                                        }
+                                        ImageProgressIndicator {
+                                            image: homeTweetImage
+                                            withPercentage: true
+                                        }
+                                    }
+                                }
+
+                                Loader {
+                                    id: videoLoader
+                                    active: containsVideo(display.retweeted_status ? display.retweeted_status : display)
+                                    width: parent.width
+                                    height: getVideoHeight(parent.width, display.retweeted_status ? display.retweeted_status : display)
+                                    sourceComponent: tweetVideoComponent
+                                }
+
+                                Component {
+                                    id: tweetVideoComponent
+                                    TweetVideoComponent {
+                                        tweet: display
+                                    }
+                                }
+
+                            }
+                        }
+
+                        Separator {
+                            id: homeTweetSeparator
+                            width: parent.width
+                            color: Theme.primaryColor
+                            horizontalAlignment: Qt.AlignHCenter
                         }
                     }
 
-                    Separator {
-                        id: homeTweetSeparator
-                        width: parent.width
-                        color: Theme.primaryColor
-                        horizontalAlignment: Qt.AlignHCenter
-                    }
+                    VerticalScrollDecorator {}
                 }
 
-                VerticalScrollDecorator {}
+                LoadingIndicator {
+                    id: homeLoadingIndicator
+                    visible: homeView.reloading
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: homeView.reloading ? 1 : 0
+                    height: parent.height
+                    width: parent.width
+                }
             }
+
 
             Column {
                 id: notificationsColumn
@@ -956,7 +1072,10 @@ Page {
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
-                        onClicked: openTab("home")
+                        onClicked: {
+                            openTab("home");
+                            homeListView.scrollToTop();
+                        }
                     }
                     Label {
                         id: homeButtonText

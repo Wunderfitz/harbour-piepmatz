@@ -44,6 +44,7 @@ Item {
         sourceSize.width: parent.width
         sourceSize.height: parent.height
         fillMode: Image.PreserveAspectCrop
+        visible: status === Image.Ready ? true : false
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -67,6 +68,12 @@ Item {
         width: Theme.iconSizeLarge
         height: Theme.iconSizeLarge
         source: "image://theme/icon-l-play"
+        visible: placeholderImage.status === Image.Ready ? true : false
+    }
+
+    ImageProgressIndicator {
+        image: placeholderImage
+        withPercentage: true
     }
 
     Rectangle {
