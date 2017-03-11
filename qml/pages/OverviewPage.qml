@@ -89,6 +89,17 @@ Page {
         return "";
     }
 
+    function getTweetImageModel(tweet, listModel) {
+        if (tweet.extended_entities) {
+            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+                if (tweet.extended_entities.media[i].type === "photo" ) {
+                    listModel.append(tweet.extended_entities.media[i]);
+                }
+            }
+        }
+        return listModel;
+    }
+
     function getUserNameById(userId, currentUser, userMentions) {
         if (typeof userId !== "undefined") {
             if (userId === currentUser.id) {
@@ -107,7 +118,6 @@ Page {
         if (tweet.extended_entities) {
             for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
                 if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    console.log("Video detected! " + tweet.full_text)
                     return true;
                 }
             }
@@ -822,15 +832,26 @@ Page {
                                     }
                                 }
                             }
-                            Image {
-                                id: homeTweetImage
-                                source: getTweetImageUrl(display.retweeted_status ? display.retweeted_status : display)
+
+                            ListModel {
+                                id: tweetImageListModel
+                            }
+
+                            SlideshowView {
+                                id: homeTweetImageSlideshow
                                 visible: hasImage(display.retweeted_status ? display.retweeted_status : display)
                                 width: parent.width
                                 height: parent.width * 2 / 3
-                                sourceSize.width: parent.width
-                                sourceSize.height: parent.width * 2 / 3
-                                fillMode: Image.PreserveAspectCrop
+                                model: getTweetImageModel(display.retweeted_status ? display.retweeted_status : display, tweetImageListModel)
+                                delegate: Image {
+                                    id: homeTweetImage
+                                    source: media_url_https
+                                    width: parent.width
+                                    height: parent.height
+                                    sourceSize.width: parent.width
+                                    sourceSize.height: parent.height
+                                    fillMode: Image.PreserveAspectCrop
+                                }
                             }
 
                             Loader {

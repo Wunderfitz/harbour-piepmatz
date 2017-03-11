@@ -88,13 +88,13 @@ Item {
         anchors {
             verticalCenter: parent.verticalCenter
         }
+        wrapMode: Text.Wrap
         text: ""
     }
 
     Video {
         id: tweetVideo
         visible: false
-        muted: true
         width: parent.width
         height: parent.height
         source: getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
