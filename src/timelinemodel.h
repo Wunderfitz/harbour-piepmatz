@@ -21,6 +21,7 @@ public:
     CoverModel *coverModel;
 
 signals:
+    void homeTimelineStartUpdate();
     void homeTimelineUpdated();
     void homeTimelineError(const QString &errorMessage);
 

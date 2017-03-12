@@ -32,6 +32,7 @@ QVariant TimelineModel::data(const QModelIndex &index, int role) const
 
 void TimelineModel::update()
 {
+    emit homeTimelineStartUpdate();
     twitterApi->homeTimeline();
 }
 

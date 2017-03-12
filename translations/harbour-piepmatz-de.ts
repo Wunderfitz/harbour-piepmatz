@@ -41,6 +41,13 @@
     </message>
 </context>
 <context>
+    <name>CoverPage</name>
+    <message>
+        <source>Loading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImageProgressIndicator</name>
     <message>
         <source>%1 %</source>

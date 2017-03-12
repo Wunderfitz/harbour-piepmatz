@@ -25,7 +25,7 @@ Item {
         id: imageProgressText
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.secondaryColor
-        text: withPercentage ? qsTr("%1 \%").arg(image.progress * 100) : qsTr("%1").arg(image.progress * 100)
+        text: withPercentage ? qsTr("%1 \%").arg(Math.round(image.progress * 100)) : qsTr("%1").arg(Math.round(image.progress * 100))
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         visible: image.status === Image.Loading ? true : false

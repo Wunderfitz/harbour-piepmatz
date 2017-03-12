@@ -661,6 +661,10 @@ Page {
 
                 Connections {
                     target: timelineModel
+                    onHomeTimelineStartUpdate: {
+                        homeView.error = false;
+                    }
+
                     onHomeTimelineUpdated: {
                         homeView.loaded = true;
                         homeView.reloading = false;

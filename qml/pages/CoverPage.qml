@@ -7,6 +7,39 @@ import Sailfish.Silica 1.0
 
 CoverBackground {
 
+    id: coverPage
+
+    property bool loading : false;
+
+    Connections {
+        target: timelineModel
+        onHomeTimelineStartUpdate: {
+            coverPage.loading = true;
+        }
+        onHomeTimelineUpdated: {
+            coverPage.loading = false;
+        }
+        onHomeTimelineError: {
+            coverPage.loading = false;
+        }
+    }
+
+    Column {
+        id: loadingColumn
+        width: parent.width - 2 * Theme.horizontalPageMargin
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: Theme.paddingMedium
+        visible: coverPage.loading
+        Behavior on opacity { NumberAnimation {} }
+        opacity: coverPage.loading ? 1 : 0
+        InfoLabel {
+            id: loadingLabel
+            text: qsTr("Loading...")
+            font.pixelSize: Theme.fontSizeMedium
+        }
+    }
+
     CoverActionList {
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
@@ -32,6 +65,9 @@ CoverBackground {
 
     SilicaListView {
         id: coverListView
+        visible: !coverPage.loading
+        Behavior on opacity { NumberAnimation {} }
+        opacity: coverPage.loading ? 0 : 1
         anchors {
             top: parent.top
             topMargin: Theme.paddingMedium
