@@ -841,6 +841,15 @@ Page {
                                         elide: Text.ElideRight
                                         maximumLineCount: 1
                                     }
+
+                                    Image {
+                                        id: homeTweetUserVerifiedImage
+                                        source: "image://theme/icon-s-installed"
+                                        visible: display.retweeted_status ? display.retweeted_status.user.verified : display.user.verified
+                                        width: Theme.fontSizeSmall
+                                        height: Theme.fontSizeSmall
+                                    }
+
                                     Text {
                                         id: homeTweetUserHandleText
                                         font.pixelSize: Theme.fontSizeExtraSmall
