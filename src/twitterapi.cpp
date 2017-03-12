@@ -81,6 +81,30 @@ void TwitterApi::homeTimeline()
     connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
 }
 
+void TwitterApi::showStatus(const QString &statusId)
+{
+    qDebug() << "TwitterApi::show" << statusId;
+    QUrl url = QUrl(API_STATUSES_SHOW);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("trim_user", "false");
+    urlQuery.addQueryItem("id", statusId);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("id"), statusId.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowStatusError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleShowStatusFinished()));
+}
+
 
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
@@ -129,5 +153,30 @@ void TwitterApi::handleHomeTimelineFinished()
         emit homeTimelineSuccessful(responseArray.toVariantList());
     } else {
         emit homeTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleShowStatusError:" << (int)error << reply->errorString() << reply->readAll();
+    emit showStatusError(reply->errorString());
+}
+
+void TwitterApi::handleShowStatusFinished()
+{
+    qDebug() << "TwitterApi::handleShowStatusFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit showStatusSuccessful(responseObject.toVariantMap());
+    } else {
+        emit showStatusError("Piepmatz couldn't understand Twitter's response!");
     }
 }

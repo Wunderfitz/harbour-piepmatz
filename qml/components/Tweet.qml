@@ -6,16 +6,55 @@ import "../js/functions.js" as Functions
 
 ListItem {
 
+    id: singleTweet
+
     property variant tweetModel;
+    property bool extendedTweet : true;
 
     contentHeight: tweetRow.height + 2 * Theme.paddingMedium
     contentWidth: parent.width
+
+    function containsTweetUrl(tweet) {
+        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
+        for (var i = 0; i < tweet.entities.urls.length; i++ ) {
+            var matchingResult = regex.exec(tweet.entities.urls[i].expanded_url);
+            if (matchingResult !== null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function getTweetStatusId(url) {
+        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
+        var matchingResult = regex.exec(url);
+        if (matchingResult !== null) {
+            return matchingResult[1];
+        }
+        return null;
+    }
+
+    function isTweetUrl(url) {
+        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
+        var matchingResult = regex.exec(url);
+        if (matchingResult !== null) {
+            return true;
+        }
+        return false;
+    }
 
     function enhanceText(tweet) {
         var tweetText = tweet.full_text;
         // URLs
         for (var i = 0; i < tweet.entities.urls.length; i++ ) {
-            tweetText = tweetText.replace(tweet.entities.urls[i].url, "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>");
+            if (isTweetUrl(tweet.entities.urls[i].expanded_url)) {
+                // Remove tweet URLs - will become embedded tweets...
+                console.log("Embedded tweet detected: " + tweet.entities.urls[i].expanded_url);
+                tweetText = tweetText.replace(tweet.entities.urls[i].url, "");
+                twitterApi.showStatus(getTweetStatusId(tweet.entities.urls[i].expanded_url));
+            } else {
+                tweetText = tweetText.replace(tweet.entities.urls[i].url, "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>");
+            }
         }
         // Remove media links - will become own QML entities
         if (tweet.extended_entities) {
@@ -111,6 +150,7 @@ ListItem {
             width: parent.width / 6
             height: parent.width / 6
             spacing: Theme.paddingSmall
+            visible: singleTweet.extendedTweet
             Image {
                 id: tweetRetweetedImage
                 source: "image://theme/icon-s-retweet"
@@ -176,20 +216,23 @@ ListItem {
             width: parent.width * 5 / 6 - Theme.horizontalPageMargin
             spacing: Theme.paddingSmall
 
-            Text {
-                id: tweetRetweetedText
-                font.pixelSize: Theme.fontSizeTiny
-                color: Theme.secondaryColor
-                text: qsTr("Retweeted by %1").arg(tweetModel.user.name)
-                visible: tweetModel.retweeted_status ? true : false
-            }
+            Column {
+                visible: singleTweet.extendedTweet
+                Text {
+                    id: tweetRetweetedText
+                    font.pixelSize: Theme.fontSizeTiny
+                    color: Theme.secondaryColor
+                    text: qsTr("Retweeted by %1").arg(tweetModel.user.name)
+                    visible: tweetModel.retweeted_status ? true : false
+                }
 
-            Text {
-                id: tweetInReplyToText
-                font.pixelSize: Theme.fontSizeTiny
-                color: Theme.secondaryColor
-                text: qsTr("In reply to %1").arg(getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
-                visible: tweetModel.in_reply_to_user_id_str ? true : false
+                Text {
+                    id: tweetInReplyToText
+                    font.pixelSize: Theme.fontSizeTiny
+                    color: Theme.secondaryColor
+                    text: qsTr("In reply to %1").arg(getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
+                    visible: tweetModel.in_reply_to_user_id_str ? true : false
+                }
             }
 
             Row {
