@@ -151,15 +151,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Retweeted by %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Saying hello to Twitter...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>In reply to %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -168,6 +160,21 @@
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tweet</name>
+    <message>
+        <source>Retweeted by %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>@%1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
