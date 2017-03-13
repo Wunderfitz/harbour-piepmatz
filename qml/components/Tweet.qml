@@ -9,131 +9,12 @@ ListItem {
     id: singleTweet
 
     property variant tweetModel;
-    property bool extendedTweet : true;
+    property string embeddedTweetId;
+    property variant embeddedTweet;
+    property bool hasEmbeddedTweet : false;
 
     contentHeight: tweetRow.height + 2 * Theme.paddingMedium
     contentWidth: parent.width
-
-    function containsTweetUrl(tweet) {
-        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
-        for (var i = 0; i < tweet.entities.urls.length; i++ ) {
-            var matchingResult = regex.exec(tweet.entities.urls[i].expanded_url);
-            if (matchingResult !== null) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function getTweetStatusId(url) {
-        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
-        var matchingResult = regex.exec(url);
-        if (matchingResult !== null) {
-            return matchingResult[1];
-        }
-        return null;
-    }
-
-    function isTweetUrl(url) {
-        var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
-        var matchingResult = regex.exec(url);
-        if (matchingResult !== null) {
-            return true;
-        }
-        return false;
-    }
-
-    function enhanceText(tweet) {
-        var tweetText = tweet.full_text;
-        // URLs
-        for (var i = 0; i < tweet.entities.urls.length; i++ ) {
-            if (isTweetUrl(tweet.entities.urls[i].expanded_url)) {
-                // Remove tweet URLs - will become embedded tweets...
-                console.log("Embedded tweet detected: " + tweet.entities.urls[i].expanded_url);
-                tweetText = tweetText.replace(tweet.entities.urls[i].url, "");
-                twitterApi.showStatus(getTweetStatusId(tweet.entities.urls[i].expanded_url));
-            } else {
-                tweetText = tweetText.replace(tweet.entities.urls[i].url, "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>");
-            }
-        }
-        // Remove media links - will become own QML entities
-        if (tweet.extended_entities) {
-            for (var j = 0; j < tweet.extended_entities.media.length; j++ ) {
-                tweetText = tweetText.replace(tweet.extended_entities.media[j].url, "");
-            }
-        }
-        return tweetText;
-    }
-
-    function hasImage(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "photo" ) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    function getTweetImageUrl(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "photo" ) {
-                    return tweet.extended_entities.media[i].media_url_https;
-                }
-            }
-        }
-        return "";
-    }
-
-    function getTweetImageModel(tweet, listModel) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "photo" ) {
-                    listModel.append(tweet.extended_entities.media[i]);
-                }
-            }
-        }
-        return listModel;
-    }
-
-    function getUserNameById(userId, currentUser, userMentions) {
-        if (typeof userId !== "undefined") {
-            if (userId === currentUser.id) {
-                return currentUser.name;
-            }
-            for (var i = 0; i < userMentions.length ; i++) {
-                if (userMentions[i].id === userId) {
-                    return userMentions[i].name;
-                }
-            }
-        }
-        return "";
-    }
-
-    function containsVideo(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    function getVideoHeight(videoWidth, tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    var videoHeight = Math.round(videoWidth * tweet.extended_entities.media[i].video_info.aspect_ratio[1] / tweet.extended_entities.media[i].video_info.aspect_ratio[0]);
-                    return videoHeight;
-                }
-            }
-        }
-        return 1;
-    }
 
     Row {
         id: tweetRow
@@ -150,7 +31,6 @@ ListItem {
             width: parent.width / 6
             height: parent.width / 6
             spacing: Theme.paddingSmall
-            visible: singleTweet.extendedTweet
             Image {
                 id: tweetRetweetedImage
                 source: "image://theme/icon-s-retweet"
@@ -217,7 +97,6 @@ ListItem {
             spacing: Theme.paddingSmall
 
             Column {
-                visible: singleTweet.extendedTweet
                 Text {
                     id: tweetRetweetedText
                     font.pixelSize: Theme.fontSizeTiny
@@ -230,7 +109,7 @@ ListItem {
                     id: tweetInReplyToText
                     font.pixelSize: Theme.fontSizeTiny
                     color: Theme.secondaryColor
-                    text: qsTr("In reply to %1").arg(getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
+                    text: qsTr("In reply to %1").arg(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
                     visible: tweetModel.in_reply_to_user_id_str ? true : false
                 }
             }
@@ -272,7 +151,7 @@ ListItem {
             Text {
                 width: parent.width
                 id: tweetContentText
-                text: enhanceText(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                text: Functions.enhanceText(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 wrapMode: Text.Wrap
@@ -354,10 +233,10 @@ ListItem {
 
             SlideshowView {
                 id: tweetImageSlideshow
-                visible: hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                visible: Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                 width: parent.width
                 height: parent.width * 2 / 3
-                model: getTweetImageModel(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel, tweetImageListModel)
+                model: Functions.getTweetImageModel(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel, tweetImageListModel)
                 delegate: Item {
                     width: parent.width
                     height: parent.height
@@ -398,9 +277,9 @@ ListItem {
 
             Loader {
                 id: videoLoader
-                active: containsVideo(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                active: Functions.containsVideo(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                 width: parent.width
-                height: getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                height: Functions.getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                 sourceComponent: tweetVideoComponent
             }
 
@@ -409,6 +288,32 @@ ListItem {
                 TweetVideo {
                     tweet: tweetModel
                 }
+            }
+
+            Connections {
+                target: twitterApi
+                onShowStatusSuccessful: {
+                    if (embeddedTweetId === result.id_str) {
+                        embeddedTweet = result;
+                        hasEmbeddedTweet = true;
+                    }
+                }
+            }
+
+            Component {
+                id: embeddedTweetComponent
+                EmbeddedTweet {
+                    id: embeddedTweetItem
+                    tweetModel: embeddedTweet
+                    visible: hasEmbeddedTweet
+                }
+            }
+
+            Loader {
+                id: embeddedTweetLoader
+                active: hasEmbeddedTweet
+                width: parent.width
+                sourceComponent: embeddedTweetComponent
             }
 
         }
