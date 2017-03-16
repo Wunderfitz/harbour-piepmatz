@@ -106,34 +106,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>@%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Following</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Followers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Tweets</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>|</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Joined in %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Timeline</source>
         <translation type="unfinished"></translation>
     </message>
@@ -167,6 +139,37 @@
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Profile</name>
+    <message>
+        <source>@%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Following</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Followers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Tweets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>|</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Joined in %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -54,7 +54,7 @@ ListItem {
                 height: parent.width
                 Image {
                     id: tweetAuthorPicture
-                    source: Functions.findHiResImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
+                    source: Functions.findBiggerImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
                     width: parent.width
                     height: parent.height
                     sourceSize {
@@ -156,7 +156,7 @@ ListItem {
                 color: Theme.primaryColor
                 wrapMode: Text.Wrap
                 textFormat: Text.StyledText
-                onLinkActivated: Qt.openUrlExternally(link)
+                onLinkActivated: Functions.handleLink(link)
                 linkColor: Theme.highlightColor
             }
 

@@ -15,11 +15,12 @@ Item {
     Column {
         id: embeddedTweetColumn
         spacing: Theme.paddingMedium
-        width: parent.width
-        height: embeddedTweetSeparator.height + tweetUserRow.height + tweetContentText.height + 3 * ( Theme.paddingMedium ) + ( videoLoader.active ? videoLoader.height + Theme.paddingMedium : 0 ) + ( tweetImageSlideshow.visible ? tweetImageSlideshow.height + Theme.paddingMedium : 0 )
+        width: parent.width - Theme.paddingMedium
+        anchors.right: parent.right
+        height: embeddedTweetSeparatorTop.height + tweetUserRow.height + tweetContentText.height + 3 * ( Theme.paddingMedium ) + ( videoLoader.active ? videoLoader.height + Theme.paddingMedium : 0 ) + ( tweetImageSlideshow.visible ? tweetImageSlideshow.height + Theme.paddingMedium : 0 )
 
         Separator {
-            id: embeddedTweetSeparator
+            id: embeddedTweetSeparatorTop
             width: parent.width
             color: Theme.primaryColor
             horizontalAlignment: Qt.AlignHCenter

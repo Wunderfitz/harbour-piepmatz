@@ -7,6 +7,15 @@ function findHiResImage(url) {
     }
 }
 
+function findBiggerImage(url) {
+    var suffixIndex = url.indexOf("_normal");
+    if (suffixIndex !== -1) {
+        return url.substring(0, suffixIndex) + "_bigger" + url.substring(suffixIndex + 7);
+    } else {
+        return url;
+    }
+}
+
 function getValidDate(twitterDate) {
     return new Date(twitterDate.replace(/^(\w+) (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/,"$1, $2 $3 $5 $4 GMT"));
 }
@@ -40,7 +49,25 @@ function enhanceText(tweet) {
             tweetText = tweetText.replace(tweet.extended_entities.media[j].url, "");
         }
     }
+    // User Mentions
+    var mention_replacements = [];
+    for (var k = 0; k < tweet.entities.user_mentions.length; k++ ) {
+        var user_mention = tweetText.substring(tweet.entities.user_mentions[k].indices[0], tweet.entities.user_mentions[k].indices[1]);
+        var user_mention_url = "<a href=\"profile://" + tweet.entities.user_mentions[k].screen_name + "\">" + user_mention + "</a>";
+        mention_replacements.push({ mention: user_mention, url: user_mention_url });
+        // TODO: Replace correctly... *sigh*
+    }
     return tweetText;
+}
+
+function handleLink(link) {
+    console.log(link);
+    if (link.indexOf("profile://") === 0) {
+        var profileComponent = Qt.createComponent("../Profile.qml");
+        // TODO: Open profile page...
+    } else {
+        Qt.openUrlExternally(link);
+    }
 }
 
 function hasImage(tweet) {

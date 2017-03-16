@@ -20,6 +20,7 @@ const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/accou
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
+const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
 
 class TwitterApi : public QObject {
 
@@ -31,6 +32,7 @@ public:
     Q_INVOKABLE void tweet(const QString &text);
     Q_INVOKABLE void homeTimeline();
     Q_INVOKABLE void showStatus(const QString &statusId);
+    Q_INVOKABLE void showUser(const QString &screenName);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -41,6 +43,8 @@ signals:
     void homeTimelineError(const QString &errorMessage);
     void showStatusSuccessful(const QVariantMap &result);
     void showStatusError(const QString &errorMessage);
+    void showUserSuccessful(const QVariantMap &result);
+    void showUserError(const QString &errorMessage);
 
 private:
     O1Requestor *requestor;
@@ -54,6 +58,8 @@ private slots:
     void handleHomeTimelineFinished();
     void handleShowStatusError(QNetworkReply::NetworkError error);
     void handleShowStatusFinished();
+    void handleShowUserError(QNetworkReply::NetworkError error);
+    void handleShowUserFinished();
 
 };
 

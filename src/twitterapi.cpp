@@ -83,7 +83,7 @@ void TwitterApi::homeTimeline()
 
 void TwitterApi::showStatus(const QString &statusId)
 {
-    qDebug() << "TwitterApi::show" << statusId;
+    qDebug() << "TwitterApi::showStatus" << statusId;
     QUrl url = QUrl(API_STATUSES_SHOW);
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
@@ -103,6 +103,28 @@ void TwitterApi::showStatus(const QString &statusId)
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowStatusError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowStatusFinished()));
+}
+
+void TwitterApi::showUser(const QString &screenName)
+{
+    qDebug() << "TwitterApi::showUser" << screenName;
+    QUrl url = QUrl(API_USERS_SHOW);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("screenName", screenName);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("screenName"), screenName.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowUserError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
 }
 
 
@@ -178,5 +200,30 @@ void TwitterApi::handleShowStatusFinished()
         emit showStatusSuccessful(responseObject.toVariantMap());
     } else {
         emit showStatusError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleShowUserError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleShowUserError:" << (int)error << reply->errorString() << reply->readAll();
+    emit showUserError(reply->errorString());
+}
+
+void TwitterApi::handleShowUserFinished()
+{
+    qDebug() << "TwitterApi::handleShowUserFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit showUserSuccessful(responseObject.toVariantMap());
+    } else {
+        emit showUserError("Piepmatz couldn't understand Twitter's response!");
     }
 }
