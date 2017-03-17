@@ -29,8 +29,21 @@ function getTweetId(url) {
     return null;
 }
 
+function Replacement(beginOffset, endOffset, replacementString) {
+    this.beginOffset = beginOffset;
+    this.endOffset = endOffset;
+    this.replacementString = replacementString;
+}
+
+Replacement.prototype.toString = function replacementToString() {
+    return "Begin Offset: " + this.beginOffset + ", End Offset: " + this.endOffset + ", Replacement String: " + this.replacementString;
+}
+
 function enhanceText(tweet) {
     var tweetText = tweet.full_text;
+
+    var replacements = [];
+
     // URLs
     for (var i = 0; i < tweet.entities.urls.length; i++ ) {
         var tweetId = getTweetId(tweet.entities.urls[i].expanded_url);
@@ -38,34 +51,48 @@ function enhanceText(tweet) {
             // Remove tweet URLs - will become embedded tweets...
             embeddedTweetId = tweetId;
             twitterApi.showStatus(tweetId);
-            tweetText = tweetText.replace(tweet.entities.urls[i].url, "");
+            replacements.push(new Replacement(tweet.entities.urls[i].indices[0], tweet.entities.urls[i].indices[1], ""));
         } else {
-            tweetText = tweetText.replace(tweet.entities.urls[i].url, "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>");
+            var url_replacement = "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>";
+            replacements.push(new Replacement(tweet.entities.urls[i].indices[0], tweet.entities.urls[i].indices[1], url_replacement));
         }
     }
     // Remove media links - will become own QML entities
     if (tweet.extended_entities) {
         for (var j = 0; j < tweet.extended_entities.media.length; j++ ) {
-            tweetText = tweetText.replace(tweet.extended_entities.media[j].url, "");
+            replacements.push(new Replacement(tweet.extended_entities.media[j].indices[0], tweet.extended_entities.media[j].indices[1], ""));
         }
     }
     // User Mentions
-    var mention_replacements = [];
     for (var k = 0; k < tweet.entities.user_mentions.length; k++ ) {
         var user_mention = tweetText.substring(tweet.entities.user_mentions[k].indices[0], tweet.entities.user_mentions[k].indices[1]);
         var user_mention_url = "<a href=\"profile://" + tweet.entities.user_mentions[k].screen_name + "\">" + user_mention + "</a>";
-        mention_replacements.push({ mention: user_mention, url: user_mention_url });
-        // TODO: Replace correctly... *sigh*
+        replacements.push(new Replacement(tweet.entities.user_mentions[k].indices[0], tweet.entities.user_mentions[k].indices[1], user_mention_url));
     }
+    // Hashtags
+    for (var l = 0; l < tweet.entities.hashtags.length; l++ ) {
+        var hashtag = tweetText.substring(tweet.entities.hashtags[l].indices[0], tweet.entities.hashtags[l].indices[1]);
+        var hashtag_url = "<a href=\"tag://" + hashtag + "\">" + hashtag + "</a>";
+        replacements.push(new Replacement(tweet.entities.hashtags[l].indices[0], tweet.entities.hashtags[l].indices[1], hashtag_url));
+    }
+
+    replacements.sort( function(a,b) { return b.beginOffset - a.beginOffset } );
+    for (var m = 0; m < replacements.length; m++) {
+        tweetText = tweetText.substring(0, replacements[m].beginOffset) + replacements[m].replacementString + tweetText.substring(replacements[m].endOffset);
+    }
+
     return tweetText;
 }
 
 function handleLink(link) {
-    console.log(link);
     if (link.indexOf("profile://") === 0) {
-        var profileComponent = Qt.createComponent("../Profile.qml");
-        // TODO: Open profile page...
-    } else {
+        console.log("Profile clicked: " + link);
+        var profileComponent = Qt.createComponent("../pages/ProfilePage.qml");
+        var profilePage = profileComponent.createObject(appWindow, {"profileName": link.substring(10)});
+        pageStack.push(profilePage);
+    } else if (link.indexOf("tag://") === 0) {
+        console.log("Hashtag clicked: " + link);
+    }  else {
         Qt.openUrlExternally(link);
     }
 }

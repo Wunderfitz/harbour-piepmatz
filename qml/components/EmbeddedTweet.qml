@@ -68,7 +68,7 @@ Item {
             color: Theme.primaryColor
             wrapMode: Text.Wrap
             textFormat: Text.StyledText
-            onLinkActivated: Qt.openUrlExternally(link)
+            onLinkActivated: Functions.handleLink(link)
             linkColor: Theme.highlightColor
         }
 

@@ -10,6 +10,8 @@ import "components"
 ApplicationWindow
 {
 
+    id: appWindow
+
     Component {
         id: aboutPage
         AboutPage {}

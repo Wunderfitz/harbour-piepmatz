@@ -344,6 +344,8 @@ Page {
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 visible: false
+                opacity: 0
+                Behavior on opacity { NumberAnimation {} }
 
                 property bool loaded : false;
                 property bool error : false;

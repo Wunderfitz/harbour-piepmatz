@@ -112,7 +112,7 @@ void TwitterApi::showUser(const QString &screenName)
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("include_entities", "true");
-    urlQuery.addQueryItem("screenName", screenName);
+    urlQuery.addQueryItem("screen_name", screenName);
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -120,7 +120,7 @@ void TwitterApi::showUser(const QString &screenName)
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("screenName"), screenName.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowUserError(QNetworkReply::NetworkError)));

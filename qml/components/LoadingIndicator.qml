@@ -10,7 +10,7 @@ Item {
     Rectangle {
         id: loadingOverlay
         color: "black"
-        opacity: 0.5
+        opacity: 0.7
         width: parent.width
         height: parent.height
         visible: true
