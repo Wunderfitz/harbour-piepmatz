@@ -161,14 +161,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>|</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Joined in %1</source>
         <translation type="unfinished"></translation>
     </message>
