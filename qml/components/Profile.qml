@@ -283,11 +283,7 @@ Item {
                         width: parent.width
                         textFormat: Text.StyledText
                         onLinkActivated: {
-                            if (link.indexOf("profile://" === 0)) {
-                                profileItem.accountName = link.substring(10);
-                            } else {
-                                Functions.handleLink(link);
-                            }
+                            Functions.handleLink(link);
                         }
                         linkColor: Theme.highlightColor
                     }

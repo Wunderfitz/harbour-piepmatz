@@ -45,14 +45,14 @@ function getRelevantTweet(tweet) {
 }
 
 function enhanceDescription(description) {
-    var httpRegex = /(http[s]*\:\/\/\S+)/g;
-    description = description.replace(httpRegex, "<a href=\"$1\">$1</a>");
+    var httpRegex = /\s+(http[s]*\:\/\/\S+)/g;
+    description = description.replace(httpRegex, " <a href=\"$1\">$1</a>");
 
-    var userMentionRegex = /(\@(\w+))/g;
-    description = description.replace(userMentionRegex, "<a href=\"profile://$2\">$1</a>");
+    var userMentionRegex = /\s+(\@(\w+))/g;
+    description = description.replace(userMentionRegex, " <a href=\"profile://$2\">$1</a>");
 
-    var hashTagRegex = /(\#(\w+))/g;
-    description = description.replace(hashTagRegex, "<a href=\"tag://$2\">$1</a>");
+    var hashTagRegex = /\s+(\#\w+)/g;
+    description = description.replace(hashTagRegex, " <a href=\"tag://$1\">$1</a>");
 
     return description;
 }
