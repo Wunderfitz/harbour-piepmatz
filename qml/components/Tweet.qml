@@ -193,6 +193,7 @@ ListItem {
                 Text {
                     id: tweetUserHandleText
                     font.pixelSize: Theme.fontSizeExtraSmall
+                    width: parent.width - tweetUserVerifiedImage.width - tweetUserNameText.width - ( 2 * Theme.paddingSmall )
                     color: Theme.secondaryColor
                     anchors.bottom: tweetUserNameText.bottom
                     text: qsTr("@%1").arg(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.screen_name : tweetModel.user.screen_name)

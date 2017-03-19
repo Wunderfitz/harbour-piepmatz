@@ -46,7 +46,8 @@ Page {
         timelineModel.update();
     }
 
-    property string activeTabId: "home"
+    property string activeTabId: "home";
+    property string authenticatedUser;
 
     function openTab(tabId) {
 
@@ -175,18 +176,33 @@ Page {
     Connections {
         target: accountModel
         onCredentialsVerified: {
-            hideAccountVerificationColumn()
-            overviewContainer.visible = true
-            overviewColumn.visible = true
-            overviewColumn.opacity = 1
-            openTab("home")
-            timelineModel.update()
+            hideAccountVerificationColumn();
+            overviewContainer.visible = true;
+            overviewColumn.visible = true;
+            overviewColumn.opacity = 1;
+            openTab("home");
+            timelineModel.update();
+            authenticatedUser = accountModel.getAuthenticatedUserName();
         }
         onVerificationError: {
-            hideAccountVerificationColumn()
+            hideAccountVerificationColumn();
             verificationFailedColumn.visible = true;
-            verificationFailedColumn.opacity = 1
+            verificationFailedColumn.opacity = 1;
         }
+    }
+
+    Connections {
+        target: twitterApi
+        onTweetError: {
+            overviewNotification.show(errorMessage);
+        }
+        onTweetSuccessful: {
+            overviewNotification.show(qsTr("Tweet sent successfully!"));
+        }
+    }
+
+    Notification {
+        id: overviewNotification
     }
 
     Column {

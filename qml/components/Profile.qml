@@ -25,6 +25,10 @@ Item {
         }
     }
 
+    Notification {
+        id: profileNotification
+    }
+
     Connections {
         target: twitterApi
         onShowUserSuccessful: {
@@ -33,7 +37,7 @@ Item {
         }
         onShowUserError: {
             loaded = true;
-            // TODO: Finally implement a nice error/notification popup
+            profileNotification.show(errorMessage);
         }
     }
 

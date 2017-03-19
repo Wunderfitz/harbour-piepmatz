@@ -141,6 +141,10 @@
         <source>Piepmatz could not log you in!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Tweet sent successfully!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
@@ -162,6 +166,25 @@
     </message>
     <message>
         <source>Joined in %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProfilePage</name>
+    <message>
+        <source>Unfollow %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Follow %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You follow %1 now.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You don&apos;t follow %1 anymore.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

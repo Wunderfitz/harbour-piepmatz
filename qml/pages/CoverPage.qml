@@ -90,6 +90,7 @@ CoverBackground {
                 Row {
                     id: resultTitleRow
                     spacing: Theme.paddingSmall
+                    width: parent.width
                     Image {
                         id: resultTitlePicture
                         source: display.image
@@ -102,11 +103,13 @@ CoverBackground {
                     }
                     Text {
                         id: resultLabelTitle
+                        width: parent.width - Theme.paddingSmall - resultTitlePicture.width
                         maximumLineCount: 1
                         color: Theme.primaryColor
                         font.pixelSize: Theme.fontSizeTiny
                         font.bold: true
                         text: display.name
+                        elide: Text.ElideRight
                     }
                 }
                 Text {

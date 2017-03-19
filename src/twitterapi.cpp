@@ -127,6 +127,42 @@ void TwitterApi::showUser(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
 }
 
+void TwitterApi::followUser(const QString &screenName)
+{
+    qDebug() << "TwitterApi::followUser" << screenName;
+    QUrl url = QUrl(API_FRIENDSHIPS_CREATE);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFollowUserError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFollowUserFinished()));
+}
+
+void TwitterApi::unfollowUser(const QString &screenName)
+{
+    qDebug() << "TwitterApi::unfollowUser" << screenName;
+    QUrl url = QUrl(API_FRIENDSHIPS_DESTROY);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnfollowUserError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUnfollowUserFinished()));
+}
+
 
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
@@ -225,5 +261,55 @@ void TwitterApi::handleShowUserFinished()
         emit showUserSuccessful(responseObject.toVariantMap());
     } else {
         emit showUserError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleFollowUserError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleFollowUserError:" << (int)error << reply->errorString() << reply->readAll();
+    emit followUserError(reply->errorString());
+}
+
+void TwitterApi::handleFollowUserFinished()
+{
+    qDebug() << "TwitterApi::handleFollowUserFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit followUserSuccessful(responseObject.toVariantMap());
+    } else {
+        emit followUserError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleUnfollowUserError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleUnfollowUserError:" << (int)error << reply->errorString() << reply->readAll();
+    emit unfollowUserError(reply->errorString());
+}
+
+void TwitterApi::handleUnfollowUserFinished()
+{
+    qDebug() << "TwitterApi::handleUnfollowUserFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit unfollowUserSuccessful(responseObject.toVariantMap());
+    } else {
+        emit unfollowUserError("Piepmatz couldn't understand Twitter's response!");
     }
 }

@@ -48,12 +48,6 @@ function enhanceDescription(description) {
     var httpRegex = /\s+(http[s]*\:\/\/\S+)/g;
     description = description.replace(httpRegex, " <a href=\"$1\">$1</a>");
 
-    var userMentionRegex = /\s+(\@(\w+))/g;
-    description = description.replace(userMentionRegex, " <a href=\"profile://$2\">$1</a>");
-
-    var hashTagRegex = /\s+(\#\w+)/g;
-    description = description.replace(hashTagRegex, " <a href=\"tag://$1\">$1</a>");
-
     return description;
 }
 
@@ -94,7 +88,13 @@ function enhanceText(tweetText, entities, extendedEntities) {
 
     replacements.sort( function(a,b) { return b.beginOffset - a.beginOffset } );
     for (var m = 0; m < replacements.length; m++) {
-        tweetText = tweetText.replace(replacements[m].originalString, replacements[m].replacementString);
+        if (tweetText.substring(replacements[m].beginOffset, replacements[m].endOffset) === replacements[m].originalString) {
+            tweetText = tweetText.substring(0, replacements[m].beginOffset) + replacements[m].replacementString + tweetText.substring(replacements[m].endOffset);
+        } else {
+            // Sometimes our offsets do not match the offsets by Twitter - trying a failsafe instead
+            console.log("Failsafe replacement used for " + replacements[m].originalString + ", replacement: " + replacements[m].replacementString);
+            tweetText = tweetText.replace(replacements[m].originalString, replacements[m].replacementString);
+        }
     }
 
     return tweetText;
@@ -103,7 +103,10 @@ function enhanceText(tweetText, entities, extendedEntities) {
 function handleLink(link, userPage) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
-        // pageStack.push(userPage);
+        twitterApi.showUser(link.substring(10));
+//        var pageComponent = Qt.createComponent("../pages/ProfilePage.qml");
+//        var pageObject = pageComponent.createObject(appWindow, {"profileName": link.substring(10)});
+//        pageStack.push(pageObject);
     } else if (link.indexOf("tag://") === 0) {
         console.log("Hashtag clicked: " + link);
     }  else {

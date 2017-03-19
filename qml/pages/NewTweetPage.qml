@@ -41,6 +41,7 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 width: parent.width - 2 * Theme.paddingLarge
+                focus: true
             }
 
             VerticalScrollDecorator {}

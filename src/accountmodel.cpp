@@ -74,6 +74,11 @@ void AccountModel::unlink()
     o1->unlink();
 }
 
+QString AccountModel::getAuthenticatedUserName()
+{
+    return this->availableAccounts.value(0).value("screen_name").toString();
+}
+
 TwitterApi *AccountModel::getTwitterApi()
 {
     return this->twitterApi;
