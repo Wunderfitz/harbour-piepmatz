@@ -223,4 +223,15 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>functions</name>
+    <message>
+        <source>#%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>@%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

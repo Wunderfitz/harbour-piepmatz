@@ -29,67 +29,81 @@ function getTweetId(url) {
     return null;
 }
 
-function Replacement(beginOffset, endOffset, replacementString) {
+function Replacement(beginOffset, endOffset, originalString, replacementString) {
     this.beginOffset = beginOffset;
     this.endOffset = endOffset;
+    this.originalString = originalString;
     this.replacementString = replacementString;
 }
 
 Replacement.prototype.toString = function replacementToString() {
-    return "Begin Offset: " + this.beginOffset + ", End Offset: " + this.endOffset + ", Replacement String: " + this.replacementString;
+    return "Begin Offset: " + this.beginOffset + ", End Offset: " + this.endOffset + ", Original String: " + this.originalString + ", Replacement String: " + this.replacementString;
 }
 
-function enhanceText(tweet) {
-    var tweetText = tweet.full_text;
+function getRelevantTweet(tweet) {
+    return tweet.retweeted_status ? tweet.retweeted_status : tweet;
+}
 
+function enhanceDescription(description) {
+    var httpRegex = /(http[s]*\:\/\/\S+)/g;
+    description = description.replace(httpRegex, "<a href=\"$1\">$1</a>");
+
+    var userMentionRegex = /(\@(\w+))/g;
+    description = description.replace(userMentionRegex, "<a href=\"profile://$2\">$1</a>");
+
+    var hashTagRegex = /(\#(\w+))/g;
+    description = description.replace(hashTagRegex, "<a href=\"tag://$2\">$1</a>");
+
+    return description;
+}
+
+function enhanceText(tweetText, entities, extendedEntities) {
     var replacements = [];
 
     // URLs
-    for (var i = 0; i < tweet.entities.urls.length; i++ ) {
-        var tweetId = getTweetId(tweet.entities.urls[i].expanded_url);
+    for (var i = 0; i < entities.urls.length; i++ ) {
+        var tweetId = getTweetId(entities.urls[i].expanded_url);
         if (tweetId !== null) {
             // Remove tweet URLs - will become embedded tweets...
             embeddedTweetId = tweetId;
             twitterApi.showStatus(tweetId);
-            replacements.push(new Replacement(tweet.entities.urls[i].indices[0], tweet.entities.urls[i].indices[1], ""));
+            replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, ""));
         } else {
-            var url_replacement = "<a href=\"" + tweet.entities.urls[i].expanded_url + "\">" + tweet.entities.urls[i].display_url + "</a>";
-            replacements.push(new Replacement(tweet.entities.urls[i].indices[0], tweet.entities.urls[i].indices[1], url_replacement));
+            var url_replacement = "<a href=\"" + entities.urls[i].expanded_url + "\">" + entities.urls[i].display_url + "</a>";
+            replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, url_replacement));
         }
     }
     // Remove media links - will become own QML entities
-    if (tweet.extended_entities) {
-        for (var j = 0; j < tweet.extended_entities.media.length; j++ ) {
-            replacements.push(new Replacement(tweet.extended_entities.media[j].indices[0], tweet.extended_entities.media[j].indices[1], ""));
+    if (extendedEntities) {
+        for (var j = 0; j < extendedEntities.media.length; j++ ) {
+            replacements.push(new Replacement(extendedEntities.media[j].indices[0], extendedEntities.media[j].indices[1], extendedEntities.media[j].url, ""));
         }
     }
     // User Mentions
-    for (var k = 0; k < tweet.entities.user_mentions.length; k++ ) {
-        var user_mention = tweetText.substring(tweet.entities.user_mentions[k].indices[0], tweet.entities.user_mentions[k].indices[1]);
-        var user_mention_url = "<a href=\"profile://" + tweet.entities.user_mentions[k].screen_name + "\">" + user_mention + "</a>";
-        replacements.push(new Replacement(tweet.entities.user_mentions[k].indices[0], tweet.entities.user_mentions[k].indices[1], user_mention_url));
+    for (var k = 0; k < entities.user_mentions.length; k++ ) {
+        var user_mention = qsTr("@%1").arg(entities.user_mentions[k].screen_name);
+        var user_mention_url = "<a href=\"profile://" + entities.user_mentions[k].screen_name + "\">" + user_mention + "</a>";
+        replacements.push(new Replacement(entities.user_mentions[k].indices[0], entities.user_mentions[k].indices[1], user_mention, user_mention_url));
     }
     // Hashtags
-    for (var l = 0; l < tweet.entities.hashtags.length; l++ ) {
-        var hashtag = tweetText.substring(tweet.entities.hashtags[l].indices[0], tweet.entities.hashtags[l].indices[1]);
+    for (var l = 0; l < entities.hashtags.length; l++ ) {
+        var hashtag = qsTr("#%1").arg(entities.hashtags[l].text);
         var hashtag_url = "<a href=\"tag://" + hashtag + "\">" + hashtag + "</a>";
-        replacements.push(new Replacement(tweet.entities.hashtags[l].indices[0], tweet.entities.hashtags[l].indices[1], hashtag_url));
+        replacements.push(new Replacement(entities.hashtags[l].indices[0], entities.hashtags[l].indices[1], hashtag, hashtag_url));
     }
 
     replacements.sort( function(a,b) { return b.beginOffset - a.beginOffset } );
     for (var m = 0; m < replacements.length; m++) {
-        tweetText = tweetText.substring(0, replacements[m].beginOffset) + replacements[m].replacementString + tweetText.substring(replacements[m].endOffset);
+        tweetText = tweetText.replace(replacements[m].originalString, replacements[m].replacementString);
     }
 
     return tweetText;
 }
 
-function handleLink(link) {
+function handleLink(link, userPage) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
-        var profileComponent = Qt.createComponent("../pages/ProfilePage.qml");
-        var profilePage = profileComponent.createObject(appWindow, {"profileName": link.substring(10)});
-        pageStack.push(profilePage);
+        // pageStack.push(userPage);
     } else if (link.indexOf("tag://") === 0) {
         console.log("Hashtag clicked: " + link);
     }  else {
@@ -138,6 +152,20 @@ function getUserNameById(userId, currentUser, userMentions) {
         for (var i = 0; i < userMentions.length ; i++) {
             if (userMentions[i].id === userId) {
                 return userMentions[i].name;
+            }
+        }
+    }
+    return "";
+}
+
+function getScreenNameById(userId, currentUser, userMentions) {
+    if (typeof userId !== "undefined") {
+        if (userId === currentUser.id) {
+            return currentUser.screen_name;
+        }
+        for (var i = 0; i < userMentions.length ; i++) {
+            if (userMentions[i].id === userId) {
+                return userMentions[i].screen_name;
             }
         }
     }

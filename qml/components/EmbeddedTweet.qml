@@ -31,6 +31,13 @@ Item {
             width: parent.width
             spacing: Theme.paddingSmall
 
+            Component {
+                id: tweetAuthorPageComponent
+                ProfilePage {
+                    profileModel: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
+                }
+            }
+
             Text {
                 id: tweetUserNameText
                 font.pixelSize: Theme.fontSizeExtraSmall
@@ -39,6 +46,12 @@ Item {
                 text: tweetModel.retweeted_status ? tweetModel.retweeted_status.user.name : tweetModel.user.name
                 elide: Text.ElideRight
                 maximumLineCount: 1
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        pageStack.push( tweetAuthorPageComponent );
+                    }
+                }
             }
 
             Image {
@@ -47,6 +60,12 @@ Item {
                 visible: tweetModel.retweeted_status ? tweetModel.retweeted_status.user.verified : tweetModel.user.verified
                 width: Theme.fontSizeSmall
                 height: Theme.fontSizeSmall
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        pageStack.push( tweetAuthorPageComponent );
+                    }
+                }
             }
 
             Text {
@@ -57,13 +76,19 @@ Item {
                 text: qsTr("@%1").arg(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.screen_name : tweetModel.user.screen_name)
                 elide: Text.ElideRight
                 maximumLineCount: 1
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        pageStack.push( tweetAuthorPageComponent );
+                    }
+                }
             }
         }
 
         Text {
             width: parent.width
             id: tweetContentText
-            text: Functions.enhanceText(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+            text: Functions.enhanceText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities)
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             wrapMode: Text.Wrap

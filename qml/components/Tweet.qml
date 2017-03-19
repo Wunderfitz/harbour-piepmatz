@@ -13,7 +13,7 @@ ListItem {
     property variant embeddedTweet;
     property bool hasEmbeddedTweet : false;
 
-    contentHeight: tweetRow.height + 2 * Theme.paddingMedium
+    contentHeight: tweetRow.height + tweetSeparator.height + 2 * Theme.paddingMedium
     contentWidth: parent.width
 
     Row {
@@ -52,6 +52,14 @@ ListItem {
                 id: tweetAuthorItem
                 width: parent.width
                 height: parent.width
+
+                Component {
+                    id: tweetAuthorPageComponent
+                    ProfilePage {
+                        profileModel: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
+                    }
+                }
+
                 Image {
                     id: tweetAuthorPicture
                     source: Functions.findBiggerImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
@@ -81,6 +89,12 @@ ListItem {
                     visible: tweetAuthorPicture.status === Image.Ready ? true : false
                     opacity: tweetAuthorPicture.status === Image.Ready ? 1 : 0
                     Behavior on opacity { NumberAnimation {} }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetAuthorPageComponent );
+                        }
+                    }
                 }
 
                 ImageProgressIndicator {
@@ -94,7 +108,22 @@ ListItem {
         Column {
             id: tweetContentColumn
             width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+
             spacing: Theme.paddingSmall
+
+            Component {
+                id: tweetRetweetedByPageComponent
+                ProfilePage {
+                    profileModel: tweetModel.user
+                }
+            }
+
+            Component {
+                id: tweetInReplyToPageComponent
+                ProfilePage {
+                    profileName: Functions.getScreenNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions)
+                }
+            }
 
             Column {
                 Text {
@@ -103,6 +132,12 @@ ListItem {
                     color: Theme.secondaryColor
                     text: qsTr("Retweeted by %1").arg(tweetModel.user.name)
                     visible: tweetModel.retweeted_status ? true : false
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetRetweetedByPageComponent );
+                        }
+                    }
                 }
 
                 Text {
@@ -111,6 +146,12 @@ ListItem {
                     color: Theme.secondaryColor
                     text: qsTr("In reply to %1").arg(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
                     visible: tweetModel.in_reply_to_user_id_str ? true : false
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetInReplyToPageComponent );
+                        }
+                    }
                 }
             }
 
@@ -127,6 +168,12 @@ ListItem {
                     text: tweetModel.retweeted_status ? tweetModel.retweeted_status.user.name : tweetModel.user.name
                     elide: Text.ElideRight
                     maximumLineCount: 1
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetAuthorPageComponent );
+                        }
+                    }
                 }
 
                 Image {
@@ -135,6 +182,12 @@ ListItem {
                     visible: tweetModel.retweeted_status ? tweetModel.retweeted_status.user.verified : tweetModel.user.verified
                     width: Theme.fontSizeSmall
                     height: Theme.fontSizeSmall
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetAuthorPageComponent );
+                        }
+                    }
                 }
 
                 Text {
@@ -145,13 +198,19 @@ ListItem {
                     text: qsTr("@%1").arg(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.screen_name : tweetModel.user.screen_name)
                     elide: Text.ElideRight
                     maximumLineCount: 1
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push( tweetAuthorPageComponent );
+                        }
+                    }
                 }
             }
 
             Text {
                 width: parent.width
                 id: tweetContentText
-                text: Functions.enhanceText(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                text: Functions.enhanceText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities)
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 wrapMode: Text.Wrap
@@ -321,6 +380,11 @@ ListItem {
 
     Separator {
         id: tweetSeparator
+        anchors {
+            top : tweetRow.bottom
+            topMargin: Theme.paddingMedium
+        }
+
         width: parent.width
         color: Theme.primaryColor
         horizontalAlignment: Qt.AlignHCenter

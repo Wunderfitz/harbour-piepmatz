@@ -333,6 +333,7 @@ Page {
                 model: accountModel
 
                 delegate: Profile {
+                    id: ownProfile
                     accountModel: display
                 }
 
