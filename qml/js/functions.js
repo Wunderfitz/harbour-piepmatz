@@ -103,7 +103,7 @@ function enhanceText(tweetText, entities, extendedEntities) {
 function handleLink(link, userPage) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
-        twitterApi.showUser(link.substring(10));
+//        twitterApi.showUser(link.substring(10));
 //        var pageComponent = Qt.createComponent("../pages/ProfilePage.qml");
 //        var pageObject = pageComponent.createObject(appWindow, {"profileName": link.substring(10)});
 //        pageStack.push(pageObject);

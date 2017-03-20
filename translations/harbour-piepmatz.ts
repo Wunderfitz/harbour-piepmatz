@@ -48,13 +48,6 @@
     </message>
 </context>
 <context>
-    <name>EmbeddedTweet</name>
-    <message>
-        <source>@%1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ImageProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -198,6 +191,9 @@
         <source>In reply to %1</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>TweetUser</name>
     <message>
         <source>@%1</source>
         <translation type="unfinished"></translation>

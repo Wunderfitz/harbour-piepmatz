@@ -38,7 +38,7 @@ Page {
     }
 
     function getNavigationRowSize() {
-        return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingLarge;
+        return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingMedium;
     }
 
     function updatePiepmatz() {
@@ -511,132 +511,157 @@ Page {
                 }
             }
 
-            Row {
+            Column {
                 id: navigationRow
                 width: parent.width
                 height: getNavigationRowSize()
-
                 Column {
-                    id: homeButtonColumn
-                    width: parent.width / 5
-                    height: parent.height
+                    id: navigationRowSeparatorColumn
+                    width: parent.width
+                    height: Theme.paddingMedium
+                    Separator {
+                        id: navigationRowSeparator
+                        width: parent.width
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                    }
+                }
 
-                    IconButton {
-                        id: homeButtonImage
-                        icon.source: "image://theme/icon-m-home"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                Row {
+                    y: Theme.paddingSmall
+                    width: parent.width
+                    Column {
+                        id: homeButtonColumn
+                        width: parent.width / 5
+                        height: parent.height - Theme.paddingMedium
+
+                        IconButton {
+                            id: homeButtonImage
+                            icon.source: "image://theme/icon-m-home"
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: {
+                                if (overviewPage.activeTabId === "home") {
+                                    homeListView.scrollToTop();
+                                } else {
+                                    openTab("home");
+                                }
+                            }
                         }
-                        onClicked: {
-                            if (overviewPage.activeTabId === "home") {
-                                homeListView.scrollToTop();
-                            } else {
-                                openTab("home");
+                        Label {
+                            id: homeButtonText
+                            text: qsTr("Timeline")
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
                             }
                         }
                     }
-                    Label {
-                        id: homeButtonText
-                        text: qsTr("Timeline")
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                    Column {
+                        id: notificationsButtonColumn
+                        width: parent.width / 5
+                        height: parent.height - navigationRowSeparator.height
+                        IconButton {
+                            id: notificationsButtonImage
+                            icon.source: "image://theme/icon-m-alarm"
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: openTab("notifications")
+                        }
+                        Label {
+                            id: notificationsButtonText
+                            text: qsTr("Notifications")
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
                         }
                     }
-                }
-                Column {
-                    id: notificationsButtonColumn
-                    width: parent.width / 5
-                    height: parent.height
-                    IconButton {
-                        id: notificationsButtonImage
-                        icon.source: "image://theme/icon-m-alarm"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                    Column {
+                        id: messagesButtonColumn
+                        width: parent.width / 5
+                        height: parent.height - navigationRowSeparator.height
+                        IconButton {
+                            id: messagesButtonImage
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            icon.source: "image://theme/icon-m-mail"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: openTab("messages")
                         }
-                        onClicked: openTab("notifications")
-                    }
-                    Label {
-                        id: notificationsButtonText
-                        text: qsTr("Notifications")
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                    }
-                }
-                Column {
-                    id: messagesButtonColumn
-                    width: parent.width / 5
-                    height: parent.height
-                    IconButton {
-                        id: messagesButtonImage
-                        icon.source: "image://theme/icon-m-mail"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        onClicked: openTab("messages")
-                    }
-                    Label {
-                        id: messagesButtonText
-                        text: qsTr("Messages")
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                        Label {
+                            id: messagesButtonText
+                            text: qsTr("Messages")
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
                         }
                     }
-                }
-                Column {
-                    id: searchButtonColumn
-                    width: parent.width / 5
-                    height: parent.height
-                    IconButton {
-                        id: searchButtonImage
-                        icon.source: "image://theme/icon-m-search"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                    Column {
+                        id: searchButtonColumn
+                        width: parent.width / 5
+                        height: parent.height - navigationRowSeparator.height
+                        IconButton {
+                            id: searchButtonImage
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            icon.source: "image://theme/icon-m-search"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: openTab("search")
                         }
-                        onClicked: openTab("search")
+                        Label {
+                            id: searchButtonText
+                            text: qsTr("Search")
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                        }
                     }
-                    Label {
-                        id: searchButtonText
-                        text: qsTr("Search")
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                    Column {
+                        id: profileButtonColumn
+                        width: parent.width / 5
+                        height: parent.height - navigationRowSeparator.height
+                        IconButton {
+                            id: profileButtonImage
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            icon.source: "image://theme/icon-m-person"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: openTab("profile")
                         }
-                    }
-                }
-                Column {
-                    id: profileButtonColumn
-                    width: parent.width / 5
-                    height: parent.height
-                    IconButton {
-                        id: profileButtonImage
-                        icon.source: "image://theme/icon-m-person"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
-                        onClicked: openTab("profile")
-                    }
-                    Label {
-                        id: profileButtonText
-                        text: qsTr("Profile")
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.primaryColor
-                        truncationMode: TruncationMode.Fade
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
+                        Label {
+                            id: profileButtonText
+                            text: qsTr("Profile")
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
 
+                        }
                     }
                 }
             }
