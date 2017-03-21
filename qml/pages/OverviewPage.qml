@@ -350,7 +350,7 @@ Page {
 
                 delegate: Profile {
                     id: ownProfile
-                    accountModel: display
+                    profileModel: display
                 }
 
                 VerticalScrollDecorator {}

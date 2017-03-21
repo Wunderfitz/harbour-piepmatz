@@ -100,13 +100,16 @@ function enhanceText(tweetText, entities, extendedEntities) {
     return tweetText;
 }
 
-function handleLink(link, userPage) {
+function handleLink(link, parentComponent) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
-//        twitterApi.showUser(link.substring(10));
-//        var pageComponent = Qt.createComponent("../pages/ProfilePage.qml");
-//        var pageObject = pageComponent.createObject(appWindow, {"profileName": link.substring(10)});
-//        pageStack.push(pageObject);
+//        var profilePage = Qt.resolvedUrl("../pages/ProfilePage.qml");
+//        console.log(profilePage);
+//        profilePage.profileName = link.substring(10);
+//        pageStack.push(profilePage);
+        var profileComponent = Qt.createComponent("../pages/ProfilePage.qml");
+        var profilePage = profileComponent.createObject(parentComponent, {"profileName": link.substring(10)});
+        pageStack.push(profilePage);
     } else if (link.indexOf("tag://") === 0) {
         console.log("Hashtag clicked: " + link);
     }  else {

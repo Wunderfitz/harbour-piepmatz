@@ -8,9 +8,31 @@ Page {
 
     property variant profileModel;
     property string profileName;
+    property bool loaded : false;
+
+    Component.onCompleted: {
+        if (!profileModel) {
+            console.log("Loading profile for " + profileName);
+            twitterApi.showUser(profileName);
+        } else {
+            loaded = true;
+        }
+    }
+
+    Notification {
+        id: profileNotification
+    }
 
     Connections {
         target: twitterApi
+        onShowUserSuccessful: {
+            profileModel = result;
+            loaded = true;
+        }
+        onShowUserError: {
+            loaded = true;
+            profileNotification.show(errorMessage);
+        }
         onFollowUserSuccessful: {
             // TODO: Find out, why result shows following: false
             profileNotification.show(qsTr("You follow %1 now.").arg(result.name));
@@ -27,34 +49,63 @@ Page {
         }
     }
 
-    Notification {
-        id: profileNotification
-    }
-
     SilicaFlickable {
         id: profileContainer
         anchors.fill: parent
 
-        PullDownMenu {
-            MenuItem {
-                text: otherProfile.accountModel.following ? qsTr("Unfollow %1").arg(otherProfile.accountModel.name) : qsTr("Follow %1").arg(otherProfile.accountModel.name)
-                onClicked: {
-                    if (otherProfile.accountModel.following) {
-                        console.log("Unfollowing user: " + otherProfile.accountModel.screen_name);
-                        twitterApi.unfollowUser(otherProfile.accountModel.screen_name);
-                    } else {
-                        console.log("Following user: " + otherProfile.accountModel.screen_name);
-                        twitterApi.followUser(otherProfile.accountModel.screen_name);
+        Loader {
+            id: profilePullDownLoader
+            active: profilePage.loaded
+            anchors.fill: parent
+            sourceComponent: profilePullDownComponent
+        }
+
+        Component {
+            id: profilePullDownComponent
+            Item {
+                id: profilePullDownContent
+                PullDownMenu {
+                    MenuItem {
+                        text: profilePage.profileModel.following ? qsTr("Unfollow %1").arg(profilePage.profileModel.name) : qsTr("Follow %1").arg(profilePage.profileModel.name)
+                        onClicked: {
+                            if (profilePage.accountModel.following) {
+                                console.log("Unfollowing user: " + profilePage.accountModel.screen_name);
+                                twitterApi.unfollowUser(profilePage.accountModel.screen_name);
+                            } else {
+                                console.log("Following user: " + profilePage.accountModel.screen_name);
+                                twitterApi.followUser(profilePage.accountModel.screen_name);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        Profile {
-            id: otherProfile
-            accountModel: profilePage.profileModel
-            accountName: profilePage.profileName
+        LoadingIndicator {
+            id: profileLoadingIndicator
+            visible: !loaded
+            Behavior on opacity { NumberAnimation {} }
+            opacity: loaded ? 0 : 1
+            height: parent.height
+            width: parent.width
         }
 
+        Loader {
+            id: profileLoader
+            active: profilePage.loaded
+            anchors.fill: parent
+            sourceComponent: profileComponent
+        }
+
+        Component {
+            id: profileComponent
+            Item {
+                id: profileContent
+                Profile {
+                    id: otherProfile
+                    profileModel: profilePage.profileModel
+                }
+            }
+        }
     }
 }
