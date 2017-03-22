@@ -34,15 +34,15 @@ Page {
             profileNotification.show(errorMessage);
         }
         onFollowUserSuccessful: {
-            // TODO: Find out, why result shows following: false
             profileNotification.show(qsTr("You follow %1 now.").arg(result.name));
+            profileModel = result;
         }
         onFollowUserError: {
             profileNotification.show(errorMessage);
         }
         onUnfollowUserSuccessful: {
-            // TODO: Find out, why result shows following: true
             profileNotification.show(qsTr("You don't follow %1 anymore.").arg(result.name));
+            profileModel = result;
         }
         onUnfollowUserError: {
             profileNotification.show(errorMessage);
@@ -68,12 +68,12 @@ Page {
                     MenuItem {
                         text: profilePage.profileModel.following ? qsTr("Unfollow %1").arg(profilePage.profileModel.name) : qsTr("Follow %1").arg(profilePage.profileModel.name)
                         onClicked: {
-                            if (profilePage.accountModel.following) {
-                                console.log("Unfollowing user: " + profilePage.accountModel.screen_name);
-                                twitterApi.unfollowUser(profilePage.accountModel.screen_name);
+                            if (profilePage.profileModel.following) {
+                                console.log("Unfollowing user: " + profilePage.profileModel.screen_name);
+                                twitterApi.unfollowUser(profilePage.profileModel.screen_name);
                             } else {
-                                console.log("Following user: " + profilePage.accountModel.screen_name);
-                                twitterApi.followUser(profilePage.accountModel.screen_name);
+                                console.log("Following user: " + profilePage.profileModel.screen_name);
+                                twitterApi.followUser(profilePage.profileModel.screen_name);
                             }
                         }
                     }

@@ -21,7 +21,7 @@ function getValidDate(twitterDate) {
 }
 
 function getTweetId(url) {
-    var regex = /https:\/\/twitter\.com\/\w+\/status\/(\d+)/g;
+    var regex = /twitter\.com\/\w+\/status\/(\d+)/g;
     var matchingResult = regex.exec(url);
     if (matchingResult !== null) {
         return matchingResult[1];

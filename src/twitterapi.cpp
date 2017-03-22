@@ -283,6 +283,8 @@ void TwitterApi::handleFollowUserFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
+        responseObject.remove("following");
+        responseObject.insert("following", QJsonValue(true));
         emit followUserSuccessful(responseObject.toVariantMap());
     } else {
         emit followUserError("Piepmatz couldn't understand Twitter's response!");
@@ -308,6 +310,8 @@ void TwitterApi::handleUnfollowUserFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
+        responseObject.remove("following");
+        responseObject.insert("following", QJsonValue(false));
         emit unfollowUserSuccessful(responseObject.toVariantMap());
     } else {
         emit unfollowUserError("Piepmatz couldn't understand Twitter's response!");
