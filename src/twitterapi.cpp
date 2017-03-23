@@ -127,6 +127,34 @@ void TwitterApi::showUser(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
 }
 
+void TwitterApi::userTimeline(const QString &screenName)
+{
+    qDebug() << "TwitterApi::userTimeline" << screenName;
+    QUrl url = QUrl(API_STATUSES_USER_TIMELINE);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("exclude_replies", "false");
+    urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("include_rts", "true");
+    urlQuery.addQueryItem("exclude_replies", "false");
+    urlQuery.addQueryItem("screen_name", screenName);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_rts"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUserTimelineError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUserTimelineFinished()));
+}
+
 void TwitterApi::followUser(const QString &screenName)
 {
     qDebug() << "TwitterApi::followUser" << screenName;
@@ -214,6 +242,31 @@ void TwitterApi::handleHomeTimelineFinished()
     }
 }
 
+void TwitterApi::handleUserTimelineError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleUserTimelineError:" << (int)error << reply->errorString() << reply->readAll();
+    emit userTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleUserTimelineFinished()
+{
+    qDebug() << "TwitterApi::handleUserTimelineFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit userTimelineSuccessful(responseArray.toVariantList());
+    } else {
+        emit userTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
 void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -283,6 +336,7 @@ void TwitterApi::handleFollowUserFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
+        // Sometimes, Twitter still says "following": true here - strange isn't it?
         responseObject.remove("following");
         responseObject.insert("following", QJsonValue(true));
         emit followUserSuccessful(responseObject.toVariantMap());
@@ -310,6 +364,7 @@ void TwitterApi::handleUnfollowUserFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
+        // Sometimes, Twitter still says "following": false here - strange isn't it?
         responseObject.remove("following");
         responseObject.insert("following", QJsonValue(false));
         emit unfollowUserSuccessful(responseObject.toVariantMap());

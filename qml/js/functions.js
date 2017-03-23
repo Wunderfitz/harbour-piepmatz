@@ -88,11 +88,12 @@ function enhanceText(tweetText, entities, extendedEntities) {
 
     replacements.sort( function(a,b) { return b.beginOffset - a.beginOffset } );
     for (var m = 0; m < replacements.length; m++) {
-        if (tweetText.substring(replacements[m].beginOffset, replacements[m].endOffset) === replacements[m].originalString) {
+        var foundString = tweetText.substring(replacements[m].beginOffset, replacements[m].endOffset);
+        if (foundString.toUpperCase() === replacements[m].originalString.toUpperCase()) {
             tweetText = tweetText.substring(0, replacements[m].beginOffset) + replacements[m].replacementString + tweetText.substring(replacements[m].endOffset);
         } else {
             // Sometimes our offsets do not match the offsets by Twitter - trying a failsafe instead
-            console.log("Failsafe replacement used for " + replacements[m].originalString + ", replacement: " + replacements[m].replacementString);
+            console.log("Failsafe replacement used for " + replacements[m].originalString + ", replacement: " + replacements[m].replacementString, " - Original would have been " + foundString);
             tweetText = tweetText.replace(replacements[m].originalString, replacements[m].replacementString);
         }
     }

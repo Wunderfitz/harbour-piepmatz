@@ -101,6 +101,7 @@ Page {
             id: profileComponent
             Item {
                 id: profileContent
+                anchors.fill: parent
                 Profile {
                     id: otherProfile
                     profileModel: profilePage.profileModel

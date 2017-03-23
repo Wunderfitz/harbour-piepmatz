@@ -14,6 +14,25 @@ Item {
     Behavior on opacity { NumberAnimation {} }
 
     property variant profileModel;
+    property variant profileTimeline;
+
+    Component.onCompleted: {
+        twitterApi.userTimeline(profileModel.screen_name);
+    }
+
+    Notification {
+        id: notification
+    }
+
+    Connections {
+        target: twitterApi
+        onUserTimelineSuccessful: {
+            profileTimeline = result;
+        }
+        onUserTimelineError: {
+            notification.show(errorMessage);
+        }
+    }
 
     Item {
         id: profileBackgroundItem
@@ -303,4 +322,25 @@ Item {
         }
     }
 
+    SilicaListView {
+        id: profileTimelineListView
+
+        anchors {
+            top: profileItemColumn.bottom
+            topMargin: Theme.paddingMedium
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        clip: true
+
+        model: profileTimeline
+// WHY, just WHY is this causing a deadlock during the application startup????
+//        delegate: Tweet {
+//            tweetModel: modelData
+//        }
+
+        VerticalScrollDecorator {}
+    }
 }
