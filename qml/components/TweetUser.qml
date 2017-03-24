@@ -11,13 +11,6 @@ Row {
     width: parent.width
     spacing: Theme.paddingSmall
 
-    Component {
-        id: tweetUserPageComponent
-        ProfilePage {
-            profileModel: tweet.retweeted_status ? tweet.retweeted_status.user : tweet.user
-        }
-    }
-
     Text {
         id: tweetUserNameText
         font.pixelSize: Theme.fontSizeExtraSmall
@@ -29,7 +22,7 @@ Row {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                pageStack.push( tweetUserPageComponent );
+                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweet.retweeted_status ? tweet.retweeted_status.user : tweet.user});
             }
         }
     }
@@ -60,7 +53,7 @@ Row {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                pageStack.push( tweetUserPageComponent );
+                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweet.retweeted_status ? tweet.retweeted_status.user : tweet.user});
             }
         }
     }

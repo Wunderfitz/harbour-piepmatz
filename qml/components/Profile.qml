@@ -336,10 +336,9 @@ Item {
         clip: true
 
         model: profileTimeline
-// WHY, just WHY is this causing a deadlock during the application startup????
-//        delegate: Tweet {
-//            tweetModel: modelData
-//        }
+        delegate: Tweet {
+            tweetModel: modelData
+        }
 
         VerticalScrollDecorator {}
     }

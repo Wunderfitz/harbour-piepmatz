@@ -57,13 +57,6 @@ ListItem {
                     width: parent.width
                     height: parent.width
 
-                    Component {
-                        id: tweetAuthorPageComponent
-                        ProfilePage {
-                            profileModel: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
-                        }
-                    }
-
                     Image {
                         id: tweetAuthorPicture
                         source: Functions.findBiggerImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
@@ -96,7 +89,7 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                pageStack.push( tweetAuthorPageComponent );
+                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user});
                             }
                         }
                     }
@@ -115,20 +108,6 @@ ListItem {
 
                 spacing: Theme.paddingSmall
 
-                Component {
-                    id: tweetRetweetedByPageComponent
-                    ProfilePage {
-                        profileModel: tweetModel.user
-                    }
-                }
-
-                Component {
-                    id: tweetInReplyToPageComponent
-                    ProfilePage {
-                        profileName: Functions.getScreenNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions)
-                    }
-                }
-
                 Column {
                     Text {
                         id: tweetRetweetedText
@@ -139,7 +118,7 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                pageStack.push( tweetRetweetedByPageComponent );
+                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetModel.user});
                             }
                         }
                     }
@@ -153,7 +132,7 @@ ListItem {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                pageStack.push( tweetInReplyToPageComponent );
+                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileName": Functions.getScreenNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions)});
                             }
                         }
                     }

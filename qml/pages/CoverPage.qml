@@ -118,6 +118,7 @@ CoverBackground {
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeTiny
                     text: display.text
+                    textFormat: Text.StyledText
                     width: parent.width
                     wrapMode: Text.Wrap
                     elide: Text.ElideRight

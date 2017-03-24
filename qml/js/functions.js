@@ -104,13 +104,7 @@ function enhanceText(tweetText, entities, extendedEntities) {
 function handleLink(link, parentComponent) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
-//        var profilePage = Qt.resolvedUrl("../pages/ProfilePage.qml");
-//        console.log(profilePage);
-//        profilePage.profileName = link.substring(10);
-//        pageStack.push(profilePage);
-        var profileComponent = Qt.createComponent("../pages/ProfilePage.qml");
-        var profilePage = profileComponent.createObject(parentComponent, {"profileName": link.substring(10)});
-        pageStack.push(profilePage);
+        pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileName": link.substring(10)});
     } else if (link.indexOf("tag://") === 0) {
         console.log("Hashtag clicked: " + link);
     }  else {
