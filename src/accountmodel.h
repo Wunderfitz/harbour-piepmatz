@@ -25,7 +25,7 @@ public:
     Q_INVOKABLE bool isLinked();
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void unlink();
-    Q_INVOKABLE QString getAuthenticatedUserName();
+    Q_INVOKABLE QVariantMap getCurrentAccount();
 
     TwitterApi *getTwitterApi();
 

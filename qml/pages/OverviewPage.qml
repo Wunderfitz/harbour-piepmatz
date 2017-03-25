@@ -47,7 +47,6 @@ Page {
     }
 
     property string activeTabId: "home";
-    property string authenticatedUser;
 
     function openTab(tabId) {
 
@@ -177,12 +176,12 @@ Page {
         target: accountModel
         onCredentialsVerified: {
             hideAccountVerificationColumn();
+            profileLoader.active = true;
             overviewContainer.visible = true;
             overviewColumn.visible = true;
             overviewColumn.opacity = 1;
             openTab("home");
             timelineModel.update();
-            authenticatedUser = accountModel.getAuthenticatedUserName();
         }
         onVerificationError: {
             hideAccountVerificationColumn();
@@ -332,28 +331,33 @@ Page {
             id: overviewColumn
             opacity: 0
             visible: false
-            anchors {
-                fill: parent
-            }
             Behavior on opacity { NumberAnimation {} }
+            width: parent.width
+            height: parent.height
 
-            SilicaListView {
+            Item {
                 id: profileView
                 opacity: 0
                 Behavior on opacity { NumberAnimation {} }
                 visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
-                clip: true
 
-                model: accountModel
-
-                delegate: Profile {
-                    id: ownProfile
-                    profileModel: display
+                Loader {
+                    id: profileLoader
+                    active: false
+                    width: parent.width
+                    height: parent.height
+                    sourceComponent: profileComponent
                 }
 
-                VerticalScrollDecorator {}
+                Component {
+                    id: profileComponent
+                    Profile {
+                        id: ownProfile
+                        profileModel: accountModel.getCurrentAccount()
+                    }
+                }
             }
 
             Item {

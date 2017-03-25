@@ -29,6 +29,7 @@ Item {
         target: twitterApi
         onUserTimelineSuccessful: {
             if (!profileTimeline) {
+                console.log("Timeline updated for user " + profileModel.screen_name)
                 profileTimeline = result;
             }
         }
@@ -351,7 +352,6 @@ Item {
         delegate: Tweet {
             tweetModel: modelData
         }
-
         VerticalScrollDecorator {}
     }
 }

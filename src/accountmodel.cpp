@@ -74,9 +74,10 @@ void AccountModel::unlink()
     o1->unlink();
 }
 
-QString AccountModel::getAuthenticatedUserName()
+QVariantMap AccountModel::getCurrentAccount()
 {
-    return this->availableAccounts.value(0).value("screen_name").toString();
+    qDebug() << "AccountModel::getCurrentAccount" << this->availableAccounts.value(0).value("screen_name").toString();
+    return this->availableAccounts.value(0);
 }
 
 TwitterApi *AccountModel::getTwitterApi()
