@@ -17,6 +17,7 @@ Item {
     property variant profileTimeline;
 
     Component.onCompleted: {
+        console.log("Profile Model called for " + profileModel.screen_name);
         twitterApi.userTimeline(profileModel.screen_name);
     }
 
@@ -27,10 +28,14 @@ Item {
     Connections {
         target: twitterApi
         onUserTimelineSuccessful: {
-            profileTimeline = result;
+            if (!profileTimeline) {
+                profileTimeline = result;
+            }
         }
         onUserTimelineError: {
-            notification.show(errorMessage);
+            if (!profileTimeline) {
+                notification.show(errorMessage);
+            }
         }
     }
 
@@ -158,7 +163,8 @@ Item {
                 bold: true
             }
             color: Theme.primaryColor
-            wrapMode: Text.Wrap
+            elide: Text.ElideRight
+            width: parent.width
         }
         Text {
             id: profileScreenNameText
@@ -168,7 +174,8 @@ Item {
                 bold: true
             }
             color: Theme.primaryColor
-            wrapMode: Text.Wrap
+            elide: Text.ElideRight
+            width: parent.width
         }
     }
 
@@ -320,6 +327,12 @@ Item {
                 }
             }
         }
+        Separator {
+            id: profileSeparator
+            width: parent.width
+            color: Theme.primaryColor
+            horizontalAlignment: Qt.AlignHCenter
+        }
     }
 
     SilicaListView {
@@ -327,7 +340,6 @@ Item {
 
         anchors {
             top: profileItemColumn.bottom
-            topMargin: Theme.paddingMedium
             bottom: parent.bottom
             left: parent.left
             right: parent.right

@@ -36,7 +36,7 @@ Row {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                pageStack.push( tweetUserPageComponent );
+                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweet.retweeted_status ? tweet.retweeted_status.user : tweet.user});
             }
         }
     }

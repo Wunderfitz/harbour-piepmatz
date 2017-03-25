@@ -26,12 +26,16 @@ Page {
     Connections {
         target: twitterApi
         onShowUserSuccessful: {
-            profileModel = result;
-            loaded = true;
+            if (!profileModel) {
+                profileModel = result;
+                loaded = true;
+            }
         }
         onShowUserError: {
-            loaded = true;
-            profileNotification.show(errorMessage);
+            if (!profileModel) {
+                loaded = true;
+                profileNotification.show(errorMessage);
+            }
         }
         onFollowUserSuccessful: {
             profileNotification.show(qsTr("You follow %1 now.").arg(result.name));

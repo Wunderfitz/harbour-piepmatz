@@ -119,6 +119,7 @@ ListItem {
                             anchors.fill: parent
                             onClicked: {
                                 pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetModel.user});
+
                             }
                         }
                     }
