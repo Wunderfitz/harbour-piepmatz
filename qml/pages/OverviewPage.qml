@@ -533,12 +533,112 @@ Page {
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
-                Column {
+
+                property bool searchInProgress : false;
+                property bool inTransition : false;
+
+                Connections {
+                    target: searchModel
+                    onSearchFinished: {
+                        searchColumn.searchInProgress = false;
+                        searchColumn.inTransition = false;
+                    }
+                    onSearchError: {
+                        searchColumn.searchInProgress = false;
+                        searchColumn.inTransition = false;
+                        overviewNotification.show(searchError);
+                    }
+                }
+
+                Timer {
+                    id: searchTimer
+                    interval: 800
+                    running: false
+                    repeat: false
+                    onTriggered: {
+                        searchColumn.searchInProgress = true;
+                        searchModel.search(searchField.text)
+                    }
+                }
+
+                SearchField {
+                    id: searchField
                     width: parent.width
-                    height: searchNotImplementedImage.height + searchNotImplementedLabel.height
-                    anchors.verticalCenter: parent.verticalCenter
+                    placeholderText: qsTr("Search on Twitter...")
+                    anchors {
+                        top: parent.top
+                    }
+
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: focus = false
+
+                    onTextChanged: {
+                        searchColumn.inTransition = true;
+                        searchTimer.stop()
+                        searchTimer.start()
+                    }
+                }
+
+                SilicaListView {
+                    anchors {
+                        top: searchField.bottom
+                    }
+                    id: searchResultsListView
+                    width: parent.width
+                    height: parent.height - searchField.height
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    opacity: searchColumn.searchInProgress ? 0 : 1
+                    visible: searchColumn.searchInProgress ? false : true
+                    Behavior on opacity { NumberAnimation {} }
+
+                    clip: true
+
+                    model: searchModel
+                    delegate: Tweet {
+                        tweetModel: display
+                    }
+                    VerticalScrollDecorator {}
+                }
+
+                Column {
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
+                    width: parent.width
+
+                    id: searchInProgressColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: searchColumn.searchInProgress ? 1 : 0
+                    visible: searchColumn.searchInProgress ? true : false
+
+                    BusyIndicator {
+                        id: searchInProgressIndicator
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        running: searchColumn.searchInProgress
+                        size: BusyIndicatorSize.Medium
+                    }
+
+                    InfoLabel {
+                        id: searchInProgressIndicatorLabel
+                        text: qsTr("Searching...")
+                        font.pixelSize: Theme.fontSizeLarge
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                    }
+                }
+
+                Column {
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
+                    width: parent.width
+
+                    id: searchNoResultsColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: ( searchResultsListView.count === 0 && !searchColumn.searchInProgress ) ? 1 : 0
+                    visible: ( searchResultsListView.count === 0 && !searchColumn.searchInProgress ) ? true : false
+
                     Image {
-                        id: searchNotImplementedImage
+                        id: searchNoResultsImage
                         source: "../../images/piepmatz.svg"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
@@ -549,14 +649,14 @@ Page {
                     }
 
                     InfoLabel {
-                        id: searchNotImplementedLabel
-                        text: "Search is not yet implemented"
+                        id: searchNoResultsText
+                        text: ( searchField.text === "" || searchColumn.inTransition ) ? qsTr("What are you looking for?") : qsTr("No results found")
+                        color: Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeLarge
                         width: parent.width - 2 * Theme.horizontalPageMargin
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
                     }
                 }
+
             }
 
             Column {

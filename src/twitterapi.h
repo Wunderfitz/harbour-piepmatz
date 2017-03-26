@@ -24,6 +24,7 @@ const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
 const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/create.json";
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
+const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json";
 
 class TwitterApi : public QObject {
 
@@ -39,6 +40,7 @@ public:
     Q_INVOKABLE void showUser(const QString &screenName);
     Q_INVOKABLE void followUser(const QString &screenName);
     Q_INVOKABLE void unfollowUser(const QString &screenName);
+    Q_INVOKABLE void searchTweets(const QString &query);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -57,6 +59,8 @@ signals:
     void followUserError(const QString &errorMessage);
     void unfollowUserSuccessful(const QVariantMap &result);
     void unfollowUserError(const QString &errorMessage);
+    void searchTweetsSuccessful(const QVariantList &result);
+    void searchTweetsError(const QString &errorMessage);
 
 private:
     O1Requestor *requestor;
@@ -78,6 +82,8 @@ private slots:
     void handleFollowUserFinished();
     void handleUnfollowUserError(QNetworkReply::NetworkError error);
     void handleUnfollowUserFinished();
+    void handleSearchTweetsError(QNetworkReply::NetworkError error);
+    void handleSearchTweetsFinished();
 
 };
 

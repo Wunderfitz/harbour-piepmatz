@@ -20,6 +20,7 @@
 #include "accountmodel.h"
 #include "twitterapi.h"
 #include "timelinemodel.h"
+#include "searchmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -36,6 +37,9 @@ int main(int argc, char *argv[])
     TimelineModel timelineModel(twitterApi);
     context->setContextProperty("timelineModel", &timelineModel);
     context->setContextProperty("coverModel", timelineModel.coverModel);
+
+    SearchModel searchModel(twitterApi);
+    context->setContextProperty("searchModel", &searchModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();

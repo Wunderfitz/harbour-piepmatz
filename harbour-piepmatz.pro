@@ -22,7 +22,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/accountmodel.cpp \
     src/twitterapi.cpp \
     src/timelinemodel.cpp \
-    src/covermodel.cpp
+    src/covermodel.cpp \
+    src/searchmodel.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -68,4 +69,5 @@ HEADERS += \
     src/accountmodel.h \
     src/twitterapi.h \
     src/timelinemodel.h \
-    src/covermodel.h
+    src/covermodel.h \
+    src/searchmodel.h

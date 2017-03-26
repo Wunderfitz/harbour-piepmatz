@@ -191,7 +191,34 @@ void TwitterApi::unfollowUser(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleUnfollowUserFinished()));
 }
 
+void TwitterApi::searchTweets(const QString &query)
+{
+    if (query == "") {
+        emit searchTweetsSuccessful(QVariantList());
+        return;
+    }
 
+    qDebug() << "TwitterApi::searchTweets" << query;
+    QUrl url = QUrl(API_SEARCH_TWEETS);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("q", query);
+    urlQuery.addQueryItem("count", "100");
+    urlQuery.addQueryItem("include_entities", "true");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("q"), query.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("100")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchTweetsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSearchTweetsFinished()));
+}
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -370,5 +397,30 @@ void TwitterApi::handleUnfollowUserFinished()
         emit unfollowUserSuccessful(responseObject.toVariantMap());
     } else {
         emit unfollowUserError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleSearchTweetsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleSearchTweetsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit userTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleSearchTweetsFinished()
+{
+    qDebug() << "TwitterApi::handleSearchTweetsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit searchTweetsSuccessful(responseObject.value("statuses").toArray().toVariantList());
+    } else {
+        emit searchTweetsError("Piepmatz couldn't understand Twitter's response!");
     }
 }

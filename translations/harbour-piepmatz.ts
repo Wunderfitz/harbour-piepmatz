@@ -138,6 +138,22 @@
         <source>Tweet sent successfully!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Search on Twitter...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No results found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>What are you looking for?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
