@@ -546,7 +546,7 @@ Page {
                     onSearchError: {
                         searchColumn.searchInProgress = false;
                         searchColumn.inTransition = false;
-                        overviewNotification.show(searchError);
+                        overviewNotification.show(errorMessage);
                     }
                 }
 
@@ -645,7 +645,7 @@ Page {
                         }
 
                         fillMode: Image.PreserveAspectFit
-                        width: 1/2 * parent.width
+                        width: 1/3 * parent.width
                     }
 
                     InfoLabel {

@@ -198,11 +198,13 @@ void TwitterApi::searchTweets(const QString &query)
         return;
     }
 
-    qDebug() << "TwitterApi::searchTweets" << query;
+    QString searchString = QString(QUrl::toPercentEncoding(query));
+
+    qDebug() << "TwitterApi::searchTweets" << searchString;
     QUrl url = QUrl(API_SEARCH_TWEETS);
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("q", query);
+    urlQuery.addQueryItem("q", searchString);
     urlQuery.addQueryItem("count", "100");
     urlQuery.addQueryItem("include_entities", "true");
     url.setQuery(urlQuery);
@@ -404,7 +406,7 @@ void TwitterApi::handleSearchTweetsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleSearchTweetsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit userTimelineError(reply->errorString());
+    emit searchTweetsError(reply->errorString());
 }
 
 void TwitterApi::handleSearchTweetsFinished()
