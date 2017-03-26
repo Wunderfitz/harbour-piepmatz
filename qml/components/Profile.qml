@@ -336,6 +336,27 @@ Item {
         }
     }
 
+    Item {
+        id: profileTimelineLoadingIndicator
+        visible: profileTimeline ? false : true
+        Behavior on opacity { NumberAnimation {} }
+        opacity: profileTimeline ? 0 : 1
+
+        anchors {
+            top: profileItemColumn.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        BusyIndicator {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            running: profileTimelineLoadingIndicator.visible
+            size: BusyIndicatorSize.Large
+        }
+    }
+
     SilicaListView {
         id: profileTimelineListView
 

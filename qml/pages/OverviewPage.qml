@@ -458,59 +458,103 @@ Page {
             }
 
 
-            Column {
+            Item {
                 id: notificationsColumn
                 opacity: 0
                 visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
-                Text {
-                    text: "Notifications not yet implemented"
-                    font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.primaryColor
-                    wrapMode: Text.Wrap
-                    width: parent.width - 2 * Theme.horizontalPageMargin
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
+
+                Column {
+                    width: parent.width
+                    height: notificationsNotImplementedImage.height + notificationsNotImplementedLabel.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    Image {
+                        id: notificationsNotImplementedImage
+                        source: "../../images/piepmatz.svg"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        fillMode: Image.PreserveAspectFit
+                        width: 1/2 * parent.width
+                    }
+
+                    InfoLabel {
+                        id: notificationsNotImplementedLabel
+                        text: "Notifications are not yet implemented"
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
                     }
                 }
             }
 
-            Column {
+            Item {
                 id: messagesColumn
                 opacity: 0
                 visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
-                Text {
-                    text: "Messages not yet implemented"
-                    font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.primaryColor
-                    wrapMode: Text.Wrap
-                    width: parent.width - 2 * Theme.horizontalPageMargin
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
+
+                Column {
+                    width: parent.width
+                    height: messagesNotImplementedImage.height + messagesNotImplementedLabel.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    Image {
+                        id: messagesNotImplementedImage
+                        source: "../../images/piepmatz.svg"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        fillMode: Image.PreserveAspectFit
+                        width: 1/2 * parent.width
+                    }
+
+                    InfoLabel {
+                        id: messagesNotImplementedLabel
+                        text: "Messages are not yet implemented"
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
                     }
                 }
             }
 
-            Column {
+            Item {
                 id: searchColumn
                 opacity: 0
                 visible: false
                 width: parent.width
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
-                Text {
-                    text: "Search not yet implemented"
-                    font.pixelSize: Theme.fontSizeMedium
-                    color: Theme.primaryColor
-                    wrapMode: Text.Wrap
-                    width: parent.width - 2 * Theme.horizontalPageMargin
-                    anchors {
-                        horizontalCenter: parent.horizontalCenter
+                Column {
+                    width: parent.width
+                    height: searchNotImplementedImage.height + searchNotImplementedLabel.height
+                    anchors.verticalCenter: parent.verticalCenter
+                    Image {
+                        id: searchNotImplementedImage
+                        source: "../../images/piepmatz.svg"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        fillMode: Image.PreserveAspectFit
+                        width: 1/2 * parent.width
+                    }
+
+                    InfoLabel {
+                        id: searchNotImplementedLabel
+                        text: "Search is not yet implemented"
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
                     }
                 }
             }
