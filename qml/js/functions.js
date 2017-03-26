@@ -107,6 +107,7 @@ function handleLink(link, parentComponent) {
         pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileName": link.substring(10)});
     } else if (link.indexOf("tag://") === 0) {
         console.log("Hashtag clicked: " + link);
+        pageStack.push(Qt.resolvedUrl("../pages/SearchResultsPage.qml"), {"searchQuery": link.substring(6)});
     }  else {
         Qt.openUrlExternally(link);
     }

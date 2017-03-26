@@ -136,7 +136,7 @@ void TwitterApi::userTimeline(const QString &screenName)
     urlQuery.addQueryItem("exclude_replies", "false");
     urlQuery.addQueryItem("count", "200");
     urlQuery.addQueryItem("include_rts", "true");
-    urlQuery.addQueryItem("exclude_replies", "false");
+    urlQuery.addQueryItem("exclude_replies", "true");
     urlQuery.addQueryItem("screen_name", screenName);
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
@@ -147,7 +147,7 @@ void TwitterApi::userTimeline(const QString &screenName)
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
     requestParameters.append(O0RequestParameter(QByteArray("include_rts"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 

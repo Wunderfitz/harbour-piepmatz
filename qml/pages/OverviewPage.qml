@@ -772,7 +772,13 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
-                            onClicked: openTab("search")
+                            onClicked: {
+                                if (overviewPage.activeTabId === "search") {
+                                    searchResultsListView.scrollToTop();
+                                } else {
+                                    openTab("search");
+                                }
+                            }
                         }
                         Label {
                             id: searchButtonText

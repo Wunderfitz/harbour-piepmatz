@@ -27,6 +27,7 @@ public slots:
 private:
     QVariantList searchResults;
     TwitterApi *twitterApi;
+    bool searchInProgress;
 };
 
 #endif // SEARCHMODEL_H

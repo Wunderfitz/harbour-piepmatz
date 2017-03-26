@@ -3,6 +3,7 @@
 SearchModel::SearchModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
+    searchInProgress = false;
 
     connect(twitterApi, SIGNAL(searchTweetsError(QString)), this, SLOT(handleSearchTweetsError(QString)));
     connect(twitterApi, SIGNAL(searchTweetsSuccessful(QVariantList)), this, SLOT(handleSearchTweetsSuccessful(QVariantList)));
@@ -26,6 +27,7 @@ QVariant SearchModel::data(const QModelIndex &index, int role) const
 
 void SearchModel::search(const QString &query)
 {
+    searchInProgress = true;
     twitterApi->searchTweets(query);
 }
 
@@ -34,15 +36,25 @@ void SearchModel::handleSearchTweetsSuccessful(const QVariantList &result)
     qDebug() << "SearchModel::handleSearchTweetsSuccessful";
     qDebug() << "Result Count: " << QString::number(result.length());
 
-    beginResetModel();
-    searchResults.clear();
-    searchResults.append(result);
-    endResetModel();
+    if (searchInProgress) {
+        beginResetModel();
+        searchResults.clear();
+        searchResults.append(result);
+        endResetModel();
+        searchInProgress = false;
+        emit searchFinished();
+    } else {
+        qDebug() << "Search API called from somewhere else...";
+    }
 
-    emit searchFinished();
 }
 
 void SearchModel::handleSearchTweetsError(const QString &errorMessage)
 {
-    emit searchError(errorMessage);
+    if (searchInProgress) {
+        searchInProgress = false;
+        emit searchError(errorMessage);
+    } else {
+        qDebug() << "Search API called from somewhere else...";
+    }
 }
