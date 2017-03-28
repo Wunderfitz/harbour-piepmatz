@@ -45,7 +45,11 @@ void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
     endResetModel();
 
     QVariantList coverList;
-    for (int i = 0; i < 4; i++) {
+    int maxTweets = 6;
+    if (timelineTweets.size() < maxTweets) {
+        maxTweets = timelineTweets.size();
+    }
+    for (int i = 0; i < maxTweets; i++) {
         QMap<QString, QVariant> coverTweet;
         QMap<QString, QVariant> originalTweet = timelineTweets.at(i).toMap();
         if (originalTweet.contains("retweeted_status")) {

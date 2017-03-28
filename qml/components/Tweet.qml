@@ -160,7 +160,7 @@ ListItem {
                             id: tweetDateText
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.secondaryColor
-                            text:  Functions.getValidDate(tweetModel.retweeted_status ? tweetModel.retweeted_status.created_at : tweetModel.created_at).toLocaleString(Qt.locale(), Locale.ShortFormat)
+                            text:  Format.formatDate(Functions.getValidDate(tweetModel.retweeted_status ? tweetModel.retweeted_status.created_at : tweetModel.created_at), Formatter.DurationElapsed)
                             elide: Text.ElideRight
                             maximumLineCount: 1
                         }

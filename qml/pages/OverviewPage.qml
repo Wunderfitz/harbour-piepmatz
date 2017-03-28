@@ -46,6 +46,34 @@ Page {
         timelineModel.update();
     }
 
+    function handleHomeClicked() {
+        if (overviewPage.activeTabId === "home") {
+            homeListView.scrollToTop();
+        } else {
+            openTab("home");
+        }
+    }
+
+    function handleNotificationsClicked() {
+        openTab("notifications");
+    }
+
+    function handleMessagesClicked() {
+        openTab("messages");
+    }
+
+    function handleSearchClicked() {
+        if (overviewPage.activeTabId === "search") {
+            searchResultsListView.scrollToTop();
+        } else {
+            openTab("search");
+        }
+    }
+
+    function handleProfileClicked() {
+        openTab("profile");
+    }
+
     property string activeTabId: "home";
 
     function openTab(tabId) {
@@ -678,38 +706,42 @@ Page {
                 Row {
                     y: Theme.paddingSmall
                     width: parent.width
-                    Column {
+                    Item {
                         id: homeButtonColumn
                         width: parent.width / 5
                         height: parent.height - Theme.paddingMedium
+                        Column {
+                            anchors.fill: parent
+                            IconButton {
+                                id: homeButtonImage
+                                icon.source: "image://theme/icon-m-home"
+                                height: Theme.iconSizeMedium
+                                width: Theme.iconSizeMedium
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                                onClicked: {
+                                    handleHomeClicked();
+                                }
 
-                        IconButton {
-                            id: homeButtonImage
-                            icon.source: "image://theme/icon-m-home"
-                            height: Theme.iconSizeMedium
-                            width: Theme.iconSizeMedium
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
                             }
-                            onClicked: {
-                                if (overviewPage.activeTabId === "home") {
-                                    homeListView.scrollToTop();
-                                } else {
-                                    openTab("home");
+                            Label {
+                                id: homeButtonText
+                                text: qsTr("Timeline")
+                                font.pixelSize: Theme.fontSizeTiny
+                                color: Theme.primaryColor
+                                truncationMode: TruncationMode.Fade
+                                anchors {
+                                    horizontalCenter: parent.horizontalCenter
+                                }
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: handleHomeClicked();
                                 }
                             }
                         }
-                        Label {
-                            id: homeButtonText
-                            text: qsTr("Timeline")
-                            font.pixelSize: Theme.fontSizeTiny
-                            color: Theme.primaryColor
-                            truncationMode: TruncationMode.Fade
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                            }
-                        }
                     }
+
                     Column {
                         id: notificationsButtonColumn
                         width: parent.width / 5
@@ -722,7 +754,9 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
-                            onClicked: openTab("notifications")
+                            onClicked: {
+                                handleNotificationsClicked();
+                            }
                         }
                         Label {
                             id: notificationsButtonText
@@ -732,6 +766,10 @@ Page {
                             truncationMode: TruncationMode.Fade
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: handleNotificationsClicked();
                             }
                         }
                     }
@@ -747,7 +785,9 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
-                            onClicked: openTab("messages")
+                            onClicked: {
+                                handleMessagesClicked();
+                            }
                         }
                         Label {
                             id: messagesButtonText
@@ -757,6 +797,10 @@ Page {
                             truncationMode: TruncationMode.Fade
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: handleMessagesClicked();
                             }
                         }
                     }
@@ -773,11 +817,7 @@ Page {
                                 horizontalCenter: parent.horizontalCenter
                             }
                             onClicked: {
-                                if (overviewPage.activeTabId === "search") {
-                                    searchResultsListView.scrollToTop();
-                                } else {
-                                    openTab("search");
-                                }
+                                handleSearchClicked();
                             }
                         }
                         Label {
@@ -788,6 +828,10 @@ Page {
                             truncationMode: TruncationMode.Fade
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: handleSearchClicked();
                             }
                         }
                     }
@@ -803,7 +847,9 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
-                            onClicked: openTab("profile")
+                            onClicked: {
+                                handleProfileClicked();
+                            }
                         }
                         Label {
                             id: profileButtonText
@@ -814,7 +860,10 @@ Page {
                             anchors {
                                 horizontalCenter: parent.horizontalCenter
                             }
-
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: handleProfileClicked();
+                            }
                         }
                     }
                 }
