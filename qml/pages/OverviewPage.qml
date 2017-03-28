@@ -44,6 +44,8 @@ Page {
     function updatePiepmatz() {
         homeView.reloading = true;
         timelineModel.update();
+        notificationsColumn.updateInProgress = true;
+        mentionsModel.update();
     }
 
     function handleHomeClicked() {
@@ -210,6 +212,8 @@ Page {
             overviewColumn.opacity = 1;
             openTab("home");
             timelineModel.update();
+            mentionsModel.update();
+            notificationsColumn.updateInProgress = true;
         }
         onVerificationError: {
             hideAccountVerificationColumn();
@@ -494,30 +498,62 @@ Page {
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
 
-                Column {
-                    width: parent.width
-                    height: notificationsNotImplementedImage.height + notificationsNotImplementedLabel.height
-                    anchors.verticalCenter: parent.verticalCenter
-                    Image {
-                        id: notificationsNotImplementedImage
-                        source: "../../images/piepmatz.svg"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
+                property bool updateInProgress : false;
 
-                        fillMode: Image.PreserveAspectFit
-                        width: 1/2 * parent.width
+                Connections {
+                    target: mentionsModel
+                    onUpdateMentionsFinished: {
+                        notificationsColumn.updateInProgress = false;
+                    }
+                    onUpdateMentionsError: {
+                        notificationsColumn.updateInProgress = false;
+                        overviewNotification.show(errorMessage);
+                    }
+                }
+
+                SilicaListView {
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: notificationsColumn.updateInProgress ? 0 : 1
+                    visible: notificationsColumn.updateInProgress ? false : true
+                    anchors {
+                        fill: parent
+                    }
+                    id: mentionsListView
+
+                    clip: true
+
+                    model: mentionsModel
+                    delegate: Tweet {
+                        tweetModel: display
+                    }
+                    VerticalScrollDecorator {}
+                }
+
+                Column {
+                    anchors {
+                        fill: parent
+                    }
+
+                    id: mentionsUpdateInProgressColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: notificationsColumn.updateInProgress ? 1 : 0
+                    visible: notificationsColumn.updateInProgress ? true : false
+
+                    BusyIndicator {
+                        id: mentionsUpdateInProgressIndicator
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        running: notificationsColumn.updateInProgress
+                        size: BusyIndicatorSize.Medium
                     }
 
                     InfoLabel {
-                        id: notificationsNotImplementedLabel
-                        text: "Notifications are not yet implemented"
+                        id: mentionsUpdateInProgressIndicatorLabel
+                        text: qsTr("Loading...")
+                        font.pixelSize: Theme.fontSizeLarge
                         width: parent.width - 2 * Theme.horizontalPageMargin
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
                     }
                 }
+
             }
 
             Item {

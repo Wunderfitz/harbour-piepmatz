@@ -81,6 +81,28 @@ void TwitterApi::homeTimeline()
     connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
 }
 
+void TwitterApi::mentionsTimeline()
+{
+    qDebug() << "TwitterApi::mentionsTimeline";
+    QUrl url = QUrl(API_STATUSES_MENTIONS_TIMELINE);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("count", "200");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleMentionsTimelineError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleMentionsTimelineFinished()));
+}
+
 void TwitterApi::showStatus(const QString &statusId)
 {
     qDebug() << "TwitterApi::showStatus" << statusId;
@@ -268,6 +290,31 @@ void TwitterApi::handleHomeTimelineFinished()
         emit homeTimelineSuccessful(responseArray.toVariantList());
     } else {
         emit homeTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleMentionsTimelineError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleMentionsTimelineError:" << (int)error << reply->errorString() << reply->readAll();
+    emit mentionsTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleMentionsTimelineFinished()
+{
+    qDebug() << "TwitterApi::handleMentionsTimelineFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit mentionsTimelineSuccessful(responseArray.toVariantList());
+    } else {
+        emit mentionsTimelineError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

@@ -19,6 +19,7 @@
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
+const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
@@ -35,6 +36,7 @@ public:
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void tweet(const QString &text);
     Q_INVOKABLE void homeTimeline();
+    Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
     Q_INVOKABLE void showStatus(const QString &statusId);
     Q_INVOKABLE void showUser(const QString &screenName);
@@ -49,6 +51,8 @@ signals:
     void tweetError(const QString &errorMessage);
     void homeTimelineSuccessful(const QVariantList &result);
     void homeTimelineError(const QString &errorMessage);
+    void mentionsTimelineSuccessful(const QVariantList &result);
+    void mentionsTimelineError(const QString &errorMessage);
     void userTimelineSuccessful(const QVariantList &result);
     void userTimelineError(const QString &errorMessage);
     void showStatusSuccessful(const QVariantMap &result);
@@ -72,6 +76,8 @@ private slots:
     void handleTweetFinished();
     void handleHomeTimelineError(QNetworkReply::NetworkError error);
     void handleHomeTimelineFinished();
+    void handleMentionsTimelineError(QNetworkReply::NetworkError error);
+    void handleMentionsTimelineFinished();
     void handleUserTimelineError(QNetworkReply::NetworkError error);
     void handleUserTimelineFinished();
     void handleShowStatusError(QNetworkReply::NetworkError error);
