@@ -57,7 +57,11 @@ Page {
     }
 
     function handleNotificationsClicked() {
-        openTab("notifications");
+        if (overviewPage.activeTabId === "notifications") {
+            mentionsListView.scrollToTop();
+        } else {
+            openTab("notifications");
+        }
     }
 
     function handleMessagesClicked() {
@@ -77,6 +81,7 @@ Page {
     }
 
     property string activeTabId: "home";
+    property variant configuration;
 
     function openTab(tabId) {
 
@@ -211,6 +216,7 @@ Page {
             overviewColumn.visible = true;
             overviewColumn.opacity = 1;
             openTab("home");
+            twitterApi.helpConfiguration();
             timelineModel.update();
             mentionsModel.update();
             notificationsColumn.updateInProgress = true;
@@ -229,6 +235,13 @@ Page {
         }
         onTweetSuccessful: {
             overviewNotification.show(qsTr("Tweet sent successfully!"));
+        }
+        onHelpConfigurationSuccessful: {
+            overviewPage.configuration = result;
+            console.log(overviewPage.configuration.short_url_length_https);
+        }
+        onHelpConfigurationError: {
+            overviewNotification.show(errorMessage);
         }
     }
 
@@ -336,7 +349,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("New Tweet")
-                onClicked: pageStack.push(newTweetPage)
+                onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
             }
             MenuItem {
                 text: qsTr("Refresh")
@@ -351,7 +364,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("New Tweet")
-                onClicked: pageStack.push(newTweetPage)
+                onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
             }
             MenuItem {
                 text: qsTr("About Piepmatz")

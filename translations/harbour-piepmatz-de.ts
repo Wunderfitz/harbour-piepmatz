@@ -39,6 +39,14 @@
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open twitter-text on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>

@@ -17,6 +17,19 @@ void TwitterApi::verifyCredentials()
     connect(reply, SIGNAL(finished()), this, SLOT(handleVerifyCredentialsSuccessful()));
 }
 
+void TwitterApi::helpConfiguration()
+{
+    qDebug() << "TwitterApi::helpConfiguration";
+    QUrl url = QUrl(API_HELP_CONFIGURATION);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHelpConfigurationError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleHelpConfigurationSuccessful()));
+}
+
 void TwitterApi::handleVerifyCredentialsSuccessful()
 {
     qDebug() << "TwitterApi::handleVerifyCredentialsSuccessful";
@@ -39,6 +52,30 @@ void TwitterApi::handleVerifyCredentialsError(QNetworkReply::NetworkError error)
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleVerifyCredentialsError:" << (int)error << reply->errorString() << reply->readAll();
     emit verifyCredentialsError(reply->errorString());
+}
+
+void TwitterApi::handleHelpConfigurationSuccessful()
+{
+    qDebug() << "TwitterApi::handleHelpConfigurationSuccessful";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        emit helpConfigurationSuccessful(jsonDocument.object().toVariantMap());
+    } else {
+        emit helpConfigurationError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleHelpConfigurationError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleHelpConfigurationError:" << (int)error << reply->errorString() << reply->readAll();
+    emit helpConfigurationError(reply->errorString());
 }
 
 void TwitterApi::tweet(const QString &text)
