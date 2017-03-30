@@ -9,10 +9,14 @@ import "../js/twitter-text.js" as TwitterText
 
 
 Page {
-    id: page
+    id: newTweetPage
     allowedOrientations: Orientation.All
 
     property variant configuration;
+
+    function getRemainingCharacters(text, configuration) {
+        return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
+    }
 
     SilicaFlickable {
         id: aboutContainer
@@ -31,8 +35,7 @@ Page {
 
         Column {
             id: column
-            width: page.width
-            spacing: Theme.paddingLarge
+            width: newTweetPage.width
 
             PageHeader {
                 title: qsTr("New Tweet")
@@ -46,9 +49,20 @@ Page {
                 width: parent.width - 2 * Theme.paddingLarge
                 focus: true
                 onTextChanged: {
-                    // Text length calculation comes here using TwitterText.twttr.txt.getTweetLength and maybe by detecting an attachment URL, see https://dev.twitter.com/overview/api/upcoming-changes-to-tweets
-                    //console.log(TwitterText.twttr.txt.getTweetLength(enterTweetTextArea.text));
+                    remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
                 }
+            }
+
+            Text {
+                id: remainingCharactersText
+                anchors {
+                    right: parent.right
+                    rightMargin: Theme.horizontalPageMargin
+                }
+                color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
+                font.pixelSize: remainingCharactersText.text < 0 ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                font.bold: remainingCharactersText.text < 0 ? true : false
+                text: getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration)
             }
 
             VerticalScrollDecorator {}
