@@ -10,6 +10,8 @@ ListItem {
 
     property variant tweetModel;
     property string tweetId : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.id_str : tweetModel.id_str );
+    // TODO: attributes favorited and retweeted are only temporary workarounds until we are able to update and replace individual tweets in the model
+    // does not work completely if model is reloaded (e.g. during scrolling)
     property bool favorited : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.favorited : tweetModel.favorited );
     property bool retweeted : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.retweeted : tweetModel.retweeted );
     property string embeddedTweetId;
