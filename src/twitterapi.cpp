@@ -280,6 +280,42 @@ void TwitterApi::searchTweets(const QString &query)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchTweetsError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchTweetsFinished()));
 }
+
+void TwitterApi::favorite(const QString &statusId)
+{
+    qDebug() << "TwitterApi::favorite" << statusId;
+    QUrl url = QUrl(API_FAVORITES_CREATE);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("id"), statusId.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFavoriteError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFavoriteFinished()));
+}
+
+void TwitterApi::unfavorite(const QString &statusId)
+{
+    qDebug() << "TwitterApi::unfavorite" << statusId;
+    QUrl url = QUrl(API_FAVORITES_DESTROY);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("id"), statusId.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnfavoriteError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUnfavoriteFinished()));
+}
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -508,5 +544,55 @@ void TwitterApi::handleSearchTweetsFinished()
         emit searchTweetsSuccessful(responseObject.value("statuses").toArray().toVariantList());
     } else {
         emit searchTweetsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleFavoriteError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleFavoriteError:" << (int)error << reply->errorString() << reply->readAll();
+    emit favoriteError(reply->errorString());
+}
+
+void TwitterApi::handleFavoriteFinished()
+{
+    qDebug() << "TwitterApi::handleFavoriteFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit favoriteSuccessful(responseObject.toVariantMap());
+    } else {
+        emit favoriteError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleUnfavoriteError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleUnfavoriteError:" << (int)error << reply->errorString() << reply->readAll();
+    emit unfavoriteError(reply->errorString());
+}
+
+void TwitterApi::handleUnfavoriteFinished()
+{
+    qDebug() << "TwitterApi::handleUnfavoriteFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit unfavoriteSuccessful(responseObject.toVariantMap());
+    } else {
+        emit unfavoriteError("Piepmatz couldn't understand Twitter's response!");
     }
 }

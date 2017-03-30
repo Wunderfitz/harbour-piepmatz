@@ -9,6 +9,9 @@ ListItem {
     id: singleTweet
 
     property variant tweetModel;
+    property string tweetId : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.id_str : tweetModel.id_str );
+    property bool favorited : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.favorited : tweetModel.favorited );
+    property bool retweeted : ( tweetModel.retweeted_status ? tweetModel.retweeted_status.retweeted : tweetModel.retweeted );
     property string embeddedTweetId;
     property variant embeddedTweet;
     property bool hasEmbeddedTweet : false;
@@ -154,6 +157,26 @@ ListItem {
                     width: parent.width
                     spacing: Theme.paddingSmall
 
+                    Connections {
+                        target: twitterApi
+                        onFavoriteSuccessful: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.highlightColor;
+                                tweetFavoritesCountText.color = Theme.highlightColor;
+                                tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
+                                singleTweet.favorited = true;
+                            }
+                        }
+                        onUnfavoriteSuccessful: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.primaryColor;
+                                tweetFavoritesCountText.color = Theme.secondaryColor;
+                                tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
+                                singleTweet.favorited = false;
+                            }
+                        }
+                    }
+
                     Row {
                         width: parent.width / 2
                         Text {
@@ -174,7 +197,7 @@ ListItem {
                             Image {
                                 id: tweetRetweetedCountImage
                                 anchors.right: parent.right
-                                source: "image://theme/icon-s-retweet"
+                                source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
                                 width: Theme.fontSizeExtraSmall
                                 height: Theme.fontSizeExtraSmall
                             }
@@ -185,7 +208,7 @@ ListItem {
                                 id: tweetRetweetedCountText
                                 font.pixelSize: Theme.fontSizeTiny
                                 anchors.left: parent.left
-                                color: Theme.secondaryColor
+                                color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.retweeted ? Theme.highlightColor : Theme.secondaryColor )
                                 text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
@@ -196,9 +219,13 @@ ListItem {
                             Image {
                                 id: tweetFavoritesCountImage
                                 anchors.right: parent.right
-                                source: "image://theme/icon-s-favorite"
+                                source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" ) : ( tweetModel.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" )
                                 width: Theme.fontSizeExtraSmall
                                 height: Theme.fontSizeExtraSmall
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
+                                }
                             }
                         }
                         Column {
@@ -207,10 +234,14 @@ ListItem {
                                 id: tweetFavoritesCountText
                                 font.pixelSize: Theme.fontSizeTiny
                                 anchors.left: parent.left
-                                color: Theme.secondaryColor
+                                color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.favorited ? Theme.highlightColor : Theme.secondaryColor )
                                 text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorite_count ? tweetModel.retweeted_status.favorite_count : " " ) : ( tweetModel.favorite_count ? tweetModel.favorite_count : " " )
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
+                                }
                             }
                         }
                     }

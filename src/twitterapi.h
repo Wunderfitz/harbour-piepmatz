@@ -27,6 +27,8 @@ const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
 const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/create.json";
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
 const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json";
+const char API_FAVORITES_CREATE[] = "https://api.twitter.com/1.1/favorites/create.json";
+const char API_FAVORITES_DESTROY[] = "https://api.twitter.com/1.1/favorites/destroy.json";
 
 class TwitterApi : public QObject {
 
@@ -45,6 +47,8 @@ public:
     Q_INVOKABLE void followUser(const QString &screenName);
     Q_INVOKABLE void unfollowUser(const QString &screenName);
     Q_INVOKABLE void searchTweets(const QString &query);
+    Q_INVOKABLE void favorite(const QString &statusId);
+    Q_INVOKABLE void unfavorite(const QString &statusId);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -69,6 +73,10 @@ signals:
     void unfollowUserError(const QString &errorMessage);
     void searchTweetsSuccessful(const QVariantList &result);
     void searchTweetsError(const QString &errorMessage);
+    void favoriteSuccessful(const QVariantMap &result);
+    void favoriteError(const QString &errorMessage);
+    void unfavoriteSuccessful(const QVariantMap &result);
+    void unfavoriteError(const QString &errorMessage);
 
 private:
     O1Requestor *requestor;
@@ -96,6 +104,10 @@ private slots:
     void handleUnfollowUserFinished();
     void handleSearchTweetsError(QNetworkReply::NetworkError error);
     void handleSearchTweetsFinished();
+    void handleFavoriteError(QNetworkReply::NetworkError error);
+    void handleFavoriteFinished();
+    void handleUnfavoriteError(QNetworkReply::NetworkError error);
+    void handleUnfavoriteFinished();
 
 };
 
