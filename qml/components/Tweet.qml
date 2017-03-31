@@ -177,6 +177,22 @@ ListItem {
                                 singleTweet.favorited = false;
                             }
                         }
+                        onRetweetSuccessful: {
+                            if (singleTweet.tweetId === result.retweeted_status.id_str) {
+                                tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.highlightColor;
+                                tweetRetweetedCountText.color = Theme.highlightColor;
+                                tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
+                                singleTweet.retweeted = true;
+                            }
+                        }
+                        onUnretweetSuccessful: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.primaryColor;
+                                tweetRetweetedCountText.color = Theme.secondaryColor;
+                                tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
+                                singleTweet.retweeted = false;
+                            }
+                        }
                     }
 
                     Row {
@@ -202,6 +218,10 @@ ListItem {
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
                                 width: Theme.fontSizeExtraSmall
                                 height: Theme.fontSizeExtraSmall
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
+                                }
                             }
                         }
                         Column {
@@ -214,6 +234,10 @@ ListItem {
                                 text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
+                                }
                             }
                         }
                         Column {

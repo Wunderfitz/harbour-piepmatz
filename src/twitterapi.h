@@ -23,6 +23,8 @@ const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+const char API_STATUSES_RETWEET[] = "https://api.twitter.com/1.1/statuses/retweet/:id.json";
+const char API_STATUSES_UNRETWEET[] = "https://api.twitter.com/1.1/statuses/unretweet/:id.json";
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
 const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/create.json";
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
@@ -49,6 +51,8 @@ public:
     Q_INVOKABLE void searchTweets(const QString &query);
     Q_INVOKABLE void favorite(const QString &statusId);
     Q_INVOKABLE void unfavorite(const QString &statusId);
+    Q_INVOKABLE void retweet(const QString &statusId);
+    Q_INVOKABLE void unretweet(const QString &statusId);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -77,6 +81,10 @@ signals:
     void favoriteError(const QString &errorMessage);
     void unfavoriteSuccessful(const QVariantMap &result);
     void unfavoriteError(const QString &errorMessage);
+    void retweetSuccessful(const QVariantMap &result);
+    void retweetError(const QString &errorMessage);
+    void unretweetSuccessful(const QVariantMap &result);
+    void unretweetError(const QString &errorMessage);
 
 private:
     O1Requestor *requestor;
@@ -108,6 +116,10 @@ private slots:
     void handleFavoriteFinished();
     void handleUnfavoriteError(QNetworkReply::NetworkError error);
     void handleUnfavoriteFinished();
+    void handleRetweetError(QNetworkReply::NetworkError error);
+    void handleRetweetFinished();
+    void handleUnretweetError(QNetworkReply::NetworkError error);
+    void handleUnretweetFinished();
 
 };
 

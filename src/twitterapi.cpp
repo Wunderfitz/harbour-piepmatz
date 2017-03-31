@@ -316,6 +316,40 @@ void TwitterApi::unfavorite(const QString &statusId)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnfavoriteError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleUnfavoriteFinished()));
 }
+
+void TwitterApi::retweet(const QString &statusId)
+{
+    qDebug() << "TwitterApi::retweet" << statusId;
+    QUrl url = QUrl(QString(API_STATUSES_RETWEET).replace(":id", statusId));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetFinished()));
+}
+
+void TwitterApi::unretweet(const QString &statusId)
+{
+    qDebug() << "TwitterApi::unretweet" << statusId;
+    QUrl url = QUrl(QString(API_STATUSES_UNRETWEET).replace(":id", statusId));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnretweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUnretweetFinished()));
+}
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -594,5 +628,55 @@ void TwitterApi::handleUnfavoriteFinished()
         emit unfavoriteSuccessful(responseObject.toVariantMap());
     } else {
         emit unfavoriteError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleRetweetError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleRetweetError:" << (int)error << reply->errorString() << reply->readAll();
+    emit retweetError(reply->errorString());
+}
+
+void TwitterApi::handleRetweetFinished()
+{
+    qDebug() << "TwitterApi::handleRetweetFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit retweetSuccessful(responseObject.toVariantMap());
+    } else {
+        emit retweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleUnretweetError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleUnretweetError:" << (int)error << reply->errorString() << reply->readAll();
+    emit unretweetError(reply->errorString());
+}
+
+void TwitterApi::handleUnretweetFinished()
+{
+    qDebug() << "TwitterApi::handleUnretweetFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit unretweetSuccessful(responseObject.toVariantMap());
+    } else {
+        emit unretweetError("Piepmatz couldn't understand Twitter's response!");
     }
 }

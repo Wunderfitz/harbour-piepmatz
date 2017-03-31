@@ -99,9 +99,7 @@ Page {
             onClicked: {
                 accountModel.enterPin(enterPinField.text)
                 enterPinColumn.opacity = 0;
-                welcomeFlickable.opacity = 1;
                 enterPinColumn.visible = false;
-                welcomeFlickable.visible = true;
             }
         }
     }
