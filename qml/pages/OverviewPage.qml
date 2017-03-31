@@ -359,6 +359,10 @@ Page {
 
         PushUpMenu {
             MenuItem {
+                text: qsTr("Show Notification")
+                onClicked: overviewNotification.show("Onkel Hugo was here...!")
+            }
+            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: updatePiepmatz()
             }
@@ -629,7 +633,7 @@ Page {
 
                 Timer {
                     id: searchTimer
-                    interval: 800
+                    interval: 1000
                     running: false
                     repeat: false
                     onTriggered: {

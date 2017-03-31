@@ -166,6 +166,10 @@
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show Notification</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

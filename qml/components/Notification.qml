@@ -43,7 +43,7 @@ Item {
     Timer {
         id: notificationTimer
         repeat: false
-        interval: 2000
+        interval: 2500
     }
 
     Timer {
@@ -65,6 +65,7 @@ Item {
             id: notificationRectangle
             anchors.fill: parent
             color: Theme.highlightColor
+            opacity: 0.6
             radius: parent.width / 15
         }
 

@@ -28,7 +28,13 @@ QVariant SearchModel::data(const QModelIndex &index, int role) const
 void SearchModel::search(const QString &query)
 {
     searchInProgress = true;
-    twitterApi->searchTweets(query);
+    QRegExp regex("(\\w+)");
+    if (query.contains(regex) || query.isEmpty()) {
+        twitterApi->searchTweets(query);
+    } else {
+        searchInProgress = false;
+        emit searchFinished();
+    }
 }
 
 void SearchModel::handleSearchTweetsSuccessful(const QVariantList &result)
