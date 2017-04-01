@@ -7,6 +7,20 @@ Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de)
 ## License
 Licensed under GNU GPLv3
 
+## Build
+Just use the project file `harbour-piepmatz.pro` to import the sources in your SailfishOS IDE. To build and run Piepmatz or an application which is based on Piepmatz, you need to create the file `harbour-piepmatz/src/o2/o1twitterglobals.h` and enter some constants in the following format:
+```
+#ifndef O1TWITTERGLOBALS_H
+#define O1TWITTERGLOBALS_H
+const char TWITTER_CLIENT_ID[]                    = "abcdef";
+const char TWITTER_CLIENT_SECRET[]                = "ghijkl";
+const char TWITTER_STORE_DEFAULT_ENCRYPTION_KEY[] = "jklmno";
+#endif // O1TWITTERGLOBALS_H
+```
+
+You get the Twitter client ID and client secret as soon as you've registered your own application on [dev.twitter.com](https://dev.twitter.com/). The default encryption key is only used in case Piepmatz is unable to determine a unique encryption key from your device. This key is used to encrypt your Twitter credentials on your device. Please use a password generator to generate the key for your application.
+
+
 ## Credits
 This project uses
 - OAuth for Qt, by Akos Polster. Available on [GitHub.com](https://github.com/pipacs/o2) - Thanks for making it available under the conditions of the BSD-2-Clause license! Details about the license of OAuth for Qt in [its license file](src/o2/LICENSE).

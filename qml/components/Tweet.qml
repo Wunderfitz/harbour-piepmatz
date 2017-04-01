@@ -21,6 +21,13 @@ ListItem {
     contentHeight: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
     contentWidth: parent.width
 
+    menu: ContextMenu {
+        MenuItem {
+            onClicked: overviewNotification.show("You want to reply? Muhahahahaaaa!")
+            text: qsTr("Reply")
+        }
+    }
+
     Column {
         id: tweetColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )
@@ -195,11 +202,21 @@ ListItem {
                         }
                     }
 
+                    Timer {
+                        id: tweetDateUpdater
+                        interval: 60000
+                        running: true
+                        repeat: true
+                        onTriggered: {
+                            tweetDateText.text = Format.formatDate(Functions.getValidDate(tweetModel.retweeted_status ? tweetModel.retweeted_status.created_at : tweetModel.created_at), Formatter.DurationElapsed);
+                        }
+                    }
+
                     Row {
-                        width: parent.width / 2
+                        width: parent.width * 9 / 20
                         Text {
                             id: tweetDateText
-                            font.pixelSize: Theme.fontSizeTiny
+                            font.pixelSize: Theme.fontSizeExtraSmall
                             color: Theme.secondaryColor
                             text:  Format.formatDate(Functions.getValidDate(tweetModel.retweeted_status ? tweetModel.retweeted_status.created_at : tweetModel.created_at), Formatter.DurationElapsed)
                             elide: Text.ElideRight
@@ -208,7 +225,7 @@ ListItem {
                     }
 
                     Row {
-                        width: parent.width / 2
+                        width: parent.width * 11 / 20
                         spacing: Theme.paddingSmall
                         Column {
                             width: parent.width / 6
@@ -216,8 +233,8 @@ ListItem {
                                 id: tweetRetweetedCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
-                                width: Theme.fontSizeExtraSmall
-                                height: Theme.fontSizeExtraSmall
+                                width: Theme.fontSizeSmall
+                                height: Theme.fontSizeSmall
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
@@ -228,7 +245,7 @@ ListItem {
                             width: parent.width / 3
                             Text {
                                 id: tweetRetweetedCountText
-                                font.pixelSize: Theme.fontSizeTiny
+                                font.pixelSize: Theme.fontSizeExtraSmall
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.retweeted ? Theme.highlightColor : Theme.secondaryColor )
                                 text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
@@ -246,8 +263,8 @@ ListItem {
                                 id: tweetFavoritesCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" ) : ( tweetModel.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" )
-                                width: Theme.fontSizeExtraSmall
-                                height: Theme.fontSizeExtraSmall
+                                width: Theme.fontSizeSmall
+                                height: Theme.fontSizeSmall
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
@@ -258,7 +275,7 @@ ListItem {
                             width: parent.width / 3
                             Text {
                                 id: tweetFavoritesCountText
-                                font.pixelSize: Theme.fontSizeTiny
+                                font.pixelSize: Theme.fontSizeExtraSmall
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.favorited ? Theme.highlightColor : Theme.secondaryColor )
                                 text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorite_count ? tweetModel.retweeted_status.favorite_count : " " ) : ( tweetModel.favorite_count ? tweetModel.favorite_count : " " )
@@ -272,6 +289,8 @@ ListItem {
                         }
                     }
                 }
+
+
             }
         }
 

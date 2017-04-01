@@ -359,10 +359,6 @@ Page {
 
         PushUpMenu {
             MenuItem {
-                text: qsTr("Show Notification")
-                onClicked: overviewNotification.show("Onkel Hugo was here...!")
-            }
-            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: updatePiepmatz()
             }
