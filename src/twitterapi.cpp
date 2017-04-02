@@ -170,6 +170,25 @@ void TwitterApi::tweet(const QString &text)
     connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
 }
 
+void TwitterApi::replyToTweet(const QString &text, const QString &replyToStatusId)
+{
+    qDebug() << "TwitterApi::replyToTweet";
+    QUrl url = QUrl(API_STATUSES_UPDATE);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("status"), text.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("in_reply_to_status_id"), replyToStatusId.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("auto_populate_reply_metadata"), QByteArray("true")));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleTweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
+}
+
 void TwitterApi::homeTimeline()
 {
     qDebug() << "TwitterApi::homeTimeline";

@@ -6,6 +6,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../js/twitter-text.js" as TwitterText
+import "../components"
 
 
 Page {
@@ -13,9 +14,18 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant configuration;
+    property string replyToStatusId;
+    property variant replyToTweet;
+    property bool replyToTweetLoaded;
 
     function getRemainingCharacters(text, configuration) {
         return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
+    }
+
+    Component.onCompleted: {
+        if (replyToStatusId) {
+            twitterApi.showStatus(replyToStatusId);
+        }
     }
 
     SilicaFlickable {
@@ -25,10 +35,14 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: qsTr("Tweet")
+                text: replyToStatusId ? qsTr("Send Reply") : qsTr("Send Tweet")
                 onClicked: {
-                    twitterApi.tweet(enterTweetTextArea.text)
-                    pageStack.pop()
+                    if (replyToStatusId) {
+                        twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                    } else {
+                        twitterApi.tweet(enterTweetTextArea.text);
+                    }
+                    pageStack.pop();
                 }
             }
         }
@@ -38,7 +52,32 @@ Page {
             width: newTweetPage.width
 
             PageHeader {
-                title: qsTr("New Tweet")
+                title: replyToStatusId ? qsTr("Reply") : qsTr("New Tweet")
+            }
+
+            Connections {
+                target: twitterApi
+                onShowStatusSuccessful: {
+                    if (newTweetPage.replyToStatusId === result.id_str) {
+                        newTweetPage.replyToTweet = result;
+                        newTweetPage.replyToTweetLoaded = true;
+                    }
+                }
+            }
+
+            Component {
+                id: replyToTweetComponent
+                Tweet {
+                    id: inReplyToTweetItem
+                    tweetModel: newTweetPage.replyToTweet
+                }
+            }
+
+            Loader {
+                id: inReplyToTweetLoader
+                active: newTweetPage.replyToTweetLoaded
+                width: parent.width
+                sourceComponent: replyToTweetComponent
             }
 
             TextArea {

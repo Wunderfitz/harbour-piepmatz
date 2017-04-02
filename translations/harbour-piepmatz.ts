@@ -96,11 +96,19 @@
 <context>
     <name>NewTweetPage</name>
     <message>
-        <source>Tweet</source>
+        <source>New Tweet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>New Tweet</source>
+        <source>Reply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Reply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send Tweet</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

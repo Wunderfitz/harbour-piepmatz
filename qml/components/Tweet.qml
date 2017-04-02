@@ -23,7 +23,9 @@ ListItem {
 
     menu: ContextMenu {
         MenuItem {
-            onClicked: overviewNotification.show("You want to reply? Muhahahahaaaa!")
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"replyToStatusId": singleTweet.tweetId});
+            }
             text: qsTr("Reply")
         }
     }

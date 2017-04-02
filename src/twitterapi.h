@@ -45,6 +45,7 @@ public:
     Q_INVOKABLE void helpPrivacy();
     Q_INVOKABLE void helpTos();
     Q_INVOKABLE void tweet(const QString &text);
+    Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId);
     Q_INVOKABLE void homeTimeline();
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
