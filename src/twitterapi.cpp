@@ -30,6 +30,32 @@ void TwitterApi::helpConfiguration()
     connect(reply, SIGNAL(finished()), this, SLOT(handleHelpConfigurationSuccessful()));
 }
 
+void TwitterApi::helpPrivacy()
+{
+    qDebug() << "TwitterApi::helpPrivacy";
+    QUrl url = QUrl(API_HELP_PRIVACY);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHelpPrivacyError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleHelpPrivacySuccessful()));
+}
+
+void TwitterApi::helpTos()
+{
+    qDebug() << "TwitterApi::helpTos";
+    QUrl url = QUrl(API_HELP_TOS);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHelpTosError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleHelpTosSuccessful()));
+}
+
 void TwitterApi::handleVerifyCredentialsSuccessful()
 {
     qDebug() << "TwitterApi::handleVerifyCredentialsSuccessful";
@@ -76,6 +102,54 @@ void TwitterApi::handleHelpConfigurationError(QNetworkReply::NetworkError error)
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleHelpConfigurationError:" << (int)error << reply->errorString() << reply->readAll();
     emit helpConfigurationError(reply->errorString());
+}
+
+void TwitterApi::handleHelpPrivacySuccessful()
+{
+    qDebug() << "TwitterApi::handleHelpPrivacySuccessful";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        emit helpPrivacySuccessful(jsonDocument.object().toVariantMap());
+    } else {
+        emit helpPrivacyError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleHelpPrivacyError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleHelpPrivacyError:" << (int)error << reply->errorString() << reply->readAll();
+    emit helpPrivacyError(reply->errorString());
+}
+
+void TwitterApi::handleHelpTosSuccessful()
+{
+    qDebug() << "TwitterApi::handleHelpTosSuccessful";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        emit helpTosSuccessful(jsonDocument.object().toVariantMap());
+    } else {
+        emit helpTosError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleHelpTosError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleHelpTosError:" << (int)error << reply->errorString() << reply->readAll();
+    emit helpTosError(reply->errorString());
 }
 
 void TwitterApi::tweet(const QString &text)

@@ -19,7 +19,7 @@ Column {
         wrapMode: Text.Wrap
         textFormat: Text.StyledText
         onLinkActivated: {
-            Functions.handleLink(link, tweetContentText);
+            Functions.handleLink(link);
         }
         linkColor: Theme.highlightColor
     }

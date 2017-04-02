@@ -5,6 +5,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/functions.js" as Functions
 
 
 Page {
@@ -77,6 +78,17 @@ Page {
                 onLinkActivated: Qt.openUrlExternally("mailto:sebastian@ygriega.de")
             }
 
+            Text {
+                text: "<a href=\"profile://ygriega\">" + qsTr("Find me on Twitter") + "</a>"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+
+                onLinkActivated: Functions.handleLink(link);
+            }
+
             Label {
                 text: qsTr("Licensed under GNU GPLv3")
                 font.pixelSize: Theme.fontSizeSmall
@@ -94,6 +106,32 @@ Page {
                 linkColor: Theme.highlightColor
 
                 onLinkActivated: Qt.openUrlExternally("https://github.com/Wunderfitz/harbour-piepmatz")
+            }
+
+            SectionHeader {
+                text: qsTr("About Twitter")
+            }
+
+            Button {
+                id: twitterTosButton
+                text: qsTr("Terms of Service")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/TextPage.qml"), {"contentId": "tos"});
+                }
+            }
+
+            Button {
+                id: twitterPrivacyButton
+                text: qsTr("Privacy Policy")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/TextPage.qml"), {"contentId": "privacy"});
+                }
             }
 
             SectionHeader {

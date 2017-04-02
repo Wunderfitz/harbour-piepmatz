@@ -101,7 +101,7 @@ function enhanceText(tweetText, entities, extendedEntities) {
     return tweetText;
 }
 
-function handleLink(link, parentComponent) {
+function handleLink(link) {
     if (link.indexOf("profile://") === 0) {
         console.log("Profile clicked: " + link);
         pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileName": link.substring(10)});

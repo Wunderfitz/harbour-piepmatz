@@ -18,6 +18,8 @@
 
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";
 const char API_HELP_CONFIGURATION[] = "https://api.twitter.com/1.1/help/configuration.json";
+const char API_HELP_PRIVACY[] = "https://api.twitter.com/1.1/help/privacy.json";
+const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
@@ -40,6 +42,8 @@ public:
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void helpConfiguration();
+    Q_INVOKABLE void helpPrivacy();
+    Q_INVOKABLE void helpTos();
     Q_INVOKABLE void tweet(const QString &text);
     Q_INVOKABLE void homeTimeline();
     Q_INVOKABLE void mentionsTimeline();
@@ -59,6 +63,10 @@ signals:
     void verifyCredentialsError(const QString &errorMessage);
     void helpConfigurationSuccessful(const QVariantMap &result);
     void helpConfigurationError(const QString &errorMessage);
+    void helpPrivacySuccessful(const QVariantMap &result);
+    void helpPrivacyError(const QString &errorMessage);
+    void helpTosSuccessful(const QVariantMap &result);
+    void helpTosError(const QString &errorMessage);
     void tweetSuccessful(const QVariantMap &result);
     void tweetError(const QString &errorMessage);
     void homeTimelineSuccessful(const QVariantList &result);
@@ -94,6 +102,10 @@ private slots:
     void handleVerifyCredentialsError(QNetworkReply::NetworkError error);
     void handleHelpConfigurationSuccessful();
     void handleHelpConfigurationError(QNetworkReply::NetworkError error);
+    void handleHelpPrivacySuccessful();
+    void handleHelpPrivacyError(QNetworkReply::NetworkError error);
+    void handleHelpTosSuccessful();
+    void handleHelpTosError(QNetworkReply::NetworkError error);
     void handleTweetError(QNetworkReply::NetworkError error);
     void handleTweetFinished();
     void handleHomeTimelineError(QNetworkReply::NetworkError error);

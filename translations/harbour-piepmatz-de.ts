@@ -47,6 +47,22 @@
         <source>Open twitter-text on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Find me on Twitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About Twitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Terms of Service</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Privacy Policy</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
@@ -206,6 +222,17 @@
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TextPage</name>
+    <message>
+        <source>Twitter Terms of Service</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twitter Privacy Policy</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

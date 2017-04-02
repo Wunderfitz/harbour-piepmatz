@@ -14,11 +14,11 @@ Just use the project file `harbour-piepmatz.pro` to import the sources in your S
 #define O1TWITTERGLOBALS_H
 const char TWITTER_CLIENT_ID[]                    = "abcdef";
 const char TWITTER_CLIENT_SECRET[]                = "ghijkl";
-const char TWITTER_STORE_DEFAULT_ENCRYPTION_KEY[] = "jklmno";
+const char TWITTER_STORE_DEFAULT_ENCRYPTION_KEY[] = "mnopqr";
 #endif // O1TWITTERGLOBALS_H
 ```
 
-You get the Twitter client ID and client secret as soon as you've registered your own application on [dev.twitter.com](https://dev.twitter.com/). The default encryption key is only used in case Piepmatz is unable to determine a unique encryption key from your device. This key is used to encrypt your Twitter credentials on your device. Please use a password generator to generate the key for your application.
+You get the Twitter client ID and client secret as soon as you've registered your own application on [dev.twitter.com](https://dev.twitter.com/). The default encryption key is only used in case Piepmatz is unable to determine a unique encryption key from the user's device. Under normal circumstances, Piepmatz uses an encryption key which was generated automatically. This key is used to encrypt the user's generated Twitter oAuth token (not the username/password!) on the user's device. Please use a password generator to generate the default key for your application.
 
 
 ## Credits
