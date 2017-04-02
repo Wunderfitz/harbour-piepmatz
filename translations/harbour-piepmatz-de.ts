@@ -5,319 +5,323 @@
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Eine Twitter-Anwendung für Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Von Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation type="unfinished"></translation>
+        <translation>E-Mail verschicken</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizenziert unter der GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Quelltexte auf GitHub</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Danksagungen</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>OAuth for Qt auf GitHub öffnen</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt nutzt OAuth for Qt von Akos Polster. Danke für das Bereitstellen unter den Bedingungen der BSD-2-Clause-Lizenz! </translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt nutzt twitter-text. Copyright 2014 Twitter, Inc. und andere Beitragende. Danke für das Bereitstellen unter den Bedingungen der Apache Lizenz, Version 2.0!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>twitter-text auf GitHub öffnen</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Finden Sie mich auf Twitter</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Twitter</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemeine Geschäftsbedingungen</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Datenschutzrichtlinie</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden...</translation>
     </message>
 </context>
 <context>
     <name>ImageProgressIndicator</name>
     <message>
         <source>%1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %</translation>
     </message>
     <message>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Laden...</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neues Gezwitscher</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwort</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwort verschicken</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Gezwitscher verschicken</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation type="unfinished"></translation>
+        <translation>Nochmal versuchen</translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizieren</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Über Piepmatz</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Neues Gezwitscher</translation>
     </message>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeitleiste</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Hinweise</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachrichten</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Suche</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktualisieren</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sagt hallo zu Twitter...</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lädt Zeitleiste...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz konnte Sie nicht anmelden!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>Gezwitscher erfolgreich verschickt!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation type="unfinished"></translation>
+        <translation>Auf Twitter suchen...</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sucht...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Ergebnisse gefunden</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation type="unfinished"></translation>
+        <translation>Wonach suchen Sie?</translation>
     </message>
     <message>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lädt...</translation>
+    </message>
+    <message>
+        <source>Messages are not yet implemented</source>
+        <translation>Nachrichten sind noch nicht implementiert</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished"></translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>%1 Following</source>
-        <translation type="unfinished"></translation>
+        <translation>Folgt %1</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Gefolgt von %1</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mal gezwitschert</translation>
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dabei seit %1</translation>
     </message>
 </context>
 <context>
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 entfolgen</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 folgen</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie folgen jetzt %1.</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie folgen %1 nicht mehr.</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
-        <source>Twitter Terms of Service</source>
-        <translation type="unfinished"></translation>
+        <source>Terms of Service</source>
+        <translation>Allgemeine Geschäftsbedingungen</translation>
     </message>
     <message>
-        <source>Twitter Privacy Policy</source>
-        <translation type="unfinished"></translation>
+        <source>Privacy Policy</source>
+        <translation>Datenschutzrichtlinie</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachgezwitschert von %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwort auf %1</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation type="unfinished"></translation>
+        <translation>Antwort</translation>
     </message>
 </context>
 <context>
     <name>TweetUser</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished"></translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Willkommen bei Piepmatz!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte melden Sie sich bei Twitter an, um fortzufahren.</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bei Twitter anmelden</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Sie noch kein Twitter-Konto haben, registrieren Sie sich bitte zuerst.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Bei Twitter registrieren</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte geben Sie die Twitter PIN ein:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation type="unfinished"></translation>
+        <translation>Es war nicht möglich, Sie mit der eingegebenen PIN zu authentifizieren.</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation type="unfinished"></translation>
+        <translation>PIN erneut eingeben</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation type="unfinished"></translation>
+        <translation>Authentifizierung neu starten</translation>
     </message>
 </context>
 <context>
     <name>functions</name>
     <message>
         <source>#%1</source>
-        <translation type="unfinished"></translation>
+        <translation>#%1</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished"></translation>
+        <translation>@%1</translation>
     </message>
 </context>
 </TS>

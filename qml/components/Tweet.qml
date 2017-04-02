@@ -73,6 +73,7 @@ ListItem {
 
                     Image {
                         id: tweetAuthorPicture
+                        z: 42
                         source: Functions.findBiggerImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
                         width: parent.width
                         height: parent.height
@@ -85,6 +86,7 @@ ListItem {
 
                     Rectangle {
                         id: tweetAuthorPictureMask
+                        z: 42
                         width: parent.width
                         height: parent.height
                         color: Theme.primaryColor
@@ -94,6 +96,7 @@ ListItem {
 
                     OpacityMask {
                         id: maskedTweetAuthorPicture
+                        z: 42
                         source: tweetAuthorPicture
                         maskSource: tweetAuthorPictureMask
                         anchors.fill: tweetAuthorPicture

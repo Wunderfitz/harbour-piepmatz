@@ -594,7 +594,7 @@ Page {
 
                     InfoLabel {
                         id: messagesNotImplementedLabel
-                        text: "Messages are not yet implemented"
+                        text: qsTr("Messages are not yet implemented")
                         width: parent.width - 2 * Theme.horizontalPageMargin
                         anchors {
                             horizontalCenter: parent.horizontalCenter

@@ -16,13 +16,13 @@ Page {
 
     Component.onCompleted: {
         if (textPage.contentId === "tos") {
-            textHeader.title = qsTr("Twitter Terms of Service");
+            textHeader.title = qsTr("Terms of Service");
             textPage.loading = true;
             twitterApi.helpTos();
             return;
         }
         if (textPage.contentId === "privacy") {
-            textHeader.title = qsTr("Twitter Privacy Policy");
+            textHeader.title = qsTr("Privacy Policy");
             textPage.loading = true;
             twitterApi.helpPrivacy();
             return;
