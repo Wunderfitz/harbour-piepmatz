@@ -525,9 +525,6 @@ Page {
                 }
 
                 SilicaListView {
-                    Behavior on opacity { NumberAnimation {} }
-                    opacity: notificationsColumn.updateInProgress ? 0 : 1
-                    visible: notificationsColumn.updateInProgress ? false : true
                     anchors {
                         fill: parent
                     }
@@ -552,18 +549,13 @@ Page {
                     opacity: notificationsColumn.updateInProgress ? 1 : 0
                     visible: notificationsColumn.updateInProgress ? true : false
 
-                    BusyIndicator {
-                        id: mentionsUpdateInProgressIndicator
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        running: notificationsColumn.updateInProgress
-                        size: BusyIndicatorSize.Medium
-                    }
-
-                    InfoLabel {
-                        id: mentionsUpdateInProgressIndicatorLabel
-                        text: qsTr("Loading...")
-                        font.pixelSize: Theme.fontSizeLarge
-                        width: parent.width - 2 * Theme.horizontalPageMargin
+                    LoadingIndicator {
+                        id: mentionsLoadingIndicator
+                        visible: notificationsColumn.updateInProgress
+                        Behavior on opacity { NumberAnimation {} }
+                        opacity: notificationsColumn.updateInProgress ? 1 : 0
+                        height: parent.height
+                        width: parent.width
                     }
                 }
 

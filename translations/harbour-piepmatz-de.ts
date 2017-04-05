@@ -187,10 +187,6 @@
         <translation>Wonach suchen Sie?</translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation>Lädt...</translation>
-    </message>
-    <message>
         <source>Messages are not yet implemented</source>
         <translation>Nachrichten sind noch nicht implementiert</translation>
     </message>

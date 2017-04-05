@@ -51,14 +51,15 @@ Page {
         }
     }
 
-    SilicaFlickable {
-        id: textContainer
-        contentHeight: column.height
-        anchors.fill: parent
-
-        Notification {
-            id: textNotification
+    Column {
+        anchors {
+            fill: parent
         }
+
+        id: textLoadingColumn
+        Behavior on opacity { NumberAnimation {} }
+        opacity: textPage.loading ? 1 : 0
+        visible: textPage.loading ? true : false
 
         LoadingIndicator {
             id: textLoadingIndicator
@@ -67,6 +68,16 @@ Page {
             opacity: textPage.loading ? 1 : 0
             height: parent.height
             width: parent.width
+        }
+    }
+
+    SilicaFlickable {
+        id: textContainer
+        contentHeight: column.height
+        anchors.fill: parent
+
+        Notification {
+            id: textNotification
         }
 
         Column {

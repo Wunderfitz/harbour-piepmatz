@@ -7,3 +7,7 @@
 
 * Sun Apr 02 2017 Sebastian Wolf <sebastian@ygriega.de> 0.1
 - First public release
+
+* Sat Apr 08 2017 Sebastian Wolf <sebastian@ygriega.de> 0.1.1
+- Included localizations for Spanish, Russian, Dutch and French
+- Minor bugfixes

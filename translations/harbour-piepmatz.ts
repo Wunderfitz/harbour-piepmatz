@@ -187,10 +187,6 @@
         <translation>What are you looking for?</translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation>Loading...</translation>
-    </message>
-    <message>
         <source>Messages are not yet implemented</source>
         <translation>Messages are not yet implemented</translation>
     </message>

@@ -43,7 +43,10 @@ CoverBackground {
     CoverActionList {
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
-            onTriggered: timelineModel.update()
+            onTriggered: {
+                timelineModel.update();
+                mentionsModel.update();
+            }
         }
     }
 

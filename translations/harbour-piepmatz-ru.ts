@@ -1,74 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.1" language="ru">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>Over Piepmatz</translation>
+        <translation>O Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Een Twitter-cliënt voor Sailfish OS</translation>
+        <translation>Клиент Twitter для ОС Sailfish</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Door Sebastian J. Wolf</translation>
+        <translation>Автор – Sebastian J. Wolf
+Перевод – Олег Уржумцев</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>E-mail verzenden</translation>
+        <translation>Отправить e-mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Gelicenseerd onder de GNU GPLv3</translation>
+        <translation>Лицензия: GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Broncode op GitHub</translation>
+        <translation>Исходный код на GitHub</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Met dank aan</translation>
+        <translation>Благодарности</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>OAuth for Qt op GitHub openen</translation>
+        <translation>Открыть OAuth for Qt на GitHub </translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Dit project maakt gebruik van OAuth voor Qt door Akos Polster. Bedankt om dit beschikbaar te maken onder de BSD-2-Clause-licentie!</translation>
+        <translation>Этот проект использует OAuth for Qt от Akos Polster. Спасибо за публикацию на условиях BSD-2-Clause!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Dit project maakt gebruik van twitter-text. Auteursrecht 2014 Twitter, Inc. en andere bijdragers. Bedankt om dit beschikbaar te maken onder de Apache-licentie versie 2.0!</translation>
+        <translation>Этот проект использует twitter-text отTwitter. Inc в 2014 году, и других разработчиков.
+Спасибо за публикацию под лицензией Apache 2.0!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>twitter-text op GitHub openen</translation>
+        <translation>Открыть проект twitter-text на GitHub</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Vind me op Twitter</translation>
+        <translation>Я в Twitter</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>Over Twitter</translation>
+        <translation>О Twitter</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Gebruiksvoorwaarden</translation>
+        <translation>Правила использования</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacybeleid</translation>
+        <translation>Политика конфиденциальности</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Загрузка...</translation>
     </message>
 </context>
 <context>
@@ -83,112 +85,112 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Fout</translation>
+        <translation>Ошибка</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Загрузка...</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Nieuwe tweet</translation>
+        <translation>Создать твит</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Bentwoorden</translation>
+        <translation>Ответ</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Antwoord verzenden</translation>
+        <translation>Отправить ответ</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Tweet verzenden</translation>
+        <translation>Отправить твит</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Opnieuw proberen</translation>
+        <translation>Повторить</translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>Authenticeren</translation>
+        <translation>Войти в сервис</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>Over Piepmatz</translation>
+        <translation>О Piepmatz</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Nieuwe tweet</translation>
+        <translation>Создать твит</translation>
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Tijdlijn</translation>
+        <translation>Моя лента</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation>Meldingen</translation>
+        <translation>Уведомления</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Berichten</translation>
+        <translation>Сообщения</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation>Profiel</translation>
+        <translation>Профиль</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Zoeken</translation>
+        <translation>Поиск</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Bijwerken</translation>
+        <translation>Обновить</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Twitter wordt begroet...</translation>
+        <translation>Скажите что-нибудь читателям...</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Tijdlijn wordt geladen...</translation>
+        <translation>Загрузка ленты...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz kon je niet inloggen!</translation>
+        <translation>Войти не удалось!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet verzonden!!</translation>
+        <translation>Ваш твит опубликован!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Zoeken op Twitter...</translation>
+        <translation>Поиск в Twitter</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Zoeken...</translation>
+        <translation>Поиск...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation>Geen resultaten gevonden</translation>
+        <translation>Ничего не найдено</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Wat zoek je?</translation>
+        <translation>Что Вы ищете?</translation>
     </message>
     <message>
         <source>Messages are not yet implemented</source>
-        <translation>Berichten zijn nog niet geïmplementeerd</translation>
+        <translation>Сообщения будут реализованы в следующей версии, простите.</translation>
     </message>
 </context>
 <context>
@@ -199,64 +201,64 @@
     </message>
     <message>
         <source>%1 Following</source>
-        <translation>%1 volgend</translation>
+        <translation>Читает %1</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 volgers</translation>
+        <translation>%1 подписчиков</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1 tweets</translation>
+        <translation>%1 твит</translation>
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>Lid sinds %1</translation>
+        <translation>Присоединился %1</translation>
     </message>
 </context>
 <context>
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>%1 ontvolgen</translation>
+        <translation>Отписаться от %1</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>%1 volgen</translation>
+        <translation>Подписаться на %1</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>Je volgt nu %1.</translation>
+        <translation>Вы подписались на %1.</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>Je volgt %1 niet meer.</translation>
+        <translation>Вы больше не подписаны на %1.</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Gebruiksvoorwaarden</translation>
+        <translation>Условия предоставления услуг</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacybeleid</translation>
+        <translation>Политика конфиденциальности</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Geretweet door %1</translation>
+        <translation>Процитировано %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>Antwoord op %1</translation>
+        <translation>Oтвет %1</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Beantwoorden</translation>
+        <translation>Ответить</translation>
     </message>
 </context>
 <context>
@@ -270,43 +272,43 @@
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Welkom bij Piepmatz!</translation>
+        <translation>Добро пожаловать в Piepmatz!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>Log in op Twitter om verder te gaan.</translation>
+        <translation>Чтобы продолжить, Вам необходимо войти в Twitter.</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>Inloggen op Twitter</translation>
+        <translation>Войти в Twitter</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Maak een Twitter-account aan als je er nog geen hebt.</translation>
+        <translation>Если у вас нет учётной записи в Twitter, сначала зарегистрируйтесь.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Registreren bij Twitter</translation>
+        <translation>Зарегистрироваться в Twitter</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>Oké</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Voer de Twitter-PIN in:</translation>
+        <translation>Введите PIN-код для входа в Twitter:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>Authenticatie met ingevoerde PIN mislukt.</translation>
+        <translation>Не удалось войти с указанным паролем.</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>Voer de PIN opnieuw in</translation>
+        <translation>Введите снова PIN-код: </translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Authenticatie opnieuw beginnen</translation>
+        <translation>Начать процесс входа заново</translation>
     </message>
 </context>
 <context>
