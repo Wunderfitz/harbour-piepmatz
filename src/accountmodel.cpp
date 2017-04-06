@@ -26,8 +26,8 @@ AccountModel::AccountModel()
     requestor = new O1Requestor(manager, o1, this);
     twitterApi = new TwitterApi(requestor, this);
 
-    connect(twitterApi, SIGNAL(verifyCredentialsError(QString)), this, SLOT(handleVerifyCredentialsError(QString)));
-    connect(twitterApi, SIGNAL(verifyCredentialsSuccessful(QVariantMap)), this, SLOT(handleVerifyCredentialsSuccessful(QVariantMap)));
+    connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
+    connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
 }
 
 QVariant AccountModel::data(const QModelIndex &index, int role) const {

@@ -5,8 +5,8 @@ TimelineModel::TimelineModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
 
-    connect(twitterApi, SIGNAL(homeTimelineError(QString)), this, SLOT(handleHomeTimelineError(QString)));
-    connect(twitterApi, SIGNAL(homeTimelineSuccessful(QVariantList)), this, SLOT(handleHomeTimelineSuccessful(QVariantList)));
+    connect(twitterApi, &TwitterApi::homeTimelineError, this, &TimelineModel::handleHomeTimelineError);
+    connect(twitterApi, &TwitterApi::homeTimelineSuccessful, this, &TimelineModel::handleHomeTimelineSuccessful);
 }
 
 TimelineModel::~TimelineModel()
