@@ -414,13 +414,11 @@ Page {
                 Behavior on opacity { NumberAnimation {} }
 
                 property bool loaded : false;
-                property bool error : false;
                 property bool reloading: false;
 
                 Connections {
                     target: timelineModel
                     onHomeTimelineStartUpdate: {
-                        homeView.error = false;
                     }
 
                     onHomeTimelineUpdated: {
@@ -429,9 +427,8 @@ Page {
                     }
                     onHomeTimelineError: {
                         homeView.loaded = true;
-                        homeView.error = true;
                         homeView.reloading = false;
-                        homeErrorLabel.text = errorMessage;
+                        overviewNotification.show(errorMessage);
                     }
                 }
 
@@ -458,27 +455,11 @@ Page {
                     }
                 }
 
-                Column {
-                    width: parent.width
-                    height: homeProgressLabel.height + homeProgressIndicator.height + Theme.paddingSmall
-                    visible: homeView.loaded && homeView.error
-                    opacity: homeView.loaded && homeView.error ? 0 : 1
-                    id: homeErrorColumn
-                    spacing: Theme.paddingSmall
-                    Behavior on opacity { NumberAnimation {} }
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    InfoLabel {
-                        id: homeErrorLabel
-                        text: ""
-                    }
-                }
-
                 SilicaListView {
                     id: homeListView
-                    opacity: homeView.loaded && !homeView.error ? 1 : 0
+                    opacity: homeView.loaded ? 1 : 0
                     Behavior on opacity { NumberAnimation {} }
-                    visible: homeView.loaded && !homeView.error
+                    visible: homeView.loaded
                     width: parent.width
                     height: parent.height
                     clip: true
