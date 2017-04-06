@@ -1,9 +1,9 @@
 #include "searchmodel.h"
 
 SearchModel::SearchModel(TwitterApi *twitterApi)
+    : searchInProgress(false)
 {
     this->twitterApi = twitterApi;
-    searchInProgress = false;
 
     connect(twitterApi, SIGNAL(searchTweetsError(QString)), this, SLOT(handleSearchTweetsError(QString)));
     connect(twitterApi, SIGNAL(searchTweetsSuccessful(QVariantList)), this, SLOT(handleSearchTweetsSuccessful(QVariantList)));

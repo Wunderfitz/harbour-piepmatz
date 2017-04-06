@@ -1,9 +1,9 @@
 #include "timelinemodel.h"
 
 TimelineModel::TimelineModel(TwitterApi *twitterApi)
+    : coverModel(new CoverModel(this))
 {
     this->twitterApi = twitterApi;
-    this->coverModel = new CoverModel();
 
     connect(twitterApi, SIGNAL(homeTimelineError(QString)), this, SLOT(handleHomeTimelineError(QString)));
     connect(twitterApi, SIGNAL(homeTimelineSuccessful(QVariantList)), this, SLOT(handleHomeTimelineSuccessful(QVariantList)));
@@ -11,7 +11,6 @@ TimelineModel::TimelineModel(TwitterApi *twitterApi)
 
 TimelineModel::~TimelineModel()
 {
-    delete this->coverModel;
 }
 
 int TimelineModel::rowCount(const QModelIndex &) const
@@ -45,10 +44,7 @@ void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
     endResetModel();
 
     QVariantList coverList;
-    int maxTweets = 6;
-    if (timelineTweets.size() < maxTweets) {
-        maxTweets = timelineTweets.size();
-    }
+    int maxTweets = qMin(6, timelineTweets.size());
     for (int i = 0; i < maxTweets; i++) {
         QMap<QString, QVariant> coverTweet;
         QMap<QString, QVariant> originalTweet = timelineTweets.at(i).toMap();

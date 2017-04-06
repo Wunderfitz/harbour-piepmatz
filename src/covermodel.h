@@ -8,7 +8,7 @@ class CoverModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    CoverModel();
+    CoverModel(QObject *parent = 0);
 
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;

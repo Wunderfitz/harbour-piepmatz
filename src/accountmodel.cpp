@@ -8,11 +8,12 @@
 #include <QUuid>
 
 AccountModel::AccountModel()
+    : networkConfigurationManager(new QNetworkConfigurationManager(this))
+    , o1(new O1Twitter(this))
+    , manager(new QNetworkAccessManager(this))
 {
-    networkConfigurationManager = new QNetworkConfigurationManager(this);
     obtainEncryptionKey();
 
-    o1 = new O1Twitter(this);
     O0SettingsStore *settings = new O0SettingsStore(encryptionKey);
     o1->setStore(settings);
     o1->setClientId(TWITTER_CLIENT_ID);
@@ -22,7 +23,6 @@ AccountModel::AccountModel()
     connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
     connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
 
-    manager = new QNetworkAccessManager(this);
     requestor = new O1Requestor(manager, o1, this);
     twitterApi = new TwitterApi(requestor, this);
 
