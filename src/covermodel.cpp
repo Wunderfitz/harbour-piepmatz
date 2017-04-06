@@ -1,8 +1,8 @@
 #include "covermodel.h"
 
-CoverModel::CoverModel()
+CoverModel::CoverModel(QObject *parent)
+  : QAbstractListModel(parent)
 {
-
 }
 
 int CoverModel::rowCount(const QModelIndex &) const

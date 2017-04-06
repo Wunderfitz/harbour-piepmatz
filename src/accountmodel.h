@@ -47,10 +47,10 @@ public slots:
 
 private:
     QList<QVariantMap> availableAccounts;
-    QNetworkConfigurationManager *networkConfigurationManager;
+    QNetworkConfigurationManager * const networkConfigurationManager;
     QString encryptionKey;
-    O1Twitter *o1;
-    QNetworkAccessManager *manager;
+    O1Twitter * const o1;
+    QNetworkAccessManager * const manager;
     O1Requestor *requestor;
     TwitterApi *twitterApi;
 

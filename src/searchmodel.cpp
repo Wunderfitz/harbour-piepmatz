@@ -1,12 +1,12 @@
 #include "searchmodel.h"
 
 SearchModel::SearchModel(TwitterApi *twitterApi)
+    : searchInProgress(false)
 {
     this->twitterApi = twitterApi;
-    searchInProgress = false;
 
-    connect(twitterApi, SIGNAL(searchTweetsError(QString)), this, SLOT(handleSearchTweetsError(QString)));
-    connect(twitterApi, SIGNAL(searchTweetsSuccessful(QVariantList)), this, SLOT(handleSearchTweetsSuccessful(QVariantList)));
+    connect(twitterApi, &TwitterApi::homeTimelineError, this, &SearchModel::handleSearchTweetsError);
+    connect(twitterApi, &TwitterApi::homeTimelineSuccessful, this, &SearchModel::handleSearchTweetsSuccessful);
 }
 
 int SearchModel::rowCount(const QModelIndex &) const

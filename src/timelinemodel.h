@@ -18,7 +18,7 @@ public:
 
     Q_INVOKABLE void update();
 
-    CoverModel *coverModel;
+    CoverModel * const coverModel;
 
 signals:
     void homeTimelineStartUpdate();
