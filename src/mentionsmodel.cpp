@@ -4,8 +4,8 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
 
-    connect(twitterApi, &TwitterApi::homeTimelineError, this, &MentionsModel::handleUpdateMentionsError);
-    connect(twitterApi, &TwitterApi::homeTimelineSuccessful, this, &MentionsModel::handleUpdateMentionsSuccessful);
+    connect(twitterApi, &TwitterApi::mentionsTimelineError, this, &MentionsModel::handleUpdateMentionsError);
+    connect(twitterApi, &TwitterApi::mentionsTimelineSuccessful, this, &MentionsModel::handleUpdateMentionsSuccessful);
 }
 
 int MentionsModel::rowCount(const QModelIndex &) const

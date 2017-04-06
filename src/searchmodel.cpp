@@ -5,8 +5,8 @@ SearchModel::SearchModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
 
-    connect(twitterApi, &TwitterApi::homeTimelineError, this, &SearchModel::handleSearchTweetsError);
-    connect(twitterApi, &TwitterApi::homeTimelineSuccessful, this, &SearchModel::handleSearchTweetsSuccessful);
+    connect(twitterApi, &TwitterApi::searchTweetsError, this, &SearchModel::handleSearchTweetsError);
+    connect(twitterApi, &TwitterApi::searchTweetsSuccessful, this, &SearchModel::handleSearchTweetsSuccessful);
 }
 
 int SearchModel::rowCount(const QModelIndex &) const
