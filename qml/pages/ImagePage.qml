@@ -9,6 +9,8 @@ Page {
     property string imageUrl;
     property int imageWidth;
     property int imageHeight;
+    property real imageSizeFactor : imageWidth / imageHeight;
+    property real screenSizeFactor: imagePage.width / imagePage.height;
 
     SilicaFlickable {
         id: imageContainer
@@ -17,9 +19,10 @@ Page {
         Image {
             id: singleImage
             source: imageUrl
-            width: parent.width
-            height: Math.round( parent.width / imageWidth * imageHeight )
+            width: ( imagePage.imageSizeFactor >= imagePage.screenSizeFactor || imagePage.imageSizeFactor >= 1 ) ? imagePage.width : Math.round(imagePage.height / imagePage.imageSizeFactor )
+            height: ( imagePage.imageSizeFactor <= imagePage.screenSizeFactor || imagePage.imageSizeFactor <= 1 ) ? imagePage.height : Math.round( imagePage.width / imagePage.imageSizeFactor )
             anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
             fillMode: Image.PreserveAspectFit
             visible: status === Image.Ready ? true : false
             opacity: status === Image.Ready ? 1 : 0
