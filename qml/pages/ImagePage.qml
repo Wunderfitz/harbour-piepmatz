@@ -28,6 +28,22 @@ Page {
             opacity: status === Image.Ready ? 1 : 0
             Behavior on opacity { NumberAnimation {} }
         }
+
+        PinchArea {
+            anchors.fill: parent
+            enabled: singleImage.visible
+            pinch {
+                target: singleImage
+                minimumScale: 1
+                maximumScale: 4
+            }
+            // Pinch-to-zoom doesn't seem to work without this Rectangle...
+            Rectangle {
+                opacity: 0
+                anchors.fill: parent
+            }
+        }
+
         ImageProgressIndicator {
             image: singleImage
             withPercentage: true
