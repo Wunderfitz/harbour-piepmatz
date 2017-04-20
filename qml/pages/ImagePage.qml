@@ -17,7 +17,6 @@ Page {
 
     property real pinchCenterX;
     property real pinchCenterY;
-    property real oldScale : 1;
 
     SilicaFlickable {
         id: imageFlickable
@@ -71,14 +70,8 @@ Page {
                     }
 
                     onPinchUpdated: {
-                        if (imagePage.oldScale === 1) {
-                            imagePage.pinchCenterX = pinch.center.x;
-                            imagePage.pinchCenterY = pinch.center.y;
-                        }
-                    }
-
-                    onPinchStarted: {
-                        imagePage.oldScale = singleImage.scale;
+                        imagePage.pinchCenterX = pinch.center.x;
+                        imagePage.pinchCenterY = pinch.center.y;
                     }
 
                     // Pinch-to-zoom doesn't seem to work without this Rectangle...
