@@ -15,12 +15,22 @@ Page {
     property real screenSizeFactor: imagePage.width / imagePage.height;
     property real sizingFactor    : imageSizeFactor >= screenSizeFactor ? imagePage.width / imageWidth : imagePage.height / imageHeight;
 
+    property real previousScale : 1;
+    property real centerX;
+    property real centerY;
+    property real oldCenterX;
+    property real oldCenterY;
+
     SilicaFlickable {
         id: imageFlickable
         anchors.fill: parent
         contentWidth: imagePinchArea.width
         contentHeight: imagePinchArea.height
         clip: true
+
+        transitions: Transition {
+            NumberAnimation { properties: "contentX, contentY"; easing.type: Easing.Linear }
+        }
 
         PinchArea {
             id: imagePinchArea
@@ -35,16 +45,8 @@ Page {
             }
 
             onPinchUpdated: {
-                var oldContentWidth = imagePinchArea.width;
-                var oldContentHeight = imagePinchArea.height;
-                var newContentWidth = Math.max( singleImage.width * singleImage.scale, imageFlickable.width )
-                var newContentHeight = Math.max( singleImage.width * singleImage.scale, imageFlickable.width )
-
-                var newContentX = imageFlickable.contentX + singleImage.scale * ( pinch.previousCenter.x - pinch.center.x );
-                var newContentY = imageFlickable.contentY + singleImage.scale * ( pinch.previousCenter.y - pinch.center.y );
-
-                imageFlickable.contentX = newContentX > 0 ? newContentX : 0;
-                imageFlickable.contentY = newContentY > 0 ? newContentY : 0;
+                imagePage.centerX = pinch.center.x;
+                imagePage.centerY = pinch.center.y;
             }
 
             Image {
@@ -59,6 +61,36 @@ Page {
                 visible: status === Image.Ready ? true : false
                 opacity: status === Image.Ready ? 1 : 0
                 Behavior on opacity { NumberAnimation {} }
+                onScaleChanged: {
+                    var newWidth = singleImage.width * singleImage.scale;
+                    var newHeight = singleImage.height * singleImage.scale;
+                    var oldWidth = singleImage.width * imagePage.previousScale;
+                    var oldHeight = singleImage.height * imagePage.previousScale;
+                    var widthDifference = newWidth - oldWidth;
+                    var heightDifference = newHeight - oldHeight;
+
+                    if (oldWidth > imageFlickable.width || newWidth > imageFlickable.width) {
+                        var xRatioNew = imagePage.centerX / newWidth;
+                        var xRatioOld = imagePage.centerX / oldHeight;
+                        imageFlickable.contentX = imageFlickable.contentX + ( xRatioNew * widthDifference );
+                        if (imagePage.oldCenterX) {
+                            imageFlickable.contentX = imageFlickable.contentX + ( ( imagePage.centerX - imagePage.oldCenterX ) * xRatioNew );
+                        }
+                    }
+                    if (oldHeight > imageFlickable.height || newHeight > imageFlickable.height) {
+                        var yRatioNew = imagePage.centerY / newHeight;
+                        var yRatioOld = imagePage.centerY / oldHeight;
+                        imageFlickable.contentY = imageFlickable.contentY + ( yRatioNew * heightDifference );
+                        if (imagePage.oldCenterY) {
+                            imageFlickable.contentY = imageFlickable.contentY + ( ( imagePage.centerY - imagePage.oldCenterY ) * yRatioNew );
+                        }
+                    }
+
+
+                    imagePage.previousScale = singleImage.scale;
+                    imagePage.oldCenterX = imagePage.centerX;
+                    imagePage.oldCenterY = imagePage.centerY;
+                }
             }
         }
     }

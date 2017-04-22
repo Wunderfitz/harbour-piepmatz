@@ -227,9 +227,11 @@ Page {
             }
         }
         onVerificationError: {
-            hideAccountVerificationColumn();
-            verificationFailedColumn.visible = true;
-            verificationFailedColumn.opacity = 1;
+            if (!overviewPage.initializationCompleted) {
+                hideAccountVerificationColumn();
+                verificationFailedColumn.visible = true;
+                verificationFailedColumn.opacity = 1;
+            }
         }
     }
 
