@@ -46,6 +46,7 @@ Page {
         timelineModel.update();
         notificationsColumn.updateInProgress = true;
         mentionsModel.update();
+        accountModel.verifyCredentials();
     }
 
     function handleHomeClicked() {
@@ -81,6 +82,7 @@ Page {
     }
 
     property string activeTabId: "home";
+    property bool initializationCompleted : false;
     property variant configuration;
 
     function openTab(tabId) {
@@ -204,22 +206,25 @@ Page {
     }
 
     Component.onCompleted: {
-        accountModel.verifyCredentials()
+        accountModel.verifyCredentials();
     }
 
     Connections {
         target: accountModel
         onCredentialsVerified: {
-            hideAccountVerificationColumn();
-            profileLoader.active = true;
-            overviewContainer.visible = true;
-            overviewColumn.visible = true;
-            overviewColumn.opacity = 1;
-            openTab("home");
-            twitterApi.helpConfiguration();
-            timelineModel.update();
-            mentionsModel.update();
-            notificationsColumn.updateInProgress = true;
+            if (!overviewPage.initializationCompleted) {
+                hideAccountVerificationColumn();
+                profileLoader.active = true;
+                overviewContainer.visible = true;
+                overviewColumn.visible = true;
+                overviewColumn.opacity = 1;
+                openTab("home");
+                twitterApi.helpConfiguration();
+                timelineModel.update();
+                mentionsModel.update();
+                notificationsColumn.updateInProgress = true;
+                overviewPage.initializationCompleted = true;
+            }
         }
         onVerificationError: {
             hideAccountVerificationColumn();
@@ -235,6 +240,7 @@ Page {
         }
         onTweetSuccessful: {
             overviewNotification.show(qsTr("Tweet sent successfully!"));
+            accountModel.verifyCredentials();
         }
         onHelpConfigurationSuccessful: {
             overviewPage.configuration = result;
@@ -401,6 +407,14 @@ Page {
                     Profile {
                         id: ownProfile
                         profileModel: accountModel.getCurrentAccount()
+
+                        Connections {
+                            target: accountModel
+                            onCredentialsVerified: {
+                                console.log("Updating profile page...");
+                                ownProfile.profileModel = accountModel.getCurrentAccount();
+                            }
+                        }
                     }
                 }
             }

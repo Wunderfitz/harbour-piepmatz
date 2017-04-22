@@ -21,6 +21,11 @@ Item {
         twitterApi.userTimeline(profileModel.screen_name);
     }
 
+    onProfileModelChanged: {
+        profileTimeline = null;
+        twitterApi.userTimeline(profileModel.screen_name);
+    }
+
     Notification {
         id: notification
     }
