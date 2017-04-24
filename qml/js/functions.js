@@ -1,3 +1,13 @@
+function updatePiepmatz() {
+    if (typeof homeView !== "undefined") {
+        homeView.reloading = true;
+        notificationsColumn.updateInProgress = true;
+    }
+    timelineModel.update();
+    mentionsModel.update();
+    accountModel.verifyCredentials();
+}
+
 function findHiResImage(url) {
     var suffixIndex = url.indexOf("_normal");
     if (suffixIndex !== -1) {

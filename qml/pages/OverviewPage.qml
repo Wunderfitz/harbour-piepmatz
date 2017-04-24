@@ -41,14 +41,6 @@ Page {
         return Theme.iconSizeMedium + Theme.fontSizeMedium + Theme.paddingMedium;
     }
 
-    function updatePiepmatz() {
-        homeView.reloading = true;
-        timelineModel.update();
-        notificationsColumn.updateInProgress = true;
-        mentionsModel.update();
-        accountModel.verifyCredentials();
-    }
-
     function handleHomeClicked() {
         if (overviewPage.activeTabId === "home") {
             homeListView.scrollToTop();
@@ -361,14 +353,14 @@ Page {
             }
             MenuItem {
                 text: qsTr("Refresh")
-                onClicked: updatePiepmatz()
+                onClicked: Functions.updatePiepmatz()
             }
         }
 
         PushUpMenu {
             MenuItem {
                 text: qsTr("Refresh")
-                onClicked: updatePiepmatz()
+                onClicked: Functions.updatePiepmatz()
             }
             MenuItem {
                 text: qsTr("New Tweet")

@@ -4,6 +4,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../js/functions.js" as Functions
 
 CoverBackground {
 
@@ -44,8 +45,7 @@ CoverBackground {
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
             onTriggered: {
-                timelineModel.update();
-                mentionsModel.update();
+                Functions.updatePiepmatz()
             }
         }
     }
