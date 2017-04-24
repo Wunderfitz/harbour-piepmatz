@@ -73,19 +73,11 @@ Page {
                         var xRatioNew = imagePage.centerX / newWidth;
                         var xRatioOld = imagePage.centerX / oldHeight;
                         imageFlickable.contentX = imageFlickable.contentX + ( xRatioNew * widthDifference );
-                        if (imagePage.oldCenterX) {
-                            // Maybe a little bit too much - keeping zoom-only mode for now...
-                            // imageFlickable.contentX = imageFlickable.contentX + ( ( imagePage.centerX - imagePage.oldCenterX ) * xRatioNew );
-                        }
                     }
                     if (oldHeight > imageFlickable.height || newHeight > imageFlickable.height) {
                         var yRatioNew = imagePage.centerY / newHeight;
                         var yRatioOld = imagePage.centerY / oldHeight;
                         imageFlickable.contentY = imageFlickable.contentY + ( yRatioNew * heightDifference );
-                        if (imagePage.oldCenterY) {
-                            // Maybe a little bit too much - keeping zoom-only mode for now...
-                            // imageFlickable.contentY = imageFlickable.contentY + ( ( imagePage.centerY - imagePage.oldCenterY ) * yRatioNew );
-                        }
                     }
 
 

@@ -22,6 +22,7 @@
 #include "timelinemodel.h"
 #include "searchmodel.h"
 #include "mentionsmodel.h"
+#include "imagesmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -44,6 +45,9 @@ int main(int argc, char *argv[])
 
     MentionsModel mentionsModel(twitterApi);
     context->setContextProperty("mentionsModel", &mentionsModel);
+
+    ImagesModel imagesModel;
+    context->setContextProperty("imagesModel", &imagesModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();

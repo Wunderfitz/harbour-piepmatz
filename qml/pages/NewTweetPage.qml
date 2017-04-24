@@ -35,6 +35,10 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                text: qsTr("Attach Images")
+                onClicked: pageStack.push(attachImagesPage)
+            }
+            MenuItem {
                 text: replyToStatusId ? qsTr("Send Reply") : qsTr("Send Tweet")
                 onClicked: {
                     if (replyToStatusId) {

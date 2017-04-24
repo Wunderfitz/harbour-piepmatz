@@ -67,6 +67,17 @@
     </message>
 </context>
 <context>
+    <name>AttachImagesPage</name>
+    <message>
+        <source>Select Images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attach</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
@@ -112,6 +123,10 @@
     <message>
         <source>Send Tweet</source>
         <translation>Отправить твит</translation>
+    </message>
+    <message>
+        <source>Attach Images</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
