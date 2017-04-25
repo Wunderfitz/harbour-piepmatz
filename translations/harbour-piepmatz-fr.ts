@@ -5,7 +5,7 @@
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>A propos de Piepmatz</translation>
+        <translation>À propos de Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
@@ -53,7 +53,7 @@
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>A propos de Twitter</translation>
+        <translation>À propos de Twitter</translation>
     </message>
     <message>
         <source>Terms of Service</source>
@@ -68,11 +68,11 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Selectionner une image</translation>
     </message>
     <message>
         <source>Attach</source>
-        <translation type="unfinished"></translation>
+        <translation>Joindre</translation>
     </message>
 </context>
 <context>
@@ -124,7 +124,7 @@
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Image jointe</translation>
     </message>
 </context>
 <context>
@@ -139,7 +139,7 @@
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>A propos de Piepmatz</translation>
+        <translation>À propos de Piepmatz</translation>
     </message>
     <message>
         <source>New Tweet</source>
@@ -147,7 +147,7 @@
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Fil</translation>
+        <translation>Accueil</translation>
     </message>
     <message>
         <source>Notifications</source>
@@ -167,11 +167,11 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Actualilser</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Connection à Twitter...</translation>
+        <translation>Connexion à Twitter...</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
@@ -214,11 +214,11 @@
     </message>
     <message>
         <source>%1 Following</source>
-        <translation>%1 Following</translation>
+        <translation>%1 Abonnements</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 Followers</translation>
+        <translation>%1 Abonnés</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
@@ -309,7 +309,7 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Merci d&apos;entrer le PIN Twitter:</translation>
+        <translation>Merci d&apos;entrer le PIN Twitter : </translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
