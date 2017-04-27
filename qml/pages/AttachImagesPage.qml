@@ -13,7 +13,50 @@ Page {
     allowedOrientations: Orientation.All
 
     Component.onCompleted: {
+        attachImagesPage.searchInProgress = true;
         imagesModel.update();
+    }
+
+    Notification {
+        id: attachImageNotification
+    }
+
+    Connections {
+        target: imagesModel
+        onSearchFinished: {
+            attachImagesPage.searchInProgress = false;
+        }
+    }
+
+    property bool searchInProgress: false;
+    property var selectedImages: [];
+
+    function selectImage(fileName) {
+        var imageIndex = selectedImages.indexOf(fileName);
+        if (imageIndex === -1) {
+            if (selectedImages.length < 4) {
+                selectedImages.push(fileName);
+            } else {
+                attachImageNotification.show(qsTr("Maximum number of images selected!"));
+            }
+        } else {
+            selectedImages.splice(imageIndex, 1);
+        }
+        attachImagesPullDown.visible = attachImagesPage.selectedImages.length > 0 ? true : false;
+        attachImageMenuItem.text = attachImagesPage.selectedImages.length > 1 ? qsTr("Attach %1 Images").arg(attachImagesPage.selectedImages.length) : qsTr("Attach Image");
+    }
+
+    function isImageSelected(fileName) {
+        return selectedImages.indexOf(fileName) === -1 ? false : true;
+    }
+
+    LoadingIndicator {
+        id: imagesLoadingIndicator
+        visible: attachImagesPage.searchInProgress
+        Behavior on opacity { NumberAnimation {} }
+        opacity: attachImagesPage.searchInProgress ? 1 : 0
+        height: parent.height
+        width: parent.width
     }
 
     SilicaFlickable {
@@ -22,10 +65,12 @@ Page {
         contentHeight: attachImagesColumn.height
 
         PullDownMenu {
+            id: attachImagesPullDown
+            visible: attachImagesPage.selectedImages.length > 0 ? true : false
             MenuItem {
-                text: qsTr("Attach")
+                id: attachImageMenuItem
                 onClicked: {
-                    // Attach stuff...
+                    imagesModel.setSelectedImages(attachImagesPage.selectedImages);
                     pageStack.pop();
                 }
             }
@@ -37,10 +82,72 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeader {
+                id: imagesHeader
                 title: qsTr("Select Images")
             }
 
-            VerticalScrollDecorator {}
+            SilicaGridView {
+
+                id: imagesGridView
+
+                height: attachImagesPage.height - imagesHeader.height - Theme.paddingLarge
+                width: parent.width
+                cellWidth: width / 3;
+                cellHeight: width / 3;
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                Behavior on opacity { NumberAnimation {} }
+                opacity: attachImagesPage.searchInProgress ? 0 : 1
+
+                clip: true
+
+                model: imagesModel
+
+                delegate:  Item {
+                    width: imagesGridView.cellWidth
+                    height: imagesGridView.cellHeight
+                    Image {
+                        id: singleImage
+                        width: imagesGridView.cellWidth
+                        height: imagesGridView.cellHeight
+                        source: display
+                        sourceSize {
+                            width: imagesGridView.cellWidth
+                            height: imagesGridView.cellHeight
+                        }
+
+                        fillMode: Image.PreserveAspectCrop
+                        asynchronous: true
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                selectImage(display);
+                                selectionRectangle.visible = isImageSelected(display);
+                            }
+                        }
+                    }
+                    ImageProgressIndicator {
+                        image: singleImage
+                        small: true
+                    }
+                    Rectangle {
+                        id: selectionRectangle
+                        border {
+                            color: Theme.highlightColor
+                            width: Theme.paddingSmall
+                        }
+                        color: "transparent"
+                        width: imagesGridView.cellWidth
+                        height: imagesGridView.cellHeight
+                        visible: isImageSelected(display)
+                    }
+                }
+
+                VerticalScrollDecorator {}
+
+            }
         }
 
     }

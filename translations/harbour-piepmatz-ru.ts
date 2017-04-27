@@ -69,11 +69,19 @@
 <context>
     <name>AttachImagesPage</name>
     <message>
-        <source>Select Images</source>
+        <source>Maximum number of images selected!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Attach</source>
+        <source>Attach %1 Images</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Attach Image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select Images</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

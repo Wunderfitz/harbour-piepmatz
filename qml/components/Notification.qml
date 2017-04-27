@@ -62,6 +62,13 @@ Item {
         opacity: 0
         Behavior on opacity { NumberAnimation {} }
         Rectangle {
+            id: notificationRectangleBackground
+            anchors.fill: parent
+            color: "black"
+            opacity: 0.6
+            radius: parent.width / 15
+        }
+        Rectangle {
             id: notificationRectangle
             anchors.fill: parent
             color: Theme.highlightColor

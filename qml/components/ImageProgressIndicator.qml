@@ -4,10 +4,14 @@ import Sailfish.Silica 1.0
 Item {
 
     property bool withPercentage : false;
+    property bool small : false;
     property Image image;
 
-    width: parent.width
-    height: parent.height
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+
+    width: small ? parent.width / 2 : parent.width
+    height: small ? parent.height / 2 : parent.height
 
     Behavior on opacity { NumberAnimation {} }
     visible: image.status === ( Image.Loading || Image.Error ) ? true : false
