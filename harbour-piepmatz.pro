@@ -26,7 +26,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/searchmodel.cpp \
     src/mentionsmodel.cpp \
     src/imagesmodel.cpp \
-    src/imagessearchworker.cpp
+    src/imagessearchworker.cpp \
+    src/imageresponsehandler.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -80,4 +81,5 @@ HEADERS += \
     src/searchmodel.h \
     src/mentionsmodel.h \
     src/imagesmodel.h \
-    src/imagessearchworker.h
+    src/imagessearchworker.h \
+    src/imageresponsehandler.h

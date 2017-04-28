@@ -1,5 +1,9 @@
 #include "twitterapi.h"
 
+#include "imageresponsehandler.h"
+#include <QFile>
+#include <QHttpMultiPart>
+
 TwitterApi::TwitterApi(O1Requestor* requestor, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
 }
@@ -443,6 +447,40 @@ void TwitterApi::unretweet(const QString &statusId)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnretweetError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleUnretweetFinished()));
 }
+
+void TwitterApi::uploadImage(const QString &fileName)
+{
+    qDebug() << "TwitterApi::uploadImage" << fileName;
+    QUrl url = QUrl(QString(API_MEDIA_UPLOAD));
+    QNetworkRequest request(url);
+
+
+    QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
+
+    QHttpPart imagePart;
+    imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/octet-stream"));
+    imagePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"media\""));
+    QFile *file = new QFile(fileName);
+    file->open(QIODevice::ReadOnly);
+    QByteArray rawImage = file->readAll();
+    imagePart.setBody(rawImage);
+    file->setParent(multiPart); // we cannot delete the file now, so delete it with the multiPart
+
+    multiPart->append(imagePart);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, multiPart);
+    multiPart->setParent(reply); // delete the multiPart with the reply
+    reply->setObjectName(fileName);
+
+    ImageResponseHandler *imageResponseHandler = new ImageResponseHandler(fileName, this);
+    imageResponseHandler->setParent(reply);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleImageUploadError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleImageUploadFinished()));
+    connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
+}
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -771,5 +809,31 @@ void TwitterApi::handleUnretweetFinished()
         emit unretweetSuccessful(responseObject.toVariantMap());
     } else {
         emit unretweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleImageUploadError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleImageUploadError:" << (int)error << reply->errorString() << reply->readAll();
+    emit imageUploadError(reply->errorString());
+}
+
+void TwitterApi::handleImageUploadFinished()
+{
+    qDebug() << "TwitterApi::handleImageUploadFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    qDebug() << jsonDocument.toJson();
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit imageUploadSuccessful(responseObject.toVariantMap());
+    } else {
+        emit imageUploadError("Piepmatz couldn't understand Twitter's response!");
     }
 }

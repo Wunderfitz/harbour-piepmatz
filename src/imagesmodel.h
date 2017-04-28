@@ -2,6 +2,7 @@
 #define IMAGESMODEL_H
 
 #include "imagessearchworker.h"
+#include "twitterapi.h"
 #include <QAbstractListModel>
 #include <QFileInfo>
 #include <QVariantList>
@@ -10,7 +11,7 @@ class ImagesModel: public QAbstractListModel
 {
     Q_OBJECT
 public:
-    ImagesModel();
+    ImagesModel(TwitterApi *twitterApi);
 
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
@@ -18,6 +19,7 @@ public:
     Q_INVOKABLE void update();
     Q_INVOKABLE void setSelectedImages(const QVariantList &selectedImages);
     Q_INVOKABLE QVariantList getSelectedImages();
+    Q_INVOKABLE void uploadSelectedImages();
 
 signals:
     void searchFinished();
@@ -30,7 +32,7 @@ private:
     QVariantList images;
     QVariantList selectedImages;
     ImagesSearchWorker *workerThread;
-
+    TwitterApi *twitterApi;
     bool searchInProgress;
 };
 

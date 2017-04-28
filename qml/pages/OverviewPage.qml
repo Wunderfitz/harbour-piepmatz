@@ -243,6 +243,9 @@ Page {
         onHelpConfigurationError: {
             overviewNotification.show(errorMessage);
         }
+        onImageUploadStatus: {
+            console.log(fileName + " - sent " + bytesSent + " bytes out of " + bytesTotal);
+        }
     }
 
     Notification {

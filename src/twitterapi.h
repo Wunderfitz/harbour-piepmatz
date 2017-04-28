@@ -20,6 +20,7 @@ const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/accou
 const char API_HELP_CONFIGURATION[] = "https://api.twitter.com/1.1/help/configuration.json";
 const char API_HELP_PRIVACY[] = "https://api.twitter.com/1.1/help/privacy.json";
 const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
+const char API_MEDIA_UPLOAD[] = "https://upload.twitter.com/1.1/media/upload.json";
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
@@ -58,6 +59,7 @@ public:
     Q_INVOKABLE void unfavorite(const QString &statusId);
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
+    Q_INVOKABLE void uploadImage(const QString &fileName);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -94,6 +96,9 @@ signals:
     void retweetError(const QString &errorMessage);
     void unretweetSuccessful(const QVariantMap &result);
     void unretweetError(const QString &errorMessage);
+    void imageUploadSuccessful(const QVariantMap &result);
+    void imageUploadError(const QString &errorMessage);
+    void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
 
 private:
     O1Requestor *requestor;
@@ -133,6 +138,8 @@ private slots:
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
+    void handleImageUploadError(QNetworkReply::NetworkError error);
+    void handleImageUploadFinished();
 
 };
 

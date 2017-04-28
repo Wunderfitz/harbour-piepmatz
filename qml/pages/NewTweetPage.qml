@@ -35,6 +35,13 @@ Page {
 
         PullDownMenu {
             MenuItem {
+                id: uploadImageMenuItem
+                text: "Upload"
+                onClicked: {
+                    imagesModel.uploadSelectedImages();
+                }
+            }
+            MenuItem {
                 text: qsTr("Attach Images")
                 onClicked: pageStack.push(attachImagesPage)
             }

@@ -5,10 +5,12 @@
 #include <QListIterator>
 #include <QFileInfo>
 
-ImagesModel::ImagesModel()
+ImagesModel::ImagesModel(TwitterApi *twitterApi)
 {
     workerThread = new ImagesSearchWorker();
     connect(workerThread, SIGNAL(searchFinished()), this, SLOT(handleSearchFinished()));
+
+    this->twitterApi = twitterApi;
 }
 
 int ImagesModel::rowCount(const QModelIndex &) const
@@ -43,6 +45,15 @@ void ImagesModel::setSelectedImages(const QVariantList &selectedImages)
 QVariantList ImagesModel::getSelectedImages()
 {
     return this->selectedImages;
+}
+
+void ImagesModel::uploadSelectedImages()
+{
+    qDebug() << "ImagesModel::uploadSelectedImages";
+    QListIterator<QVariant> selectedImagesIterator(selectedImages);
+    while (selectedImagesIterator.hasNext()) {
+        twitterApi->uploadImage(selectedImagesIterator.next().toString());
+    }
 }
 
 void ImagesModel::handleSearchFinished()

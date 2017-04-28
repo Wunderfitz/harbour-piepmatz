@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
     MentionsModel mentionsModel(twitterApi);
     context->setContextProperty("mentionsModel", &mentionsModel);
 
-    ImagesModel imagesModel;
+    ImagesModel imagesModel(twitterApi);
     context->setContextProperty("imagesModel", &imagesModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
