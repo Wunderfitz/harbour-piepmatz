@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Envoyer un E-mail</translation>
+        <translation>Envoyer un courriel</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
@@ -68,19 +68,19 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre maximum d'images atteint !</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Joindre %1 images</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Joindre une image</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélectionner les images</translation>
     </message>
 </context>
 <context>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <source>Attach Images</source>
-        <translation>Image jointe</translation>
+        <translation>Joindre une image</translation>
     </message>
 </context>
 <context>
@@ -175,7 +175,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Actualilser</translation>
+        <translation>Actualiser</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
