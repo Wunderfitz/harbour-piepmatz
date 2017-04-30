@@ -76,6 +76,7 @@ Page {
     property string activeTabId: "home";
     property bool initializationCompleted : false;
     property variant configuration;
+    property bool tweetInProgress : false;
 
     function openTab(tabId) {
 
@@ -231,10 +232,12 @@ Page {
         target: twitterApi
         onTweetError: {
             overviewNotification.show(errorMessage);
+            overviewPage.tweetInProgress = false;
         }
         onTweetSuccessful: {
             overviewNotification.show(qsTr("Tweet sent successfully!"));
             accountModel.verifyCredentials();
+            overviewPage.tweetInProgress = false;
         }
         onHelpConfigurationSuccessful: {
             overviewPage.configuration = result;
@@ -248,9 +251,49 @@ Page {
         }
     }
 
+    Connections {
+        target: imagesModel
+        onUploadStarted: {
+            overviewPage.tweetInProgress = true;
+            persistentNotificationItem.enabled = true;
+            persistentNotification.text = qsTr("Sending tweet...");
+        }
+
+        onUploadCompleted: {
+            persistentNotificationItem.enabled = false;
+        }
+
+        onUploadFailed: {
+            persistentNotificationItem.enabled = false;
+            overviewPage.tweetInProgress = false;
+            overviewNotification.show(errorMessage);
+        }
+
+        onUploadProgress: {
+            persistentNotification.text = qsTr("Uploading, %1\% completed...").arg(percentCompleted);
+        }
+    }
+
     Notification {
         id: overviewNotification
     }
+
+    Item {
+        id: persistentNotificationItem
+        enabled: false
+        width: parent.width
+        height: persistentNotification.height
+        y: parent.height - getNavigationRowSize() - persistentNotification.height - Theme.paddingSmall
+        z: 42
+
+        NotificationItem {
+            id: persistentNotification
+            visible: persistentNotificationItem.enabled
+            opacity: persistentNotificationItem.enabled ? 1 : 0
+        }
+    }
+
+
 
     Column {
         y: ( parent.height - ( accountVerificationImage.height + accountVerificationIndicator.height + accountVerificationLabel.height + ( 3 * Theme.paddingSmall ) ) ) / 2
@@ -352,6 +395,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("New Tweet")
+                enabled: overviewPage.tweetInProgress ? false : true
                 onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
             }
             MenuItem {
@@ -367,6 +411,7 @@ Page {
             }
             MenuItem {
                 text: qsTr("New Tweet")
+                enabled: overviewPage.tweetInProgress ? false : true
                 onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
             }
             MenuItem {

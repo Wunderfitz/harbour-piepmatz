@@ -26,6 +26,7 @@ bool reverseDateTime(const QFileInfo &fileInfo1, const QFileInfo &fileInfo2)
 void ImagesSearchWorker::performSearch()
 {
     qDebug() << "ImagesSearchWorker::performSearch";
+    availableImages.clear();
     QStringList supportedImageTypes;
     supportedImageTypes.append("*.jpg");
     supportedImageTypes.append("*.gif");

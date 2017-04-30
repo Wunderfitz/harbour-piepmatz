@@ -17,6 +17,8 @@ Page {
     property string replyToStatusId;
     property variant replyToTweet;
     property bool replyToTweetLoaded;
+    property bool withImages : false;
+    property variant attachedImages;
 
     function getRemainingCharacters(text, configuration) {
         return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
@@ -25,6 +27,15 @@ Page {
     Component.onCompleted: {
         if (replyToStatusId) {
             twitterApi.showStatus(replyToStatusId);
+        }
+        imagesModel.clearModel();
+    }
+
+    Connections {
+        target: imagesModel
+        onImagesSelected: {
+            newTweetPage.withImages = true;
+            newTweetPage.attachedImages = imagesModel.getSelectedImages();
         }
     }
 
@@ -35,13 +46,6 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                id: uploadImageMenuItem
-                text: "Upload"
-                onClicked: {
-                    imagesModel.uploadSelectedImages();
-                }
-            }
-            MenuItem {
                 text: qsTr("Attach Images")
                 onClicked: pageStack.push(attachImagesPage)
             }
@@ -49,9 +53,17 @@ Page {
                 text: replyToStatusId ? qsTr("Send Reply") : qsTr("Send Tweet")
                 onClicked: {
                     if (replyToStatusId) {
-                        twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                        if (withImages) {
+                            imagesModel.replyToTweetWithSelectedImages(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                        } else {
+                            twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                        }
                     } else {
-                        twitterApi.tweet(enterTweetTextArea.text);
+                        if (withImages) {
+                            imagesModel.tweetWithSelectedImages(enterTweetTextArea.text);
+                        } else {
+                            twitterApi.tweet(enterTweetTextArea.text);
+                        }
                     }
                     pageStack.pop();
                 }
@@ -61,6 +73,7 @@ Page {
         Column {
             id: column
             width: newTweetPage.width
+            spacing: Theme.paddingMedium
 
             PageHeader {
                 title: replyToStatusId ? qsTr("Reply") : qsTr("New Tweet")
@@ -113,6 +126,32 @@ Page {
                 font.pixelSize: remainingCharactersText.text < 0 ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 font.bold: remainingCharactersText.text < 0 ? true : false
                 text: getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration)
+            }
+
+            SlideshowView {
+                id: attachedImagesSlideshow
+                width: parent.width * 2 / 3
+                height: parent.width * 2 / 3
+                anchors.horizontalCenter: parent.horizontalCenter
+                model: newTweetPage.attachedImages
+                delegate: Item {
+                    width: parent.width
+                    height: parent.height
+
+                    Image {
+                        id: attachedImage
+                        source: modelData
+                        width: parent.width
+                        height: parent.height
+                        asynchronous: true
+                        sourceSize.width: parent.width
+                        sourceSize.height: parent.height
+                        fillMode: Image.PreserveAspectCrop
+                        visible: status === Image.Ready ? true : false
+                        opacity: status === Image.Ready ? 1 : 0
+                        Behavior on opacity { NumberAnimation {} }
+                    }
+                }
             }
 
             VerticalScrollDecorator {}

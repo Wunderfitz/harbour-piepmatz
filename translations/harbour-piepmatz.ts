@@ -213,6 +213,14 @@
         <source>Messages are not yet implemented</source>
         <translation>Messages are not yet implemented</translation>
     </message>
+    <message>
+        <source>Sending tweet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading, %1% completed...</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

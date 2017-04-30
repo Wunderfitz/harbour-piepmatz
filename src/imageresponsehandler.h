@@ -13,6 +13,8 @@ public:
 
 public slots:
     void handleImageUploadProgress(qint64 bytesSent, qint64 bytesTotal);
+    void handleImageUploadError(QNetworkReply::NetworkError error);
+    void handleImageUploadFinished();
 
 private:
     QString fileName;

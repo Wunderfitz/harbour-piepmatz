@@ -11,7 +11,7 @@ Item {
     width: parent.width - 2 * Theme.horizontalPageMargin
 
     function show(message) {
-        notificationText.text = message;
+        notificationTextItem.text = message;
         notificationTimer.start();
         notificationTextItem.visible = true;
         notificationTextItem.opacity = 1;
@@ -52,41 +52,8 @@ Item {
         interval: 1000
     }
 
-    Item {
+    NotificationItem {
         id: notificationTextItem
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: parent.width
-        height: notificationText.height + 2 * Theme.paddingMedium
-        visible: false
-        opacity: 0
-        Behavior on opacity { NumberAnimation {} }
-        Rectangle {
-            id: notificationRectangleBackground
-            anchors.fill: parent
-            color: "black"
-            opacity: 0.6
-            radius: parent.width / 15
-        }
-        Rectangle {
-            id: notificationRectangle
-            anchors.fill: parent
-            color: Theme.highlightColor
-            opacity: 0.6
-            radius: parent.width / 15
-        }
-
-        Text {
-            id: notificationText
-            color: Theme.primaryColor
-            font.pixelSize: Theme.fontSizeSmall
-            font.bold: true
-            width: parent.width - 2 * Theme.paddingMedium
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            wrapMode: Text.Wrap
-            horizontalAlignment: Text.AlignHCenter
-        }
     }
 
 }

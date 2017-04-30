@@ -47,6 +47,8 @@ public:
     Q_INVOKABLE void helpTos();
     Q_INVOKABLE void tweet(const QString &text);
     Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId);
+    Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds);
+    Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds);
     Q_INVOKABLE void homeTimeline();
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
@@ -96,8 +98,8 @@ signals:
     void retweetError(const QString &errorMessage);
     void unretweetSuccessful(const QVariantMap &result);
     void unretweetError(const QString &errorMessage);
-    void imageUploadSuccessful(const QVariantMap &result);
-    void imageUploadError(const QString &errorMessage);
+    void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
+    void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
 
 private:
@@ -138,8 +140,6 @@ private slots:
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
-    void handleImageUploadError(QNetworkReply::NetworkError error);
-    void handleImageUploadFinished();
 
 };
 

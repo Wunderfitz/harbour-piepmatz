@@ -68,7 +68,7 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>Nombre maximum d'images atteint !</translation>
+        <translation>Nombre maximum d&apos;images atteint !</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
@@ -212,6 +212,14 @@
     <message>
         <source>Messages are not yet implemented</source>
         <translation>Les messages ne sont pas encore implémentés</translation>
+    </message>
+    <message>
+        <source>Sending tweet...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Uploading, %1% completed...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
