@@ -68,19 +68,19 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximum number of images selected!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Attach %1 Images</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Attach Image</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Select Images</translation>
     </message>
 </context>
 <context>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Attach Images</translation>
     </message>
 </context>
 <context>
@@ -215,11 +215,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sending tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Uploading, %1% completed...</translation>
     </message>
 </context>
 <context>
@@ -287,11 +287,11 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Open in Browser</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Reply to Tweet</translation>
     </message>
 </context>
 <context>
