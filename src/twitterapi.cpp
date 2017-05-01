@@ -3,9 +3,11 @@
 #include "imageresponsehandler.h"
 #include <QFile>
 #include <QHttpMultiPart>
+#include <QXmlStreamReader>
 
-TwitterApi::TwitterApi(O1Requestor* requestor, QObject* parent) : QObject(parent) {
+TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
+    this->manager = manager;
 }
 
 void TwitterApi::verifyCredentials()
@@ -519,6 +521,17 @@ void TwitterApi::uploadImage(const QString &fileName)
     connect(reply, SIGNAL(finished()), imageResponseHandler, SLOT(handleImageUploadFinished()));
     connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
 }
+
+void TwitterApi::getOpenGraph(const QString &address)
+{
+    qDebug() << "TwitterApi::getOpenGraph";
+    QUrl url = QUrl(address);
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetOpenGraphError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetOpenGraphFinished()));
+}
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -847,5 +860,65 @@ void TwitterApi::handleUnretweetFinished()
         emit unretweetSuccessful(responseObject.toVariantMap());
     } else {
         emit unretweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleGetOpenGraphError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleGetOpenGraphFinished:" << (int)error << reply->errorString() << reply->readAll();
+    emit getOpenGraphError(reply->errorString());
+}
+
+void TwitterApi::handleGetOpenGraphFinished()
+{
+    qDebug() << "TwitterApi::handleGetOpenGraphFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QString requestAddress = reply->request().url().toString();
+
+    QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
+    if (!contentTypeHeader.isValid()) {
+        return;
+    }
+    if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
+        qDebug() << requestAddress + " is not HTML, not checking Open Graph data...";
+        return;
+    }
+
+    QVariantMap openGraphData;
+
+    QXmlStreamReader xml(reply);
+    while (!xml.atEnd()) {
+        QXmlStreamReader::TokenType tokenType = xml.readNext();
+        if (tokenType == QXmlStreamReader::StartElement && xml.name() == "meta") {
+            QXmlStreamAttributes metaAttributes = xml.attributes();
+            if (metaAttributes.hasAttribute("property") && metaAttributes.hasAttribute("content")) {
+                QRegExp ogRegex("og\\:([\\w\\:]+)");
+                if (ogRegex.indexIn(metaAttributes.value("property").toString()) != -1) {
+                    QString openGraphKey = ogRegex.cap(1);
+                    // See ogp.me - in case of arrays, the first one may win...
+                    if (!openGraphData.contains(openGraphKey)) {
+                        openGraphData.insert(openGraphKey, metaAttributes.value("content").toString());
+                    }
+                }
+            }
+        }
+    }
+    if (xml.hasError()) {
+        emit getOpenGraphError(xml.errorString());
+    }
+
+    if (openGraphData.isEmpty()) {
+        emit getOpenGraphError(requestAddress + " does not contain Open Graph data");
+    } else {
+        // Always using request URL to be able to compare results
+        openGraphData.insert("url", requestAddress);
+        qDebug() << "Open Graph data found for " + requestAddress;
+        emit getOpenGraphSuccessful(openGraphData);
     }
 }

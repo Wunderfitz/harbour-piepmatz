@@ -39,7 +39,7 @@ class TwitterApi : public QObject {
 
     Q_OBJECT
 public:
-    TwitterApi(O1Requestor* requestor, QObject* parent = 0);
+    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent = 0);
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void helpConfiguration();
@@ -62,6 +62,8 @@ public:
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
+
+    Q_INVOKABLE void getOpenGraph(const QString &address);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -102,8 +104,12 @@ signals:
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
 
+    void getOpenGraphSuccessful(const QVariantMap &result);
+    void getOpenGraphError(const QString &errorMessage);
+
 private:
     O1Requestor *requestor;
+    QNetworkAccessManager *manager;
 
 private slots:
     void handleVerifyCredentialsSuccessful();
@@ -140,6 +146,9 @@ private slots:
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
+
+    void handleGetOpenGraphError(QNetworkReply::NetworkError error);
+    void handleGetOpenGraphFinished();
 
 };
 

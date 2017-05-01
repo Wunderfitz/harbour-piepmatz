@@ -24,7 +24,7 @@ AccountModel::AccountModel()
     connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
 
     requestor = new O1Requestor(manager, o1, this);
-    twitterApi = new TwitterApi(requestor, this);
+    twitterApi = new TwitterApi(requestor, manager, this);
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);

@@ -17,6 +17,9 @@ ListItem {
     property string embeddedTweetId;
     property variant embeddedTweet;
     property bool hasEmbeddedTweet : false;
+    property string referenceUrl;
+    property variant referenceMetadata;
+    property bool hasReference : false;
 
     contentHeight: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
     contentWidth: parent.width
@@ -164,6 +167,99 @@ ListItem {
                 TweetText {
                     id: tweetContentText
                     tweet: tweetModel
+                }
+
+                Connections {
+                    target: twitterApi
+                    onGetOpenGraphSuccessful: {
+                        if (referenceUrl === result.url) {
+                            singleTweet.referenceMetadata = result;
+                            singleTweet.hasReference = true;
+                        }
+                    }
+                }
+
+                Component {
+                    id: openGraphComponent
+                    Column {
+                        spacing: Theme.paddingSmall
+                        Separator {
+                            width: parent.width
+                            color: Theme.primaryColor
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+
+                        Item {
+                            id: openGraphImageItem
+                            width: parent.width
+                            height: parent.width * 2 / 3
+                            visible: referenceMetadata.image ? true : false
+                            Image {
+                                id: openGraphImage
+                                width: parent.width
+                                height: parent.height
+                                sourceSize {
+                                    width: parent.width
+                                    height: parent.height
+                                }
+                                fillMode: Image.PreserveAspectCrop
+                                visible: status === Image.Ready ? true : false
+                                opacity: status === Image.Ready ? 1 : 0
+                                source: referenceMetadata.image ? referenceMetadata.image : ""
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        if (referenceMetadata.url) {
+                                            Qt.openUrlExternally(referenceMetadata.url);
+                                        }
+                                    }
+                                }
+                            }
+                            ImageProgressIndicator {
+                                image: openGraphImage
+                                withPercentage: false
+                            }
+                        }
+
+                        Text {
+                            visible: referenceMetadata.description ? true : false
+                            width: parent.width
+                            id: openGraphText
+                            text: referenceMetadata.description ? referenceMetadata.description : ""
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.primaryColor
+                            wrapMode: Text.Wrap
+                            textFormat: Text.StyledText
+                        }
+
+                        Text {
+                            visible: referenceMetadata.url ? true : false
+                            width: parent.width
+                            id: openGraphLink
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + referenceMetadata.title + "</a>"
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: Theme.secondaryColor
+                            wrapMode: Text.Wrap
+                            textFormat: Text.StyledText
+                            onLinkActivated: {
+                                Functions.handleLink(link);
+                            }
+                            linkColor: Theme.highlightColor
+                        }
+
+                        Separator {
+                            width: parent.width
+                            color: Theme.primaryColor
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+                    }
+                }
+
+                Loader {
+                    id: openGraphLoader
+                    active: singleTweet.hasReference
+                    width: parent.width
+                    sourceComponent: openGraphComponent
                 }
 
                 Row {

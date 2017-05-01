@@ -75,6 +75,9 @@ function enhanceText(tweetText, entities, extendedEntities) {
         } else {
             var url_replacement = "<a href=\"" + entities.urls[i].expanded_url + "\">" + entities.urls[i].display_url + "</a>";
             replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, url_replacement));
+            // TODO: Could fail in case of multiple references. Well, let's see what happens :D
+            referenceUrl = entities.urls[i].expanded_url;
+            twitterApi.getOpenGraph(entities.urls[i].expanded_url);
         }
     }
     // Remove media links - will become own QML entities
