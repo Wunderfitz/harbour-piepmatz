@@ -288,8 +288,12 @@
         <translation>Oтвет %1</translation>
     </message>
     <message>
-        <source>Reply</source>
-        <translation>Ответить</translation>
+        <source>Open in Browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

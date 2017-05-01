@@ -68,19 +68,19 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Maximale Anzahl an Bildern ausgewählt!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Bilder anhängen</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bild anhängen</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder auswählen</translation>
     </message>
 </context>
 <context>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilder anhängen</translation>
     </message>
 </context>
 <context>
@@ -215,11 +215,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Gezwitscher abschicken...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hochladen, %1% fertiggestellt...</translation>
     </message>
 </context>
 <context>
@@ -286,8 +286,12 @@
         <translation>Antwort auf %1</translation>
     </message>
     <message>
-        <source>Reply</source>
-        <translation>Antwort</translation>
+        <source>Open in Browser</source>
+        <translation>Im Browser öffnen</translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation>Auf Gezwitscher antworten</translation>
     </message>
 </context>
 <context>
