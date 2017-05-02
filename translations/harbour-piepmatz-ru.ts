@@ -70,19 +70,19 @@
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрано максимальное количество изображений!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикреплено %1 изображений</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикрепить изображение</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбрать изображение</translation>
     </message>
 </context>
 <context>
@@ -134,7 +134,7 @@
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Прикрепить изображения</translation>
     </message>
 </context>
 <context>
@@ -217,11 +217,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить твит</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузка, %1% выполнено...</translation>
     </message>
 </context>
 <context>
@@ -289,11 +289,11 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Открыть в браузере</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ответить на твит</translation>
     </message>
 </context>
 <context>

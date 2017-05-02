@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<TS version="2.1" language="ja">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>Over Piepmatz</translation>
+        <translation>Piepmatzについて</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Een Twitter-cliënt voor Sailfish OS</translation>
+        <translation>SailfishOS向けTwitterクライアント</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Door Sebastian J. Wolf</translation>
+        <translation>By Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>E-mail verzenden</translation>
+        <translation>メールを送る</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Gelicenseerd onder de GNU GPLv3</translation>
+        <translation>GNU GPLv3に基づいています</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Broncode op GitHub</translation>
+        <translation>GitHubのソースコードを見る</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Met dank aan</translation>
+        <translation>クレジット</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>OAuth for Qt op GitHub openen</translation>
+        <translation>Open OAuth for Qt プロジェクト</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Dit project maakt gebruik van OAuth voor Qt door Akos Polster. Bedankt om dit beschikbaar te maken onder de BSD-2-Clause-licentie!</translation>
+        <translation>PiepmatzはAkos PolsterのOAuth for Qtを利用しています。このライブラリがに条項BSDライセンスで利用できることに感謝します。</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Dit project maakt gebruik van twitter-text. Auteursrecht 2014 Twitter, Inc. en andere bijdragers. Bedankt om dit beschikbaar te maken onder de Apache-licentie versie 2.0!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>twitter-text op GitHub openen</translation>
+        <translation>Open twitter-text プロジェクト</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Vind me op Twitter</translation>
+        <translation>開発者のTwitterアカウントを見る</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>Over Twitter</translation>
+        <translation>Twitterについて</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Gebruiksvoorwaarden</translation>
+        <translation>りようきやく</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacybeleid</translation>
+        <translation>ぷらいばしーぽりし</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>Maximum aantal afbeeldingen geselecteerd!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>%1 afbeeldingen toevoegen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Afbeelding toevoegen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation>Selecteer afbeeldingen</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>読込み中...</translation>
     </message>
 </context>
 <context>
@@ -102,196 +102,196 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Fout</translation>
+        <translation>えr</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>読込み中...</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Nieuwe tweet</translation>
+        <translation>新規ツイート</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Beantwoorden</translation>
+        <translation>返信</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Antwoord verzenden</translation>
+        <translation>返信を送信</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Tweet verzenden</translation>
+        <translation>ツイートを痩身</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation>Afbeeldingen toevoegen</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Opnieuw proberen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>Authenticeren</translation>
+        <translation>認証</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>Over Piepmatz</translation>
+        <translation>Piepmatzについて</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Nieuwe tweet</translation>
+        <translation>新規ツイート</translation>
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Tijdlijn</translation>
+        <translation>タイムライン</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation>Meldingen</translation>
+        <translation>通知</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Berichten</translation>
+        <translation>メッセージ</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation>Profiel</translation>
+        <translation>プロフィール</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Zoeken</translation>
+        <translation>けんさ</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Bijwerken</translation>
+        <translation>後進</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Hallo, Twitter...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Tijdlijn wordt geladen...</translation>
+        <translation>タイムラインをロード中...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz kon je niet inloggen!</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet verzonden!</translation>
+        <translation>ツイート送信完了</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Zoek op Twitter...</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Zoeken...</translation>
+        <translation>検索中...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation>Geen resultaten gevonden</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Wat zoek je?</translation>
+        <translation>何をお探しですか</translation>
     </message>
     <message>
         <source>Messages are not yet implemented</source>
-        <translation>Berichten zijn nog niet geïmplementeerd</translation>
+        <translation>メッセージ機能は未実装です</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>Tweet wordt verzonden…</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>%1% geüpload…</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>@%1</source>
-        <translation>%@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>%1 Following</source>
-        <translation>%1 volgend</translation>
+        <translation>%1 人をふぉろ</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 volgers</translation>
+        <translation>%1 人のふぉろ</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1 tweets</translation>
+        <translation>%1 ツイート</translation>
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>Lid sinds %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>%1 ontvolgen</translation>
+        <translation>%1 のフォローを解除</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>%1 volgen</translation>
+        <translation>%1 をフォロー</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>Je volgt nu %1.</translation>
+        <translation>%1 をフォローしまし</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>Je volgt %1 niet meer.</translation>
+        <translation>%1 のフォローを解除しました</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Gebruiksvoorwaarden</translation>
+        <translation>利用規約</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacybeleid</translation>
+        <translation>プライバシーポリシー</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Geretweet door %1</translation>
+        <translation>%1 がリツイート</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>Antwoord op %1</translation>
+        <translation>%1 への返信</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation>Openen in browser</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Tweet beantwoorden</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -305,43 +305,43 @@
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Welkom bij Piepmatz!</translation>
+        <translation>Piepmatzへよう</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>Log in op Twitter om verder te gaan.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>Inloggen op Twitter</translation>
+        <translation>Twitterへログイン</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Maak een Twitter-account aan als je er nog geen hebt.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Registreren bij Twitter</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>Oké</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Voer de Twitter-PIN in:</translation>
+        <translation>PINを入力してください:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>Authenticatie met ingevoerde PIN mislukt.</translation>
+        <translation>入力されたPINでは認証できませn</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>Voer de PIN opnieuw in</translation>
+        <translation>PINを再入力してください</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Authenticatie opnieuw beginnen</translation>
+        <translation>認証をやりなおしてくださ</translation>
     </message>
 </context>
 <context>

@@ -1,7 +1,11 @@
 #include "timelinemodel.h"
 
+#include <QListIterator>
+
+const char SETTINGS_CURRENT_TWEET[] = "tweets/currentId";
+
 TimelineModel::TimelineModel(TwitterApi *twitterApi)
-    : coverModel(new CoverModel(this))
+    : coverModel(new CoverModel(this)), settings("harbour-piepmatz", "settings")
 {
     this->twitterApi = twitterApi;
 
@@ -35,13 +39,36 @@ void TimelineModel::update()
     twitterApi->homeTimeline();
 }
 
+void TimelineModel::setCurrentTweetId(const QString &tweetId)
+{
+    qDebug() << "TimelineModel::setCurrentTweetId" << tweetId;
+    settings.setValue(SETTINGS_CURRENT_TWEET, tweetId);
+}
+
+int TimelineModel::getCurrentIndex()
+{
+    return currentIndex;
+}
+
 void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
 {
     qDebug() << "TimelineModel::handleHomeTimelineSuccessful";
     beginResetModel();
     timelineTweets.clear();
     timelineTweets.append(result);
+    currentIndex = 0;
     endResetModel();
+
+    QListIterator<QVariant> tweetIterator(timelineTweets);
+    int i = 0;
+    QString lastTweetId = settings.value(SETTINGS_CURRENT_TWEET).toString();
+    while (tweetIterator.hasNext()) {
+        QMap<QString,QVariant> singleTweet = tweetIterator.next().toMap();
+        if (singleTweet.value("id_str").toString() == lastTweetId) {
+            currentIndex = i;
+        }
+        i++;
+    }
 
     QVariantList coverList;
     int maxTweets = qMin(6, timelineTweets.size());

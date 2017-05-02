@@ -215,11 +215,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoi du tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargement, %1% effectué...</translation>
     </message>
 </context>
 <context>
@@ -287,11 +287,11 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Répondre au Tweet</translation>
     </message>
 </context>
 <context>

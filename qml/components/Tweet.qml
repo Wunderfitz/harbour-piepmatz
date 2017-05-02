@@ -243,6 +243,8 @@ ListItem {
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
                             textFormat: Text.StyledText
+                            maximumLineCount: 4
+                            elide: Text.ElideRight
                         }
 
                         Text {

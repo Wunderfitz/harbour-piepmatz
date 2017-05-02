@@ -2,6 +2,7 @@
 #define TIMELINEMODEL_H
 
 #include <QAbstractListModel>
+#include <QSettings>
 #include <QVariantList>
 #include "twitterapi.h"
 #include "covermodel.h"
@@ -17,6 +18,8 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE void update();
+    Q_INVOKABLE void setCurrentTweetId(const QString &tweetId);
+    Q_INVOKABLE int getCurrentIndex();
 
     CoverModel * const coverModel;
 
@@ -31,6 +34,8 @@ public slots:
 
 private:
     QVariantList timelineTweets;
+    QSettings settings;
+    int currentIndex;
     TwitterApi *twitterApi;
 
 };

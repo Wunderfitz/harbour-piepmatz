@@ -2,6 +2,7 @@ function updatePiepmatz() {
     if (typeof homeView !== "undefined") {
         homeView.reloading = true;
         notificationsColumn.updateInProgress = true;
+        homeListView.currentIndex = homeListView.indexAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2)));
     }
     timelineModel.update();
     mentionsModel.update();

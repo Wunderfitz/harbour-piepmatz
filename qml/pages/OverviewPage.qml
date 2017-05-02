@@ -478,6 +478,7 @@ Page {
                     }
 
                     onHomeTimelineUpdated: {
+                        homeListView.currentIndex = timelineModel.getCurrentIndex();
                         homeView.loaded = true;
                         homeView.reloading = false;
                     }
@@ -524,6 +525,10 @@ Page {
 
                     delegate: Tweet {
                         tweetModel: display
+                    }
+
+                    onMovementEnded: {
+                        timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
                     }
 
                     VerticalScrollDecorator {}
