@@ -11,3 +11,9 @@
 * Sat Apr 08 2017 Sebastian Wolf <sebastian@ygriega.de> 0.1.1
 - Included localizations for Spanish, Russian, Dutch and French
 - Minor bugfixes
+
+* Wed May 03 2017 Sebastian Wolf <sebastian@ygriega.de> 0.2
+- Pinch-to-zoom for images
+- Attach up to 4 images to a tweet
+- Link preview powered by Open Graph (for Instagram, Facebook, news sites etc.)
+- Open tweet in browser
