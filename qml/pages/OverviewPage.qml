@@ -475,6 +475,7 @@ Page {
                 Connections {
                     target: timelineModel
                     onHomeTimelineStartUpdate: {
+                        homeListView.currentIndex = -1;
                     }
 
                     onHomeTimelineUpdated: {

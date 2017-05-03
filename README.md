@@ -27,9 +27,12 @@ This project uses
 - twitter-text, copyright 2014 Twitter, Inc. and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
 
 Piepmatz was translated to several languages. Thanks to all contributors!
-- Dutch: [d9h02f](https://github.com/d9h02f)
+- Dutch: [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
+- Finnish: [Ari Järviö](https://www.transifex.com/user/profile/ari_jarvio/)
 - French: [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/)
-- Russian: [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
+- Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/)
+- Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
+- Russian: [Алексей Дедун](https://www.transifex.com/user/profile/lewa/), [Юрий](https://www.transifex.com/user/profile/iAncelad/) and [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
 - Spanish: [Carmen F. B.](https://github.com/carmenfdezb)
 
 Code improvements by:
