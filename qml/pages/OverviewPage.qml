@@ -478,7 +478,7 @@ Page {
                     }
 
                     onHomeTimelineUpdated: {
-                        homeListView.currentIndex = timelineModel.getCurrentIndex();
+                        homeListView.currentIndex = modelIndex;
                         homeView.loaded = true;
                         homeView.reloading = false;
                     }

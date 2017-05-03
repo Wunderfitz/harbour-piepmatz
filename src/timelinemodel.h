@@ -19,13 +19,12 @@ public:
 
     Q_INVOKABLE void update();
     Q_INVOKABLE void setCurrentTweetId(const QString &tweetId);
-    Q_INVOKABLE int getCurrentIndex();
 
     CoverModel * const coverModel;
 
 signals:
     void homeTimelineStartUpdate();
-    void homeTimelineUpdated();
+    void homeTimelineUpdated(int modelIndex);
     void homeTimelineError(const QString &errorMessage);
 
 public slots:
@@ -35,7 +34,6 @@ public slots:
 private:
     QVariantList timelineTweets;
     QSettings settings;
-    int currentIndex;
     TwitterApi *twitterApi;
 
 };
