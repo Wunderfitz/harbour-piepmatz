@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ja">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ja" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -37,11 +35,11 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>PiepmatzはAkos PolsterのOAuth for Qtを利用しています。このライブラリがに条項BSDライセンスで利用できることに感謝します。</translation>
+        <translation>PiepmatzはAkos PolsterのOAuth for Qtを利用しています。このライブラリがに条項BSDライセンスで利用できることに感謝します！</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation type="unfinished"></translation>
+        <translation>PiepmatzはTwitter社(Copyright 2014)およびたくさんの寄稿者によるtwitter-textを利用しています。このライブラリがApache License, Version 2.0で利用できることに感謝します！</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
@@ -57,30 +55,30 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>りようきやく</translation>
+        <translation>利用規約</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>ぷらいばしーぽりし</translation>
+        <translation>プライバシーポリシー</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>選択できる画像数の上限に達しました！</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>%1つの画像を添付</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を添付</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を選択</translation>
     </message>
 </context>
 <context>
@@ -102,7 +100,7 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>えr</translation>
+        <translation>エラー</translation>
     </message>
 </context>
 <context>
@@ -128,18 +126,18 @@
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>ツイートを痩身</translation>
+        <translation>ツイートを送信</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>画像を添付</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation type="unfinished"></translation>
+        <translation>再試行</translation>
     </message>
     <message>
         <source>Authenticate</source>
@@ -171,15 +169,15 @@
     </message>
     <message>
         <source>Search</source>
-        <translation>けんさ</translation>
+        <translation>検索</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>後進</translation>
+        <translation>タイムラインを更新</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <source>Loading timeline...</source>
@@ -187,7 +185,7 @@
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation type="unfinished"></translation>
+        <translation>ログインできません</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
@@ -195,7 +193,7 @@
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitterで検索...</translation>
     </message>
     <message>
         <source>Searching...</source>
@@ -203,11 +201,11 @@
     </message>
     <message>
         <source>No results found</source>
-        <translation type="unfinished"></translation>
+        <translation>検索結果がみつかりませんでした</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>何をお探しですか</translation>
+        <translation>何をお探しですか？</translation>
     </message>
     <message>
         <source>Messages are not yet implemented</source>
@@ -215,11 +213,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>ツイート送信中...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>%1%をアップロード...</translation>
     </message>
 </context>
 <context>
@@ -230,11 +228,11 @@
     </message>
     <message>
         <source>%1 Following</source>
-        <translation>%1 人をふぉろ</translation>
+        <translation>%1 人をフォロー</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 人のふぉろ</translation>
+        <translation>%1 人のフォロワー</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
@@ -242,7 +240,7 @@
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1が参加しました</translation>
     </message>
 </context>
 <context>
@@ -257,7 +255,7 @@
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>%1 をフォローしまし</translation>
+        <translation>%1 をフォローしました</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
@@ -287,11 +285,11 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>ブラウザで開く</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>ツイートに返信</translation>
     </message>
 </context>
 <context>
@@ -305,11 +303,11 @@
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Piepmatzへよう</translation>
+        <translation>Piepmatzへようこそ</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitterにログインしてください</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
@@ -317,11 +315,11 @@
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitterアカウントをお持ちでない場合には、まずサインアップしてください</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitterにサインアップする</translation>
     </message>
     <message>
         <source>OK</source>
@@ -333,7 +331,7 @@
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>入力されたPINでは認証できませn</translation>
+        <translation>入力されたPINでは認証できません</translation>
     </message>
     <message>
         <source>Enter PIN again</source>

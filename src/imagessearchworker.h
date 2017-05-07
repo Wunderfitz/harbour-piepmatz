@@ -21,6 +21,7 @@ private:
     void performSearch();
 
     QList<QFileInfo> availableImages;
+    QString getSDCardDirectory();
 };
 
 #endif // IMAGESSEARCHWORKER_H
