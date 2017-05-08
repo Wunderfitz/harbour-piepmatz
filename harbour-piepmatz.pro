@@ -14,7 +14,7 @@ TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp
 
-QT += core
+QT += core multimedia
 
 include(src/o2/o2.pri)
 
