@@ -34,6 +34,7 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
 - Russian: [Алексей Дедун](https://www.transifex.com/user/profile/lewa/), [Юрий](https://www.transifex.com/user/profile/iAncelad/) and [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
 - Spanish: [Carmen F. B.](https://github.com/carmenfdezb)
+- Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
 Code improvements by:
 - [Rolf Eike Beer](https://github.com/DerDakon) 
