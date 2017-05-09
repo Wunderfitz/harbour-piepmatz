@@ -199,7 +199,14 @@ Item {
             text: qsTr("%1 Following").arg(Number(profileModel.friends_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
+            font.underline: true
             wrapMode: Text.Wrap
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/FriendsPage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name });
+                }
+            }
         }
         Text {
             id: profileFollowingSeparatorText
@@ -212,7 +219,14 @@ Item {
             text: qsTr("%1 Followers").arg(Number(profileModel.followers_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
+            font.underline: true
             wrapMode: Text.Wrap
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/FollowersPage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name });
+                }
+            }
         }
     }
 
@@ -229,7 +243,14 @@ Item {
             id: profileTweetsText
             text: qsTr("%1 Tweets").arg(Number(profileModel.statuses_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
+            font.underline: true
             color: Theme.primaryColor
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/UserTimelinePage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name, "userTimelineModel": profileTimeline });
+                }
+            }
         }
         Text {
             id: profileActivitySeparatorText

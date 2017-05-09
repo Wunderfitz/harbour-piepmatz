@@ -351,6 +351,62 @@ void TwitterApi::userTimeline(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleUserTimelineFinished()));
 }
 
+void TwitterApi::followers(const QString &screenName)
+{
+    qDebug() << "TwitterApi::followers" << screenName;
+    QUrl url = QUrl(API_FOLLOWERS_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("screen_name", screenName);
+    urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("skip_status", "true");
+    urlQuery.addQueryItem("include_user_entities", "true");
+
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("skip_status"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_user_entities"), QByteArray("true")));
+
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFollowersError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFollowersFinished()));
+}
+
+void TwitterApi::friends(const QString &screenName)
+{
+    qDebug() << "TwitterApi::friends" << screenName;
+    QUrl url = QUrl(API_FRIENDS_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("screen_name", screenName);
+    urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("skip_status", "true");
+    urlQuery.addQueryItem("include_user_entities", "true");
+
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("skip_status"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_user_entities"), QByteArray("true")));
+
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFriendsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFriendsFinished()));
+}
+
 void TwitterApi::followUser(const QString &screenName)
 {
     qDebug() << "TwitterApi::followUser" << screenName;
@@ -629,6 +685,56 @@ void TwitterApi::handleUserTimelineFinished()
         emit userTimelineSuccessful(responseArray.toVariantList());
     } else {
         emit userTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleFollowersError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleFollowersError:" << (int)error << reply->errorString() << reply->readAll();
+    emit followersError(reply->errorString());
+}
+
+void TwitterApi::handleFollowersFinished()
+{
+    qDebug() << "TwitterApi::handleFollowersFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit followersSuccessful(responseObject.toVariantMap());
+    } else {
+        emit followersError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleFriendsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleFriendsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit friendsError(reply->errorString());
+}
+
+void TwitterApi::handleFriendsFinished()
+{
+    qDebug() << "TwitterApi::handleFriendsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit friendsSuccessful(responseObject.toVariantMap());
+    } else {
+        emit friendsError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

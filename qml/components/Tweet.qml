@@ -174,7 +174,7 @@ ListItem {
 
                 TweetUser {
                     id: tweetUserRow
-                    tweet: tweetModel
+                    tweetUser: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
                 }
 
                 TweetText {

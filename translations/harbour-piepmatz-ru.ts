@@ -93,6 +93,20 @@
     </message>
 </context>
 <context>
+    <name>FollowersPage</name>
+    <message>
+        <source>%1: Followers</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>FriendsPage</name>
+    <message>
+        <source>%1: Following</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImageProgressIndicator</name>
     <message>
         <source>%1 %</source>

@@ -24,6 +24,8 @@ const char API_MEDIA_UPLOAD[] = "https://upload.twitter.com/1.1/media/upload.jso
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
+const char API_FOLLOWERS_LIST[] = "https://api.twitter.com/1.1/followers/list.json";
+const char API_FRIENDS_LIST[] = "https://api.twitter.com/1.1/friends/list.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const char API_STATUSES_RETWEET[] = "https://api.twitter.com/1.1/statuses/retweet/:id.json";
@@ -52,6 +54,8 @@ public:
     Q_INVOKABLE void homeTimeline();
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
+    Q_INVOKABLE void followers(const QString &screenName);
+    Q_INVOKABLE void friends(const QString &screenName);
     Q_INVOKABLE void showStatus(const QString &statusId);
     Q_INVOKABLE void showUser(const QString &screenName);
     Q_INVOKABLE void followUser(const QString &screenName);
@@ -82,6 +86,10 @@ signals:
     void mentionsTimelineError(const QString &errorMessage);
     void userTimelineSuccessful(const QVariantList &result);
     void userTimelineError(const QString &errorMessage);
+    void followersSuccessful(const QVariantMap &result);
+    void followersError(const QString &errorMessage);
+    void friendsSuccessful(const QVariantMap &result);
+    void friendsError(const QString &errorMessage);
     void showStatusSuccessful(const QVariantMap &result);
     void showStatusError(const QString &errorMessage);
     void showUserSuccessful(const QVariantMap &result);
@@ -128,6 +136,10 @@ private slots:
     void handleMentionsTimelineFinished();
     void handleUserTimelineError(QNetworkReply::NetworkError error);
     void handleUserTimelineFinished();
+    void handleFollowersError(QNetworkReply::NetworkError error);
+    void handleFollowersFinished();
+    void handleFriendsError(QNetworkReply::NetworkError error);
+    void handleFriendsFinished();
     void handleShowStatusError(QNetworkReply::NetworkError error);
     void handleShowStatusFinished();
     void handleShowUserError(QNetworkReply::NetworkError error);
