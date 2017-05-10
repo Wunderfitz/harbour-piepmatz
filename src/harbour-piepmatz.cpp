@@ -23,6 +23,7 @@
 #include "searchmodel.h"
 #include "mentionsmodel.h"
 #include "imagesmodel.h"
+#include "directmessagesmodel.h"
 
 int main(int argc, char *argv[])
 {
@@ -48,6 +49,9 @@ int main(int argc, char *argv[])
 
     ImagesModel imagesModel(twitterApi);
     context->setContextProperty("imagesModel", &imagesModel);
+
+    DirectMessagesModel directMessagesModel(twitterApi);
+    context->setContextProperty("directMessagesModel", &directMessagesModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();

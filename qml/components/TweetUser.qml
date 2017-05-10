@@ -41,10 +41,24 @@ Row {
         }
     }
 
+    Image {
+        id: tweetUserProtectedImage
+        source: "image://theme/icon-s-secure"
+        visible: tweetUser.protected
+        width: Theme.fontSizeSmall
+        height: Theme.fontSizeSmall
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetUser});
+            }
+        }
+    }
+
     Text {
         id: tweetUserHandleText
         font.pixelSize: Theme.fontSizeExtraSmall
-        width: parent.width - tweetUserVerifiedImage.width - tweetUserNameText.width - ( 2 * Theme.paddingSmall )
+        width: parent.width - ( tweetUserVerifiedImage.visible ? tweetUserVerifiedImage.width : 0 ) - ( tweetUserProtectedImage.visible ? tweetUserProtectedImage.width : 0 ) - tweetUserNameText.width - ( 2 * Theme.paddingSmall )
         color: Theme.secondaryColor
         anchors.bottom: tweetUserNameText.bottom
         text: qsTr("@%1").arg(tweetUser.screen_name)

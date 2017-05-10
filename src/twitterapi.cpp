@@ -323,6 +323,28 @@ void TwitterApi::showUser(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
 }
 
+void TwitterApi::showUserById(const QString &userId)
+{
+    qDebug() << "TwitterApi::showUserById" << userId;
+    QUrl url = QUrl(API_USERS_SHOW);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("user_id", userId);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("user_id"), userId.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowUserError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
+}
+
 void TwitterApi::userTimeline(const QString &screenName)
 {
     qDebug() << "TwitterApi::userTimeline" << screenName;
@@ -576,6 +598,22 @@ void TwitterApi::uploadImage(const QString &fileName)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), imageResponseHandler, SLOT(handleImageUploadError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), imageResponseHandler, SLOT(handleImageUploadFinished()));
     connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
+}
+
+void TwitterApi::directMessagesList()
+{
+    qDebug() << "TwitterApi::directMessagesReceived";
+    QUrl url = QUrl(API_DIRECT_MESSAGES_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDirectMessagesReceivedError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesReceivedFinished()));
 }
 
 void TwitterApi::getOpenGraph(const QString &address)
@@ -966,6 +1004,32 @@ void TwitterApi::handleUnretweetFinished()
         emit unretweetSuccessful(responseObject.toVariantMap());
     } else {
         emit unretweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleDirectMessagesListError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleDirectMessagesListError:" << (int)error << reply->errorString() << reply->readAll();
+    emit directMessagesListError(reply->errorString());
+}
+
+void TwitterApi::handleDirectMessagesListFinished()
+{
+    qDebug() << "TwitterApi::handleDirectMessagesListFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    qDebug() << jsonDocument.toJson();
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit directMessagesListSuccessful(responseObject.toVariantMap());
+    } else {
+        emit directMessagesListError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

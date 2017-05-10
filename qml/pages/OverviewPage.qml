@@ -532,6 +532,12 @@ Page {
                         timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
                     }
 
+                    onQuickScrollAnimatingChanged: {
+                        if (!quickScrollAnimating) {
+                            timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
+                        }
+                    }
+
                     VerticalScrollDecorator {}
                 }
 

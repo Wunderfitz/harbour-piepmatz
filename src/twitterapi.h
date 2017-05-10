@@ -36,6 +36,7 @@ const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/
 const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json";
 const char API_FAVORITES_CREATE[] = "https://api.twitter.com/1.1/favorites/create.json";
 const char API_FAVORITES_DESTROY[] = "https://api.twitter.com/1.1/favorites/destroy.json";
+const char API_DIRECT_MESSAGES_LIST[] = "https://api.twitter.com/1.1/direct_messages/events/list.json";
 
 class TwitterApi : public QObject {
 
@@ -58,6 +59,7 @@ public:
     Q_INVOKABLE void friends(const QString &screenName);
     Q_INVOKABLE void showStatus(const QString &statusId);
     Q_INVOKABLE void showUser(const QString &screenName);
+    Q_INVOKABLE void showUserById(const QString &userId);
     Q_INVOKABLE void followUser(const QString &screenName);
     Q_INVOKABLE void unfollowUser(const QString &screenName);
     Q_INVOKABLE void searchTweets(const QString &query);
@@ -66,6 +68,7 @@ public:
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
+    Q_INVOKABLE void directMessagesList();
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
 
@@ -111,6 +114,8 @@ signals:
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
+    void directMessagesListSuccessful(const QVariantMap &result);
+    void directMessagesListError(const QString &errorMessage);
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
@@ -158,6 +163,8 @@ private slots:
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
+    void handleDirectMessagesListError(QNetworkReply::NetworkError error);
+    void handleDirectMessagesListFinished();
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();

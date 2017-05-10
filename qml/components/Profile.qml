@@ -15,6 +15,7 @@ Item {
 
     property variant profileModel;
     property variant profileTimeline;
+    property variant loadingError : false;
 
     Component.onCompleted: {
         console.log("Profile Model called for " + profileModel.screen_name);
@@ -40,6 +41,7 @@ Item {
         }
         onUserTimelineError: {
             if (!profileTimeline) {
+                loadingError = true;
                 notification.show(errorMessage);
             }
         }
@@ -199,9 +201,10 @@ Item {
             text: qsTr("%1 Following").arg(Number(profileModel.friends_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
-            font.underline: true
+            font.underline: !profileItem.loadingError
             wrapMode: Text.Wrap
             MouseArea {
+                enabled: !profileItem.loadingError
                 anchors.fill: parent
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("../pages/FriendsPage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name });
@@ -219,9 +222,10 @@ Item {
             text: qsTr("%1 Followers").arg(Number(profileModel.followers_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
-            font.underline: true
+            font.underline: !profileItem.loadingError
             wrapMode: Text.Wrap
             MouseArea {
+                enabled: !profileItem.loadingError
                 anchors.fill: parent
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("../pages/FollowersPage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name });
@@ -243,9 +247,10 @@ Item {
             id: profileTweetsText
             text: qsTr("%1 Tweets").arg(Number(profileModel.statuses_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
-            font.underline: true
+            font.underline: !profileItem.loadingError
             color: Theme.primaryColor
             MouseArea {
+                enabled: !profileItem.loadingError
                 anchors.fill: parent
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("../pages/UserTimelinePage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name, "userTimelineModel": profileTimeline });
@@ -364,7 +369,7 @@ Item {
 
     Item {
         id: profileTimelineLoadingIndicator
-        visible: profileTimeline ? false : true
+        visible: profileTimeline || profileItem.loadingError ? false : true
         Behavior on opacity { NumberAnimation {} }
         opacity: profileTimeline ? 0 : 1
 
