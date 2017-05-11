@@ -5,6 +5,7 @@ function updatePiepmatz() {
     }
     timelineModel.update();
     mentionsModel.update();
+    directMessagesModel.update();
     accountModel.verifyCredentials();
 }
 

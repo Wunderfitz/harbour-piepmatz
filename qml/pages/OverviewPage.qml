@@ -216,6 +216,8 @@ Page {
                 timelineModel.update();
                 mentionsModel.update();
                 notificationsColumn.updateInProgress = true;
+                directMessagesModel.setUserId(accountModel.getCurrentAccount().id_str);
+                directMessagesModel.update();
                 overviewPage.initializationCompleted = true;
             }
         }

@@ -612,13 +612,13 @@ void TwitterApi::directMessagesList()
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDirectMessagesReceivedError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesReceivedFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDirectMessagesListError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesListFinished()));
 }
 
 void TwitterApi::getOpenGraph(const QString &address)
 {
-    qDebug() << "TwitterApi::getOpenGraph";
+    qDebug() << "TwitterApi::getOpenGraph" << address;
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
     QNetworkReply *reply = manager->get(request);
@@ -1024,7 +1024,6 @@ void TwitterApi::handleDirectMessagesListFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    qDebug() << jsonDocument.toJson();
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
         emit directMessagesListSuccessful(responseObject.toVariantMap());
@@ -1080,7 +1079,9 @@ void TwitterApi::handleGetOpenGraphFinished()
         }
     }
     if (xml.hasError()) {
-        emit getOpenGraphError(xml.errorString());
+        QString errorString = "Error parsing " + requestAddress + ", error was: " + xml.errorString();
+        qDebug() << errorString;
+        emit getOpenGraphError(errorString);
     }
 
     if (openGraphData.isEmpty()) {
