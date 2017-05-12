@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci pour l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
+        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci de l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de Service</translation>
+        <translation>Conditions d'utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -72,11 +72,11 @@
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre %1 images</translation>
+        <translation>Joindre les %1 images</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre une image</translation>
+        <translation>Joindre l'image</translation>
     </message>
     <message>
         <source>Select Images</source>
@@ -94,14 +94,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 : abonnés</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: : abonnements</translation>
     </message>
 </context>
 <context>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez vous ?</translation>
+        <translation>Que cherchez-vous ?</translation>
     </message>
     <message>
         <source>Messages are not yet implemented</source>
@@ -233,7 +233,7 @@
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléchargement, %1% effectué...</translation>
+        <translation>Téléversement, %1% effectué...</translation>
     </message>
 </context>
 <context>
@@ -282,7 +282,7 @@
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de Service</translation>
+        <translation>Conditions d'utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
