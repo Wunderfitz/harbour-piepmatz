@@ -6,6 +6,8 @@
 #include <QVariantList>
 #include "twitterapi.h"
 
+const int MAX_ITERATIONS = 2;
+
 class DirectMessagesModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -29,9 +31,15 @@ private slots:
 
 private:
     TwitterApi *twitterApi;
-    QVariantList contacts;
+    int iterations;
     QList<QString> involvedUsers;
+    QVariantList messages;
     QString userId;
+
+    QVariantList contacts;
+
+
+    void compileContacts();
 };
 
 #endif // DIRECTMESSAGESMODEL_H

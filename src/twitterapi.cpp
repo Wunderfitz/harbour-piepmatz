@@ -600,16 +600,24 @@ void TwitterApi::uploadImage(const QString &fileName)
     connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
 }
 
-void TwitterApi::directMessagesList()
+void TwitterApi::directMessagesList(const QString &cursor)
 {
-    qDebug() << "TwitterApi::directMessagesReceived";
+    qDebug() << "TwitterApi::directMessagesList" << cursor;
     QUrl url = QUrl(API_DIRECT_MESSAGES_LIST);
     QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("count", "50");
+    if (!cursor.isEmpty()) {
+        urlQuery.addQueryItem("cursor", cursor);
+    }
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("50")));
+    if (!cursor.isEmpty()) {
+        requestParameters.append(O0RequestParameter(QByteArray("cursor"), cursor.toUtf8()));
+    }
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDirectMessagesListError(QNetworkReply::NetworkError)));

@@ -32,6 +32,8 @@ void DirectMessagesModel::update()
 {
     qDebug() << "DirectMessagesModel::update";
     involvedUsers.clear();
+    messages.clear();
+    iterations = 0;
     involvedUsers.append(userId);
     twitterApi->directMessagesList();
     // Get the last messages
@@ -48,7 +50,8 @@ void DirectMessagesModel::setUserId(const QString &userId)
 void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &result)
 {
     qDebug() << "DirectMessagesModel::handleDirectMessagesListSuccessful";
-    QListIterator<QVariant> messagesIterator(result.value("events").toList());
+    QVariantList events = result.value("events").toList();
+    QListIterator<QVariant> messagesIterator(events);
     while (messagesIterator.hasNext()) {
         QVariantMap singleEvent = messagesIterator.next().toMap();
         QVariantMap singleMessage = singleEvent.value("message_create").toMap();
@@ -61,9 +64,13 @@ void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &
             involvedUsers.append(recipientId);
         }
     }
-    QListIterator<QString> usersIterator(involvedUsers);
-    while (usersIterator.hasNext()) {
-        twitterApi->showUserById(usersIterator.next());
+    messages.append(events);
+    QString nextCursor = result.value("next_cursor").toString();
+    if (iterations < MAX_ITERATIONS && !nextCursor.isEmpty()) {
+        iterations++;
+        twitterApi->directMessagesList(nextCursor);
+    } else {
+        compileContacts();
     }
 }
 
@@ -82,4 +89,14 @@ void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
 {
     qDebug() << "DirectMessagesModel::handleShowUserError";
     emit updateFailed(errorMessage);
+}
+
+void DirectMessagesModel::compileContacts()
+{
+    qDebug() << "DirectMessagesModel::compileContacts";
+    qDebug() << "Retrieved direct messages: " + QString::number(messages.size());
+    QListIterator<QString> usersIterator(involvedUsers);
+    while (usersIterator.hasNext()) {
+        twitterApi->showUserById(usersIterator.next());
+    }
 }

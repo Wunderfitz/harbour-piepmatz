@@ -68,7 +68,7 @@ public:
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
-    Q_INVOKABLE void directMessagesList();
+    Q_INVOKABLE void directMessagesList(const QString &cursor = "");
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
 
