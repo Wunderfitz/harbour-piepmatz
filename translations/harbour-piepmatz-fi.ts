@@ -224,15 +224,15 @@
         <translation>Mitä etsit?</translation>
     </message>
     <message>
-        <source>Messages are not yet implemented</source>
-        <translation>Viestiominaisuus ei ole vielä käytössä</translation>
-    </message>
-    <message>
         <source>Sending tweet...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

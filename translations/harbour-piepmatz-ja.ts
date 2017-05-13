@@ -224,16 +224,16 @@
         <translation>何をお探しですか？</translation>
     </message>
     <message>
-        <source>Messages are not yet implemented</source>
-        <translation>メッセージ機能は未実装です</translation>
-    </message>
-    <message>
         <source>Sending tweet...</source>
         <translation>ツイート送信中...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
         <translation>%1%をアップロード...</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

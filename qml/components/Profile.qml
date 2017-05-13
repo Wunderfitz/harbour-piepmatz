@@ -15,7 +15,7 @@ Item {
 
     property variant profileModel;
     property variant profileTimeline;
-    property variant loadingError : false;
+    property bool loadingError : false;
 
     Component.onCompleted: {
         console.log("Profile Model called for " + profileModel.screen_name);

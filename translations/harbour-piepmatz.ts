@@ -224,16 +224,16 @@
         <translation>What are you looking for?</translation>
     </message>
     <message>
-        <source>Messages are not yet implemented</source>
-        <translation>Messages are not yet implemented</translation>
-    </message>
-    <message>
         <source>Sending tweet...</source>
         <translation>Sending tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
         <translation>Uploading, %1% completed...</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

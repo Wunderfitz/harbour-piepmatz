@@ -31,6 +31,7 @@ QVariant DirectMessagesModel::data(const QModelIndex &index, int role) const
 void DirectMessagesModel::update()
 {
     qDebug() << "DirectMessagesModel::update";
+    emit updateMessagesStarted();
     involvedUsers.clear();
     messages.clear();
     users.clear();
@@ -84,7 +85,7 @@ void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &
 void DirectMessagesModel::handleDirectMessagesListError(const QString &errorMessage)
 {
     qDebug() << "DirectMessagesModel::handleDirectMessagesListError";
-    emit updateFailed(errorMessage);
+    emit updateMessagesError(errorMessage);
 }
 
 void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
@@ -103,7 +104,7 @@ void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
 void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
 {
     qDebug() << "DirectMessagesModel::handleShowUserError";
-    emit updateFailed(errorMessage);
+    emit updateMessagesError(errorMessage);
 }
 
 void DirectMessagesModel::hydrateUsers()
@@ -154,12 +155,6 @@ void DirectMessagesModel::compileContacts()
         contact.insert("messages", rawContacts.value(currentUserId));
         contacts.append(contact);
     }
-    qDebug() << "Available contacts: " + QString::number(contacts.size());
-    QListIterator<QVariant> contactIterator(contacts);
-    while (contactIterator.hasNext()) {
-        QVariantMap singleContact = contactIterator.next().toMap();
-        qDebug() << singleContact.value("user").toMap().value("name").toString();
-        qDebug() << QString::number(singleContact.value("messages").toList().size());
-    }
     endResetModel();
+    emit updateMessagesFinished();
 }

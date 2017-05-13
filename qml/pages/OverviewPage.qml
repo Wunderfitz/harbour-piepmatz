@@ -73,7 +73,22 @@ Page {
         openTab("profile");
     }
 
+    function getLastUserOfConversation(otherUser, conversation) {
+        var lastMessage = conversation[conversation.length - 1].message_create;
+        if (lastMessage.sender_id === overviewPage.myUser.id_str) {
+            return qsTr("You");
+        } else {
+            return otherUser.name;
+        }
+    }
+
+    function getLastMessageOfConversation(conversation) {
+        var lastMessage = conversation[conversation.length - 1].message_create;
+        return lastMessage.message_data.text;
+    }
+
     property string activeTabId: "home";
+    property variant myUser;
     property bool initializationCompleted : false;
     property variant configuration;
     property bool tweetInProgress : false;
@@ -216,7 +231,8 @@ Page {
                 timelineModel.update();
                 mentionsModel.update();
                 notificationsColumn.updateInProgress = true;
-                directMessagesModel.setUserId(accountModel.getCurrentAccount().id_str);
+                overviewPage.myUser = accountModel.getCurrentAccount();
+                directMessagesModel.setUserId(overviewPage.myUser.id_str);
                 directMessagesModel.update();
                 overviewPage.initializationCompleted = true;
             }
@@ -620,28 +636,187 @@ Page {
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
 
-                Column {
-                    width: parent.width
-                    height: messagesNotImplementedImage.height + messagesNotImplementedLabel.height
-                    anchors.verticalCenter: parent.verticalCenter
-                    Image {
-                        id: messagesNotImplementedImage
-                        source: "../../images/piepmatz.svg"
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
-                        }
+                property bool updateInProgress : false;
 
-                        fillMode: Image.PreserveAspectFit
-                        width: 1/2 * parent.width
+                Connections {
+                    target: directMessagesModel
+
+                    onUpdateMessagesStarted: {
+                        messagesColumn.updateInProgress = true;
                     }
 
-                    InfoLabel {
-                        id: messagesNotImplementedLabel
-                        text: qsTr("Messages are not yet implemented")
-                        width: parent.width - 2 * Theme.horizontalPageMargin
-                        anchors {
-                            horizontalCenter: parent.horizontalCenter
+                    onUpdateMessagesFinished: {
+                        messagesColumn.updateInProgress = false;
+                    }
+
+                    onUpdateMessagesError: {
+                        messagesColumn.updateInProgress = false;
+                        overviewNotification.show(errorMessage);
+                    }
+                }
+
+                SilicaListView {
+                    anchors {
+                        fill: parent
+                    }
+                    id: messagesListView
+
+                    clip: true
+
+                    model: directMessagesModel
+                    delegate: ListItem {
+
+                        id: messageContactItem
+
+                        contentHeight: messageContactRow.height + messageContactSeparator.height + 2 * Theme.paddingMedium
+                        contentWidth: parent.width
+
+                        onClicked: {
+                            // Open message page for this contact
                         }
+
+                        Column {
+                            id: messageContactColumn
+                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                            spacing: Theme.paddingSmall
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
+
+                            Row {
+                                id: messageContactRow
+                                width: parent.width
+                                spacing: Theme.paddingMedium
+
+                                Column {
+                                    id: messageContactPictureColumn
+                                    width: parent.width / 6
+                                    height: parent.width / 6
+                                    spacing: Theme.paddingSmall
+
+                                    Item {
+                                        id: messageContactPictureItem
+                                        width: parent.width
+                                        height: parent.width
+
+                                        Image {
+                                            id: messageContactPicture
+                                            z: 42
+                                            source: Functions.findBiggerImage(display.user.profile_image_url_https)
+                                            width: parent.width
+                                            height: parent.height
+                                            sourceSize {
+                                                width: parent.width
+                                                height: parent.height
+                                            }
+                                            visible: false
+                                        }
+
+                                        Rectangle {
+                                            id: messageContactPictureMask
+                                            z: 42
+                                            width: parent.width
+                                            height: parent.height
+                                            color: Theme.primaryColor
+                                            radius: parent.width / 7
+                                            visible: false
+                                        }
+
+                                        OpacityMask {
+                                            id: maskedMessageContactPicture
+                                            z: 42
+                                            source: messageContactPicture
+                                            maskSource: messageContactPictureMask
+                                            anchors.fill: messageContactPicture
+                                            visible: messageContactPicture.status === Image.Ready ? true : false
+                                            opacity: messageContactPicture.status === Image.Ready ? 1 : 0
+                                            Behavior on opacity { NumberAnimation {} }
+                                        }
+
+                                        ImageProgressIndicator {
+                                            image: messageContactPicture
+                                            withPercentage: false
+                                        }
+
+                                    }
+                                }
+
+                                Column {
+                                    id: messageContactContentColumn
+                                    width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+
+                                    spacing: Theme.paddingSmall
+
+                                    Text {
+                                        id: messageContactNameText
+                                        text: display.user.name
+                                        font.pixelSize: Theme.fontSizeMedium
+                                        color: Theme.primaryColor
+                                        elide: Text.ElideRight
+                                        width: parent.width
+                                    }
+
+                                    Row {
+                                        id: messageContactLastMessageRow
+                                        width: parent.width
+                                        spacing: Theme.paddingMedium
+                                        Text {
+                                            id: messageContactLastUserText
+                                            text: getLastUserOfConversation(display.user, display.messages)
+                                            font.pixelSize: Theme.fontSizeExtraSmall
+                                            color: Theme.highlightColor
+                                        }
+                                        Text {
+                                            id: messageContactLastMessageText
+                                            text: getLastMessageOfConversation(display.messages)
+                                            font.pixelSize: Theme.fontSizeExtraSmall
+                                            color: Theme.primaryColor
+                                            width: parent.width - Theme.paddingMedium - messageContactLastUserText.width
+                                            elide: Text.ElideRight
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        Separator {
+                            id: messageContactSeparator
+
+                            anchors {
+                                top: messageContactColumn.bottom
+                                topMargin: Theme.paddingMedium
+                            }
+
+                            width: parent.width
+                            color: Theme.primaryColor
+                            horizontalAlignment: Qt.AlignHCenter
+                        }
+
+                    }
+
+
+                    VerticalScrollDecorator {}
+                }
+
+                Column {
+                    anchors {
+                        fill: parent
+                    }
+
+                    id: messagesUpdateInProgressColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: messagesColumn.updateInProgress ? 1 : 0
+                    visible: messagesColumn.updateInProgress ? true : false
+
+                    LoadingIndicator {
+                        id: messagesLoadingIndicator
+                        visible: messagesColumn.updateInProgress
+                        Behavior on opacity { NumberAnimation {} }
+                        opacity: messagesColumn.updateInProgress ? 1 : 0
+                        height: parent.height
+                        width: parent.width
                     }
                 }
             }

@@ -21,7 +21,9 @@ public:
     Q_INVOKABLE void setUserId(const QString &userId);
 
 signals:
-    void updateFailed(const QString &errorMessage);
+    void updateMessagesError(const QString &errorMessage);
+    void updateMessagesStarted();
+    void updateMessagesFinished();
 
 private slots:
     void handleDirectMessagesListSuccessful(const QVariantMap &result);

@@ -224,16 +224,16 @@
         <translation>Vad söker du?</translation>
     </message>
     <message>
-        <source>Messages are not yet implemented</source>
-        <translation>Meddelanden är ännu inte implementerat</translation>
-    </message>
-    <message>
         <source>Sending tweet...</source>
         <translation>Skickar tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
         <translation>Laddar upp, %1% slutfört...</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

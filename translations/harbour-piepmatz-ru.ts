@@ -226,16 +226,16 @@
         <translation>Что Вы ищете?</translation>
     </message>
     <message>
-        <source>Messages are not yet implemented</source>
-        <translation>Сообщения будут реализованы в следующей версии, простите.</translation>
-    </message>
-    <message>
         <source>Sending tweet...</source>
         <translation>Отправить твит</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
         <translation>Загрузка, %1% выполнено...</translation>
+    </message>
+    <message>
+        <source>You</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
