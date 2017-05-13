@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d'utilisation</translation>
+        <translation>Conditions d&apos;utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -76,7 +76,7 @@
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre l'image</translation>
+        <translation>Joindre l&apos;image</translation>
     </message>
     <message>
         <source>Select Images</source>
@@ -282,7 +282,7 @@
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d'utilisation</translation>
+        <translation>Conditions d&apos;utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>

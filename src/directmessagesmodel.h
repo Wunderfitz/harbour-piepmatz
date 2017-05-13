@@ -34,11 +34,12 @@ private:
     int iterations;
     QList<QString> involvedUsers;
     QVariantList messages;
+    QVariantMap users;
     QString userId;
 
     QVariantList contacts;
 
-
+    void hydrateUsers();
     void compileContacts();
 };
 

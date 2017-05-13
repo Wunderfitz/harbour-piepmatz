@@ -33,18 +33,23 @@ void DirectMessagesModel::update()
     qDebug() << "DirectMessagesModel::update";
     involvedUsers.clear();
     messages.clear();
+    users.clear();
     iterations = 0;
     involvedUsers.append(userId);
     twitterApi->directMessagesList();
-    // Get the last messages
-    // Hydrate the users
-    // Build up the contacts accordingly :)
 }
 
 void DirectMessagesModel::setUserId(const QString &userId)
 {
     qDebug() << "DirectMessagesModel::setUserId" << userId;
     this->userId = userId;
+}
+
+bool earlierMessage(const QVariant &message1, const QVariant &message2)
+{
+    QVariantMap messageMap1 = message1.toMap();
+    QVariantMap messageMap2 = message2.toMap();
+    return messageMap1.value("created_timestamp").toLongLong() < messageMap2.value("created_timestamp").toLongLong();
 }
 
 void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &result)
@@ -70,7 +75,9 @@ void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &
         iterations++;
         twitterApi->directMessagesList(nextCursor);
     } else {
-        compileContacts();
+        qDebug() << "Retrieved direct messages: " + QString::number(messages.size());
+        qSort(messages.begin(), messages.end(), earlierMessage);
+        hydrateUsers();
     }
 }
 
@@ -83,6 +90,14 @@ void DirectMessagesModel::handleDirectMessagesListError(const QString &errorMess
 void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
 {
     qDebug() << "DirectMessagesModel::handleShowUserSuccessful" << result.value("name").toString();
+    QString currentUserId = result.value("id_str").toString();
+    if (involvedUsers.contains(currentUserId)) {
+        users.insert(currentUserId, result);
+    }
+    if (users.size() == involvedUsers.size()) {
+        qDebug() << "DirectMessagesModel::handleShowUserSuccessful" << "All users hydrated, finally compiling messages list!";
+        compileContacts();
+    }
 }
 
 void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
@@ -91,12 +106,60 @@ void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
     emit updateFailed(errorMessage);
 }
 
-void DirectMessagesModel::compileContacts()
+void DirectMessagesModel::hydrateUsers()
 {
-    qDebug() << "DirectMessagesModel::compileContacts";
-    qDebug() << "Retrieved direct messages: " + QString::number(messages.size());
+    qDebug() << "DirectMessagesModel::hydrateUsers";
     QListIterator<QString> usersIterator(involvedUsers);
     while (usersIterator.hasNext()) {
         twitterApi->showUserById(usersIterator.next());
     }
+}
+
+void DirectMessagesModel::compileContacts()
+{
+    qDebug() << "DirectMessagesModel::compileContacts";
+    beginResetModel();
+    contacts.clear();
+    QMap<QString,QVariantList> rawContacts;
+    QListIterator<QString> involvedUserIterator(involvedUsers);
+    while (involvedUserIterator.hasNext()) {
+        rawContacts.insert(involvedUserIterator.next(), QVariantList());
+    }
+
+    QListIterator<QVariant> messagesIterator(messages);
+    while (messagesIterator.hasNext()) {
+        QVariant rawMessage = messagesIterator.next();
+        QVariantMap currentMessage = rawMessage.toMap().value("message_create").toMap();
+        QString senderId = currentMessage.value("sender_id").toString();
+        QString recipientId = currentMessage.value("target").toMap().value("recipient_id").toString();
+        if (senderId == userId) {
+            QVariantList contactMessages = rawContacts.value(recipientId);
+            contactMessages.append(rawMessage);
+            rawContacts.insert(recipientId, contactMessages);
+        }
+        if (recipientId == userId) {
+            QVariantList contactMessages = rawContacts.value(senderId);
+            contactMessages.append(rawMessage);
+            rawContacts.insert(senderId, contactMessages);
+        }
+    }
+    QListIterator<QString> usersIterator(users.keys());
+    while (usersIterator.hasNext()) {
+        QString currentUserId = usersIterator.next();
+        if (currentUserId == userId) {
+            continue;
+        }
+        QVariantMap contact;
+        contact.insert("user", users.value(currentUserId));
+        contact.insert("messages", rawContacts.value(currentUserId));
+        contacts.append(contact);
+    }
+    qDebug() << "Available contacts: " + QString::number(contacts.size());
+    QListIterator<QVariant> contactIterator(contacts);
+    while (contactIterator.hasNext()) {
+        QVariantMap singleContact = contactIterator.next().toMap();
+        qDebug() << singleContact.value("user").toMap().value("name").toString();
+        qDebug() << QString::number(singleContact.value("messages").toList().size());
+    }
+    endResetModel();
 }
