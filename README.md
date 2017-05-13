@@ -29,7 +29,7 @@ This project uses
 Piepmatz was translated to several languages. Thanks to all contributors!
 - Dutch: [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
 - Finnish: [Ari Järviö](https://www.transifex.com/user/profile/ari_jarvio/)
-- French: [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/)
+- French: [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
 - Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/)
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
 - Russian: [Алексей Дедун](https://www.transifex.com/user/profile/lewa/), [Юрий](https://www.transifex.com/user/profile/iAncelad/) and [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
