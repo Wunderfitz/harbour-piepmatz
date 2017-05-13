@@ -672,7 +672,7 @@ Page {
                         contentWidth: parent.width
 
                         onClicked: {
-                            // Open message page for this contact
+                            pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str });
                         }
 
                         Column {

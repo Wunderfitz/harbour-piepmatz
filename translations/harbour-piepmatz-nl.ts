@@ -239,10 +239,6 @@
 <context>
     <name>Profile</name>
     <message>
-        <source>@%1</source>
-        <translation>%@%1</translation>
-    </message>
-    <message>
         <source>%1 Following</source>
         <translation>%1 volgend</translation>
     </message>
@@ -257,6 +253,13 @@
     <message>
         <source>Joined in %1</source>
         <translation>Lid sinds %1</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileHeader</name>
+    <message>
+        <source>@%1</source>
+        <translation type="unfinished">@%1</translation>
     </message>
 </context>
 <context>

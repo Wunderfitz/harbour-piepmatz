@@ -62,7 +62,15 @@ function enhanceDescription(description) {
     return description;
 }
 
+function enhanceSimpleText(tweetText, entities) {
+    return enhanceTweetText(tweetText, entities, null, false);
+}
+
 function enhanceText(tweetText, entities, extendedEntities) {
+    return enhanceTweetText(tweetText, entities, extendedEntities, true);
+}
+
+function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUrl) {
     var replacements = [];
 
     // URLs
@@ -77,8 +85,10 @@ function enhanceText(tweetText, entities, extendedEntities) {
             var url_replacement = "<a href=\"" + entities.urls[i].expanded_url + "\">" + entities.urls[i].display_url + "</a>";
             replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, url_replacement));
             // TODO: Could fail in case of multiple references. Well, let's see what happens :D
-            referenceUrl = entities.urls[i].expanded_url;
-            twitterApi.getOpenGraph(entities.urls[i].expanded_url);
+            if (withReferenceUrl) {
+                referenceUrl = entities.urls[i].expanded_url;
+                twitterApi.getOpenGraph(entities.urls[i].expanded_url);
+            }
         }
     }
     // Remove media links - will become own QML entities
