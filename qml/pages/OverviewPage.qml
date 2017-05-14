@@ -672,7 +672,7 @@ Page {
                         contentWidth: parent.width
 
                         onClicked: {
-                            pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str });
+                            pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str, "configuration": overviewPage.configuration });
                         }
 
                         Column {
@@ -819,6 +819,39 @@ Page {
                         width: parent.width
                     }
                 }
+
+                Column {
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
+                    width: parent.width
+
+                    id: messagesNoResultsColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: ( messagesListView.count === 0 && !messagesColumn.searchInProgress ) ? 1 : 0
+                    visible: ( messagesListView.count === 0 && !messagesColumn.searchInProgress ) ? true : false
+
+                    Image {
+                        id: messagesNoResultsImage
+                        source: "../../images/piepmatz.svg"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        fillMode: Image.PreserveAspectFit
+                        width: 1/3 * parent.width
+                    }
+
+                    InfoLabel {
+                        id: messagesNoResultsText
+                        text: qsTr("No direct messages in the last 30 days")
+                        color: Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeLarge
+                        width: parent.width - 2 * Theme.horizontalPageMargin
+                    }
+                }
+
+
             }
 
             Item {

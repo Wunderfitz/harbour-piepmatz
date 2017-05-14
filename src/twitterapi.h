@@ -37,6 +37,7 @@ const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json
 const char API_FAVORITES_CREATE[] = "https://api.twitter.com/1.1/favorites/create.json";
 const char API_FAVORITES_DESTROY[] = "https://api.twitter.com/1.1/favorites/destroy.json";
 const char API_DIRECT_MESSAGES_LIST[] = "https://api.twitter.com/1.1/direct_messages/events/list.json";
+const char API_DIRECT_MESSAGES_NEW[] = "https://api.twitter.com/1.1/direct_messages/events/new.json";
 
 class TwitterApi : public QObject {
 
@@ -69,6 +70,7 @@ public:
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
     Q_INVOKABLE void directMessagesList(const QString &cursor = "");
+    Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
 
@@ -116,6 +118,8 @@ signals:
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
     void directMessagesListSuccessful(const QVariantMap &result);
     void directMessagesListError(const QString &errorMessage);
+    void directMessagesNewSuccessful(const QVariantMap &result);
+    void directMessagesNewError(const QString &errorMessage);
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
@@ -165,6 +169,8 @@ private slots:
     void handleUnretweetFinished();
     void handleDirectMessagesListError(QNetworkReply::NetworkError error);
     void handleDirectMessagesListFinished();
+    void handleDirectMessagesNewError(QNetworkReply::NetworkError error);
+    void handleDirectMessagesNewFinished();
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();

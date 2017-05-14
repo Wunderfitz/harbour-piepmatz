@@ -90,7 +90,7 @@ void DirectMessagesModel::handleDirectMessagesListError(const QString &errorMess
 
 void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
 {
-    qDebug() << "DirectMessagesModel::handleShowUserSuccessful" << result.value("name").toString();
+    qDebug() << "DirectMessagesModel::handleShowUserSuccessful" << result.value("id_str").toString() << result.value("name").toString();
     QString currentUserId = result.value("id_str").toString();
     if (involvedUsers.contains(currentUserId)) {
         users.insert(currentUserId, result);

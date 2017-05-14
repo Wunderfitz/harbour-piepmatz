@@ -624,6 +624,39 @@ void TwitterApi::directMessagesList(const QString &cursor)
     connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesListFinished()));
 }
 
+void TwitterApi::directMessagesNew(const QString &text, const QString &recipientId)
+{
+    qDebug() << "TwitterApi::directMessagesNew" << recipientId;
+    QUrl url = QUrl(API_DIRECT_MESSAGES_NEW);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_JSON);
+
+    QJsonObject messageTargetObject;
+    messageTargetObject.insert("recipient_id", recipientId);
+    QJsonObject messageDataObject;
+    messageDataObject.insert("text", text);
+    QJsonObject messageCreateObject;
+    messageCreateObject.insert("target", messageTargetObject);
+    messageCreateObject.insert("message_data", messageDataObject);
+
+    QJsonObject eventObject;
+    eventObject.insert("type", QString("message_create"));
+    eventObject.insert("message_create", messageCreateObject);
+
+    QJsonObject requestObject;
+    requestObject.insert("event", eventObject);
+
+    QJsonDocument requestDocument(requestObject);
+    QByteArray jsonAsByteArray = requestDocument.toJson();
+    request.setHeader(QNetworkRequest::ContentLengthHeader, QByteArray::number(jsonAsByteArray.size()));
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->post(request, requestParameters, jsonAsByteArray);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDirectMessagesNewError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesNewFinished()));
+}
+
 void TwitterApi::getOpenGraph(const QString &address)
 {
     qDebug() << "TwitterApi::getOpenGraph" << address;
@@ -1037,6 +1070,31 @@ void TwitterApi::handleDirectMessagesListFinished()
         emit directMessagesListSuccessful(responseObject.toVariantMap());
     } else {
         emit directMessagesListError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleDirectMessagesNewError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleDirectMessagesNewError:" << (int)error << reply->errorString() << reply->readAll();
+    emit directMessagesNewError(reply->errorString());
+}
+
+void TwitterApi::handleDirectMessagesNewFinished()
+{
+    qDebug() << "TwitterApi::handleDirectMessagesNewFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit directMessagesNewSuccessful(responseObject.toVariantMap());
+    } else {
+        emit directMessagesNewError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

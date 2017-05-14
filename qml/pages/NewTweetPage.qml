@@ -114,6 +114,7 @@ Page {
                 onTextChanged: {
                     remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
                 }
+                errorHighlight: remainingCharactersText.text < 0
             }
 
             Text {

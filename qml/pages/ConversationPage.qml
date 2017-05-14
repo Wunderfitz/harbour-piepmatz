@@ -2,17 +2,34 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
 import "../js/functions.js" as Functions
+import "../js/twitter-text.js" as TwitterText
 
 Page {
     id: conversationPage
     allowedOrientations: Orientation.All
 
     property variant conversationModel;
+    property variant configuration;
     property string myUserId;
     property bool loaded : true;
 
+    function getRemainingCharacters(text, configuration) {
+        return 10000 - TwitterText.twttr.txt.getTweetLength(text, configuration);
+    }
+
     Notification {
         id: conversationNotification
+    }
+
+    Connections {
+        target: twitterApi
+
+        onDirectMessagesNewSuccessful: {
+        }
+
+        onDirectMessagesNewError: {
+            conversationNotification.show(errorMessage);
+        }
     }
 
     ProfileHeader {
@@ -20,6 +37,7 @@ Page {
         profileModel: conversationModel.user
         width: parent.width
     }
+
 
     SilicaFlickable {
         id: conversationContainer
@@ -40,7 +58,8 @@ Page {
             id: conversationListView
             Component.onCompleted: positionViewAtEnd();
 
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height - newMessageRow.height
 
             clip: true
 
@@ -102,6 +121,50 @@ Page {
 
             VerticalScrollDecorator {}
         }
+
+
+        Row {
+            id: newMessageRow
+            width: parent.width - Theme.horizontalPageMargin
+            height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
+            anchors.top: conversationListView.bottom
+            anchors.left: parent.left
+            spacing: Theme.paddingMedium
+            TextField {
+                id: newMessageTextField
+                width: parent.width - Theme.fontSizeMedium - ( 2 * Theme.paddingMedium )
+                font.pixelSize: Theme.fontSizeSmall
+                placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
+                labelVisible: false
+                errorHighlight: remainingCharactersText.text < 0
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Column {
+                id: sendMessageColumn
+                width: Theme.fontSizeMedium
+                anchors.verticalCenter: parent.verticalCenter
+                IconButton {
+                    id: newMessageSendButton
+                    icon.source: "image://theme/icon-m-bubble-universal"
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    onClicked: {
+                        twitterApi.directMessagesNew(newMessageTextField.text, conversationModel.user.id_str);
+                        newMessageTextField.text = "";
+                        newMessageTextField.focus = false;
+                    }
+                }
+                Text {
+                    id: remainingCharactersText
+                    text: Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0)
+                    color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    font.bold: remainingCharactersText.text < 0 ? true : false
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+
     }
+
 }
 

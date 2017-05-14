@@ -86,6 +86,13 @@
     </message>
 </context>
 <context>
+    <name>ConversationPage</name>
+    <message>
+        <source>New message to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
@@ -235,6 +242,10 @@
     </message>
     <message>
         <source>You</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No direct messages in the last 30 days</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
