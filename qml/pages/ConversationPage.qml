@@ -25,6 +25,16 @@ Page {
         target: twitterApi
 
         onDirectMessagesNewSuccessful: {
+            console.log("New message sent: " + result.event.message_create.message_data.text);
+            var newMessages = conversationListView.model;
+            console.log("Messages in old list: " + conversationListView.model.length);
+            console.log("Messages in new list: " + newMessages.length);
+            newMessages.push(result.event);
+            console.log("Messages in old list: " + conversationListView.model.length);
+            console.log("Messages in new list: " + newMessages.length);
+            conversationListView.model = newMessages;
+
+            conversationListView.positionViewAtEnd();
         }
 
         onDirectMessagesNewError: {
@@ -130,15 +140,29 @@ Page {
             anchors.top: conversationListView.bottom
             anchors.left: parent.left
             spacing: Theme.paddingMedium
-            TextField {
-                id: newMessageTextField
+            Column {
                 width: parent.width - Theme.fontSizeMedium - ( 2 * Theme.paddingMedium )
-                font.pixelSize: Theme.fontSizeSmall
-                placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
-                labelVisible: false
-                errorHighlight: remainingCharactersText.text < 0
                 anchors.verticalCenter: parent.verticalCenter
+                TextField {
+                    id: newMessageTextField
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                    placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
+                    labelVisible: false
+                    errorHighlight: remainingCharactersText.text < 0
+
+                }
+                Text {
+                    id: remainingCharactersText
+                    text: qsTr("%1 characters left for your message").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
+                    color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    font.bold: remainingCharactersText.text < 0 ? true : false
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                }
             }
+
             Column {
                 id: sendMessageColumn
                 width: Theme.fontSizeMedium
@@ -152,14 +176,6 @@ Page {
                         newMessageTextField.text = "";
                         newMessageTextField.focus = false;
                     }
-                }
-                Text {
-                    id: remainingCharactersText
-                    text: Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0)
-                    color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeTiny
-                    font.bold: remainingCharactersText.text < 0 ? true : false
-                    anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
         }

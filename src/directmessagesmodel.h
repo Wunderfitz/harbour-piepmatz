@@ -28,6 +28,8 @@ signals:
 private slots:
     void handleDirectMessagesListSuccessful(const QVariantMap &result);
     void handleDirectMessagesListError(const QString &errorMessage);
+    void handleDirectMessagesNewSuccessful(const QVariantMap &result);
+    void handleDirectMessagesNewError(const QString &errorMessage);
     void handleShowUserSuccessful(const QVariantMap &result);
     void handleShowUserError(const QString &errorMessage);
 
@@ -38,6 +40,8 @@ private:
     QVariantList messages;
     QVariantMap users;
     QString userId;
+    bool incrementalUpdate;
+    QVariantMap currentMessage;
 
     QVariantList contacts;
 

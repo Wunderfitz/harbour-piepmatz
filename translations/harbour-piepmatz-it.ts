@@ -89,6 +89,10 @@
         <source>New message to %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>%1 characters left for your message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
