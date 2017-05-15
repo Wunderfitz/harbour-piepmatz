@@ -25,13 +25,8 @@ Page {
         target: twitterApi
 
         onDirectMessagesNewSuccessful: {
-            console.log("New message sent: " + result.event.message_create.message_data.text);
             var newMessages = conversationListView.model;
-            console.log("Messages in old list: " + conversationListView.model.length);
-            console.log("Messages in new list: " + newMessages.length);
             newMessages.push(result.event);
-            console.log("Messages in old list: " + conversationListView.model.length);
-            console.log("Messages in new list: " + newMessages.length);
             conversationListView.model = newMessages;
 
             conversationListView.positionViewAtEnd();
@@ -150,7 +145,6 @@ Page {
                     placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
                     labelVisible: false
                     errorHighlight: remainingCharactersText.text < 0
-
                 }
                 Text {
                     id: remainingCharactersText

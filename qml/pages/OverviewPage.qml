@@ -864,6 +864,7 @@ Page {
 
                 property bool searchInProgress : false;
                 property bool inTransition : false;
+                property bool userSearchSelected : false;
 
                 Connections {
                     target: searchModel
@@ -889,12 +890,64 @@ Page {
                     }
                 }
 
+                Row {
+                    id: searchTypeRow
+                    width: parent.width
+                    height: Theme.fontSizeLarge
+                    anchors.top: parent.top
+                    anchors.topMargin: Theme.paddingMedium
+                    Text {
+                        id: searchTypeTweets
+                        width: ( parent.width / 2 )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: searchColumn.userSearchSelected ? Theme.primaryColor : Theme.highlightColor
+                        textFormat: Text.PlainText
+                        text: qsTr("Tweets")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (searchColumn.userSearchSelected) {
+                                    searchColumn.userSearchSelected = false;
+                                }
+                            }
+                        }
+                    }
+                    Separator {
+                        width: Theme.fontSizeMedium
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                        transform: Rotation {
+                            angle: 90
+                        }
+                    }
+                    Text {
+                        id: searchTypeUsers
+                        width: ( parent.width / 2 ) - ( 2 * Theme.fontSizeMedium )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: searchColumn.userSearchSelected ? Theme.highlightColor : Theme.primaryColor
+                        textFormat: Text.PlainText
+                        text: qsTr("Users")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (!searchColumn.userSearchSelected) {
+                                    searchColumn.userSearchSelected = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 SearchField {
                     id: searchField
                     width: parent.width
                     placeholderText: qsTr("Search on Twitter...")
                     anchors {
-                        top: parent.top
+                        top: searchTypeRow.bottom
                     }
 
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
@@ -913,7 +966,7 @@ Page {
                     }
                     id: searchResultsListView
                     width: parent.width
-                    height: parent.height - searchField.height
+                    height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingSmall
                     anchors.horizontalCenter: parent.horizontalCenter
                     opacity: searchColumn.searchInProgress ? 0 : 1
                     visible: searchColumn.searchInProgress ? false : true

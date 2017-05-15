@@ -252,6 +252,14 @@
         <source>No direct messages in the last 30 days</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Tweets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Users</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
