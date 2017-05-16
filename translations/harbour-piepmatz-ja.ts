@@ -90,7 +90,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>%1 characters left for your message</source>
+        <source>%1 characters left</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -223,10 +223,6 @@
         <translation>Twitterで検索...</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>検索中...</translation>
-    </message>
-    <message>
         <source>No results found</source>
         <translation>検索結果がみつかりませんでした</translation>
     </message>
@@ -256,6 +252,10 @@
     </message>
     <message>
         <source>Users</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Searching...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

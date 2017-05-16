@@ -828,8 +828,8 @@ Page {
 
                     id: messagesNoResultsColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: ( messagesListView.count === 0 && !messagesColumn.searchInProgress ) ? 1 : 0
-                    visible: ( messagesListView.count === 0 && !messagesColumn.searchInProgress ) ? true : false
+                    opacity: messagesListView.count === 0 ? 1 : 0
+                    visible: messagesListView.count === 0 ? true : false
 
                     Image {
                         id: messagesNoResultsImage
@@ -862,19 +862,35 @@ Page {
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
 
-                property bool searchInProgress : false;
-                property bool inTransition : false;
-                property bool userSearchSelected : false;
+                property bool tweetSearchInProgress : false;
+                property bool usersSearchInProgress : false;
+                property bool tweetSearchInTransition : false;
+                property bool usersSearchInTransition : false;
+
+                property bool usersSearchSelected : false;
 
                 Connections {
                     target: searchModel
                     onSearchFinished: {
-                        searchColumn.searchInProgress = false;
-                        searchColumn.inTransition = false;
+                        searchColumn.tweetSearchInProgress = false;
+                        searchColumn.tweetSearchInTransition = false;
                     }
                     onSearchError: {
-                        searchColumn.searchInProgress = false;
-                        searchColumn.inTransition = false;
+                        searchColumn.tweetSearchInProgress = false;
+                        searchColumn.tweetSearchInTransition = false;
+                        overviewNotification.show(errorMessage);
+                    }
+                }
+
+                Connections {
+                    target: searchUsersModel
+                    onSearchFinished: {
+                        searchColumn.usersSearchInProgress = false;
+                        searchColumn.usersSearchInTransition = false;
+                    }
+                    onSearchError: {
+                        searchColumn.usersSearchInProgress = false;
+                        searchColumn.usersSearchInTransition = false;
                         overviewNotification.show(errorMessage);
                     }
                 }
@@ -885,60 +901,10 @@ Page {
                     running: false
                     repeat: false
                     onTriggered: {
-                        searchColumn.searchInProgress = true;
-                        searchModel.search(searchField.text)
-                    }
-                }
-
-                Row {
-                    id: searchTypeRow
-                    width: parent.width
-                    height: Theme.fontSizeLarge
-                    anchors.top: parent.top
-                    anchors.topMargin: Theme.paddingMedium
-                    Text {
-                        id: searchTypeTweets
-                        width: ( parent.width / 2 )
-                        font.pixelSize: Theme.fontSizeMedium
-                        font.capitalization: Font.SmallCaps
-                        horizontalAlignment: Text.AlignHCenter
-                        color: searchColumn.userSearchSelected ? Theme.primaryColor : Theme.highlightColor
-                        textFormat: Text.PlainText
-                        text: qsTr("Tweets")
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                if (searchColumn.userSearchSelected) {
-                                    searchColumn.userSearchSelected = false;
-                                }
-                            }
-                        }
-                    }
-                    Separator {
-                        width: Theme.fontSizeMedium
-                        color: Theme.primaryColor
-                        horizontalAlignment: Qt.AlignHCenter
-                        transform: Rotation {
-                            angle: 90
-                        }
-                    }
-                    Text {
-                        id: searchTypeUsers
-                        width: ( parent.width / 2 ) - ( 2 * Theme.fontSizeMedium )
-                        font.pixelSize: Theme.fontSizeMedium
-                        font.capitalization: Font.SmallCaps
-                        horizontalAlignment: Text.AlignHCenter
-                        color: searchColumn.userSearchSelected ? Theme.highlightColor : Theme.primaryColor
-                        textFormat: Text.PlainText
-                        text: qsTr("Users")
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                if (!searchColumn.userSearchSelected) {
-                                    searchColumn.userSearchSelected = true;
-                                }
-                            }
-                        }
+                        searchColumn.tweetSearchInProgress = true;
+                        searchColumn.usersSearchInProgress = true;
+                        searchModel.search(searchField.text);
+                        searchUsersModel.search(searchField.text);
                     }
                 }
 
@@ -947,29 +913,87 @@ Page {
                     width: parent.width
                     placeholderText: qsTr("Search on Twitter...")
                     anchors {
-                        top: searchTypeRow.bottom
+                        top: parent.top
                     }
 
                     EnterKey.iconSource: "image://theme/icon-m-enter-close"
                     EnterKey.onClicked: focus = false
 
                     onTextChanged: {
-                        searchColumn.inTransition = true;
+                        searchColumn.tweetSearchInTransition = true;
+                        searchColumn.usersSearchInTransition = true;
                         searchTimer.stop()
                         searchTimer.start()
                     }
                 }
 
+                Row {
+                    id: searchTypeRow
+                    width: parent.width
+                    height: Theme.fontSizeLarge + Theme.paddingMedium
+                    anchors.top: searchField.bottom
+                    anchors.topMargin: Theme.paddingMedium
+                    opacity: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || searchResultsListView.count === 0 ) ? 0 : 1
+                    visible: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || searchResultsListView.count === 0 ) ? false : true
+                    Behavior on opacity { NumberAnimation {} }
+                    Text {
+                        id: searchTypeTweets
+                        width: ( parent.width / 2 )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: searchColumn.usersSearchSelected ? Theme.primaryColor : Theme.highlightColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
+                        text: qsTr("Tweets")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (searchColumn.usersSearchSelected) {
+                                    searchColumn.usersSearchSelected = false;
+                                }
+                            }
+                        }
+                    }
+                    Separator {
+                        width: Theme.fontSizeMedium
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: Theme.paddingSmall
+                        transform: Rotation { angle: 90 }
+                    }
+                    Text {
+                        id: searchTypeUsers
+                        width: ( parent.width / 2 ) - ( 2 * Theme.fontSizeMedium )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: searchColumn.usersSearchSelected ? Theme.highlightColor : Theme.primaryColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
+                        text: qsTr("Users")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (!searchColumn.usersSearchSelected) {
+                                    searchColumn.usersSearchSelected = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 SilicaListView {
                     anchors {
-                        top: searchField.bottom
+                        top: searchTypeRow.bottom
                     }
                     id: searchResultsListView
                     width: parent.width
-                    height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingSmall
+                    height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
-                    opacity: searchColumn.searchInProgress ? 0 : 1
-                    visible: searchColumn.searchInProgress ? false : true
+                    opacity: ( !searchColumn.tweetSearchInProgress && !searchColumn.usersSearchSelected ) ? 1 : 0
+                    visible: ( !searchColumn.tweetSearchInProgress && !searchColumn.usersSearchSelected ) ? true : false
                     Behavior on opacity { NumberAnimation {} }
 
                     clip: true
@@ -977,6 +1001,27 @@ Page {
                     model: searchModel
                     delegate: Tweet {
                         tweetModel: display
+                    }
+                    VerticalScrollDecorator {}
+                }
+
+                SilicaListView {
+                    anchors {
+                        top: searchTypeRow.bottom
+                    }
+                    id: usersSearchResultsListView
+                    width: parent.width
+                    height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingMedium
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    opacity: ( !searchColumn.usersSearchInProgress && searchColumn.usersSearchSelected ) ? 1 : 0
+                    visible: ( !searchColumn.usersSearchInProgress && searchColumn.usersSearchSelected ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
+
+                    clip: true
+
+                    model: searchUsersModel
+                    delegate: User {
+                        userModel: display
                     }
                     VerticalScrollDecorator {}
                 }
@@ -989,13 +1034,13 @@ Page {
 
                     id: searchInProgressColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: searchColumn.searchInProgress ? 1 : 0
-                    visible: searchColumn.searchInProgress ? true : false
+                    opacity: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ? 1 : 0
+                    visible: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ? true : false
 
                     BusyIndicator {
                         id: searchInProgressIndicator
                         anchors.horizontalCenter: parent.horizontalCenter
-                        running: searchColumn.searchInProgress
+                        running: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress )
                         size: BusyIndicatorSize.Medium
                     }
 
@@ -1015,8 +1060,8 @@ Page {
 
                     id: searchNoResultsColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: ( searchResultsListView.count === 0 && !searchColumn.searchInProgress ) ? 1 : 0
-                    visible: ( searchResultsListView.count === 0 && !searchColumn.searchInProgress ) ? true : false
+                    opacity: ( searchResultsListView.count === 0 && usersSearchResultsListView.count === 0 && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? 1 : 0
+                    visible: ( searchResultsListView.count === 0 && usersSearchResultsListView.count === 0 && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? true : false
 
                     Image {
                         id: searchNoResultsImage
@@ -1031,7 +1076,7 @@ Page {
 
                     InfoLabel {
                         id: searchNoResultsText
-                        text: ( searchField.text === "" || searchColumn.inTransition ) ? qsTr("What are you looking for?") : qsTr("No results found")
+                        text: ( searchField.text === "" || searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ? qsTr("What are you looking for?") : qsTr("No results found")
                         color: Theme.primaryColor
                         font.pixelSize: Theme.fontSizeLarge
                         width: parent.width - 2 * Theme.horizontalPageMargin

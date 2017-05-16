@@ -148,7 +148,7 @@ Page {
                 }
                 Text {
                     id: remainingCharactersText
-                    text: qsTr("%1 characters left for your message").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
+                    text: qsTr("%1 characters left").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
                     color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
                     font.pixelSize: Theme.fontSizeTiny
                     font.bold: remainingCharactersText.text < 0 ? true : false

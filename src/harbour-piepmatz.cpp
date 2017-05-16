@@ -21,6 +21,7 @@
 #include "twitterapi.h"
 #include "timelinemodel.h"
 #include "searchmodel.h"
+#include "searchusersmodel.h"
 #include "mentionsmodel.h"
 #include "imagesmodel.h"
 #include "directmessagesmodel.h"
@@ -43,6 +44,9 @@ int main(int argc, char *argv[])
 
     SearchModel searchModel(twitterApi);
     context->setContextProperty("searchModel", &searchModel);
+
+    SearchUsersModel searchUsersModel(twitterApi);
+    context->setContextProperty("searchUsersModel", &searchUsersModel);
 
     MentionsModel mentionsModel(twitterApi);
     context->setContextProperty("mentionsModel", &mentionsModel);

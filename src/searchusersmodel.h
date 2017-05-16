@@ -1,15 +1,15 @@
-#ifndef SEARCHMODEL_H
-#define SEARCHMODEL_H
+#ifndef SEARCHUSERSMODEL_H
+#define SEARCHUSERSMODEL_H
 
 #include <QAbstractListModel>
 #include <QVariantList>
 #include "twitterapi.h"
 
-class SearchModel : public QAbstractListModel
+class SearchUsersModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    SearchModel(TwitterApi *twitterApi);
+    SearchUsersModel(TwitterApi *twitterApi);
 
     virtual int rowCount(const QModelIndex &) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
@@ -21,8 +21,8 @@ signals:
     void searchError(const QString &errorMessage);
 
 public slots:
-    void handleSearchTweetsSuccessful(const QVariantList &result);
-    void handleSearchTweetsError(const QString &errorMessage);
+    void handleSearchUsersSuccessful(const QVariantList &result);
+    void handleSearchUsersError(const QString &errorMessage);
 
 private:
     QVariantList searchResults;
@@ -30,4 +30,4 @@ private:
     bool searchInProgress;
 };
 
-#endif // SEARCHMODEL_H
+#endif // SEARCHUSERSMODEL_H
