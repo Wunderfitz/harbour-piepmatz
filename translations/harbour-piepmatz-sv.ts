@@ -303,6 +303,10 @@
         <source>You don&apos;t follow %1 anymore.</source>
         <translation>Du följer inte längre %1.</translation>
     </message>
+    <message>
+        <source>Send Direct Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

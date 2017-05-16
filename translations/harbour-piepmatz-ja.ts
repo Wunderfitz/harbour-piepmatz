@@ -303,6 +303,10 @@
         <source>You don&apos;t follow %1 anymore.</source>
         <translation>%1 のフォローを解除しました</translation>
     </message>
+    <message>
+        <source>Send Direct Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

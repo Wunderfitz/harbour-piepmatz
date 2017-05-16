@@ -305,6 +305,10 @@
         <source>You don&apos;t follow %1 anymore.</source>
         <translation>Вы больше не подписаны на %1.</translation>
     </message>
+    <message>
+        <source>Send Direct Message</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

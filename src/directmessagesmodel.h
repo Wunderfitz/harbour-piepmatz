@@ -19,6 +19,7 @@ public:
 
     Q_INVOKABLE void update();
     Q_INVOKABLE void setUserId(const QString &userId);
+    Q_INVOKABLE QVariantList getMessagesForUserId(const QString &userId);
 
 signals:
     void updateMessagesError(const QString &errorMessage);

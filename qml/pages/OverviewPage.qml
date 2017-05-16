@@ -933,8 +933,8 @@ Page {
                     height: Theme.fontSizeLarge + Theme.paddingMedium
                     anchors.top: searchField.bottom
                     anchors.topMargin: Theme.paddingMedium
-                    opacity: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || searchResultsListView.count === 0 ) ? 0 : 1
-                    visible: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || searchResultsListView.count === 0 ) ? false : true
+                    opacity: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || (searchResultsListView.count === 0 && usersSearchResultsListView.count === 0)) ? 0 : 1
+                    visible: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || (searchResultsListView.count === 0 && usersSearchResultsListView.count === 0)) ? false : true
                     Behavior on opacity { NumberAnimation {} }
                     Text {
                         id: searchTypeTweets
@@ -1060,8 +1060,8 @@ Page {
 
                     id: searchNoResultsColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: ( searchResultsListView.count === 0 && usersSearchResultsListView.count === 0 && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? 1 : 0
-                    visible: ( searchResultsListView.count === 0 && usersSearchResultsListView.count === 0 && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? true : false
+                    opacity: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? 1 : 0
+                    visible: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? true : false
 
                     Image {
                         id: searchNoResultsImage

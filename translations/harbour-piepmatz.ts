@@ -87,11 +87,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>New message to %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 characters left</translation>
     </message>
 </context>
 <context>
@@ -105,14 +105,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Followers</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Following</translation>
     </message>
 </context>
 <context>
@@ -240,23 +240,23 @@
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>You</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>No direct messages in the last 30 days</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweets</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Users</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Searching...</translation>
     </message>
 </context>
 <context>
@@ -282,7 +282,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -302,6 +302,10 @@
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
         <translation>You don&apos;t follow %1 anymore.</translation>
+    </message>
+    <message>
+        <source>Send Direct Message</source>
+        <translation>Send Direct Message</translation>
     </message>
 </context>
 <context>

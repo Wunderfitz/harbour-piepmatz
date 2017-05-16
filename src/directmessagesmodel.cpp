@@ -50,6 +50,18 @@ void DirectMessagesModel::setUserId(const QString &userId)
     this->userId = userId;
 }
 
+QVariantList DirectMessagesModel::getMessagesForUserId(const QString &userId)
+{
+    QListIterator<QVariant> contactsIterator(contacts);
+    while (contactsIterator.hasNext()) {
+        QVariantMap currentContact = contactsIterator.next().toMap();
+        if (currentContact.value("user").toMap().value("id_str") == userId ) {
+            return currentContact.value("messages").toList();
+        }
+    }
+    return QVariantList();
+}
+
 bool earlierMessage(const QVariant &message1, const QVariant &message2)
 {
     QVariantMap messageMap1 = message1.toMap();

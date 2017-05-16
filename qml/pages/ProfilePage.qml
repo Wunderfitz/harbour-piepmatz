@@ -81,6 +81,13 @@ Page {
                             }
                         }
                     }
+                    MenuItem {
+                        text: qsTr("Send Direct Message")
+                        onClicked: {
+                            var myConversationModel = { user : profileModel, messages: directMessagesModel.getMessagesForUserId(profileModel.id_str) };
+                            pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : myConversationModel, "myUserId": profileModel.id_str });
+                        }
+                    }
                 }
             }
         }
