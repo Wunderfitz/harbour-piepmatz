@@ -87,6 +87,10 @@ Page {
         return lastMessage.message_data.text;
     }
 
+    function getConversationTimeElapsed(conversation) {
+        return Format.formatDate(new Date(parseInt(conversation[conversation.length - 1].created_timestamp)), Formatter.DurationElapsed);
+    }
+
     property string activeTabId: "home";
     property variant myUser;
     property bool initializationCompleted : false;
@@ -775,6 +779,12 @@ Page {
                                             width: parent.width - Theme.paddingMedium - messageContactLastUserText.width
                                             elide: Text.ElideRight
                                         }
+                                    }
+                                    Text {
+                                        id: messageContactTimeElapsedText
+                                        text: getConversationTimeElapsed(display.messages)
+                                        font.pixelSize: Theme.fontSizeTiny
+                                        color: Theme.highlightColor
                                     }
                                 }
                             }

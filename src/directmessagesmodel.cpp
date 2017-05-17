@@ -133,6 +133,23 @@ void DirectMessagesModel::handleDirectMessagesNewError(const QString &errorMessa
     // Nothing to do for now, UI will display a notification anyway
 }
 
+bool reverseTimestamp(const QVariant &contact1, const QVariant &contact2)
+{
+    QVariantList messages1 = contact1.toMap().value("messages").toList();
+    QVariantList messages2 = contact2.toMap().value("messages").toList();
+    qlonglong timestamp1 = 0;
+    qlonglong timestamp2 = 0;
+
+    if (!messages1.isEmpty()) {
+        timestamp1 = messages1.last().toMap().value("created_timestamp").toLongLong();
+    }
+    if (!messages2.isEmpty()) {
+        timestamp2 = messages2.last().toMap().value("created_timestamp").toLongLong();
+    }
+
+    return timestamp1 > timestamp2;
+}
+
 void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
 {
     qDebug() << "DirectMessagesModel::handleShowUserSuccessful" << result.value("id_str").toString() << result.value("name").toString();
@@ -148,6 +165,7 @@ void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
         contact.insert("user", result);
         contact.insert("messages", messagesList);
         contacts.append(contact);
+        qSort(contacts.begin(), contacts.end(), reverseTimestamp);
         endResetModel();
     } else {
         qDebug() << "DirectMessagesModel::handleShowUserSuccessful - FULL update";
@@ -215,6 +233,7 @@ void DirectMessagesModel::compileContacts()
         contact.insert("messages", rawContacts.value(currentUserId));
         contacts.append(contact);
     }
+    qSort(contacts.begin(), contacts.end(), reverseTimestamp);
     endResetModel();
     emit updateMessagesFinished();
 }
