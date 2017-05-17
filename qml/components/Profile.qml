@@ -18,7 +18,7 @@ Item {
     property bool loadingError : false;
 
     Component.onCompleted: {
-        console.log("Profile Model called for " + profileModel.screen_name);
+        console.log("Profile Model called for " + profileModel.id_str + ": " + profileModel.screen_name);
         twitterApi.userTimeline(profileModel.screen_name);
     }
 

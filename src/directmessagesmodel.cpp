@@ -123,7 +123,7 @@ void DirectMessagesModel::handleDirectMessagesNewSuccessful(const QVariantMap &r
         }
     }
     incrementalUpdate = true;
-    currentMessage = result;
+    currentMessage = newMessage;
     twitterApi->showUserById(messageRecipientId);
 }
 

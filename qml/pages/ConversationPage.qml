@@ -145,6 +145,8 @@ Page {
                     placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
                     labelVisible: false
                     errorHighlight: remainingCharactersText.text < 0
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                    EnterKey.onClicked: focus = false
                 }
                 Text {
                     id: remainingCharactersText
