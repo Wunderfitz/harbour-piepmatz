@@ -59,121 +59,131 @@ Page {
             width: parent.width
         }
 
-        SilicaListView {
-            id: conversationListView
-            Component.onCompleted: positionViewAtEnd();
-
+        Column {
+            id: messageListColumn
             width: parent.width
-            height: parent.height - newMessageRow.height
+            height: parent.height
 
-            clip: true
+            SilicaListView {
+                id: conversationListView
+                Component.onCompleted: positionViewAtEnd();
 
-            model: conversationModel.messages
-            delegate: ListItem {
+                width: parent.width
+                height: parent.height
 
-                id: messageListItem
-                contentHeight: messageTextItem.height + ( 2 * Theme.paddingMedium )
-                contentWidth: parent.width
+                clip: true
 
-                Column {
-                    id: messageTextItem
+                model: conversationModel.messages
+                delegate: ListItem {
 
-                    spacing: Theme.paddingSmall
+                    id: messageListItem
+                    contentHeight: messageTextItem.height + ( 2 * Theme.paddingMedium )
+                    contentWidth: parent.width
 
-                    width: parent.width
-                    height: messageText.height + messageDateText.height + ( 2 * Theme.paddingMedium )
-                    anchors.verticalCenter: parent.verticalCenter
+                    Column {
+                        id: messageTextItem
 
-                    Text {
-                        anchors {
-                            left: parent.left
-                            leftMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
-                            right: parent.right
-                            rightMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                        spacing: Theme.paddingSmall
+
+                        width: parent.width
+                        height: messageText.height + messageDateText.height + ( 2 * Theme.paddingMedium )
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        Text {
+                            anchors {
+                                left: parent.left
+                                leftMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
+                                right: parent.right
+                                rightMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            }
+
+                            id: messageText
+                            text: Functions.enhanceSimpleText(modelData.message_create.message_data.text, modelData.message_create.message_data.entities)
+                            font.pixelSize: Theme.fontSizeSmall
+                            color: modelData.message_create.sender_id === conversationPage.myUserId ? Theme.highlightColor : Theme.primaryColor
+                            wrapMode: Text.Wrap
+                            textFormat: Text.StyledText
+                            onLinkActivated: {
+                                Functions.handleLink(link);
+                            }
+                            horizontalAlignment: (modelData.message_create.sender_id === conversationPage.myUserId) ? Text.AlignRight : Text.AlignLeft
+                            linkColor: Theme.highlightColor
                         }
 
-                        id: messageText
-                        text: Functions.enhanceSimpleText(modelData.message_create.message_data.text, modelData.message_create.message_data.entities)
-                        font.pixelSize: Theme.fontSizeSmall
-                        color: modelData.message_create.sender_id === conversationPage.myUserId ? Theme.highlightColor : Theme.primaryColor
-                        wrapMode: Text.Wrap
-                        textFormat: Text.StyledText
-                        onLinkActivated: {
-                            Functions.handleLink(link);
-                        }
-                        horizontalAlignment: (modelData.message_create.sender_id === conversationPage.myUserId) ? Text.AlignRight : Text.AlignLeft
-                        linkColor: Theme.highlightColor
-                    }
+                        Text {
+                            anchors {
+                                left: parent.left
+                                leftMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
+                                right: parent.right
+                                rightMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            }
 
-                    Text {
-                        anchors {
-                            left: parent.left
-                            leftMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? 4 * Theme.horizontalPageMargin : Theme.horizontalPageMargin
-                            right: parent.right
-                            rightMargin: (modelData.message_create.sender_id === conversationPage.myUserId) ? Theme.horizontalPageMargin : 4 * Theme.horizontalPageMargin
+                            id: messageDateText
+                            text: Format.formatDate(new Date(parseInt(modelData.created_timestamp)), Formatter.DurationElapsed);
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: modelData.message_create.sender_id === conversationPage.myUserId ? Theme.highlightColor : Theme.primaryColor
+                            horizontalAlignment: (modelData.message_create.sender_id === conversationPage.myUserId) ? Text.AlignRight : Text.AlignLeft
                         }
 
-                        id: messageDateText
-                        text: Format.formatDate(new Date(parseInt(modelData.created_timestamp)), Formatter.DurationElapsed);
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: modelData.message_create.sender_id === conversationPage.myUserId ? Theme.highlightColor : Theme.primaryColor
-                        horizontalAlignment: (modelData.message_create.sender_id === conversationPage.myUserId) ? Text.AlignRight : Text.AlignLeft
                     }
 
                 }
 
+                footer: footerComponent
+
+                VerticalScrollDecorator { flickable: conversationListView }
             }
 
-            VerticalScrollDecorator {}
-        }
-
-
-        Row {
-            id: newMessageRow
-            width: parent.width - Theme.horizontalPageMargin
-            height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
-            anchors.top: conversationListView.bottom
-            anchors.left: parent.left
-            spacing: Theme.paddingMedium
-            Column {
-                width: parent.width - Theme.fontSizeMedium - ( 2 * Theme.paddingMedium )
-                anchors.verticalCenter: parent.verticalCenter
-                TextField {
-                    id: newMessageTextField
-                    width: parent.width
-                    font.pixelSize: Theme.fontSizeSmall
-                    placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
-                    labelVisible: false
-                    errorHighlight: remainingCharactersText.text < 0
-                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                    EnterKey.onClicked: focus = false
-                }
-                Text {
-                    id: remainingCharactersText
-                    text: qsTr("%1 characters left").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
-                    color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeTiny
-                    font.bold: remainingCharactersText.text < 0 ? true : false
+            Component {
+                id: footerComponent
+                Row {
+                    id: newMessageRow
+                    width: parent.width - Theme.horizontalPageMargin
+                    height: sendMessageColumn.height + ( 2 * Theme.paddingLarge )
                     anchors.left: parent.left
-                    anchors.leftMargin: Theme.horizontalPageMargin
-                }
-            }
+                    spacing: Theme.paddingMedium
+                    Column {
+                        id: sendMessageColumn
+                        width: parent.width - Theme.fontSizeMedium - ( 2 * Theme.paddingMedium )
+                        anchors.verticalCenter: parent.verticalCenter
+                        TextArea {
+                            id: newMessageTextField
+                            width: parent.width
+                            font.pixelSize: Theme.fontSizeSmall
+                            placeholderText: qsTr("New message to %1").arg(conversationModel.user.name)
+                            labelVisible: false
+                            errorHighlight: remainingCharactersText.text < 0
+                        }
+                        Text {
+                            id: remainingCharactersText
+                            text: qsTr("%1 characters left").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
+                            color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
+                            font.pixelSize: Theme.fontSizeTiny
+                            font.bold: remainingCharactersText.text < 0 ? true : false
+                            anchors.left: parent.left
+                            anchors.leftMargin: Theme.horizontalPageMargin
+                        }
+                    }
 
-            Column {
-                id: sendMessageColumn
-                width: Theme.fontSizeMedium
-                anchors.verticalCenter: parent.verticalCenter
-                IconButton {
-                    id: newMessageSendButton
-                    icon.source: "image://theme/icon-m-bubble-universal"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    onClicked: {
-                        twitterApi.directMessagesNew(newMessageTextField.text, conversationModel.user.id_str);
-                        newMessageTextField.text = "";
-                        newMessageTextField.focus = false;
+                    Column {
+                        width: Theme.fontSizeMedium
+                        anchors.bottom: parent.bottom
+                        IconButton {
+                            id: newMessageSendButton
+                            icon.source: "image://theme/icon-m-chat"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            onClicked: {
+                                twitterApi.directMessagesNew(newMessageTextField.text, conversationModel.user.id_str);
+                                newMessageTextField.text = "";
+                                newMessageTextField.focus = false;
+                            }
+                        }
                     }
                 }
+
             }
+
+
         }
 
     }

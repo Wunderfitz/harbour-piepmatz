@@ -809,7 +809,7 @@ Page {
                                         id: messageContactTimeElapsedText
                                         text: getConversationTimeElapsed(display.messages)
                                         font.pixelSize: Theme.fontSizeTiny
-                                        color: Theme.highlightColor
+                                        color: Theme.primaryColor
                                     }
                                 }
                             }

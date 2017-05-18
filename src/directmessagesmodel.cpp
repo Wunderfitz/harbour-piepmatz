@@ -116,35 +116,6 @@ void DirectMessagesModel::handleDirectMessagesListError(const QString &errorMess
     emit updateMessagesError(errorMessage);
 }
 
-void DirectMessagesModel::handleDirectMessagesNewSuccessful(const QVariantMap &result)
-{
-    qDebug() << "DirectMessagesModel::handleDirectMessagesNewSuccessful";
-    QVariantMap newMessage = result.value("event").toMap();
-    QString messageRecipientId = newMessage.value("message_create").toMap().value("target").toMap().value("recipient_id").toString();
-    QMutableListIterator<QVariant> contactsIterator(contacts);
-    while (contactsIterator.hasNext()) {
-        QVariantMap currentContact = contactsIterator.next().toMap();
-        if (currentContact.value("user").toMap().value("id_str") == messageRecipientId ) {
-            beginResetModel();
-            QVariantList messagesList = currentContact.value("messages").toList();
-            messagesList.append(newMessage);
-            currentContact.insert("messages", messagesList);
-            contactsIterator.setValue(currentContact);
-            endResetModel();
-            return;
-        }
-    }
-    incrementalUpdate = true;
-    currentMessage = newMessage;
-    twitterApi->showUserById(messageRecipientId);
-}
-
-void DirectMessagesModel::handleDirectMessagesNewError(const QString &errorMessage)
-{
-    qDebug() << "DirectMessagesModel::handleDirectMessagesNewError" << errorMessage;
-    // Nothing to do for now, UI will display a notification anyway
-}
-
 bool reverseTimestamp(const QVariant &contact1, const QVariant &contact2)
 {
     QVariantList messages1 = contact1.toMap().value("messages").toList();
@@ -160,6 +131,36 @@ bool reverseTimestamp(const QVariant &contact1, const QVariant &contact2)
     }
 
     return timestamp1 > timestamp2;
+}
+
+void DirectMessagesModel::handleDirectMessagesNewSuccessful(const QVariantMap &result)
+{
+    qDebug() << "DirectMessagesModel::handleDirectMessagesNewSuccessful";
+    QVariantMap newMessage = result.value("event").toMap();
+    QString messageRecipientId = newMessage.value("message_create").toMap().value("target").toMap().value("recipient_id").toString();
+    QMutableListIterator<QVariant> contactsIterator(contacts);
+    while (contactsIterator.hasNext()) {
+        QVariantMap currentContact = contactsIterator.next().toMap();
+        if (currentContact.value("user").toMap().value("id_str") == messageRecipientId ) {
+            beginResetModel();
+            QVariantList messagesList = currentContact.value("messages").toList();
+            messagesList.append(newMessage);
+            currentContact.insert("messages", messagesList);
+            contactsIterator.setValue(currentContact);
+            qSort(contacts.begin(), contacts.end(), reverseTimestamp);
+            endResetModel();
+            return;
+        }
+    }
+    incrementalUpdate = true;
+    currentMessage = newMessage;
+    twitterApi->showUserById(messageRecipientId);
+}
+
+void DirectMessagesModel::handleDirectMessagesNewError(const QString &errorMessage)
+{
+    qDebug() << "DirectMessagesModel::handleDirectMessagesNewError" << errorMessage;
+    // Nothing to do for now, UI will display a notification anyway
 }
 
 void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
