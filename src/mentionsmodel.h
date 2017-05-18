@@ -4,6 +4,7 @@
 
 #include <QAbstractListModel>
 #include <QVariantList>
+#include <QSettings>
 #include "twitterapi.h"
 
 class MentionsModel : public QAbstractListModel
@@ -20,6 +21,7 @@ public:
 signals:
     void updateMentionsFinished();
     void updateMentionsError(const QString &errorMessage);
+    void newMentionsFound();
 
 public slots:
     void handleUpdateMentionsSuccessful(const QVariantList &result);
@@ -27,6 +29,7 @@ public slots:
 
 private:
     QVariantList mentions;
+    QSettings settings;
     TwitterApi *twitterApi;
 };
 

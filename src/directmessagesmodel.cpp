@@ -3,7 +3,9 @@
 #include <QListIterator>
 #include <QMutableListIterator>
 
-DirectMessagesModel::DirectMessagesModel(TwitterApi *twitterApi)
+const char SETTINGS_LAST_MESSAGE[] = "messages/lastId";
+
+DirectMessagesModel::DirectMessagesModel(TwitterApi *twitterApi) : settings("harbour-piepmatz", "settings")
 {
     this->twitterApi = twitterApi;
     this->incrementalUpdate = false;
@@ -72,16 +74,26 @@ bool earlierMessage(const QVariant &message1, const QVariant &message2)
 void DirectMessagesModel::handleDirectMessagesListSuccessful(const QVariantMap &result)
 {
     qDebug() << "DirectMessagesModel::handleDirectMessagesListSuccessful";
+    bool firstOtherMessageFound = false;
     QVariantList events = result.value("events").toList();
     QListIterator<QVariant> messagesIterator(events);
     while (messagesIterator.hasNext()) {
         QVariantMap singleEvent = messagesIterator.next().toMap();
         QVariantMap singleMessage = singleEvent.value("message_create").toMap();
         QString senderId = singleMessage.value("sender_id").toString();
+        QString recipientId = singleMessage.value("target").toMap().value("recipient_id").toString();
+        if (iterations == 0 && !firstOtherMessageFound && recipientId == this->userId) {
+            QString storedMessageId = settings.value(SETTINGS_LAST_MESSAGE).toString();
+            QString lastMessageId = singleEvent.value("id").toString();
+            if (!storedMessageId.isEmpty() && storedMessageId != lastMessageId) {
+                emit newMessagesFound();
+            }
+            settings.setValue(SETTINGS_LAST_MESSAGE, lastMessageId);
+            firstOtherMessageFound = true;
+        }
         if (!involvedUsers.contains(senderId)) {
             involvedUsers.append(senderId);
         }
-        QString recipientId = singleMessage.value("target").toMap().value("recipient_id").toString();
         if (!involvedUsers.contains(recipientId)) {
             involvedUsers.append(recipientId);
         }

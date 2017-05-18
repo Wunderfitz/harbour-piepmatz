@@ -7,6 +7,9 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
+import org.nemomobile.notifications 1.0
+
+
 import "../components"
 import "../js/functions.js" as Functions
 
@@ -296,8 +299,14 @@ Page {
         }
     }
 
-    Notification {
+    AppNotification {
         id: overviewNotification
+    }
+
+    Notification {
+        id: nemoNotification
+        appName: "Piepmatz"
+        appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
     }
 
     Item {
@@ -308,7 +317,7 @@ Page {
         y: parent.height - getNavigationRowSize() - persistentNotification.height - Theme.paddingSmall
         z: 42
 
-        NotificationItem {
+        AppNotificationItem {
             id: persistentNotification
             visible: persistentNotificationItem.enabled
             opacity: persistentNotificationItem.enabled ? 1 : 0
@@ -593,6 +602,14 @@ Page {
                         notificationsColumn.updateInProgress = false;
                         overviewNotification.show(errorMessage);
                     }
+                    onNewMentionsFound: {
+                        nemoNotification.summary = qsTr("New Mentions");
+                        nemoNotification.body = qsTr("You have been mentioned!");
+                        nemoNotification.previewSummary = qsTr("New Mentions");
+                        nemoNotification.previewBody = qsTr("You have been mentioned!");
+                        nemoNotification.replacesId = 0;
+                        nemoNotification.publish();
+                    }
                 }
 
                 SilicaListView {
@@ -656,6 +673,14 @@ Page {
                     onUpdateMessagesError: {
                         messagesColumn.updateInProgress = false;
                         overviewNotification.show(errorMessage);
+                    }
+                    onNewMessagesFound: {
+                        nemoNotification.summary = qsTr("New Messages");
+                        nemoNotification.body = qsTr("You have new direct messages!");
+                        nemoNotification.previewSummary = qsTr("New Messages");
+                        nemoNotification.previewBody = qsTr("You have new messages!");
+                        nemoNotification.replacesId = 0;
+                        nemoNotification.publish();
                     }
                 }
 

@@ -258,6 +258,26 @@
         <source>Searching...</source>
         <translation>Suchen...</translation>
     </message>
+    <message>
+        <source>New Mentions</source>
+        <translation>Neue Erwähungen</translation>
+    </message>
+    <message>
+        <source>You have been mentioned!</source>
+        <translation>Sie wurden erwähnt!</translation>
+    </message>
+    <message>
+        <source>New Messages</source>
+        <translation>Neue Nachrichten</translation>
+    </message>
+    <message>
+        <source>You have new direct messages!</source>
+        <translation>Sie haben neue Direktnachrichten!</translation>
+    </message>
+    <message>
+        <source>You have new messages!</source>
+        <translation>Sie haben neue Nachrichten!</translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

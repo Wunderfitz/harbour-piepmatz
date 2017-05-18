@@ -28,7 +28,7 @@ Item {
         twitterApi.userTimeline(profileModel.screen_name);
     }
 
-    Notification {
+    AppNotification {
         id: notification
     }
 

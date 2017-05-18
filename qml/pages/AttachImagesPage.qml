@@ -17,7 +17,7 @@ Page {
         imagesModel.update();
     }
 
-    Notification {
+    AppNotification {
         id: attachImageNotification
     }
 

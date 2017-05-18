@@ -1,6 +1,8 @@
 #include "mentionsmodel.h"
 
-MentionsModel::MentionsModel(TwitterApi *twitterApi)
+const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
+
+MentionsModel::MentionsModel(TwitterApi *twitterApi) : settings("harbour-piepmatz", "settings")
 {
     this->twitterApi = twitterApi;
 
@@ -37,6 +39,14 @@ void MentionsModel::handleUpdateMentionsSuccessful(const QVariantList &result)
     beginResetModel();
     mentions.clear();
     mentions.append(result);
+    if (!result.isEmpty()) {
+        QString storedMentionId = settings.value(SETTINGS_LAST_MENTION).toString();
+        QString lastMentionId = result.first().toMap().value("id_str").toString();
+        if (!storedMentionId.isEmpty() && storedMentionId != lastMentionId) {
+            emit newMentionsFound();
+        }
+        settings.setValue(SETTINGS_LAST_MENTION, lastMentionId);
+    }
     endResetModel();
     emit updateMentionsFinished();
 

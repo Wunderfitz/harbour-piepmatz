@@ -76,7 +76,7 @@ Page {
         contentHeight: column.height
         anchors.fill: parent
 
-        Notification {
+        AppNotification {
             id: textNotification
         }
 

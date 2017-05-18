@@ -20,7 +20,7 @@ Page {
         }
     }
 
-    Notification {
+    AppNotification {
         id: friendsNotification
     }
 

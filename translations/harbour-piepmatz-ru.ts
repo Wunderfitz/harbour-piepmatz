@@ -260,6 +260,26 @@
         <source>Searching...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>New Mentions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have been mentioned!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Messages</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have new direct messages!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have new messages!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

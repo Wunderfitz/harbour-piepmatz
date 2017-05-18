@@ -4,6 +4,7 @@
 #include <QAbstractListModel>
 #include <QList>
 #include <QVariantList>
+#include <QSettings>
 #include "twitterapi.h"
 
 const int MAX_ITERATIONS = 2;
@@ -25,6 +26,7 @@ signals:
     void updateMessagesError(const QString &errorMessage);
     void updateMessagesStarted();
     void updateMessagesFinished();
+    void newMessagesFound();
 
 private slots:
     void handleDirectMessagesListSuccessful(const QVariantMap &result);
@@ -36,6 +38,7 @@ private slots:
 
 private:
     TwitterApi *twitterApi;
+    QSettings settings;
     int iterations;
     QList<QString> involvedUsers;
     QVariantList messages;

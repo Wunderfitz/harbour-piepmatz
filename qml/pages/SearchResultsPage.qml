@@ -19,7 +19,7 @@ Page {
         }
     }
 
-    Notification {
+    AppNotification {
         id: searchResultsNotification
     }
 

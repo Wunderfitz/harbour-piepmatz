@@ -17,7 +17,7 @@ Page {
         return 10000 - TwitterText.twttr.txt.getTweetLength(text, configuration);
     }
 
-    Notification {
+    AppNotification {
         id: conversationNotification
     }
 

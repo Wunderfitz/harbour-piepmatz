@@ -52,7 +52,7 @@ Item {
         interval: 1000
     }
 
-    NotificationItem {
+    AppNotificationItem {
         id: notificationTextItem
     }
 
