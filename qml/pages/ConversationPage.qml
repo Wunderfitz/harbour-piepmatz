@@ -48,7 +48,7 @@ Page {
         id: conversationContainer
         width: parent.width
         height: parent.height - profileHeader.height
-        anchors.top: profileHeader.bottom
+        anchors.bottom: parent.bottom
 
         LoadingIndicator {
             id: conversationLoadingIndicator
@@ -63,6 +63,7 @@ Page {
             id: messageListColumn
             width: parent.width
             height: parent.height
+            anchors.bottom: parent.bottom
 
             SilicaListView {
                 id: conversationListView

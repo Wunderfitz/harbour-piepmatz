@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="nl">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="nl" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -87,11 +85,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuw bericht naar %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 tekens resterend</translation>
     </message>
 </context>
 <context>
@@ -105,14 +103,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: volgers</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: volgend</translation>
     </message>
 </context>
 <context>
@@ -240,43 +238,43 @@
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Jij</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt de voorbije 30 dagen geen privéberichten ontvangen</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweets</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruikers</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoeken...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe vermeldingen</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bent vermeld geweest!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe berichten</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt nieuwe privéberichten!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt nieuwe berichten!</translation>
     </message>
 </context>
 <context>
@@ -302,7 +300,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -325,7 +323,7 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Privébericht verzenden</translation>
     </message>
 </context>
 <context>

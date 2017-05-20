@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="it" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -87,11 +85,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo messaggio a %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 caratteri rimasti</translation>
     </message>
 </context>
 <context>
@@ -105,14 +103,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: follower</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: following</translation>
     </message>
 </context>
 <context>
@@ -240,43 +238,43 @@
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Tu</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun messaggio negli ultimi 30 giorni</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Utenti</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ricerca...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuove menzioni</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei stato menzionato!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovi messaggi</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai nuovi messaggi!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai nuovi messaggi!</translation>
     </message>
 </context>
 <context>
@@ -302,7 +300,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -325,7 +323,7 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Invia messaggio</translation>
     </message>
 </context>
 <context>
@@ -355,7 +353,7 @@
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Riispondi al tweet</translation>
+        <translation>Rispondi al tweet</translation>
     </message>
 </context>
 <context>

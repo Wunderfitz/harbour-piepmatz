@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -37,7 +35,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci de l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
+        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci pour l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -57,7 +55,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d&apos;utilisation</translation>
+        <translation>Conditions de Service</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -72,11 +70,11 @@
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre les %1 images</translation>
+        <translation>Joindre %1 images</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre l&apos;image</translation>
+        <translation>Joindre une image</translation>
     </message>
     <message>
         <source>Select Images</source>
@@ -87,11 +85,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau message à %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 caractères restants</translation>
     </message>
 </context>
 <context>
@@ -105,14 +103,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : abonnés</translation>
+        <translation>%1 : Followers</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: : abonnements</translation>
+        <translation>%1: Following</translation>
     </message>
 </context>
 <context>
@@ -228,7 +226,7 @@
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez-vous ?</translation>
+        <translation>Que cherchez vous ?</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
@@ -236,47 +234,47 @@
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléversement, %1% effectué...</translation>
+        <translation>Téléchargement, %1% effectué...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas de message direct ces 30 derniers jours</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweets</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilisateurs</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Recherche...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouvelles mentions</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez été mentionné!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveaux messages</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez de nouveaux messages directs !</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vous avez de nouveaux messages!</translation>
     </message>
 </context>
 <context>
@@ -302,7 +300,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -325,14 +323,14 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer un message direct</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d&apos;utilisation</translation>
+        <translation>Conditions de Service</translation>
     </message>
     <message>
         <source>Privacy Policy</source>

@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="ru" version="2.1">
 <context>
     <name>AboutPage</name>
     <message>
@@ -89,11 +87,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Новое сообщение для %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>Осталось %1 букв</translation>
     </message>
 </context>
 <context>
@@ -107,14 +105,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: подписчики</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 подписок</translation>
     </message>
 </context>
 <context>
@@ -242,43 +240,43 @@
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Вы</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>За последние 30 дней Вы не получали личных сообщений</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Твиты</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Пользователи</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation type="unfinished"></translation>
+        <translation>Новые упоминания</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation type="unfinished"></translation>
+        <translation>Кто-то упомянул вас в своём твите!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Новые сообщения</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>У вас есть новые личные сообщения!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>У вас есть новые сообщения!</translation>
     </message>
 </context>
 <context>
@@ -304,7 +302,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -327,7 +325,7 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить личное сообщение</translation>
     </message>
 </context>
 <context>
