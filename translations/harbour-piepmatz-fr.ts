@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="fr" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="fr">
 <context>
     <name>AboutPage</name>
     <message>
@@ -55,7 +57,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d'utilisation</translation>
+        <translation>Conditions d&apos;utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -74,7 +76,7 @@
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre l'image</translation>
+        <translation>Joindre l&apos;image</translation>
     </message>
     <message>
         <source>Select Images</source>
@@ -330,7 +332,7 @@
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d'utilisation</translation>
+        <translation>Conditions d&apos;utilisation</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
