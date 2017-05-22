@@ -2,6 +2,7 @@
 
 #include <QListIterator>
 #include <QMutableListIterator>
+#include <QRegExp>
 
 const char SETTINGS_LAST_MESSAGE[] = "messages/lastId";
 
@@ -39,6 +40,7 @@ void DirectMessagesModel::update()
     qDebug() << "DirectMessagesModel::update";
     emit updateMessagesStarted();
     involvedUsers.clear();
+    invalidUsers.clear();
     messages.clear();
     users.clear();
     iterations = 0;
@@ -195,7 +197,18 @@ void DirectMessagesModel::handleShowUserSuccessful(const QVariantMap &result)
 void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
 {
     qDebug() << "DirectMessagesModel::handleShowUserError";
-    emit updateMessagesError(errorMessage);
+    if (incrementalUpdate) {
+        emit updateMessagesError(errorMessage);
+    } else {
+        // Not so pretty, but we only send an error message now. In the future, we need to return the user ID as well...
+        QRegExp regex("user_id\\=(\\d+)");
+        if (errorMessage.contains(regex)) {
+            invalidUsers.append(regex.cap(1));
+            involvedUsers.removeAll(regex.cap(1));
+        } else {
+            emit updateMessagesError(errorMessage);
+        }
+    }
 }
 
 void DirectMessagesModel::hydrateUsers()
@@ -224,6 +237,10 @@ void DirectMessagesModel::compileContacts()
         QVariantMap currentMessage = rawMessage.toMap().value("message_create").toMap();
         QString senderId = currentMessage.value("sender_id").toString();
         QString recipientId = currentMessage.value("target").toMap().value("recipient_id").toString();
+        if (invalidUsers.contains(senderId)) {
+            qDebug() << "DirectMessagesModel::compileContacts - Direct messages contains content from the invalid user: " + recipientId;
+            continue;
+        }
         if (senderId == userId) {
             QVariantList contactMessages = rawContacts.value(recipientId);
             contactMessages.append(rawMessage);

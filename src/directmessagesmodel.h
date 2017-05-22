@@ -41,6 +41,7 @@ private:
     QSettings settings;
     int iterations;
     QList<QString> involvedUsers;
+    QList<QString> invalidUsers;
     QVariantList messages;
     QVariantMap users;
     QString userId;
