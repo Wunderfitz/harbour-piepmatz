@@ -111,6 +111,16 @@ Page {
                             linkColor: Theme.highlightColor
                         }
 
+                        Timer {
+                            id: messageDateUpdater
+                            interval: 60000
+                            running: true
+                            repeat: true
+                            onTriggered: {
+                                messageDateText.text = Format.formatDate(new Date(parseInt(modelData.created_timestamp)), Formatter.DurationElapsed);
+                            }
+                        }
+
                         Text {
                             anchors {
                                 left: parent.left

@@ -805,6 +805,17 @@ Page {
                                             elide: Text.ElideRight
                                         }
                                     }
+
+                                    Timer {
+                                        id: messageContactTimeUpdater
+                                        interval: 60000
+                                        running: true
+                                        repeat: true
+                                        onTriggered: {
+                                            messageContactTimeElapsedText.text = getConversationTimeElapsed(display.messages);
+                                        }
+                                    }
+
                                     Text {
                                         id: messageContactTimeElapsedText
                                         text: getConversationTimeElapsed(display.messages)
