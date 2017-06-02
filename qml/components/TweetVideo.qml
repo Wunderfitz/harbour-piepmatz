@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtMultimedia 5.0
+import "../js/functions.js" as Functions
 
 Item {
     id: tweetVideoComponent
@@ -36,6 +37,19 @@ Item {
         return "";
     }
 
+    function getTimeString(rawSeconds) {
+        var minutes = Math.floor( rawSeconds / 60 );
+        var seconds = rawSeconds - ( minutes * 60 );
+
+        if ( minutes < 10 ) {
+            minutes = "0" + minutes;
+        }
+        if ( seconds < 10 ) {
+            seconds = "0" + seconds;
+        }
+        return minutes + ":" + seconds;
+    }
+
     Image {
         id: placeholderImage
         source: getTweetVideoPlaceholderImageUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
@@ -48,16 +62,7 @@ Item {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                if (tweetVideo.error === MediaPlayer.NoError) {
-                    tweetVideo.visible = true
-                    placeholderImage.visible = false
-                    playButton.visible = false
-                    tweetVideo.play()
-                } else {
-                    errorText.text = qsTr("Error loading video! " + tweetVideo.errorString)
-                    errorTextOverlay.visible = true
-                    errorText.visible = true
-                }
+                videoComponentLoader.active = true;
             }
         }
     }
@@ -99,20 +104,138 @@ Item {
         text: ""
     }
 
-    Video {
-        id: tweetVideo
-        visible: false
+    Loader {
+        id: videoComponentLoader
+        active: false
         width: parent.width
-        height: parent.height
-        source: getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
-        MouseArea {
-            anchors.fill: parent
-            onClicked: tweetVideo.playbackState === MediaPlayer.PlayingState ? tweetVideo.pause() : tweetVideo.play()
-        }
-        onStopped: {
-            tweetVideo.visible = false
-            placeholderImage.visible = true
-            playButton.visible = true
-        }
+        height: Functions.getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+        sourceComponent: videoComponent
     }
+
+    Component {
+        id: videoComponent
+
+        Item {
+            width: parent ? parent.width : 0
+            height: parent ? parent.height : 0
+
+            Connections {
+                target: tweetVideo
+                onPlaying: {
+                    playButton.visible = false;
+                    placeholderImage.visible = false;
+                    tweetVideo.visible = true;
+                }
+            }
+
+            Video {
+                id: tweetVideo
+
+                Component.onCompleted: {
+                    if (tweetVideo.error === MediaPlayer.NoError) {
+                        tweetVideo.play();
+                    } else {
+                        errorText.text = qsTr("Error loading video! " + tweetVideo.errorString)
+                        errorTextOverlay.visible = true;
+                        errorText.visible = true;
+                    }
+                }
+
+                onStatusChanged: {
+                    if (status == MediaPlayer.NoMedia) {
+                        console.log("No Media");
+                        videoBusyIndicator.visible = false;
+                    }
+                    if (status == MediaPlayer.Loading) {
+                        console.log("Loading");
+                        videoBusyIndicator.visible = true;
+                    }
+                    if (status == MediaPlayer.Loaded) {
+                        console.log("Loaded");
+                        videoBusyIndicator.visible = false;
+                    }
+                    if (status == MediaPlayer.Buffering) {
+                        console.log("Buffering");
+                        videoBusyIndicator.visible = true;
+                    }
+                    if (status == MediaPlayer.Stalled) {
+                        console.log("Stalled");
+                        videoBusyIndicator.visible = true;
+                    }
+                    if (status == MediaPlayer.Buffered) {
+                        console.log("Buffered");
+                        videoBusyIndicator.visible = false;
+                    }
+                    if (status == MediaPlayer.EndOfMedia) {
+                        console.log("End of Media");
+                        videoBusyIndicator.visible = false;
+                    }
+                    if (status == MediaPlayer.InvalidMedia) {
+                        console.log("Invalid Media");
+                        videoBusyIndicator.visible = false;
+                    }
+                    if (status == MediaPlayer.UnknownStatus) {
+                        console.log("Unknown Status");
+                        videoBusyIndicator.visible = false;
+                    }
+                }
+
+                visible: false
+                width: parent.width
+                height: parent.height
+                source: getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: tweetVideo.playbackState === MediaPlayer.PlayingState ? tweetVideo.pause() : tweetVideo.play()
+                }
+                onStopped: {
+                    tweetVideo.visible = false;
+                    placeholderImage.visible = true;
+                    playButton.visible = true;
+                    videoComponentLoader.active = false;
+                }
+            }
+
+            BusyIndicator {
+                id: videoBusyIndicator
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                visible: false
+                running: visible
+                size: BusyIndicatorSize.Medium
+            }
+
+            Item {
+                width: positionText.width + 2 * Theme.paddingMedium
+                height: Theme.fontSizeExtraSmall
+                anchors.bottom: parent.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: tweetVideo.visible
+                Rectangle {
+                    id: positionTextOverlay
+                    color: "black"
+                    opacity: 0.5
+                    width: parent.width
+                    height: parent.height
+                    visible: parent.visible
+                }
+                Text {
+                    id: positionText
+                    visible: tweetVideo.visible
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    wrapMode: Text.Wrap
+                    text: getTimeString(Math.round((tweetVideo.duration - tweetVideo.position) / 1000))
+                }
+            }
+
+        }
+
+
+    }
+
 }
