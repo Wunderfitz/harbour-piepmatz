@@ -220,3 +220,14 @@ function getVideoHeight(videoWidth, tweet) {
     }
     return 1;
 }
+
+function getTweetUrl(tweetModel) {
+    var statusUrl = "https://twitter.com/";
+    if (tweetModel.retweeted_status) {
+        statusUrl += tweetModel.retweeted_status.user.screen_name + "/status/" + tweetModel.retweeted_status.id_str;
+    } else {
+        statusUrl += tweetModel.user.screen_name + "/status/" + tweetModel.id_str;
+    }
+    console.log(statusUrl);
+    return statusUrl;
+}

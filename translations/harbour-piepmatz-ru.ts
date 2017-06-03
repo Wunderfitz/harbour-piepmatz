@@ -161,6 +161,10 @@
         <source>Attach Images</source>
         <translation>Прикрепить изображения</translation>
     </message>
+    <message>
+        <source>Retweet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -358,6 +362,10 @@
     <message>
         <source>Reply to Tweet</source>
         <translation>Ответить на твит</translation>
+    </message>
+    <message>
+        <source>Retweet as Attachment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -33,14 +33,13 @@ ListItem {
         }
         MenuItem {
             onClicked: {
-                var statusUrl = "https://twitter.com/";
-                if (tweetModel.retweeted_status) {
-                    statusUrl += tweetModel.retweeted_status.user.screen_name + "/status/" + tweetModel.retweeted_status.id_str;
-                } else {
-                    statusUrl += tweetModel.user.screen_name + "/status/" + tweetModel.id_str;
-                }
-                console.log(statusUrl);
-                Qt.openUrlExternally(statusUrl);
+                pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"attachmentTweet": tweetModel});
+            }
+            text: qsTr("Retweet as Attachment")
+        }
+        MenuItem {
+            onClicked: {
+                Qt.openUrlExternally(Functions.getTweetUrl(tweetModel));
             }
             text: qsTr("Open in Browser")
         }

@@ -8,6 +8,7 @@ Item {
     id: embeddedTweet
 
     property variant tweetModel;
+    property bool withReferenceUrl : true;
 
     width: parent.width
     height: embeddedTweetColumn.height
@@ -34,7 +35,7 @@ Item {
         Text {
             width: parent.width
             id: tweetContentText
-            text: Functions.enhanceText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities)
+            text: Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl)
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             wrapMode: Text.Wrap

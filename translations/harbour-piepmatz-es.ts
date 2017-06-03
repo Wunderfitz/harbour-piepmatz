@@ -159,6 +159,10 @@
         <source>Attach Images</source>
         <translation>Adjuntar imágenes</translation>
     </message>
+    <message>
+        <source>Retweet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -356,6 +360,10 @@
     <message>
         <source>Reply to Tweet</source>
         <translation>Responder el tuit</translation>
+    </message>
+    <message>
+        <source>Retweet as Attachment</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

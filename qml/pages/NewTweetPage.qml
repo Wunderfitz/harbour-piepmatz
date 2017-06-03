@@ -15,6 +15,7 @@ Page {
 
     property variant configuration;
     property string replyToStatusId;
+    property variant attachmentTweet;
     property variant replyToTweet;
     property bool replyToTweetLoaded;
     property bool withImages : false;
@@ -73,10 +74,10 @@ Page {
         Column {
             id: column
             width: newTweetPage.width
-            spacing: Theme.paddingMedium
+            spacing: Theme.paddingSmall
 
             PageHeader {
-                title: replyToStatusId ? qsTr("Reply") : qsTr("New Tweet")
+                title: replyToStatusId ? qsTr("Reply") : ( attachmentTweet ? qsTr("Retweet") : qsTr("New Tweet") )
             }
 
             Connections {
@@ -111,6 +112,7 @@ Page {
                 }
                 width: parent.width - 2 * Theme.paddingLarge
                 focus: true
+                font.pixelSize: Theme.fontSizeSmall
                 onTextChanged: {
                     remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
                 }
@@ -127,6 +129,24 @@ Page {
                 font.pixelSize: remainingCharactersText.text < 0 ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 font.bold: remainingCharactersText.text < 0 ? true : false
                 text: getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration)
+            }
+
+            Component {
+                id: attachmentTweetComponent
+                EmbeddedTweet {
+                    id: attachmentTweetItem
+                    tweetModel: attachmentTweet
+                    visible: attachmentTweet ? true : false
+                    withReferenceUrl: false
+                }
+            }
+
+            Loader {
+                id: attachmentTweetLoader
+                active: attachmentTweet ? true : false
+                width: parent.width - 2 * Theme.horizontalPageMargin
+                anchors.horizontalCenter: parent.horizontalCenter
+                sourceComponent: attachmentTweetComponent
             }
 
             SlideshowView {
