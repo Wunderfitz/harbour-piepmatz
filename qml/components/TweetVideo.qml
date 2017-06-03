@@ -229,7 +229,7 @@ Item {
                         horizontalCenter: parent.horizontalCenter
                     }
                     wrapMode: Text.Wrap
-                    text: getTimeString(Math.round((tweetVideo.duration - tweetVideo.position) / 1000))
+                    text: ( tweetVideo.duration - tweetVideo.position ) > 0 ? getTimeString(Math.round((tweetVideo.duration - tweetVideo.position) / 1000)) : "-:-"
                 }
             }
 

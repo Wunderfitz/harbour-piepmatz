@@ -209,6 +209,13 @@ ListItem {
                             visible: referenceMetadata.image ? true : false
                             Image {
                                 id: openGraphImage
+
+                                onStatusChanged: {
+                                    if (status === Image.Error) {
+                                        openGraphImageItem.visible = false;
+                                    }
+                                }
+
                                 width: parent.width
                                 height: parent.height
                                 sourceSize {

@@ -1184,27 +1184,22 @@ void TwitterApi::handleGetOpenGraphFinished()
 
     QVariantMap openGraphData;
 
-    QXmlStreamReader xml(reply);
-    while (!xml.atEnd()) {
-        QXmlStreamReader::TokenType tokenType = xml.readNext();
-        if (tokenType == QXmlStreamReader::StartElement && xml.name() == "meta") {
-            QXmlStreamAttributes metaAttributes = xml.attributes();
-            if (metaAttributes.hasAttribute("property") && metaAttributes.hasAttribute("content")) {
-                QRegExp ogRegex("og\\:([\\w\\:]+)");
-                if (ogRegex.indexIn(metaAttributes.value("property").toString()) != -1) {
-                    QString openGraphKey = ogRegex.cap(1);
-                    // See ogp.me - in case of arrays, the first one may win...
-                    if (!openGraphData.contains(openGraphKey)) {
-                        openGraphData.insert(openGraphKey, metaAttributes.value("content").toString());
-                    }
-                }
-            }
-        }
+    QString resultDocument(reply->readAll());
+    QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (urlRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("url", urlRegex.cap(1));
     }
-    if (xml.hasError()) {
-        QString errorString = "Error parsing " + requestAddress + ", error was: " + xml.errorString();
-        qDebug() << errorString;
-        emit getOpenGraphError(errorString);
+    QRegExp imageRegex("\\<meta\\s+property\\=\\\"og\\:image\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (imageRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("image", imageRegex.cap(1));
+    }
+    QRegExp descriptionRegex("\\<meta\\s+property\\=\\\"og\\:description\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (descriptionRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("description", descriptionRegex.cap(1));
+    }
+    QRegExp titleRegex("\\<meta\\s+property\\=\\\"og\\:title\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (titleRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("title", titleRegex.cap(1));
     }
 
     if (openGraphData.isEmpty()) {
@@ -1212,6 +1207,9 @@ void TwitterApi::handleGetOpenGraphFinished()
     } else {
         // Always using request URL to be able to compare results
         openGraphData.insert("url", requestAddress);
+        if (!openGraphData.contains("title")) {
+            openGraphData.insert("title", openGraphData.value("url"));
+        }
         qDebug() << "Open Graph data found for " + requestAddress;
         emit getOpenGraphSuccessful(openGraphData);
     }
