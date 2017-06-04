@@ -161,7 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Retweet</translation>
+    </message>
+    <message>
+        <source>Send Retweet</source>
+        <translation>Send Retweet</translation>
     </message>
 </context>
 <context>
@@ -362,8 +366,8 @@
         <translation>Reply to Tweet</translation>
     </message>
     <message>
-        <source>Retweet as Attachment</source>
-        <translation type="unfinished"></translation>
+        <source>Retweet with Comment</source>
+        <translation>Retweet with Comment</translation>
     </message>
 </context>
 <context>

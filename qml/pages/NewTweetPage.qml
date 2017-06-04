@@ -7,6 +7,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../js/twitter-text.js" as TwitterText
 import "../components"
+import "../js/functions.js" as Functions
 
 
 Page {
@@ -49,9 +50,10 @@ Page {
             MenuItem {
                 text: qsTr("Attach Images")
                 onClicked: pageStack.push(attachImagesPage)
+                visible: attachmentTweet ? false : true
             }
             MenuItem {
-                text: replyToStatusId ? qsTr("Send Reply") : qsTr("Send Tweet")
+                text: replyToStatusId ? qsTr("Send Reply") : ( attachmentTweet ? qsTr("Send Retweet") : qsTr("Send Tweet") )
                 onClicked: {
                     if (replyToStatusId) {
                         if (withImages) {
@@ -63,7 +65,11 @@ Page {
                         if (withImages) {
                             imagesModel.tweetWithSelectedImages(enterTweetTextArea.text);
                         } else {
-                            twitterApi.tweet(enterTweetTextArea.text);
+                            if ( attachmentTweet ) {
+                                twitterApi.retweetWithComment(enterTweetTextArea.text, Functions.getTweetUrl(attachmentTweet));
+                            } else {
+                                twitterApi.tweet(enterTweetTextArea.text);
+                            }
                         }
                     }
                     pageStack.pop();

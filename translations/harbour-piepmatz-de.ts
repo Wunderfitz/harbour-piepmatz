@@ -161,7 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachzwitschern</translation>
+    </message>
+    <message>
+        <source>Send Retweet</source>
+        <translation>Nachgezwitscher verschicken</translation>
     </message>
 </context>
 <context>
@@ -362,8 +366,8 @@
         <translation>Auf Gezwitscher antworten</translation>
     </message>
     <message>
-        <source>Retweet as Attachment</source>
-        <translation type="unfinished"></translation>
+        <source>Retweet with Comment</source>
+        <translation>Mit Kommentar nachzwitschern</translation>
     </message>
 </context>
 <context>

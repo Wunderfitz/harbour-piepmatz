@@ -165,6 +165,10 @@
         <source>Retweet</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Send Retweet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
@@ -364,7 +368,7 @@
         <translation>Ответить на твит</translation>
     </message>
     <message>
-        <source>Retweet as Attachment</source>
+        <source>Retweet with Comment</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

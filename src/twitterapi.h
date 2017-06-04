@@ -52,6 +52,7 @@ public:
     Q_INVOKABLE void helpTos();
     Q_INVOKABLE void tweet(const QString &text);
     Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId);
+    Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl);
     Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds);
     Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds);
     Q_INVOKABLE void homeTimeline();

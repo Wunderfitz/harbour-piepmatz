@@ -35,7 +35,7 @@ ListItem {
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"attachmentTweet": tweetModel});
             }
-            text: qsTr("Retweet as Attachment")
+            text: qsTr("Retweet with Comment")
         }
         MenuItem {
             onClicked: {

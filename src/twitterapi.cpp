@@ -195,6 +195,24 @@ void TwitterApi::replyToTweet(const QString &text, const QString &replyToStatusI
     connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
 }
 
+void TwitterApi::retweetWithComment(const QString &text, const QString &attachmentUrl)
+{
+    qDebug() << "TwitterApi::retweetWithComment" << attachmentUrl;
+    QUrl url = QUrl(API_STATUSES_UPDATE);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("status"), text.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("attachment_url"), attachmentUrl.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleTweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
+}
+
 void TwitterApi::tweetWithImages(const QString &text, const QString &mediaIds)
 {
     qDebug() << "TwitterApi::tweetWithImages";
