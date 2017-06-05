@@ -286,6 +286,14 @@
         <source>You have new messages!</source>
         <translation>You have new messages!</translation>
     </message>
+    <message>
+        <source>Load more tweets</source>
+        <translation>Load more tweets</translation>
+    </message>
+    <message>
+        <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
+        <translation>No tweets found. Follow more people to get their tweets in your timeline!</translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

@@ -36,6 +36,7 @@ public:
     virtual QVariant data(const QModelIndex &index, int role) const;
 
     Q_INVOKABLE void update();
+    Q_INVOKABLE void loadMore();
     Q_INVOKABLE void setCurrentTweetId(const QString &tweetId);
 
     CoverModel * const coverModel;
@@ -44,9 +45,10 @@ signals:
     void homeTimelineStartUpdate();
     void homeTimelineUpdated(int modelIndex);
     void homeTimelineError(const QString &errorMessage);
+    void homeTimelineEndReached();
 
 public slots:
-    void handleHomeTimelineSuccessful(const QVariantList &result);
+    void handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
     void handleHomeTimelineError(const QString &errorMessage);
 
 private:

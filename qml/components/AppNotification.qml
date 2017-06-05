@@ -53,15 +53,10 @@ Item {
         }
     }
 
-    Connections {
-        target: notificationItem
-
-    }
-
     Timer {
         id: notificationTimer
         repeat: false
-        interval: 2500
+        interval: 3500
     }
 
     Timer {

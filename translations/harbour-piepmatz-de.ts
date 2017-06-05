@@ -286,6 +286,14 @@
         <source>You have new messages!</source>
         <translation>Sie haben neue Nachrichten!</translation>
     </message>
+    <message>
+        <source>Load more tweets</source>
+        <translation>Mehr Gezwitscher laden</translation>
+    </message>
+    <message>
+        <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
+        <translation>Kein Gezwitscher gefunden. Folgen Sie mehr Leuten um ihr Gezwitscher in Ihre Zeitleiste zu bekommen!</translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

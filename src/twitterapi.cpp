@@ -269,13 +269,16 @@ void TwitterApi::replyToTweetWithImages(const QString &text, const QString &repl
     connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
 }
 
-void TwitterApi::homeTimeline()
+void TwitterApi::homeTimeline(const QString &maxId)
 {
-    qDebug() << "TwitterApi::homeTimeline";
+    qDebug() << "TwitterApi::homeTimeline" << maxId;
     QUrl url = QUrl(API_STATUSES_HOME_TIMELINE);
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("exclude_replies", "false");
+    if (!maxId.isEmpty()) {
+        urlQuery.addQueryItem("max_id", maxId);
+    }
     urlQuery.addQueryItem("count", "200");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
@@ -285,10 +288,18 @@ void TwitterApi::homeTimeline()
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    if (!maxId.isEmpty()) {
+        requestParameters.append(O0RequestParameter(QByteArray("max_id"), maxId.toUtf8()));
+    }
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
+    if (maxId.isEmpty()) {
+        connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
+    } else {
+        connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineLoadMoreFinished()));
+    }
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHomeTimelineError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
+
 }
 
 void TwitterApi::mentionsTimeline()
@@ -778,7 +789,25 @@ void TwitterApi::handleHomeTimelineFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isArray()) {
         QJsonArray responseArray = jsonDocument.array();
-        emit homeTimelineSuccessful(responseArray.toVariantList());
+        emit homeTimelineSuccessful(responseArray.toVariantList(), false);
+    } else {
+        emit homeTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleHomeTimelineLoadMoreFinished()
+{
+    qDebug() << "TwitterApi::handleHomeTimelineLoadMoreFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit homeTimelineSuccessful(responseArray.toVariantList(), true);
     } else {
         emit homeTimelineError("Piepmatz couldn't understand Twitter's response!");
     }

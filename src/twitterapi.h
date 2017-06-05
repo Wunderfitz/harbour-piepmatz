@@ -73,7 +73,7 @@ public:
     Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl);
     Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds);
     Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds);
-    Q_INVOKABLE void homeTimeline();
+    Q_INVOKABLE void homeTimeline(const QString &maxId = "");
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
     Q_INVOKABLE void followers(const QString &screenName);
@@ -106,7 +106,7 @@ signals:
     void helpTosError(const QString &errorMessage);
     void tweetSuccessful(const QVariantMap &result);
     void tweetError(const QString &errorMessage);
-    void homeTimelineSuccessful(const QVariantList &result);
+    void homeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
     void homeTimelineError(const QString &errorMessage);
     void mentionsTimelineSuccessful(const QVariantList &result);
     void mentionsTimelineError(const QString &errorMessage);
@@ -164,6 +164,7 @@ private slots:
     void handleTweetFinished();
     void handleHomeTimelineError(QNetworkReply::NetworkError error);
     void handleHomeTimelineFinished();
+    void handleHomeTimelineLoadMoreFinished();
     void handleMentionsTimelineError(QNetworkReply::NetworkError error);
     void handleMentionsTimelineFinished();
     void handleUserTimelineError(QNetworkReply::NetworkError error);

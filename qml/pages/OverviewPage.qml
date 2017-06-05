@@ -520,6 +520,7 @@ Page {
                     target: timelineModel
                     onHomeTimelineStartUpdate: {
                         homeListView.currentIndex = -1;
+                        homeListView.footer = homeTimelineFooterComponent;
                     }
 
                     onHomeTimelineUpdated: {
@@ -531,6 +532,10 @@ Page {
                         homeView.loaded = true;
                         homeView.reloading = false;
                         overviewNotification.show(errorMessage);
+                    }
+                    onHomeTimelineEndReached: {
+                        homeListView.footer = null;
+                        overviewNotification.show(qsTr("No tweets found. Follow more people to get their tweets in your timeline!"));
                     }
                 }
 
@@ -582,8 +587,52 @@ Page {
                         }
                     }
 
+                    footer: homeTimelineFooterComponent;
+
                     VerticalScrollDecorator {}
                 }
+
+                Component {
+                    id: homeTimelineFooterComponent
+                    Item {
+                        id: homeTimelineLoadMoreRow
+                        width: overviewPage.width
+                        height: homeTimelineLoadMoreButton.height + ( 2 * Theme.paddingLarge )
+                        Button {
+                            id: homeTimelineLoadMoreButton
+                            Behavior on opacity { NumberAnimation {} }
+                            text: qsTr("Load more tweets")
+                            preferredWidth: Theme.buttonWidthLarge
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            opacity: visible ? 1 : 0
+                            onClicked: {
+                                console.log("Loading more tweets for timeline");
+                                timelineModel.loadMore();
+                                homeTimelineLoadMoreBusyIndicator.visible = true;
+                                homeTimelineLoadMoreButton.visible = false;
+                            }
+                        }
+                        BusyIndicator {
+                            id: homeTimelineLoadMoreBusyIndicator
+                            Behavior on opacity { NumberAnimation {} }
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.verticalCenter: parent.verticalCenter
+                            visible: false
+                            opacity: visible ? 1 : 0
+                            running: visible
+                            size: BusyIndicatorSize.Medium
+                        }
+                        Connections {
+                            target: timelineModel
+                            onHomeTimelineUpdated: {
+                                homeTimelineLoadMoreBusyIndicator.visible = false;
+                                homeTimelineLoadMoreButton.visible = true;
+                            }
+                        }
+                    }
+                }
+
 
                 LoadingIndicator {
                     id: homeLoadingIndicator

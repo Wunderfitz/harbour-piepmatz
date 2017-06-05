@@ -53,8 +53,21 @@ QVariant TimelineModel::data(const QModelIndex &index, int role) const
 
 void TimelineModel::update()
 {
+    qDebug() << "TimelineModel::update";
     emit homeTimelineStartUpdate();
     twitterApi->homeTimeline();
+}
+
+void TimelineModel::loadMore()
+{
+    qDebug() << "TimelineModel::loadMore";
+    emit homeTimelineStartUpdate();
+    QString maxId = "";
+    if (!timelineTweets.isEmpty()) {
+        QVariantMap lastItem = timelineTweets.last().toMap();
+        maxId = lastItem.value("id_str").toString();
+    }
+    twitterApi->homeTimeline(maxId);
 }
 
 void TimelineModel::setCurrentTweetId(const QString &tweetId)
@@ -63,12 +76,28 @@ void TimelineModel::setCurrentTweetId(const QString &tweetId)
     settings.setValue(SETTINGS_CURRENT_TWEET, tweetId);
 }
 
-void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result)
+void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate)
 {
     qDebug() << "TimelineModel::handleHomeTimelineSuccessful";
     beginResetModel();
-    timelineTweets.clear();
-    timelineTweets.append(result);
+    if (incrementalUpdate) {
+        qDebug() << "User wanted to load more tweets for the timeline";
+        if (result.size() > 1) {
+            QVariantList incrementalUpdateResult = result;
+            incrementalUpdateResult.removeFirst();
+            timelineTweets.append(incrementalUpdateResult);
+        } else {
+            emit homeTimelineEndReached();
+        }
+    } else {
+        qDebug() << "Complete timeline update";
+        if (result.isEmpty()) {
+            emit homeTimelineEndReached();
+        } else {
+            timelineTweets.clear();
+            timelineTweets.append(result);
+        }
+    }
     endResetModel();
 
     QListIterator<QVariant> tweetIterator(timelineTweets);
