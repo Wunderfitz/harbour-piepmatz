@@ -161,11 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Upprepa</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka upprepning</translation>
     </message>
 </context>
 <context>
@@ -288,11 +288,11 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Läs in fler tweets</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga tweets hittades. Följ fler människor för att få deras tweets i din tidslinje!</translation>
     </message>
 </context>
 <context>
@@ -359,7 +359,7 @@
     <name>Tweet</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Retweetad av %1</translation>
+        <translation>Upprepad av %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Upprepa med kommentar</translation>
     </message>
 </context>
 <context>

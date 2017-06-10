@@ -23,3 +23,11 @@
 - Display user lists for followers & following
 - Direct messages (up to 10.000 characters)
 - System notifications for new messages and mentions
+
+* Sat Jun 10 2017 Sebastian Wolf <sebastian@ygriega.de> 0.4
+- Retweet with comment
+- Load more tweets in timeline
+- Improved video playback (now with remaining time)
+- Better link preview
+- Bugfix: Crash/Freeze on scrolling
+- Bugfix: Error loading direct messages with suspended user

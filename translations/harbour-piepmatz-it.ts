@@ -161,11 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Retweet</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ritwitta</translation>
     </message>
 </context>
 <context>
@@ -288,11 +288,11 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Carica altri tweet</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun tweet. Segui più persone per vedere i loro tweet sulla tua timeline!</translation>
     </message>
 </context>
 <context>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Cita il tweet</translation>
     </message>
 </context>
 <context>

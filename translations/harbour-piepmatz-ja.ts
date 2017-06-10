@@ -161,11 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>リツイート</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>リツイートを送信</translation>
     </message>
 </context>
 <context>
@@ -292,7 +292,7 @@
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>表示可能なツイートがありません。タイムラインにツイートを増やすにはもっとたくさんの人をフォローしてみましょう</translation>
     </message>
 </context>
 <context>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>コメント付きリツイート</translation>
     </message>
 </context>
 <context>

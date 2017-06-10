@@ -163,11 +163,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ретвит</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Отправить ретвит</translation>
     </message>
 </context>
 <context>
@@ -290,11 +290,11 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Загрузить ещё</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>Лента пуста. Подпишитесь на нескольких людей, чтобы увидеть их в ленте!</translation>
     </message>
 </context>
 <context>
@@ -377,7 +377,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Комментировать с цитатой</translation>
     </message>
 </context>
 <context>

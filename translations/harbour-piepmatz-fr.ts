@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci de l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
+        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci pour l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -57,7 +57,7 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d&apos;utilisation</translation>
+        <translation>Conditions de Service</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -72,11 +72,11 @@
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre les %1 images</translation>
+        <translation>Joindre %1 images</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre l&apos;image</translation>
+        <translation>Joindre une image</translation>
     </message>
     <message>
         <source>Select Images</source>
@@ -105,14 +105,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : abonnés</translation>
+        <translation>%1 : Followers</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1 : abonnements</translation>
+        <translation>%1: Following</translation>
     </message>
 </context>
 <context>
@@ -161,11 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Retweet</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer un retweet</translation>
     </message>
 </context>
 <context>
@@ -236,7 +236,7 @@
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez-vous ?</translation>
+        <translation>Que cherchez vous ?</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
@@ -244,7 +244,7 @@
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléversement, %1% effectué...</translation>
+        <translation>Téléchargement, %1% effectué...</translation>
     </message>
     <message>
         <source>You</source>
@@ -288,11 +288,11 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Charger plus de tweets</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun tweet trouvé. Suivez plus de personnes pour avoir leurs tweets dans votre fil !</translation>
     </message>
 </context>
 <context>
@@ -348,7 +348,7 @@
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions d&apos;utilisation</translation>
+        <translation>Conditions de Service</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
@@ -375,7 +375,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Retweeter avec commentaire</translation>
     </message>
 </context>
 <context>

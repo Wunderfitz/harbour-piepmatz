@@ -21,31 +21,31 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisensoitu GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähdekoodit Githubista</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekijät</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa OAuth Qt:lle GitHub:ssa</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää OAuth:ia Qt:lle Akos Polster&apos;in toimesta. Kiitos, että se on saatavana BSD-2-lausekkeen ehtojen mukaisesti!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää twitter -tekstiä. Tekijänoikeus 2014 Twitter, Inc. ja muut osallistujat. Kiitos, että se on saatavana Apache-lisenssin version 2.0 mukaan!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa twitter -teksti GitHub:ssa</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -57,41 +57,41 @@
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttöehdot</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietosuojakäytäntö</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvien enimmäismäärä valittuina!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä %1 kuvaa</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä kuva</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kuvat</translation>
     </message>
 </context>
 <context>
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi viesti %1 :lle</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 merkkiä jäljellä</translation>
     </message>
 </context>
 <context>
@@ -105,14 +105,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Seuraajaa: %1</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation type="unfinished"></translation>
+        <translation>Seuratut: %1</translation>
     </message>
 </context>
 <context>
@@ -153,19 +153,19 @@
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Lähetä Ttviitti</translation>
+        <translation>Lähetä tviitti</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä kuvia</translation>
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudelleentviittaa</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä uudelleentviittaus</translation>
     </message>
 </context>
 <context>
@@ -176,7 +176,7 @@
     </message>
     <message>
         <source>Authenticate</source>
-        <translation type="unfinished"></translation>
+        <translation>Todenna</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
@@ -212,7 +212,7 @@
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Tervehtii Twitteriä...</translation>
+        <translation>Tervetuloa Twitteriin!</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
@@ -224,7 +224,7 @@
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tviitti lähetetty onnistuneesti</translation>
+        <translation>Tviitti lähetettiin onnistuneesti!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
@@ -232,7 +232,7 @@
     </message>
     <message>
         <source>No results found</source>
-        <translation>Ei hakutulosta</translation>
+        <translation>Ei hakutuloksia</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
@@ -240,70 +240,70 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetetään tviitti...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataa, %1% suoritettu...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinä</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei yksityisviestejä viimeisten 30 päivän aikana</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Tviitit</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttäjät</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsii...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudet maininnat</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinut on mainittu!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudet viestit</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla on uusia yksityisviestejä!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla on uusia viestejä!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataa lisää tviittejä</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei tviittejä. Seuraa useampia saadaksesi heidän tviittejään aikajanalle.</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 seuraa</translation>
+        <translation>Seuratut: %1</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 seuraajaa</translation>
+        <translation>Seuraajaa: %1</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
@@ -318,7 +318,7 @@
     <name>ProfileHeader</name>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
 </context>
 <context>
@@ -341,18 +341,18 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation type="unfinished"></translation>
+        <translation>Lähetä yksityisviesti</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Käyttöehdot</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietosuojakäytäntö</translation>
     </message>
 </context>
 <context>
@@ -367,15 +367,15 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa selaimessa</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastaa tviittiin</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Lainaa tviittiä</translation>
     </message>
 </context>
 <context>

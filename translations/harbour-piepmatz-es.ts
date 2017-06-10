@@ -161,11 +161,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Retuitear</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Enviar retuit</translation>
     </message>
 </context>
 <context>
@@ -216,7 +216,7 @@
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Cargando inicio ...</translation>
+        <translation>Cargando inicio...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
@@ -288,11 +288,11 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Cargar más tuits</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation type="unfinished"></translation>
+        <translation>No hay tuits. ¡Sigue a más gente para ver sus tuits en la página de inicio!</translation>
     </message>
 </context>
 <context>
@@ -371,11 +371,11 @@
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Responder el tuit</translation>
+        <translation>Responder tuit</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished"></translation>
+        <translation>Retuitear con comentario</translation>
     </message>
 </context>
 <context>
