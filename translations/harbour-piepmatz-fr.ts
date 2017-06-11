@@ -87,7 +87,7 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>Nouveau message à %1</translation>
+        <translation>Nouveau message pour %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
@@ -105,14 +105,14 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : Followers</translation>
+        <translation>Abonnés : %1</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: Following</translation>
+        <translation>Abonnements : %1</translation>
     </message>
 </context>
 <context>
@@ -172,7 +172,7 @@
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Essayer encore</translation>
+        <translation>Essayer de nouveau</translation>
     </message>
     <message>
         <source>Authenticate</source>
@@ -272,7 +272,7 @@
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>Vous avez été mentionné!</translation>
+        <translation>On vous a mentionné !</translation>
     </message>
     <message>
         <source>New Messages</source>
@@ -284,7 +284,7 @@
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Vous avez de nouveaux messages!</translation>
+        <translation>Vous avez de nouveaux messages !</translation>
     </message>
     <message>
         <source>Load more tweets</source>
@@ -409,7 +409,7 @@
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Valider</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
