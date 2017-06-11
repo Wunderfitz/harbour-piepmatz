@@ -430,6 +430,7 @@ Page {
     SilicaFlickable {
         id: overviewContainer
         anchors.fill: parent
+        contentHeight: parent.height
         visible: false
 
         PullDownMenu {
