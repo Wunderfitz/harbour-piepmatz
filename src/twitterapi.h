@@ -53,6 +53,7 @@ const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/c
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
 const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json";
 const char API_SEARCH_USERS[] = "https://api.twitter.com/1.1/users/search.json";
+const char API_FAVORITES_LIST[] = "https://api.twitter.com/1.1/favorites/list.json";
 const char API_FAVORITES_CREATE[] = "https://api.twitter.com/1.1/favorites/create.json";
 const char API_FAVORITES_DESTROY[] = "https://api.twitter.com/1.1/favorites/destroy.json";
 const char API_DIRECT_MESSAGES_LIST[] = "https://api.twitter.com/1.1/direct_messages/events/list.json";
@@ -87,6 +88,7 @@ public:
     Q_INVOKABLE void searchUsers(const QString &query);
     Q_INVOKABLE void favorite(const QString &statusId);
     Q_INVOKABLE void unfavorite(const QString &statusId);
+    Q_INVOKABLE void favorites(const QString &screenName);
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
@@ -132,6 +134,8 @@ signals:
     void favoriteError(const QString &errorMessage);
     void unfavoriteSuccessful(const QVariantMap &result);
     void unfavoriteError(const QString &errorMessage);
+    void favoritesSuccessful(const QVariantList &result);
+    void favoritesError(const QString &errorMessage);
     void retweetSuccessful(const QVariantMap &result);
     void retweetError(const QString &errorMessage);
     void unretweetSuccessful(const QVariantMap &result);
@@ -189,6 +193,8 @@ private slots:
     void handleFavoriteFinished();
     void handleUnfavoriteError(QNetworkReply::NetworkError error);
     void handleUnfavoriteFinished();
+    void handleFavoritesError(QNetworkReply::NetworkError error);
+    void handleFavoritesFinished();
     void handleRetweetError(QNetworkReply::NetworkError error);
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);

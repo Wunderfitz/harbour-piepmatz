@@ -610,6 +610,30 @@ void TwitterApi::unfavorite(const QString &statusId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleUnfavoriteFinished()));
 }
 
+void TwitterApi::favorites(const QString &screenName)
+{
+    qDebug() << "TwitterApi::favorites" << screenName;
+    QUrl url = QUrl(API_FAVORITES_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("screen_name", screenName);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFavoritesError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleFavoritesFinished()));
+}
+
 void TwitterApi::retweet(const QString &statusId)
 {
     qDebug() << "TwitterApi::retweet" << statusId;
@@ -1117,6 +1141,31 @@ void TwitterApi::handleUnfavoriteFinished()
         emit unfavoriteSuccessful(responseObject.toVariantMap());
     } else {
         emit unfavoriteError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleFavoritesError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleFavoritesError:" << (int)error << reply->errorString() << reply->readAll();
+    emit favoritesError(reply->errorString());
+}
+
+void TwitterApi::handleFavoritesFinished()
+{
+    qDebug() << "TwitterApi::handleFavoritesFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit favoritesSuccessful(responseArray.toVariantList());
+    } else {
+        emit favoritesError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

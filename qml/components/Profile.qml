@@ -85,7 +85,7 @@ Item {
             id: profileFriendsText
             text: qsTr("%1 Following").arg(Number(profileModel.friends_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
-            color: Theme.primaryColor
+            color: Theme.highlightColor
             font.underline: !profileItem.loadingError
             wrapMode: Text.Wrap
             MouseArea {
@@ -106,7 +106,7 @@ Item {
             id: profileFollowersText
             text: qsTr("%1 Followers").arg(Number(profileModel.followers_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
-            color: Theme.primaryColor
+            color: Theme.highlightColor
             font.underline: !profileItem.loadingError
             wrapMode: Text.Wrap
             MouseArea {
@@ -133,7 +133,7 @@ Item {
             text: qsTr("%1 Tweets").arg(Number(profileModel.statuses_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
             font.underline: !profileItem.loadingError
-            color: Theme.primaryColor
+            color: Theme.highlightColor
             MouseArea {
                 enabled: !profileItem.loadingError
                 anchors.fill: parent
@@ -149,11 +149,18 @@ Item {
             color: Theme.primaryColor
         }
         Text {
-            id: profileJoinedText
-            text: qsTr("Joined in %1").arg(Functions.getValidDate(profileModel.created_at).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
+            id: profileFavoritesText
+            text: qsTr("%1 Favorites").arg(Number(profileModel.favourites_count).toLocaleString(Qt.locale(), "f", 0))
             font.pixelSize: Theme.fontSizeExtraSmall
-            color: Theme.primaryColor
-            wrapMode: Text.Wrap
+            font.underline: !profileItem.loadingError
+            color: Theme.highlightColor
+            MouseArea {
+                enabled: !profileItem.loadingError
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/FavoritesPage.qml"), { "screenName" : profileModel.screen_name, "userName" : profileModel.name });
+                }
+            }
         }
     }
 
@@ -190,6 +197,24 @@ Item {
             }
         }
 
+        Row {
+            id: profileJoinedRow
+            spacing: Theme.paddingMedium
+            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            Text {
+                id: profileJoinedText
+                text: qsTr("Joined in %1").arg(Functions.getValidDate(profileModel.created_at).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.primaryColor
+                wrapMode: Text.NoWrap
+                elide: Text.ElideRight
+            }
+        }
+
 
         Row {
             id: profileLocationRow
@@ -200,6 +225,7 @@ Item {
             }
             Row {
                 visible: profileModel.location.length === 0 ? false : true
+                width: profileModel.location.length === 0 ? 0 : ( profileModel.entities.url ? parent.width / 2 : parent.width )
                 Image {
                     id: profileLocationImage
                     source: "image://theme/icon-m-location"
@@ -211,21 +237,16 @@ Item {
                     text: profileModel.location
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                    wrapMode: Text.Wrap
+                    wrapMode: Text.NoWrap
                     anchors.verticalCenter: parent.verticalCenter
+                    elide: Text.ElideRight
+                    width: parent.width - profileLocationImage.width
                 }
             }
-        }
 
-        Row {
-            id: profileUrlRow
-            spacing: Theme.paddingMedium
-            width: parent.width - ( 2 * Theme.horizontalPageMargin )
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-            }
             Row {
                 visible: profileModel.entities.url ? true : false
+                width: profileModel.entities.url ? ( profileModel.location.length === 0 ? parent.width : parent.width / 2 ) : 0
                 Image {
                     id: profileUrlImage
                     source: "image://theme/icon-m-link"
@@ -237,13 +258,16 @@ Item {
                     text: profileModel.entities.url ? ("<a href=\"" + profileModel.entities.url.urls[0].url + "\">" + profileModel.entities.url.urls[0].display_url + "</a>") : ""
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                    wrapMode: Text.Wrap
+                    wrapMode: Text.NoWrap
                     anchors.verticalCenter: parent.verticalCenter
                     onLinkActivated: Qt.openUrlExternally(profileModel.entities.url.urls[0].url)
                     linkColor: Theme.highlightColor
+                    elide: Text.ElideRight
+                    width: parent.width - profileUrlImage.width
                 }
             }
         }
+
         Separator {
             id: profileSeparator
             width: parent.width

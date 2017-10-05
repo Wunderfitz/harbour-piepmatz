@@ -197,6 +197,7 @@ Page {
                     Column {
                         width: Theme.fontSizeMedium
                         anchors.bottom: parent.bottom
+                        anchors.bottomMargin: Theme.paddingLarge
                         IconButton {
                             id: newMessageSendButton
                             icon.source: "image://theme/icon-m-chat"

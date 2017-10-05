@@ -102,6 +102,13 @@
     </message>
 </context>
 <context>
+    <name>FavoritesPage</name>
+    <message>
+        <source>%1: Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
@@ -312,6 +319,10 @@
     <message>
         <source>Joined in %1</source>
         <translation>Dabei seit %1</translation>
+    </message>
+    <message>
+        <source>%1 Favorites</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

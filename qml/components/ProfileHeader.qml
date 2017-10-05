@@ -32,7 +32,7 @@ Item {
     Item {
         id: profileBackgroundItem
         width: parent.width
-        height: appWindow.height / 5
+        height: appWindow.height / 8
         Rectangle {
             id: profileBackgroundColor
             color: "#" + profileModel.profile_link_color
@@ -43,6 +43,7 @@ Item {
             Image {
                 id: profileBackgroundImage
                 source: profileModel.profile_banner_url
+                fillMode: Image.PreserveAspectCrop
             }
         }
 
@@ -94,6 +95,7 @@ Item {
                 source: Functions.findHiResImage(profileModel.profile_image_url_https)
                 width: parent.width - parent.width / 10
                 height: parent.height - parent.height / 10
+                fillMode: Image.PreserveAspectCrop
                 anchors.margins: Theme.horizontalPageMargin + parent.width / 60
                 anchors.centerIn: profilePictureBackground
                 visible: false
