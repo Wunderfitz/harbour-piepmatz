@@ -33,6 +33,9 @@ public:
 
     void setCoverTweets(const QVariantList &coverTweets);
 
+signals:
+    void coverInitialized();
+
 private:
     QVariantList coverTweets;
 

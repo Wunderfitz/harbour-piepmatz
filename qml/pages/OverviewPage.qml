@@ -866,6 +866,7 @@ Page {
                                             color: Theme.primaryColor
                                             width: parent.width - Theme.paddingMedium - messageContactLastUserText.width
                                             elide: Text.ElideRight
+                                            textFormat: Text.PlainText
                                         }
                                     }
 

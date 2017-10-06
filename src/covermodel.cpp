@@ -45,4 +45,5 @@ void CoverModel::setCoverTweets(const QVariantList &coverTweets)
     this->coverTweets.clear();
     this->coverTweets.append(coverTweets);
     endResetModel();
+    emit coverInitialized();
 }

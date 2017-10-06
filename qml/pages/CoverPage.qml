@@ -25,6 +25,7 @@ CoverBackground {
     id: coverPage
 
     property bool loading : false;
+    property bool initialized : false;
 
     Connections {
         target: timelineModel
@@ -36,6 +37,13 @@ CoverBackground {
         }
         onHomeTimelineError: {
             coverPage.loading = false;
+        }
+    }
+
+    Connections {
+        target: coverModel
+        onCoverInitialized: {
+            coverPage.initialized = true;
         }
     }
 
@@ -56,6 +64,7 @@ CoverBackground {
     }
 
     CoverActionList {
+        enabled: coverPage.initialized
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
             onTriggered: {
