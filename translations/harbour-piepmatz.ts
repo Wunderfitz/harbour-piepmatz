@@ -105,7 +105,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Favorites</translation>
     </message>
 </context>
 <context>
@@ -322,7 +322,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Favorites</translation>
     </message>
 </context>
 <context>
@@ -448,6 +448,14 @@
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+    <message>
+        <source>%1M</source>
+        <translation>%1M</translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation>%1K</translation>
     </message>
 </context>
 </TS>

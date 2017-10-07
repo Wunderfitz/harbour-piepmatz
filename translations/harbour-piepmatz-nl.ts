@@ -449,5 +449,13 @@
         <source>@%1</source>
         <translation>@%1</translation>
     </message>
+    <message>
+        <source>%1M</source>
+        <translation type="unfinished">%1M</translation>
+    </message>
+    <message>
+        <source>%1K</source>
+        <translation type="unfinished">%1K</translation>
+    </message>
 </context>
 </TS>

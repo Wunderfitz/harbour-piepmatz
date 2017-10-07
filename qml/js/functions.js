@@ -249,3 +249,21 @@ function getTweetUrl(tweetModel) {
     console.log(statusUrl);
     return statusUrl;
 }
+
+function getRetweetCount(tweetModel) {
+    return tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
+}
+
+function getFavoritesCount(tweetModel) {
+    return tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorite_count ? tweetModel.retweeted_status.favorite_count : " " ) : ( tweetModel.favorite_count ? tweetModel.favorite_count : " " );
+}
+
+function getShortenedCount(count) {
+    if (count >= 1000000) {
+        return qsTr("%1M").arg((count / 1000000).toLocaleString(Qt.locale(), 'f', 0));
+    } else if (count >= 1000 ) {
+        return qsTr("%1K").arg((count / 1000).toLocaleString(Qt.locale(), 'f', 0));
+    } else {
+        return count;
+    }
+}

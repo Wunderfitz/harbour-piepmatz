@@ -304,6 +304,7 @@ ListItem {
                 Row {
                     id: tweetInfoRow
                     width: parent.width
+                    height: Theme.fontSizeLarge
                     spacing: Theme.paddingSmall
 
                     Connections {
@@ -354,7 +355,9 @@ ListItem {
 
                     Row {
                         width: parent.width * 9 / 20
+                        height: parent.height
                         Text {
+                            anchors.verticalCenter: parent.verticalCenter
                             id: tweetDateText
                             font.pixelSize: Theme.fontSizeExtraSmall
                             color: Theme.secondaryColor
@@ -366,15 +369,17 @@ ListItem {
 
                     Row {
                         width: parent.width * 11 / 20
+                        height: parent.height
                         spacing: Theme.paddingSmall
                         Column {
                             width: parent.width / 6
+                            anchors.verticalCenter: parent.verticalCenter
                             Image {
                                 id: tweetRetweetedCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
-                                width: Theme.fontSizeSmall
-                                height: Theme.fontSizeSmall
+                                width: Theme.fontSizeMedium
+                                height: Theme.fontSizeMedium
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
@@ -383,12 +388,13 @@ ListItem {
                         }
                         Column {
                             width: parent.width / 3
+                            anchors.verticalCenter: parent.verticalCenter
                             Text {
                                 id: tweetRetweetedCountText
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.retweeted ? Theme.highlightColor : Theme.secondaryColor )
-                                text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
+                                text: Functions.getShortenedCount(Functions.getRetweetCount(tweetModel))
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
                                 MouseArea {
@@ -399,12 +405,13 @@ ListItem {
                         }
                         Column {
                             width: parent.width / 6
+                            anchors.verticalCenter: parent.verticalCenter
                             Image {
                                 id: tweetFavoritesCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" ) : ( tweetModel.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" )
-                                width: Theme.fontSizeSmall
-                                height: Theme.fontSizeSmall
+                                width: Theme.fontSizeMedium
+                                height: Theme.fontSizeMedium
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
@@ -413,12 +420,13 @@ ListItem {
                         }
                         Column {
                             width: parent.width / 3
+                            anchors.verticalCenter: parent.verticalCenter
                             Text {
                                 id: tweetFavoritesCountText
                                 font.pixelSize: Theme.fontSizeExtraSmall
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.favorited ? Theme.highlightColor : Theme.secondaryColor )
-                                text: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorite_count ? tweetModel.retweeted_status.favorite_count : " " ) : ( tweetModel.favorite_count ? tweetModel.favorite_count : " " )
+                                text: Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel))
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
                                 MouseArea {
