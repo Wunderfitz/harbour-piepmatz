@@ -311,6 +311,7 @@ ListItem {
                         target: twitterApi
                         onFavoriteSuccessful: {
                             if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.highlightColor;
                                 tweetFavoritesCountText.color = Theme.highlightColor;
                                 tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
@@ -319,6 +320,7 @@ ListItem {
                         }
                         onUnfavoriteSuccessful: {
                             if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.primaryColor;
                                 tweetFavoritesCountText.color = Theme.secondaryColor;
                                 tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
@@ -327,6 +329,7 @@ ListItem {
                         }
                         onRetweetSuccessful: {
                             if (singleTweet.tweetId === result.retweeted_status.id_str) {
+                                tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.highlightColor;
                                 tweetRetweetedCountText.color = Theme.highlightColor;
                                 tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
@@ -335,6 +338,7 @@ ListItem {
                         }
                         onUnretweetSuccessful: {
                             if (singleTweet.tweetId === result.id_str) {
+                                tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.primaryColor;
                                 tweetRetweetedCountText.color = Theme.secondaryColor;
                                 tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
@@ -382,8 +386,19 @@ ListItem {
                                 height: Theme.fontSizeMedium
                                 MouseArea {
                                     anchors.fill: parent
-                                    onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
+                                    onClicked: {
+                                        tweetRetweetedCountImage.visible = false;
+                                        singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId);
+                                    }
+
                                 }
+                            }
+                            BusyIndicator {
+                                id: tweetRetweetBusyIndicator
+                                anchors.right: parent.right
+                                running: visible
+                                size: BusyIndicatorSize.ExtraSmall
+                                visible: !tweetRetweetedCountImage.visible
                             }
                         }
                         Column {
@@ -399,7 +414,11 @@ ListItem {
                                 maximumLineCount: 1
                                 MouseArea {
                                     anchors.fill: parent
-                                    onClicked: singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId)
+                                    onClicked: {
+                                        tweetRetweetedCountImage.visible = false;
+                                        singleTweet.retweeted ? twitterApi.unretweet(singleTweet.tweetId) : twitterApi.retweet(singleTweet.tweetId);
+                                    }
+
                                 }
                             }
                         }
@@ -414,8 +433,19 @@ ListItem {
                                 height: Theme.fontSizeMedium
                                 MouseArea {
                                     anchors.fill: parent
-                                    onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
+                                    onClicked: {
+                                        tweetFavoritesCountImage.visible = false;
+                                        singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId);
+                                    }
+
                                 }
+                            }
+                            BusyIndicator {
+                                id: tweetFavoriteBusyIndicator
+                                anchors.right: parent.right
+                                running: visible
+                                size: BusyIndicatorSize.ExtraSmall
+                                visible: !tweetFavoritesCountImage.visible
                             }
                         }
                         Column {
@@ -431,7 +461,11 @@ ListItem {
                                 maximumLineCount: 1
                                 MouseArea {
                                     anchors.fill: parent
-                                    onClicked: singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId)
+                                    onClicked: {
+                                        tweetFavoritesCountImage.visible = false;
+                                        singleTweet.favorited ? twitterApi.unfavorite(singleTweet.tweetId) : twitterApi.favorite(singleTweet.tweetId);
+                                    }
+
                                 }
                             }
                         }
