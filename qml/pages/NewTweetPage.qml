@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with Piepmatz. If not, see <http://www.gnu.org/licenses/>.
 */
-import QtQuick 2.0
+import QtQuick 2.5
 import Sailfish.Silica 1.0
 import "../js/twitter-text.js" as TwitterText
 import "../components"
@@ -132,6 +132,7 @@ Page {
                 width: parent.width - 2 * Theme.paddingLarge
                 focus: true
                 font.pixelSize: Theme.fontSizeSmall
+                labelVisible: false;
                 onTextChanged: {
                     remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
                 }
@@ -173,6 +174,7 @@ Page {
                 width: parent.width * 2 / 3
                 height: parent.width * 2 / 3
                 anchors.horizontalCenter: parent.horizontalCenter
+                visible: newTweetPage.attachedImages ? true : false
                 model: newTweetPage.attachedImages
                 delegate: Item {
                     width: parent.width
@@ -183,6 +185,7 @@ Page {
                         source: modelData
                         width: parent.width
                         height: parent.height
+                        autoTransform: true
                         asynchronous: true
                         sourceSize.width: parent.width
                         sourceSize.height: parent.height

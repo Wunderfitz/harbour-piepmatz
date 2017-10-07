@@ -19,6 +19,7 @@
 #include "twitterapi.h"
 
 #include "imageresponsehandler.h"
+#include <QBuffer>
 #include <QFile>
 #include <QHttpMultiPart>
 #include <QXmlStreamReader>
@@ -674,12 +675,12 @@ void TwitterApi::uploadImage(const QString &fileName)
     QUrl url = QUrl(QString(API_MEDIA_UPLOAD));
     QNetworkRequest request(url);
 
-
     QHttpMultiPart *multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
 
     QHttpPart imagePart;
     imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("application/octet-stream"));
     imagePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"media\""));
+
     QFile *file = new QFile(fileName);
     file->open(QIODevice::ReadOnly);
     QByteArray rawImage = file->readAll();

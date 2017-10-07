@@ -27,7 +27,9 @@
 ImagesModel::ImagesModel(TwitterApi *twitterApi)
 {
     workerThread = new ImagesSearchWorker();
+    imageProcessor = new ImageProcessor();
     connect(workerThread, SIGNAL(searchFinished()), this, SLOT(handleSearchFinished()));
+    connect(imageProcessor, SIGNAL(processingComplete()), this, SLOT(handleImageProcessingComplete()));
 
     connect(twitterApi, SIGNAL(imageUploadSuccessful(QString,QVariantMap)), this, SLOT(handleImageUploadSuccessful(QString,QVariantMap)));
     connect(twitterApi, SIGNAL(imageUploadError(QString,QString)), this, SLOT(handleImageUploadError(QString,QString)));
@@ -63,14 +65,7 @@ void ImagesModel::setSelectedImages(const QVariantList &selectedImages)
     qDebug() << "ImagesModel::setSelectedImages";
     this->selectedImages.clear();
     this->selectedImages.append(selectedImages);
-    QListIterator<QVariant> selectedImagesIterator(selectedImages);
-    while (selectedImagesIterator.hasNext()) {
-        QString selectedImageFileName = selectedImagesIterator.next().toString();
-        QFileInfo selectedImageInfo(selectedImageFileName);
-        selectedImagesSize += selectedImageInfo.size();
-        uploadImagesBytesSent.insert(selectedImageFileName, 0);
-    }
-    qDebug() << "Total images size: " + QString::number(selectedImagesSize);
+    this->imageProcessor->setSelectedImages(selectedImages);
     emit imagesSelected();
 }
 
@@ -83,16 +78,14 @@ void ImagesModel::uploadSelectedImages()
 {
     qDebug() << "ImagesModel::uploadSelectedImages";
     emit uploadStarted();
-    QListIterator<QVariant> selectedImagesIterator(selectedImages);
-    while (selectedImagesIterator.hasNext()) {
-        twitterApi->uploadImage(selectedImagesIterator.next().toString());
-    }
+    imageProcessor->start();
 }
 
 void ImagesModel::clearModel()
 {
     qDebug() << "ImagesModel::clearModel";
     this->selectedImages.clear();
+    this->imageProcessor->removeTemporaryFiles();
     this->tweetText.clear();
     this->replyToStatusId.clear();
     this->tweetWithImagesInProgress = false;
@@ -134,6 +127,24 @@ void ImagesModel::handleSearchFinished()
     }
     endResetModel();
     emit searchFinished();
+}
+
+void ImagesModel::handleImageProcessingComplete()
+{
+    QVariantList temporaryFiles = imageProcessor->getTemporaryFiles();
+    QListIterator<QVariant> temporaryFilesIterator(temporaryFiles);
+    while (temporaryFilesIterator.hasNext()) {
+        QString temporaryFileName = temporaryFilesIterator.next().toString();
+        QFileInfo temporaryFileInfo(temporaryFileName);
+        selectedImagesSize += temporaryFileInfo.size();
+        uploadImagesBytesSent.insert(temporaryFileName, 0);
+    }
+    qDebug() << "Total images size: " + QString::number(selectedImagesSize);
+
+    temporaryFilesIterator.toFront();
+    while (temporaryFilesIterator.hasNext()) {
+        twitterApi->uploadImage(temporaryFilesIterator.next().toString());
+    }
 }
 
 void ImagesModel::handleImageUploadSuccessful(const QString &fileName, const QVariantMap &result)

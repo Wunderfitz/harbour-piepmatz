@@ -20,6 +20,7 @@
 #define IMAGESMODEL_H
 
 #include "imagessearchworker.h"
+#include "imageprocessor.h"
 #include "twitterapi.h"
 #include <QAbstractListModel>
 #include <QFileInfo>
@@ -53,6 +54,7 @@ signals:
 
 private slots:
     void handleSearchFinished();
+    void handleImageProcessingComplete();
     void handleImageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void handleImageUploadError(const QString &fileName, const QString &errorMessage);
     void handleImageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
@@ -63,6 +65,8 @@ private:
 
     QVariantList images;
     ImagesSearchWorker *workerThread;
+    ImageProcessor *imageProcessor;
+
     TwitterApi *twitterApi;
     bool searchInProgress;
 

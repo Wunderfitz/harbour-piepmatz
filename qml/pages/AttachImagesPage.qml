@@ -16,7 +16,7 @@
     You should have received a copy of the GNU General Public License
     along with Piepmatz. If not, see <http://www.gnu.org/licenses/>.
 */
-import QtQuick 2.0
+import QtQuick 2.5
 import Sailfish.Silica 1.0
 import "../components"
 
@@ -132,6 +132,7 @@ Page {
                         }
 
                         fillMode: Image.PreserveAspectCrop
+                        autoTransform: true
                         asynchronous: true
                         MouseArea {
                             anchors.fill: parent
