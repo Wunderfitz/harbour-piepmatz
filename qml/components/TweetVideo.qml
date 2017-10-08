@@ -94,6 +94,15 @@ Item {
         visible: placeholderImage.status === Image.Ready ? true : false
     }
 
+    Rectangle {
+        id: videoErrorShade
+        width: parent.width
+        height: parent.height
+        color: "lightgrey"
+        visible: placeholderImage.status === Image.Error ? true : false
+        opacity: 0.3
+    }
+
     ImageProgressIndicator {
         image: placeholderImage
         withPercentage: true

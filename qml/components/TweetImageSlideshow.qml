@@ -68,6 +68,16 @@ Column {
                     }
                 }
             }
+
+            Rectangle {
+                id: tweetImageErrorShade
+                width: parent.width
+                height: parent.height
+                color: "lightgrey"
+                visible: tweetImage.status === Image.Error ? true : false
+                opacity: 0.3
+            }
+
             ImageProgressIndicator {
                 image: tweetImage
                 withPercentage: true

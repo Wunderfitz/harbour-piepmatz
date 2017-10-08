@@ -118,6 +118,15 @@ ListItem {
                     }
 
                     Rectangle {
+                        id: tweetAuthorPictureErrorShade
+                        z: 42
+                        width: parent.width
+                        height: parent.height
+                        color: "lightgrey"
+                        visible: false
+                    }
+
+                    Rectangle {
                         id: tweetAuthorPictureMask
                         z: 42
                         width: parent.width
@@ -130,11 +139,11 @@ ListItem {
                     OpacityMask {
                         id: maskedTweetAuthorPicture
                         z: 42
-                        source: tweetAuthorPicture
+                        source: tweetAuthorPicture.status === Image.Error ? tweetAuthorPictureErrorShade : tweetAuthorPicture
                         maskSource: tweetAuthorPictureMask
                         anchors.fill: tweetAuthorPicture
-                        visible: tweetAuthorPicture.status === Image.Ready ? true : false
-                        opacity: tweetAuthorPicture.status === Image.Ready ? 1 : 0
+                        visible: ( tweetAuthorPicture.status === Image.Ready || tweetAuthorPicture.status === Image.Error ) ? true : false
+                        opacity: tweetAuthorPicture.status === Image.Ready ? 1 : ( tweetAuthorPicture.status === Image.Error ? 0.3 : 0 )
                         Behavior on opacity { NumberAnimation {} }
                         MouseArea {
                             anchors.fill: parent
@@ -314,8 +323,13 @@ ListItem {
                                 tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.highlightColor;
                                 tweetFavoritesCountText.color = Theme.highlightColor;
-                                tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
+                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel));
                                 singleTweet.favorited = true;
+                            }
+                        }
+                        onFavoriteError: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.visible = true;
                             }
                         }
                         onUnfavoriteSuccessful: {
@@ -323,8 +337,13 @@ ListItem {
                                 tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.primaryColor;
                                 tweetFavoritesCountText.color = Theme.secondaryColor;
-                                tweetFavoritesCountText.text = result.retweeted_status ? ( result.retweeted_status.favorite_count ? result.retweeted_status.favorite_count : " " ) : ( result.favorite_count ? result.favorite_count : " " );
+                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel));
                                 singleTweet.favorited = false;
+                            }
+                        }
+                        onUnfavoriteError: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetFavoritesCountImage.visible = true;
                             }
                         }
                         onRetweetSuccessful: {
@@ -332,8 +351,13 @@ ListItem {
                                 tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.highlightColor;
                                 tweetRetweetedCountText.color = Theme.highlightColor;
-                                tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
+                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(tweetModel));
                                 singleTweet.retweeted = true;
+                            }
+                        }
+                        onRetweetError: {
+                            if (singleTweet.tweetId === result.retweeted_status.id_str) {
+                                tweetRetweetedCountImage.visible = true;
                             }
                         }
                         onUnretweetSuccessful: {
@@ -341,8 +365,13 @@ ListItem {
                                 tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.primaryColor;
                                 tweetRetweetedCountText.color = Theme.secondaryColor;
-                                tweetRetweetedCountText.text = result.retweeted_status ? ( result.retweeted_status.retweet_count ? result.retweeted_status.retweet_count : " " ) : ( result.retweet_count ? result.retweet_count : " " );
+                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(tweetModel));
                                 singleTweet.retweeted = false;
+                            }
+                        }
+                        onUnretweetError: {
+                            if (singleTweet.tweetId === result.id_str) {
+                                tweetRetweetedCountImage.visible = true;
                             }
                         }
                     }
