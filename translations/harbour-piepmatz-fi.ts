@@ -369,14 +369,6 @@
 <context>
     <name>Tweet</name>
     <message>
-        <source>Retweeted by %1</source>
-        <translation>Henkilön %1 uudelleentviittaama</translation>
-    </message>
-    <message>
-        <source>In reply to %1</source>
-        <translation>Vastaus henkilölle %1</translation>
-    </message>
-    <message>
         <source>Open in Browser</source>
         <translation>Avaa selaimessa</translation>
     </message>
@@ -387,6 +379,40 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Lainaa tviittiä</translation>
+    </message>
+</context>
+<context>
+    <name>TweetElement</name>
+    <message>
+        <source>Retweeted by %1</source>
+        <translation type="unfinished">Henkilön %1 uudelleentviittaama</translation>
+    </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished">Vastaus henkilölle %1</translation>
+    </message>
+    <message>
+        <source>Tweeted with %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TweetPage</name>
+    <message>
+        <source>Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation type="unfinished">Vastaa tviittiin</translation>
+    </message>
+    <message>
+        <source>Retweet with Comment</source>
+        <translation type="unfinished">Lainaa tviittiä</translation>
+    </message>
+    <message>
+        <source>Open in Browser</source>
+        <translation type="unfinished">Avaa selaimessa</translation>
     </message>
 </context>
 <context>

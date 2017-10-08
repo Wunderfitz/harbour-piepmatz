@@ -369,14 +369,6 @@
 <context>
     <name>Tweet</name>
     <message>
-        <source>Retweeted by %1</source>
-        <translation>Retuiteado por %1</translation>
-    </message>
-    <message>
-        <source>In reply to %1</source>
-        <translation>En respuesta a %1</translation>
-    </message>
-    <message>
         <source>Open in Browser</source>
         <translation>Abrir en el navegador</translation>
     </message>
@@ -387,6 +379,40 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Retuitear con comentario</translation>
+    </message>
+</context>
+<context>
+    <name>TweetElement</name>
+    <message>
+        <source>Retweeted by %1</source>
+        <translation type="unfinished">Retuiteado por %1</translation>
+    </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished">En respuesta a %1</translation>
+    </message>
+    <message>
+        <source>Tweeted with %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TweetPage</name>
+    <message>
+        <source>Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation type="unfinished">Responder tuit</translation>
+    </message>
+    <message>
+        <source>Retweet with Comment</source>
+        <translation type="unfinished">Retuitear con comentario</translation>
+    </message>
+    <message>
+        <source>Open in Browser</source>
+        <translation type="unfinished">Abrir en el navegador</translation>
     </message>
 </context>
 <context>

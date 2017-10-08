@@ -267,3 +267,16 @@ function getShortenedCount(count) {
         return count;
     }
 }
+
+function containsPlace(tweetModel) {
+    if (tweetModel.retweeted_status) {
+        if (tweetModel.retweeted_status.place) {
+            return true;
+        }
+    } else {
+        if (tweetModel.place) {
+            return true;
+        }
+    }
+    return false;
+}

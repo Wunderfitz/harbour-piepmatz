@@ -371,14 +371,6 @@
 <context>
     <name>Tweet</name>
     <message>
-        <source>Retweeted by %1</source>
-        <translation>Процитировано %1</translation>
-    </message>
-    <message>
-        <source>In reply to %1</source>
-        <translation>Oтвет %1</translation>
-    </message>
-    <message>
         <source>Open in Browser</source>
         <translation>Открыть в браузере</translation>
     </message>
@@ -389,6 +381,40 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Комментировать с цитатой</translation>
+    </message>
+</context>
+<context>
+    <name>TweetElement</name>
+    <message>
+        <source>Retweeted by %1</source>
+        <translation type="unfinished">Процитировано %1</translation>
+    </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished">Oтвет %1</translation>
+    </message>
+    <message>
+        <source>Tweeted with %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TweetPage</name>
+    <message>
+        <source>Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation type="unfinished">Ответить на твит</translation>
+    </message>
+    <message>
+        <source>Retweet with Comment</source>
+        <translation type="unfinished">Комментировать с цитатой</translation>
+    </message>
+    <message>
+        <source>Open in Browser</source>
+        <translation type="unfinished">Открыть в браузере</translation>
     </message>
 </context>
 <context>

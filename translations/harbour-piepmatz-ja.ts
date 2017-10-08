@@ -369,14 +369,6 @@
 <context>
     <name>Tweet</name>
     <message>
-        <source>Retweeted by %1</source>
-        <translation>%1 がリツイート</translation>
-    </message>
-    <message>
-        <source>In reply to %1</source>
-        <translation>%1 への返信</translation>
-    </message>
-    <message>
         <source>Open in Browser</source>
         <translation>ブラウザで開く</translation>
     </message>
@@ -387,6 +379,40 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>コメント付きリツイート</translation>
+    </message>
+</context>
+<context>
+    <name>TweetElement</name>
+    <message>
+        <source>Retweeted by %1</source>
+        <translation type="unfinished">%1 がリツイート</translation>
+    </message>
+    <message>
+        <source>In reply to %1</source>
+        <translation type="unfinished">%1 への返信</translation>
+    </message>
+    <message>
+        <source>Tweeted with %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TweetPage</name>
+    <message>
+        <source>Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reply to Tweet</source>
+        <translation type="unfinished">ツイートに返信</translation>
+    </message>
+    <message>
+        <source>Retweet with Comment</source>
+        <translation type="unfinished">コメント付きリツイート</translation>
+    </message>
+    <message>
+        <source>Open in Browser</source>
+        <translation type="unfinished">ブラウザで開く</translation>
     </message>
 </context>
 <context>
