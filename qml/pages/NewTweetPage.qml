@@ -28,8 +28,8 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant configuration;
-    property string replyToStatusId;
     property variant attachmentTweet;
+    property string replyToStatusId;
     property variant replyToTweet;
     property bool replyToTweetLoaded;
     property bool withImages : false;

@@ -39,6 +39,7 @@ Item {
     property variant referenceMetadata;
     property bool hasReference : false;
     property bool extendedMode : false;
+    property bool withSeparator : true;
 
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
@@ -600,7 +601,7 @@ Item {
         width: parent.width
         color: Theme.primaryColor
         horizontalAlignment: Qt.AlignHCenter
-        visible: !tweetElement.extendedMode
+        visible: tweetElementItem.withSeparator
     }
 
 }

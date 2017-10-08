@@ -385,34 +385,34 @@
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">Nachgezwitschert von %1</translation>
+        <translation>Nachgezwitschert von %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">Antwort auf %1</translation>
+        <translation>Antwort auf %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gezwitschert mit %1</translation>
     </message>
 </context>
 <context>
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Gezwitscher</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">Auf Gezwitscher antworten</translation>
+        <translation>Auf Gezwitscher antworten</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">Mit Kommentar nachzwitschern</translation>
+        <translation>Mit Kommentar nachzwitschern</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">Im Browser öffnen</translation>
+        <translation>Im Browser öffnen</translation>
     </message>
 </context>
 <context>

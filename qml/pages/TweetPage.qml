@@ -25,6 +25,34 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant tweetModel;
+    property string replyToStatusId;
+    property variant replyToTweet;
+    property bool replyToTweetLoaded;
+
+    Component.onCompleted: {
+        if (tweetModel.retweeted_status) {
+            if (tweetModel.retweeted_status.in_reply_to_status_id_str) {
+                replyToStatusId = tweetModel.retweeted_status.in_reply_to_status_id_str;
+            }
+        } else {
+            if (tweetModel.in_reply_to_status_id_str) {
+                replyToStatusId = tweetModel.in_reply_to_status_id_str;
+            }
+        }
+        if (replyToStatusId) {
+            twitterApi.showStatus(replyToStatusId);
+        }
+    }
+
+    Connections {
+        target: twitterApi
+        onShowStatusSuccessful: {
+            if (tweetPage.replyToStatusId === result.id_str) {
+                tweetPage.replyToTweet = result;
+                tweetPage.replyToTweetLoaded = true;
+            }
+        }
+    }
 
     SilicaFlickable {
         id: tweetContainer
@@ -63,10 +91,27 @@ Page {
                 title: qsTr("Tweet")
             }
 
+            Component {
+                id: replyToTweetComponent
+                TweetElement {
+                    id: inReplyToTweetItem
+                    tweetModel: tweetPage.replyToTweet
+                    extendedMode: true
+                }
+            }
+
+            Loader {
+                id: inReplyToTweetLoader
+                active: tweetPage.replyToTweetLoaded
+                width: parent.width
+                sourceComponent: replyToTweetComponent
+            }
+
             TweetElement {
                 id: tweetElement
                 tweetModel: tweetPage.tweetModel
                 extendedMode: true
+                withSeparator: false
             }
 
         }
