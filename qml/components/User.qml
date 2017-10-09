@@ -74,6 +74,15 @@ ListItem {
                     }
 
                     Rectangle {
+                        id: userPictureErrorShade
+                        z: 42
+                        width: parent.width
+                        height: parent.height
+                        color: "lightgrey"
+                        visible: false
+                    }
+
+                    Rectangle {
                         id: userPictureMask
                         z: 42
                         width: parent.width
@@ -86,11 +95,11 @@ ListItem {
                     OpacityMask {
                         id: maskedUserPicture
                         z: 42
-                        source: userPicture
+                        source: userPicture.status === Image.Error ? userPictureErrorShade : userPicture
                         maskSource: userPictureMask
                         anchors.fill: userPicture
-                        visible: userPicture.status === Image.Ready ? true : false
-                        opacity: userPicture.status === Image.Ready ? 1 : 0
+                        visible: ( userPicture.status === Image.Ready || userPicture.status === Image.Error ) ? true : false
+                        opacity: userPicture.status === Image.Ready ? 1 : ( userPicture.status === Image.Error ? 0.3 : 0 )
                         Behavior on opacity { NumberAnimation {} }
                         MouseArea {
                             anchors.fill: parent
