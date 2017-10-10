@@ -17,13 +17,17 @@
     along with Piepmatz. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
 
-Column {
+Item {
+
+    id: tweetImageSlideshowItem
 
     property variant tweet;
+    property bool withArrows : false;
 
     width: parent.width
     height: parent.width * 2 / 3
@@ -36,19 +40,14 @@ Column {
         id: tweetImageSlideshow
         width: parent.width
         height: parent.height
+        itemWidth: width
+        itemHeight: height
+        clip: true
         model: Functions.getTweetImageModel(tweet.retweeted_status ? tweet.retweeted_status : tweet, tweetImageListModel)
+        Behavior on opacity { NumberAnimation {} }
         delegate: Item {
             width: parent.width
             height: parent.height
-
-            Component {
-                id: singleImageComponent
-                ImagePage {
-                    imageUrl: media_url_https
-                    imageHeight: sizes.large.h
-                    imageWidth: sizes.large.w
-                }
-            }
 
             Image {
                 id: tweetImage
@@ -64,7 +63,7 @@ Column {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        pageStack.push( singleImageComponent );
+                        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": media_url_https, "imageHeight": sizes.large.h, "imageWidth": sizes.large.w});
                     }
                 }
             }
@@ -82,7 +81,68 @@ Column {
                 image: tweetImage
                 withPercentage: true
             }
+
+            Rectangle {
+                id: tweetArrowLeftBackground
+                color: "black"
+                opacity: 0.3
+                height: parent.height
+                width: Theme.fontSizeLarge
+                anchors.left: tweetImage.left
+                visible: tweetImageSlideshowItem.withArrows
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex - 1;
+                    }
+                }
+            }
+
+            Image {
+                id: imageArrowLeft
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.left: tweetImage.left
+                anchors.verticalCenter: tweetImage.verticalCenter
+                source: "image://theme/icon-m-left"
+                visible: tweetImageSlideshowItem.withArrows
+            }
+
+            Rectangle {
+                id: tweetArrowRightBackground
+                color: "black"
+                opacity: 0.3
+                height: parent.height
+                width: Theme.fontSizeLarge
+                anchors.right: tweetImage.right
+                visible: tweetImageSlideshowItem.withArrows
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex + 1;
+                    }
+                }
+            }
+
+            Image {
+                id: imageArrowRight
+                width: Theme.fontSizeLarge
+                height: Theme.fontSizeLarge
+                anchors.right: tweetImage.right
+                anchors.verticalCenter: tweetImage.verticalCenter
+                source: "image://theme/icon-m-right"
+                visible: tweetImageSlideshowItem.withArrows
+            }
+        }
+
+        onModelChanged: {
+            if ( tweetImageListModel.count > 1 ) {
+                tweetImageSlideshowItem.withArrows = true;
+            }
         }
     }
 
 }
+
+
+
