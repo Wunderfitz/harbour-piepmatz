@@ -169,32 +169,112 @@ Page {
                 sourceComponent: attachmentTweetComponent
             }
 
-            SlideshowView {
-                id: attachedImagesSlideshow
+            Item {
                 width: parent.width * 2 / 3
                 height: parent.width * 2 / 3
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: newTweetPage.attachedImages ? true : false
-                model: newTweetPage.attachedImages
-                delegate: Item {
-                    width: parent.width
-                    height: parent.height
 
-                    Image {
-                        id: attachedImage
-                        source: modelData
+                SlideshowView {
+                    id: attachedImagesSlideshow
+                    anchors.fill: parent
+                    model: newTweetPage.attachedImages
+                    clip: true
+                    delegate: Item {
                         width: parent.width
                         height: parent.height
-                        autoTransform: true
-                        asynchronous: true
-                        sourceSize.width: parent.width
-                        sourceSize.height: parent.height
-                        fillMode: Image.PreserveAspectCrop
-                        visible: status === Image.Ready ? true : false
-                        opacity: status === Image.Ready ? 1 : 0
-                        Behavior on opacity { NumberAnimation {} }
+
+                        Image {
+                            id: attachedImage
+                            source: modelData
+                            width: parent.width
+                            height: parent.height
+                            autoTransform: true
+                            asynchronous: true
+                            sourceSize.width: parent.width
+                            sourceSize.height: parent.height
+                            fillMode: Image.PreserveAspectCrop
+                            visible: status === Image.Ready ? true : false
+                            opacity: status === Image.Ready ? 1 : 0
+                            Behavior on opacity { NumberAnimation {} }
+                        }
                     }
                 }
+
+                Rectangle {
+                    id: tweetArrowLeftBackground
+                    color: "black"
+                    opacity: 0.3
+                    height: parent.height
+                    width: Theme.fontSizeLarge
+                    anchors.left: attachedImagesSlideshow.left
+                    visible: attachedImagesSlideshow.count > 1
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            attachedImagesSlideshow.currentIndex = attachedImagesSlideshow.currentIndex - 1;
+                        }
+                    }
+                }
+
+                Image {
+                    id: imageArrowLeft
+                    width: Theme.fontSizeLarge
+                    height: Theme.fontSizeLarge
+                    anchors.left: attachedImagesSlideshow.left
+                    anchors.verticalCenter: attachedImagesSlideshow.verticalCenter
+                    source: "image://theme/icon-m-left"
+                    visible: attachedImagesSlideshow.count > 1
+                }
+
+                Rectangle {
+                    id: tweetArrowRightBackground
+                    color: "black"
+                    opacity: 0.3
+                    height: parent.height
+                    width: Theme.fontSizeLarge
+                    anchors.right: attachedImagesSlideshow.right
+                    visible: attachedImagesSlideshow.count > 1
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            attachedImagesSlideshow.currentIndex = attachedImagesSlideshow.currentIndex + 1;
+                        }
+                    }
+                }
+
+                Image {
+                    id: imageArrowRight
+                    width: Theme.fontSizeLarge
+                    height: Theme.fontSizeLarge
+                    anchors.right: attachedImagesSlideshow.right
+                    anchors.verticalCenter: attachedImagesSlideshow.verticalCenter
+                    source: "image://theme/icon-m-right"
+                    visible: attachedImagesSlideshow.count > 1
+                }
+
+                Row {
+                    id: imagePointRepeaterRow
+                    anchors.bottom: attachedImagesSlideshow.bottom
+                    anchors.bottomMargin: Theme.fontSizeTiny
+                    anchors.horizontalCenter: attachedImagesSlideshow.horizontalCenter
+                    spacing: 5
+                    visible: attachedImagesSlideshow.count > 1
+                    Repeater {
+                        id: imagePointRepeater
+                        model: attachedImagesSlideshow.count
+                        Rectangle {
+                            id: imagePoint
+                            width: 12
+                            height: 12
+                            radius: width * 0.5
+                            border.color: "black"
+                            border.width: 1
+                            color: index === attachedImagesSlideshow.currentIndex ? Theme.highlightColor : Theme.primaryColor
+                        }
+                    }
+                }
+
             }
 
             VerticalScrollDecorator {}

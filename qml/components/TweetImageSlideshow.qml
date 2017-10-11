@@ -81,63 +81,87 @@ Item {
                 image: tweetImage
                 withPercentage: true
             }
-
-            Rectangle {
-                id: tweetArrowLeftBackground
-                color: "black"
-                opacity: 0.3
-                height: parent.height
-                width: Theme.fontSizeLarge
-                anchors.left: tweetImage.left
-                visible: tweetImageSlideshowItem.withArrows
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex - 1;
-                    }
-                }
-            }
-
-            Image {
-                id: imageArrowLeft
-                width: Theme.fontSizeLarge
-                height: Theme.fontSizeLarge
-                anchors.left: tweetImage.left
-                anchors.verticalCenter: tweetImage.verticalCenter
-                source: "image://theme/icon-m-left"
-                visible: tweetImageSlideshowItem.withArrows
-            }
-
-            Rectangle {
-                id: tweetArrowRightBackground
-                color: "black"
-                opacity: 0.3
-                height: parent.height
-                width: Theme.fontSizeLarge
-                anchors.right: tweetImage.right
-                visible: tweetImageSlideshowItem.withArrows
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex + 1;
-                    }
-                }
-            }
-
-            Image {
-                id: imageArrowRight
-                width: Theme.fontSizeLarge
-                height: Theme.fontSizeLarge
-                anchors.right: tweetImage.right
-                anchors.verticalCenter: tweetImage.verticalCenter
-                source: "image://theme/icon-m-right"
-                visible: tweetImageSlideshowItem.withArrows
-            }
         }
 
         onModelChanged: {
             if ( tweetImageListModel.count > 1 ) {
                 tweetImageSlideshowItem.withArrows = true;
+            }
+        }
+
+    }
+
+
+    Rectangle {
+        id: tweetArrowLeftBackground
+        color: "black"
+        opacity: 0.3
+        height: parent.height
+        width: Theme.fontSizeLarge
+        anchors.left: tweetImageSlideshow.left
+        visible: tweetImageSlideshowItem.withArrows
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex - 1;
+            }
+        }
+    }
+
+    Image {
+        id: imageArrowLeft
+        width: Theme.fontSizeLarge
+        height: Theme.fontSizeLarge
+        anchors.left: tweetImageSlideshow.left
+        anchors.verticalCenter: tweetImageSlideshow.verticalCenter
+        source: "image://theme/icon-m-left"
+        visible: tweetImageSlideshowItem.withArrows
+    }
+
+    Rectangle {
+        id: tweetArrowRightBackground
+        color: "black"
+        opacity: 0.3
+        height: parent.height
+        width: Theme.fontSizeLarge
+        anchors.right: tweetImageSlideshow.right
+        visible: tweetImageSlideshowItem.withArrows
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tweetImageSlideshow.currentIndex = tweetImageSlideshow.currentIndex + 1;
+            }
+        }
+    }
+
+    Image {
+        id: imageArrowRight
+        width: Theme.fontSizeLarge
+        height: Theme.fontSizeLarge
+        anchors.right: tweetImageSlideshow.right
+        anchors.verticalCenter: tweetImageSlideshow.verticalCenter
+        source: "image://theme/icon-m-right"
+        visible: tweetImageSlideshowItem.withArrows
+    }
+
+    Row {
+        id: imagePointRepeaterRow
+        anchors.bottom: tweetImageSlideshow.bottom
+        anchors.bottomMargin: Theme.fontSizeTiny
+        anchors.horizontalCenter: tweetImageSlideshow.horizontalCenter
+        spacing: 5
+        visible: tweetImageListModel.count > 1
+        Repeater {
+            id: imagePointRepeater
+            model: tweetImageSlideshow.count
+            Rectangle {
+                id: imagePoint
+                width: 12
+                height: 12
+                radius: width * 0.5
+                border.color: "black"
+                border.width: 1
+                color: index === tweetImageSlideshow.currentIndex ? Theme.highlightColor : Theme.primaryColor
             }
         }
     }
