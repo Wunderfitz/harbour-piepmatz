@@ -17,6 +17,7 @@
     along with Piepmatz. If not, see <http://www.gnu.org/licenses/>.
 */
 import QtQuick 2.5
+import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../js/twitter-text.js" as TwitterText
 import "../components"
@@ -33,10 +34,48 @@ Page {
     property variant replyToTweet;
     property bool replyToTweetLoaded;
     property bool withImages : false;
+    property variant atMentionProposals;
     property variant attachedImages;
 
     function getRemainingCharacters(text, configuration) {
         return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
+    }
+
+    function getWordBoundaries(text, cursorPosition) {
+        var wordBoundaries = { beginIndex : 0, endIndex : text.length};
+        var currentIndex = 0;
+        for (currentIndex = (cursorPosition - 1); currentIndex > 0; currentIndex--) {
+            if (text.charAt(currentIndex) === ' ') {
+                wordBoundaries.beginIndex = currentIndex + 1;
+                break;
+            }
+        }
+        for (currentIndex = cursorPosition; currentIndex < text.length; currentIndex++) {
+            if (text.charAt(currentIndex) === ' ') {
+                wordBoundaries.endIndex = currentIndex;
+                break;
+            }
+        }
+        return wordBoundaries;
+    }
+
+    function handleAtMentioning(text, cursorPosition) {
+        var wordBoundaries = getWordBoundaries(text, cursorPosition);
+
+        var currentWord = text.substring(wordBoundaries.beginIndex, wordBoundaries.endIndex);
+        if (currentWord.length > 1 && currentWord.charAt(0) === '@') {
+            twitterApi.searchUsers(currentWord);
+        } else {
+            newTweetPage.atMentionProposals = null;
+        }
+    }
+
+    function replaceAtMentioning(text, cursorPosition, screenName) {
+        var wordBoundaries = getWordBoundaries(text, cursorPosition);
+        var newText = text.substring(0, wordBoundaries.beginIndex) + screenName + " " + text.substring(wordBoundaries.endIndex);
+        var newIndex = wordBoundaries.beginIndex + screenName.length + 1;
+        enterTweetTextArea.text = newText;
+        enterTweetTextArea.cursorPosition = newIndex;
     }
 
     Component.onCompleted: {
@@ -51,6 +90,16 @@ Page {
         onImagesSelected: {
             newTweetPage.withImages = true;
             newTweetPage.attachedImages = imagesModel.getSelectedImages();
+        }
+    }
+
+    Connections {
+        target: twitterApi
+        onSearchUsersSuccessful: {
+            newTweetPage.atMentionProposals = result;
+        }
+        onSearchUsersError: {
+            newTweetPage.atMentionProposals = null;
         }
     }
 
@@ -135,6 +184,8 @@ Page {
                 labelVisible: false;
                 onTextChanged: {
                     remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
+                    atMentioningTimer.stop();
+                    atMentioningTimer.start();
                 }
                 errorHighlight: remainingCharactersText.text < 0
             }
@@ -149,6 +200,139 @@ Page {
                 font.pixelSize: remainingCharactersText.text < 0 ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 font.bold: remainingCharactersText.text < 0 ? true : false
                 text: getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration)
+            }
+
+            Timer {
+                id: atMentioningTimer
+                interval: 1000
+                running: false
+                repeat: false
+                onTriggered: {
+                    handleAtMentioning(enterTweetTextArea.text, enterTweetTextArea.cursorPosition);
+                }
+            }
+
+            Column {
+                id: atMentioningColumn
+                width: parent.width
+                visible: atMentionProposals ? ( atMentionProposals.length > 0 ? true : false ) : false
+                opacity: atMentionProposals ? ( atMentionProposals.length > 0 ? 1 : 0 ) : 0
+                Behavior on opacity { NumberAnimation {} }
+                spacing: Theme.paddingSmall
+                Separator {
+                    id: atMentioningColumnTopSeparator
+                    width: parent.width
+                    color: Theme.primaryColor
+                    horizontalAlignment: Qt.AlignHCenter
+                }
+
+                Flickable {
+                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                    height: atMentioningResultRow.height
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    contentWidth: atMentioningResultRow.width
+                    clip: true
+                    Row {
+                        id: atMentioningResultRow
+                        spacing: Theme.paddingMedium
+                        Repeater {
+                            model: atMentionProposals
+
+                            Item {
+                                height: singleUserRow.height
+                                width: singleUserRow.width
+
+                                Row {
+                                    id: singleUserRow
+                                    spacing: Theme.paddingSmall
+
+                                    Item {
+                                        width: Theme.fontSizeExtraLarge
+                                        height: Theme.fontSizeExtraLarge
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        Image {
+                                            id: userPicture
+                                            z: 42
+                                            source: modelData.profile_image_url_https
+                                            width: parent.width
+                                            height: parent.height
+                                            visible: false
+                                        }
+
+                                        Rectangle {
+                                            id: userPictureErrorShade
+                                            z: 42
+                                            width: parent.width
+                                            height: parent.height
+                                            color: "lightgrey"
+                                            visible: false
+                                        }
+
+                                        Rectangle {
+                                            id: userPictureMask
+                                            z: 42
+                                            width: parent.width
+                                            height: parent.height
+                                            color: Theme.primaryColor
+                                            radius: parent.width / 7
+                                            visible: false
+                                        }
+
+                                        OpacityMask {
+                                            id: maskedUserPicture
+                                            z: 42
+                                            source: userPicture.status === Image.Error ? userPictureErrorShade : userPicture
+                                            maskSource: userPictureMask
+                                            anchors.fill: userPicture
+                                            visible: ( userPicture.status === Image.Ready || userPicture.status === Image.Error ) ? true : false
+                                            opacity: userPicture.status === Image.Ready ? 1 : ( userPicture.status === Image.Error ? 0.3 : 0 )
+                                            Behavior on opacity { NumberAnimation {} }
+                                        }
+                                    }
+
+                                    Column {
+                                        Row {
+                                            spacing: Theme.paddingSmall
+                                            Text {
+                                                text: modelData.name
+                                                color: Theme.primaryColor
+                                                font.pixelSize: Theme.fontSizeTiny
+                                                font.bold: true
+                                            }
+                                            Image {
+                                                source: "image://theme/icon-s-installed"
+                                                visible: modelData.verified
+                                                width: Theme.fontSizeExtraSmall
+                                                height: Theme.fontSizeExtraSmall
+                                            }
+                                        }
+                                        Text {
+                                            text: qsTr("@%1").arg(modelData.screen_name)
+                                            color: Theme.primaryColor
+                                            font.pixelSize: Theme.fontSizeTiny
+                                        }
+                                    }
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        replaceAtMentioning(enterTweetTextArea.text, enterTweetTextArea.cursorPosition, qsTr("@%1").arg(modelData.screen_name));
+                                        atMentionProposals = null;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                Separator {
+                    id: atMentioningColumnBottomSeparator
+                    width: parent.width
+                    color: Theme.primaryColor
+                    horizontalAlignment: Qt.AlignHCenter
+                }
             }
 
             Component {

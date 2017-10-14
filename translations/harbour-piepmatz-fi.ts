@@ -174,6 +174,10 @@
         <source>Send Retweet</source>
         <translation>Lähetä uudelleentviittaus</translation>
     </message>
+    <message>
+        <source>@%1</source>
+        <translation type="unfinished">@%1</translation>
+    </message>
 </context>
 <context>
     <name>OverviewPage</name>
