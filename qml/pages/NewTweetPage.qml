@@ -76,6 +76,17 @@ Page {
         var newIndex = wordBoundaries.beginIndex + screenName.length + 1;
         enterTweetTextArea.text = newText;
         enterTweetTextArea.cursorPosition = newIndex;
+        lostFocusTimer.start();
+    }
+
+    Timer {
+        id: lostFocusTimer
+        interval: 200
+        running: false
+        repeat: false
+        onTriggered: {
+            enterTweetTextArea.forceActiveFocus();
+        }
     }
 
     Component.onCompleted: {
@@ -187,6 +198,7 @@ Page {
                     atMentioningTimer.stop();
                     atMentioningTimer.start();
                 }
+
                 errorHighlight: remainingCharactersText.text < 0
             }
 
@@ -204,7 +216,7 @@ Page {
 
             Timer {
                 id: atMentioningTimer
-                interval: 1000
+                interval: 600
                 running: false
                 repeat: false
                 onTriggered: {
@@ -214,21 +226,23 @@ Page {
 
             Column {
                 id: atMentioningColumn
-                width: parent.width
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                anchors.horizontalCenter: parent.horizontalCenter
                 visible: atMentionProposals ? ( atMentionProposals.length > 0 ? true : false ) : false
                 opacity: atMentionProposals ? ( atMentionProposals.length > 0 ? 1 : 0 ) : 0
                 Behavior on opacity { NumberAnimation {} }
-                spacing: Theme.paddingSmall
+                spacing: Theme.paddingMedium
                 Separator {
-                    id: atMentioningColumnTopSeparator
+                    id: atMentioningColumnSeparator
                     width: parent.width
                     color: Theme.primaryColor
+                    anchors.horizontalCenter: parent.horizontalCenter
                     horizontalAlignment: Qt.AlignHCenter
                 }
 
                 Flickable {
-                    width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                    height: atMentioningResultRow.height
+                    width: parent.width
+                    height: atMentioningResultRow.height + Theme.paddingSmall
                     anchors.horizontalCenter: parent.horizontalCenter
                     contentWidth: atMentioningResultRow.width
                     clip: true
@@ -247,8 +261,8 @@ Page {
                                     spacing: Theme.paddingSmall
 
                                     Item {
-                                        width: Theme.fontSizeExtraLarge
-                                        height: Theme.fontSizeExtraLarge
+                                        width: Theme.fontSizeHuge
+                                        height: Theme.fontSizeHuge
                                         anchors.verticalCenter: parent.verticalCenter
                                         Image {
                                             id: userPicture
@@ -296,20 +310,20 @@ Page {
                                             Text {
                                                 text: modelData.name
                                                 color: Theme.primaryColor
-                                                font.pixelSize: Theme.fontSizeTiny
+                                                font.pixelSize: Theme.fontSizeExtraSmall
                                                 font.bold: true
                                             }
                                             Image {
                                                 source: "image://theme/icon-s-installed"
                                                 visible: modelData.verified
-                                                width: Theme.fontSizeExtraSmall
-                                                height: Theme.fontSizeExtraSmall
+                                                width: Theme.fontSizeSmall
+                                                height: Theme.fontSizeSmall
                                             }
                                         }
                                         Text {
                                             text: qsTr("@%1").arg(modelData.screen_name)
                                             color: Theme.primaryColor
-                                            font.pixelSize: Theme.fontSizeTiny
+                                            font.pixelSize: Theme.fontSizeExtraSmall
                                         }
                                     }
                                 }
@@ -325,13 +339,6 @@ Page {
 
                         }
                     }
-                }
-
-                Separator {
-                    id: atMentioningColumnBottomSeparator
-                    width: parent.width
-                    color: Theme.primaryColor
-                    horizontalAlignment: Qt.AlignHCenter
                 }
             }
 
