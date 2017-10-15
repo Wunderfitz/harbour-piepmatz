@@ -30,7 +30,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/imageresponsehandler.cpp \
     src/directmessagesmodel.cpp \
     src/searchusersmodel.cpp \
-    src/imageprocessor.cpp
+    src/imageprocessor.cpp \
+    src/trendsmodel.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -92,4 +93,5 @@ HEADERS += \
     src/imageresponsehandler.h \
     src/directmessagesmodel.h \
     src/searchusersmodel.h \
-    src/imageprocessor.h
+    src/imageprocessor.h \
+    src/trendsmodel.h

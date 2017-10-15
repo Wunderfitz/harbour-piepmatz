@@ -575,6 +575,30 @@ void TwitterApi::searchUsers(const QString &query)
     connect(reply, SIGNAL(finished()), this, SLOT(handleSearchUsersFinished()));
 }
 
+void TwitterApi::searchGeo(const QString &latitude, const QString &longitude)
+{
+    qDebug() << "TwitterApi::searchGeo" << latitude << longitude;
+    QUrl url = QUrl(API_GEO_SEARCH);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("lat", latitude);
+    urlQuery.addQueryItem("long", longitude);
+    urlQuery.addQueryItem("granularity", "city");
+    urlQuery.addQueryItem("max_results", "1");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("lat"), latitude.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("long"), longitude.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("granularity"), QByteArray("city")));
+    requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("1")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchGeoError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSearchGeoFinished()));
+}
+
 void TwitterApi::favorite(const QString &statusId)
 {
     qDebug() << "TwitterApi::favorite" << statusId;
@@ -760,6 +784,44 @@ void TwitterApi::directMessagesNew(const QString &text, const QString &recipient
     connect(reply, SIGNAL(finished()), this, SLOT(handleDirectMessagesNewFinished()));
 }
 
+void TwitterApi::trends(const QString &placeId)
+{
+    qDebug() << "TwitterApi::trends" << placeId;
+    QUrl url = QUrl(API_TRENDS_PLACE);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("id", placeId);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("id"), placeId.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleTrendsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleTrendsFinished()));
+}
+
+void TwitterApi::placesForTrends(const QString &latitude, const QString &longitude)
+{
+    qDebug() << "TwitterApi::placesForTrends" << latitude << longitude;
+    QUrl url = QUrl(API_TRENDS_CLOSEST);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("lat", latitude);
+    urlQuery.addQueryItem("long", longitude);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("lat"), latitude.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("long"), longitude.toUtf8()));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handlePlacesForTrendsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handlePlacesForTrendsFinished()));
+}
+
 void TwitterApi::getOpenGraph(const QString &address)
 {
     qDebug() << "TwitterApi::getOpenGraph" << address;
@@ -769,6 +831,17 @@ void TwitterApi::getOpenGraph(const QString &address)
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetOpenGraphError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetOpenGraphFinished()));
+}
+
+void TwitterApi::getIpInfo()
+{
+    qDebug() << "TwitterApi::getIpInfo";
+    QUrl url = QUrl("https://ipinfo.io/json");
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetIpInfoError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetIpInfoFinished()));
 }
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
@@ -1094,6 +1167,31 @@ void TwitterApi::handleSearchUsersFinished()
     }
 }
 
+void TwitterApi::handleSearchGeoError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleSearchGeoError:" << (int)error << reply->errorString() << reply->readAll();
+    emit searchGeoError(reply->errorString());
+}
+
+void TwitterApi::handleSearchGeoFinished()
+{
+    qDebug() << "TwitterApi::handleSearchGeoFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit searchGeoSuccessful(responseObject.toVariantMap());
+    } else {
+        emit searchGeoError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
 
 void TwitterApi::handleFavoriteError(QNetworkReply::NetworkError error)
 {
@@ -1270,6 +1368,56 @@ void TwitterApi::handleDirectMessagesNewFinished()
     }
 }
 
+void TwitterApi::handleTrendsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleTrendsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit trendsError(reply->errorString());
+}
+
+void TwitterApi::handleTrendsFinished()
+{
+    qDebug() << "TwitterApi::handleTrendsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit trendsSuccessful(responseArray.toVariantList());
+    } else {
+        emit trendsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handlePlacesForTrendsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handlePlacesForTrendsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit placesForTrendsError(reply->errorString());
+}
+
+void TwitterApi::handlePlacesForTrendsFinished()
+{
+    qDebug() << "TwitterApi::handlePlacesForTrendsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit placesForTrendsSuccessful(responseArray.toVariantList());
+    } else {
+        emit placesForTrendsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
 void TwitterApi::handleGetOpenGraphError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -1327,5 +1475,30 @@ void TwitterApi::handleGetOpenGraphFinished()
         }
         qDebug() << "Open Graph data found for " + requestAddress;
         emit getOpenGraphSuccessful(openGraphData);
+    }
+}
+
+void TwitterApi::handleGetIpInfoError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleGetIpInfoError:" << (int)error << reply->errorString() << reply->readAll();
+    emit getIpInfoError(reply->errorString());
+}
+
+void TwitterApi::handleGetIpInfoFinished()
+{
+    qDebug() << "TwitterApi::handleGetIpInfoFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit getIpInfoSuccessful(responseObject.toVariantMap());
+    } else {
+        emit getIpInfoError("Piepmatz couldn't understand Twitter's response!");
     }
 }

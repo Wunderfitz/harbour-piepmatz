@@ -178,6 +178,7 @@ Item {
             id: profileDetailsRow
             spacing: Theme.paddingMedium
             width: parent.width - ( 2 * Theme.horizontalPageMargin )
+            visible: profileModel.description ? true : false
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }

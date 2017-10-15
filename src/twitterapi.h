@@ -53,11 +53,14 @@ const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/c
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
 const char API_SEARCH_TWEETS[] = "https://api.twitter.com/1.1/search/tweets.json";
 const char API_SEARCH_USERS[] = "https://api.twitter.com/1.1/users/search.json";
+const char API_GEO_SEARCH[] = "https://api.twitter.com/1.1/geo/search.json";
 const char API_FAVORITES_LIST[] = "https://api.twitter.com/1.1/favorites/list.json";
 const char API_FAVORITES_CREATE[] = "https://api.twitter.com/1.1/favorites/create.json";
 const char API_FAVORITES_DESTROY[] = "https://api.twitter.com/1.1/favorites/destroy.json";
 const char API_DIRECT_MESSAGES_LIST[] = "https://api.twitter.com/1.1/direct_messages/events/list.json";
 const char API_DIRECT_MESSAGES_NEW[] = "https://api.twitter.com/1.1/direct_messages/events/new.json";
+const char API_TRENDS_PLACE[] = "https://api.twitter.com/1.1/trends/place.json";
+const char API_TRENDS_CLOSEST[] = "https://api.twitter.com/1.1/trends/closest.json";
 
 class TwitterApi : public QObject {
 
@@ -86,6 +89,7 @@ public:
     Q_INVOKABLE void unfollowUser(const QString &screenName);
     Q_INVOKABLE void searchTweets(const QString &query);
     Q_INVOKABLE void searchUsers(const QString &query);
+    Q_INVOKABLE void searchGeo(const QString &latitude, const QString &longitude);
     Q_INVOKABLE void favorite(const QString &statusId);
     Q_INVOKABLE void unfavorite(const QString &statusId);
     Q_INVOKABLE void favorites(const QString &screenName);
@@ -94,8 +98,11 @@ public:
     Q_INVOKABLE void uploadImage(const QString &fileName);
     Q_INVOKABLE void directMessagesList(const QString &cursor = "");
     Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);
+    Q_INVOKABLE void trends(const QString &placeId);
+    Q_INVOKABLE void placesForTrends(const QString &latitude, const QString &longitude);
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
+    Q_INVOKABLE void getIpInfo();
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -130,6 +137,8 @@ signals:
     void searchTweetsError(const QString &errorMessage);
     void searchUsersSuccessful(const QVariantList &result);
     void searchUsersError(const QString &errorMessage);
+    void searchGeoSuccessful(const QVariantMap &result);
+    void searchGeoError(const QString &errorMessage);
     void favoriteSuccessful(const QVariantMap &result);
     void favoriteError(const QString &errorMessage);
     void unfavoriteSuccessful(const QVariantMap &result);
@@ -147,9 +156,15 @@ signals:
     void directMessagesListError(const QString &errorMessage);
     void directMessagesNewSuccessful(const QVariantMap &result);
     void directMessagesNewError(const QString &errorMessage);
+    void trendsSuccessful(const QVariantList &result);
+    void trendsError(const QString &errorMessage);
+    void placesForTrendsSuccessful(const QVariantList &result);
+    void placesForTrendsError(const QString &errorMessage);
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
+    void getIpInfoSuccessful(const QVariantMap &result);
+    void getIpInfoError(const QString &errorMessage);
 
 private:
     O1Requestor *requestor;
@@ -189,6 +204,8 @@ private slots:
     void handleSearchTweetsFinished();
     void handleSearchUsersError(QNetworkReply::NetworkError error);
     void handleSearchUsersFinished();
+    void handleSearchGeoError(QNetworkReply::NetworkError error);
+    void handleSearchGeoFinished();
     void handleFavoriteError(QNetworkReply::NetworkError error);
     void handleFavoriteFinished();
     void handleUnfavoriteError(QNetworkReply::NetworkError error);
@@ -203,9 +220,15 @@ private slots:
     void handleDirectMessagesListFinished();
     void handleDirectMessagesNewError(QNetworkReply::NetworkError error);
     void handleDirectMessagesNewFinished();
+    void handleTrendsError(QNetworkReply::NetworkError error);
+    void handleTrendsFinished();
+    void handlePlacesForTrendsError(QNetworkReply::NetworkError error);
+    void handlePlacesForTrendsFinished();
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();
+    void handleGetIpInfoError(QNetworkReply::NetworkError error);
+    void handleGetIpInfoFinished();
 
 };
 

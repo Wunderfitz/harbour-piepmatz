@@ -107,10 +107,15 @@ Page {
         return Format.formatDate(new Date(parseInt(conversation[conversation.length - 1].created_timestamp)), Formatter.DurationElapsed);
     }
 
+    function updateIpInfo() {
+        twitterApi.getIpInfo();
+    }
+
     property string activeTabId: "home";
     property variant myUser;
     property bool initializationCompleted : false;
     property variant configuration;
+    property variant ipInfo;
     property bool tweetInProgress : false;
 
     function openTab(tabId) {
@@ -237,6 +242,15 @@ Page {
         accountModel.verifyCredentials();
     }
 
+    Timer {
+        id: ipInfoUpdater
+        repeat: true
+        interval: 1800000
+        onTriggered: {
+            updateIpInfo();
+        }
+    }
+
     Connections {
         target: accountModel
         onCredentialsVerified: {
@@ -255,6 +269,8 @@ Page {
                 directMessagesModel.setUserId(overviewPage.myUser.id_str);
                 directMessagesModel.update();
                 overviewPage.initializationCompleted = true;
+                updateIpInfo();
+                ipInfoUpdater.start();
             }
         }
         onVerificationError: {
@@ -286,6 +302,10 @@ Page {
         }
         onImageUploadStatus: {
             console.log(fileName + " - sent " + bytesSent + " bytes out of " + bytesTotal);
+        }
+        onGetIpInfoSuccessful: {
+            overviewPage.ipInfo = result;
+            console.log("Piepmatz knows where he currently is: " + result.city + ", " + result.region + ", " + result.country);
         }
     }
 
