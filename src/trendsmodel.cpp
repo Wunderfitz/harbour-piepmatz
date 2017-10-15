@@ -1,10 +1,13 @@
 #include "trendsmodel.h"
 
+#include <QListIterator>
+
 TrendsModel::TrendsModel(TwitterApi *twitterApi)
 {
     this->twitterApi = twitterApi;
     connect(twitterApi, &TwitterApi::getIpInfoSuccessful, this, &TrendsModel::handleGetIpInfoSuccessful);
     connect(twitterApi, &TwitterApi::placesForTrendsSuccessful, this, &TrendsModel::handlePlacesForTrendsSuccessful);
+    connect(twitterApi, &TwitterApi::trendsSuccessful, this, &TrendsModel::handleTrendsSuccessful);
 }
 
 int TrendsModel::rowCount(const QModelIndex &) const
@@ -42,5 +45,17 @@ void TrendsModel::handlePlacesForTrendsSuccessful(const QVariantList &result)
         QString woeid = firstResult.value("woeid").toString();
         qDebug() << "My place (WOEID): " + woeid;
         twitterApi->trends(woeid);
+    }
+}
+
+void TrendsModel::handleTrendsSuccessful(const QVariantList &result)
+{
+    qDebug() << "TrendsModel::handleTrendsSuccessful";
+    if (!result.isEmpty()) {
+        beginResetModel();
+        this->trends.clear();
+        this->trends.append(result.value(0).toMap().value("trends").toList());
+        endResetModel();
+        qDebug() << "Trends model updated...";
     }
 }

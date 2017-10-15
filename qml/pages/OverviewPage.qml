@@ -1213,6 +1213,63 @@ Page {
                     }
                 }
 
+                SilicaListView {
+                    anchors {
+                        top: searchTypeRow.bottom
+                    }
+                    id: trendsListView
+                    width: parent.width
+                    height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingMedium
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    opacity: searchNoResultsColumn.visible ? 1 : 0
+                    visible: searchNoResultsColumn.visible
+                    Behavior on opacity { NumberAnimation {} }
+
+                    clip: true
+
+                    model: trendsModel
+                    delegate: ListItem {
+                        contentHeight: trendRow.height
+                        contentWidth: parent.width
+                        Row {
+                            id: trendRow
+                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                            height: Theme.fontSizeHuge
+                            spacing: Theme.paddingMedium
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                id: trendsNameText
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: display.name
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                elide: Text.ElideRight
+                                maximumLineCount: 1
+                                width: parent.width * 3 / 4
+                            }
+                            Text {
+                                id: trendsNameCount
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: display.tweet_volume ? Number(display.tweet_volume).toLocaleString(Qt.locale(), "f", 0) : ""
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                horizontalAlignment: Text.AlignRight
+                                width: parent.width - trendsNameText.width - Theme.paddingMedium
+                                elide: Text.ElideRight
+                                maximumLineCount: 1
+                            }
+                        }
+                        onClicked: {
+                            searchField.text = display.name;
+                        }
+                    }
+
+                    VerticalScrollDecorator {}
+                }
+
             }
 
             Column {
