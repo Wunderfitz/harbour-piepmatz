@@ -115,8 +115,8 @@ Page {
     property variant myUser;
     property bool initializationCompleted : false;
     property variant configuration;
-    property variant ipInfo;
     property bool tweetInProgress : false;
+    property variant ipInfo;
 
     function openTab(tabId) {
 
@@ -1025,6 +1025,13 @@ Page {
                     }
                 }
 
+                Connections {
+                    target: trendsModel
+                    onTrendsRetrieved: {
+                        trendsPlaceText.text = qsTr("Trends for %1").arg(place);
+                    }
+                }
+
                 Timer {
                     id: searchTimer
                     interval: 1000
@@ -1052,8 +1059,8 @@ Page {
                     onTextChanged: {
                         searchColumn.tweetSearchInTransition = true;
                         searchColumn.usersSearchInTransition = true;
-                        searchTimer.stop()
-                        searchTimer.start()
+                        searchTimer.stop();
+                        searchTimer.start();
                     }
                 }
 
@@ -1111,6 +1118,27 @@ Page {
                                 }
                             }
                         }
+                    }
+                }
+
+                Row {
+                    id: trendsPlaceRow
+                    width: parent.width
+                    height: Theme.fontSizeLarge + Theme.paddingMedium
+                    anchors.top: searchField.bottom
+                    anchors.topMargin: Theme.paddingMedium
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
+                    Text {
+                        id: trendsPlaceText
+                        width: parent.width
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: Theme.highlightColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
                     }
                 }
 
@@ -1190,8 +1218,8 @@ Page {
 
                     id: searchNoResultsColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? 1 : 0
-                    visible: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) ) ? true : false
+                    opacity: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) && !( trendsListView.count !== 0 && searchField.text === "" ) ) ? 1 : 0
+                    visible: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) && !( trendsListView.count !== 0 && searchField.text === "" ) ) ? true : false
 
                     Image {
                         id: searchNoResultsImage
@@ -1221,8 +1249,8 @@ Page {
                     width: parent.width
                     height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
-                    opacity: searchNoResultsColumn.visible ? 1 : 0
-                    visible: searchNoResultsColumn.visible
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? true : false
                     Behavior on opacity { NumberAnimation {} }
 
                     clip: true

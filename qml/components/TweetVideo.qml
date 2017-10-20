@@ -213,9 +213,18 @@ Item {
                 source: getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: tweetVideo.playbackState === MediaPlayer.PlayingState ? tweetVideo.pause() : tweetVideo.play()
+                    onClicked: {
+                        if (tweetVideo.playbackState === MediaPlayer.PlayingState) {
+                            twitterApi.controlScreenSaver(true);
+                            tweetVideo.pause();
+                        } else {
+                            twitterApi.controlScreenSaver(false);
+                            tweetVideo.play();
+                        }
+                    }
                 }
                 onStopped: {
+                    twitterApi.controlScreenSaver(true);
                     tweetVideo.visible = false;
                     placeholderImage.visible = true;
                     playButton.visible = true;
@@ -230,6 +239,13 @@ Item {
                 visible: false
                 running: visible
                 size: BusyIndicatorSize.Medium
+                onVisibleChanged: {
+                    if (visible) {
+                        twitterApi.controlScreenSaver(true);
+                    } else {
+                        twitterApi.controlScreenSaver(false);
+                    }
+                }
             }
 
             Item {

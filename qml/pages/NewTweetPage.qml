@@ -36,6 +36,9 @@ Page {
     property bool withImages : false;
     property variant atMentionProposals;
     property variant attachedImages;
+    property variant ipInfo;
+    property variant place;
+    property bool geoEnabled;
 
     function getRemainingCharacters(text, configuration) {
         return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
@@ -90,6 +93,8 @@ Page {
     }
 
     Component.onCompleted: {
+        twitterApi.getIpInfo();
+        twitterApi.accountSettings();
         if (replyToStatusId) {
             twitterApi.showStatus(replyToStatusId);
         }
@@ -112,6 +117,22 @@ Page {
         onSearchUsersError: {
             newTweetPage.atMentionProposals = null;
         }
+        onGetIpInfoSuccessful: {
+            newTweetPage.ipInfo = result;
+            var locationArray = newTweetPage.ipInfo.loc.split(",");
+            if (locationArray.length === 2) {
+                twitterApi.searchGeo(locationArray[0], locationArray[1]);
+            }
+        }
+        onSearchGeoSuccessful: {
+            newTweetPage.place = result.result.places[0];
+            console.log("New tweet will use: " + newTweetPage.place.full_name + " (" + newTweetPage.place.id + ")");
+            attachLocationTextSwitch.text = newTweetPage.place.full_name;
+        }
+        onAccountSettingsSuccessful: {
+            console.log("Geo status: " + result.geo_enabled);
+            newTweetPage.geoEnabled = result.geo_enabled;
+        }
     }
 
     SilicaFlickable {
@@ -130,18 +151,38 @@ Page {
                 onClicked: {
                     if (replyToStatusId) {
                         if (withImages) {
-                            imagesModel.replyToTweetWithSelectedImages(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                            if (attachLocationTextSwitch.checked) {
+                                imagesModel.replyToTweetWithSelectedImages(enterTweetTextArea.text, newTweetPage.replyToStatusId, newTweetPage.place.id);
+                            } else {
+                                imagesModel.replyToTweetWithSelectedImages(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                            }
                         } else {
-                            twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                            if (attachLocationTextSwitch.checked) {
+                                twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId, newTweetPage.place.id);
+                            } else {
+                                twitterApi.replyToTweet(enterTweetTextArea.text, newTweetPage.replyToStatusId);
+                            }
                         }
                     } else {
                         if (withImages) {
-                            imagesModel.tweetWithSelectedImages(enterTweetTextArea.text);
+                            if (attachLocationTextSwitch.checked) {
+                                imagesModel.tweetWithSelectedImages(enterTweetTextArea.text, newTweetPage.place.id);
+                            } else {
+                                imagesModel.tweetWithSelectedImages(enterTweetTextArea.text);
+                            }
                         } else {
                             if ( attachmentTweet ) {
-                                twitterApi.retweetWithComment(enterTweetTextArea.text, Functions.getTweetUrl(attachmentTweet));
+                                if (attachLocationTextSwitch.checked) {
+                                    twitterApi.retweetWithComment(enterTweetTextArea.text, Functions.getTweetUrl(attachmentTweet), newTweetPage.place.id);
+                                } else {
+                                    twitterApi.retweetWithComment(enterTweetTextArea.text, Functions.getTweetUrl(attachmentTweet));
+                                }
                             } else {
-                                twitterApi.tweet(enterTweetTextArea.text);
+                                if (attachLocationTextSwitch.checked) {
+                                    twitterApi.tweet(enterTweetTextArea.text, newTweetPage.place.id);
+                                } else {
+                                    twitterApi.tweet(enterTweetTextArea.text);
+                                }
                             }
                         }
                     }
@@ -340,6 +381,15 @@ Page {
                         }
                     }
                 }
+            }
+
+            IconTextSwitch {
+                id: attachLocationTextSwitch
+                icon.source: "image://theme/icon-m-location"
+                visible: ( newTweetPage.place && newTweetPage.geoEnabled ) ? true : false
+                description: qsTr("Attach current location to this tweet")
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                anchors.horizontalCenter: parent.horizontalCenter
             }
 
             Component {

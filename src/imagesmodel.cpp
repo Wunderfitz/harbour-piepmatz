@@ -94,18 +94,20 @@ void ImagesModel::clearModel()
     this->uploadImagesBytesSent.clear();
 }
 
-void ImagesModel::tweetWithSelectedImages(const QString &text)
+void ImagesModel::tweetWithSelectedImages(const QString &text, const QString &placeId)
 {
     this->tweetText = text;
     this->tweetWithImagesInProgress = true;
+    this->tweetPlaceId = placeId;
     this->uploadSelectedImages();
 }
 
-void ImagesModel::replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId)
+void ImagesModel::replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId, const QString &placeId)
 {
     this->tweetText = text;
     this->replyToStatusId = replyToStatusId;
     this->tweetWithImagesInProgress = true;
+    this->tweetPlaceId = placeId;
     this->uploadSelectedImages();
 }
 
@@ -161,9 +163,9 @@ void ImagesModel::handleImageUploadSuccessful(const QString &fileName, const QVa
             mediaIds += uploadedImagesIterator.next().value().value("media_id_string").toString();
         }
         if (replyToStatusId.isEmpty()) {
-            twitterApi->tweetWithImages(tweetText, mediaIds);
+            twitterApi->tweetWithImages(tweetText, mediaIds, tweetPlaceId);
         } else {
-            twitterApi->replyToTweetWithImages(tweetText, replyToStatusId, mediaIds);
+            twitterApi->replyToTweetWithImages(tweetText, replyToStatusId, mediaIds, tweetPlaceId);
         }
         this->clearModel();
         emit uploadCompleted();

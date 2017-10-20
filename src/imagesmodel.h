@@ -40,8 +40,8 @@ public:
     Q_INVOKABLE void setSelectedImages(const QVariantList &selectedImages);
     Q_INVOKABLE QVariantList getSelectedImages();
     Q_INVOKABLE void clearModel();
-    Q_INVOKABLE void tweetWithSelectedImages(const QString &text);
-    Q_INVOKABLE void replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId);
+    Q_INVOKABLE void tweetWithSelectedImages(const QString &text, const QString &placeId = "");
+    Q_INVOKABLE void replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId, const QString &placeId = "");
     Q_INVOKABLE bool isTweetWithImagesInProgress();
 
 signals:
@@ -76,6 +76,7 @@ private:
     QMap<QString, qint64> uploadImagesBytesSent;
     QString tweetText;
     QString replyToStatusId;
+    QString tweetPlaceId;
     bool tweetWithImagesInProgress;
 };
 

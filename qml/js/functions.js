@@ -21,6 +21,15 @@ function updatePiepmatz() {
         homeView.reloading = true;
         notificationsColumn.updateInProgress = true;
     }
+    if (typeof searchColumn !== "undefined") {
+        if (searchField.text !== "") {
+            console.log("Updating search as well...");
+            searchColumn.tweetSearchInTransition = true;
+            searchColumn.usersSearchInTransition = true;
+            searchTimer.stop();
+            searchTimer.start();
+        }
+    }
     timelineModel.update();
     mentionsModel.update();
     directMessagesModel.update();
@@ -50,10 +59,9 @@ function getValidDate(twitterDate) {
 }
 
 function getTweetId(url) {
-    var regex = /twitter\.com\/\w+\/status\/(\d+)/g;
-    var matchingResult = regex.exec(url);
-    if (matchingResult !== null) {
-        return matchingResult[1];
+    // The QML JS engine sometimes fails to match regex /twitter\.com\/\w+\/status\/(\d+)/g correctly. Therefore doing it differently now...
+    if (url.indexOf("twitter.com/") !== -1 && url.indexOf("/status/") !== -1) {
+        return url.substring(url.indexOf("/status/") + 8);
     }
     return null;
 }
@@ -76,6 +84,12 @@ function getRelevantTweet(tweet) {
 function enhanceDescription(description) {
     var httpRegex = /\s+(http[s]*\:\/\/\S+)/g;
     description = description.replace(httpRegex, " <a href=\"$1\">$1</a>");
+
+    var userRegex = /\s+(\@(\w+))/g;
+    description = description.replace(userRegex, " <a href=\"profile://$2\">$1</a>");
+
+    var tagRegex = /\s+(\#\w+)/g;
+    description = description.replace(tagRegex, " <a href=\"tag://$1\">$1</a>");
 
     return description;
 }

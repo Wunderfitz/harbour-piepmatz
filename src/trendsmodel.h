@@ -14,6 +14,9 @@ public:
     virtual int rowCount(const QModelIndex &) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
 
+signals:
+    void trendsRetrieved(const QString &place);
+
 public slots:
     void handleGetIpInfoSuccessful(const QVariantMap &result);
     void handlePlacesForTrendsSuccessful(const QVariantList &result);

@@ -35,6 +35,7 @@
 #include "o0globals.h"
 
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";
+const char API_ACCOUNT_SETTINGS[] = "https://api.twitter.com/1.1/account/settings.json";
 const char API_HELP_CONFIGURATION[] = "https://api.twitter.com/1.1/help/configuration.json";
 const char API_HELP_PRIVACY[] = "https://api.twitter.com/1.1/help/privacy.json";
 const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
@@ -69,14 +70,15 @@ public:
     TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent = 0);
 
     Q_INVOKABLE void verifyCredentials();
+    Q_INVOKABLE void accountSettings();
     Q_INVOKABLE void helpConfiguration();
     Q_INVOKABLE void helpPrivacy();
     Q_INVOKABLE void helpTos();
-    Q_INVOKABLE void tweet(const QString &text);
-    Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId);
-    Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl);
-    Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds);
-    Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds);
+    Q_INVOKABLE void tweet(const QString &text, const QString &placeId = "");
+    Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId, const QString &placeId = "");
+    Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl, const QString &placeId = "");
+    Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds, const QString &placeId = "");
+    Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds, const QString &placeId = "");
     Q_INVOKABLE void homeTimeline(const QString &maxId = "");
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
@@ -103,10 +105,13 @@ public:
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
     Q_INVOKABLE void getIpInfo();
+    Q_INVOKABLE void controlScreenSaver(const bool &enabled);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
     void verifyCredentialsError(const QString &errorMessage);
+    void accountSettingsSuccessful(const QVariantMap &result);
+    void accountSettingsError(const QString &errorMessage);
     void helpConfigurationSuccessful(const QVariantMap &result);
     void helpConfigurationError(const QString &errorMessage);
     void helpPrivacySuccessful(const QVariantMap &result);
@@ -173,6 +178,8 @@ private:
 private slots:
     void handleVerifyCredentialsSuccessful();
     void handleVerifyCredentialsError(QNetworkReply::NetworkError error);
+    void handleAccountSettingsSuccessful();
+    void handleAccountSettingsError(QNetworkReply::NetworkError error);
     void handleHelpConfigurationSuccessful();
     void handleHelpConfigurationError(QNetworkReply::NetworkError error);
     void handleHelpPrivacySuccessful();

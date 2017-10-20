@@ -256,7 +256,7 @@ Item {
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
-                            textFormat: Text.RichText
+                            textFormat: Text.StyledText
                             maximumLineCount: 4
                             elide: Text.ElideRight
                         }
@@ -265,11 +265,11 @@ Item {
                             visible: referenceMetadata.url ? true : false
                             width: parent.width
                             id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\" style=\"color: " + Theme.highlightColor + "\">" + referenceMetadata.title + "</a>"
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + referenceMetadata.title + "</a>"
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.highlightColor
                             wrapMode: Text.Wrap
-                            textFormat: Text.RichText
+                            textFormat: Text.StyledText
                             onLinkActivated: {
                                 Functions.handleLink(link);
                             }

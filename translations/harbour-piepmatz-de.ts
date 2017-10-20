@@ -63,6 +63,14 @@
         <source>Privacy Policy</source>
         <translation>Datenschutzrichtlinie</translation>
     </message>
+    <message>
+        <source>Open ipinfo.io</source>
+        <translation>ipinfo.io öffnen</translation>
+    </message>
+    <message>
+        <source>Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
+        <translation>Piepmatz nutzt ipinfo.io um Ihren Aufenthaltsort zu bestimmen. Ihr Aufenthaltsort wird dazu verwendet, um Trends abzurufen und - nur wenn Sie dem ausdrücklich zustimmen - als Anhang an Gezwitscher. Wenn Sie Ihren Aufenthaltsort in Gezwitscher verwenden wollen, stellen Sie bitte sicher, dass sie das in Ihren &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-Einstellungen&lt;/a&gt; eingeschaltet haben.</translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -176,7 +184,11 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
+    </message>
+    <message>
+        <source>Attach current location to this tweet</source>
+        <translation>Gegenwärtigen Aufenthaltsort zu diesem Gezwitscher hinzufügen</translation>
     </message>
 </context>
 <context>
@@ -305,6 +317,10 @@
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
         <translation>Kein Gezwitscher gefunden. Folgen Sie mehr Leuten um ihr Gezwitscher in Ihre Zeitleiste zu bekommen!</translation>
     </message>
+    <message>
+        <source>Trends for %1</source>
+        <translation>Trends für %1</translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
@@ -357,6 +373,10 @@
     <message>
         <source>Send Direct Message</source>
         <translation>Direktnachricht senden</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Aktualisieren</translation>
     </message>
 </context>
 <context>

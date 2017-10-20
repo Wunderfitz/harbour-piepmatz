@@ -54,8 +54,11 @@ void TrendsModel::handleTrendsSuccessful(const QVariantList &result)
     if (!result.isEmpty()) {
         beginResetModel();
         this->trends.clear();
-        this->trends.append(result.value(0).toMap().value("trends").toList());
+        QVariantMap trendsMap = result.value(0).toMap();
+        this->trends.append(trendsMap.value("trends").toList());
+        QString place = trendsMap.value("locations").toList().value(0).toMap().value("name").toString();
         endResetModel();
-        qDebug() << "Trends model updated...";
+        emit trendsRetrieved(place);
+        qDebug() << "Trends model updated for " + place;
     }
 }

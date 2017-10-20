@@ -33,6 +33,7 @@ Page {
             console.log("Loading profile for " + profileName);
             twitterApi.showUser(profileName);
         } else {
+            profilePage.profileName = profilePage.profileModel.screen_name;
             loaded = true;
         }
     }
@@ -44,8 +45,15 @@ Page {
     Connections {
         target: twitterApi
         onShowUserSuccessful: {
-            if (!profileModel) {
+            if (profileModel) {
+                if (profileName === result.screen_name) {
+                    profileModel = result;
+                    profileName = result.screen_name;
+                    loaded = true;
+                }
+            } else {
                 profileModel = result;
+                profileName = result.screen_name;
                 loaded = true;
             }
         }
@@ -104,6 +112,13 @@ Page {
                         onClicked: {
                             var myConversationModel = { user : profileModel, messages: directMessagesModel.getMessagesForUserId(profileModel.id_str) };
                             pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : myConversationModel, "myUserId": accountModel.getCurrentAccount().id_str });
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Refresh")
+                        onClicked: {
+                            profilePage.loaded = false;
+                            twitterApi.showUser(profilePage.profileName);
                         }
                     }
                 }

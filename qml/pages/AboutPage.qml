@@ -195,6 +195,32 @@ Page {
                 onLinkActivated: Qt.openUrlExternally("https://github.com/twitter/twitter-text")
             }
 
+            Text {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                text: qsTr("Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your <a href=\"https://twitter.com/settings/safety\">Twitter settings</a>.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                wrapMode: Text.Wrap
+                textFormat: Text.StyledText
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Text {
+                text: "<a href=\"https://ipinfo.io\">" + qsTr("Open ipinfo.io") + "</a>"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+
+                onLinkActivated: Qt.openUrlExternally("https://ipinfo.io")
+            }
+
             Label {
                 id: separatorLabel
                 x: Theme.horizontalPageMargin

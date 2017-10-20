@@ -65,6 +65,14 @@
         <source>Privacy Policy</source>
         <translation>Политика конфиденциальности</translation>
     </message>
+    <message>
+        <source>Open ipinfo.io</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -179,6 +187,10 @@
     <message>
         <source>@%1</source>
         <translation type="unfinished">@%1</translation>
+    </message>
+    <message>
+        <source>Attach current location to this tweet</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -307,6 +319,10 @@
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
         <translation>Лента пуста. Подпишитесь на нескольких людей, чтобы увидеть их в ленте!</translation>
     </message>
+    <message>
+        <source>Trends for %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
@@ -359,6 +375,10 @@
     <message>
         <source>Send Direct Message</source>
         <translation>Отправить личное сообщение</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
     </message>
 </context>
 <context>
