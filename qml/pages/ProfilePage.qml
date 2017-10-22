@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../components"
+import "../js/functions.js" as Functions
 
 Page {
     id: profilePage
@@ -95,6 +96,12 @@ Page {
             Item {
                 id: profilePullDownContent
                 PullDownMenu {
+                    MenuItem {
+                        onClicked: {
+                            Clipboard.text = Functions.getUserUrl(profilePage.profileModel);
+                        }
+                        text: qsTr("Copy URL to Clipboard")
+                    }
                     MenuItem {
                         text: profilePage.profileModel.following ? qsTr("Unfollow %1").arg(profilePage.profileModel.name) : qsTr("Follow %1").arg(profilePage.profileModel.name)
                         onClicked: {

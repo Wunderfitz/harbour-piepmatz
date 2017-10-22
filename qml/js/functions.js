@@ -264,6 +264,12 @@ function getTweetUrl(tweetModel) {
     return statusUrl;
 }
 
+function getUserUrl(userModel) {
+    var userUrl = "https://twitter.com/" + userModel.screen_name;
+    console.log(userUrl);
+    return userUrl;
+}
+
 function getRetweetCount(tweetModel) {
     return tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweet_count ? tweetModel.retweeted_status.retweet_count : " " ) : ( tweetModel.retweet_count ? tweetModel.retweet_count : " " )
 }

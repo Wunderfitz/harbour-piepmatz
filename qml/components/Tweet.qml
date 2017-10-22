@@ -50,6 +50,12 @@ ListItem {
             }
             text: qsTr("Open in Browser")
         }
+        MenuItem {
+            onClicked: {
+                Clipboard.text = Functions.getTweetUrl(tweetModel);
+            }
+            text: qsTr("Copy URL to Clipboard")
+        }
     }
 
     TweetElement {

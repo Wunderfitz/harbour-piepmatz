@@ -376,7 +376,11 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>URL in die Zwischenablage kopieren</translation>
     </message>
 </context>
 <context>
@@ -403,6 +407,10 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Mit Kommentar nachzwitschern</translation>
+    </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>URL in die Zwischenablage kopieren</translation>
     </message>
 </context>
 <context>
@@ -438,12 +446,23 @@
         <source>Open in Browser</source>
         <translation>Im Browser öffnen</translation>
     </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>URL in die Zwischenablage kopieren</translation>
+    </message>
 </context>
 <context>
     <name>TweetUser</name>
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+</context>
+<context>
+    <name>User</name>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>URL in die Zwischenablage kopieren</translation>
     </message>
 </context>
 <context>

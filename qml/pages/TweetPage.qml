@@ -64,6 +64,12 @@ Page {
             id: tweetMenu
             MenuItem {
                 onClicked: {
+                    Clipboard.text = Functions.getTweetUrl(tweetModel);
+                }
+                text: qsTr("Copy URL to Clipboard")
+            }
+            MenuItem {
+                onClicked: {
                     Qt.openUrlExternally(Functions.getTweetUrl(tweetModel));
                 }
                 text: qsTr("Open in Browser")

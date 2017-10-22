@@ -35,6 +35,15 @@ ListItem {
         pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": userModel});
     }
 
+    menu: ContextMenu {
+        MenuItem {
+            onClicked: {
+                Clipboard.text = Functions.getUserUrl(userModel);
+            }
+            text: qsTr("Copy URL to Clipboard")
+        }
+    }
+
     Column {
         id: userColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )

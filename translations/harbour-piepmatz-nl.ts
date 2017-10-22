@@ -378,6 +378,10 @@
         <source>Refresh</source>
         <translation type="unfinished">Bijwerken</translation>
     </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
@@ -403,6 +407,10 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Retweeten met commentaar</translation>
+    </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -438,12 +446,23 @@
         <source>Open in Browser</source>
         <translation type="unfinished">Openen in browser</translation>
     </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetUser</name>
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+</context>
+<context>
+    <name>User</name>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

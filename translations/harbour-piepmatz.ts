@@ -376,7 +376,11 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Refresh</translation>
+        <translation>Refresh</translation>
+    </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>Copy URL to Clipboard</translation>
     </message>
 </context>
 <context>
@@ -403,6 +407,10 @@
     <message>
         <source>Retweet with Comment</source>
         <translation>Retweet with Comment</translation>
+    </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>Copy URL to Clipboard</translation>
     </message>
 </context>
 <context>
@@ -438,12 +446,23 @@
         <source>Open in Browser</source>
         <translation>Open in Browser</translation>
     </message>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>Copy URL to Clipboard</translation>
+    </message>
 </context>
 <context>
     <name>TweetUser</name>
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+</context>
+<context>
+    <name>User</name>
+    <message>
+        <source>Copy URL to Clipboard</source>
+        <translation>Copy URL to Clipboard</translation>
     </message>
 </context>
 <context>
