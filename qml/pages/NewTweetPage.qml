@@ -93,7 +93,14 @@ Page {
     }
 
     Component.onCompleted: {
-        twitterApi.getIpInfo();
+        if (locationInformation.hasInformation()) {
+            locationInformation.updateInformation();
+            var currentPosition = locationInformation.getCurrentPosition();
+            console.log("Latitude: " + currentPosition.latitude + ", longitude: " + currentPosition.longitude);
+            twitterApi.searchGeo(currentPosition.latitude, currentPosition.longitude);
+        } else {
+            twitterApi.getIpInfo();
+        }
         twitterApi.accountSettings();
         if (replyToStatusId) {
             twitterApi.showStatus(replyToStatusId);
@@ -132,6 +139,14 @@ Page {
         onAccountSettingsSuccessful: {
             console.log("Geo status: " + result.geo_enabled);
             newTweetPage.geoEnabled = result.geo_enabled;
+        }
+    }
+
+    Connections {
+        target: locationInformation
+        onNewPosition: {
+            console.log("New GPS coordinates: " + coordinate.latitude + " " + coordinate.longitude);
+            twitterApi.searchGeo(coordinate.latitude, coordinate.longitude);
         }
     }
 

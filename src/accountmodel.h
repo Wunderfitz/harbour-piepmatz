@@ -28,6 +28,8 @@
 #include "o1twitter.h"
 #include "o1requestor.h"
 #include "twitterapi.h"
+#include "locationinformation.h"
+#include "wagnis/wagnis.h"
 
 class AccountModel : public QAbstractListModel
 {
@@ -46,6 +48,8 @@ public:
     Q_INVOKABLE QVariantMap getCurrentAccount();
 
     TwitterApi *getTwitterApi();
+    LocationInformation *getLocationInformation();
+    Wagnis *getWagnis();
 
 signals:
     void pinRequestError(const QString &errorMessage);
@@ -71,6 +75,8 @@ private:
     QNetworkAccessManager * const manager;
     O1Requestor *requestor;
     TwitterApi *twitterApi;
+    LocationInformation *locationInformation;
+    Wagnis *wagnis;
 
     void obtainEncryptionKey();
 

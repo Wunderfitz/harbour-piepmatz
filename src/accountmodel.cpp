@@ -43,6 +43,8 @@ AccountModel::AccountModel()
 
     requestor = new O1Requestor(manager, o1, this);
     twitterApi = new TwitterApi(requestor, manager, this);
+    locationInformation = new LocationInformation(this);
+    wagnis = new Wagnis(this);
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
@@ -101,6 +103,16 @@ QVariantMap AccountModel::getCurrentAccount()
 TwitterApi *AccountModel::getTwitterApi()
 {
     return this->twitterApi;
+}
+
+LocationInformation *AccountModel::getLocationInformation()
+{
+    return this->locationInformation;
+}
+
+Wagnis *AccountModel::getWagnis()
+{
+    return this->wagnis;
 }
 
 void AccountModel::handlePinRequestError(const QString &errorMessage)

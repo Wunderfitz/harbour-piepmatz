@@ -14,11 +14,12 @@ TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp
 
-QT += core dbus
+QT += core dbus positioning
 
 LIBS += -lcrypto
 
 include(src/o2/o2.pri)
+include(src/wagnis/wagnis.pri)
 
 SOURCES += src/harbour-piepmatz.cpp \
     src/accountmodel.cpp \
@@ -33,7 +34,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/directmessagesmodel.cpp \
     src/searchusersmodel.cpp \
     src/imageprocessor.cpp \
-    src/trendsmodel.cpp
+    src/trendsmodel.cpp \
+    src/locationinformation.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -96,4 +98,5 @@ HEADERS += \
     src/directmessagesmodel.h \
     src/searchusersmodel.h \
     src/imageprocessor.h \
-    src/trendsmodel.h
+    src/trendsmodel.h \
+    src/locationinformation.h

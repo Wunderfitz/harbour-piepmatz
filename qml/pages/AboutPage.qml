@@ -198,7 +198,7 @@ Page {
             Text {
                 x: Theme.horizontalPageMargin
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
-                text: qsTr("Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your <a href=\"https://twitter.com/settings/safety\">Twitter settings</a>.")
+                text: qsTr("Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your <a href=\"https://twitter.com/settings/safety\">Twitter settings</a>.")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor

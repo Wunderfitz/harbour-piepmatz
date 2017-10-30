@@ -70,7 +70,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
+        <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -635,7 +635,6 @@ void TwitterApi::searchGeo(const QString &latitude, const QString &longitude)
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("lat", latitude);
     urlQuery.addQueryItem("long", longitude);
-    urlQuery.addQueryItem("granularity", "city");
     urlQuery.addQueryItem("max_results", "1");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
@@ -644,7 +643,6 @@ void TwitterApi::searchGeo(const QString &latitude, const QString &longitude)
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     requestParameters.append(O0RequestParameter(QByteArray("lat"), latitude.toUtf8()));
     requestParameters.append(O0RequestParameter(QByteArray("long"), longitude.toUtf8()));
-    requestParameters.append(O0RequestParameter(QByteArray("granularity"), QByteArray("city")));
     requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("1")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 

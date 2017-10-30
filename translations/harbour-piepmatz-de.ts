@@ -68,8 +68,8 @@
         <translation>ipinfo.io öffnen</translation>
     </message>
     <message>
-        <source>Piepmatz uses ipinfo.io to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>Piepmatz nutzt ipinfo.io um Ihren Aufenthaltsort zu bestimmen. Ihr Aufenthaltsort wird dazu verwendet, um Trends abzurufen und - nur wenn Sie dem ausdrücklich zustimmen - als Anhang an Gezwitscher. Wenn Sie Ihren Aufenthaltsort in Gezwitscher verwenden wollen, stellen Sie bitte sicher, dass sie das in Ihren &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-Einstellungen&lt;/a&gt; eingeschaltet haben.</translation>
+        <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
+        <translation>Piepmatz nutzt ipinfo.io und (sofern verfügbar) den GPS-Empfänger Ihres Geräts um Ihren Aufenthaltsort zu bestimmen. Ihr Aufenthaltsort wird dazu verwendet, um Trends abzurufen und - nur wenn Sie dem ausdrücklich zustimmen - als Anhang an Gezwitscher. Wenn Sie Ihren Aufenthaltsort in Gezwitscher verwenden wollen, stellen Sie bitte sicher, dass sie das in Ihren &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-Einstellungen&lt;/a&gt; eingeschaltet haben.</translation>
     </message>
 </context>
 <context>

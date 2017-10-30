@@ -32,6 +32,7 @@
 #include "o1requestor.h"
 #include "accountmodel.h"
 #include "twitterapi.h"
+#include "locationinformation.h"
 #include "timelinemodel.h"
 #include "searchmodel.h"
 #include "searchusersmodel.h"
@@ -51,6 +52,9 @@ int main(int argc, char *argv[])
 
     TwitterApi *twitterApi = accountModel.getTwitterApi();
     context->setContextProperty("twitterApi", twitterApi);
+
+    LocationInformation *locationInformation = accountModel.getLocationInformation();
+    context->setContextProperty("locationInformation", locationInformation);
 
     TimelineModel timelineModel(twitterApi);
     context->setContextProperty("timelineModel", &timelineModel);
