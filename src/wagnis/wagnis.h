@@ -9,10 +9,15 @@ class Wagnis : public QObject
 public:
     explicit Wagnis(QObject *parent = 0);
     ~Wagnis();
+    Q_INVOKABLE QString getId();
 
 signals:
 
 public slots:
+
+private:
+    void generateId();
+    QString wagnisId;
 };
 
 #endif // WAGNIS_H

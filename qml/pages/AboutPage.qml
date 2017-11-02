@@ -148,6 +148,18 @@ Page {
             }
 
             SectionHeader {
+                text: "Wagnis"
+            }
+
+            Label {
+                text: "Wagnis ID: " + wagnis.getId()
+                font.pixelSize: Theme.fontSizeSmall
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            SectionHeader {
                 text: qsTr("Credits")
             }
 
