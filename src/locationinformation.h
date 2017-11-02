@@ -25,6 +25,7 @@ private slots:
 private:
     QGeoPositionInfoSource *source;
     QVariantMap currentPosition;
+    int updateCount;
 };
 
 #endif // LOCATIONINFORMATION_H
