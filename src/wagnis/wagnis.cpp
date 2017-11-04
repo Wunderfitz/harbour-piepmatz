@@ -7,17 +7,19 @@
 #include <QFile>
 #include <QUuid>
 #include <QCryptographicHash>
+#include <QJsonDocument>
+#include <QJsonObject>
 
-Wagnis::Wagnis(QObject *parent) : QObject(parent)
+Wagnis::Wagnis(QNetworkAccessManager *manager, QObject *parent) : QObject(parent)
 {
     qDebug() << "Initializing Wagnis...";
+    this->manager = manager;
+    getIpInfo();
 
     /* Load the human readable error strings for libcrypto */
     ERR_load_crypto_strings();
-
     /* Load all digest and cipher algorithms */
     OpenSSL_add_all_algorithms();
-
     /* Load config file, and other important initialisation */
     OPENSSL_config(NULL);
 
@@ -40,6 +42,12 @@ Wagnis::~Wagnis()
 QString Wagnis::getId()
 {
     return this->wagnisId;
+}
+
+bool Wagnis::isRegistered()
+{
+    // TODO: Implement the critical stuff here... ;)
+    return false;
 }
 
 void Wagnis::generateId()
@@ -100,5 +108,39 @@ void Wagnis::generateId()
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
     qDebug() << "Hash: " + uidHash;
     wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "Wagnis ID: " + wagnisId;
+    qDebug() << "[Wagnis] ID: " + wagnisId;
+}
+
+void Wagnis::getIpInfo()
+{
+    qDebug() << "Wagnis::getIpInfo";
+    QUrl url = QUrl("https://ipinfo.io/json");
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetIpInfoError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetIpInfoFinished()));
+}
+
+void Wagnis::handleGetIpInfoError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleGetIpInfoError:" << (int)error << reply->errorString() << reply->readAll();
+}
+
+void Wagnis::handleGetIpInfoFinished()
+{
+    qDebug() << "Wagnis::handleGetIpInfoFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        this->ipInfo = responseObject.toVariantMap();
+        qDebug() << "[Wagnis] Country: " + ipInfo.value("country").toString();
+    }
 }

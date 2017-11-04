@@ -152,10 +152,23 @@ Page {
             }
 
             Label {
+                id: wagnisIdLabel
                 text: "Wagnis ID: " + wagnis.getId()
                 font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     horizontalCenter: parent.horizontalCenter
+                }
+                visible: false
+            }
+            Button {
+                id: showWagnisIdButton
+                text: "Show Wagnis ID"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    showWagnisIdButton.visible = false;
+                    wagnisIdLabel.visible = true;
                 }
             }
 

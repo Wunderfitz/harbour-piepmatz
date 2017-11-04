@@ -51,7 +51,12 @@ ApplicationWindow
         AttachImagesPage {}
     }
 
-    initialPage: accountModel.isLinked() ? overviewPage : welcomePage
+    Component {
+        id: registrationPage
+        RegistrationPage {}
+    }
+
+    initialPage: wagnis.isRegistered() ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

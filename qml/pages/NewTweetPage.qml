@@ -288,13 +288,6 @@ Page {
                 opacity: atMentionProposals ? ( atMentionProposals.length > 0 ? 1 : 0 ) : 0
                 Behavior on opacity { NumberAnimation {} }
                 spacing: Theme.paddingMedium
-                Separator {
-                    id: atMentioningColumnSeparator
-                    width: parent.width
-                    color: Theme.primaryColor
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    horizontalAlignment: Qt.AlignHCenter
-                }
 
                 Flickable {
                     width: parent.width
@@ -396,6 +389,7 @@ Page {
                         }
                     }
                 }
+
             }
 
             IconTextSwitch {

@@ -384,6 +384,29 @@
     </message>
 </context>
 <context>
+    <name>RegistrationPage</name>
+    <message>
+        <source>Welcome to Piepmatz!</source>
+        <translation type="unfinished">Piepmatzへようこそ</translation>
+    </message>
+    <message>
+        <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accept</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
