@@ -44,7 +44,7 @@ AccountModel::AccountModel()
     requestor = new O1Requestor(manager, o1, this);
     twitterApi = new TwitterApi(requestor, manager, this);
     locationInformation = new LocationInformation(this);
-    wagnis = new Wagnis(manager, this);
+    wagnis = new Wagnis(manager, "Piepmatz", "0.5", this);
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);

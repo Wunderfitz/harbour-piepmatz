@@ -104,6 +104,7 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
+                    wagnis.registerApplication();
                     pageStack.clear();
                     accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
                 }
