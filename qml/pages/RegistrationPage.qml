@@ -53,6 +53,10 @@ Page {
                 width: 1/2 * parent.width
             }
 
+            SectionHeader {
+                text: qsTr("Committed to Free Software")
+            }
+
             Text {
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
@@ -66,6 +70,10 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            SectionHeader {
+                text: qsTr("Anonymous Registration")
             }
 
             Text {

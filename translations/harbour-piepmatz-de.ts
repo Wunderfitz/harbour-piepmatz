@@ -405,6 +405,14 @@
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Committed to Free Software</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anonymous Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
