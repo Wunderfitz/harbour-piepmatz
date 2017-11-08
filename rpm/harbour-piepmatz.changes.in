@@ -31,3 +31,7 @@
 - Better link preview
 - Bugfix: Crash/Freeze on scrolling
 - Bugfix: Error loading direct messages with suspended user
+
+* Wed Nov 08 2017 Sebastian Wolf <sebastian@ygriega.de> 0.4.280
+- Use 280 characters for a tweet
+- Bugfix: Bottom push-up menu can't scroll infinitely anymore
