@@ -17,7 +17,6 @@
 
 const char MIME_TYPE_JSON[] = "application/json";
 const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/registration.php";
-
 const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMbkCojgMgKFZOgit5rDPPQC5jrvy7tC\n3teqxVVb054WemtJ++x8buc4ZgtxpmDJt9VgMS6ExQmC2808PNoyxD0CAwEAAQ==\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
@@ -40,6 +39,7 @@ private:
 
     void generateId();
     void getIpInfo();
+
     QString applicationName;
     QString applicationVersion;
     QString wagnisId;
