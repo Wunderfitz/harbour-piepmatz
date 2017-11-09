@@ -32,6 +32,8 @@ public:
 
 signals:
     void registrationError(const QString &errorMessage);
+    void registrationValid();
+    void registrationInvalid();
 
 public slots:
 

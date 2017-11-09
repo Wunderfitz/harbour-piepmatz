@@ -197,6 +197,11 @@ void Wagnis::handleRegisterApplicationError(QNetworkReply::NetworkError error)
     }
 }
 
+/*
+ * Signature validation by Ian Bull as outlined in his tutorial on
+ * https://eclipsesource.com/de/blogs/2016/09/07/tutorial-code-signing-and-verification-with-openssl/
+ * Thank you very much - in other programming languages this is a single line of code...
+ */
 RSA* createPublicRSA(std::string key)
 {
   RSA *rsa = NULL;
@@ -253,15 +258,21 @@ void Wagnis::handleRegisterApplicationFinished()
         QVariantMap registrationInformation = responseObject.toVariantMap();
         QString registrationData = registrationInformation.value("registration").toString();
         QString registrationSignature = registrationInformation.value("signature").toString();
-        qDebug() << "Payload: " << registrationData;
-        qDebug() << "Signature: " << registrationSignature;
+        qDebug() << "[Wagnis] Payload: " << registrationData;
+        qDebug() << "[Wagnis] Signature: " << registrationSignature;
 
         RSA* publicRSA = createPublicRSA(PUBLIC_KEY);
         QByteArray signatureigBase64 = registrationSignature.toLatin1();
         QByteArray rawData = QByteArray::fromBase64(signatureigBase64);
         bool authentic;
         bool result = verifySignature(publicRSA, reinterpret_cast<unsigned char*>(rawData.data()), rawData.length(), registrationData.toStdString().c_str(), registrationData.toStdString().length(), &authentic);
-        qDebug() << "Signatur OK? " + QString::number(result & authentic);
+        if (result & authentic) {
+            qDebug() << "[Wagnis] Registration valid!";
+            emit registrationValid();
+        } else {
+            qDebug() << "[Wagnis] Registration INVALID!";
+            emit registrationInvalid();
+        }
     }
 }
 
