@@ -6,6 +6,7 @@
 #include <QUrlQuery>
 #include <QUuid>
 #include <QCryptographicHash>
+#include <QStandardPaths>
 #include <QJsonDocument>
 #include <QJsonObject>
 
@@ -25,6 +26,8 @@ Wagnis::Wagnis(QNetworkAccessManager *manager, const QString &applicationName, c
     OPENSSL_config(NULL);
 
     generateId();
+    readRegistration();
+
 }
 
 Wagnis::~Wagnis()
@@ -32,10 +35,8 @@ Wagnis::~Wagnis()
     qDebug() << "Shutting down Wagnis...";
     /* Removes all digests and ciphers */
     EVP_cleanup();
-
     /* if you omit the next, a small leak may be left when you make use of the BIO (low level API) for e.g. base64 transformations */
     CRYPTO_cleanup_all_ex_data();
-
     /* Remove error strings */
     ERR_free_strings();
 }
@@ -86,8 +87,7 @@ void Wagnis::getApplicationRegistration()
 
 bool Wagnis::isRegistered()
 {
-    // TODO: Implement the critical stuff here... ;)
-    return false;
+    return !validatedRegistration.isEmpty();
 }
 
 void Wagnis::generateId()
@@ -143,6 +143,7 @@ void Wagnis::generateId()
     QCryptographicHash idHash(QCryptographicHash::Sha256);
     idHash.addData(temporaryUUID.toUtf8());
     idHash.addData(this->applicationName.toUtf8());
+    idHash.addData(QString("Wagnis").toUtf8());
     idHash.result().toHex();
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
@@ -151,49 +152,16 @@ void Wagnis::generateId()
     qDebug() << "[Wagnis] ID: " + wagnisId;
 }
 
-void Wagnis::getIpInfo()
+void Wagnis::readRegistration()
 {
-    qDebug() << "Wagnis::getIpInfo";
-    QUrl url = QUrl("https://ipinfo.io/json");
-    QNetworkRequest request(url);
-    QNetworkReply *reply = manager->get(request);
+    qDebug() << "Wagnis::readRegistration";
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetIpInfoError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleGetIpInfoFinished()));
-}
-
-void Wagnis::handleGetIpInfoError(QNetworkReply::NetworkError error)
-{
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "Wagnis::handleGetIpInfoError:" << (int)error << reply->errorString() << reply->readAll();
-}
-
-void Wagnis::handleGetIpInfoFinished()
-{
-    qDebug() << "Wagnis::handleGetIpInfoFinished";
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    reply->deleteLater();
-    if (reply->error() != QNetworkReply::NoError) {
-        return;
-    }
-
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isObject()) {
-        QJsonObject responseObject = jsonDocument.object();
-        this->ipInfo = responseObject.toVariantMap();
-        qDebug() << "[Wagnis] Country: " + ipInfo.value("country").toString();
-    }
-}
-
-void Wagnis::handleRegisterApplicationError(QNetworkReply::NetworkError error)
-{
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "Wagnis::handleRegisterApplicationError:" << (int)error << reply->errorString() << reply->readAll();
-    if (error == QNetworkReply::ContentConflictError) { // Conflict = Registration already there!
-        qDebug() << "[Wagnis] Installation already registered!";
-        this->getApplicationRegistration();
-    } else {
-        emit registrationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
+    QFile registrationFile(getRegistrationFileName());
+    if (registrationFile.exists() && registrationFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "[Wagnis] Reading registration file from " + registrationFile.fileName();
+        QByteArray fileRawContent = registrationFile.readAll();
+        validateRegistrationData(fileRawContent, false);
+        registrationFile.close();
     }
 }
 
@@ -243,9 +211,73 @@ bool verifySignature(RSA* rsa, unsigned char* rawSignature, size_t rawSignatureL
   }
 }
 
-void Wagnis::handleRegisterApplicationFinished()
+void Wagnis::validateRegistrationData(const QByteArray &registrationData, const bool &saveData)
 {
-    qDebug() << "Wagnis::handleRegisterApplicationFinished";
+    qDebug() << "Wagnis::validateRegistrationData";
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(registrationData);
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        QVariantMap registrationInformation = responseObject.toVariantMap();
+        QString registrationContent = registrationInformation.value("registration").toString();
+        QString registrationSignature = registrationInformation.value("signature").toString();
+        qDebug() << "[Wagnis] Payload: " << registrationContent;
+        qDebug() << "[Wagnis] Signature: " << registrationSignature;
+
+        if (isSignatureValid(registrationContent, registrationSignature)) {
+            qDebug() << "[Wagnis] Registration valid!";
+            this->validatedRegistration = registrationInformation;
+            emit registrationValid(registrationInformation);
+            if (saveData) {
+                QFile registrationFile(getRegistrationFileName());
+                if (registrationFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                    qDebug() << "[Wagnis] Writing registration file to " + registrationFile.fileName();
+                    registrationFile.write(registrationData);
+                    registrationFile.close();
+                }
+            }
+        } else {
+            qDebug() << "[Wagnis] Registration INVALID!";
+            emit registrationInvalid();
+        }
+    }
+}
+
+void Wagnis::getIpInfo()
+{
+    qDebug() << "Wagnis::getIpInfo";
+    QUrl url = QUrl("https://ipinfo.io/json");
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetIpInfoError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetIpInfoFinished()));
+}
+
+QString Wagnis::getRegistrationFileName()
+{
+    return QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/" + this->applicationName + "/" + "registration.json";
+}
+
+bool Wagnis::isSignatureValid(const QString &content, const QString &signature)
+{
+    qDebug() << "Wagnis::isSignatureValid";
+    RSA* publicRSA = createPublicRSA(PUBLIC_KEY);
+    QByteArray signatureigBase64 = signature.toLatin1();
+    QByteArray rawData = QByteArray::fromBase64(signatureigBase64);
+    bool authentic;
+    bool result = verifySignature(publicRSA, reinterpret_cast<unsigned char*>(rawData.data()), rawData.length(), content.toStdString().c_str(), content.toStdString().length(), &authentic);
+    return authentic & result;
+}
+
+void Wagnis::handleGetIpInfoError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleGetIpInfoError:" << (int)error << reply->errorString() << reply->readAll();
+}
+
+void Wagnis::handleGetIpInfoFinished()
+{
+    qDebug() << "Wagnis::handleGetIpInfoFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
@@ -255,25 +287,34 @@ void Wagnis::handleRegisterApplicationFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
-        QVariantMap registrationInformation = responseObject.toVariantMap();
-        QString registrationData = registrationInformation.value("registration").toString();
-        QString registrationSignature = registrationInformation.value("signature").toString();
-        qDebug() << "[Wagnis] Payload: " << registrationData;
-        qDebug() << "[Wagnis] Signature: " << registrationSignature;
-
-        RSA* publicRSA = createPublicRSA(PUBLIC_KEY);
-        QByteArray signatureigBase64 = registrationSignature.toLatin1();
-        QByteArray rawData = QByteArray::fromBase64(signatureigBase64);
-        bool authentic;
-        bool result = verifySignature(publicRSA, reinterpret_cast<unsigned char*>(rawData.data()), rawData.length(), registrationData.toStdString().c_str(), registrationData.toStdString().length(), &authentic);
-        if (result & authentic) {
-            qDebug() << "[Wagnis] Registration valid!";
-            emit registrationValid();
-        } else {
-            qDebug() << "[Wagnis] Registration INVALID!";
-            emit registrationInvalid();
-        }
+        this->ipInfo = responseObject.toVariantMap();
+        qDebug() << "[Wagnis] Country: " + ipInfo.value("country").toString();
     }
+}
+
+void Wagnis::handleRegisterApplicationError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleRegisterApplicationError:" << (int)error << reply->errorString() << reply->readAll();
+    if (error == QNetworkReply::ContentConflictError) { // Conflict = Registration already there!
+        qDebug() << "[Wagnis] Installation already registered!";
+        this->getApplicationRegistration();
+    } else {
+        emit registrationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
+    }
+}
+
+void Wagnis::handleRegisterApplicationFinished()
+{
+    qDebug() << "Wagnis::handleRegisterApplicationFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QByteArray registrationReply = reply->readAll();
+    validateRegistrationData(registrationReply, true);
 }
 
 void Wagnis::handleGetApplicationRegistrationError(QNetworkReply::NetworkError error)

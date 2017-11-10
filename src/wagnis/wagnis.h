@@ -32,7 +32,7 @@ public:
 
 signals:
     void registrationError(const QString &errorMessage);
-    void registrationValid();
+    void registrationValid(const QVariantMap &registrationInformation);
     void registrationInvalid();
 
 public slots:
@@ -40,12 +40,17 @@ public slots:
 private:
 
     void generateId();
+    void readRegistration();
+    void validateRegistrationData(const QByteArray &registrationData, const bool &saveData);
     void getIpInfo();
+    QString getRegistrationFileName();
+    bool isSignatureValid(const QString &content, const QString &signature);
 
     QString applicationName;
     QString applicationVersion;
     QString wagnisId;
     QVariantMap ipInfo;
+    QVariantMap validatedRegistration;
     QNetworkAccessManager *manager;
 
 private slots:
