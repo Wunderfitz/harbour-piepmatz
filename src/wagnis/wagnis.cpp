@@ -90,6 +90,21 @@ bool Wagnis::isRegistered()
     return !validatedRegistration.isEmpty();
 }
 
+bool Wagnis::hasFeature(const QString &featureName)
+{
+    qDebug() << "Wagnis::hasFeature" << featureName;
+    if (!validatedRegistration.isEmpty()) {
+        QVariantList registeredFeatures = validatedRegistration.value("features").toList();
+        QListIterator<QVariant> featuresIterator(registeredFeatures);
+        while (featuresIterator.hasNext()) {
+            if (featuresIterator.next().toMap().value("name") == featureName) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 void Wagnis::generateId()
 {
     // We try to use the unique device ID. If we can't determine this ID, a random key is used...

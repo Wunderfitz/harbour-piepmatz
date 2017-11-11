@@ -415,6 +415,102 @@
         <source>Anonymous Registration</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Registration Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart Registration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Registration Invalid</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Survey about Piepmatz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Would you pay for Piepmatz?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please select an option...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, more than 10 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No, I wouldn&apos;t pay for Piepmatz.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No, but for my other device.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Options: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the Wagnis ID of Piepmatz on the other device</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, between 8 and 10 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, between 6 and 8 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, between 4 and 6 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, between 2 and 4 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Yes, maximum 2 Euro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can skip the survey for the next %1 if you want to test Piepmatz before answering the question.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Skip Survey</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

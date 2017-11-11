@@ -23,6 +23,8 @@ Item {
 
     id: loadingIndicator
 
+    property bool withOverlay: true
+
     width: parent.width
     height: parent.height
     Rectangle {
@@ -31,7 +33,7 @@ Item {
         opacity: 0.7
         width: parent.width
         height: parent.height
-        visible: true
+        visible: loadingIndicator.withOverlay
     }
 
     Column {

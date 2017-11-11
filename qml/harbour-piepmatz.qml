@@ -56,7 +56,7 @@ ApplicationWindow
         RegistrationPage {}
     }
 
-    initialPage: wagnis.isRegistered() ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage
+    initialPage: ( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 }

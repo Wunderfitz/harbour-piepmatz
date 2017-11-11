@@ -29,6 +29,7 @@ public:
     Q_INVOKABLE void registerApplication();
     Q_INVOKABLE void getApplicationRegistration();
     Q_INVOKABLE bool isRegistered();
+    Q_INVOKABLE bool hasFeature(const QString &featureName);
 
 signals:
     void registrationError(const QString &errorMessage);

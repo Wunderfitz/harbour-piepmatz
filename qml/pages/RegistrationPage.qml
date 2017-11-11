@@ -18,20 +18,74 @@
 */
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+import "../js/functions.js" as Functions
+import "../components"
 
 Page {
     id: registrationPage
     allowedOrientations: Orientation.All
+
+    property bool registrationLoading : false;
+
+    Component.onCompleted: {
+        if (wagnis.isRegistered()) {
+            surveyFlickable.visible = true;
+            surveyFlickable.opacity = 1;
+        } else {
+            registrationFlickable.visible = true;
+            registrationFlickable.opacity = 1;
+        }
+    }
+
+    Connections {
+        target: wagnis
+        onRegistrationError: {
+            registrationPage.registrationLoading = false;
+            registrationErrorFlickable.visible = true;
+            registrationErrorFlickable.opacity = 1;
+        }
+        onRegistrationInvalid: {
+            registrationPage.registrationLoading = false;
+            registrationInvalidFlickable = true;
+            registrationInvalidFlickable.opacity = 1;
+        }
+        onRegistrationValid: {
+            registrationPage.registrationLoading = false;
+            surveyFlickable.visible = true;
+            surveyFlickable.opacity = 1;
+        }
+    }
+
+
+    Column {
+        anchors {
+            fill: parent
+        }
+
+        id: registrationLoadingColumn
+        Behavior on opacity { NumberAnimation {} }
+        opacity: registrationPage.registrationLoading ? 1 : 0
+        visible: registrationPage.registrationLoading ? true : false
+
+        LoadingIndicator {
+            id: registrationLoadingIndicator
+            visible: registrationPage.registrationLoading
+            Behavior on opacity { NumberAnimation {} }
+            opacity: registrationPage.registrationLoading ? 1 : 0
+            height: parent.height
+            width: parent.width
+            withOverlay: false
+        }
+    }
+
 
     SilicaFlickable {
         id: registrationFlickable
         anchors.fill: parent
         contentHeight: termsOfUseColumn.height
         Behavior on opacity { NumberAnimation {} }
-
-        Connections {
-            target: wagnis
-        }
+        visible: false
+        opacity: 0
 
         Column {
             id: termsOfUseColumn
@@ -113,8 +167,9 @@ Page {
                 }
                 onClicked: {
                     wagnis.registerApplication();
-                    pageStack.clear();
-                    accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
+                    registrationPage.registrationLoading = true;
+                    registrationFlickable.opacity = 0;
+                    registrationFlickable.visible = false;
                 }
             }
 
@@ -131,6 +186,328 @@ Page {
 
         }
 
+    }
+
+
+    SilicaFlickable {
+        id: registrationErrorFlickable
+        anchors.fill: parent
+        contentHeight: registrationErrorColumn.height
+        Behavior on opacity { NumberAnimation {} }
+        visible: false
+        opacity: 0
+
+
+        Column {
+            id: registrationErrorColumn
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            Image {
+                source: "../../images/piepmatz.svg"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                fillMode: Image.PreserveAspectFit
+                width: 1/2 * parent.width
+            }
+
+            InfoLabel {
+                text: qsTr("Registration Error")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Registration failed. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case a restart doesn't work, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Button {
+                text: qsTr("Restart Registration")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    wagnis.registerApplication();
+                    registrationPage.registrationLoading = true;
+                    registrationErrorFlickable.visible = false;
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+    }
+
+    SilicaFlickable {
+        id: registrationInvalidFlickable
+        anchors.fill: parent
+        contentHeight: registrationInvalidColumn.height
+        Behavior on opacity { NumberAnimation {} }
+        visible: false
+        opacity: 0
+
+        Column {
+            id: registrationInvalidColumn
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            Image {
+                source: "../../images/piepmatz.svg"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                fillMode: Image.PreserveAspectFit
+                width: 1/2 * parent.width
+            }
+
+            InfoLabel {
+                text: qsTr("Registration Invalid")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case the new registration isn't successful, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Button {
+                text: qsTr("Restart Registration")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    wagnis.registerApplication();
+                    registrationPage.registrationLoading = true;
+                    registrationInvalidFlickable.visible = false;
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+    }
+
+    SilicaFlickable {
+        id: surveyFlickable
+        anchors.fill: parent
+        contentHeight: surveyColumn.height
+        Behavior on opacity { NumberAnimation {} }
+        visible: false
+        opacity: 0
+
+        Column {
+            id: surveyColumn
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            PageHeader {
+                title: qsTr("Survey about Piepmatz")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.")
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            SectionHeader {
+                text: qsTr("Would you pay for Piepmatz?")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Piepmatz will remain open source software. However, I'm considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            ComboBox {
+                id: contributionQuestionCombobox
+                label: qsTr("Options: ")
+                menu: ContextMenu {
+                    MenuItem {
+                        text: qsTr("Please select an option...")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, more than 10 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, between 8 and 10 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, between 6 and 8 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, between 4 and 6 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, between 2 and 4 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("Yes, maximum 2 Euro")
+                    }
+                    MenuItem {
+                        text: qsTr("No, I wouldn't pay for Piepmatz.")
+                    }
+                    MenuItem {
+                        text: qsTr("No, but for my other device.")
+                    }
+                }
+            }
+
+            Text {
+                visible: ( contributionQuestionCombobox.currentIndex === 8 ) ? true : false
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Simply open Piepmatz on the other device and access the 'About Piepmatz' page. The Wagnis ID is listed there.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Column {
+                width: parent.width
+                visible: ( contributionQuestionCombobox.currentIndex === 8 ) ? true : false
+
+                TextField {
+                    id: wagnisIdTextField
+                    width: parent.width
+                    labelVisible: false
+                    placeholderText: "1234-5678-90ab-cdef"
+                }
+
+                Text {
+                    text: qsTr("Enter the Wagnis ID of Piepmatz on the other device")
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                }
+            }
+
+            Button {
+                enabled: {
+                    if ( contributionQuestionCombobox.currentIndex === 0 ) {
+                        false;
+                    } else {
+                        if ( contributionQuestionCombobox.currentIndex !== 8) {
+                            true;
+                        } else {
+                            if (wagnisIdTextField.text.match(/^[\da-f]{4}\-[\da-f]{4}\-[\da-f]{4}\-[\da-f]{4}$/)) {
+                                true;
+                            } else {
+                                false;
+                            }
+                        }
+                    }
+                }
+                text: qsTr("Send")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    // TODO: Send the survey and check results
+                    pageStack.clear();
+                    accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
+                }
+            }
+
+            Text {
+                // TODO: Hide when time is over and calculate the remaining time...
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("You can skip the survey for the next %1 if you want to test Piepmatz before answering the question.").arg("14 days")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Button {
+                // TODO: Hide when time is over...
+                text: qsTr("Skip Survey")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    pageStack.clear();
+                    accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
     }
 
 }
