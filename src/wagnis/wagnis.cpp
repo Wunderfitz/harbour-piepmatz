@@ -238,7 +238,17 @@ void Wagnis::validateRegistrationData(const QByteArray &registrationData, const 
         qDebug() << "[Wagnis] Payload: " << registrationContent;
         qDebug() << "[Wagnis] Signature: " << registrationSignature;
 
-        if (isSignatureValid(registrationContent, registrationSignature)) {
+        QJsonDocument registrationContentJson = QJsonDocument::fromJson(registrationContent.toUtf8());
+        bool wagnisIdVerified = false;
+        if (registrationContentJson.isObject()) {
+            QVariantMap wagnisInformation = registrationContentJson.object().toVariantMap();
+            if ( wagnisInformation.value("id").toString() == this->wagnisId ) {
+                qDebug() << "[Wagnis] ID verified!";
+                wagnisIdVerified = true;
+            }
+        }
+
+        if (wagnisIdVerified && isSignatureValid(registrationContent, registrationSignature)) {
             qDebug() << "[Wagnis] Registration valid!";
             this->validatedRegistration = registrationInformation;
             emit registrationValid(registrationInformation);
