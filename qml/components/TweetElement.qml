@@ -155,6 +155,9 @@ Item {
                         color: Theme.secondaryColor
                         text: qsTr("Retweeted by %1").arg(tweetModel.user.name)
                         visible: tweetModel.retweeted_status ? true : false
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                        width: tweetContentColumn.width
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -170,6 +173,9 @@ Item {
                         color: Theme.secondaryColor
                         text: qsTr("In reply to %1").arg(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
                         visible: tweetModel.in_reply_to_user_id_str ? true : false
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                        width: tweetContentColumn.width
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {

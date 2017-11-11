@@ -92,9 +92,19 @@ Page {
         }
     }
 
+    Timer {
+        id: updateLocationInformationTimer
+        interval: 100
+        running: false
+        repeat: false
+        onTriggered: {
+            locationInformation.updateInformation();
+        }
+    }
+
     Component.onCompleted: {
         if (locationInformation.hasInformation()) {
-            locationInformation.updateInformation();
+            updateLocationInformationTimer.start();
             var currentPosition = locationInformation.getCurrentPosition();
             console.log("Latitude: " + currentPosition.latitude + ", longitude: " + currentPosition.longitude);
             twitterApi.searchGeo(currentPosition.latitude, currentPosition.longitude);
@@ -361,6 +371,9 @@ Page {
                                                 color: Theme.primaryColor
                                                 font.pixelSize: Theme.fontSizeExtraSmall
                                                 font.bold: true
+                                                elide: Text.ElideRight
+                                                maximumLineCount: 1
+                                                width: if (modelData.name.length > 20) { atMentioningColumn.width / 2 }
                                             }
                                             Image {
                                                 source: "image://theme/icon-s-installed"

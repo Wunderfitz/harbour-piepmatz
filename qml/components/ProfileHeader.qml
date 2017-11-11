@@ -156,7 +156,9 @@ Item {
             }
             color: Theme.primaryColor
             elide: Text.ElideRight
-            width: parent.width
+            maximumLineCount: 2
+            width: parent.width - ( 2 * Theme.horizontalPageMargin ) - Theme.paddingSmall
+            wrapMode: Text.Wrap
         }
         Text {
             id: profileScreenNameText
