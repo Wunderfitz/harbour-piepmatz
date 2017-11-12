@@ -288,6 +288,22 @@ function getShortenedCount(count) {
     }
 }
 
+function getTimeRemaining(count) {
+    if (count >= 172800) {
+        return qsTr("the next %1 days").arg((count / 86400).toLocaleString(Qt.locale(), 'f', 0));
+    } else if (count >= 86400) {
+        return qsTr("the next day");
+    } else if (count >= 7200 ) {
+        return qsTr("the next %1 hours").arg((count / 3600).toLocaleString(Qt.locale(), 'f', 0));
+    } if (count >= 3600 ) {
+        return qsTr("the next hour");
+    } else if (count >= 120 ) {
+        return qsTr("the next %1 minutes").arg((count / 60).toLocaleString(Qt.locale(), 'f', 0));
+    } else {
+        return qsTr("the next minute");
+    }
+}
+
 function containsPlace(tweetModel) {
     if (tweetModel.retweeted_status) {
         if (tweetModel.retweeted_status.place) {

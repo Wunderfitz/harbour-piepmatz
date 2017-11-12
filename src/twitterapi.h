@@ -33,6 +33,7 @@
 #include "o1requestor.h"
 #include "o0requestparameter.h"
 #include "o0globals.h"
+#include "wagnis/wagnis.h"
 
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";
 const char API_ACCOUNT_SETTINGS[] = "https://api.twitter.com/1.1/account/settings.json";
@@ -67,7 +68,7 @@ class TwitterApi : public QObject {
 
     Q_OBJECT
 public:
-    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent = 0);
+    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent = 0);
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void accountSettings();
@@ -174,6 +175,7 @@ signals:
 private:
     O1Requestor *requestor;
     QNetworkAccessManager *manager;
+    Wagnis *wagnis;
 
 private slots:
     void handleVerifyCredentialsSuccessful();

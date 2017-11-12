@@ -153,7 +153,7 @@ Page {
 
             Label {
                 id: wagnisIdLabel
-                text: "Wagnis ID: " + wagnis.getId()
+                text: qsTr("Wagnis ID: ") + wagnis.getId()
                 font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -162,7 +162,7 @@ Page {
             }
             Button {
                 id: showWagnisIdButton
-                text: "Show Wagnis ID"
+                text: qsTr("Show Wagnis ID")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

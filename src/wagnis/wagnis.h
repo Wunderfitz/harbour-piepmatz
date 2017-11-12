@@ -17,6 +17,7 @@
 
 const char MIME_TYPE_JSON[] = "application/json";
 const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/registration.php";
+const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/survey.php";
 const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMbkCojgMgKFZOgit5rDPPQC5jrvy7tC\n3teqxVVb054WemtJ++x8buc4ZgtxpmDJt9VgMS6ExQmC2808PNoyxD0CAwEAAQ==\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
@@ -30,6 +31,10 @@ public:
     Q_INVOKABLE void getApplicationRegistration();
     Q_INVOKABLE bool isRegistered();
     Q_INVOKABLE bool hasFeature(const QString &featureName);
+    Q_INVOKABLE void sendSurvey(const QString &answer, const QString &otherId = "");
+    Q_INVOKABLE QVariantMap getRegistrationData();
+    Q_INVOKABLE bool inTestingPeriod();
+    Q_INVOKABLE int getRemainingTime();
 
 signals:
     void registrationError(const QString &errorMessage);
@@ -52,6 +57,7 @@ private:
     QString wagnisId;
     QVariantMap ipInfo;
     QVariantMap validatedRegistration;
+    int remainingSeconds = 0;
     QNetworkAccessManager *manager;
 
 private slots:
@@ -59,6 +65,8 @@ private slots:
     void handleGetIpInfoFinished();
     void handleRegisterApplicationError(QNetworkReply::NetworkError error);
     void handleRegisterApplicationFinished();
+    void handleSendSurveyError(QNetworkReply::NetworkError error);
+    void handleSendSurveyFinished();
     void handleGetApplicationRegistrationError(QNetworkReply::NetworkError error);
 };
 

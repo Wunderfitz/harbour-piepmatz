@@ -71,6 +71,14 @@
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Wagnis ID: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Wagnis ID</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -502,11 +510,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You can skip the survey for the next %1 if you want to test Piepmatz before answering the question.</source>
+        <source>Skip Survey</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Skip Survey</source>
+        <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -652,6 +660,30 @@
     <message>
         <source>%1K</source>
         <translation type="unfinished">%1K</translation>
+    </message>
+    <message>
+        <source>the next %1 days</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>the next day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>the next %1 hours</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>the next hour</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>the next %1 minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>the next minute</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

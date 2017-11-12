@@ -69,7 +69,15 @@
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>Wagnis ID: </source>
+        <translation>Wagnis ID: </translation>
+    </message>
+    <message>
+        <source>Show Wagnis ID</source>
+        <translation>Show Wagnis ID</translation>
     </message>
 </context>
 <context>
@@ -387,127 +395,127 @@
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Welcome to Piepmatz!</translation>
+        <translation>Welcome to Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Have fun with Piepmatz! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accept</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation type="unfinished"></translation>
+        <translation>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Committed to Free Software</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonymous Registration</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Registration Error</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Restart Registration</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>Registration Invalid</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Survey about Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Survey about Piepmatz</translation>
     </message>
     <message>
         <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
-        <translation type="unfinished"></translation>
+        <translation>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</translation>
     </message>
     <message>
         <source>Would you pay for Piepmatz?</source>
-        <translation type="unfinished"></translation>
+        <translation>Would you pay for Piepmatz?</translation>
     </message>
     <message>
         <source>Please select an option...</source>
-        <translation type="unfinished"></translation>
+        <translation>Please select an option...</translation>
     </message>
     <message>
         <source>Yes, more than 10 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, more than 10 Euro</translation>
     </message>
     <message>
         <source>No, I wouldn&apos;t pay for Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>No, I wouldn&apos;t pay for Piepmatz.</translation>
     </message>
     <message>
         <source>No, but for my other device.</source>
-        <translation type="unfinished"></translation>
+        <translation>No, but for my other device.</translation>
     </message>
     <message>
         <source>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</translation>
     </message>
     <message>
         <source>Options: </source>
-        <translation type="unfinished"></translation>
+        <translation>Options: </translation>
     </message>
     <message>
         <source>Enter the Wagnis ID of Piepmatz on the other device</source>
-        <translation type="unfinished"></translation>
+        <translation>Enter the Wagnis ID of Piepmatz on the other device</translation>
     </message>
     <message>
         <source>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</translation>
     </message>
     <message>
         <source>Yes, between 8 and 10 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, between 8 and 10 Euro</translation>
     </message>
     <message>
         <source>Yes, between 6 and 8 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, between 6 and 8 Euro</translation>
     </message>
     <message>
         <source>Yes, between 4 and 6 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, between 4 and 6 Euro</translation>
     </message>
     <message>
         <source>Yes, between 2 and 4 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, between 2 and 4 Euro</translation>
     </message>
     <message>
         <source>Yes, maximum 2 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Yes, maximum 2 Euro</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You can skip the survey for the next %1 if you want to test Piepmatz before answering the question.</source>
-        <translation type="unfinished"></translation>
+        <translation>Send</translation>
     </message>
     <message>
         <source>Skip Survey</source>
-        <translation type="unfinished"></translation>
+        <translation>Skip Survey</translation>
+    </message>
+    <message>
+        <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
+        <translation>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</translation>
     </message>
 </context>
 <context>
@@ -652,6 +660,30 @@
     <message>
         <source>%1K</source>
         <translation>%1K</translation>
+    </message>
+    <message>
+        <source>the next %1 days</source>
+        <translation>the next %1 days</translation>
+    </message>
+    <message>
+        <source>the next day</source>
+        <translation>the next day</translation>
+    </message>
+    <message>
+        <source>the next %1 hours</source>
+        <translation>the next %1 hours</translation>
+    </message>
+    <message>
+        <source>the next hour</source>
+        <translation>the next hour</translation>
+    </message>
+    <message>
+        <source>the next %1 minutes</source>
+        <translation>the next %1 minutes</translation>
+    </message>
+    <message>
+        <source>the next minute</source>
+        <translation>the next minute</translation>
     </message>
 </context>
 </TS>

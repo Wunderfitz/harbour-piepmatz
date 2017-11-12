@@ -51,8 +51,13 @@ Page {
         }
         onRegistrationValid: {
             registrationPage.registrationLoading = false;
-            surveyFlickable.visible = true;
-            surveyFlickable.opacity = 1;
+            if (wagnis.hasFeature("survey")) {
+                pageStack.clear();
+                accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage);
+            } else {
+                surveyFlickable.visible = true;
+                surveyFlickable.opacity = 1;
+            }
         }
     }
 
@@ -223,7 +228,7 @@ Page {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
                 text: qsTr("Registration failed. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case a restart doesn't work, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
-                font.pixelSize: Theme.fontSizeExtraSmall
+                font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
                 anchors {
@@ -289,7 +294,7 @@ Page {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
                 text: qsTr("The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case the new registration isn't successful, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
-                font.pixelSize: Theme.fontSizeExtraSmall
+                font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
                 anchors {
@@ -330,6 +335,16 @@ Page {
         visible: false
         opacity: 0
 
+        property bool canSkip: false
+        property string remainingTime
+
+        onVisibleChanged: {
+            if (visible) {
+                surveyFlickable.canSkip = wagnis.inTestingPeriod();
+                surveyFlickable.remainingTime = Functions.getTimeRemaining(wagnis.getRemainingTime());
+            }
+        }
+
         Column {
             id: surveyColumn
             width: parent.width
@@ -337,6 +352,16 @@ Page {
 
             PageHeader {
                 title: qsTr("Survey about Piepmatz")
+            }
+
+            Image {
+                source: "../../images/piepmatz.svg"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                fillMode: Image.PreserveAspectFit
+                width: 1/2 * parent.width
             }
 
             Text {
@@ -464,19 +489,20 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    // TODO: Send the survey and check results
-                    pageStack.clear();
-                    accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
+                    wagnis.sendSurvey(contributionQuestionCombobox.currentIndex, wagnisIdTextField.text);
+                    registrationPage.registrationLoading = true;
+                    surveyFlickable.opacity = 0;
+                    surveyFlickable.visible = false;
                 }
             }
 
             Text {
-                // TODO: Hide when time is over and calculate the remaining time...
+                visible: surveyFlickable.canSkip
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("You can skip the survey for the next %1 if you want to test Piepmatz before answering the question.").arg("14 days")
+                text: qsTr("You can skip the survey for %1 if you want to test Piepmatz before answering the question.").arg(surveyFlickable.remainingTime)
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -487,7 +513,7 @@ Page {
             }
 
             Button {
-                // TODO: Hide when time is over...
+                visible: surveyFlickable.canSkip
                 text: qsTr("Skip Survey")
                 anchors {
                     horizontalCenter: parent.horizontalCenter

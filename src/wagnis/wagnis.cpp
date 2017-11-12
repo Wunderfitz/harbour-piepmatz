@@ -9,6 +9,7 @@
 #include <QStandardPaths>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QDateTime>
 
 Wagnis::Wagnis(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent)
 {
@@ -103,6 +104,49 @@ bool Wagnis::hasFeature(const QString &featureName)
         }
     }
     return false;
+}
+
+void Wagnis::sendSurvey(const QString &answer, const QString &otherId)
+{
+    qDebug() << "Wagnis::sendSurvey" << answer << otherId;
+    QUrl url = QUrl(API_SURVEY);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+
+    QJsonObject jsonPayloadObject;
+    jsonPayloadObject.insert("id", wagnisId);
+    jsonPayloadObject.insert("application", this->applicationName);
+    jsonPayloadObject.insert("answer", answer);
+    if (!otherId.isEmpty()) {
+        jsonPayloadObject.insert("other_id", otherId);
+    }
+
+    QJsonDocument requestDocument(jsonPayloadObject);
+    QByteArray jsonAsByteArray = requestDocument.toJson();
+    request.setHeader(QNetworkRequest::ContentLengthHeader, QByteArray::number(jsonAsByteArray.size()));
+
+    QNetworkReply *reply = manager->post(request, jsonAsByteArray);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRegisterApplicationError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleRegisterApplicationFinished()));
+}
+
+QVariantMap Wagnis::getRegistrationData()
+{
+    qDebug() << "Wagnis::getRegistrationData";
+    return this->validatedRegistration;
+}
+
+bool Wagnis::inTestingPeriod()
+{
+    qDebug() << "Wagnis::inTestingPeriod";
+    return this->remainingSeconds > 0;
+}
+
+int Wagnis::getRemainingTime()
+{
+    qDebug() << "Wagnis::getRemainingTime";
+    return this->remainingSeconds;
 }
 
 void Wagnis::generateId()
@@ -250,8 +294,16 @@ void Wagnis::validateRegistrationData(const QByteArray &registrationData, const 
 
         if (wagnisIdVerified && isSignatureValid(registrationContent, registrationSignature)) {
             qDebug() << "[Wagnis] Registration valid!";
-            this->validatedRegistration = registrationInformation;
-            emit registrationValid(registrationInformation);
+            this->validatedRegistration = registrationContentJson.object().toVariantMap();
+
+            QDateTime registrationTime = QDateTime::fromString(this->validatedRegistration.value("timestamp").toString(), "yyyy-MM-dd hh:mm:ss");
+            QDateTime currentTime = QDateTime::currentDateTime();
+            this->remainingSeconds = 1209600 - registrationTime.secsTo(currentTime);
+            if (this->remainingSeconds < 0 ) {
+                this->remainingSeconds = 0;
+            }
+
+            emit registrationValid(this->validatedRegistration);
             if (saveData) {
                 QFile registrationFile(getRegistrationFileName());
                 if (registrationFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -332,6 +384,26 @@ void Wagnis::handleRegisterApplicationError(QNetworkReply::NetworkError error)
 void Wagnis::handleRegisterApplicationFinished()
 {
     qDebug() << "Wagnis::handleRegisterApplicationFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QByteArray registrationReply = reply->readAll();
+    validateRegistrationData(registrationReply, true);
+}
+
+void Wagnis::handleSendSurveyError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleSendSurveyError:" << (int)error << reply->errorString() << reply->readAll();
+    emit registrationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
+}
+
+void Wagnis::handleSendSurveyFinished()
+{
+    qDebug() << "Wagnis::handleSendSurveyFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
