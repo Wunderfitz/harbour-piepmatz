@@ -14,11 +14,12 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QVariantMap>
+#include <QJsonDocument>
 
 const char MIME_TYPE_JSON[] = "application/json";
-const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/registration.php";
-const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/survey.php";
-const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMbkCojgMgKFZOgit5rDPPQC5jrvy7tC\n3teqxVVb054WemtJ++x8buc4ZgtxpmDJt9VgMS6ExQmC2808PNoyxD0CAwEAAQ==\n-----END PUBLIC KEY-----";
+const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/registration.php";
+const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/survey.php";
+const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALTS08Se9DHnB6N2EhK9G7EgR2s/zPNb\ns51EV43EEMsOAeWbMZMDpnz4RYHnfo/tucA4oDdBBmIzoNF08n5Pv5MCAwEAAQ==\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
 {
@@ -27,6 +28,7 @@ public:
     explicit Wagnis(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
     ~Wagnis();
     Q_INVOKABLE QString getId();
+    Q_INVOKABLE QString getCandidateRegistrationData();
     Q_INVOKABLE void registerApplication();
     Q_INVOKABLE void getApplicationRegistration();
     Q_INVOKABLE bool isRegistered();
@@ -46,6 +48,7 @@ public slots:
 private:
 
     void generateId();
+    QJsonDocument getRegistrationDocument();
     void readRegistration();
     void validateRegistrationData(const QByteArray &registrationData, const bool &saveData);
     void getIpInfo();

@@ -517,6 +517,14 @@
         <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
         <translation>Sie können die Umfrage für %1 überspringen, wenn Sie Piepmatz vor dem Beantworten der Umfrge testen wollen.</translation>
     </message>
+    <message>
+        <source>Show Registration Data</source>
+        <translation>Registrierungsdaten anzeigen</translation>
+    </message>
+    <message>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>Die Daten werden nicht an Dritte weitergegeben. Weitere Informationen zur Datenverarbeitung sind im &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;Impressum&lt;/a&gt; verfügbar. Weitere Details über die Hintergründe, das eindeutige Identifikationsmerkmal und wie es erstellt wird, finden Sie auf meiner Seite &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;über Wagnis&lt;/a&gt;.</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

@@ -151,6 +151,50 @@ Page {
             }
 
             Text {
+                id: candidateRegistrationData
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.primaryColor
+                textFormat: Text.StyledText
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                visible: false
+            }
+
+            Button {
+                text: qsTr("Show Registration Data")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    candidateRegistrationData.text = wagnis.getCandidateRegistrationData();
+                    visible = false;
+                    candidateRegistrationData.visible = true;
+                }
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("The data isn't shared with anyone else. Please see the <a href=\"http://legal.ygriega.de/\">legal notice</a> for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page <a href=\"http://wagnis.ygriega.de/\">about Wagnis</a>.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: {
+                    Qt.openUrlExternally(link);
+                }
+
+            }
+
+            Text {
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )

@@ -7,9 +7,10 @@
 #include <QUuid>
 #include <QCryptographicHash>
 #include <QStandardPaths>
-#include <QJsonDocument>
 #include <QJsonObject>
 #include <QDateTime>
+#include <QtDBus/QDBusConnection>
+#include <QtDBus/QDBusInterface>
 
 Wagnis::Wagnis(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent) : QObject(parent)
 {
@@ -47,6 +48,13 @@ QString Wagnis::getId()
     return this->wagnisId;
 }
 
+QString Wagnis::getCandidateRegistrationData()
+{
+    qDebug() << "Wagnis::getCandidateRegistrationData";
+    QJsonDocument registrationDocument = getRegistrationDocument();
+    return "<pre>" + QString::fromUtf8(registrationDocument.toJson(QJsonDocument::Indented)) + "</pre>";
+}
+
 void Wagnis::registerApplication()
 {
     qDebug() << "Wagnis::registerApplication";
@@ -54,13 +62,7 @@ void Wagnis::registerApplication()
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
 
-    QJsonObject jsonPayloadObject;
-    jsonPayloadObject.insert("id", wagnisId);
-    jsonPayloadObject.insert("country", ipInfo.value("country").toString());
-    jsonPayloadObject.insert("application", this->applicationName);
-    jsonPayloadObject.insert("version", this->applicationVersion);
-
-    QJsonDocument requestDocument(jsonPayloadObject);
+    QJsonDocument requestDocument = getRegistrationDocument();
     QByteArray jsonAsByteArray = requestDocument.toJson();
     request.setHeader(QNetworkRequest::ContentLengthHeader, QByteArray::number(jsonAsByteArray.size()));
 
@@ -151,64 +153,80 @@ int Wagnis::getRemainingTime()
 
 void Wagnis::generateId()
 {
-    // We try to use the unique device ID. If we can't determine this ID, a random key is used...
-    // Unique device ID determination copied from the QtSystems module of the Qt Toolkit
-    QString temporaryUUID;
-    if (temporaryUUID.isEmpty()) {
-        QFile file(QStringLiteral("/sys/devices/virtual/dmi/id/product_uuid"));
-        if (file.open(QIODevice::ReadOnly)) {
-            QString id = QString::fromLocal8Bit(file.readAll().simplified().data());
-            if (id.length() == 36) {
-                temporaryUUID = id;
-            }
-            file.close();
-        }
-    }
-    if (temporaryUUID.isEmpty()) {
-        QFile file(QStringLiteral("/etc/machine-id"));
-        if (file.open(QIODevice::ReadOnly)) {
-            QString id = QString::fromLocal8Bit(file.readAll().simplified().data());
-            if (id.length() == 32) {
-                temporaryUUID = id.insert(8,'-').insert(13,'-').insert(18,'-').insert(23,'-');
-            }
-            file.close();
-        }
-    }
-    if (temporaryUUID.isEmpty()) {
-        QFile file(QStringLiteral("/etc/unique-id"));
-        if (file.open(QIODevice::ReadOnly)) {
-            QString id = QString::fromLocal8Bit(file.readAll().simplified().data());
-            if (id.length() == 32) {
-                temporaryUUID = id.insert(8,'-').insert(13,'-').insert(18,'-').insert(23,'-');
-            }
-            file.close();
-        }
-    }
-    if (temporaryUUID.isEmpty()) {
-        QFile file(QStringLiteral("/var/lib/dbus/machine-id"));
-        if (file.open(QIODevice::ReadOnly)) {
-            QString id = QString::fromLocal8Bit(file.readAll().simplified().data());
-            if (id.length() == 32) {
-                temporaryUUID = id.insert(8,'-').insert(13,'-').insert(18,'-').insert(23,'-');
-            }
-            file.close();
-        }
-    }
-    if (temporaryUUID.isEmpty()) {
-        qDebug() << "FATAL: Unable to obtain unique device ID!";
-        temporaryUUID = "n/a";
-    }
+
+    // There is no such thing as a reliable unique device ID on SailfishOS. Usually, /etc/machine-id
+    // does the job, but it seems to be the same on a lot of devices of the same kind (e.g. Xperia X)
+    // Therefore, there is no other choice than to use IMEI(s), serial numbers and MAC addresses as
+    // hash data. For those of you who are afraid about data privacy, please use the search engine of
+    // your choice for information about cryptographic hash functions. tl;dr: Nobody can restore the
+    // original data from the hash...
 
     QCryptographicHash idHash(QCryptographicHash::Sha256);
-    idHash.addData(temporaryUUID.toUtf8());
+
+    // If we are on a device which you still can use as a telephone, there's at least one IMEI
+    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
+    QDBusInterface dbusInterface("org.ofono", "/", "org.nemomobile.ofono.ModemManager", dbusConnection);
+    QDBusMessage reply = dbusInterface.call(QLatin1String("GetIMEI"));
+    QList<QVariant> imeiList = reply.arguments();
+    QListIterator<QVariant> imeiIterator(imeiList);
+    while (imeiIterator.hasNext()) {
+        QString imei = imeiIterator.next().toString();
+        if (!imei.isEmpty()) {
+            qDebug() << "[Wagnis] Using IMEI " + imei + " for the ID";
+            idHash.addData(imei.toUtf8());
+        }
+    }
+
+    // On devices without cellular connection, there should be a unique serial ID as replacement
+    QFile serialFile(QStringLiteral("/config/serial/serial.txt"));
+    if (serialFile.open(QIODevice::ReadOnly)) {
+        QString serialNumber = QString::fromLocal8Bit(serialFile.readAll().simplified().data());
+        qDebug() << "[Wagnis] Using Serial Number " + serialNumber + " for the ID";
+        idHash.addData(serialNumber.toUtf8());
+        serialFile.close();
+    }
+
+    // Most devices support Wi-Fi - all networking devices have a MAC address
+    QFile wifiFile(QStringLiteral("/sys/class/net/wlan0/address"));
+    if (wifiFile.open(QIODevice::ReadOnly)) {
+        QString wifiMacAddress = QString::fromLocal8Bit(wifiFile.readAll().simplified().data());
+        qDebug() << "[Wagnis] Using Wi-Fi MAC address " + wifiMacAddress + " for the ID";
+        idHash.addData(wifiMacAddress.toUtf8());
+        wifiFile.close();
+    }
+
+    // Many devices also have Bluetooth - that's also a networking device :)
+    QFile bluetoothFile(QStringLiteral("/sys/class/bluetooth/hci0/address"));
+    if (bluetoothFile.open(QIODevice::ReadOnly)) {
+        QString bluetoothMacAddress = QString::fromLocal8Bit(bluetoothFile.readAll().simplified().data());
+        qDebug() << "[Wagnis] Using Bluetooth MAC address " + bluetoothMacAddress + " for the ID";
+        idHash.addData(bluetoothMacAddress.toUtf8());
+        bluetoothFile.close();
+    }
+
+    // Additional components of the hash are the current application name...
     idHash.addData(this->applicationName.toUtf8());
-    idHash.addData(QString("Wagnis").toUtf8());
+    // ...and the identifier of this Wagnis release.
+    idHash.addData(QString("Wagnis PoC").toUtf8());
     idHash.result().toHex();
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
-    qDebug() << "Hash: " + uidHash;
+    qDebug() << "[Wagnis] Complete hash: " + uidHash;
     wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
     qDebug() << "[Wagnis] ID: " + wagnisId;
+}
+
+QJsonDocument Wagnis::getRegistrationDocument()
+{
+    qDebug() << "Wagnis::getRegistrationDocument";
+    QJsonObject jsonPayloadObject;
+    jsonPayloadObject.insert("id", wagnisId);
+    jsonPayloadObject.insert("country", ipInfo.value("country").toString());
+    jsonPayloadObject.insert("application", this->applicationName);
+    jsonPayloadObject.insert("version", this->applicationVersion);
+
+    QJsonDocument registrationDocument(jsonPayloadObject);
+    return registrationDocument;
 }
 
 void Wagnis::readRegistration()

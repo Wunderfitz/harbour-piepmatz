@@ -517,6 +517,14 @@
         <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
         <translation>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</translation>
     </message>
+    <message>
+        <source>Show Registration Data</source>
+        <translation>Show Registration Data</translation>
+    </message>
+    <message>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
