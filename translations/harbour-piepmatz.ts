@@ -327,7 +327,7 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>Trends für %1</translation>
+        <translation>Trends for %1</translation>
     </message>
 </context>
 <context>
