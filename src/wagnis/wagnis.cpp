@@ -167,11 +167,14 @@ void Wagnis::generateId()
     QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
     QDBusInterface dbusInterface("org.ofono", "/", "org.nemomobile.ofono.ModemManager", dbusConnection);
     QDBusMessage reply = dbusInterface.call(QLatin1String("GetIMEI"));
-    QList<QVariant> imeiList = reply.arguments();
-    QListIterator<QVariant> imeiIterator(imeiList);
-    while (imeiIterator.hasNext()) {
-        QString imei = imeiIterator.next().toString();
-        if (!imei.isEmpty()) {
+    QList<QVariant> imeiResponseList = reply.arguments();
+    QListIterator<QVariant> imeiResponseIterator(imeiResponseList);
+    while (imeiResponseIterator.hasNext()) {
+        QList<QVariant> imeiList = imeiResponseIterator.next().toList();
+        qDebug() << "[Wagnis] We found " + QString::number(imeiList.size()) + " IMEI(s).";
+        QListIterator<QVariant> imeiListIterator(imeiList);
+        while (imeiListIterator.hasNext()) {
+            QString imei = imeiListIterator.next().toString();
             qDebug() << "[Wagnis] Using IMEI " + imei + " for the ID";
             idHash.addData(imei.toUtf8());
         }

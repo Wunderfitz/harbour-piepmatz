@@ -25,6 +25,7 @@ You get the Twitter client ID and client secret as soon as you've registered you
 This project uses
 - OAuth for Qt, by Akos Polster. Available on [GitHub.com](https://github.com/pipacs/o2) - Thanks for making it available under the conditions of the BSD-2-Clause license! Details about the license of OAuth for Qt in [its license file](src/o2/LICENSE).
 - twitter-text, copyright 2014 Twitter, Inc. and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
+- ipinfo.io to determine your location.
 
 Piepmatz was translated to several languages. Thanks to all contributors!
 - Dutch: [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
@@ -32,7 +33,9 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 - French: [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
 - Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/)
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
+- Polish: [atlochowski](https://www.transifex.com/user/profile/atlochowski/)
 - Russian: [Алексей Дедун](https://www.transifex.com/user/profile/lewa/), [Юрий](https://www.transifex.com/user/profile/iAncelad/) and [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
+- Slowenian: [Boštjan Štrumbelj](https://www.transifex.com/user/profile/sponka/)
 - Spanish: [Carmen F. B.](https://github.com/carmenfdezb)
 - Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
