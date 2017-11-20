@@ -560,11 +560,11 @@
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">Henkilön %1 uudelleentviittaama</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">Vastaus henkilölle %1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tweeted with %1</source>

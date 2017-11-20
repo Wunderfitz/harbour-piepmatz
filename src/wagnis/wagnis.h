@@ -19,7 +19,7 @@
 const char MIME_TYPE_JSON[] = "application/json";
 const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/registration.php";
 const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/survey.php";
-const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBALTS08Se9DHnB6N2EhK9G7EgR2s/zPNb\ns51EV43EEMsOAeWbMZMDpnz4RYHnfo/tucA4oDdBBmIzoNF08n5Pv5MCAwEAAQ==\n-----END PUBLIC KEY-----";
+const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJn498EnLBpy8qSfJ0xyflZA+rqKEtw+\nHESIOu9xCeORLXFn1UZMS+cl7hzf4n4V8BsfEBHSyYyxeNVQR0J+DdcCAwEAAQ==\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
 {

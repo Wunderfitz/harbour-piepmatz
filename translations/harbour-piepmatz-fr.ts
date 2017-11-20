@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci pour l&apos;avoir rendu disponible sous les conditions de la license BSD Clause 2 !</translation>
+        <translation>Ce projet utilise OAuth pour Qt par Akos Polster. Merci pour l&apos;avoir rendu disponible sous les conditions de la license BSD Clause-2 !</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -65,19 +65,19 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation type="unfinished"></translation>
+        <translation>Ouvrir ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz utilise ipinfo.io et (si disponible) le récepteur GPS de votre appareil pour déterminer votre poistion. Celle est utilisée pour montrer les tendances et - uniquement si vous avez explicitement confrmé - comme pièce jointe à vos tweets. Si vous souhaitez utiliser votre position dans les tweets, assurez-vous de l&apos;activer dans vos &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;paramètres Twitter&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis ID:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Montrer Wagnis ID</translation>
     </message>
 </context>
 <context>
@@ -103,7 +103,7 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>Nouveau message pour %1</translation>
+        <translation>Nouveau message à %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
@@ -121,21 +121,21 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Favoris</translation>
     </message>
 </context>
 <context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>Abonnés : %1</translation>
+        <translation>%1 : Followers</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>Abonnements : %1</translation>
+        <translation>%1: Following</translation>
     </message>
 </context>
 <context>
@@ -192,18 +192,18 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Joindre votre emplacement actuel à ce tweet</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Essayer de nouveau</translation>
+        <translation>Essayer encore une fois</translation>
     </message>
     <message>
         <source>Authenticate</source>
@@ -303,7 +303,7 @@
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>On vous a mentionné !</translation>
+        <translation>Vous avez été mentionné!</translation>
     </message>
     <message>
         <source>New Messages</source>
@@ -315,7 +315,7 @@
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Vous avez de nouveaux messages !</translation>
+        <translation>Vous avez de nouveaux messages!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
@@ -327,7 +327,7 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tendances pour %1</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 favoris</translation>
     </message>
 </context>
 <context>
@@ -384,18 +384,18 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Actualiser</translation>
+        <translation>Rafraîchir</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le lien</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Bienvenue dans Piepmatz !</translation>
+        <translation>Bienvenue dans Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
@@ -403,7 +403,7 @@
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Accepter</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
@@ -419,11 +419,11 @@
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;inscrire anonymement</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Erreur de registration</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
@@ -443,7 +443,7 @@
     </message>
     <message>
         <source>Survey about Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Enquête sur Piepmatz</translation>
     </message>
     <message>
         <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
@@ -451,11 +451,11 @@
     </message>
     <message>
         <source>Would you pay for Piepmatz?</source>
-        <translation type="unfinished"></translation>
+        <translation>Voudriez-vous payer pour Piepmatz?</translation>
     </message>
     <message>
         <source>Please select an option...</source>
-        <translation type="unfinished"></translation>
+        <translation>Veuillez sélectionner une option...</translation>
     </message>
     <message>
         <source>Yes, more than 10 Euro</source>
@@ -475,7 +475,7 @@
     </message>
     <message>
         <source>Options: </source>
-        <translation type="unfinished"></translation>
+        <translation>Options:</translation>
     </message>
     <message>
         <source>Enter the Wagnis ID of Piepmatz on the other device</source>
@@ -507,11 +507,11 @@
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyer</translation>
     </message>
     <message>
         <source>Skip Survey</source>
-        <translation type="unfinished"></translation>
+        <translation>Surpasser &apos;enquête</translation>
     </message>
     <message>
         <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
@@ -553,45 +553,45 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le lien</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">Retweeté par %1</translation>
+        <translation>Retweeté par %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">En réponse à %1</translation>
+        <translation>En réponse à %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Envoyé avec %1</translation>
     </message>
 </context>
 <context>
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">Répondre au Tweet</translation>
+        <translation>Répondre</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">Retweeter avec commentaire</translation>
+        <translation>Commenter</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">Ouvrir dans le navigateur</translation>
+        <translation>Ouvrir dans le navigateur</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le lien</translation>
     </message>
 </context>
 <context>
@@ -605,7 +605,7 @@
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Copier le lien</translation>
     </message>
 </context>
 <context>
@@ -632,7 +632,7 @@
     </message>
     <message>
         <source>OK</source>
-        <translation>Valider</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
@@ -663,35 +663,35 @@
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished">%1M</translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished">%1K</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>les %1 jours suivantes</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation type="unfinished"></translation>
+        <translation>le jour suivant</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>les %1 prochaines heures</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation type="unfinished"></translation>
+        <translation>l&apos;heure suivante</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>les %1 prochaines minutes</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation type="unfinished"></translation>
+        <translation>la minute suivante</translation>
     </message>
 </context>
 </TS>

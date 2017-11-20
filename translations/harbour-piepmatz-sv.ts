@@ -65,19 +65,19 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation type="unfinished"></translation>
+        <translation>Öppna ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz använder ipinfo.io och (om tillgänglig) din enhets GPS-mottagare för att avgöra din position. Din position används sedan för att ta emot trender och, endast om du tillåter, för att bifoga platsinformation i dina tweets. Tillse att du har det aktiverat i dina &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-inställningar&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis-ID: </translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa Wagnis-ID</translation>
     </message>
 </context>
 <context>
@@ -121,7 +121,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Favoriter</translation>
     </message>
 </context>
 <context>
@@ -192,11 +192,11 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Bifoga aktuell position till denna tweet</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Trender för %1</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Favoriter</translation>
     </message>
 </context>
 <context>
@@ -384,146 +384,148 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Uppdatera</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera URL till urklipp</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Välkommen till Piepmatz!</translation>
+        <translation>Välkommen till Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha så kul med Piepmatz! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Acceptera</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation type="unfinished"></translation>
+        <translation>Välkommen till Piepmatz! - En Twitter-klient för Sailfish OS! Piepmatz är &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;fri mjukvara&lt;/a&gt;, licensierad under villkoren för &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License, version 3 (GPLv3)&lt;/a&gt;. Genom att använda mjukvaran, accepterar du villkoren för denna licens.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz kommer dessutom att automatiskt registrera denna installation på min server, om du trycker på &quot;Acceptera&quot;. 
+Jag respekterar din integritet och därför kommer endast anonym och ytterst begränsad information att överföras. En unik identifierare för denna installation och ditt land.
+Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. Om detta inte är OK för dig, kan du bara stänga programmet. Ingen information har hittills överförts.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Tillägnad fri mjukvara</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonym registrering</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Registreringsfel</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Registreringen misslyckades. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta om registrering</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>Registrering ogiltig</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen måste behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Survey about Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkät om Piepmatz</translation>
     </message>
     <message>
         <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
-        <translation type="unfinished"></translation>
+        <translation>Innan du börjar med Piepmatz, hade det varit bra om du kunde svara på följande enkät. Din data, liksom registreringen, bearbetas helt anonymt.</translation>
     </message>
     <message>
         <source>Would you pay for Piepmatz?</source>
-        <translation type="unfinished"></translation>
+        <translation>Skulle du betala för Piepmatz?</translation>
     </message>
     <message>
         <source>Please select an option...</source>
-        <translation type="unfinished"></translation>
+        <translation>Välj ett alternativ...</translation>
     </message>
     <message>
         <source>Yes, more than 10 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, mer än 10 euro</translation>
     </message>
     <message>
         <source>No, I wouldn&apos;t pay for Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nej, jag skulle inte betala för Piepmatz.</translation>
     </message>
     <message>
         <source>No, but for my other device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nej, men för min andra enhet.</translation>
     </message>
     <message>
         <source>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz kommer att förbli öppen källkodsmjukvara. Jag överväger dock att be dig om ett bidrag innan du kan köra Piepmatz, i en framtida version. Så, skulle du betala för Piepmatz och i så fall hur mycket?</translation>
     </message>
     <message>
         <source>Options: </source>
-        <translation type="unfinished"></translation>
+        <translation>Alternativ:</translation>
     </message>
     <message>
         <source>Enter the Wagnis ID of Piepmatz on the other device</source>
-        <translation type="unfinished"></translation>
+        <translation>Ange Piepmatz Wagnis-ID på den andra enheten</translation>
     </message>
     <message>
         <source>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</source>
-        <translation type="unfinished"></translation>
+        <translation>Starta bara Piepmatz på den andra enheten och gå till &quot;Om Piepmatz&quot;. Wagnis-ID är listat där.</translation>
     </message>
     <message>
         <source>Yes, between 8 and 10 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, mellan 8 och 10 euro</translation>
     </message>
     <message>
         <source>Yes, between 6 and 8 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, mellan 6 och 8 euro</translation>
     </message>
     <message>
         <source>Yes, between 4 and 6 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, mellan 4 och 6 euro</translation>
     </message>
     <message>
         <source>Yes, between 2 and 4 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, mellan 2 och 4 euro</translation>
     </message>
     <message>
         <source>Yes, maximum 2 Euro</source>
-        <translation type="unfinished"></translation>
+        <translation>Ja, max 2 euro</translation>
     </message>
     <message>
         <source>Send</source>
-        <translation type="unfinished"></translation>
+        <translation>Skicka</translation>
     </message>
     <message>
         <source>Skip Survey</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoppa över enkäten</translation>
     </message>
     <message>
         <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
-        <translation type="unfinished"></translation>
+        <translation>Du kan hoppa över enkäten %1, om du vill testa Piepmatz innan du svarar på frågan.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa registreringsdata</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Data delas inte med någon annan. Läs den &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;juridiska förklaringen&lt;/a&gt; för mer information om hur data bearbetas. Fler detaljer om motivet till detta, den unika identifikationen och hur den genereras hittar du på min sida &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -553,45 +555,45 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera URL till urklipp</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">Upprepad av %1</translation>
+        <translation>Upprepad av %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">I svar till %1</translation>
+        <translation>I svar till %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Twittrad med %1</translation>
     </message>
 </context>
 <context>
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">Svara på Tweet</translation>
+        <translation>Svara på Tweet</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">Upprepa med kommentar</translation>
+        <translation>Upprepa med kommentar</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">Öppna i webbläsaren</translation>
+        <translation>Öppna i webbläsaren</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera URL till urklipp</translation>
     </message>
 </context>
 <context>
@@ -605,7 +607,7 @@
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera URL till urklipp</translation>
     </message>
 </context>
 <context>
@@ -663,35 +665,35 @@
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished">%1M</translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished">%1K</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>de kommande %1 dagarna</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation type="unfinished"></translation>
+        <translation>en dag</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>de kommande %1 timmarna</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation type="unfinished"></translation>
+        <translation>en timma</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>de kommande %1 minuterna</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation type="unfinished"></translation>
+        <translation>en minut</translation>
     </message>
 </context>
 </TS>

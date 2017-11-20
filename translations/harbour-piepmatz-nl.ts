@@ -65,11 +65,11 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation type="unfinished"></translation>
+        <translation>ipinfo.io openen</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz maakt gebruik van ipinfo.io en (indien beschikbaar) de GPS-ontvanger van je apparaat om je positie te bepalen, om trends op te halen en - enkel als je dit uitdrukkelijk kiest - je positie aan je tweets toe te voegen. Als je van deze laatste functie gebruik wil maken, schakel deze dan in in je &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-instellingen&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
@@ -121,7 +121,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: favorieten</translation>
     </message>
 </context>
 <context>
@@ -192,11 +192,11 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige positie toevoegen aan deze tweet</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 favorieten</translation>
     </message>
 </context>
 <context>
@@ -384,34 +384,34 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Bijwerken</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Welkom bij Piepmatz!</translation>
+        <translation>Welkom bij Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Veel plezier met Piepmatz! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Aanvaarden</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation type="unfinished"></translation>
+        <translation>Welkom bij Piepmatz - een Twitter-cliënt voor Sailfish OS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;vrije software&lt;/a&gt;, uitgegeven onder de voorwaarden van de &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;GNU GPLv3&lt;/a&gt;. Door gebruik te maken van deze software, ga je akkoord met de voorwaarden van deze licentie.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Let op: als je op &apos;Aanvaarden&apos; tikt, zal Piepmatz deze installatie automatisch op mijn server registreren. Er zal slechts een beperkte hoeveelheid informatie verzonden worden: een unieke identificatiecode voor deze installatie, en je land. Ik wil gewoonweg weten hoeveel gebruikers Piepmatz heeft en waar ze vandaan komen. Als je dit niet oké vindt, sluit en verwijder Piepmatz dan van je apparaat. Er is nog geen informatie verzonden.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -553,45 +553,45 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">Geretweet door %1</translation>
+        <translation>Geretweet door %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">Antwoord op %1</translation>
+        <translation>Antwoord op %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Getweet met %1</translation>
     </message>
 </context>
 <context>
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">Tweet beantwoorden</translation>
+        <translation>Tweet beantwoorden</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">Retweeten met commentaar</translation>
+        <translation>Retweeten met commentaar</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">Openen in browser</translation>
+        <translation>Openen in browser</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
 </context>
 <context>
@@ -605,7 +605,7 @@
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URL kopiëren naar klembord</translation>
     </message>
 </context>
 <context>
@@ -663,11 +663,11 @@
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished">%1M</translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished">%1K</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>the next %1 days</source>

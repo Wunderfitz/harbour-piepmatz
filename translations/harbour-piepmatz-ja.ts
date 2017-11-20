@@ -560,11 +560,11 @@
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished">%1 がリツイート</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished">%1 への返信</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
