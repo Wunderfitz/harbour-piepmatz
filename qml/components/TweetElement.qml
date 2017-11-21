@@ -348,7 +348,7 @@ Item {
                                 tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.highlightColor;
                                 tweetFavoritesCountText.color = Theme.highlightColor;
-                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel));
+                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(result));
                                 tweetElementItem.favorited = true;
                             }
                         }
@@ -362,7 +362,7 @@ Item {
                                 tweetFavoritesCountImage.visible = true;
                                 tweetFavoritesCountImage.source = "image://theme/icon-s-favorite?" + Theme.primaryColor;
                                 tweetFavoritesCountText.color = Theme.secondaryColor;
-                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel));
+                                tweetFavoritesCountText.text = Functions.getShortenedCount(Functions.getFavoritesCount(result));
                                 tweetElementItem.favorited = false;
                             }
                         }
@@ -376,7 +376,7 @@ Item {
                                 tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.highlightColor;
                                 tweetRetweetedCountText.color = Theme.highlightColor;
-                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(tweetModel));
+                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(result));
                                 tweetElementItem.retweeted = true;
                             }
                         }
@@ -390,7 +390,7 @@ Item {
                                 tweetRetweetedCountImage.visible = true;
                                 tweetRetweetedCountImage.source = "image://theme/icon-s-retweet?" + Theme.primaryColor;
                                 tweetRetweetedCountText.color = Theme.secondaryColor;
-                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(tweetModel));
+                                tweetRetweetedCountText.text = Functions.getShortenedCount(Functions.getRetweetCount(result));
                                 tweetElementItem.retweeted = false;
                             }
                         }

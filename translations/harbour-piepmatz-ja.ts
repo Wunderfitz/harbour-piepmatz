@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation type="unfinished"></translation>
+        <translation>ipinfo.ioを開く</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
@@ -73,11 +73,11 @@
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis ID:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis IDを表示</translation>
     </message>
 </context>
 <context>
@@ -192,11 +192,11 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>ツイートに現在地情報を付加</translation>
     </message>
 </context>
 <context>
@@ -319,7 +319,7 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished"></translation>
+        <translation>ツイートを読み込む</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
@@ -384,18 +384,18 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">タイムラインを更新</translation>
+        <translation>再表示</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URLをクリップボードにコピー</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Piepmatzへようこそ</translation>
+        <translation>Piepmatzへようこそ！</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
@@ -553,18 +553,18 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URLをクリップボードにコピー</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1がリツイート</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1への返信</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
@@ -575,23 +575,23 @@
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>ツイート</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">ツイートに返信</translation>
+        <translation>ツイートに返信</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">コメント付きリツイート</translation>
+        <translation>コメント付きリツイート</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">ブラウザで開く</translation>
+        <translation>ブラウザで開く</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URLをクリップボードにコピー</translation>
     </message>
 </context>
 <context>
@@ -605,7 +605,7 @@
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>URLをクリップボードにコピー</translation>
     </message>
 </context>
 <context>
@@ -663,11 +663,11 @@
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished">%1M</translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished">%1K</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>the next %1 days</source>

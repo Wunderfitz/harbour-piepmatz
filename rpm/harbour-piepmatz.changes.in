@@ -35,3 +35,14 @@
 * Wed Nov 08 2017 Sebastian Wolf <sebastian@ygriega.de> 0.4.280
 - Use 280 characters for a tweet
 - Bugfix: Bottom push-up menu can't scroll infinitely anymore
+
+* Tue Nov 21 2017 Sebastian Wolf <sebastian@ygriega.de> 0.5
+- Show user's favorites in profile
+- Standalone tweet page incl. geotagging information
+- New picture slideshow
+- @-mentioning support during tweet creation
+- Local trends (see popular hash tags and keywords from your area in search)
+- Copy tweet/user URL to clipboard
+- Geotagging for tweets (needs to be enabled in your Twitter privacy settings at https://twitter.com/settings/safety)
+- A lot of bugfixes
+- Probably a lot of new bugs
