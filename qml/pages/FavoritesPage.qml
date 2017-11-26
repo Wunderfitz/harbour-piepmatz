@@ -58,16 +58,21 @@ Page {
         }
     }
 
-    PageHeader {
-        id: favoritesHeader
-        title: qsTr("%1: Favorites").arg(userName)
-    }
-
     SilicaFlickable {
         id: favoritesContainer
         width: parent.width
-        height: parent.height - favoritesHeader.height
-        anchors.top: favoritesHeader.bottom
+        height: parent.height
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: {
+                    favoritesPage.loaded = false;
+                    favoritesPage.favoritesModel = null;
+                    twitterApi.favorites(screenName);
+                }
+            }
+        }
 
         LoadingIndicator {
             id: favoritesLoadingIndicator
@@ -78,19 +83,32 @@ Page {
             width: parent.width
         }
 
-        SilicaListView {
-            id: favoritesListView
-
+        Column {
             anchors.fill: parent
 
-            clip: true
-
-            model: favoritesModel
-            delegate: Tweet {
-                tweetModel: modelData
+            PageHeader {
+                id: favoritesHeader
+                title: qsTr("%1: Favorites").arg(userName)
             }
-            VerticalScrollDecorator {}
+
+            SilicaListView {
+                id: favoritesListView
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height - favoritesHeader.height
+
+                clip: true
+
+                model: favoritesModel
+                delegate: Tweet {
+                    tweetModel: modelData
+                }
+                VerticalScrollDecorator {}
+            }
+
         }
+
     }
 }
 

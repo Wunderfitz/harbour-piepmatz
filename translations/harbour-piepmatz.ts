@@ -123,6 +123,10 @@
         <source>%1: Favorites</source>
         <translation>%1: Favorites</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Refresh</translation>
+    </message>
 </context>
 <context>
     <name>FollowersPage</name>
@@ -130,12 +134,20 @@
         <source>%1: Followers</source>
         <translation>%1: Followers</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Refresh</translation>
+    </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
         <translation>%1: Following</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Refresh</translation>
     </message>
 </context>
 <context>
@@ -606,6 +618,13 @@
     <message>
         <source>Copy URL to Clipboard</source>
         <translation>Copy URL to Clipboard</translation>
+    </message>
+</context>
+<context>
+    <name>UserTimelinePage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Refresh</translation>
     </message>
 </context>
 <context>

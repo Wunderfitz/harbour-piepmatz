@@ -58,16 +58,21 @@ Page {
         }
     }
 
-    PageHeader {
-        id: userTimelineHeader
-        title: userName
-    }
-
     SilicaFlickable {
         id: userTimelineContainer
         width: parent.width
-        height: parent.height - userTimelineHeader.height
-        anchors.top: userTimelineHeader.bottom
+        height: parent.height
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: {
+                    userTimelinePage.loaded = false;
+                    userTimelinePage.userTimelineModel = null;
+                    twitterApi.userTimeline(screenName);
+                }
+            }
+        }
 
         LoadingIndicator {
             id: userTimelineLoadingIndicator
@@ -78,19 +83,31 @@ Page {
             width: parent.width
         }
 
-        SilicaListView {
-            id: userTimelineListView
-
+        Column {
             anchors.fill: parent
-
-            clip: true
-
-            model: userTimelineModel
-            delegate: Tweet {
-                tweetModel: modelData
+            PageHeader {
+                id: userTimelineHeader
+                title: userName
             }
-            VerticalScrollDecorator {}
+
+            SilicaListView {
+                id: userTimelineListView
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height - userTimelineHeader.height
+
+                clip: true
+
+                model: userTimelineModel
+                delegate: Tweet {
+                    tweetModel: modelData
+                }
+                VerticalScrollDecorator {}
+            }
+
         }
+
     }
 }
 

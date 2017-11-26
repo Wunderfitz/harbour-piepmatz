@@ -123,6 +123,10 @@
         <source>%1: Favorites</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Osveži</translation>
+    </message>
 </context>
 <context>
     <name>FollowersPage</name>
@@ -130,12 +134,20 @@
         <source>%1: Followers</source>
         <translation>%1: Sledilcev</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Osveži</translation>
+    </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
         <translation>%1: sledite</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Osveži</translation>
     </message>
 </context>
 <context>
@@ -606,6 +618,13 @@
     <message>
         <source>Copy URL to Clipboard</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UserTimelinePage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Osveži</translation>
     </message>
 </context>
 <context>

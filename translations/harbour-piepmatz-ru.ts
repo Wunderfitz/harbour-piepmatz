@@ -125,6 +125,10 @@
         <source>%1: Favorites</source>
         <translation>%1: избранное</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
+    </message>
 </context>
 <context>
     <name>FollowersPage</name>
@@ -132,12 +136,20 @@
         <source>%1: Followers</source>
         <translation>%1: подписчики</translation>
     </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
+    </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
         <translation>%1 подписок</translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
     </message>
 </context>
 <context>
@@ -608,6 +620,13 @@
     <message>
         <source>Copy URL to Clipboard</source>
         <translation>Скопировать ссылку</translation>
+    </message>
+</context>
+<context>
+    <name>UserTimelinePage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Обновить</translation>
     </message>
 </context>
 <context>

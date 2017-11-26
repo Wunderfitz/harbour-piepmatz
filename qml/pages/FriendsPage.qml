@@ -58,16 +58,21 @@ Page {
         }
     }
 
-    PageHeader {
-        id: friendsHeader
-        title: qsTr("%1: Following").arg(userName)
-    }
-
     SilicaFlickable {
         id: friendsContainer
         width: parent.width
-        height: parent.height - friendsHeader.height
-        anchors.top: friendsHeader.bottom
+        height: parent.height
+
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: {
+                    friendsPage.loaded = false;
+                    friendsPage.friendsModel = null;
+                    twitterApi.friends(screenName);
+                }
+            }
+        }
 
         LoadingIndicator {
             id: friendsLoadingIndicator
@@ -78,19 +83,33 @@ Page {
             width: parent.width
         }
 
-        SilicaListView {
-            id: friendsListView
-
+        Column {
             anchors.fill: parent
 
-            clip: true
-
-            model: friendsModel
-            delegate: User {
-                userModel: modelData
+            PageHeader {
+                id: friendsHeader
+                title: qsTr("%1: Following").arg(userName)
             }
-            VerticalScrollDecorator {}
+
+            SilicaListView {
+                id: friendsListView
+
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: parent.height - friendsHeader.height
+
+                clip: true
+
+                model: friendsModel
+                delegate: User {
+                    userModel: modelData
+                }
+                VerticalScrollDecorator {}
+            }
+
         }
+
     }
 }
 
