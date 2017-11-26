@@ -253,6 +253,28 @@ function getVideoHeight(videoWidth, tweet) {
     return 1;
 }
 
+function getVideoOriginalHeight(tweet) {
+    if (tweet.extended_entities) {
+        for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+            if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
+                return tweet.extended_entities.media[i].video_info.aspect_ratio[1];
+            }
+        }
+    }
+    return 1;
+}
+
+function getVideoOriginalWidth(tweet) {
+    if (tweet.extended_entities) {
+        for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+            if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
+                return tweet.extended_entities.media[i].video_info.aspect_ratio[0];
+            }
+        }
+    }
+    return 1;
+}
+
 function getTweetUrl(tweetModel) {
     var statusUrl = "https://twitter.com/";
     if (tweetModel.retweeted_status) {

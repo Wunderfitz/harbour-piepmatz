@@ -25,6 +25,7 @@ Item {
     id: tweetVideoComponent
 
     property variant tweet;
+    property bool fullscreen : false;
 
     width: parent.width
     height: parent.height
@@ -77,21 +78,50 @@ Item {
         sourceSize.height: parent.height
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                videoComponentLoader.active = true;
-            }
-        }
     }
 
-    Image {
-        id: playButton
-        anchors.centerIn: placeholderImage
-        width: Theme.iconSizeLarge
-        height: Theme.iconSizeLarge
-        source: "image://theme/icon-l-play"
-        visible: placeholderImage.status === Image.Ready ? true : false
+    Row {
+        width: parent.width
+        height: parent.height
+        Item {
+            height: parent.height
+            width: tweetVideoComponent.fullscreen ? parent.width : ( parent.width / 2 )
+            Image {
+                id: playButton
+                anchors.centerIn: parent
+                width: Theme.iconSizeLarge
+                height: Theme.iconSizeLarge
+                source: "image://theme/icon-l-play"
+                visible: placeholderImage.status === Image.Ready ? true : false
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        fullscreenItem.visible = false;
+                        videoComponentLoader.active = true;
+                    }
+                }
+            }
+        }
+        Item {
+            id: fullscreenItem
+            height: parent.height
+            width: parent.width / 2
+            visible: !tweetVideoComponent.fullscreen
+            Image {
+                id: fullscreenButton
+                anchors.centerIn: parent
+                width: Theme.iconSizeLarge
+                height: Theme.iconSizeLarge
+                source: "../../images/icon-l-fullscreen.png"
+                visible: ( placeholderImage.status === Image.Ready && !tweetVideoComponent.fullscreen ) ? true : false
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweetVideoComponent.tweet});
+                    }
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -229,6 +259,52 @@ Item {
                     placeholderImage.visible = true;
                     playButton.visible = true;
                     videoComponentLoader.active = false;
+                    fullscreenItem.visible = !tweetVideoComponent.fullscreen;
+                }
+            }
+
+            Row {
+                id: pausedRow
+                width: parent.width
+                height: parent.height
+                visible: videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState
+                Item {
+                    height: parent.height
+                    width: tweetVideoComponent.fullscreen ? parent.width : ( parent.width / 2 )
+                    Image {
+                        id: pausedPlayButton
+                        anchors.centerIn: parent
+                        width: Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
+                        source: "image://theme/icon-l-play"
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                twitterApi.controlScreenSaver(false);
+                                tweetVideo.play();
+                            }
+                        }
+                    }
+                }
+                Item {
+                    id: pausedFullscreenItem
+                    height: parent.height
+                    width: parent.width / 2
+                    visible: !tweetVideoComponent.fullscreen
+                    Image {
+                        id: pausedFullscreenButton
+                        anchors.centerIn: parent
+                        width: Theme.iconSizeLarge
+                        height: Theme.iconSizeLarge
+                        source: "../../images/icon-l-fullscreen.png"
+                        visible: ( videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState ) ? true : false
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweetVideoComponent.tweet});
+                            }
+                        }
+                    }
                 }
             }
 
@@ -250,7 +326,7 @@ Item {
 
             Item {
                 width: positionText.width + 2 * Theme.paddingMedium
-                height: Theme.fontSizeExtraSmall
+                height: tweetVideoComponent.fullscreen ? Theme.fontSizeMedium : Theme.fontSizeExtraSmall
                 anchors.bottom: parent.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: tweetVideo.visible
@@ -266,7 +342,7 @@ Item {
                     id: positionText
                     visible: tweetVideo.visible
                     color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeTiny
+                    font.pixelSize: tweetVideoComponent.fullscreen ? Theme.fontSizeSmall : Theme.fontSizeTiny
                     anchors {
                         verticalCenter: parent.verticalCenter
                         horizontalCenter: parent.horizontalCenter

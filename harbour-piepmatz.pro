@@ -102,3 +102,6 @@ HEADERS += \
     src/imageprocessor.h \
     src/trendsmodel.h \
     src/locationinformation.h
+
+DISTFILES += \
+    qml/pages/VideoPage.qml

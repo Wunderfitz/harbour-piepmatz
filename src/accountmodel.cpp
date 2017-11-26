@@ -42,7 +42,7 @@ AccountModel::AccountModel()
     connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
 
     requestor = new O1Requestor(manager, o1, this);
-    wagnis = new Wagnis(manager, "harbour-piepmatz", "0.5", this);
+    wagnis = new Wagnis(manager, "harbour-piepmatz", "0.6", this);
     twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     locationInformation = new LocationInformation(this);
 
