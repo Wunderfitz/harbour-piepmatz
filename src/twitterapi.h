@@ -99,6 +99,7 @@ public:
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
+    Q_INVOKABLE void downloadFile(const QString &address, const QString &fileName);
     Q_INVOKABLE void directMessagesList(const QString &cursor = "");
     Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);
     Q_INVOKABLE void trends(const QString &placeId);
@@ -158,6 +159,9 @@ signals:
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
+    void downloadSuccessful(const QString &filePath);
+    void downloadError(const QString &fileName, const QString &errorMessage);
+    void downloadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
     void directMessagesListSuccessful(const QVariantMap &result);
     void directMessagesListError(const QString &errorMessage);
     void directMessagesNewSuccessful(const QVariantMap &result);

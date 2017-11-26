@@ -19,6 +19,7 @@
 #include "twitterapi.h"
 
 #include "imageresponsehandler.h"
+#include "downloadresponsehandler.h"
 #include <QBuffer>
 #include <QFile>
 #include <QHttpMultiPart>
@@ -783,6 +784,21 @@ void TwitterApi::uploadImage(const QString &fileName)
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), imageResponseHandler, SLOT(handleImageUploadError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), imageResponseHandler, SLOT(handleImageUploadFinished()));
     connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
+}
+
+void TwitterApi::downloadFile(const QString &address, const QString &fileName)
+{
+    qDebug() << "TwitterApi::downloadFile" << address << fileName;
+    QUrl url = QUrl(address);
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    DownloadResponseHandler *downloadResponseHandler = new DownloadResponseHandler(fileName, this);
+    downloadResponseHandler->setParent(reply);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), downloadResponseHandler, SLOT(handleDownloadError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), downloadResponseHandler, SLOT(handleDownloadFinished()));
+    connect(reply, SIGNAL(downloadProgress(qint64,qint64)), downloadResponseHandler, SLOT(handleDownloadProgress(qint64,qint64)));
 }
 
 void TwitterApi::directMessagesList(const QString &cursor)
