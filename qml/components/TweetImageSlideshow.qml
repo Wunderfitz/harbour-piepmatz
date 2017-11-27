@@ -63,7 +63,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": media_url_https, "imageHeight": sizes.large.h, "imageWidth": sizes.large.w});
+                        pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": media_url_https, "imageHeight": sizes.large.h, "imageWidth": sizes.large.w, "tweet": tweet});
                     }
                 }
             }

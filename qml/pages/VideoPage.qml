@@ -35,14 +35,68 @@ Page {
     property real screenSizeFactor: videoPage.width / videoPage.height;
     property real sizingFactor    : imageSizeFactor >= screenSizeFactor ? videoPage.width / videoWidth : videoPage.height / videoHeight;
 
-    Item {
-        width: videoPage.videoWidth * videoPage.sizingFactor
-        height: videoPage.videoHeight * videoPage.sizingFactor
-        anchors.centerIn: parent
+    SilicaFlickable {
+        anchors.fill: parent
 
-        TweetVideo {
-            tweet: videoPage.tweetModel
-            fullscreen: true
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("Download")
+                onClicked: {
+                    var mediaUrl = Functions.getTweetVideoUrl(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel);
+                    twitterApi.downloadFile(mediaUrl, Functions.getMediaFileName(tweetModel, mediaUrl));
+                    persistentNotificationItem.enabled = true;
+                    persistentNotification.text = qsTr("Downloading...");
+                }
+            }
         }
+
+        Connections {
+            target: twitterApi
+
+            onDownloadSuccessful: {
+                persistentNotificationItem.enabled = false;
+                videoNotification.show(qsTr("Download of %1 successful.").arg(fileName));
+            }
+
+            onDownloadError: {
+                persistentNotificationItem.enabled = false;
+                imageNotification.show(errorMessage);
+            }
+
+            onDownloadStatus: {
+                persistentNotification.text = qsTr("Downloading, %1\% completed...").arg(percentCompleted);
+            }
+        }
+
+        AppNotification {
+            id: videoNotification
+        }
+
+        Item {
+            id: persistentNotificationItem
+            enabled: false
+            width: parent.width
+            height: persistentNotification.height
+            y: parent.height - persistentNotification.height - Theme.paddingSmall
+            z: 42
+
+            AppNotificationItem {
+                id: persistentNotification
+                visible: persistentNotificationItem.enabled
+                opacity: persistentNotificationItem.enabled ? 1 : 0
+            }
+        }
+
+        Item {
+            width: videoPage.videoWidth * videoPage.sizingFactor
+            height: videoPage.videoHeight * videoPage.sizingFactor
+            anchors.centerIn: parent
+
+            TweetVideo {
+                tweet: videoPage.tweetModel
+                fullscreen: true
+            }
+        }
+
     }
 }

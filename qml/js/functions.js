@@ -338,3 +338,26 @@ function containsPlace(tweetModel) {
     }
     return false;
 }
+
+function getTweetVideoUrl(tweet) {
+    if (tweet.extended_entities) {
+        for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
+            if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
+                for (var j = 0; j < tweet.extended_entities.media[i].video_info.variants.length; j++) {
+                    if (tweet.extended_entities.media[i].video_info.variants[j].content_type === "video/mp4") {
+                        return tweet.extended_entities.media[i].video_info.variants[j].url;
+                    }
+                }
+            }
+        }
+    }
+    return "";
+}
+
+function getMediaFileName(tweet, mediaUrl) {
+    var fileNamePrefix = tweet.user.screen_name + "_" + Qt.formatDate(Functions.getValidDate(tweet.retweeted_status ? tweet.retweeted_status.created_at : tweet.created_at), "yyyy-MM-dd");
+    if (tweet.retweeted_status) {
+        fileNamePrefix = tweet.retweeted_status.user.screen_name + "_" + Qt.formatDate(Functions.getValidDate(tweet.retweeted_status ? tweet.retweeted_status.created_at : tweet.created_at), "yyyy-MM-dd");
+    }
+    return fileNamePrefix + "_" + mediaUrl.substring(mediaUrl.lastIndexOf("/") + 1);
+}

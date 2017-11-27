@@ -30,21 +30,6 @@ Item {
     width: parent.width
     height: parent.height
 
-    function getTweetVideoUrl(tweet) {
-        if (tweet.extended_entities) {
-            for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
-                if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                    for (var j = 0; j < tweet.extended_entities.media[i].video_info.variants.length; j++) {
-                        if (tweet.extended_entities.media[i].video_info.variants[j].content_type === "video/mp4") {
-                            return tweet.extended_entities.media[i].video_info.variants[j].url;
-                        }
-                    }
-                }
-            }
-        }
-        return "";
-    }
-
     function getTweetVideoPlaceholderImageUrl(tweet) {
         if (tweet.extended_entities) {
             for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
@@ -240,7 +225,7 @@ Item {
                 visible: false
                 width: parent.width
                 height: parent.height
-                source: getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
+                source: Functions.getTweetVideoUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {

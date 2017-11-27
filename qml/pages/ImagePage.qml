@@ -20,10 +20,13 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtMultimedia 5.0
 import "../components"
+import "../js/functions.js" as Functions
 
 Page {
     id: imagePage
     allowedOrientations: Orientation.All
+
+    property variant tweet;
 
     property string imageUrl;
     property int imageWidth;
@@ -46,8 +49,57 @@ Page {
         contentHeight: imagePinchArea.height
         clip: true
 
+        PullDownMenu {
+            visible: tweet ? true : false
+            MenuItem {
+                text: qsTr("Download")
+                onClicked: {
+                    twitterApi.downloadFile(imageUrl, Functions.getMediaFileName(tweet, imageUrl));
+                    persistentNotificationItem.enabled = true;
+                    persistentNotification.text = qsTr("Downloading...");
+                }
+            }
+        }
+
         transitions: Transition {
             NumberAnimation { properties: "contentX, contentY"; easing.type: Easing.Linear }
+        }
+
+        Connections {
+            target: twitterApi
+
+            onDownloadSuccessful: {
+                persistentNotificationItem.enabled = false;
+                imageNotification.show(qsTr("Download of %1 successful.").arg(fileName));
+            }
+
+            onDownloadError: {
+                persistentNotificationItem.enabled = false;
+                imageNotification.show(errorMessage);
+            }
+
+            onDownloadStatus: {
+                persistentNotification.text = qsTr("Downloading, %1\% completed...").arg(percentCompleted);
+            }
+        }
+
+        AppNotification {
+            id: imageNotification
+        }
+
+        Item {
+            id: persistentNotificationItem
+            enabled: false
+            width: parent.width
+            height: persistentNotification.height
+            y: parent.height - persistentNotification.height - Theme.paddingSmall
+            z: 42
+
+            AppNotificationItem {
+                id: persistentNotification
+                visible: persistentNotificationItem.enabled
+                opacity: persistentNotificationItem.enabled ? 1 : 0
+            }
         }
 
         PinchArea {

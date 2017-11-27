@@ -159,9 +159,9 @@ signals:
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
-    void downloadSuccessful(const QString &filePath);
+    void downloadSuccessful(const QString &fileName);
     void downloadError(const QString &fileName, const QString &errorMessage);
-    void downloadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
+    void downloadStatus(const QString &fileName, int percentCompleted);
     void directMessagesListSuccessful(const QVariantMap &result);
     void directMessagesListError(const QString &errorMessage);
     void directMessagesNewSuccessful(const QVariantMap &result);

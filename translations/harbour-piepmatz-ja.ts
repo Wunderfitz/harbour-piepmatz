@@ -151,6 +151,25 @@
     </message>
 </context>
 <context>
+    <name>ImagePage</name>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading, %1% completed...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImageProgressIndicator</name>
     <message>
         <source>%1 %</source>
@@ -624,6 +643,25 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>VideoPage</name>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download of %1 successful.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Downloading, %1% completed...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -11,8 +11,9 @@ DownloadResponseHandler::DownloadResponseHandler(const QString &fileName, Twitte
 
 void DownloadResponseHandler::handleDownloadProgress(qint64 bytesSent, qint64 bytesTotal)
 {
-    qDebug() << "DownloadResponseHandler::handleImageUploadProgress";
-    emit twitterApi->downloadStatus(fileName, bytesSent, bytesTotal);
+    qDebug() << "DownloadResponseHandler::handleImageUploadProgress" << this->fileName << QString::number(bytesSent) << QString::number(bytesTotal);
+    int percentCompleted = 100 * bytesSent / bytesTotal;
+    emit twitterApi->downloadStatus(fileName, percentCompleted);
 }
 
 void DownloadResponseHandler::handleDownloadError(QNetworkReply::NetworkError error)
@@ -24,7 +25,7 @@ void DownloadResponseHandler::handleDownloadError(QNetworkReply::NetworkError er
 
 void DownloadResponseHandler::handleDownloadFinished()
 {
-    qDebug() << "DownloadResponseHandler::handleImageUploadFinished";
+    qDebug() << "DownloadResponseHandler::handleImageUploadFinished" << this->fileName;
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
@@ -37,7 +38,7 @@ void DownloadResponseHandler::handleDownloadFinished()
         qDebug() << "Writing downloaded file to " + downloadedFile.fileName();
         downloadedFile.write(reply->readAll());
         downloadedFile.close();
-        emit twitterApi->downloadSuccessful(filePath);
+        emit twitterApi->downloadSuccessful(fileName);
     } else {
         emit twitterApi->downloadError(fileName, "Error storing file at " + filePath);
     }
