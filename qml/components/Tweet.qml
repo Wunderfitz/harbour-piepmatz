@@ -39,7 +39,6 @@ ListItem {
                 var newModel = singleTweet.parent.parent.model;
                 newModel.splice(index, 1);
                 singleTweet.parent.parent.model = newModel;
-                Functions.updatePiepmatz();
             }
         }
     }

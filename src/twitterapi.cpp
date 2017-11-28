@@ -765,8 +765,8 @@ void TwitterApi::destroyTweet(const QString &statusId)
 
     QNetworkReply *reply = requestor->post(request, requestParameters, postData);
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnretweetError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleUnretweetFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDestroyError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleDestroyFinished()));
 }
 
 void TwitterApi::uploadImage(const QString &fileName)

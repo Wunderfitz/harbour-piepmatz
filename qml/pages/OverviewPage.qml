@@ -307,6 +307,9 @@ Page {
             overviewPage.ipInfo = result;
             console.log("Piepmatz knows where he currently is: " + result.city + ", " + result.region + ", " + result.country);
         }
+        onDestroySuccessful: {
+            Functions.updatePiepmatz();
+        }
     }
 
     Connections {
