@@ -50,6 +50,7 @@ const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const char API_STATUSES_RETWEET[] = "https://api.twitter.com/1.1/statuses/retweet/:id.json";
 const char API_STATUSES_UNRETWEET[] = "https://api.twitter.com/1.1/statuses/unretweet/:id.json";
+const char API_STATUSES_DESTROY[] = "https://api.twitter.com/1.1/statuses/destroy/:id.json";
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
 const char API_FRIENDSHIPS_CREATE[] = "https://api.twitter.com/1.1/friendships/create.json";
 const char API_FRIENDSHIPS_DESTROY[] = "https://api.twitter.com/1.1/friendships/destroy.json";
@@ -98,6 +99,7 @@ public:
     Q_INVOKABLE void favorites(const QString &screenName);
     Q_INVOKABLE void retweet(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
+    Q_INVOKABLE void destroyTweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
     Q_INVOKABLE void downloadFile(const QString &address, const QString &fileName);
     Q_INVOKABLE void directMessagesList(const QString &cursor = "");
@@ -156,6 +158,8 @@ signals:
     void retweetError(const QString &errorMessage);
     void unretweetSuccessful(const QVariantMap &result);
     void unretweetError(const QString &errorMessage);
+    void destroyError(const QString &errorMessage);
+    void destroySuccessful(const QVariantMap &result);
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
@@ -229,6 +233,8 @@ private slots:
     void handleRetweetFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
+    void handleDestroyError(QNetworkReply::NetworkError error);
+    void handleDestroyFinished();
     void handleDirectMessagesListError(QNetworkReply::NetworkError error);
     void handleDirectMessagesListFinished();
     void handleDirectMessagesNewError(QNetworkReply::NetworkError error);

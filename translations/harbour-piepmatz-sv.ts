@@ -588,6 +588,14 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <source>Copy URL to Clipboard</source>
         <translation>Kopiera URL till urklipp</translation>
     </message>
+    <message>
+        <source>Delete Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetElement</name>

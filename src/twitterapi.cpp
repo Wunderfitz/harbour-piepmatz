@@ -752,6 +752,23 @@ void TwitterApi::unretweet(const QString &statusId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleUnretweetFinished()));
 }
 
+void TwitterApi::destroyTweet(const QString &statusId)
+{
+    qDebug() << "TwitterApi::destroy" << statusId;
+    QUrl url = QUrl(QString(API_STATUSES_DESTROY).replace(":id", statusId));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUnretweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUnretweetFinished()));
+}
+
 void TwitterApi::uploadImage(const QString &fileName)
 {
     qDebug() << "TwitterApi::uploadImage" << fileName;
@@ -1405,6 +1422,31 @@ void TwitterApi::handleUnretweetFinished()
         emit unretweetSuccessful(responseObject.toVariantMap());
     } else {
         emit unretweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleDestroyError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleDestroyError:" << (int)error << reply->errorString() << reply->readAll();
+    emit destroyError(reply->errorString());
+}
+
+void TwitterApi::handleDestroyFinished()
+{
+    qDebug() << "TwitterApi::handleDestroyFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit destroySuccessful(responseObject.toVariantMap());
+    } else {
+        emit destroyError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

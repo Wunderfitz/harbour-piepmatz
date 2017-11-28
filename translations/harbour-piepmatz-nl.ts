@@ -586,6 +586,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>URL kopiëren naar klembord</translation>
     </message>
+    <message>
+        <source>Delete Tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting tweet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetElement</name>

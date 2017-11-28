@@ -27,11 +27,32 @@ ListItem {
     id: singleTweet
 
     property variant tweetModel;
+    property string userId : accountModel.getCurrentAccount().id_str;
 
     contentHeight: tweetElement.height
     contentWidth: parent.width
 
+    Connections {
+        target: twitterApi
+        onDestroySuccessful: {
+            if (result.id_str === tweetModel.id_str) {
+                var newModel = singleTweet.parent.parent.model;
+                newModel.splice(index, 1);
+                singleTweet.parent.parent.model = newModel;
+                Functions.updatePiepmatz();
+            }
+        }
+    }
+
     menu: ContextMenu {
+        MenuItem {
+            visible: ( tweetModel.retweeted_status ? false : ( tweetModel.user.id_str === singleTweet.userId ) )
+            onClicked: {
+                tweetRemorseItem.execute(singleTweet, qsTr("Deleting tweet"), function() { twitterApi.destroyTweet(tweetModel.id_str); } );
+            }
+            text: qsTr("Delete Tweet")
+        }
+
         MenuItem {
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"replyToStatusId": tweetElement.tweetId});
@@ -56,6 +77,10 @@ ListItem {
             }
             text: qsTr("Copy URL to Clipboard")
         }
+    }
+
+    RemorseItem {
+        id: tweetRemorseItem
     }
 
     TweetElement {
