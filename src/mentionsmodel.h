@@ -44,6 +44,8 @@ signals:
 public slots:
     void handleUpdateMentionsSuccessful(const QVariantList &result);
     void handleUpdateMentionsError(const QString &errorMessage);
+    void handleUpdateRetweetsSuccessful(const QVariantList &result);
+    void handleUpdateRetweetsError(const QString &errorMessage);
 
 private:
     QVariantList mentions;

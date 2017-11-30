@@ -599,6 +599,7 @@ Page {
 
                     delegate: Tweet {
                         tweetModel: display
+                        userId: overviewPage.myUser.id_str
                     }
 
                     onMovementEnded: {
@@ -709,6 +710,7 @@ Page {
                     model: mentionsModel
                     delegate: Tweet {
                         tweetModel: display
+                        userId: overviewPage.myUser.id_str
                     }
                     VerticalScrollDecorator {}
                 }
@@ -1162,6 +1164,7 @@ Page {
                     model: searchModel
                     delegate: Tweet {
                         tweetModel: display
+                        userId: overviewPage.myUser.id_str
                     }
                     VerticalScrollDecorator {}
                 }

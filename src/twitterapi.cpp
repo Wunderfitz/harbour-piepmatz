@@ -386,6 +386,30 @@ void TwitterApi::mentionsTimeline()
     connect(reply, SIGNAL(finished()), this, SLOT(handleMentionsTimelineFinished()));
 }
 
+void TwitterApi::retweetTimeline()
+{
+    qDebug() << "TwitterApi::retweetTimeline";
+    QUrl url = QUrl(API_STATUSES_RETWEET_TIMELINE);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("trim_user", "false");
+    urlQuery.addQueryItem("count", "100");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("100")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetTimelineError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetTimelineFinished()));
+}
+
 void TwitterApi::showStatus(const QString &statusId)
 {
     qDebug() << "TwitterApi::showStatus" << statusId;
@@ -950,6 +974,7 @@ void TwitterApi::controlScreenSaver(const bool &enabled)
     }
 
 }
+
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -1040,6 +1065,31 @@ void TwitterApi::handleMentionsTimelineFinished()
         emit mentionsTimelineSuccessful(responseArray.toVariantList());
     } else {
         emit mentionsTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleRetweetTimelineError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleRetweetTimelineError:" << (int)error << reply->errorString() << reply->readAll();
+    emit mentionsTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleRetweetTimelineFinished()
+{
+    qDebug() << "TwitterApi::handleRetweetTimelineFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit retweetTimelineSuccessful(responseArray.toVariantList());
+    } else {
+        emit retweetTimelineError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

@@ -26,6 +26,9 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi) : settings("harbour-piepmat
 
     connect(twitterApi, &TwitterApi::mentionsTimelineError, this, &MentionsModel::handleUpdateMentionsError);
     connect(twitterApi, &TwitterApi::mentionsTimelineSuccessful, this, &MentionsModel::handleUpdateMentionsSuccessful);
+    connect(twitterApi, &TwitterApi::retweetTimelineError, this, &MentionsModel::handleUpdateRetweetsError);
+    connect(twitterApi, &TwitterApi::retweetTimelineSuccessful, this, &MentionsModel::handleUpdateRetweetsSuccessful);
+
 }
 
 int MentionsModel::rowCount(const QModelIndex &) const
@@ -46,7 +49,9 @@ QVariant MentionsModel::data(const QModelIndex &index, int role) const
 
 void MentionsModel::update()
 {
+    qDebug() << "MentionsModel::update";
     twitterApi->mentionsTimeline();
+    twitterApi->retweetTimeline();
 }
 
 void MentionsModel::handleUpdateMentionsSuccessful(const QVariantList &result)
@@ -72,6 +77,19 @@ void MentionsModel::handleUpdateMentionsSuccessful(const QVariantList &result)
 
 void MentionsModel::handleUpdateMentionsError(const QString &errorMessage)
 {
+    qDebug() << "MentionsModel::handleUpdateMentionsError";
+    emit updateMentionsError(errorMessage);
+}
+
+void MentionsModel::handleUpdateRetweetsSuccessful(const QVariantList &result)
+{
+    qDebug() << "MentionsModel::handleUpdateRetweetsSuccessful";
+    qDebug() << "Result Count: " << QString::number(result.length());
+}
+
+void MentionsModel::handleUpdateRetweetsError(const QString &errorMessage)
+{
+    qDebug() << "MentionsModel::handleUpdateMentionsError";
     emit updateMentionsError(errorMessage);
 }
 
