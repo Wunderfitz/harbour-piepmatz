@@ -33,7 +33,8 @@ function updatePiepmatz() {
     timelineModel.update();
     mentionsModel.update();
     directMessagesModel.update();
-    accountModel.verifyCredentials();
+    // Updated via MentionsModel
+    // accountModel.verifyCredentials();
 }
 
 function findHiResImage(url) {

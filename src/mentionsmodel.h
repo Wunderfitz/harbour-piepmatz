@@ -29,7 +29,7 @@ class MentionsModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    MentionsModel(TwitterApi *twitterApi);
+    MentionsModel(TwitterApi *twitterApi, QString &screenName);
 
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
@@ -46,11 +46,31 @@ public slots:
     void handleUpdateMentionsError(const QString &errorMessage);
     void handleUpdateRetweetsSuccessful(const QVariantList &result);
     void handleUpdateRetweetsError(const QString &errorMessage);
+    void handleFollowersSuccessful(const QVariantMap &result);
+    void handleFollowersError(const QString &errorMessage);
+    void handleVerifyCredentialsSuccessful(const QVariantMap &result);
+    void handleVerifyCredentialsError(const QString &errorMessage);
 
 private:
+
+    void handleUpdateError(const QString &errorMessage);
+    void handleUpdateSuccessful();
+    void resetStatus();
+
     QVariantList mentions;
     QSettings settings;
     TwitterApi *twitterApi;
+
+    QString screenName;
+    bool updateInProgress;
+    bool mentionsUpdated;
+    QVariantList rawMentions;
+    bool retweetsUpdated;
+    QVariantList rawRetweets;
+    bool followersUpdated;
+    QVariantMap rawFollowers;
+    bool credentialsUpdated;
+    QVariantMap myAccount;
 };
 
 #endif // MENTIONSMODEL_H
