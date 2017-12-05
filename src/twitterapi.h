@@ -50,6 +50,7 @@ const char API_FRIENDS_LIST[] = "https://api.twitter.com/1.1/friends/list.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const char API_STATUSES_RETWEET[] = "https://api.twitter.com/1.1/statuses/retweet/:id.json";
+const char API_STATUSES_RETWEET_USERS[] = "https://api.twitter.com/1.1/statuses/retweets/:id.json";
 const char API_STATUSES_UNRETWEET[] = "https://api.twitter.com/1.1/statuses/unretweet/:id.json";
 const char API_STATUSES_DESTROY[] = "https://api.twitter.com/1.1/statuses/destroy/:id.json";
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
@@ -100,6 +101,7 @@ public:
     Q_INVOKABLE void unfavorite(const QString &statusId);
     Q_INVOKABLE void favorites(const QString &screenName);
     Q_INVOKABLE void retweet(const QString &statusId);
+    Q_INVOKABLE void retweetUsers(const QString &statusId);
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void destroyTweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
@@ -160,6 +162,8 @@ signals:
     void favoritesError(const QString &errorMessage);
     void retweetSuccessful(const QVariantMap &result);
     void retweetError(const QString &errorMessage);
+    void retweetUsersSuccessful(const QString &statusId, const QVariantList &result);
+    void retweetUsersError(const QString &statusId, const QString &errorMessage);
     void unretweetSuccessful(const QVariantMap &result);
     void unretweetError(const QString &errorMessage);
     void destroyError(const QString &errorMessage);
@@ -237,6 +241,8 @@ private slots:
     void handleFavoritesFinished();
     void handleRetweetError(QNetworkReply::NetworkError error);
     void handleRetweetFinished();
+    void handleRetweetUsersError(QNetworkReply::NetworkError error);
+    void handleRetweetUsersFinished();
     void handleUnretweetError(QNetworkReply::NetworkError error);
     void handleUnretweetFinished();
     void handleDestroyError(QNetworkReply::NetworkError error);

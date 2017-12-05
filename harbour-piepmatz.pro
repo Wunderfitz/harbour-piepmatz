@@ -14,7 +14,7 @@ TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp
 
-QT += core dbus positioning
+QT += core dbus positioning sql
 
 LIBS += -lcrypto
 

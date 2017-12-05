@@ -125,7 +125,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Refresh</translation>
+        <translation>Refresh</translation>
     </message>
 </context>
 <context>
@@ -136,7 +136,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Refresh</translation>
+        <translation>Refresh</translation>
     </message>
 </context>
 <context>
@@ -147,26 +147,26 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Refresh</translation>
+        <translation>Refresh</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Download</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloading...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download of %1 successful.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloading, %1% completed...</translation>
     </message>
 </context>
 <context>
@@ -588,11 +588,11 @@
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete Tweet</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Deleting tweet</translation>
     </message>
 </context>
 <context>
@@ -651,26 +651,26 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Refresh</translation>
+        <translation>Refresh</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Download</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download of %1 successful.</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloading...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloading, %1% completed...</translation>
     </message>
 </context>
 <context>

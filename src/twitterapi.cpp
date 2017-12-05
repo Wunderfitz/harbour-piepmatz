@@ -759,6 +759,30 @@ void TwitterApi::retweet(const QString &statusId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetFinished()));
 }
 
+void TwitterApi::retweetUsers(const QString &statusId)
+{
+    qDebug() << "TwitterApi::retweetUsers" << statusId;
+    QUrl url = QUrl(QString(API_STATUSES_RETWEET_USERS).replace(":id", statusId));
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("count", "11");
+    urlQuery.addQueryItem("trim_user", "false");
+
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("11")));
+    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
+
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetUsersError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetUsersFinished()));
+}
+
 void TwitterApi::unretweet(const QString &statusId)
 {
     qDebug() << "TwitterApi::unretweet" << statusId;
@@ -1447,6 +1471,43 @@ void TwitterApi::handleRetweetFinished()
         emit retweetSuccessful(responseObject.toVariantMap());
     } else {
         emit retweetError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleRetweetUsersError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    QString requestPath = reply->request().url().path();
+    QRegExp statusRegex("(\\d+)\\.json");
+    QString statusId;
+    if (statusRegex.indexIn(requestPath) != -1) {
+        statusId = statusRegex.cap(1);
+    }
+    qWarning() << "TwitterApi::handleRetweetUsersError:" << (int)error << reply->errorString() << reply->readAll() << statusId;
+    emit retweetUsersError(statusId, reply->errorString());
+}
+
+void TwitterApi::handleRetweetUsersFinished()
+{
+    qDebug() << "TwitterApi::handleRetweetUsersFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+    QString requestPath = reply->request().url().path();
+    QRegExp statusRegex("(\\d+)\\.json");
+    QString statusId;
+    if (statusRegex.indexIn(requestPath) != -1) {
+        statusId = statusRegex.cap(1);
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit retweetUsersSuccessful(statusId, responseArray.toVariantList());
+    } else {
+        emit retweetUsersError(statusId, "Piepmatz couldn't understand Twitter's response!");
     }
 }
 
