@@ -23,6 +23,8 @@
 #include <QAbstractListModel>
 #include <QVariantList>
 #include <QSettings>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include "twitterapi.h"
 
 class MentionsModel : public QAbstractListModel
@@ -30,6 +32,7 @@ class MentionsModel : public QAbstractListModel
     Q_OBJECT
 public:
     MentionsModel(TwitterApi *twitterApi, QString &screenName);
+    ~MentionsModel();
 
     virtual int rowCount(const QModelIndex&) const;
     virtual QVariant data(const QModelIndex &index, int role) const;
@@ -56,9 +59,16 @@ private:
     void handleUpdateError(const QString &errorMessage);
     void handleUpdateSuccessful();
     void resetStatus();
+    void initializeDatabase();
+    QString getDirectory(const QString &directoryString);
+    void createFollowersTable(const QStringList &existingTables);
+    void createRetweetsTable(const QStringList &existingTables);
+    void createUsersTable(const QStringList &existingTables);
+
 
     QVariantList mentions;
     QSettings settings;
+    QSqlDatabase database;
     TwitterApi *twitterApi;
 
     QString screenName;

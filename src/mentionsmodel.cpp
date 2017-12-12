@@ -17,6 +17,8 @@
     along with Piepmatz. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "mentionsmodel.h"
+#include <QStandardPaths>
+#include <QDir>
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
 
@@ -25,6 +27,7 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : sett
     this->twitterApi = twitterApi;
     this->screenName = screenName;
     resetStatus();
+    initializeDatabase();
 
     connect(twitterApi, &TwitterApi::mentionsTimelineError, this, &MentionsModel::handleUpdateMentionsError);
     connect(twitterApi, &TwitterApi::mentionsTimelineSuccessful, this, &MentionsModel::handleUpdateMentionsSuccessful);
@@ -35,6 +38,12 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : sett
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &MentionsModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &MentionsModel::handleVerifyCredentialsSuccessful);
 
+}
+
+MentionsModel::~MentionsModel()
+{
+    qDebug() << "MentionsModel::destroy";
+    database.close();
 }
 
 int MentionsModel::rowCount(const QModelIndex &) const
@@ -165,5 +174,82 @@ void MentionsModel::resetStatus()
     this->retweetsUpdated = false;
     this->followersUpdated = false;
     this->credentialsUpdated = false;
+}
+
+void MentionsModel::initializeDatabase()
+{
+    qDebug() << "MentionsModel::initializeDatabase";
+    QString databaseDirectory = getDirectory(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz");
+    QString databaseFilePath = databaseDirectory + "/cache.db";
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName(databaseFilePath);
+    if (database.open()) {
+        qDebug() << "SQLite database " + databaseFilePath + " successfully opened";
+        QStringList existingTables = database.tables();
+        createFollowersTable(existingTables);
+        createRetweetsTable(existingTables);
+        createUsersTable(existingTables);
+    } else {
+        qDebug() << "Error opening SQLite database " + databaseFilePath;
+    }
+}
+
+QString MentionsModel::getDirectory(const QString &directoryString)
+{
+    qDebug() << "MentionsModel::getDirectory";
+    QString myDirectoryString = directoryString;
+    QDir myDirectory(directoryString);
+    if (!myDirectory.exists()) {
+        qDebug() << "Creating directory " + directoryString;
+        if (myDirectory.mkdir(directoryString)) {
+            qDebug() << "Directory " + directoryString + " successfully created!";
+        } else {
+            qDebug() << "Error creating directory " + directoryString + "!";
+            myDirectoryString = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        }
+    }
+    return myDirectoryString;
+}
+
+void MentionsModel::createFollowersTable(const QStringList &existingTables)
+{
+    if (!existingTables.contains("followers")) {
+        QSqlQuery databaseQuery(database);
+        databaseQuery.prepare("CREATE TABLE `followers` (`id` TEXT,`name` TEXT, `screen_name` TEXT, `image_url` TEXT, sqltime TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, PRIMARY KEY(id));");
+        if (databaseQuery.exec()) {
+            qDebug() << "Followers table successfully created!";
+        } else {
+            qDebug() << "Error creating followers table!";
+            return;
+        }
+    }
+}
+
+void MentionsModel::createRetweetsTable(const QStringList &existingTables)
+{
+    if (!existingTables.contains("retweets")) {
+        QSqlQuery databaseQuery(database);
+        databaseQuery.prepare("CREATE TABLE `retweets` (`id` TEXT,`name` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(id));");
+        if (databaseQuery.exec()) {
+            qDebug() << "Retweets table successfully created!";
+        } else {
+            qDebug() << "Error creating retweets table!";
+            return;
+        }
+    }
+}
+
+void MentionsModel::createUsersTable(const QStringList &existingTables)
+{
+    if (!existingTables.contains("users")) {
+        QSqlQuery databaseQuery(database);
+        databaseQuery.prepare("CREATE TABLE `users` (`id` TEXT,`name` TEXT, `screen_name` TEXT, `image_url` TEXT, PRIMARY KEY(id));");
+        if (databaseQuery.exec()) {
+            qDebug() << "Users table successfully created!";
+        } else {
+            qDebug() << "Error creating users table!";
+            return;
+        }
+    }
 }
 
