@@ -690,10 +690,32 @@ Page {
                         overviewNotification.show(errorMessage);
                     }
                     onNewMentionsFound: {
-                        nemoNotification.summary = qsTr("New Mentions");
-                        nemoNotification.body = qsTr("You have been mentioned!");
-                        nemoNotification.previewSummary = qsTr("New Mentions");
-                        nemoNotification.previewBody = qsTr("You have been mentioned!");
+                        if (newMentions > 1) {
+                            nemoNotification.summary = qsTr("New Mentions");
+                            nemoNotification.body = qsTr("You have been mentioned %1 times!").arg(newMentions);
+                            nemoNotification.previewSummary = qsTr("New Mentions");
+                            nemoNotification.previewBody = qsTr("You have been mentioned %1 times!").arg(newMentions);
+                        } else {
+                            nemoNotification.summary = qsTr("New Mention");
+                            nemoNotification.body = qsTr("You have been mentioned!");
+                            nemoNotification.previewSummary = qsTr("New Mention");
+                            nemoNotification.previewBody = qsTr("You have been mentioned!");
+                        }
+                        nemoNotification.replacesId = 0;
+                        nemoNotification.publish();
+                    }
+                    onNewFollowersFound: {
+                        if (newFollowers > 1) {
+                            nemoNotification.summary = qsTr("New Followers");
+                            nemoNotification.body = qsTr("You have %1 new followers!").arg(newFollowers);
+                            nemoNotification.previewSummary = qsTr("New Followers");
+                            nemoNotification.previewBody = qsTr("You have %1 new followers!").arg(newFollowers);
+                        } else {
+                            nemoNotification.summary = qsTr("New Follower");
+                            nemoNotification.body = qsTr("You have a new follower!");
+                            nemoNotification.previewSummary = qsTr("New Follower");
+                            nemoNotification.previewBody = qsTr("You have a new follower!");
+                        }
                         nemoNotification.replacesId = 0;
                         nemoNotification.publish();
                     }

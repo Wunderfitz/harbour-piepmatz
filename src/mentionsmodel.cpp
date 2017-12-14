@@ -21,6 +21,7 @@
 #include <QDir>
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
+const char SETTINGS_LAST_FOLLOWER_COUNT[] = "lastFollowerCount";
 
 MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : settings("harbour-piepmatz", "settings")
 {
@@ -79,6 +80,7 @@ void MentionsModel::handleUpdateMentionsSuccessful(const QVariantList &result)
     if (updateInProgress) {
         this->mentionsUpdated = true;
         this->rawMentions = result;
+        processRawMentions();
         handleUpdateSuccessful();
     }
 }
@@ -127,6 +129,7 @@ void MentionsModel::handleVerifyCredentialsSuccessful(const QVariantMap &result)
     if (updateInProgress) {
         this->credentialsUpdated = true;
         this->myAccount = result;
+        processCredentials();
         handleUpdateSuccessful();
     }
 }
@@ -153,14 +156,6 @@ void MentionsModel::handleUpdateSuccessful()
         beginResetModel();
         mentions.clear();
         mentions.append(rawMentions);
-        if (!rawMentions.isEmpty()) {
-            QString storedMentionId = settings.value(SETTINGS_LAST_MENTION).toString();
-            QString lastMentionId = rawMentions.first().toMap().value("id_str").toString();
-            if (!storedMentionId.isEmpty() && storedMentionId != lastMentionId) {
-                emit newMentionsFound();
-            }
-            settings.setValue(SETTINGS_LAST_MENTION, lastMentionId);
-        }
         endResetModel();
         emit updateMentionsFinished();
     }
@@ -229,11 +224,25 @@ void MentionsModel::createRetweetsTable(const QStringList &existingTables)
 {
     if (!existingTables.contains("retweets")) {
         QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `retweets` (`id` TEXT,`name` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(id));");
+        databaseQuery.prepare("CREATE TABLE `retweets` (`id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(id));");
         if (databaseQuery.exec()) {
             qDebug() << "Retweets table successfully created!";
         } else {
             qDebug() << "Error creating retweets table!";
+            return;
+        }
+    }
+}
+
+void MentionsModel::createRetweetUsersTable(const QStringList &existingTables)
+{
+    if (!existingTables.contains("retweet_users")) {
+        QSqlQuery databaseQuery(database);
+        databaseQuery.prepare("CREATE TABLE `retweets` (`tweet_id` TEXT, `user_id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(tweet_id, user_id));");
+        if (databaseQuery.exec()) {
+            qDebug() << "Retweet users table successfully created!";
+        } else {
+            qDebug() << "Error creating retweet users table!";
             return;
         }
     }
@@ -251,5 +260,44 @@ void MentionsModel::createUsersTable(const QStringList &existingTables)
             return;
         }
     }
+}
+
+void MentionsModel::processRawMentions()
+{
+    qDebug() << "MentionsModel::processRawMentions";
+    if (!rawMentions.isEmpty()) {
+        QString storedMentionId = settings.value(SETTINGS_LAST_MENTION).toString();
+        if (!storedMentionId.isEmpty()) {
+            QListIterator<QVariant> rawMentionsIterator(rawMentions);
+            int newMentions = 0;
+            while (rawMentionsIterator.hasNext()) {
+                QVariantMap nextMention = rawMentionsIterator.next().toMap();
+                if (nextMention.value("id_str").toString() != storedMentionId) {
+                    newMentions++;
+                } else {
+                    break;
+                }
+            }
+            if (newMentions > 0) {
+                if (newMentions >= rawMentions.size()) {
+                    emit newMentionsFound(0);
+                } else {
+                    emit newMentionsFound(newMentions);
+                }
+            }
+        }
+        settings.setValue(SETTINGS_LAST_MENTION, rawMentions.first().toMap().value("id_str").toString());
+    }
+}
+
+void MentionsModel::processCredentials()
+{
+    qDebug() << "MentionsModel::processCredentials";
+    int lastFollowerCount = settings.value(SETTINGS_LAST_FOLLOWER_COUNT).toInt();
+    int currentFollowerCount = myAccount.value("followers_count").toInt();
+    if (lastFollowerCount > 0 && lastFollowerCount < currentFollowerCount) {
+        emit newFollowersFound(currentFollowerCount - lastFollowerCount);
+    }
+    settings.setValue(SETTINGS_LAST_FOLLOWER_COUNT, currentFollowerCount);
 }
 

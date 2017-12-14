@@ -360,6 +360,30 @@
         <source>Trends for %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>You have been mentioned %1 times!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Mention</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Followers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have %1 new followers!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New Follower</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have a new follower!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

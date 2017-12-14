@@ -42,7 +42,8 @@ public:
 signals:
     void updateMentionsFinished();
     void updateMentionsError(const QString &errorMessage);
-    void newMentionsFound();
+    void newMentionsFound(const int newMentions);
+    void newFollowersFound(const int newFollowers);
 
 public slots:
     void handleUpdateMentionsSuccessful(const QVariantList &result);
@@ -59,11 +60,16 @@ private:
     void handleUpdateError(const QString &errorMessage);
     void handleUpdateSuccessful();
     void resetStatus();
+
     void initializeDatabase();
     QString getDirectory(const QString &directoryString);
     void createFollowersTable(const QStringList &existingTables);
     void createRetweetsTable(const QStringList &existingTables);
+    void createRetweetUsersTable(const QStringList &existingTables);
     void createUsersTable(const QStringList &existingTables);
+
+    void processRawMentions();
+    void processCredentials();
 
 
     QVariantList mentions;
