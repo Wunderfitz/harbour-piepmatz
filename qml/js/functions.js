@@ -96,20 +96,20 @@ function enhanceDescription(description) {
 }
 
 function enhanceSimpleText(tweetText, entities) {
-    return enhanceTweetText(tweetText, entities, null, false);
+    return enhanceTweetText(tweetText, entities, null, false, false);
 }
 
 function enhanceText(tweetText, entities, extendedEntities) {
-    return enhanceTweetText(tweetText, entities, extendedEntities, true);
+    return enhanceTweetText(tweetText, entities, extendedEntities, true, true);
 }
 
-function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUrl) {
+function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUrl, followEmbeddedTweet) {
     var replacements = [];
 
     // URLs
     for (var i = 0; i < entities.urls.length; i++ ) {
         var tweetId = getTweetId(entities.urls[i].expanded_url);
-        if (tweetId !== null) {
+        if (tweetId !== null && followEmbeddedTweet) {
             // Remove tweet URLs - will become embedded tweets...
             embeddedTweetId = tweetId;
             twitterApi.showStatus(tweetId);

@@ -53,7 +53,7 @@ Item {
         Text {
             width: parent.width
             id: tweetContentText
-            text: Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl)
+            text: Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false)
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             wrapMode: Text.Wrap
