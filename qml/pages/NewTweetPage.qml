@@ -29,6 +29,8 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant configuration;
+    property real progress : 0;
+    property bool valid : true;
     property variant attachmentTweet;
     property string replyToStatusId;
     property variant replyToTweet;
@@ -40,8 +42,10 @@ Page {
     property variant place;
     property bool geoEnabled;
 
-    function getRemainingCharacters(text, configuration) {
-        return TwitterText.MAX_LENGTH - TwitterText.twttr.txt.getTweetLength(text, configuration);
+    function parseText(text) {
+        var parsingResult = TwitterText.parseTweet(text);
+        newTweetPage.valid = parsingResult.valid;
+        newTweetPage.progress = parsingResult.permillage > 1000 ? 1 : ( parsingResult.permillage / 1000 );
     }
 
     function getWordBoundaries(text, cursorPosition) {
@@ -250,35 +254,40 @@ Page {
                 sourceComponent: replyToTweetComponent
             }
 
-            TextArea {
-                id: enterTweetTextArea
+            Row {
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 width: parent.width - 2 * Theme.paddingLarge
-                focus: true
-                font.pixelSize: Theme.fontSizeSmall
-                labelVisible: false;
-                onTextChanged: {
-                    remainingCharactersText.text = getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration);
-                    atMentioningTimer.stop();
-                    atMentioningTimer.start();
+                TextArea {
+                    id: enterTweetTextArea
+                    width: parent.width - remainingCircle.width
+                    focus: true
+                    font.pixelSize: Theme.fontSizeSmall
+                    labelVisible: false;
+                    onTextChanged: {
+                        parseText(enterTweetTextArea.text);
+                        atMentioningTimer.stop();
+                        atMentioningTimer.start();
+                    }
+
+                    errorHighlight: !newTweetPage.valid
                 }
 
-                errorHighlight: remainingCharactersText.text < 0
+                ProgressCircle {
+                    id: remainingCircle
+                    progressColor: Theme.highlightColor
+                    backgroundColor: Theme.highlightDimmerColor
+                    width: Theme.itemSizeExtraSmall
+                    height: Theme.itemSizeExtraSmall
+                    value: newTweetPage.progress
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
+
+                }
             }
 
-            Text {
-                id: remainingCharactersText
-                anchors {
-                    right: parent.right
-                    rightMargin: Theme.horizontalPageMargin
-                }
-                color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
-                font.pixelSize: remainingCharactersText.text < 0 ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
-                font.bold: remainingCharactersText.text < 0 ? true : false
-                text: getRemainingCharacters(enterTweetTextArea.text, newTweetPage.configuration)
-            }
 
             Timer {
                 id: atMentioningTimer

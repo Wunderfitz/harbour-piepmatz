@@ -32,7 +32,7 @@ Page {
     property bool loaded : true;
 
     function getRemainingCharacters(text, configuration) {
-        return 10000 - TwitterText.twttr.txt.getTweetLength(text, configuration);
+        return 10000 - TwitterText.getTweetLength(text);
     }
 
     AppNotification {
