@@ -258,7 +258,7 @@ Item {
                             visible: referenceMetadata.description ? true : false
                             width: parent.width
                             id: openGraphText
-                            text: referenceMetadata.description ? referenceMetadata.description : ""
+                            text: referenceMetadata.description ? Functions.htmlDecode(referenceMetadata.description) : ""
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
@@ -271,7 +271,7 @@ Item {
                             visible: referenceMetadata.url ? true : false
                             width: parent.width
                             id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\">" + referenceMetadata.title + "</a>"
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + Functions.htmlDecode(referenceMetadata.title) + "</a>"
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.highlightColor
                             wrapMode: Text.Wrap
