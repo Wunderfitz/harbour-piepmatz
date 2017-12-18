@@ -85,4 +85,9 @@ Item {
 
     }
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": embeddedTweet.tweetModel });
+    }
+
 }
