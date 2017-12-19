@@ -193,7 +193,7 @@ function getTweetImageUrl(tweet) {
 }
 
 function getTweetImageModel(tweet, listModel) {
-    if (tweet.extended_entities) {
+    if (tweet.extended_entities && listModel.rowCount() === 0) {
         for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
             if (tweet.extended_entities.media[i].type === "photo" ) {
                 listModel.append(tweet.extended_entities.media[i]);

@@ -31,6 +31,11 @@ Item {
     width: parent.width
     height: embeddedTweetColumn.height
 
+    MouseArea {
+        anchors.fill: parent
+        onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": embeddedTweet.tweetModel });
+    }
+
     Column {
         id: embeddedTweetColumn
         spacing: Theme.paddingMedium
@@ -83,11 +88,6 @@ Item {
             }
         }
 
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": embeddedTweet.tweetModel });
     }
 
 }
