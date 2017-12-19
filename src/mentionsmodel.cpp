@@ -22,6 +22,9 @@
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
 const char SETTINGS_LAST_FOLLOWER_COUNT[] = "lastFollowerCount";
+const char SETTINGS_LAST_KNOWN_FOLLOWERS[] = "lastKnownFollowers";
+// We generate this amount of named follower entries maximum...
+const int SETTINGS_MAX_NAMED_FOLLOWERS = 25;
 
 MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : settings("harbour-piepmatz", "settings")
 {
@@ -113,6 +116,7 @@ void MentionsModel::handleFollowersSuccessful(const QVariantMap &result)
     if (updateInProgress) {
         this->followersUpdated = true;
         this->rawFollowers = result;
+        processRawFollowers();
         handleUpdateSuccessful();
     }
 }
@@ -150,6 +154,11 @@ void MentionsModel::handleUpdateError(const QString &errorMessage)
 void MentionsModel::handleUpdateSuccessful()
 {
     if (mentionsUpdated && retweetsUpdated && followersUpdated && credentialsUpdated) {
+        if (this->newNamedFollowerCount > this->newGeneralFollowerCount) {
+            emit newFollowersFound(this->newNamedFollowerCount);
+        } else {
+            emit newFollowersFound(this->newGeneralFollowerCount);
+        }
         qDebug() << "[MentionsModel] Updating all mentions...";
         resetStatus();
         // Do the merge and check work...
@@ -164,6 +173,8 @@ void MentionsModel::handleUpdateSuccessful()
 void MentionsModel::resetStatus()
 {
     qDebug() << "MentionsModel::resetStatus";
+    this->newNamedFollowerCount = 0;
+    this->newGeneralFollowerCount = 0;
     this->updateInProgress = false;
     this->mentionsUpdated = false;
     this->retweetsUpdated = false;
@@ -296,8 +307,48 @@ void MentionsModel::processCredentials()
     int lastFollowerCount = settings.value(SETTINGS_LAST_FOLLOWER_COUNT).toInt();
     int currentFollowerCount = myAccount.value("followers_count").toInt();
     if (lastFollowerCount > 0 && lastFollowerCount < currentFollowerCount) {
-        emit newFollowersFound(currentFollowerCount - lastFollowerCount);
+        this->newGeneralFollowerCount = currentFollowerCount - lastFollowerCount;
     }
     settings.setValue(SETTINGS_LAST_FOLLOWER_COUNT, currentFollowerCount);
+}
+
+void MentionsModel::processRawFollowers()
+{
+    qDebug() << "MentionsModel::processCredentials";
+    QStringList lastKnownFollowers = settings.value(SETTINGS_LAST_KNOWN_FOLLOWERS).toStringList();
+    QStringList currentLastFollowers;
+    QVariantList currentFollowers = rawFollowers.value("users").toList();
+    for (int i = 0; i < SETTINGS_MAX_NAMED_FOLLOWERS; i++) {
+        QVariantMap currentFollower = currentFollowers.value(i).toMap();
+        currentLastFollowers.append(currentFollower.value("screen_name").toString());
+    }
+    // Check if we find one of the last known followers in the current list
+    int indexInCurrentFollowers = 0;
+    QListIterator<QString> lastKnownFollowersIterator(lastKnownFollowers);
+    while(lastKnownFollowersIterator.hasNext()) {
+        QString lastKnownFollower = lastKnownFollowersIterator.next();
+        if (currentLastFollowers.contains(lastKnownFollower)) {
+            // We found a match
+            for (int i = 0; i < SETTINGS_MAX_NAMED_FOLLOWERS; i++) {
+                if (currentLastFollowers.length() < (i + 1)) {
+                    break;
+                }
+                if (lastKnownFollower == currentLastFollowers[i]) {
+                    // If we are here, it means that we can identify the new followers by name...
+                    indexInCurrentFollowers = i;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    if (indexInCurrentFollowers > 0) {
+        for (int i = 0; i < indexInCurrentFollowers; i++) {
+            this->newNamedFollowerCount = i;
+            qDebug() << "New follower: " + currentLastFollowers[i];
+            // generate new mention element here...
+        }
+    }
+    settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
 }
 

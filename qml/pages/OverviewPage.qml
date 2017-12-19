@@ -710,7 +710,7 @@ Page {
                             nemoNotification.body = qsTr("You have %1 new followers!").arg(newFollowers);
                             nemoNotification.previewSummary = qsTr("New Followers");
                             nemoNotification.previewBody = qsTr("You have %1 new followers!").arg(newFollowers);
-                        } else {
+                        } else if (newFollowers === 1) {
                             nemoNotification.summary = qsTr("New Follower");
                             nemoNotification.body = qsTr("You have a new follower!");
                             nemoNotification.previewSummary = qsTr("New Follower");

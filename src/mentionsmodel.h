@@ -70,6 +70,7 @@ private:
 
     void processRawMentions();
     void processCredentials();
+    void processRawFollowers();
 
 
     QVariantList mentions;
@@ -87,6 +88,8 @@ private:
     QVariantMap rawFollowers;
     bool credentialsUpdated;
     QVariantMap myAccount;
+    int newNamedFollowerCount;
+    int newGeneralFollowerCount;
 };
 
 #endif // MENTIONSMODEL_H
