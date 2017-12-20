@@ -37,7 +37,7 @@ Row {
         text: tweetUser.name
         elide: Text.ElideRight
         maximumLineCount: 1
-        width: if (tweetUser.name.length > 20) { parent.width * 2 / 3 }
+        width: if (tweetUser.name.length > 25) { parent.width / 2 }
         MouseArea {
             anchors.fill: parent
             onClicked: {

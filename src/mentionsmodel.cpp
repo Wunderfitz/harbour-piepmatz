@@ -19,6 +19,7 @@
 #include "mentionsmodel.h"
 #include <QStandardPaths>
 #include <QDir>
+#include <QSqlError>
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
 const char SETTINGS_LAST_FOLLOWER_COUNT[] = "lastFollowerCount";
@@ -194,6 +195,7 @@ void MentionsModel::initializeDatabase()
         QStringList existingTables = database.tables();
         createFollowersTable(existingTables);
         createRetweetsTable(existingTables);
+        createRetweetUsersTable(existingTables);
         createUsersTable(existingTables);
     } else {
         qDebug() << "Error opening SQLite database " + databaseFilePath;
@@ -221,7 +223,7 @@ void MentionsModel::createFollowersTable(const QStringList &existingTables)
 {
     if (!existingTables.contains("followers")) {
         QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `followers` (`id` TEXT,`name` TEXT, `screen_name` TEXT, `image_url` TEXT, sqltime TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL, PRIMARY KEY(id));");
+        databaseQuery.prepare("create table followers (id text primary key, name text, screen_name text, image_url text, sqltime TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
         if (databaseQuery.exec()) {
             qDebug() << "Followers table successfully created!";
         } else {
@@ -249,7 +251,7 @@ void MentionsModel::createRetweetUsersTable(const QStringList &existingTables)
 {
     if (!existingTables.contains("retweet_users")) {
         QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `retweets` (`tweet_id` TEXT, `user_id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(tweet_id, user_id));");
+        databaseQuery.prepare("CREATE TABLE `retweet_users` (`tweet_id` TEXT, `user_id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(tweet_id, user_id));");
         if (databaseQuery.exec()) {
             qDebug() << "Retweet users table successfully created!";
         } else {
@@ -343,10 +345,21 @@ void MentionsModel::processRawFollowers()
         }
     }
     if (indexInCurrentFollowers > 0) {
+        QSqlQuery databaseQuery(database);
+        databaseQuery.prepare("insert into followers values((:id),(:name),(:screen_name),(:image_url), CURRENT_TIMESTAMP)");
         for (int i = 0; i < indexInCurrentFollowers; i++) {
             this->newNamedFollowerCount = i;
             qDebug() << "New follower: " + currentLastFollowers[i];
-            // generate new mention element here...
+            QVariantMap newFollower = currentFollowers.value(i).toMap();
+            databaseQuery.bindValue(":id", newFollower.value("id_str").toString());
+            databaseQuery.bindValue(":name", newFollower.value("name").toString());
+            databaseQuery.bindValue(":screen_name", newFollower.value("screen_name").toString());
+            databaseQuery.bindValue(":image_url", newFollower.value("profile_image_url_https").toString());
+            if (databaseQuery.exec()) {
+                qDebug() << "Successfully wrote new follower " + currentLastFollowers[i] + " to database.";
+            } else {
+                qDebug() << "Error writing new follower " + currentLastFollowers[i] + ": " + databaseQuery.lastError().text();
+            }
         }
     }
     settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
