@@ -158,7 +158,9 @@ void MentionsModel::handleUpdateSuccessful()
         if (this->newNamedFollowerCount > this->newGeneralFollowerCount) {
             emit newFollowersFound(this->newNamedFollowerCount);
         } else {
-            emit newFollowersFound(this->newGeneralFollowerCount);
+            if (this->newGeneralFollowerCount > 0) {
+                emit newFollowersFound(this->newGeneralFollowerCount);
+            }
         }
         qDebug() << "[MentionsModel] Updating all mentions...";
         resetStatus();
@@ -316,52 +318,47 @@ void MentionsModel::processCredentials()
 
 void MentionsModel::processRawFollowers()
 {
-    qDebug() << "MentionsModel::processCredentials";
-    QStringList lastKnownFollowers = settings.value(SETTINGS_LAST_KNOWN_FOLLOWERS).toStringList();
-    QStringList currentLastFollowers;
+    qDebug() << "MentionsModel::processRawFollowers";
+
+    QSqlQuery databaseQuery(database);
+    databaseQuery.prepare("insert into followers values((:id),(:name),(:screen_name),(:image_url), CURRENT_TIMESTAMP)");
+
     QVariantList currentFollowers = rawFollowers.value("users").toList();
-    for (int i = 0; i < SETTINGS_MAX_NAMED_FOLLOWERS; i++) {
-        QVariantMap currentFollower = currentFollowers.value(i).toMap();
-        currentLastFollowers.append(currentFollower.value("screen_name").toString());
-    }
-    // Check if we find one of the last known followers in the current list
-    int indexInCurrentFollowers = 0;
-    QListIterator<QString> lastKnownFollowersIterator(lastKnownFollowers);
-    while(lastKnownFollowersIterator.hasNext()) {
-        QString lastKnownFollower = lastKnownFollowersIterator.next();
-        if (currentLastFollowers.contains(lastKnownFollower)) {
-            // We found a match
-            for (int i = 0; i < SETTINGS_MAX_NAMED_FOLLOWERS; i++) {
-                if (currentLastFollowers.length() < (i + 1)) {
-                    break;
-                }
-                if (lastKnownFollower == currentLastFollowers[i]) {
-                    // If we are here, it means that we can identify the new followers by name...
-                    indexInCurrentFollowers = i;
-                    break;
+    QStringList lastKnownFollowers = settings.value(SETTINGS_LAST_KNOWN_FOLLOWERS).toStringList();
+    if (!lastKnownFollowers.isEmpty()) {
+        QListIterator<QVariant> currentFollowersIterator(currentFollowers);
+        int i = 0;
+        while (currentFollowersIterator.hasNext()) {
+            QVariantMap currentFollower = currentFollowersIterator.next().toMap();
+            if (lastKnownFollowers.contains(currentFollower.value("screen_name").toString())) {
+                // This means that we found the current follower in our stored list,
+                // The index represents the count of new followers
+                break;
+            } else {
+                databaseQuery.bindValue(":id", currentFollower.value("id_str").toString());
+                databaseQuery.bindValue(":name", currentFollower.value("name").toString());
+                databaseQuery.bindValue(":screen_name", currentFollower.value("screen_name").toString());
+                databaseQuery.bindValue(":image_url", currentFollower.value("profile_image_url_https").toString());
+                if (databaseQuery.exec()) {
+                    qDebug() << "Successfully wrote new follower " + currentFollower.value("screen_name").toString() + " to database.";
+                } else {
+                    qDebug() << "Error writing new follower " + currentFollower.value("screen_name").toString() + ": " + databaseQuery.lastError().text();
                 }
             }
+            i++;
+        }
+        this->newNamedFollowerCount = i;
+    }
+
+    QStringList currentLastFollowers;
+    for (int j = 0; j < SETTINGS_MAX_NAMED_FOLLOWERS; j++) {
+        if (currentFollowers.size() < j) {
             break;
         }
-    }
-    if (indexInCurrentFollowers > 0) {
-        QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("insert into followers values((:id),(:name),(:screen_name),(:image_url), CURRENT_TIMESTAMP)");
-        for (int i = 0; i < indexInCurrentFollowers; i++) {
-            this->newNamedFollowerCount = i;
-            qDebug() << "New follower: " + currentLastFollowers[i];
-            QVariantMap newFollower = currentFollowers.value(i).toMap();
-            databaseQuery.bindValue(":id", newFollower.value("id_str").toString());
-            databaseQuery.bindValue(":name", newFollower.value("name").toString());
-            databaseQuery.bindValue(":screen_name", newFollower.value("screen_name").toString());
-            databaseQuery.bindValue(":image_url", newFollower.value("profile_image_url_https").toString());
-            if (databaseQuery.exec()) {
-                qDebug() << "Successfully wrote new follower " + currentLastFollowers[i] + " to database.";
-            } else {
-                qDebug() << "Error writing new follower " + currentLastFollowers[i] + ": " + databaseQuery.lastError().text();
-            }
-        }
+        QString lastFollower = currentFollowers.at(j).toMap().value("screen_name").toString();
+        currentLastFollowers.append(lastFollower);
     }
     settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
+
 }
 

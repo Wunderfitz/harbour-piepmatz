@@ -339,12 +339,6 @@ Page {
         id: overviewNotification
     }
 
-    Notification {
-        id: nemoNotification
-        appName: "Piepmatz"
-        appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
-    }
-
     Item {
         id: persistentNotificationItem
         enabled: false
@@ -680,7 +674,19 @@ Page {
 
                 property bool updateInProgress : false;
 
+                Notification {
+                    id: mentionsNotification
+                    appName: "Piepmatz"
+                    appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+                }
+                Notification {
+                    id: followersNotification
+                    appName: "Piepmatz"
+                    appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+                }
+
                 Connections {
+
                     target: mentionsModel
                     onUpdateMentionsFinished: {
                         notificationsColumn.updateInProgress = false;
@@ -691,33 +697,33 @@ Page {
                     }
                     onNewMentionsFound: {
                         if (newMentions > 1) {
-                            nemoNotification.summary = qsTr("New Mentions");
-                            nemoNotification.body = qsTr("You have been mentioned %1 times!").arg(newMentions);
-                            nemoNotification.previewSummary = qsTr("New Mentions");
-                            nemoNotification.previewBody = qsTr("You have been mentioned %1 times!").arg(newMentions);
+                            mentionsNotification.summary = qsTr("New Mentions");
+                            mentionsNotification.body = qsTr("You have been mentioned %1 times!").arg(newMentions);
+                            mentionsNotification.previewSummary = qsTr("New Mentions");
+                            mentionsNotification.previewBody = qsTr("You have been mentioned %1 times!").arg(newMentions);
                         } else {
-                            nemoNotification.summary = qsTr("New Mention");
-                            nemoNotification.body = qsTr("You have been mentioned!");
-                            nemoNotification.previewSummary = qsTr("New Mention");
-                            nemoNotification.previewBody = qsTr("You have been mentioned!");
+                            mentionsNotification.summary = qsTr("New Mention");
+                            mentionsNotification.body = qsTr("You have been mentioned!");
+                            mentionsNotification.previewSummary = qsTr("New Mention");
+                            mentionsNotification.previewBody = qsTr("You have been mentioned!");
                         }
-                        nemoNotification.replacesId = 0;
-                        nemoNotification.publish();
+                        mentionsNotification.replacesId = 0;
+                        mentionsNotification.publish();
                     }
                     onNewFollowersFound: {
                         if (newFollowers > 1) {
-                            nemoNotification.summary = qsTr("New Followers");
-                            nemoNotification.body = qsTr("You have %1 new followers!").arg(newFollowers);
-                            nemoNotification.previewSummary = qsTr("New Followers");
-                            nemoNotification.previewBody = qsTr("You have %1 new followers!").arg(newFollowers);
+                            followersNotification.summary = qsTr("New Followers");
+                            followersNotification.body = qsTr("You have %1 new followers!").arg(newFollowers);
+                            followersNotification.previewSummary = qsTr("New Followers");
+                            followersNotification.previewBody = qsTr("You have %1 new followers!").arg(newFollowers);
                         } else if (newFollowers === 1) {
-                            nemoNotification.summary = qsTr("New Follower");
-                            nemoNotification.body = qsTr("You have a new follower!");
-                            nemoNotification.previewSummary = qsTr("New Follower");
-                            nemoNotification.previewBody = qsTr("You have a new follower!");
+                            followersNotification.summary = qsTr("New Follower");
+                            followersNotification.body = qsTr("You have a new follower!");
+                            followersNotification.previewSummary = qsTr("New Follower");
+                            followersNotification.previewBody = qsTr("You have a new follower!");
                         }
-                        nemoNotification.replacesId = 0;
-                        nemoNotification.publish();
+                        followersNotification.replacesId = 0;
+                        followersNotification.publish();
                     }
                 }
 
@@ -769,7 +775,14 @@ Page {
 
                 property bool updateInProgress : false;
 
+                Notification {
+                    id: messagesNotification
+                    appName: "Piepmatz"
+                    appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+                }
+
                 Connections {
+
                     target: directMessagesModel
 
                     onUpdateMessagesStarted: {
@@ -785,12 +798,12 @@ Page {
                         overviewNotification.show(errorMessage);
                     }
                     onNewMessagesFound: {
-                        nemoNotification.summary = qsTr("New Messages");
-                        nemoNotification.body = qsTr("You have new direct messages!");
-                        nemoNotification.previewSummary = qsTr("New Messages");
-                        nemoNotification.previewBody = qsTr("You have new messages!");
-                        nemoNotification.replacesId = 0;
-                        nemoNotification.publish();
+                        messagesNotification.summary = qsTr("New Messages");
+                        messagesNotification.body = qsTr("You have new direct messages!");
+                        messagesNotification.previewSummary = qsTr("New Messages");
+                        messagesNotification.previewBody = qsTr("You have new messages!");
+                        messagesNotification.replacesId = 0;
+                        messagesNotification.publish();
                     }
                 }
 
