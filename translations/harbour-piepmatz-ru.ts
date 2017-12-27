@@ -386,6 +386,10 @@
         <source>You have a new follower!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>follows you now!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

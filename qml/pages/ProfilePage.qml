@@ -34,8 +34,15 @@ Page {
             console.log("Loading profile for " + profileName);
             twitterApi.showUser(profileName);
         } else {
-            profilePage.profileName = profilePage.profileModel.screen_name;
-            loaded = true;
+            if (!profileModel.created_at) {
+                // For mentions we don't have the complete information...
+                profileName = profileModel.screen_name;
+                console.log("Loading complete profile for " + profileName);
+                twitterApi.showUser(profileName);
+            } else {
+                profilePage.profileName = profilePage.profileModel.screen_name;
+                loaded = true;
+            }
         }
     }
 

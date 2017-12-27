@@ -727,6 +727,23 @@ Page {
                     }
                 }
 
+                Component {
+                    id: componentMentionsTweet
+
+                    Tweet {
+                        tweetModel: mentionsData
+                        userId: overviewPage.myUser.id_str
+                    }
+                }
+
+                Component {
+                    id: componentMentionsUser
+
+                    User {
+                        userModel: mentionsData
+                    }
+                }
+
                 SilicaListView {
                     anchors {
                         fill: parent
@@ -736,10 +753,19 @@ Page {
                     clip: true
 
                     model: mentionsModel
-                    delegate: Tweet {
-                        tweetModel: display
-                        userId: overviewPage.myUser.id_str
+                    delegate: Component {
+                        Loader {
+                            width: mentionsListView.width
+                            property variant mentionsData: display
+                            sourceComponent: if (display.followed_at) {
+                                                 mentionsData.description = qsTr("follows you now!");
+                                                 return componentMentionsUser;
+                                             } else {
+                                                 return componentMentionsTweet;
+                                             }
+                        }
                     }
+
                     VerticalScrollDecorator {}
                 }
 

@@ -20,6 +20,8 @@
 #include <QStandardPaths>
 #include <QDir>
 #include <QSqlError>
+#include <QDateTime>
+#include <QLocale>
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
 const char SETTINGS_LAST_FOLLOWER_COUNT[] = "lastFollowerCount";
@@ -118,6 +120,7 @@ void MentionsModel::handleFollowersSuccessful(const QVariantMap &result)
         this->followersUpdated = true;
         this->rawFollowers = result;
         processRawFollowers();
+        getFollowersFromDatabase();
         handleUpdateSuccessful();
     }
 }
@@ -152,6 +155,22 @@ void MentionsModel::handleUpdateError(const QString &errorMessage)
     emit updateMentionsError(errorMessage);
 }
 
+QDateTime getTimestamp(const QVariantMap &mentionMap) {
+    QString timestampString;
+    if (mentionMap.value("is_new_follower").toBool()) {
+        timestampString = mentionMap.value("followed_at").toString();
+    } else {
+        timestampString = mentionMap.value("created_at").toString();
+    }
+    QLocale englishLocale(QLocale::English);
+    QDateTime timestamp = englishLocale.toDateTime(timestampString, "ddd MMM dd HH:mm:ss +0000 yyyy");
+    return timestamp;
+}
+
+bool compareMentions(const QVariant &mention1, const QVariant &mention2) {
+    return getTimestamp(mention1.toMap()) > getTimestamp(mention2.toMap());
+}
+
 void MentionsModel::handleUpdateSuccessful()
 {
     if (mentionsUpdated && retweetsUpdated && followersUpdated && credentialsUpdated) {
@@ -167,7 +186,9 @@ void MentionsModel::handleUpdateSuccessful()
         // Do the merge and check work...
         beginResetModel();
         mentions.clear();
+        mentions.append(followersFromDatabase);
         mentions.append(rawMentions);
+        qSort(mentions.begin(), mentions.end(), compareMentions);
         endResetModel();
         emit updateMentionsFinished();
     }
@@ -360,5 +381,36 @@ void MentionsModel::processRawFollowers()
     }
     settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
 
+}
+
+void MentionsModel::getFollowersFromDatabase()
+{
+    qDebug() << "MentionsModel::processRawFollowers";
+    this->followersFromDatabase.clear();
+    QSqlQuery databaseQuery(database);
+    databaseQuery.prepare("SELECT * FROM followers ORDER BY sqltime ASC;");
+    if (databaseQuery.exec()) {
+        qDebug() << "Followers successfully selected from database!";
+        while (databaseQuery.next()) {
+            QVariantMap followerAsMap;
+            followerAsMap.insert("id_str", databaseQuery.value(0).toString());
+            followerAsMap.insert("name", databaseQuery.value(1).toString());
+            followerAsMap.insert("screen_name", databaseQuery.value(2).toString());
+            followerAsMap.insert("profile_image_url_https", databaseQuery.value(3).toString());
+            QDateTime followedAtTimestamp = databaseQuery.value(4).toDateTime();
+            QLocale englishLocale(QLocale::English);
+            QString followedAt = englishLocale.toString(followedAtTimestamp, "ddd MMM dd HH:mm:ss +0000 yyyy");
+            followerAsMap.insert("followed_at", followedAt);
+            followerAsMap.insert("verified", false);
+            followerAsMap.insert("protected", false);
+            followerAsMap.insert("description", "");
+            followerAsMap.insert("is_new_follower", true);
+            qDebug() << "Follower: " + followerAsMap.value("id_str").toString() + ", " + followerAsMap.value("name").toString() + ", " + followerAsMap.value("screen_name").toString() + ", " + followerAsMap.value("profile_image_url_https").toString() + ", " + followerAsMap.value("followed_at").toString();
+            this->followersFromDatabase.append(followerAsMap);
+        }
+    } else {
+        qDebug() << "Error selecting followers from database!";
+        return;
+    }
 }
 

@@ -71,12 +71,15 @@ private:
     void processRawMentions();
     void processCredentials();
     void processRawFollowers();
+    void getFollowersFromDatabase();
 
 
     QVariantList mentions;
     QSettings settings;
     QSqlDatabase database;
     TwitterApi *twitterApi;
+
+    QVariantList followersFromDatabase;
 
     QString screenName;
     bool updateInProgress;
