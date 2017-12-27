@@ -22,6 +22,7 @@
 #include "downloadresponsehandler.h"
 #include <QBuffer>
 #include <QFile>
+#include <QStandardPaths>
 #include <QHttpMultiPart>
 #include <QXmlStreamReader>
 #include <QtDBus/QDBusConnection>
@@ -1365,6 +1366,7 @@ void TwitterApi::handleSearchGeoFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    qDebug() << jsonDocument.toJson();
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
         emit searchGeoSuccessful(responseObject.toVariantMap());

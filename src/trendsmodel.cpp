@@ -1,6 +1,9 @@
 #include "trendsmodel.h"
 
 #include <QListIterator>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonArray>
 
 TrendsModel::TrendsModel(TwitterApi *twitterApi)
 {
@@ -8,6 +11,14 @@ TrendsModel::TrendsModel(TwitterApi *twitterApi)
     connect(twitterApi, &TwitterApi::getIpInfoSuccessful, this, &TrendsModel::handleGetIpInfoSuccessful);
     connect(twitterApi, &TwitterApi::placesForTrendsSuccessful, this, &TrendsModel::handlePlacesForTrendsSuccessful);
     connect(twitterApi, &TwitterApi::trendsSuccessful, this, &TrendsModel::handleTrendsSuccessful);
+
+    QFile woeidsFile(QStringLiteral("/usr/share/harbour-piepmatz/qml/js/woeids-countries.json"));
+    if (woeidsFile.open(QIODevice::ReadOnly)) {
+        woeidsCountries = QJsonDocument::fromJson(woeidsFile.readAll()).array().toVariantList();
+        woeidsFile.close();
+    } else {
+        qDebug() << "Unable to open WOEIDs file...";
+    }
 }
 
 int TrendsModel::rowCount(const QModelIndex &) const
@@ -29,6 +40,7 @@ QVariant TrendsModel::data(const QModelIndex &index, int role) const
 void TrendsModel::handleGetIpInfoSuccessful(const QVariantMap &result)
 {
     qDebug() << "TrendsModel::handleGetIpInfoSuccessful";
+    this->country = result.value("country").toString();
     QString location = result.value("loc").toString();
     QStringList locationList = location.split(",");
     if (locationList.size() == 2) {
@@ -43,6 +55,17 @@ void TrendsModel::handlePlacesForTrendsSuccessful(const QVariantList &result)
     if (!result.isEmpty()) {
         QVariantMap firstResult = result.value(0).toMap();
         QString woeid = firstResult.value("woeid").toString();
+        if (firstResult.value("countryCode") != this->country) {
+            qDebug() << "Closest trends location is in another country, try to choose own country from list first...";
+            QListIterator<QVariant> woeidIterator(woeidsCountries);
+            while (woeidIterator.hasNext()) {
+                QVariantMap woeidCountry = woeidIterator.next().toMap();
+                if (woeidCountry.value("countryCode").toString() == this->country) {
+                    qDebug() << "Choosing WOEID for " + woeidCountry.value("name").toString();
+                    woeid = woeidCountry.value("woeid").toString();
+                }
+            }
+        }
         qDebug() << "My place (WOEID): " + woeid;
         twitterApi->trends(woeid);
     }

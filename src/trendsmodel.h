@@ -25,6 +25,8 @@ public slots:
 private:
     QVariantList trends;
     TwitterApi *twitterApi;
+    QVariantList woeidsCountries;
+    QString country;
 };
 
 #endif // TRENDSMODEL_H

@@ -66,6 +66,7 @@ const char API_DIRECT_MESSAGES_LIST[] = "https://api.twitter.com/1.1/direct_mess
 const char API_DIRECT_MESSAGES_NEW[] = "https://api.twitter.com/1.1/direct_messages/events/new.json";
 const char API_TRENDS_PLACE[] = "https://api.twitter.com/1.1/trends/place.json";
 const char API_TRENDS_CLOSEST[] = "https://api.twitter.com/1.1/trends/closest.json";
+const char API_TRENDS_AVAILABLE[] = "https://api.twitter.com/1.1/trends/available.json";
 
 class TwitterApi : public QObject {
 
