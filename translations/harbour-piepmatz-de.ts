@@ -388,6 +388,18 @@
         <source>follows you now!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>New Retweets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have been retweeted %1 times!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have been retweeted!</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

@@ -40,6 +40,7 @@ Item {
     property bool hasReference : false;
     property bool extendedMode : false;
     property bool withSeparator : true;
+    property bool truncateText : false;
 
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
@@ -193,6 +194,7 @@ Item {
                 TweetText {
                     id: tweetContentText
                     tweet: tweetModel
+                    truncateText: tweetElementItem.truncateText
                 }
 
                 Connections {

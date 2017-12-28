@@ -680,6 +680,11 @@ Page {
                     appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
                 }
                 Notification {
+                    id: retweetsNotification
+                    appName: "Piepmatz"
+                    appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+                }
+                Notification {
                     id: followersNotification
                     appName: "Piepmatz"
                     appIcon: "/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
@@ -710,6 +715,21 @@ Page {
                         mentionsNotification.replacesId = 0;
                         mentionsNotification.publish();
                     }
+                    onNewRetweetsFound: {
+                        if (newRetweets > 1) {
+                            retweetsNotification.summary = qsTr("New Retweets");
+                            retweetsNotification.body = qsTr("You have been retweeted %1 times!").arg(newRetweets);
+                            retweetsNotification.previewSummary = qsTr("New Retweets");
+                            retweetsNotification.previewBody = qsTr("You have been retweeted %1 times!").arg(newRetweets);
+                        } else {
+                            retweetsNotification.summary = qsTr("New Retweets");
+                            retweetsNotification.body = qsTr("You have been retweeted!");
+                            retweetsNotification.previewSummary = qsTr("New Retweets");
+                            retweetsNotification.previewBody = qsTr("You have been retweeted!");
+                        }
+                        retweetsNotification.replacesId = 0;
+                        retweetsNotification.publish();
+                    }
                     onNewFollowersFound: {
                         if (newFollowers > 1) {
                             followersNotification.summary = qsTr("New Followers");
@@ -733,6 +753,7 @@ Page {
                     Tweet {
                         tweetModel: mentionsData
                         userId: overviewPage.myUser.id_str
+                        truncateText: truncateTweet
                     }
                 }
 
@@ -757,6 +778,8 @@ Page {
                         Loader {
                             width: mentionsListView.width
                             property variant mentionsData: display
+                            property bool truncateTweet : display.retweeted_status ? (( display.retweeted_status.user.id_str === overviewPage.myUser.id_str ) ? true : false ) : false
+
                             sourceComponent: if (display.followed_at) {
                                                  mentionsData.description = qsTr("follows you now!");
                                                  return componentMentionsUser;

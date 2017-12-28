@@ -24,6 +24,7 @@
 #include <QLocale>
 
 const char SETTINGS_LAST_MENTION[] = "mentions/lastId";
+const char SETTINGS_LAST_RETWEET[] = "retweets/lastId";
 const char SETTINGS_LAST_FOLLOWER_COUNT[] = "lastFollowerCount";
 const char SETTINGS_LAST_KNOWN_FOLLOWERS[] = "lastKnownFollowers";
 // We generate this amount of named follower entries maximum...
@@ -40,6 +41,8 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : sett
     connect(twitterApi, &TwitterApi::mentionsTimelineSuccessful, this, &MentionsModel::handleUpdateMentionsSuccessful);
     connect(twitterApi, &TwitterApi::retweetTimelineError, this, &MentionsModel::handleUpdateRetweetsError);
     connect(twitterApi, &TwitterApi::retweetTimelineSuccessful, this, &MentionsModel::handleUpdateRetweetsSuccessful);
+    connect(twitterApi, &TwitterApi::retweetsForError, this, &MentionsModel::handleRetweetsForError);
+    connect(twitterApi, &TwitterApi::retweetsForSuccessful, this, &MentionsModel::handleRetweetsForSuccessful);
     connect(twitterApi, &TwitterApi::followersError, this, &MentionsModel::handleFollowersError);
     connect(twitterApi, &TwitterApi::followersSuccessful, this, &MentionsModel::handleFollowersSuccessful);
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &MentionsModel::handleVerifyCredentialsError);
@@ -97,12 +100,36 @@ void MentionsModel::handleUpdateMentionsError(const QString &errorMessage)
     handleUpdateError(errorMessage);
 }
 
+QDateTime getTimestamp(const QVariantMap &mentionMap) {
+    QString timestampString;
+    if (mentionMap.value("is_new_follower").toBool()) {
+        timestampString = mentionMap.value("followed_at").toString();
+    } else {
+        timestampString = mentionMap.value("created_at").toString();
+    }
+    QLocale englishLocale(QLocale::English);
+    QDateTime timestamp = englishLocale.toDateTime(timestampString, "ddd MMM dd HH:mm:ss +0000 yyyy");
+    return timestamp;
+}
+
+bool compareMentions(const QVariant &mention1, const QVariant &mention2) {
+    return getTimestamp(mention1.toMap()) > getTimestamp(mention2.toMap());
+}
+
 void MentionsModel::handleUpdateRetweetsSuccessful(const QVariantList &result)
 {
     qDebug() << "MentionsModel::handleUpdateRetweetsSuccessful";
     if (updateInProgress) {
-        this->retweetsUpdated = true;
-        this->rawRetweets = result;
+        this->rawRetweets.clear();
+        this->retweetsCount = result.size();
+        if (this->retweetsCount == 0) {
+            this->retweetsUpdated = true;
+        }
+        QListIterator<QVariant> resultIterator(result);
+        while (resultIterator.hasNext()) {
+            QVariantMap singleResult = resultIterator.next().toMap();
+            twitterApi->retweetsFor(singleResult.value("id_str").toString());
+        }
         handleUpdateSuccessful();
     }
 }
@@ -110,6 +137,26 @@ void MentionsModel::handleUpdateRetweetsSuccessful(const QVariantList &result)
 void MentionsModel::handleUpdateRetweetsError(const QString &errorMessage)
 {
     qDebug() << "MentionsModel::handleUpdateMentionsError";
+    handleUpdateError(errorMessage);
+}
+
+void MentionsModel::handleRetweetsForSuccessful(const QString &statusId, const QVariantList &result)
+{
+    qDebug() << "MentionsModel::handleRetweetsForSuccessful" << statusId;
+    if (updateInProgress) {
+        this->rawRetweets.append(result);
+        this->retweetsForCompletedCount++;
+        if (this->retweetsForCompletedCount == this->retweetsCount) {
+            processRawRetweets();
+            this->retweetsUpdated = true;
+        }
+        handleUpdateSuccessful();
+    }
+}
+
+void MentionsModel::handleRetweetsForError(const QString &statusId, const QString &errorMessage)
+{
+    qDebug() << "MentionsModel::handleUpdateMentionsError" << statusId;
     handleUpdateError(errorMessage);
 }
 
@@ -155,22 +202,6 @@ void MentionsModel::handleUpdateError(const QString &errorMessage)
     emit updateMentionsError(errorMessage);
 }
 
-QDateTime getTimestamp(const QVariantMap &mentionMap) {
-    QString timestampString;
-    if (mentionMap.value("is_new_follower").toBool()) {
-        timestampString = mentionMap.value("followed_at").toString();
-    } else {
-        timestampString = mentionMap.value("created_at").toString();
-    }
-    QLocale englishLocale(QLocale::English);
-    QDateTime timestamp = englishLocale.toDateTime(timestampString, "ddd MMM dd HH:mm:ss +0000 yyyy");
-    return timestamp;
-}
-
-bool compareMentions(const QVariant &mention1, const QVariant &mention2) {
-    return getTimestamp(mention1.toMap()) > getTimestamp(mention2.toMap());
-}
-
 void MentionsModel::handleUpdateSuccessful()
 {
     if (mentionsUpdated && retweetsUpdated && followersUpdated && credentialsUpdated) {
@@ -188,6 +219,7 @@ void MentionsModel::handleUpdateSuccessful()
         mentions.clear();
         mentions.append(followersFromDatabase);
         mentions.append(rawMentions);
+        mentions.append(rawRetweets);
         qSort(mentions.begin(), mentions.end(), compareMentions);
         endResetModel();
         emit updateMentionsFinished();
@@ -199,6 +231,8 @@ void MentionsModel::resetStatus()
     qDebug() << "MentionsModel::resetStatus";
     this->newNamedFollowerCount = 0;
     this->newGeneralFollowerCount = 0;
+    this->retweetsCount = 0;
+    this->retweetsForCompletedCount = 0;
     this->updateInProgress = false;
     this->mentionsUpdated = false;
     this->retweetsUpdated = false;
@@ -381,6 +415,35 @@ void MentionsModel::processRawFollowers()
     }
     settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
 
+}
+
+void MentionsModel::processRawRetweets()
+{
+    qDebug() << "MentionsModel::processRawRetweets";
+    if (!rawRetweets.isEmpty()) {
+        qSort(rawRetweets.begin(), rawRetweets.end(), compareMentions);
+        QString storedRetweetId = settings.value(SETTINGS_LAST_RETWEET).toString();
+        if (!storedRetweetId.isEmpty()) {
+            QListIterator<QVariant> rawRetweetIterator(rawRetweets);
+            int newRetweets = 0;
+            while (rawRetweetIterator.hasNext()) {
+                QVariantMap nextRetweet = rawRetweetIterator.next().toMap();
+                if (nextRetweet.value("id_str").toString() != storedRetweetId) {
+                    newRetweets++;
+                } else {
+                    break;
+                }
+            }
+            if (newRetweets > 0) {
+                if (newRetweets >= rawRetweets.size()) {
+                    emit newRetweetsFound(0);
+                } else {
+                    emit newRetweetsFound(newRetweets);
+                }
+            }
+        }
+        settings.setValue(SETTINGS_LAST_RETWEET, rawRetweets.first().toMap().value("id_str").toString());
+    }
 }
 
 void MentionsModel::getFollowersFromDatabase()

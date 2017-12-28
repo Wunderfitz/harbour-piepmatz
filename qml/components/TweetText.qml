@@ -25,17 +25,20 @@ import "../js/functions.js" as Functions
 Column {
     id: tweetTextColumn
     property variant tweet;
+    property bool truncateText : false;
 
     width: parent.width
 
     Text {
         width: parent.width
         id: tweetContentText
-        text: Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities)
+        text: tweetTextColumn.truncateText ? Functions.getRelevantTweet(tweetTextColumn.tweet).full_text : Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities)
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
+        elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone
         wrapMode: Text.Wrap
         textFormat: Text.StyledText
+        maximumLineCount: tweetTextColumn.truncateText ? 3 : 42
         onLinkActivated: {
             Functions.handleLink(link);
         }

@@ -44,12 +44,15 @@ signals:
     void updateMentionsError(const QString &errorMessage);
     void newMentionsFound(const int newMentions);
     void newFollowersFound(const int newFollowers);
+    void newRetweetsFound(const int newRetweets);
 
 public slots:
     void handleUpdateMentionsSuccessful(const QVariantList &result);
     void handleUpdateMentionsError(const QString &errorMessage);
     void handleUpdateRetweetsSuccessful(const QVariantList &result);
     void handleUpdateRetweetsError(const QString &errorMessage);
+    void handleRetweetsForSuccessful(const QString &statusId, const QVariantList &result);
+    void handleRetweetsForError(const QString &statusId, const QString &errorMessage);
     void handleFollowersSuccessful(const QVariantMap &result);
     void handleFollowersError(const QString &errorMessage);
     void handleVerifyCredentialsSuccessful(const QVariantMap &result);
@@ -71,8 +74,8 @@ private:
     void processRawMentions();
     void processCredentials();
     void processRawFollowers();
+    void processRawRetweets();
     void getFollowersFromDatabase();
-
 
     QVariantList mentions;
     QSettings settings;
@@ -93,6 +96,8 @@ private:
     QVariantMap myAccount;
     int newNamedFollowerCount;
     int newGeneralFollowerCount;
+    int retweetsCount;
+    int retweetsForCompletedCount;
 };
 
 #endif // MENTIONSMODEL_H

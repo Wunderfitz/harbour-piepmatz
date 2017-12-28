@@ -28,6 +28,7 @@ ListItem {
 
     property variant tweetModel;
     property string userId : accountModel.getCurrentAccount().id_str;
+    property bool truncateText : false;
 
     contentHeight: tweetElement.height
     contentWidth: parent.width
@@ -85,6 +86,7 @@ ListItem {
     TweetElement {
         id: tweetElement
         tweetModel: singleTweet.tweetModel
+        truncateText: singleTweet.truncateText
     }
 
     onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": singleTweet.tweetModel });

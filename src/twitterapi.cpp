@@ -394,7 +394,7 @@ void TwitterApi::retweetTimeline()
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("trim_user", "false");
-    urlQuery.addQueryItem("count", "100");
+    urlQuery.addQueryItem("count", "10");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -403,7 +403,7 @@ void TwitterApi::retweetTimeline()
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("100")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("10")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetTimelineError(QNetworkReply::NetworkError)));
@@ -759,13 +759,13 @@ void TwitterApi::retweet(const QString &statusId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetFinished()));
 }
 
-void TwitterApi::retweetUsers(const QString &statusId)
+void TwitterApi::retweetsFor(const QString &statusId)
 {
     qDebug() << "TwitterApi::retweetUsers" << statusId;
-    QUrl url = QUrl(QString(API_STATUSES_RETWEET_USERS).replace(":id", statusId));
+    QUrl url = QUrl(QString(API_STATUSES_RETWEETS_FOR).replace(":id", statusId));
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("count", "11");
+    urlQuery.addQueryItem("count", "21");
     urlQuery.addQueryItem("trim_user", "false");
 
     url.setQuery(urlQuery);
@@ -774,13 +774,13 @@ void TwitterApi::retweetUsers(const QString &statusId)
 
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("11")));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("21")));
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
 
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetUsersError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetUsersFinished()));
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetsForError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetsForFinished()));
 }
 
 void TwitterApi::unretweet(const QString &statusId)
@@ -1474,7 +1474,7 @@ void TwitterApi::handleRetweetFinished()
     }
 }
 
-void TwitterApi::handleRetweetUsersError(QNetworkReply::NetworkError error)
+void TwitterApi::handleRetweetsForError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     QString requestPath = reply->request().url().path();
@@ -1484,12 +1484,12 @@ void TwitterApi::handleRetweetUsersError(QNetworkReply::NetworkError error)
         statusId = statusRegex.cap(1);
     }
     qWarning() << "TwitterApi::handleRetweetUsersError:" << (int)error << reply->errorString() << reply->readAll() << statusId;
-    emit retweetUsersError(statusId, reply->errorString());
+    emit retweetsForError(statusId, reply->errorString());
 }
 
-void TwitterApi::handleRetweetUsersFinished()
+void TwitterApi::handleRetweetsForFinished()
 {
-    qDebug() << "TwitterApi::handleRetweetUsersFinished";
+    qDebug() << "TwitterApi::handleRetweetsForFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
@@ -1505,9 +1505,9 @@ void TwitterApi::handleRetweetUsersFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isArray()) {
         QJsonArray responseArray = jsonDocument.array();
-        emit retweetUsersSuccessful(statusId, responseArray.toVariantList());
+        emit retweetsForSuccessful(statusId, responseArray.toVariantList());
     } else {
-        emit retweetUsersError(statusId, "Piepmatz couldn't understand Twitter's response!");
+        emit retweetsForError(statusId, "Piepmatz couldn't understand Twitter's response!");
     }
 }
 
