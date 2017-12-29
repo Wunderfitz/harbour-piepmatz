@@ -26,6 +26,7 @@ Column {
     id: tweetTextColumn
     property variant tweet;
     property bool truncateText : false;
+    visible: (tweetContentText.text !== "")
 
     width: parent.width
 

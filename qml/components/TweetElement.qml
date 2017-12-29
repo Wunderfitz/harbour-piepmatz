@@ -355,9 +355,7 @@ Item {
                             }
                         }
                         onFavoriteError: {
-                            if (tweetElementItem.tweetId === result.id_str) {
-                                tweetFavoritesCountImage.visible = true;
-                            }
+                            tweetFavoritesCountImage.visible = true;
                         }
                         onUnfavoriteSuccessful: {
                             if (tweetElementItem.tweetId === result.id_str) {
@@ -369,9 +367,7 @@ Item {
                             }
                         }
                         onUnfavoriteError: {
-                            if (tweetElementItem.tweetId === result.id_str) {
-                                tweetFavoritesCountImage.visible = true;
-                            }
+                            tweetFavoritesCountImage.visible = true;
                         }
                         onRetweetSuccessful: {
                             if (tweetElementItem.tweetId === result.retweeted_status.id_str) {
@@ -383,9 +379,7 @@ Item {
                             }
                         }
                         onRetweetError: {
-                            if (tweetElementItem.tweetId === result.retweeted_status.id_str) {
-                                tweetRetweetedCountImage.visible = true;
-                            }
+                            tweetRetweetedCountImage.visible = true;
                         }
                         onUnretweetSuccessful: {
                             if (tweetElementItem.tweetId === result.id_str) {
@@ -397,9 +391,7 @@ Item {
                             }
                         }
                         onUnretweetError: {
-                            if (tweetElementItem.tweetId === result.id_str) {
-                                tweetRetweetedCountImage.visible = true;
-                            }
+                            tweetRetweetedCountImage.visible = true;
                         }
                     }
 
@@ -434,12 +426,14 @@ Item {
                         Column {
                             width: parent.width / 6
                             anchors.verticalCenter: parent.verticalCenter
+                            enabled: !Functions.getRelevantTweet(tweetModel).user.protected
                             Image {
                                 id: tweetRetweetedCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
                                 width: Theme.fontSizeMedium
                                 height: Theme.fontSizeMedium
+                                opacity: Functions.getRelevantTweet(tweetModel).user.protected ? 0.2 : 1
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -460,6 +454,7 @@ Item {
                         Column {
                             width: parent.width / 3
                             anchors.verticalCenter: parent.verticalCenter
+                            enabled: !Functions.getRelevantTweet(tweetModel).user.protected
                             Text {
                                 id: tweetRetweetedCountText
                                 font.pixelSize: Theme.fontSizeExtraSmall
