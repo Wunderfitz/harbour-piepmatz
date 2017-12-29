@@ -251,9 +251,6 @@ void MentionsModel::initializeDatabase()
         qDebug() << "SQLite database " + databaseFilePath + " successfully opened";
         QStringList existingTables = database.tables();
         createFollowersTable(existingTables);
-        createRetweetsTable(existingTables);
-        createRetweetUsersTable(existingTables);
-        createUsersTable(existingTables);
     } else {
         qDebug() << "Error opening SQLite database " + databaseFilePath;
     }
@@ -285,48 +282,6 @@ void MentionsModel::createFollowersTable(const QStringList &existingTables)
             qDebug() << "Followers table successfully created!";
         } else {
             qDebug() << "Error creating followers table!";
-            return;
-        }
-    }
-}
-
-void MentionsModel::createRetweetsTable(const QStringList &existingTables)
-{
-    if (!existingTables.contains("retweets")) {
-        QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `retweets` (`id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(id));");
-        if (databaseQuery.exec()) {
-            qDebug() << "Retweets table successfully created!";
-        } else {
-            qDebug() << "Error creating retweets table!";
-            return;
-        }
-    }
-}
-
-void MentionsModel::createRetweetUsersTable(const QStringList &existingTables)
-{
-    if (!existingTables.contains("retweet_users")) {
-        QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `retweet_users` (`tweet_id` TEXT, `user_id` TEXT, sqltime TIMESTAMP NOT NULL, PRIMARY KEY(tweet_id, user_id));");
-        if (databaseQuery.exec()) {
-            qDebug() << "Retweet users table successfully created!";
-        } else {
-            qDebug() << "Error creating retweet users table!";
-            return;
-        }
-    }
-}
-
-void MentionsModel::createUsersTable(const QStringList &existingTables)
-{
-    if (!existingTables.contains("users")) {
-        QSqlQuery databaseQuery(database);
-        databaseQuery.prepare("CREATE TABLE `users` (`id` TEXT,`name` TEXT, `screen_name` TEXT, `image_url` TEXT, PRIMARY KEY(id));");
-        if (databaseQuery.exec()) {
-            qDebug() << "Users table successfully created!";
-        } else {
-            qDebug() << "Error creating users table!";
             return;
         }
     }

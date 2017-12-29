@@ -362,43 +362,43 @@
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>You have been mentioned %1 times!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>New Mention</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>New Followers</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>You have %1 new followers!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>New Follower</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>You have a new follower!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>follows you now!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>New Retweets</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>You have been retweeted %1 times!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>You have been retweeted!</translation>
     </message>
 </context>
 <context>

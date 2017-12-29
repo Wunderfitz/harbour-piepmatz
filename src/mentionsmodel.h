@@ -67,9 +67,6 @@ private:
     void initializeDatabase();
     QString getDirectory(const QString &directoryString);
     void createFollowersTable(const QStringList &existingTables);
-    void createRetweetsTable(const QStringList &existingTables);
-    void createRetweetUsersTable(const QStringList &existingTables);
-    void createUsersTable(const QStringList &existingTables);
 
     void processRawMentions();
     void processCredentials();

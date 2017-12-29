@@ -130,7 +130,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user});
+                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetModel.retweeted_status ? ( tweetElementItem.isRetweetMention ? tweetModel.user : tweetModel.retweeted_status.user ) : tweetModel.user});
                             }
                         }
                     }
