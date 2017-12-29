@@ -400,6 +400,10 @@
         <source>You have been retweeted!</source>
         <translation>Sie wurden nachgezwitschert!</translation>
     </message>
+    <message>
+        <source>Lists</source>
+        <translation>Listen</translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

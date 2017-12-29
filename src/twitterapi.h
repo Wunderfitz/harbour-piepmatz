@@ -67,6 +67,10 @@ const char API_DIRECT_MESSAGES_NEW[] = "https://api.twitter.com/1.1/direct_messa
 const char API_TRENDS_PLACE[] = "https://api.twitter.com/1.1/trends/place.json";
 const char API_TRENDS_CLOSEST[] = "https://api.twitter.com/1.1/trends/closest.json";
 const char API_TRENDS_AVAILABLE[] = "https://api.twitter.com/1.1/trends/available.json";
+const char API_LISTS_LIST[] = "https://api.twitter.com/1.1/lists/list.json";
+const char API_LISTS_MEMBERSHIPS[] = "https://api.twitter.com/1.1/lists/memberships.json";
+const char API_LISTS_MEMBERS[] = "https://api.twitter.com/1.1/lists/members.json";
+const char API_LISTS_STATUSES[] = "https://api.twitter.com/1.1/lists/statuses.json";
 
 class TwitterApi : public QObject {
 
@@ -111,6 +115,10 @@ public:
     Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);
     Q_INVOKABLE void trends(const QString &placeId);
     Q_INVOKABLE void placesForTrends(const QString &latitude, const QString &longitude);
+    Q_INVOKABLE void userLists();
+    Q_INVOKABLE void listsMemberships();
+    Q_INVOKABLE void listMembers(const QString &listId);
+    Q_INVOKABLE void listTimeline(const QString &listId, const QString &maxId = "");
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
     Q_INVOKABLE void getIpInfo();
@@ -183,6 +191,14 @@ signals:
     void trendsError(const QString &errorMessage);
     void placesForTrendsSuccessful(const QVariantList &result);
     void placesForTrendsError(const QString &errorMessage);
+    void userListsSuccessful(const QVariantList &result);
+    void userListsError(const QString &errorMessage);
+    void listsMembershipsSuccessful(const QVariantMap &result);
+    void listsMembershipsError(const QString &errorMessage);
+    void listMembersSuccessful(const QVariantMap &result);
+    void listMembersError(const QString &errorMessage);
+    void listTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
+    void listTimelineError(const QString &errorMessage);
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
@@ -256,6 +272,15 @@ private slots:
     void handleTrendsFinished();
     void handlePlacesForTrendsError(QNetworkReply::NetworkError error);
     void handlePlacesForTrendsFinished();
+    void handleUserListsError(QNetworkReply::NetworkError error);
+    void handleUserListsFinished();
+    void handleListsMembershipsError(QNetworkReply::NetworkError error);
+    void handleListsMembershipsFinished();
+    void handleListMembersError(QNetworkReply::NetworkError error);
+    void handleListMembersFinished();
+    void handleListTimelineError(QNetworkReply::NetworkError error);
+    void handleListTimelineFinished();
+    void handleListTimelineLoadMoreFinished();
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();

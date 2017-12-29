@@ -961,6 +961,97 @@ void TwitterApi::placesForTrends(const QString &latitude, const QString &longitu
     connect(reply, SIGNAL(finished()), this, SLOT(handlePlacesForTrendsFinished()));
 }
 
+void TwitterApi::userLists()
+{
+    qDebug() << "TwitterApi::userLists";
+    QUrl url = QUrl(API_LISTS_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("reverse", "true");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("reverse"), QByteArray("true")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUserListsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleUserListsFinished()));
+}
+
+void TwitterApi::listsMemberships()
+{
+    qDebug() << "TwitterApi::listsMemberships";
+    QUrl url = QUrl(API_LISTS_MEMBERSHIPS);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("count", "100");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("100")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleListsMembershipsError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleListsMembershipsFinished()));
+}
+
+void TwitterApi::listMembers(const QString &listId)
+{
+    qDebug() << "TwitterApi::listsMembers" << listId;
+    QUrl url = QUrl(API_LISTS_MEMBERS);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("list_id", listId);
+    urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("skip_status", "true");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("list_id"), listId.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("skip_status"), QByteArray("true")));
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleListMembersError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleListMembersFinished()));
+}
+
+void TwitterApi::listTimeline(const QString &listId, const QString &maxId)
+{
+    qDebug() << "TwitterApi::listTimeline" << listId << maxId;
+    QUrl url = QUrl(API_LISTS_STATUSES);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("tweet_mode", "extended");
+    urlQuery.addQueryItem("list_id", listId);
+    if (!maxId.isEmpty()) {
+        urlQuery.addQueryItem("max_id", maxId);
+    }
+    urlQuery.addQueryItem("count", "200");
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
+    requestParameters.append(O0RequestParameter(QByteArray("list_id"), listId.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    if (!maxId.isEmpty()) {
+        requestParameters.append(O0RequestParameter(QByteArray("max_id"), maxId.toUtf8()));
+    }
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    if (maxId.isEmpty()) {
+        connect(reply, SIGNAL(finished()), this, SLOT(handleListTimelineFinished()));
+    } else {
+        connect(reply, SIGNAL(finished()), this, SLOT(handleListTimelineLoadMoreFinished()));
+    }
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleListTimelineError(QNetworkReply::NetworkError)));
+
+}
+
 void TwitterApi::getOpenGraph(const QString &address)
 {
     qDebug() << "TwitterApi::getOpenGraph" << address;
@@ -1658,6 +1749,124 @@ void TwitterApi::handlePlacesForTrendsFinished()
         emit placesForTrendsSuccessful(responseArray.toVariantList());
     } else {
         emit placesForTrendsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleUserListsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleUserListsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit userListsError(reply->errorString());
+}
+
+void TwitterApi::handleUserListsFinished()
+{
+    qDebug() << "TwitterApi::handleUserListsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit userListsSuccessful(responseArray.toVariantList());
+    } else {
+        emit userListsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleListsMembershipsError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleListsMembershipsError:" << (int)error << reply->errorString() << reply->readAll();
+    emit listsMembershipsError(reply->errorString());
+}
+
+void TwitterApi::handleListsMembershipsFinished()
+{
+    qDebug() << "TwitterApi::handleListsMembershipsFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit listsMembershipsSuccessful(responseObject.toVariantMap());
+    } else {
+        emit listsMembershipsError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleListMembersError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleListsMembersError:" << (int)error << reply->errorString() << reply->readAll();
+    emit listMembersError(reply->errorString());
+}
+
+void TwitterApi::handleListMembersFinished()
+{
+    qDebug() << "TwitterApi::handleListsMembersFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit listMembersSuccessful(responseObject.toVariantMap());
+    } else {
+        emit listMembersError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleListTimelineError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleListTimelineError:" << (int)error << reply->errorString() << reply->readAll();
+    emit listTimelineError(reply->errorString());
+}
+
+void TwitterApi::handleListTimelineFinished()
+{
+    qDebug() << "TwitterApi::handleListTimelineFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit listTimelineSuccessful(responseArray.toVariantList(), false);
+    } else {
+        emit listTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleListTimelineLoadMoreFinished()
+{
+    qDebug() << "TwitterApi::handleListTimelineLoadMoreFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit listTimelineSuccessful(responseArray.toVariantList(), true);
+    } else {
+        emit listTimelineError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 

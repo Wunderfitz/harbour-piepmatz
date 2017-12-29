@@ -85,6 +85,10 @@ Page {
         }
     }
 
+    function handleListsClicked() {
+        openTab("lists");
+    }
+
     function handleProfileClicked() {
         openTab("profile");
     }
@@ -140,6 +144,10 @@ Page {
             searchButtonText.color = Theme.primaryColor
             searchColumn.opacity = 0
             searchColumn.visible = false
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.primaryColor
+            listsButtonText.color = Theme.primaryColor
+            listsColumn.opacity = 0
+            listsColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
             profileView.opacity = 0
@@ -162,6 +170,10 @@ Page {
             searchButtonText.color = Theme.primaryColor
             searchColumn.opacity = 0
             searchColumn.visible = false
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.primaryColor
+            listsButtonText.color = Theme.primaryColor
+            listsColumn.opacity = 0
+            listsColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
             profileView.opacity = 0
@@ -184,6 +196,10 @@ Page {
             searchButtonText.color = Theme.primaryColor
             searchColumn.opacity = 0
             searchColumn.visible = false
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.primaryColor
+            listsButtonText.color = Theme.primaryColor
+            listsColumn.opacity = 0
+            listsColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
             profileView.opacity = 0
@@ -206,6 +222,36 @@ Page {
             searchButtonText.color = Theme.highlightColor
             searchColumn.visible = true
             searchColumn.opacity = 1
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.primaryColor
+            listsButtonText.color = Theme.primaryColor
+            listsColumn.opacity = 0
+            listsColumn.visible = false
+            profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
+            profileButtonText.color = Theme.primaryColor
+            profileView.opacity = 0
+            profileView.visible = false
+            break;
+        case "lists":
+            homeButtonImage.icon.source = "image://theme/icon-m-home?" + Theme.primaryColor
+            homeButtonText.color = Theme.primaryColor
+            homeView.opacity = 0
+            homeView.visible = false
+            notificationsButtonImage.icon.source = "image://theme/icon-m-alarm?" + Theme.primaryColor
+            notificationsButtonText.color = Theme.primaryColor
+            notificationsColumn.opacity = 0
+            notificationsColumn.visible = false
+            messagesButtonImage.icon.source = "image://theme/icon-m-mail?" + Theme.primaryColor
+            messagesButtonText.color = Theme.primaryColor
+            messagesColumn.opacity = 0
+            messagesColumn.visible = false
+            searchButtonImage.icon.source = "image://theme/icon-m-search?" + Theme.primaryColor
+            searchButtonText.color = Theme.primaryColor
+            searchColumn.opacity = 0
+            searchColumn.visible = false
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.highlightColor
+            listsButtonText.color = Theme.highlightColor
+            listsColumn.visible = true
+            listsColumn.opacity = 1
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.primaryColor
             profileButtonText.color = Theme.primaryColor
             profileView.opacity = 0
@@ -228,6 +274,10 @@ Page {
             searchButtonText.color = Theme.primaryColor
             searchColumn.opacity = 0
             searchColumn.visible = false
+            listsButtonImage.icon.source = "image://theme/icon-m-note?" + Theme.primaryColor
+            listsButtonText.color = Theme.primaryColor
+            listsColumn.opacity = 0
+            listsColumn.visible = false
             profileButtonImage.icon.source = "image://theme/icon-m-person?" + Theme.highlightColor
             profileButtonText.color = Theme.highlightColor
             profileView.visible = true
@@ -1390,6 +1440,52 @@ Page {
 
             }
 
+            Item {
+                id: listsColumn
+                opacity: 0
+                visible: false
+                width: parent.width
+                height: parent.height - getNavigationRowSize()
+                Behavior on opacity { NumberAnimation {} }
+
+                property bool updateInProgress: false;
+
+                SilicaListView {
+                    anchors {
+                        fill: parent
+                    }
+                    id: listsListView
+
+                    clip: true
+
+                    //model: listsModel
+                    //delegate: ...
+
+                    VerticalScrollDecorator {}
+                }
+
+                Column {
+                    anchors {
+                        fill: parent
+                    }
+
+                    id: listsUpdateInProgressColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: listsColumn.updateInProgress ? 1 : 0
+                    visible: listsColumn.updateInProgress ? true : false
+
+                    LoadingIndicator {
+                        id: listsLoadingIndicator
+                        visible: listsColumn.updateInProgress
+                        Behavior on opacity { NumberAnimation {} }
+                        opacity: listsColumn.updateInProgress ? 1 : 0
+                        height: parent.height
+                        width: parent.width
+                    }
+                }
+
+            }
+
             Column {
                 id: navigationRow
                 width: parent.width
@@ -1411,7 +1507,7 @@ Page {
                     width: parent.width
                     Item {
                         id: homeButtonColumn
-                        width: parent.width / 5
+                        width: parent.width / 6
                         height: parent.height - Theme.paddingMedium
                         Column {
                             anchors.fill: parent
@@ -1431,7 +1527,7 @@ Page {
                             Label {
                                 id: homeButtonText
                                 text: qsTr("Timeline")
-                                font.pixelSize: Theme.fontSizeTiny
+                                font.pixelSize: Theme.fontSizeTiny * 7 / 8
                                 color: Theme.primaryColor
                                 truncationMode: TruncationMode.Fade
                                 anchors {
@@ -1447,7 +1543,7 @@ Page {
 
                     Column {
                         id: notificationsButtonColumn
-                        width: parent.width / 5
+                        width: parent.width / 6
                         height: parent.height - navigationRowSeparator.height
                         IconButton {
                             id: notificationsButtonImage
@@ -1464,7 +1560,7 @@ Page {
                         Label {
                             id: notificationsButtonText
                             text: qsTr("Notifications")
-                            font.pixelSize: Theme.fontSizeTiny
+                            font.pixelSize: Theme.fontSizeTiny * 7 / 8
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Fade
                             anchors {
@@ -1478,7 +1574,7 @@ Page {
                     }
                     Column {
                         id: messagesButtonColumn
-                        width: parent.width / 5
+                        width: parent.width / 6
                         height: parent.height - navigationRowSeparator.height
                         IconButton {
                             id: messagesButtonImage
@@ -1495,7 +1591,7 @@ Page {
                         Label {
                             id: messagesButtonText
                             text: qsTr("Messages")
-                            font.pixelSize: Theme.fontSizeTiny
+                            font.pixelSize: Theme.fontSizeTiny * 7 / 8
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Fade
                             anchors {
@@ -1509,7 +1605,7 @@ Page {
                     }
                     Column {
                         id: searchButtonColumn
-                        width: parent.width / 5
+                        width: parent.width / 6
                         height: parent.height - navigationRowSeparator.height
                         IconButton {
                             id: searchButtonImage
@@ -1526,7 +1622,7 @@ Page {
                         Label {
                             id: searchButtonText
                             text: qsTr("Search")
-                            font.pixelSize: Theme.fontSizeTiny
+                            font.pixelSize: Theme.fontSizeTiny * 7 / 8
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Fade
                             anchors {
@@ -1538,9 +1634,42 @@ Page {
                             }
                         }
                     }
+
+                    Column {
+                        id: listsButtonColumn
+                        width: parent.width / 6
+                        height: parent.height - navigationRowSeparator.height
+                        IconButton {
+                            id: listsButtonImage
+                            height: Theme.iconSizeMedium
+                            width: Theme.iconSizeMedium
+                            icon.source: "image://theme/icon-m-note"
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            onClicked: {
+                                handleListsClicked();
+                            }
+                        }
+                        Label {
+                            id: listsButtonText
+                            text: qsTr("Lists")
+                            font.pixelSize: Theme.fontSizeTiny * 7 / 8
+                            color: Theme.primaryColor
+                            truncationMode: TruncationMode.Fade
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                            }
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: handleListsClicked();
+                            }
+                        }
+                    }
+
                     Column {
                         id: profileButtonColumn
-                        width: parent.width / 5
+                        width: parent.width / 6
                         height: parent.height - navigationRowSeparator.height
                         IconButton {
                             id: profileButtonImage
@@ -1557,7 +1686,7 @@ Page {
                         Label {
                             id: profileButtonText
                             text: qsTr("Profile")
-                            font.pixelSize: Theme.fontSizeTiny
+                            font.pixelSize: Theme.fontSizeTiny * 7 / 8
                             color: Theme.primaryColor
                             truncationMode: TruncationMode.Fade
                             anchors {

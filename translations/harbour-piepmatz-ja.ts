@@ -400,6 +400,10 @@
         <source>You have been retweeted!</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
