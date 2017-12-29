@@ -40,7 +40,7 @@ Item {
     property bool hasReference : false;
     property bool extendedMode : false;
     property bool withSeparator : true;
-    property bool truncateText : false;
+    property bool isRetweetMention : false;
 
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
@@ -69,8 +69,8 @@ Item {
                     source: "image://theme/icon-s-retweet"
                     visible: tweetModel.retweeted_status ? true : false
                     anchors.right: parent.right
-                    width: Theme.fontSizeExtraSmall
-                    height: Theme.fontSizeExtraSmall
+                    width: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                    height: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
                 }
                 Image {
                     id: tweetInReplyToImage
@@ -89,7 +89,7 @@ Item {
                     Image {
                         id: tweetAuthorPicture
                         z: 42
-                        source: Functions.findBiggerImage(tweetModel.retweeted_status ? tweetModel.retweeted_status.user.profile_image_url_https : tweetModel.user.profile_image_url_https )
+                        source: Functions.findBiggerImage(tweetModel.retweeted_status ? ( tweetElementItem.isRetweetMention ? tweetModel.user.profile_image_url_https : tweetModel.retweeted_status.user.profile_image_url_https ) : tweetModel.user.profile_image_url_https )
                         width: parent.width
                         height: parent.height
                         sourceSize {
@@ -152,9 +152,10 @@ Item {
                 Column {
                     Text {
                         id: tweetRetweetedText
-                        font.pixelSize: Theme.fontSizeTiny
-                        color: Theme.secondaryColor
-                        text: qsTr("Retweeted by %1").arg(tweetModel.user.name)
+                        font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
+                        color: tweetElementItem.isRetweetMention ? Theme.primaryColor : Theme.secondaryColor
+                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + tweetModel.user.name + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
+                        textFormat: Text.StyledText
                         visible: tweetModel.retweeted_status ? true : false
                         elide: Text.ElideRight
                         maximumLineCount: 1
@@ -189,12 +190,13 @@ Item {
                 TweetUser {
                     id: tweetUserRow
                     tweetUser: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
+                    visible: !tweetElementItem.isRetweetMention
                 }
 
                 TweetText {
                     id: tweetContentText
                     tweet: tweetModel
-                    truncateText: tweetElementItem.truncateText
+                    truncateText: tweetElementItem.isRetweetMention
                 }
 
                 Connections {

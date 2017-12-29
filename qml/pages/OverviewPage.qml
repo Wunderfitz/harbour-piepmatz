@@ -753,7 +753,7 @@ Page {
                     Tweet {
                         tweetModel: mentionsData
                         userId: overviewPage.myUser.id_str
-                        truncateText: truncateTweet
+                        isRetweetMention: isRetweet
                     }
                 }
 
@@ -778,7 +778,7 @@ Page {
                         Loader {
                             width: mentionsListView.width
                             property variant mentionsData: display
-                            property bool truncateTweet : display.retweeted_status ? (( display.retweeted_status.user.id_str === overviewPage.myUser.id_str ) ? true : false ) : false
+                            property bool isRetweet : display.retweeted_status ? (( display.retweeted_status.user.id_str === overviewPage.myUser.id_str ) ? true : false ) : false
 
                             sourceComponent: if (display.followed_at) {
                                                  mentionsData.description = qsTr("follows you now!");
