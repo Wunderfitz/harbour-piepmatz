@@ -547,7 +547,7 @@ Item {
 
                 TweetImageSlideshow {
                     id: tweetImageSlideshow
-                    visible: Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                    visible: !tweetElementItem.isRetweetMention && Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                     tweet: tweetModel
                 }
 
