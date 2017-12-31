@@ -330,7 +330,7 @@ Item {
                     }
                     Text {
                         id: tweetPlaceText
-                        width: parent.width
+                        width: parent.width - Theme.paddingSmall - tweetPlaceImage.width
                         font.pixelSize: Theme.fontSizeExtraSmall
                         elide: Text.ElideRight
                         maximumLineCount: 1
