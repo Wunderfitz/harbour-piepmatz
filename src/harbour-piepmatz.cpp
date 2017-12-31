@@ -40,6 +40,8 @@
 #include "imagesmodel.h"
 #include "directmessagesmodel.h"
 #include "trendsmodel.h"
+#include "ownlistsmodel.h"
+#include "membershiplistsmodel.h"
 #include "wagnis/wagnis.h"
 
 int main(int argc, char *argv[])
@@ -82,6 +84,12 @@ int main(int argc, char *argv[])
 
     TrendsModel trendsModel(twitterApi);
     context->setContextProperty("trendsModel", &trendsModel);
+
+    OwnListsModel ownListsModel(twitterApi);
+    context->setContextProperty("ownListsModel", &ownListsModel);
+
+    MembershipListsModel membershipListsModel(twitterApi);
+    context->setContextProperty("membershipListsModel", &membershipListsModel);
 
     view->setSource(SailfishApp::pathTo("qml/harbour-piepmatz.qml"));
     view->show();

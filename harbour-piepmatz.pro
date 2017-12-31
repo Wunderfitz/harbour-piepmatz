@@ -36,7 +36,9 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/imageprocessor.cpp \
     src/trendsmodel.cpp \
     src/locationinformation.cpp \
-    src/downloadresponsehandler.cpp
+    src/downloadresponsehandler.cpp \
+    src/ownlistsmodel.cpp \
+    src/membershiplistsmodel.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -103,7 +105,9 @@ HEADERS += \
     src/imageprocessor.h \
     src/trendsmodel.h \
     src/locationinformation.h \
-    src/downloadresponsehandler.h
+    src/downloadresponsehandler.h \
+    src/ownlistsmodel.h \
+    src/membershiplistsmodel.h
 
 DISTFILES += \
     qml/pages/VideoPage.qml
