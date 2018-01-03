@@ -155,7 +155,7 @@ function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUr
         }
     }
 
-    return tweetText;
+    return tweetText.replace(new RegExp("\r?\n", "g"), "<br>");
 }
 
 function handleLink(link) {

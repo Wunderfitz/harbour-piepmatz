@@ -362,7 +362,7 @@
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation></translation>
+        <translation>Sie wurden %1 mal erwähnt!</translation>
     </message>
     <message>
         <source>New Mention</source>
