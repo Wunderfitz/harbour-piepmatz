@@ -1448,13 +1448,97 @@ Page {
                 height: parent.height - getNavigationRowSize()
                 Behavior on opacity { NumberAnimation {} }
 
-                property bool updateInProgress: false;
+                property bool myListsInProgress : false;
+                property bool memberListsInProgress : false;
+
+                property bool memberListsSelected : false;
+
+                Row {
+                    id: listsTypeRow
+                    width: parent.width
+                    height: Theme.fontSizeLarge + Theme.paddingMedium
+                    anchors.top: listsColumn.top
+                    anchors.topMargin: Theme.paddingMedium
+                    opacity: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress || (myListsListView.count === 0 && memberListsListView.count === 0)) ? 0 : 1
+                    visible: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress || (myListsListView.count === 0 && memberListsListView.count === 0)) ? false : true
+                    Behavior on opacity { NumberAnimation {} }
+                    Text {
+                        id: listsTypeMy
+                        width: ( parent.width / 2 )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: listsColumn.memberListsSelected ? Theme.primaryColor : Theme.highlightColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
+                        text: qsTr("Subscribed")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (listsColumn.memberListsSelected) {
+                                    listsColumn.memberListsSelected = false;
+                                }
+                            }
+                        }
+                    }
+                    Separator {
+                        width: Theme.fontSizeMedium
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: Theme.paddingSmall
+                        transform: Rotation { angle: 90 }
+                    }
+                    Text {
+                        id: listsTypeMember
+                        width: ( parent.width / 2 ) - ( 2 * Theme.fontSizeMedium )
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: listsColumn.memberListsSelected ? Theme.highlightColor : Theme.primaryColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
+                        text: qsTr("Member")
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                if (!listsColumn.memberListsSelected) {
+                                    listsColumn.memberListsSelected = true;
+                                }
+                            }
+                        }
+                    }
+                }
 
                 SilicaListView {
                     anchors {
-                        fill: parent
+                        top: listsTypeRow.bottom
                     }
-                    id: listsListView
+                    id: myListsListView
+                    width: parent.width
+                    height: parent.height - listsTypeRow.height - Theme.paddingMedium
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    visible: false
+
+                    clip: true
+
+                    //model: listsModel
+                    //delegate: ...
+
+                    VerticalScrollDecorator {}
+                }
+
+                SilicaListView {
+                    anchors {
+                        top: listsTypeRow.bottom
+                    }
+                    id: memberListsListView
+                    width: parent.width
+                    height: parent.height - listsTypeRow.height - Theme.paddingMedium
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    visible: false
 
                     clip: true
 
@@ -1471,14 +1555,14 @@ Page {
 
                     id: listsUpdateInProgressColumn
                     Behavior on opacity { NumberAnimation {} }
-                    opacity: listsColumn.updateInProgress ? 1 : 0
-                    visible: listsColumn.updateInProgress ? true : false
+                    opacity: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ? 1 : 0
+                    visible: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ? true : false
 
                     LoadingIndicator {
                         id: listsLoadingIndicator
-                        visible: listsColumn.updateInProgress
+                        visible: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress )
                         Behavior on opacity { NumberAnimation {} }
-                        opacity: listsColumn.updateInProgress ? 1 : 0
+                        opacity: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ? 1 : 0
                         height: parent.height
                         width: parent.width
                     }
