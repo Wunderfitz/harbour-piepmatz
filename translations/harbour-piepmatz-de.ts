@@ -185,6 +185,36 @@
     </message>
 </context>
 <context>
+    <name>ListMembersPage</name>
+    <message>
+        <source>Refresh</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>%1: Members</source>
+        <translation>%1: Mitglieder</translation>
+    </message>
+</context>
+<context>
+    <name>ListTimelinePage</name>
+    <message>
+        <source>Refresh</source>
+        <translation>Aktualisieren</translation>
+    </message>
+    <message>
+        <source>%1: Timeline</source>
+        <translation>%1: Zeitleiste</translation>
+    </message>
+    <message>
+        <source>Show Members</source>
+        <translation>Mitglieder anzeigen</translation>
+    </message>
+    <message>
+        <source>Load more tweets</source>
+        <translation>Mehr Gezwitscher laden</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>

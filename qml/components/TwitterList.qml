@@ -32,7 +32,7 @@ ListItem {
     contentWidth: parent.width
 
     onClicked: {
-        // pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": userModel});
+        pageStack.push(Qt.resolvedUrl("../pages/ListTimelinePage.qml"), {"listId": listModel.id_str, "listName": listModel.name});
     }
 
     Column {
@@ -132,12 +132,6 @@ ListItem {
                     maximumLineCount: 1
                     width: parent.width
                     textFormat: Text.StyledText
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            //pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetUser});
-                        }
-                    }
                 }
 
                 Text {

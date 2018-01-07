@@ -185,6 +185,36 @@
     </message>
 </context>
 <context>
+    <name>ListMembersPage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Päivitä</translation>
+    </message>
+    <message>
+        <source>%1: Members</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ListTimelinePage</name>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished">Päivitä</translation>
+    </message>
+    <message>
+        <source>%1: Timeline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show Members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Load more tweets</source>
+        <translation type="unfinished">Lataa lisää tviittejä</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>

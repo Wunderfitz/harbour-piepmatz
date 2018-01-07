@@ -26,6 +26,7 @@ QVariant OwnListsModel::data(const QModelIndex &index, int role) const
 void OwnListsModel::update()
 {
     qDebug() << "OwnListsModel::update";
+    emit updateStarted();
     this->updateInProgress = true;
     this->twitterApi->userLists();
 }
@@ -33,7 +34,7 @@ void OwnListsModel::update()
 void OwnListsModel::handleUserListsSuccessful(const QVariantList &result)
 {
     qDebug() << "OwnListsModel::handleUerListsSuccessful";
-    if (!result.isEmpty() && this->updateInProgress) {
+    if (this->updateInProgress) {
         beginResetModel();
         this->ownLists.clear();
         this->ownLists.append(result);

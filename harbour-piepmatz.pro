@@ -110,4 +110,6 @@ HEADERS += \
     src/membershiplistsmodel.h
 
 DISTFILES += \
-    qml/pages/VideoPage.qml
+    qml/pages/VideoPage.qml \
+    qml/pages/ListTimelinePage.qml \
+    qml/pages/ListMembersPage.qml

@@ -26,6 +26,7 @@ QVariant MembershipListsModel::data(const QModelIndex &index, int role) const
 void MembershipListsModel::update()
 {
     qDebug() << "MembershipListsModel::update";
+    emit updateStarted();
     this->updateInProgress = true;
     this->twitterApi->listsMemberships();
 }
@@ -33,7 +34,7 @@ void MembershipListsModel::update()
 void MembershipListsModel::handleMembershipListsSuccessful(const QVariantMap &result)
 {
     qDebug() << "MembershipListsModel::handleMembershipListsSuccessful";
-    if (!result.isEmpty() && this->updateInProgress) {
+    if (this->updateInProgress) {
         beginResetModel();
         this->membershipLists.clear();
         this->membershipLists.append(result.value("lists").toList());
