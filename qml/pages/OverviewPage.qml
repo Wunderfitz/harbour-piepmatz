@@ -318,6 +318,8 @@ Page {
                 overviewPage.myUser = accountModel.getCurrentAccount();
                 directMessagesModel.setUserId(overviewPage.myUser.id_str);
                 directMessagesModel.update();
+                ownListsModel.update();
+                membershipListsModel.update();
                 overviewPage.initializationCompleted = true;
                 updateIpInfo();
                 ipInfoUpdater.start();
@@ -1453,6 +1455,32 @@ Page {
 
                 property bool memberListsSelected : false;
 
+                Connections {
+                    target: ownListsModel
+                    onUpdateStarted: {
+                        listsColumn.myListsInProgress = true;
+                    }
+                    onOwnListsRetrieved: {
+                        listsColumn.myListsInProgress = false;
+                    }
+                    onOwnListsError: {
+                        listsColumn.myListsInProgress = false;
+                    }
+                }
+
+                Connections {
+                    target: membershipListsModel
+                    onUpdateStarted: {
+                        listsColumn.memberListsInProgress = true;
+                    }
+                    onMembershipListsRetrieved: {
+                        listsColumn.memberListsInProgress = false;
+                    }
+                    onMembershipListsError: {
+                        listsColumn.memberListsInProgress = false;
+                    }
+                }
+
                 Row {
                     id: listsTypeRow
                     width: parent.width
@@ -1498,7 +1526,7 @@ Page {
                         color: listsColumn.memberListsSelected ? Theme.highlightColor : Theme.primaryColor
                         textFormat: Text.PlainText
                         anchors.top: parent.top
-                        text: qsTr("Member")
+                        text: qsTr("Member of")
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
@@ -1518,13 +1546,16 @@ Page {
                     width: parent.width
                     height: parent.height - listsTypeRow.height - Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
-
-                    visible: false
+                    opacity: ( !listsColumn.myListsInProgress && !listsColumn.memberListsSelected ) ? 1 : 0
+                    visible: ( !listsColumn.myListsInProgress && !listsColumn.memberListsSelected ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
 
                     clip: true
 
-                    //model: listsModel
-                    //delegate: ...
+                    model: ownListsModel
+                    delegate: TwitterList {
+                        listModel: display
+                    }
 
                     VerticalScrollDecorator {}
                 }
@@ -1537,13 +1568,16 @@ Page {
                     width: parent.width
                     height: parent.height - listsTypeRow.height - Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
-
-                    visible: false
+                    opacity: ( !listsColumn.memberListsInProgress && listsColumn.memberListsSelected ) ? 1 : 0
+                    visible: ( !listsColumn.memberListsInProgress && listsColumn.memberListsSelected ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
 
                     clip: true
 
-                    //model: listsModel
-                    //delegate: ...
+                    model: membershipListsModel
+                    delegate: TwitterList {
+                        listModel: display
+                    }
 
                     VerticalScrollDecorator {}
                 }
@@ -1565,6 +1599,37 @@ Page {
                         opacity: ( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ? 1 : 0
                         height: parent.height
                         width: parent.width
+                    }
+                }
+
+                Column {
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                    }
+                    width: parent.width
+
+                    id: listsNoResultsColumn
+                    Behavior on opacity { NumberAnimation {} }
+                    opacity: ( ((!listsColumn.memberListsSelected && myListsListView.count === 0) || (listsColumn.memberListsSelected && memberListsListView.count === 0)) && !( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ) ? 1 : 0
+                    visible: ( ((!listsColumn.memberListsSelected && myListsListView.count === 0) || (listsColumn.memberListsSelected && memberListsListView.count === 0)) && !( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ) ? true : false
+
+                    Image {
+                        id: listsNoResultsImage
+                        source: "../../images/piepmatz.svg"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                        }
+
+                        fillMode: Image.PreserveAspectFit
+                        width: 1/3 * parent.width
+                    }
+
+                    InfoLabel {
+                        id: listsNoResultsText
+                        text: qsTr("No lists found")
+                        color: Theme.primaryColor
+                        font.pixelSize: Theme.fontSizeLarge
+                        width: parent.width - 2 * Theme.horizontalPageMargin
                     }
                 }
 

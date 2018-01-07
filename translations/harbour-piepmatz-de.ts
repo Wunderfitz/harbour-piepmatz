@@ -406,11 +406,15 @@
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Abonniert</translation>
     </message>
     <message>
-        <source>Member</source>
-        <translation type="unfinished"></translation>
+        <source>No lists found</source>
+        <translation>Keine Listen gefunden</translation>
+    </message>
+    <message>
+        <source>Member of</source>
+        <translation>Mitglied von</translation>
     </message>
 </context>
 <context>
@@ -690,6 +694,17 @@
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+</context>
+<context>
+    <name>TwitterList</name>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
+        <translation>&lt;b&gt;%1&lt;/b&gt; von %2</translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation>%1 Mitglieder</translation>
     </message>
 </context>
 <context>

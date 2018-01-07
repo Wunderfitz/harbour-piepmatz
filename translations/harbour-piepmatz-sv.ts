@@ -409,7 +409,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Member</source>
+        <source>No lists found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Member of</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -692,6 +696,17 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     <message>
         <source>@%1</source>
         <translation>@%1</translation>
+    </message>
+</context>
+<context>
+    <name>TwitterList</name>
+    <message>
+        <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 members</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

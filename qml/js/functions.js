@@ -33,6 +33,8 @@ function updatePiepmatz() {
     timelineModel.update();
     mentionsModel.update();
     directMessagesModel.update();
+    ownListsModel.update();
+    membershipListsModel.update();
     // Updated via MentionsModel
     // accountModel.verifyCredentials();
 }
