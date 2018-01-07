@@ -446,6 +446,10 @@
         <source>Member of</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>
@@ -640,6 +644,21 @@
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsPage</name>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Positioning</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

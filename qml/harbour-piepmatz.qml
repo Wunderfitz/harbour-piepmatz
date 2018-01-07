@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017 Sebastian J. Wolf
+    Copyright (C) 2017-18 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -54,6 +54,11 @@ ApplicationWindow
     Component {
         id: registrationPage
         RegistrationPage {}
+    }
+
+    Component {
+        id: settingsPage
+        SettingsPage {}
     }
 
     initialPage: ( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage

@@ -112,4 +112,5 @@ HEADERS += \
 DISTFILES += \
     qml/pages/VideoPage.qml \
     qml/pages/ListTimelinePage.qml \
-    qml/pages/ListMembersPage.qml
+    qml/pages/ListMembersPage.qml \
+    qml/pages/SettingsPage.qml

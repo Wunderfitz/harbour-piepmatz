@@ -24,7 +24,7 @@ You get the Twitter client ID and client secret as soon as you've registered you
 ## Credits
 This project uses
 - OAuth for Qt, by Akos Polster. Available on [GitHub.com](https://github.com/pipacs/o2) - Thanks for making it available under the conditions of the BSD-2-Clause license! Details about the license of OAuth for Qt in [its license file](src/o2/LICENSE).
-- twitter-text, copyright 2014 Twitter, Inc. and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
+- twitter-text, copyright 2017 Twitter, Inc. and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
 - ipinfo.io to determine your location.
 
 Piepmatz was translated to several languages. Thanks to all contributors!

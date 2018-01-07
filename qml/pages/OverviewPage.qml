@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017 Sebastian J. Wolf
+    Copyright (C) 2017-18 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -508,6 +508,10 @@ Page {
                 onClicked: pageStack.push(aboutPage)
             }
             MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(settingsPage)
+            }
+            MenuItem {
                 text: qsTr("New Tweet")
                 enabled: overviewPage.tweetInProgress ? false : true
                 onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
@@ -527,6 +531,10 @@ Page {
                 text: qsTr("New Tweet")
                 enabled: overviewPage.tweetInProgress ? false : true
                 onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(settingsPage)
             }
             MenuItem {
                 text: qsTr("About Piepmatz")
