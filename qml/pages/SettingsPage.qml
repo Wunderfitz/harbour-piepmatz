@@ -39,12 +39,39 @@ Page {
                 title: qsTr("Settings")
             }
 
+            SectionHeader {
+                text: qsTr("Location")
+            }
+
             TextSwitch {
                 checked: locationInformation.isEnabled()
                 text: qsTr("Enable Positioning")
                 description: qsTr("Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging")
                 onCheckedChanged: {
                     locationInformation.setEnabled(checked);
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Images")
+            }
+
+            ComboBox {
+                id: imagesComboBox
+                label: qsTr("Image Style")
+                currentIndex: (accountModel.getImagePath() === "") ? 0 : 1
+                description: qsTr("Choose the active image style here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("Standard")
+                     }
+                     MenuItem {
+                        text: qsTr("Ferlanero")
+                     }
+                    onActivated: {
+                        var imagePath = ( index === 0 ? "" : "ferlanero/" );
+                        accountModel.setImagePath(imagePath);
+                    }
                 }
             }
 

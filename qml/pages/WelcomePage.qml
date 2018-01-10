@@ -35,7 +35,7 @@ Page {
 
         Image {
             id: wunderfitzErrorImage
-            source: "../../images/piepmatz.svg"
+            source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -77,7 +77,7 @@ Page {
 
         Image {
             id: wunderfitzPinImage
-            source: "../../images/piepmatz.svg"
+            source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -129,7 +129,7 @@ Page {
 
         Image {
             id: wunderfitzLinkingErrorImage
-            source: "../../images/piepmatz.svg"
+            source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -222,7 +222,7 @@ Page {
 
             Image {
                 id: wunderfitzImage
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

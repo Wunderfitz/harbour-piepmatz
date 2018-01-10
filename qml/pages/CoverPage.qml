@@ -47,6 +47,13 @@ CoverBackground {
         }
     }
 
+    Connections {
+        target: accountModel
+        onImageStyleChanged: {
+            backgroundImage.source = "../../images/" + accountModel.getImagePath() + "background.png";
+        }
+    }
+
     Column {
         id: loadingColumn
         width: parent.width - 2 * Theme.horizontalPageMargin
@@ -74,7 +81,8 @@ CoverBackground {
     }
 
     Image {
-        source: "../../images/background.png"
+        id: backgroundImage
+        source: "../../images/" + accountModel.getImagePath() + "background.png"
         anchors {
             verticalCenter: parent.verticalCenter
 

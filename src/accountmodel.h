@@ -25,6 +25,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QNetworkAccessManager>
+#include <QSettings>
 #include "o1twitter.h"
 #include "o1requestor.h"
 #include "twitterapi.h"
@@ -46,6 +47,8 @@ public:
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void unlink();
     Q_INVOKABLE QVariantMap getCurrentAccount();
+    Q_INVOKABLE QString getImagePath();
+    Q_INVOKABLE void setImagePath(const QString &imagePath);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -58,6 +61,7 @@ signals:
     void linkingSuccessful();
     void credentialsVerified();
     void verificationError(const QString &errorMessage);
+    void imageStyleChanged();
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);
@@ -77,6 +81,7 @@ private:
     TwitterApi *twitterApi;
     LocationInformation *locationInformation;
     Wagnis *wagnis;
+    QSettings settings;
 
     void obtainEncryptionKey();
 

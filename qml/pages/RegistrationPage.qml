@@ -103,7 +103,7 @@ Page {
 
             Image {
                 id: piepmatzImage
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
@@ -253,7 +253,7 @@ Page {
             spacing: Theme.paddingLarge
 
             Image {
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
@@ -319,7 +319,7 @@ Page {
             spacing: Theme.paddingLarge
 
             Image {
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
@@ -399,7 +399,7 @@ Page {
             }
 
             Image {
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

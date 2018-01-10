@@ -661,6 +661,30 @@
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
         <translation>Piepmatz erlauben, GPS/GLONASS/Galileo usw. zur Georeferenzierung von Gezwitscher zu verwenden</translation>
     </message>
+    <message>
+        <source>Location</source>
+        <translation>Ort</translation>
+    </message>
+    <message>
+        <source>Images</source>
+        <translation>Abbildungen</translation>
+    </message>
+    <message>
+        <source>Choose the active image style here</source>
+        <translation>Wählen Sie hier den aktiven Abbildungsstil aus</translation>
+    </message>
+    <message>
+        <source>Standard</source>
+        <translation>Standard</translation>
+    </message>
+    <message>
+        <source>Ferlanero</source>
+        <translation>Ferlanero</translation>
+    </message>
+    <message>
+        <source>Image Style</source>
+        <translation>Abbildungsstil</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

@@ -417,7 +417,7 @@ Page {
 
         Image {
             id: accountVerificationImage
-            source: "../../images/piepmatz.svg"
+            source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -451,7 +451,7 @@ Page {
 
         Image {
             id: verificationFailedImage
-            source: "../../images/piepmatz.svg"
+            source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
             anchors {
                 horizontalCenter: parent.horizontalCenter
             }
@@ -1112,7 +1112,7 @@ Page {
 
                     Image {
                         id: messagesNoResultsImage
-                        source: "../../images/piepmatz.svg"
+                        source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
@@ -1373,7 +1373,7 @@ Page {
 
                     Image {
                         id: searchNoResultsImage
-                        source: "../../images/piepmatz.svg"
+                        source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }
@@ -1627,7 +1627,7 @@ Page {
 
                     Image {
                         id: listsNoResultsImage
-                        source: "../../images/piepmatz.svg"
+                        source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                         anchors {
                             horizontalCenter: parent.horizontalCenter
                         }

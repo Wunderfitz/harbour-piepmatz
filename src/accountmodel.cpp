@@ -25,10 +25,13 @@
 #include <QFile>
 #include <QUuid>
 
+const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
+
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
     , o1(new O1Twitter(this))
     , manager(new QNetworkAccessManager(this))
+    , settings("harbour-piepmatz", "settings")
 {
     obtainEncryptionKey();
 
@@ -98,6 +101,17 @@ QVariantMap AccountModel::getCurrentAccount()
 {
     qDebug() << "AccountModel::getCurrentAccount" << this->availableAccounts.value(0).value("screen_name").toString();
     return this->availableAccounts.value(0);
+}
+
+QString AccountModel::getImagePath()
+{
+    return settings.value(SETTINGS_IMAGE_PATH, "").toString();
+}
+
+void AccountModel::setImagePath(const QString &imagePath)
+{
+    settings.setValue(SETTINGS_IMAGE_PATH, imagePath);
+    emit imageStyleChanged();
 }
 
 TwitterApi *AccountModel::getTwitterApi()

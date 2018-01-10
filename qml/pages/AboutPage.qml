@@ -41,7 +41,7 @@ Page {
 
             Image {
                 id: wunderfitzImage
-                source: "../../images/piepmatz.svg"
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

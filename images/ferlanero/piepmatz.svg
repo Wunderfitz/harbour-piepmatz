@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg4372"
+   viewBox="0 0 500.00001 500.00001"
+   height="500"
+   width="500"
+   sodipodi:docname="piepmatz.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1200"
+     inkscape:window-height="712"
+     id="namedview67"
+     showgrid="false"
+     inkscape:zoom="0.6675088"
+     inkscape:cx="251.43249"
+     inkscape:cy="291.72464"
+     inkscape:window-x="583"
+     inkscape:window-y="283"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4372" />
+  <defs
+     id="defs4374">
+    <filter
+       id="filter4279"
+       style="color-interpolation-filters:sRGB">
+      <feFlood
+         id="feFlood4281"
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.498039" />
+      <feComposite
+         id="feComposite4283"
+         result="composite1"
+         operator="in"
+         in2="SourceGraphic"
+         in="flood" />
+      <feGaussianBlur
+         id="feGaussianBlur4285"
+         result="blur"
+         stdDeviation="6.3"
+         in="composite1" />
+      <feOffset
+         id="feOffset4287"
+         result="offset"
+         dy="10"
+         dx="10" />
+      <feComposite
+         id="feComposite4289"
+         result="fbSourceGraphic"
+         operator="over"
+         in2="offset"
+         in="SourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix4291"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feFlood
+         in="fbSourceGraphic"
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.498039"
+         id="feFlood4293" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="fbSourceGraphic"
+         id="feComposite4295" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="6.3"
+         in="composite1"
+         id="feGaussianBlur4297" />
+      <feOffset
+         result="offset"
+         dy="10"
+         dx="10"
+         id="feOffset4299" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="fbSourceGraphic"
+         in2="offset"
+         id="feComposite4301" />
+    </filter>
+    <linearGradient
+       gradientTransform="matrix(1.953125,0,0,1.953125,-383.1049,-145.42772)"
+       inkscape:collect="always"
+       xlink:href="#linearGradient6940"
+       id="linearGradient6942"
+       x1="219.31392"
+       y1="129.85028"
+       x2="485.05164"
+       y2="321.60806"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient6940"
+       inkscape:collect="always">
+      <stop
+         id="stop6980"
+         offset="0"
+         style="stop-color:#6d8f96;stop-opacity:1;" />
+      <stop
+         id="stop6982"
+         offset="1"
+         style="stop-color:#6d8f96;stop-opacity:0;" />
+    </linearGradient>
+  </defs>
+  <metadata
+     id="metadata4377">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <circle
+     cy="250.09669"
+     cx="249.88976"
+     id="circle6801"
+     style="display:inline;opacity:1;fill:url(#linearGradient6942);fill-opacity:1;fill-rule:nonzero;stroke-width:0.83099121"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96"
+     r="250" />
+  <path
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#0dd2fb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.43826985;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     d="M 246.90204,39.743163 233.19551,53.906288 219.48895,46.824725 207.92407,64.74994 c -31.56895,6.713106 -53.87512,22.478223 -72.36096,47.39946 -32.33328,43.58928 -32.57984,118.79598 -32.57984,161.28535 0,42.48939 75.38603,56.65252 143.91877,56.65252 68.53277,0 143.9188,-14.16313 143.9188,-56.65252 0,-42.48937 -0.24672,-117.69607 -32.57986,-161.28535 C 339.75516,87.228163 317.44901,71.463046 285.88006,64.74994 L 274.31514,46.824725 260.6086,53.906288 Z"
+     id="path4808"
+     inkscape:connector-curvature="0"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <circle
+     style="display:inline;fill:#0dd2fb;fill-opacity:1;fill-rule:nonzero;stroke-width:0.64271969"
+     id="path6380"
+     cx="250.53981"
+     cy="251.28384"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96"
+     r="193.35938" />
+  <path
+     style="display:inline;opacity:1;fill:#95551c;fill-opacity:1;stroke:none;stroke-width:1.59275222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;enable-background:new"
+     d="m 204.86409,321.19346 c 8.86703,15.35822 25.24445,24.82945 42.97851,24.85506 17.7341,-0.024 34.11149,-9.49684 42.97854,-24.85506 H 247.8426 Z"
+     id="path4812"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     id="path4814"
+     d="m 247.8426,254.92946 v 74.54898 l -49.71006,-8.28504 c -7.37886,-0.002 -10.11431,-15.43261 -4.89855,-20.65213 l 48.75086,-43.20068 c 1.55373,-1.55439 3.66351,-2.40945 5.85775,-2.41113 z"
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#fbba1e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.59275222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccc"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ea8616;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.59275222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     d="m 247.8426,254.92946 v 74.54898 l 49.7101,-8.28498 c 7.37885,-0.002 10.11432,-15.43267 4.89853,-20.65219 l -48.75085,-43.20068 c -1.55374,-1.55439 -3.66356,-2.40945 -5.85778,-2.41113 z"
+     id="path4816"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccc"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     inkscape:connector-curvature="0"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484875;marker:none;enable-background:accumulate"
+     d="m 334.67711,190.65493 a 37.145578,32.936195 64.588071 0 0 -29.46281,27.43455 37.145578,32.936195 64.588071 0 0 -0.36865,6.68363 37.145578,32.936195 64.588071 0 1 0.36865,-5.0909 37.145578,32.936195 64.588071 0 1 38.57293,-26.32393 37.145578,32.936195 64.588071 0 1 28.48443,37.56342 37.145578,32.936195 64.588071 0 0 -28.48443,-39.15617 37.145578,32.936195 64.588071 0 0 -9.11012,-1.1106 z"
+     id="ellipse4918"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <ellipse
+     cy="133.8127"
+     cx="370.88684"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.7;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484922;marker:none;enable-background:accumulate"
+     id="ellipse4820"
+     transform="matrix(0.96571944,0.25958805,-0.1465798,0.98919885,0,0)"
+     rx="34.526909"
+     ry="35.671825"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     inkscape:connector-curvature="0"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.2;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484875;marker:none;enable-background:accumulate"
+     d="m 162.87452,190.25518 a 32.936189,37.145568 25.411943 0 0 -9.11012,1.11059 32.936189,37.145568 25.411943 0 0 -28.48442,39.15619 32.936189,37.145568 25.411944 0 1 28.48442,-37.56346 32.936189,37.145568 25.411944 0 1 38.57293,26.32396 32.936189,37.145568 25.411944 0 1 0.36861,5.09092 32.936189,37.145568 25.411943 0 0 -0.36861,-6.68365 32.936189,37.145568 25.411943 0 0 -29.46281,-27.43455 z"
+     id="ellipse4920"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <ellipse
+     ry="13.44449"
+     rx="8.593153"
+     cy="-149.15146"
+     cx="365.76752"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.76381908;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484875;marker:none;enable-background:accumulate"
+     id="ellipse4822"
+     transform="matrix(0.57347835,0.81922072,-0.80655379,0.59116071,0,0)"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <ellipse
+     cy="263.44882"
+     cx="-124.65004"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.7;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484922;marker:none;enable-background:accumulate"
+     id="ellipse4826"
+     transform="matrix(-0.96571944,0.25958806,0.14657984,0.98919884,0,0)"
+     rx="34.526901"
+     ry="35.671814"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <ellipse
+     ry="13.367941"
+     rx="8.5442247"
+     cy="-4.6547494"
+     cx="264.04404"
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;opacity:0.76381908;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:7.72484875;marker:none;enable-background:accumulate"
+     id="ellipse4828"
+     transform="matrix(0.57347835,0.81922072,-0.80655379,0.59116071,0,0)"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     inkscape:connector-curvature="0"
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.2;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.59275222;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     d="m 247.84258,254.92963 c -0.27451,2.4e-4 -0.54734,0.0156 -0.81816,0.0402 -0.17969,0.0176 -0.35621,0.0486 -0.53352,0.0775 -0.0801,0.0117 -0.16172,0.0201 -0.24109,0.0357 -1.60307,0.31029 -3.09252,1.08396 -4.26496,2.25691 l -48.7516,43.20053 c -1.99145,1.99287 -2.81668,5.47385 -2.67375,9.01678 0.13222,-2.96516 0.98271,-5.73178 2.67375,-7.42405 l 48.7516,-43.20027 c 1.17244,-1.17295 2.66189,-1.94668 4.26496,-2.25691 v 72.53556 l 1.59277,0.26608 v -72.95563 c 2.19422,0.002 4.30397,0.85651 5.8577,2.4109 l 48.75162,43.20043 c 1.69103,1.69227 2.54174,4.45889 2.67375,7.42404 0.14297,-3.54293 -0.68235,-7.0239 -2.67375,-9.01677 l -48.75162,-43.20034 c -1.55373,-1.55437 -3.66348,-2.40921 -5.8577,-2.41087 z"
+     id="path4904"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+  <path
+     sodipodi:nodetypes="ccscc"
+     inkscape:connector-curvature="0"
+     id="path4936"
+     d="m 247.35725,232.09526 v 219.01345 c 99.07455,0 160.2017,-60.39636 187.36666,-121.74369 11.57924,-26.14968 44.25041,-125.95371 -41.40945,-218.88824 -2.43813,-13.410275 -145.95721,-9.78955 -145.95721,121.61848 z"
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:0.1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.64560366;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     inkscape:export-filename="/home/ferlanero/Documentos/PIEPMATZ_ICON-0.1/ICONSET/Piepmatz-icon-0.8-1.noarch/usr/share/icons/hicolor/256x256/apps/harbour-piepmatz.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96" />
+</svg>
