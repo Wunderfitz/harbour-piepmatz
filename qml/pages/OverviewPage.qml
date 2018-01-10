@@ -1110,6 +1110,13 @@ Page {
                     opacity: messagesListView.count === 0 ? 1 : 0
                     visible: messagesListView.count === 0 ? true : false
 
+                    Connections {
+                        target: accountModel
+                        onImageStyleChanged: {
+                            messagesNoResultsImage.source = "../../images/" + accountModel.getImagePath() + "piepmatz.svg";
+                        }
+                    }
+
                     Image {
                         id: messagesNoResultsImage
                         source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
@@ -1371,6 +1378,13 @@ Page {
                     opacity: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) && !( trendsListView.count !== 0 && searchField.text === "" ) ) ? 1 : 0
                     visible: ( ((!searchColumn.usersSearchSelected && searchResultsListView.count === 0) || (searchColumn.usersSearchSelected && usersSearchResultsListView.count === 0)) && !( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress ) && !( trendsListView.count !== 0 && searchField.text === "" ) ) ? true : false
 
+                    Connections {
+                        target: accountModel
+                        onImageStyleChanged: {
+                            searchNoResultsImage.source = "../../images/" + accountModel.getImagePath() + "piepmatz.svg";
+                        }
+                    }
+
                     Image {
                         id: searchNoResultsImage
                         source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
@@ -1624,6 +1638,13 @@ Page {
                     Behavior on opacity { NumberAnimation {} }
                     opacity: ( ((!listsColumn.memberListsSelected && myListsListView.count === 0) || (listsColumn.memberListsSelected && memberListsListView.count === 0)) && !( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ) ? 1 : 0
                     visible: ( ((!listsColumn.memberListsSelected && myListsListView.count === 0) || (listsColumn.memberListsSelected && memberListsListView.count === 0)) && !( listsColumn.myListsInProgress || listsColumn.memberListsInProgress ) ) ? true : false
+
+                    Connections {
+                        target: accountModel
+                        onImageStyleChanged: {
+                            listsNoResultsImage.source = "../../images/" + accountModel.getImagePath() + "piepmatz.svg";
+                        }
+                    }
 
                     Image {
                         id: listsNoResultsImage
