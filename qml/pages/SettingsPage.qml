@@ -66,12 +66,42 @@ Page {
                         text: qsTr("Standard")
                      }
                      MenuItem {
-                        text: qsTr("Ferlanero")
+                        text: qsTr("Piepfish by @ferlanero")
                      }
                     onActivated: {
                         var imagePath = ( index === 0 ? "" : "ferlanero/" );
                         accountModel.setImagePath(imagePath);
                     }
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Accounts")
+            }
+
+            ComboBox {
+                id: accountsComboBox
+                label: qsTr("Account")
+                currentIndex: 0
+                description: qsTr("Choose the active account here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("@%1").arg(accountModel.getCurrentAccount().screen_name)
+                     }
+                    onActivated: {
+
+                    }
+                }
+            }
+
+            Button {
+                id: registerNewAccountButton
+                text: qsTr("Register New Account")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    accountModel.registerNewAccount();
                 }
             }
 

@@ -24,6 +24,8 @@
 
 #include <QFile>
 #include <QUuid>
+#include <QDir>
+#include <QStandardPaths>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 
@@ -48,6 +50,8 @@ AccountModel::AccountModel()
     wagnis = new Wagnis(manager, "harbour-piepmatz", "0.6", this);
     twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     locationInformation = new LocationInformation(this);
+
+    readOtherAccounts();
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
@@ -101,6 +105,16 @@ QVariantMap AccountModel::getCurrentAccount()
 {
     qDebug() << "AccountModel::getCurrentAccount" << this->availableAccounts.value(0).value("screen_name").toString();
     return this->availableAccounts.value(0);
+}
+
+QVariantList AccountModel::getOtherAccounts()
+{
+    return this->otherAccounts;
+}
+
+void AccountModel::registerNewAccount()
+{
+    qDebug() << "AccountModel::registerNewAccount";
 }
 
 QString AccountModel::getImagePath()
@@ -214,6 +228,23 @@ void AccountModel::obtainEncryptionKey()
          encryptionKey = QString(TWITTER_STORE_DEFAULT_ENCRYPTION_KEY);
     }
     qDebug() << "Using encryption key: " + encryptionKey;
+}
+
+void AccountModel::readOtherAccounts()
+{
+    this->otherAccounts.clear();
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz";
+    QDir configDirectory(configPath);
+    QStringList nameFilter("*.account");
+    QStringList accountFiles = configDirectory.entryList(nameFilter);
+    QStringListIterator accountFilesIterator(accountFiles);
+    while (accountFilesIterator.hasNext()) {
+        QString accountFileName = accountFilesIterator.next();
+        QRegExp accountFileMatcher("harbour\\-piepmatz\\-([\\w]+)\\.account");
+        if (accountFileMatcher.indexIn(accountFileName) != -1) {
+            this->otherAccounts.append(accountFileMatcher.cap(1));
+        }
+    }
 }
 
 int AccountModel::rowCount(const QModelIndex&) const {

@@ -678,12 +678,32 @@
         <translation>Standard</translation>
     </message>
     <message>
-        <source>Ferlanero</source>
-        <translation>Ferlanero</translation>
-    </message>
-    <message>
         <source>Image Style</source>
         <translation>Abbildungsstil</translation>
+    </message>
+    <message>
+        <source>Piepfish by @ferlanero</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Accounts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the active account here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>@%1</source>
+        <translation type="unfinished">@%1</translation>
+    </message>
+    <message>
+        <source>Register New Account</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -47,6 +47,8 @@ public:
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void unlink();
     Q_INVOKABLE QVariantMap getCurrentAccount();
+    Q_INVOKABLE QVariantList getOtherAccounts();
+    Q_INVOKABLE void registerNewAccount();
     Q_INVOKABLE QString getImagePath();
     Q_INVOKABLE void setImagePath(const QString &imagePath);
 
@@ -82,8 +84,10 @@ private:
     LocationInformation *locationInformation;
     Wagnis *wagnis;
     QSettings settings;
+    QVariantList otherAccounts;
 
     void obtainEncryptionKey();
+    void readOtherAccounts();
 
 };
 
