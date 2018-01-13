@@ -49,6 +49,7 @@ public:
     Q_INVOKABLE QVariantMap getCurrentAccount();
     Q_INVOKABLE QVariantList getOtherAccounts();
     Q_INVOKABLE void registerNewAccount();
+    Q_INVOKABLE void switchAccount(const QString &newAccountName);
     Q_INVOKABLE QString getImagePath();
     Q_INVOKABLE void setImagePath(const QString &imagePath);
 

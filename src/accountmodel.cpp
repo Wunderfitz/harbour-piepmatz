@@ -115,6 +115,24 @@ QVariantList AccountModel::getOtherAccounts()
 void AccountModel::registerNewAccount()
 {
     qDebug() << "AccountModel::registerNewAccount";
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
+    this->unlink();
+}
+
+void AccountModel::switchAccount(const QString &newAccountName)
+{
+    qDebug() << "AccountModel::switchAccount" << newAccountName;
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
+
+    // Reinitialize account...but how?
+
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db");
 }
 
 QString AccountModel::getImagePath()
@@ -162,6 +180,7 @@ void AccountModel::handleLinkingFailed()
 void AccountModel::handleLinkingSucceeded()
 {
     qDebug() << "Linking successful! :)";
+    readOtherAccounts();
     emit linkingSuccessful();
 }
 
@@ -232,16 +251,18 @@ void AccountModel::obtainEncryptionKey()
 
 void AccountModel::readOtherAccounts()
 {
+    qDebug() << "AccountModel::readOtherAccounts";
     this->otherAccounts.clear();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz";
     QDir configDirectory(configPath);
-    QStringList nameFilter("*.account");
+    QStringList nameFilter("*.conf");
     QStringList accountFiles = configDirectory.entryList(nameFilter);
     QStringListIterator accountFilesIterator(accountFiles);
     while (accountFilesIterator.hasNext()) {
         QString accountFileName = accountFilesIterator.next();
-        QRegExp accountFileMatcher("harbour\\-piepmatz\\-([\\w]+)\\.account");
+        QRegExp accountFileMatcher("harbour\\-piepmatz\\-([\\w]+)\\.conf");
         if (accountFileMatcher.indexIn(accountFileName) != -1) {
+            qDebug() << "Found other account: " + accountFileMatcher.cap(1);
             this->otherAccounts.append(accountFileMatcher.cap(1));
         }
     }

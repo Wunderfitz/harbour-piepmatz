@@ -25,6 +25,13 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
+    property variant allAccounts;
+
+    Component.onCompleted: {
+        allAccounts = [ accountModel.getCurrentAccount().screen_name ];
+        allAccounts = allAccounts.concat(accountModel.getOtherAccounts());
+    }
+
     SilicaFlickable {
         id: aboutContainer
         contentHeight: column.height
@@ -85,11 +92,17 @@ Page {
                 currentIndex: 0
                 description: qsTr("Choose the active account here")
                 menu: ContextMenu {
-                     MenuItem {
-                        text: qsTr("@%1").arg(accountModel.getCurrentAccount().screen_name)
-                     }
+                    Repeater {
+                        model: allAccounts
+                        delegate: MenuItem {
+                            text: qsTr("@%1").arg(modelData)
+                        }
+                    }
                     onActivated: {
-
+                        console.log("Account " + allAccounts[index] + " was selected");
+                        accountModel.switchAccount(allAccounts[index]);
+                        //pageStack.clear();
+                        //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
                     }
                 }
             }
@@ -102,6 +115,8 @@ Page {
                 }
                 onClicked: {
                     accountModel.registerNewAccount();
+                    pageStack.clear();
+                    pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
                 }
             }
 

@@ -361,12 +361,14 @@ void MentionsModel::processRawFollowers()
     }
 
     QStringList currentLastFollowers;
-    for (int j = 0; j < SETTINGS_MAX_NAMED_FOLLOWERS; j++) {
-        if (currentFollowers.size() < j) {
-            break;
+    if (!currentFollowers.isEmpty()) {
+        for (int j = 0; j < SETTINGS_MAX_NAMED_FOLLOWERS; j++) {
+            if (currentFollowers.size() < j) {
+                break;
+            }
+            QString lastFollower = currentFollowers.at(j).toMap().value("screen_name").toString();
+            currentLastFollowers.append(lastFollower);
         }
-        QString lastFollower = currentFollowers.at(j).toMap().value("screen_name").toString();
-        currentLastFollowers.append(lastFollower);
     }
     settings.setValue(SETTINGS_LAST_KNOWN_FOLLOWERS, currentLastFollowers);
 

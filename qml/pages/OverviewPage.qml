@@ -1480,11 +1480,9 @@ Page {
                 Connections {
                     target: ownListsModel
                     onUpdateStarted: {
-                        console.log("MY LISTS STARTED");
                         listsColumn.myListsInProgress = true;
                     }
                     onOwnListsRetrieved: {
-                        console.log("MY LISTS RECEIVED");
                         listsColumn.myListsInProgress = false;
                     }
                     onOwnListsError: {
@@ -1495,11 +1493,9 @@ Page {
                 Connections {
                     target: membershipListsModel
                     onUpdateStarted: {
-                        console.log("MEMBER LISTS STARTED");
                         listsColumn.memberListsInProgress = true;
                     }
                     onMembershipListsRetrieved: {
-                        console.log("MEMBER LISTS RECEIVED");
                         listsColumn.memberListsInProgress = false;
                     }
                     onMembershipListsError: {
