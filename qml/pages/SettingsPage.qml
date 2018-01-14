@@ -109,7 +109,7 @@ Page {
 
             Button {
                 id: registerNewAccountButton
-                text: qsTr("Register New Account")
+                text: qsTr("Login with other Account")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

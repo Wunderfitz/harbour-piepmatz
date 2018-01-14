@@ -683,27 +683,27 @@
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepfish von @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerkonten</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzerkonto</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie hier das aktive Benutzerkonto aus</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
-        <source>Register New Account</source>
-        <translation type="unfinished"></translation>
+        <source>Login with other Account</source>
+        <translation>Mit anderem Benutzerkonto anmelden</translation>
     </message>
 </context>
 <context>

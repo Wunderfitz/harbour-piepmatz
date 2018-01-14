@@ -704,7 +704,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation type="unfinished">@%1</translation>
     </message>
     <message>
-        <source>Register New Account</source>
+        <source>Login with other Account</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
