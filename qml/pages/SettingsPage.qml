@@ -101,8 +101,8 @@ Page {
                     onActivated: {
                         console.log("Account " + allAccounts[index] + " was selected");
                         accountModel.switchAccount(allAccounts[index]);
-                        //pageStack.clear();
-                        //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                        pageStack.clear();
+                        pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("survey") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
                     }
                 }
             }

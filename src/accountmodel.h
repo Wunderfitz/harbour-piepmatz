@@ -88,6 +88,7 @@ private:
     QVariantList otherAccounts;
 
     void obtainEncryptionKey();
+    void initializeEnvironment();
     void readOtherAccounts();
 
 };

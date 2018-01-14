@@ -35,26 +35,11 @@ AccountModel::AccountModel()
     , manager(new QNetworkAccessManager(this))
     , settings("harbour-piepmatz", "settings")
 {
-    obtainEncryptionKey();
-
-    O0SettingsStore *settings = new O0SettingsStore(encryptionKey);
-    o1->setStore(settings);
-    o1->setClientId(TWITTER_CLIENT_ID);
-    o1->setClientSecret(TWITTER_CLIENT_SECRET);
-    connect(o1, SIGNAL(pinRequestError(QString)), this, SLOT(handlePinRequestError(QString)));
-    connect(o1, SIGNAL(pinRequestSuccessful(QUrl)), this, SLOT(handlePinRequestSuccessful(QUrl)));
-    connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
-    connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
-
-    requestor = new O1Requestor(manager, o1, this);
     wagnis = new Wagnis(manager, "harbour-piepmatz", "0.6", this);
-    twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     locationInformation = new LocationInformation(this);
 
-    readOtherAccounts();
-
-    connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
-    connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
+    obtainEncryptionKey();
+    initializeEnvironment();
 }
 
 QVariant AccountModel::data(const QModelIndex &index, int role) const {
@@ -65,6 +50,25 @@ QVariant AccountModel::data(const QModelIndex &index, int role) const {
         return QVariant(availableAccounts.value(index.row()));
     }
     return QVariant();
+}
+
+void AccountModel::initializeEnvironment()
+{
+    O0SettingsStore *settings = new O0SettingsStore(encryptionKey);
+    o1->setStore(settings);
+    o1->setClientId(TWITTER_CLIENT_ID);
+    o1->setClientSecret(TWITTER_CLIENT_SECRET);
+    connect(o1, SIGNAL(pinRequestError(QString)), this, SLOT(handlePinRequestError(QString)));
+    connect(o1, SIGNAL(pinRequestSuccessful(QUrl)), this, SLOT(handlePinRequestSuccessful(QUrl)));
+    connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
+    connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
+
+    requestor = new O1Requestor(manager, o1, this);
+    twitterApi = new TwitterApi(requestor, manager, wagnis, this);
+    readOtherAccounts();
+
+    connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
+    connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
 }
 
 void AccountModel::obtainPinUrl()
@@ -118,7 +122,7 @@ void AccountModel::registerNewAccount()
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
-    this->unlink();
+    this->initializeEnvironment();
 }
 
 void AccountModel::switchAccount(const QString &newAccountName)
@@ -128,11 +132,12 @@ void AccountModel::switchAccount(const QString &newAccountName)
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
 
-    // Reinitialize account...but how?
-
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf");
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf");
     QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db");
+
+    this->initializeEnvironment();
+
 }
 
 QString AccountModel::getImagePath()
