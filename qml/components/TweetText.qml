@@ -20,7 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
-
+import "../js/twemoji.js" as Emoji
 
 Column {
     id: tweetTextColumn
@@ -33,7 +33,7 @@ Column {
     Text {
         width: parent.width
         id: tweetContentText
-        text: tweetTextColumn.truncateText ? Functions.getRelevantTweet(tweetTextColumn.tweet).full_text : Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities)
+        text: tweetTextColumn.truncateText ? Emoji.twemoji.parse(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall }) : Emoji.twemoji.parse(Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities), { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall })
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone

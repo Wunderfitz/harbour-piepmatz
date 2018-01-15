@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 Row {
 
@@ -34,7 +35,7 @@ Row {
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.primaryColor
-        text: tweetUser.name
+        text: Emoji.twemoji.parse(tweetUser.name, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall })
         elide: Text.ElideRight
         maximumLineCount: 1
         width: if (tweetUser.name.length > 25) { parent.width / 2 }
