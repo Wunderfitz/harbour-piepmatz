@@ -21,6 +21,7 @@ import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 Item {
     id: profileHeader
@@ -149,13 +150,14 @@ Item {
         }
         Text {
             id: profileNameText
-            text: profileModel.name
+            text: Emoji.emojify(profileModel.name, Theme.fontSizeMedium)
             font {
                 pixelSize: Theme.fontSizeMedium
                 bold: true
             }
             color: Theme.primaryColor
             elide: Text.ElideRight
+            textFormat: Text.StyledText
             maximumLineCount: 2
             width: parent.width - ( 2 * Theme.horizontalPageMargin ) - Theme.paddingSmall
             wrapMode: Text.Wrap

@@ -21,6 +21,7 @@ import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 Item {
 
@@ -154,7 +155,7 @@ Item {
                         id: tweetRetweetedText
                         font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
                         color: tweetElementItem.isRetweetMention ? Theme.primaryColor : Theme.secondaryColor
-                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + tweetModel.user.name + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
+                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + Emoji.emojify(tweetModel.user.name, Theme.fontSizeTiny) + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
                         textFormat: Text.StyledText
                         visible: tweetModel.retweeted_status ? true : false
                         elide: Text.ElideRight
@@ -173,7 +174,8 @@ Item {
                         id: tweetInReplyToText
                         font.pixelSize: Theme.fontSizeTiny
                         color: Theme.secondaryColor
-                        text: qsTr("In reply to %1").arg(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions))
+                        text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions, Theme.fontSizeTiny)))
+                        textFormat: Text.StyledText
                         visible: tweetModel.in_reply_to_user_id_str ? true : false
                         elide: Text.ElideRight
                         maximumLineCount: 1
@@ -262,7 +264,7 @@ Item {
                             visible: referenceMetadata.description ? true : false
                             width: parent.width
                             id: openGraphText
-                            text: referenceMetadata.description ? Functions.htmlDecode(referenceMetadata.description) : ""
+                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), Theme.fontSizeTiny) : ""
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
@@ -275,7 +277,7 @@ Item {
                             visible: referenceMetadata.url ? true : false
                             width: parent.width
                             id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\">" + Functions.htmlDecode(referenceMetadata.title) + "</a>"
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), Theme.fontSizeTiny) + "</a>"
                             font.pixelSize: Theme.fontSizeTiny
                             color: Theme.highlightColor
                             wrapMode: Text.Wrap

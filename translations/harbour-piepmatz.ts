@@ -79,6 +79,14 @@
         <source>Show Wagnis ID</source>
         <translation>Show Wagnis ID</translation>
     </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</translation>
+    </message>
+    <message>
+        <source>Open twemoji on GitHub</source>
+        <translation>Open twemoji on GitHub</translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>

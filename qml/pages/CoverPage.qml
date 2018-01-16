@@ -19,6 +19,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 CoverBackground {
 
@@ -142,7 +143,8 @@ CoverBackground {
                         color: Theme.primaryColor
                         font.pixelSize: Theme.fontSizeTiny
                         font.bold: true
-                        text: display.name
+                        text: Emoji.emojify(display.name, Theme.fontSizeTiny)
+                        textFormat: Text.StyledText
                         elide: Text.ElideRight
                     }
                 }
@@ -151,7 +153,7 @@ CoverBackground {
                     maximumLineCount: 2
                     color: Theme.primaryColor
                     font.pixelSize: Theme.fontSizeTiny
-                    text: display.text
+                    text: Emoji.emojify(display.text, Theme.fontSizeTiny)
                     textFormat: Text.StyledText
                     width: parent.width
                     wrapMode: Text.Wrap

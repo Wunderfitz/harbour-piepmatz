@@ -33,7 +33,7 @@ Column {
     Text {
         width: parent.width
         id: tweetContentText
-        text: tweetTextColumn.truncateText ? Emoji.twemoji.parse(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall }) : Emoji.twemoji.parse(Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities), { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall })
+        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeExtraSmall) : Emoji.emojify(Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities), Theme.fontSizeExtraSmall)
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone

@@ -25,6 +25,7 @@ import Nemo.Notifications 1.0
 
 import "../components"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 Page {
 
@@ -1011,7 +1012,8 @@ Page {
 
                                     Text {
                                         id: messageContactNameText
-                                        text: display.user.name
+                                        text: Emoji.emojify(display.user.name, Theme.fontSizeMedium)
+                                        textFormat: Text.StyledText
                                         font.pixelSize: Theme.fontSizeMedium
                                         color: Theme.primaryColor
                                         elide: Text.ElideRight
@@ -1024,18 +1026,19 @@ Page {
                                         spacing: Theme.paddingMedium
                                         Text {
                                             id: messageContactLastUserText
-                                            text: getLastUserOfConversation(display.user, display.messages)
+                                            text: Emoji.emojify(getLastUserOfConversation(display.user, display.messages), Theme.fontSizeExtraSmall)
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.highlightColor
+                                            textFormat: Text.StyledText
                                         }
                                         Text {
                                             id: messageContactLastMessageText
-                                            text: getLastMessageOfConversation(display.messages)
+                                            text: Emoji.emojify(getLastMessageOfConversation(display.messages), Theme.fontSizeExtraSmall)
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.primaryColor
                                             width: parent.width - Theme.paddingMedium - messageContactLastUserText.width
                                             elide: Text.ElideRight
-                                            textFormat: Text.PlainText
+                                            textFormat: Text.StyledText
                                         }
                                     }
 

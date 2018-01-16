@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 Item {
 
@@ -59,7 +60,7 @@ Item {
             width: parent.width
             id: tweetContentText
             visible: (tweetContentText.text !== "")
-            text: Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false)
+            text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), Theme.fontSizeExtraSmall)
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.primaryColor
             wrapMode: Text.Wrap

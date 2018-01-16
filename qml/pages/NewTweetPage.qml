@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 import "../js/twitter-text.js" as TwitterText
 import "../components"
 import "../js/functions.js" as Functions
-
+import "../js/twemoji.js" as Emoji
 
 Page {
     id: newTweetPage
@@ -376,7 +376,8 @@ Page {
                                         Row {
                                             spacing: Theme.paddingSmall
                                             Text {
-                                                text: modelData.name
+                                                text: Emoji.emojify(modelData.name, Theme.fontSizeExtraSmall)
+                                                textFormat: Text.StyledText
                                                 color: Theme.primaryColor
                                                 font.pixelSize: Theme.fontSizeExtraSmall
                                                 font.bold: true
@@ -392,7 +393,8 @@ Page {
                                             }
                                         }
                                         Text {
-                                            text: qsTr("@%1").arg(modelData.screen_name)
+                                            text: qsTr("@%1").arg(Emoji.emojify(modelData.screen_name, Theme.fontSizeExtraSmall))
+                                            textFormat: Text.StyledText
                                             color: Theme.primaryColor
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                         }

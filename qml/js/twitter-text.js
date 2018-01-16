@@ -1233,7 +1233,7 @@ var linkToTextWithSymbol = function (entity, symbol, text, attributes, options) 
   text = htmlEscape(text);
   var taggedText = options.textWithSymbolTag ? '<' + options.textWithSymbolTag + '>' + text + '</' + options.textWithSymbolTag + '>' : text;
 
-  if (options.usernameIncludeSymbol || !symbol.match(twttr.txt.regexen.atSigns)) {
+  if (options.usernameIncludeSymbol || !symbol.match(regexen.atSigns)) {
     return linkToText(entity, taggedSymbol + taggedText, attributes, options);
   } else {
     return taggedSymbol + linkToText(entity, taggedText, attributes, options);
@@ -1414,12 +1414,12 @@ var DEFAULT_CASHTAG_CLASS = 'tweet-url cashtag';
 var autoLinkEntities = function (text, entities, options) {
   var options = clone(options || {});
   options.hashtagClass = options.hashtagClass || DEFAULT_HASHTAG_CLASS;
-  options.hashtagUrlBase = options.hashtagUrlBase || 'https://twitter.com/search?q=%23';
+  options.hashtagUrlBase = options.hashtagUrlBase || 'tag://#';
   options.cashtagClass = options.cashtagClass || DEFAULT_CASHTAG_CLASS;
   options.cashtagUrlBase = options.cashtagUrlBase || 'https://twitter.com/search?q=%24';
   options.listClass = options.listClass || DEFAULT_LIST_CLASS;
   options.usernameClass = options.usernameClass || DEFAULT_USERNAME_CLASS;
-  options.usernameUrlBase = options.usernameUrlBase || 'https://twitter.com/';
+  options.usernameUrlBase = options.usernameUrlBase || 'profile://';
   options.listUrlBase = options.listUrlBase || 'https://twitter.com/';
   options.htmlAttrs = extractHtmlAttrsFromOptions(options);
   options.invisibleTagAttrs = options.invisibleTagAttrs || "style='position:absolute;left:-9999px;'";

@@ -24,10 +24,9 @@ You get the Twitter client ID and client secret as soon as you've registered you
 ## Credits
 This project uses
 - OAuth for Qt, by Akos Polster. Available on [GitHub.com](https://github.com/pipacs/o2) - Thanks for making it available under the conditions of the BSD-2-Clause license! Details about the license of OAuth for Qt in [its license file](src/o2/LICENSE).
-- twitter-text, copyright 2017 Twitter, Inc. and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
+- twitter-text, copyright 2017 Twitter, Inc and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
+- Emoji parsing and artwork by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/), copyright 2017 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 - ipinfo.io to determine your location.
-- Emoji parsing and artwork is provided by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/) Copyright 2017 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
-- Country flag Emoji artwork is provided by [Emojitwo](https://emojitwo.github.io/), originally released as [Emojione 2.2](https://www.emojione.com) by [Ranks.com](http://www.ranks.com) with contributions from the Emojitwo community and is licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)
 
 Piepmatz was translated to several languages. Thanks to all contributors!
 - Dutch: [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)

@@ -21,6 +21,7 @@ import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
 
 ListItem {
 
@@ -127,7 +128,7 @@ ListItem {
                     id: listNameText
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                    text: qsTr("<b>%1</b> by %2").arg(listModel.name).arg(listModel.user.name)
+                    text: qsTr("<b>%1</b> by %2").arg(Emoji.emojify(listModel.name, Theme.fontSizeExtraSmall)).arg(Emoji.emojify(listModel.user.name, Theme.fontSizeExtraSmall))
                     elide: Text.ElideRight
                     maximumLineCount: 1
                     width: parent.width

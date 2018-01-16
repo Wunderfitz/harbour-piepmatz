@@ -35,7 +35,8 @@ Row {
         font.pixelSize: Theme.fontSizeExtraSmall
         font.bold: true
         color: Theme.primaryColor
-        text: Emoji.twemoji.parse(tweetUser.name, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: Theme.fontSizeSmall })
+        text: Emoji.emojify(tweetUser.name, Theme.fontSizeExtraSmall)
+        textFormat: Text.StyledText
         elide: Text.ElideRight
         maximumLineCount: 1
         width: if (tweetUser.name.length > 25) { parent.width / 2 }

@@ -21,6 +21,8 @@ import QtGraphicalEffects 1.0
 import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
+import "../js/twemoji.js" as Emoji
+import "../js/twitter-text.js" as TwitterText
 
 Item {
 
@@ -185,7 +187,7 @@ Item {
 
             Text {
                 id: profileDescriptionText
-                text: Functions.enhanceDescription(profileModel.description);
+                text: Emoji.emojify(TwitterText.autoLink(profileModel.description, { usernameIncludeSymbol : true }), Theme.fontSizeExtraSmall)
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.primaryColor
                 wrapMode: Text.Wrap

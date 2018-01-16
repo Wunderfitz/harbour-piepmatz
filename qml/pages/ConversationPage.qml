@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../components"
 import "../js/functions.js" as Functions
 import "../js/twitter-text.js" as TwitterText
+import "../js/twemoji.js" as Emoji
 
 Page {
     id: conversationPage
@@ -117,7 +118,7 @@ Page {
                             }
 
                             id: messageText
-                            text: Functions.enhanceSimpleText(modelData.message_create.message_data.text, modelData.message_create.message_data.entities)
+                            text: Emoji.emojify(Functions.enhanceSimpleText(modelData.message_create.message_data.text, modelData.message_create.message_data.entities), Theme.fontSizeSmall)
                             font.pixelSize: Theme.fontSizeSmall
                             color: modelData.message_create.sender_id === conversationPage.myUserId ? Theme.highlightColor : Theme.primaryColor
                             wrapMode: Text.Wrap
