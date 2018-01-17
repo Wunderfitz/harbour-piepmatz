@@ -146,6 +146,13 @@ CoverBackground {
                         text: Emoji.emojify(display.name, Theme.fontSizeTiny)
                         textFormat: Text.StyledText
                         elide: Text.ElideRight
+                        onTruncatedChanged: {
+                            // There is obviously a bug in QML in truncating text with images.
+                            // We simply remove Emojis then...
+                            if (truncated) {
+                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                            }
+                        }
                     }
                 }
                 Text {
@@ -158,6 +165,13 @@ CoverBackground {
                     width: parent.width
                     wrapMode: Text.Wrap
                     elide: Text.ElideRight
+                    onTruncatedChanged: {
+                        // There is obviously a bug in QML in truncating text with images.
+                        // We simply remove Emojis then...
+                        if (truncated) {
+                            text = text.replace(/\<img [^>]+\/\>/g, "");
+                        }
+                    }
                 }
             }
         }

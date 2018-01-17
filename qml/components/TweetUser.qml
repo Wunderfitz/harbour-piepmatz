@@ -46,6 +46,13 @@ Row {
                 pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetUser});
             }
         }
+        onTruncatedChanged: {
+            // There is obviously a bug in QML in truncating text with images.
+            // We simply remove Emojis then...
+            if (truncated) {
+                text = text.replace(/\<img [^>]+\/\>/g, "");
+            }
+        }
     }
 
     Image {

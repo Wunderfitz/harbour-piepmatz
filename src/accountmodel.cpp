@@ -28,6 +28,7 @@
 #include <QStandardPaths>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
+const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
 
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -149,6 +150,16 @@ void AccountModel::setImagePath(const QString &imagePath)
 {
     settings.setValue(SETTINGS_IMAGE_PATH, imagePath);
     emit imageStyleChanged();
+}
+
+bool AccountModel::getUseEmoji()
+{
+    return settings.value(SETTINGS_USE_EMOJI, true).toBool();
+}
+
+void AccountModel::setUseEmoji(const bool &useEmoji)
+{
+    settings.setValue(SETTINGS_USE_EMOJI, useEmoji);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

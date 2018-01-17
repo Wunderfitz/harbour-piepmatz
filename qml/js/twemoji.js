@@ -568,5 +568,9 @@ var twemoji = (function (
 }());
 
 function emojify(rawText, emojiSize) {
-    return twemoji.parse(rawText, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: emojiSize })
+    if (accountModel.getUseEmoji()) {
+        return twemoji.parse(rawText, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: emojiSize });
+    } else {
+        return rawText;
+    }
 }

@@ -715,6 +715,14 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <source>Login with other Account</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use Twitter Emoji</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Twitter Emoji instead of system font</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

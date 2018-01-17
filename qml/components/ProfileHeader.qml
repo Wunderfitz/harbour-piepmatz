@@ -161,6 +161,13 @@ Item {
             maximumLineCount: 2
             width: parent.width - ( 2 * Theme.horizontalPageMargin ) - Theme.paddingSmall
             wrapMode: Text.Wrap
+            onTruncatedChanged: {
+                // There is obviously a bug in QML in truncating text with images.
+                // We simply remove Emojis then...
+                if (truncated) {
+                    text = text.replace(/\<img [^>]+\/\>/g, "");
+                }
+            }
         }
         Text {
             id: profileScreenNameText

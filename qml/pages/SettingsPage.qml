@@ -63,6 +63,15 @@ Page {
                 text: qsTr("Images")
             }
 
+            TextSwitch {
+                checked: accountModel.getUseEmoji()
+                text: qsTr("Use Twitter Emoji")
+                description: qsTr("Use Twitter Emoji instead of system font")
+                onCheckedChanged: {
+                    accountModel.setUseEmoji(checked);
+                }
+            }
+
             ComboBox {
                 id: imagesComboBox
                 label: qsTr("Image Style")

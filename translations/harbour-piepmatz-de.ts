@@ -713,6 +713,14 @@
         <source>Login with other Account</source>
         <translation>Mit anderem Benutzerkonto anmelden</translation>
     </message>
+    <message>
+        <source>Use Twitter Emoji</source>
+        <translation>Twitter-Emoji verwenden</translation>
+    </message>
+    <message>
+        <source>Use Twitter Emoji instead of system font</source>
+        <translation>Twitter-Emoji anstelle der System-Schriftart verwenden</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

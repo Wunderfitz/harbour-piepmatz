@@ -133,6 +133,13 @@ ListItem {
                     maximumLineCount: 1
                     width: parent.width
                     textFormat: Text.StyledText
+                    onTruncatedChanged: {
+                        // There is obviously a bug in QML in truncating text with images.
+                        // We simply remove Emojis then...
+                        if (truncated) {
+                            text = text.replace(/\<img [^>]+\/\>/g, "");
+                        }
+                    }
                 }
 
                 Text {

@@ -52,6 +52,8 @@ public:
     Q_INVOKABLE void switchAccount(const QString &newAccountName);
     Q_INVOKABLE QString getImagePath();
     Q_INVOKABLE void setImagePath(const QString &imagePath);
+    Q_INVOKABLE bool getUseEmoji();
+    Q_INVOKABLE void setUseEmoji(const bool &useEmoji);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();

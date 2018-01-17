@@ -384,6 +384,13 @@ Page {
                                                 elide: Text.ElideRight
                                                 maximumLineCount: 1
                                                 width: if (modelData.name.length > 20) { atMentioningColumn.width / 2 }
+                                                onTruncatedChanged: {
+                                                    // There is obviously a bug in QML in truncating text with images.
+                                                    // We simply remove Emojis then...
+                                                    if (truncated) {
+                                                        text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                    }
+                                                }
                                             }
                                             Image {
                                                 source: "image://theme/icon-s-installed"
@@ -393,7 +400,7 @@ Page {
                                             }
                                         }
                                         Text {
-                                            text: qsTr("@%1").arg(Emoji.emojify(modelData.screen_name, Theme.fontSizeExtraSmall))
+                                            text: qsTr("@%1").arg(modelData.screen_name)
                                             textFormat: Text.StyledText
                                             color: Theme.primaryColor
                                             font.pixelSize: Theme.fontSizeExtraSmall

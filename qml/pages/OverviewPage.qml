@@ -1018,6 +1018,13 @@ Page {
                                         color: Theme.primaryColor
                                         elide: Text.ElideRight
                                         width: parent.width
+                                        onTruncatedChanged: {
+                                            // There is obviously a bug in QML in truncating text with images.
+                                            // We simply remove Emojis then...
+                                            if (truncated) {
+                                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                                            }
+                                        }
                                     }
 
                                     Row {
@@ -1030,6 +1037,13 @@ Page {
                                             font.pixelSize: Theme.fontSizeExtraSmall
                                             color: Theme.highlightColor
                                             textFormat: Text.StyledText
+                                            onTruncatedChanged: {
+                                                // There is obviously a bug in QML in truncating text with images.
+                                                // We simply remove Emojis then...
+                                                if (truncated) {
+                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                }
+                                            }
                                         }
                                         Text {
                                             id: messageContactLastMessageText
@@ -1039,6 +1053,13 @@ Page {
                                             width: parent.width - Theme.paddingMedium - messageContactLastUserText.width
                                             elide: Text.ElideRight
                                             textFormat: Text.StyledText
+                                            onTruncatedChanged: {
+                                                // There is obviously a bug in QML in truncating text with images.
+                                                // We simply remove Emojis then...
+                                                if (truncated) {
+                                                    text = text.replace(/\<img [^>]+\/\>/g, "");
+                                                }
+                                            }
                                         }
                                     }
 
