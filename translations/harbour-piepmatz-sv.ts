@@ -573,88 +573,28 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen måste behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt;.</translation>
     </message>
     <message>
-        <source>Survey about Piepmatz</source>
-        <translation>Enkät om Piepmatz</translation>
-    </message>
-    <message>
-        <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
-        <translation>Innan du börjar med Piepmatz, hade det varit bra om du kunde svara på följande enkät. Din data, liksom registreringen, bearbetas helt anonymt.</translation>
-    </message>
-    <message>
-        <source>Would you pay for Piepmatz?</source>
-        <translation>Skulle du betala för Piepmatz?</translation>
-    </message>
-    <message>
-        <source>Please select an option...</source>
-        <translation>Välj ett alternativ...</translation>
-    </message>
-    <message>
-        <source>Yes, more than 10 Euro</source>
-        <translation>Ja, mer än 10 euro</translation>
-    </message>
-    <message>
-        <source>No, I wouldn&apos;t pay for Piepmatz.</source>
-        <translation>Nej, jag skulle inte betala för Piepmatz.</translation>
-    </message>
-    <message>
-        <source>No, but for my other device.</source>
-        <translation>Nej, men för min andra enhet.</translation>
-    </message>
-    <message>
-        <source>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</source>
-        <translation>Piepmatz kommer att förbli öppen källkodsmjukvara. Jag överväger dock att be dig om ett bidrag innan du kan köra Piepmatz, i en framtida version. Så, skulle du betala för Piepmatz och i så fall hur mycket?</translation>
-    </message>
-    <message>
-        <source>Options: </source>
-        <translation>Alternativ:</translation>
-    </message>
-    <message>
-        <source>Enter the Wagnis ID of Piepmatz on the other device</source>
-        <translation>Ange Piepmatz Wagnis-ID på den andra enheten</translation>
-    </message>
-    <message>
-        <source>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</source>
-        <translation>Starta bara Piepmatz på den andra enheten och gå till &quot;Om Piepmatz&quot;. Wagnis-ID är listat där.</translation>
-    </message>
-    <message>
-        <source>Yes, between 8 and 10 Euro</source>
-        <translation>Ja, mellan 8 och 10 euro</translation>
-    </message>
-    <message>
-        <source>Yes, between 6 and 8 Euro</source>
-        <translation>Ja, mellan 6 och 8 euro</translation>
-    </message>
-    <message>
-        <source>Yes, between 4 and 6 Euro</source>
-        <translation>Ja, mellan 4 och 6 euro</translation>
-    </message>
-    <message>
-        <source>Yes, between 2 and 4 Euro</source>
-        <translation>Ja, mellan 2 och 4 euro</translation>
-    </message>
-    <message>
-        <source>Yes, maximum 2 Euro</source>
-        <translation>Ja, max 2 euro</translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation>Skicka</translation>
-    </message>
-    <message>
-        <source>Skip Survey</source>
-        <translation>Hoppa över enkäten</translation>
-    </message>
-    <message>
-        <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
-        <translation>Du kan hoppa över enkäten %1, om du vill testa Piepmatz innan du svarar på frågan.</translation>
-    </message>
-    <message>
         <source>Show Registration Data</source>
         <translation>Visa registreringsdata</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
         <translation>Data delas inte med någon annan. Läs den &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;juridiska förklaringen&lt;/a&gt; för mer information om hur data bearbetas. Fler detaljer om motivet till detta, den unika identifikationen och hur den genereras hittar du på min sida &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>Development Contribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please contribute to Piepmatz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue Testing</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

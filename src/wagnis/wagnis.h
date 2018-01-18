@@ -30,6 +30,7 @@ public:
     Q_INVOKABLE QString getId();
     Q_INVOKABLE QString getCandidateRegistrationData();
     Q_INVOKABLE void registerApplication();
+    Q_INVOKABLE void resetRegistration();
     Q_INVOKABLE void getApplicationRegistration();
     Q_INVOKABLE bool isRegistered();
     Q_INVOKABLE bool hasFeature(const QString &featureName);

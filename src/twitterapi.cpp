@@ -37,7 +37,7 @@ void TwitterApi::verifyCredentials()
 {
     qDebug() << "TwitterApi::verifyCredentials";
 
-    if (!wagnis->hasFeature("survey") && wagnis->getRemainingTime() == 0) {
+    if (!wagnis->hasFeature("contribution") && wagnis->getRemainingTime() == 0) {
         emit verifyCredentialsError("You haven't completed the registration process!");
         return;
     }

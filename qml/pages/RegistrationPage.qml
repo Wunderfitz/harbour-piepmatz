@@ -29,8 +29,8 @@ Page {
 
     Component.onCompleted: {
         if (wagnis.isRegistered()) {
-            surveyFlickable.visible = true;
-            surveyFlickable.opacity = 1;
+            contributionFlickable.visible = true;
+            contributionFlickable.opacity = 1;
         } else {
             registrationFlickable.visible = true;
             registrationFlickable.opacity = 1;
@@ -51,12 +51,12 @@ Page {
         }
         onRegistrationValid: {
             registrationPage.registrationLoading = false;
-            if (wagnis.hasFeature("survey")) {
+            if (wagnis.hasFeature("contribution")) {
                 pageStack.clear();
                 accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage);
             } else {
-                surveyFlickable.visible = true;
-                surveyFlickable.opacity = 1;
+                contributionFlickable.visible = true;
+                contributionFlickable.opacity = 1;
             }
         }
     }
@@ -372,9 +372,9 @@ Page {
     }
 
     SilicaFlickable {
-        id: surveyFlickable
+        id: contributionFlickable
         anchors.fill: parent
-        contentHeight: surveyColumn.height
+        contentHeight: contributionColumn.height
         Behavior on opacity { NumberAnimation {} }
         visible: false
         opacity: 0
@@ -384,18 +384,18 @@ Page {
 
         onVisibleChanged: {
             if (visible) {
-                surveyFlickable.canSkip = wagnis.inTestingPeriod();
-                surveyFlickable.remainingTime = Functions.getTimeRemaining(wagnis.getRemainingTime());
+                contributionFlickable.canSkip = wagnis.inTestingPeriod();
+                contributionFlickable.remainingTime = Functions.getTimeRemaining(wagnis.getRemainingTime());
             }
         }
 
         Column {
-            id: surveyColumn
+            id: contributionColumn
             width: parent.width
             spacing: Theme.paddingLarge
 
             PageHeader {
-                title: qsTr("Survey about Piepmatz")
+                title: qsTr("Development Contribution")
             }
 
             Image {
@@ -408,23 +408,8 @@ Page {
                 width: 1/2 * parent.width
             }
 
-            Text {
-                wrapMode: Text.Wrap
-                x: Theme.horizontalPageMargin
-                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                horizontalAlignment: Text.AlignJustify
-                text: qsTr("Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.")
-                font.pixelSize: Theme.fontSizeSmall
-                linkColor: Theme.highlightColor
-                color: Theme.primaryColor
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                }
-                onLinkActivated: Qt.openUrlExternally(link)
-            }
-
             SectionHeader {
-                text: qsTr("Would you pay for Piepmatz?")
+                text: qsTr("Please contribute to Piepmatz")
             }
 
             Text {
@@ -432,7 +417,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("Piepmatz will remain open source software. However, I'm considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?")
+                text: "Piepmatz will remain open source software. However, I'd like to ask you for a contribution before you can run Piepmatz. The contribution feature will be added later. If you want to run Piepmatz in the meantime, please <a href=\"mailto:sebastian@ygriega.de\">contact me</a>."
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -442,111 +427,45 @@ Page {
                 onLinkActivated: Qt.openUrlExternally(link)
             }
 
-            ComboBox {
-                id: contributionQuestionCombobox
-                label: qsTr("Options: ")
-                menu: ContextMenu {
-                    MenuItem {
-                        text: qsTr("Please select an option...")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, more than 10 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, between 8 and 10 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, between 6 and 8 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, between 4 and 6 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, between 2 and 4 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("Yes, maximum 2 Euro")
-                    }
-                    MenuItem {
-                        text: qsTr("No, I wouldn't pay for Piepmatz.")
-                    }
-                    MenuItem {
-                        text: qsTr("No, but for my other device.")
-                    }
-                }
-            }
-
-            Text {
-                visible: ( contributionQuestionCombobox.currentIndex === 8 ) ? true : false
-                wrapMode: Text.Wrap
-                x: Theme.horizontalPageMargin
-                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                horizontalAlignment: Text.AlignJustify
-                text: qsTr("Simply open Piepmatz on the other device and access the 'About Piepmatz' page. The Wagnis ID is listed there.")
-                font.pixelSize: Theme.fontSizeExtraSmall
-                linkColor: Theme.highlightColor
-                color: Theme.primaryColor
+            Label {
+                id: wagnisIdLabel
+                text: "Wagnis ID: " + wagnis.getId()
+                font.pixelSize: Theme.fontSizeSmall
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-                onLinkActivated: Qt.openUrlExternally(link)
+                visible: false
             }
-
-            Column {
-                width: parent.width
-                visible: ( contributionQuestionCombobox.currentIndex === 8 ) ? true : false
-
-                TextField {
-                    id: wagnisIdTextField
-                    width: parent.width
-                    labelVisible: false
-                    placeholderText: "1234-5678-90ab-cdef"
-                }
-
-                Text {
-                    text: qsTr("Enter the Wagnis ID of Piepmatz on the other device")
-                    color: Theme.primaryColor
-                    font.pixelSize: Theme.fontSizeTiny
-                    anchors.left: parent.left
-                    anchors.leftMargin: Theme.horizontalPageMargin
-                }
-            }
-
             Button {
-                enabled: {
-                    if ( contributionQuestionCombobox.currentIndex === 0 ) {
-                        false;
-                    } else {
-                        if ( contributionQuestionCombobox.currentIndex !== 8) {
-                            true;
-                        } else {
-                            if (wagnisIdTextField.text.match(/^[\da-f]{4}\-[\da-f]{4}\-[\da-f]{4}\-[\da-f]{4}$/)) {
-                                true;
-                            } else {
-                                false;
-                            }
-                        }
-                    }
-                }
-                text: qsTr("Send")
+                id: showWagnisIdButton
+                text: "Show Wagnis ID"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    wagnis.sendSurvey(contributionQuestionCombobox.currentIndex, wagnisIdTextField.text);
-                    registrationPage.registrationLoading = true;
-                    surveyFlickable.opacity = 0;
-                    surveyFlickable.visible = false;
+                    showWagnisIdButton.visible = false;
+                    wagnisIdLabel.visible = true;
+                }
+            }
+
+            Button {
+                id: resetRegistrationButton
+                text: "Reset Registration"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    wagnis.resetRegistration();
                 }
             }
 
             Text {
-                visible: surveyFlickable.canSkip
+                visible: contributionFlickable.canSkip
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("You can skip the survey for %1 if you want to test Piepmatz before answering the question.").arg(surveyFlickable.remainingTime)
+                text: qsTr("You can skip the contribution for %1 if you want to test Piepmatz before.").arg(contributionFlickable.remainingTime)
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -557,8 +476,8 @@ Page {
             }
 
             Button {
-                visible: surveyFlickable.canSkip
-                text: qsTr("Skip Survey")
+                visible: contributionFlickable.canSkip
+                text: qsTr("Continue Testing")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }

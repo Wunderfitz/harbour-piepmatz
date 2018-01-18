@@ -571,87 +571,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Survey about Piepmatz</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Before you can get started with Piepmatz, it would be great if you could answer the following survey. Like the registration, your data is processed anonymously.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Would you pay for Piepmatz?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Please select an option...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, more than 10 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No, I wouldn&apos;t pay for Piepmatz.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No, but for my other device.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Piepmatz will remain open source software. However, I&apos;m considering to ask you for a contribution before you can run Piepmatz in a future version. So, would you pay for Piepmatz and if yes, how much?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Options: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enter the Wagnis ID of Piepmatz on the other device</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Simply open Piepmatz on the other device and access the &apos;About Piepmatz&apos; page. The Wagnis ID is listed there.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, between 8 and 10 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, between 6 and 8 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, between 4 and 6 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, between 2 and 4 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Yes, maximum 2 Euro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Send</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Skip Survey</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You can skip the survey for %1 if you want to test Piepmatz before answering the question.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Show Registration Data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Development Contribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Please contribute to Piepmatz</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Continue Testing</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

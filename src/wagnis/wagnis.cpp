@@ -72,6 +72,16 @@ void Wagnis::registerApplication()
     connect(reply, SIGNAL(finished()), this, SLOT(handleRegisterApplicationFinished()));
 }
 
+void Wagnis::resetRegistration()
+{
+    qDebug() << "Wagnis::resetRegistration";
+    QFile registrationFile(getRegistrationFileName());
+    if (registrationFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "[Wagnis] Removing registration file from " + registrationFile.fileName();
+        registrationFile.remove();
+    }
+}
+
 void Wagnis::getApplicationRegistration()
 {
     qDebug() << "Wagnis::getApplicationRegistration";
