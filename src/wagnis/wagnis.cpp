@@ -48,6 +48,11 @@ QString Wagnis::getId()
     return this->wagnisId;
 }
 
+QString Wagnis::getPocId()
+{
+    return this->wagnisPocId;
+}
+
 QString Wagnis::getCandidateRegistrationData()
 {
     qDebug() << "Wagnis::getCandidateRegistrationData";
@@ -174,45 +179,77 @@ void Wagnis::generateId()
     QCryptographicHash idHash(QCryptographicHash::Sha256);
 
     // If we are on a device which you still can use as a telephone, there's at least one IMEI
-    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
-    QDBusInterface dbusInterface("org.ofono", "/", "org.nemomobile.ofono.ModemManager", dbusConnection);
-    QDBusMessage reply = dbusInterface.call(QLatin1String("GetIMEI"));
-    QList<QVariant> imeiResponseList = reply.arguments();
-    QListIterator<QVariant> imeiResponseIterator(imeiResponseList);
-    while (imeiResponseIterator.hasNext()) {
-        QList<QVariant> imeiList = imeiResponseIterator.next().toList();
-        qDebug() << "[Wagnis] We found " + QString::number(imeiList.size()) + " IMEI(s).";
-        QListIterator<QVariant> imeiListIterator(imeiList);
-        while (imeiListIterator.hasNext()) {
-            QString imei = imeiListIterator.next().toString();
-            qDebug() << "[Wagnis] Using IMEI " + imei + " for the ID";
-            idHash.addData(imei.toUtf8());
-        }
+    QStringList imeis = getImeis();
+    QListIterator<QString> imeiIterator(imeis);
+    while (imeiIterator.hasNext()) {
+        QString imei = imeiIterator.next();
+        qDebug() << "[Wagnis] Using IMEI " + imei + " for the ID";
+        idHash.addData(imei.toUtf8());
     }
 
     // On devices without cellular connection, there should be a unique serial ID as replacement
-    QFile serialFile(QStringLiteral("/config/serial/serial.txt"));
-    if (serialFile.open(QIODevice::ReadOnly)) {
-        QString serialNumber = QString::fromLocal8Bit(serialFile.readAll().simplified().data());
+    QString serialNumber = getSerialNumber();
+    if (!serialNumber.isEmpty()) {
         qDebug() << "[Wagnis] Using Serial Number " + serialNumber + " for the ID";
         idHash.addData(serialNumber.toUtf8());
-        serialFile.close();
     }
 
     // Most devices support Wi-Fi - all networking devices have a MAC address
-    QFile wifiFile(QStringLiteral("/sys/class/net/wlan0/address"));
-    if (wifiFile.open(QIODevice::ReadOnly)) {
-        QString wifiMacAddress = QString::fromLocal8Bit(wifiFile.readAll().simplified().data());
+    QString wifiMacAddress = getWifiMacAddress();
+    if (!wifiMacAddress.isEmpty()) {
         qDebug() << "[Wagnis] Using Wi-Fi MAC address " + wifiMacAddress + " for the ID";
         idHash.addData(wifiMacAddress.toUtf8());
-        wifiFile.close();
+    }
+
+    // Additional components of the hash are the current application name...
+    idHash.addData(this->applicationName.toUtf8());
+    // ...and the identifier of this Wagnis release.
+    idHash.addData(QString("Wagnis 42").toUtf8());
+    idHash.result().toHex();
+
+    QString uidHash = QString::fromUtf8(idHash.result().toHex());
+    qDebug() << "[Wagnis] Complete hash: " + uidHash;
+    wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
+    qDebug() << "[Wagnis] ID: " + wagnisId;
+
+}
+
+void Wagnis::generatePocId()
+{
+
+    // This is the Wagnis ID used for the Proof-of-Concept
+    // Unfortunately, not 100% reliable as Bluetooth MAC isn't visible if BT is switched off...
+
+    QCryptographicHash idHash(QCryptographicHash::Sha256);
+
+    // If we are on a device which you still can use as a telephone, there's at least one IMEI
+    QStringList imeis = getImeis();
+    QListIterator<QString> imeiIterator(imeis);
+    while (imeiIterator.hasNext()) {
+        QString imei = imeiIterator.next();
+        qDebug() << "[Wagnis PoC] Using IMEI " + imei + " for the ID";
+        idHash.addData(imei.toUtf8());
+    }
+
+    // On devices without cellular connection, there should be a unique serial ID as replacement
+    QString serialNumber = getSerialNumber();
+    if (!serialNumber.isEmpty()) {
+        qDebug() << "[Wagnis PoC] Using Serial Number " + serialNumber + " for the ID";
+        idHash.addData(serialNumber.toUtf8());
+    }
+
+    // Most devices support Wi-Fi - all networking devices have a MAC address
+    QString wifiMacAddress = getWifiMacAddress();
+    if (!wifiMacAddress.isEmpty()) {
+        qDebug() << "[Wagnis PoC] Using Wi-Fi MAC address " + wifiMacAddress + " for the ID";
+        idHash.addData(wifiMacAddress.toUtf8());
     }
 
     // Many devices also have Bluetooth - that's also a networking device :)
     QFile bluetoothFile(QStringLiteral("/sys/class/bluetooth/hci0/address"));
     if (bluetoothFile.open(QIODevice::ReadOnly)) {
         QString bluetoothMacAddress = QString::fromLocal8Bit(bluetoothFile.readAll().simplified().data());
-        qDebug() << "[Wagnis] Using Bluetooth MAC address " + bluetoothMacAddress + " for the ID";
+        qDebug() << "[Wagnis PoC] Using Bluetooth MAC address " + bluetoothMacAddress + " for the ID";
         idHash.addData(bluetoothMacAddress.toUtf8());
         bluetoothFile.close();
     }
@@ -224,9 +261,50 @@ void Wagnis::generateId()
     idHash.result().toHex();
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
-    qDebug() << "[Wagnis] Complete hash: " + uidHash;
-    wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "[Wagnis] ID: " + wagnisId;
+    qDebug() << "[Wagnis PoC] Complete hash: " + uidHash;
+    wagnisPocId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
+    qDebug() << "[Wagnis PoC] ID: " + wagnisPocId;
+}
+
+QStringList Wagnis::getImeis()
+{
+    QStringList imeis;
+    QDBusConnection dbusConnection = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "system");
+    QDBusInterface dbusInterface("org.ofono", "/", "org.nemomobile.ofono.ModemManager", dbusConnection);
+    QDBusMessage reply = dbusInterface.call(QLatin1String("GetIMEI"));
+    QList<QVariant> imeiResponseList = reply.arguments();
+    QListIterator<QVariant> imeiResponseIterator(imeiResponseList);
+    while (imeiResponseIterator.hasNext()) {
+        QList<QVariant> imeiList = imeiResponseIterator.next().toList();
+        qDebug() << "[Wagnis] We found " + QString::number(imeiList.size()) + " IMEI(s).";
+        QListIterator<QVariant> imeiListIterator(imeiList);
+        while (imeiListIterator.hasNext()) {
+            imeis.append(imeiListIterator.next().toString());
+        }
+    }
+    return imeis;
+}
+
+QString Wagnis::getSerialNumber()
+{
+    QString serialNumber;
+    QFile serialFile(QStringLiteral("/config/serial/serial.txt"));
+    if (serialFile.open(QIODevice::ReadOnly)) {
+        serialNumber = QString::fromLocal8Bit(serialFile.readAll().simplified().data());
+        serialFile.close();
+    }
+    return serialNumber;
+}
+
+QString Wagnis::getWifiMacAddress()
+{
+    QString wifiMacAddress;
+    QFile wifiFile(QStringLiteral("/sys/class/net/wlan0/address"));
+    if (wifiFile.open(QIODevice::ReadOnly)) {
+        wifiMacAddress = QString::fromLocal8Bit(wifiFile.readAll().simplified().data());
+        wifiFile.close();
+    }
+    return wifiMacAddress;
 }
 
 QJsonDocument Wagnis::getRegistrationDocument()

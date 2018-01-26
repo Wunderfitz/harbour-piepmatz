@@ -28,6 +28,7 @@ public:
     explicit Wagnis(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
     ~Wagnis();
     Q_INVOKABLE QString getId();
+    Q_INVOKABLE QString getPocId();
     Q_INVOKABLE QString getCandidateRegistrationData();
     Q_INVOKABLE void registerApplication();
     Q_INVOKABLE void resetRegistration();
@@ -49,6 +50,10 @@ public slots:
 private:
 
     void generateId();
+    void generatePocId();
+    QStringList getImeis();
+    QString getSerialNumber();
+    QString getWifiMacAddress();
     QJsonDocument getRegistrationDocument();
     void readRegistration();
     void validateRegistrationData(const QByteArray &registrationData, const bool &saveData);
@@ -59,6 +64,7 @@ private:
     QString applicationName;
     QString applicationVersion;
     QString wagnisId;
+    QString wagnisPocId;
     QVariantMap ipInfo;
     QVariantMap validatedRegistration;
     int remainingSeconds = 0;
