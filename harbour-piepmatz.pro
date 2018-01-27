@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-piepmatz
 
-CONFIG += sailfishapp
+CONFIG += sailfishapp c++11
 
 QT += core dbus positioning sql
 
@@ -20,6 +20,7 @@ LIBS += -lcrypto
 
 include(src/o2/o2.pri)
 include(src/wagnis/wagnis.pri)
+include(src/QGumboParser/QGumboParser.pri)
 
 SOURCES += src/harbour-piepmatz.cpp \
     src/accountmodel.cpp \

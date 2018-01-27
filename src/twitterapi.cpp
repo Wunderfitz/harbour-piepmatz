@@ -20,12 +20,15 @@
 
 #include "imageresponsehandler.h"
 #include "downloadresponsehandler.h"
+#include "QGumboParser/qgumbodocument.h"
+#include "QGumboParser/qgumbonode.h"
 #include <QBuffer>
 #include <QFile>
 #include <QHttpMultiPart>
 #include <QXmlStreamReader>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
+
 
 TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
@@ -1057,6 +1060,7 @@ void TwitterApi::getOpenGraph(const QString &address)
     qDebug() << "TwitterApi::getOpenGraph" << address;
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
+    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetOpenGraphError(QNetworkReply::NetworkError)));
@@ -1900,6 +1904,17 @@ void TwitterApi::handleGetOpenGraphFinished()
     QVariantMap openGraphData;
 
     QString resultDocument(reply->readAll());
+
+
+    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
+    auto root = parsedResult.rootNode();
+    auto nodes = root.getElementsByTagName(HtmlTag::TITLE);
+    Q_ASSERT(nodes.size() == 1);
+
+    auto title = nodes.front();
+    qDebug() << "[GUMBO TEST] Title is: " << title.innerText();
+
+
     QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
     if (urlRegex.indexIn(resultDocument) != -1) {
         openGraphData.insert("url", urlRegex.cap(1));

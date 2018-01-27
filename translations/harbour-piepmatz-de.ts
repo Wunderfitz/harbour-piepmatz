@@ -87,6 +87,14 @@
         <source>Open twemoji on GitHub</source>
         <translation>twemoji auf GitHub öffnen</translation>
     </message>
+    <message>
+        <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open QGumboParser on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
