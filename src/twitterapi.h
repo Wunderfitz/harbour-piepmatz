@@ -121,6 +121,7 @@ public:
     Q_INVOKABLE void listTimeline(const QString &listId, const QString &maxId = "");
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
+    Q_INVOKABLE void getSingleTweet(const QString &tweetId, const QString &address);
     Q_INVOKABLE void getIpInfo();
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
 
@@ -202,6 +203,7 @@ signals:
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
+    void tweetConversationReceived(const QString &tweetId, const QVariantList &receivedTweets);
     void getIpInfoSuccessful(const QVariantMap &result);
     void getIpInfoError(const QString &errorMessage);
 
@@ -284,6 +286,9 @@ private slots:
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();
+    void handleGetSingleTweetError(QNetworkReply::NetworkError error);
+    void handleGetSingleTweetFinished();
+    void handleTweetConversationReceived(QString tweetId, QVariantList receivedTweets);
     void handleGetIpInfoError(QNetworkReply::NetworkError error);
     void handleGetIpInfoFinished();
 

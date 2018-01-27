@@ -709,6 +709,13 @@
     </message>
 </context>
 <context>
+    <name>TweetConversationPage</name>
+    <message>
+        <source>Thread</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
@@ -744,6 +751,10 @@
     <message>
         <source>Copy URL to Clipboard</source>
         <translation>URL kopiëren naar klembord</translation>
+    </message>
+    <message>
+        <source>Show Conversation</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

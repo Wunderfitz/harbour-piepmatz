@@ -26,6 +26,8 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant tweetModel;
+    property string  myTweetId;
+    property variant conversationTweets;
     property string replyToStatusId;
     property variant replyToTweet;
     property bool replyToTweetLoaded;
@@ -43,6 +45,8 @@ Page {
         if (replyToStatusId) {
             twitterApi.showStatus(replyToStatusId);
         }
+        myTweetId = Functions.getRelevantTweet(tweetModel).id_str;
+        twitterApi.getSingleTweet(myTweetId, Functions.getTweetUrl(tweetModel));
     }
 
     Connections {
@@ -53,6 +57,11 @@ Page {
                 tweetPage.replyToTweetLoaded = true;
             }
         }
+        onTweetConversationReceived: {
+            console.log("Conversation received for: " + tweetId + ", my Tweet: " + tweetPage.myTweetId);
+            tweetPage.conversationTweets = receivedTweets;
+            showConversationButton.visible = true;
+        }
     }
 
     SilicaFlickable {
@@ -62,6 +71,7 @@ Page {
 
         PullDownMenu {
             id: tweetMenu
+            visible: tweetColumn.visible
             MenuItem {
                 onClicked: {
                     Clipboard.text = Functions.getTweetUrl(tweetModel);
@@ -92,6 +102,7 @@ Page {
             id: tweetColumn
             width: tweetPage.width
             spacing: Theme.paddingSmall
+            Behavior on opacity { NumberAnimation {} }
 
             PageHeader {
                 id: tweetHeader
@@ -121,9 +132,22 @@ Page {
                 withSeparator: false
             }
 
+            Button {
+                id: showConversationButton
+                Behavior on opacity { NumberAnimation {} }
+                text: qsTr("Show Conversation")
+                preferredWidth: Theme.buttonWidthLarge
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: false
+                opacity: visible ? 1 : 0
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/TweetConversationPage.qml"), {"conversationTweets": tweetPage.conversationTweets })
+                }
+            }
+
         }
 
-        VerticalScrollDecorator {}
+        VerticalScrollDecorator { }
     }
 }
 

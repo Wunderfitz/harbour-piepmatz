@@ -20,6 +20,7 @@
 
 #include "imageresponsehandler.h"
 #include "downloadresponsehandler.h"
+#include "tweetconversationhandler.h"
 #include "QGumboParser/qgumbodocument.h"
 #include "QGumboParser/qgumbonode.h"
 #include <QBuffer>
@@ -1067,6 +1068,17 @@ void TwitterApi::getOpenGraph(const QString &address)
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetOpenGraphFinished()));
 }
 
+void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
+{
+    qDebug() << "TwitterApi::getSingleTweet" << tweetId << address;
+    QUrl url = QUrl(address);
+    QNetworkRequest request(url);
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetSingleTweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetSingleTweetFinished()));
+}
+
 void TwitterApi::getIpInfo()
 {
     qDebug() << "TwitterApi::getIpInfo";
@@ -1904,17 +1916,6 @@ void TwitterApi::handleGetOpenGraphFinished()
     QVariantMap openGraphData;
 
     QString resultDocument(reply->readAll());
-
-
-    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
-    auto root = parsedResult.rootNode();
-    auto nodes = root.getElementsByTagName(HtmlTag::TITLE);
-    Q_ASSERT(nodes.size() == 1);
-
-    auto title = nodes.front();
-    qDebug() << "[GUMBO TEST] Title is: " << title.innerText();
-
-
     QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
     if (urlRegex.indexIn(resultDocument) != -1) {
         openGraphData.insert("url", urlRegex.cap(1));
@@ -1943,6 +1944,64 @@ void TwitterApi::handleGetOpenGraphFinished()
         qDebug() << "Open Graph data found for " + requestAddress;
         emit getOpenGraphSuccessful(openGraphData);
     }
+}
+
+void TwitterApi::handleGetSingleTweetError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleGetSingleTweetError:" << (int)error << reply->errorString() << reply->readAll();
+}
+
+void TwitterApi::handleGetSingleTweetFinished()
+{
+    qDebug() << "TwitterApi::handleGetSingleTweetFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QString requestAddress = reply->request().url().toString();
+
+    QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
+    if (!contentTypeHeader.isValid()) {
+        return;
+    }
+    if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
+        qDebug() << requestAddress + " is not HTML, not checking tweet result data...";
+        return;
+    }
+
+    QRegExp tweetIdRegex("status\\/(\\d+)");
+    QString currentTweetId;
+    if (tweetIdRegex.indexIn(requestAddress) != -1) {
+        currentTweetId = tweetIdRegex.cap(1);
+    }
+
+    QString resultDocument(reply->readAll());
+    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
+    QGumboNode root = parsedResult.rootNode();
+
+    QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
+    QVariantList relatedTweets;
+    for (QGumboNode &tweetNode : tweetNodes) {
+        QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
+        qDebug() << "Found Tweet ID: " << otherTweetId;
+        relatedTweets.append(otherTweetId);
+    }
+
+    if (!relatedTweets.isEmpty()) {
+        qDebug() << "Found other tweets, let's build a conversation!";
+        TweetConversationHandler *conversationHandler = new TweetConversationHandler(this, currentTweetId, relatedTweets, this);
+        connect(conversationHandler, SIGNAL(tweetConversationCompleted(QString, QVariantList)), this, SLOT(handleTweetConversationReceived(QString, QVariantList)));
+        conversationHandler->buildConversation();
+    }
+
+}
+
+void TwitterApi::handleTweetConversationReceived(QString tweetId, QVariantList receivedTweets)
+{
+    emit tweetConversationReceived(tweetId, receivedTweets);
 }
 
 void TwitterApi::handleGetIpInfoError(QNetworkReply::NetworkError error)

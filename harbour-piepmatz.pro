@@ -39,7 +39,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/locationinformation.cpp \
     src/downloadresponsehandler.cpp \
     src/ownlistsmodel.cpp \
-    src/membershiplistsmodel.cpp
+    src/membershiplistsmodel.cpp \
+    src/tweetconversationhandler.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -108,10 +109,12 @@ HEADERS += \
     src/locationinformation.h \
     src/downloadresponsehandler.h \
     src/ownlistsmodel.h \
-    src/membershiplistsmodel.h
+    src/membershiplistsmodel.h \
+    src/tweetconversationhandler.h
 
 DISTFILES += \
     qml/pages/VideoPage.qml \
     qml/pages/ListTimelinePage.qml \
     qml/pages/ListMembersPage.qml \
-    qml/pages/SettingsPage.qml
+    qml/pages/SettingsPage.qml \
+    qml/pages/TweetConversationPage.qml

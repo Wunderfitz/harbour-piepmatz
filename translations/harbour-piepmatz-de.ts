@@ -89,11 +89,11 @@
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt nutzt QGumboParser. Copyright 2017 Sergey Lagner. Danke für das Bereitstellen unter den Bedingungen der MIT Lizenz. QGumboParser nutzt Gumbo. Copyright 2017 Google. Lizenziert unter den Bedingungen der Apache-Lizenz 2.0.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>QGumboParser auf GitHub öffnen</translation>
     </message>
 </context>
 <context>
@@ -709,6 +709,13 @@
     </message>
 </context>
 <context>
+    <name>TweetConversationPage</name>
+    <message>
+        <source>Thread</source>
+        <translation>Gesprächsfaden</translation>
+    </message>
+</context>
+<context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
@@ -744,6 +751,10 @@
     <message>
         <source>Copy URL to Clipboard</source>
         <translation>URL in die Zwischenablage kopieren</translation>
+    </message>
+    <message>
+        <source>Show Conversation</source>
+        <translation>Gesprächsfaden anzeigen</translation>
     </message>
 </context>
 <context>
