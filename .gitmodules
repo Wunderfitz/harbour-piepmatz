@@ -1,0 +1,3 @@
+[submodule "src/QGumboParser/gumbo-parser"]
+	path = src/QGumboParser/gumbo-parser
+	url = https://github.com/google/gumbo-parser.git

@@ -8,7 +8,7 @@
 
 #TEMPLATE = lib
 #CONFIG += staticlib c++11
-#QMAKE_CFLAGS += -std=c99
+QMAKE_CFLAGS += -std=c99
 
 SOURCES += \
     $$PWD/qgumboattribute.cpp \
@@ -46,6 +46,6 @@ HEADERS += \
     $$PWD/gumbo-parser/src/vector.h \
     $$PWD/HtmlTag.h
 
-#contains(QMAKE_CC, gcc): {
-#    QMAKE_CFLAGS_WARN_ON += -Wno-unused-parameter -Wno-sign-compare -Wno-old-style-declaration
-#}
+contains(QMAKE_CC, gcc): {
+    QMAKE_CFLAGS_WARN_ON += -Wno-unused-parameter -Wno-sign-compare -Wno-old-style-declaration -Wno-type-limits
+}
