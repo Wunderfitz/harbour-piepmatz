@@ -753,7 +753,7 @@
         <translation>URL in die Zwischenablage kopieren</translation>
     </message>
     <message>
-        <source>Show Conversation</source>
+        <source>Show Thread</source>
         <translation>Gesprächsfaden anzeigen</translation>
     </message>
 </context>

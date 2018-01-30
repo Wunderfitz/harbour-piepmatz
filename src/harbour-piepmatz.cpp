@@ -72,8 +72,7 @@ int main(int argc, char *argv[])
     SearchUsersModel searchUsersModel(twitterApi);
     context->setContextProperty("searchUsersModel", &searchUsersModel);
 
-    QString screenName = accountModel.getCurrentAccount().value("screen_name").toString();
-    MentionsModel mentionsModel(twitterApi, screenName);
+    MentionsModel mentionsModel(twitterApi, accountModel);
     context->setContextProperty("mentionsModel", &mentionsModel);
 
     ImagesModel imagesModel(twitterApi);

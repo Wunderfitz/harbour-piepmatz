@@ -755,7 +755,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Kopiera URL till urklipp</translation>
     </message>
     <message>
-        <source>Show Conversation</source>
+        <source>Show Thread</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -67,6 +67,7 @@ signals:
     void credentialsVerified();
     void verificationError(const QString &errorMessage);
     void imageStyleChanged();
+    void accountSwitched();
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);

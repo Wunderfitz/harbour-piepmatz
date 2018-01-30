@@ -26,12 +26,13 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include "twitterapi.h"
+#include "accountmodel.h"
 
 class MentionsModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    MentionsModel(TwitterApi *twitterApi, QString &screenName);
+    MentionsModel(TwitterApi *twitterApi, AccountModel &accountModel);
     ~MentionsModel();
 
     virtual int rowCount(const QModelIndex&) const;
@@ -57,6 +58,7 @@ public slots:
     void handleFollowersError(const QString &errorMessage);
     void handleVerifyCredentialsSuccessful(const QVariantMap &result);
     void handleVerifyCredentialsError(const QString &errorMessage);
+    void handleAccountSwitched();
 
 private:
 
@@ -78,6 +80,7 @@ private:
     QSettings settings;
     QSqlDatabase database;
     TwitterApi *twitterApi;
+    AccountModel *accountModel;
 
     QVariantList followersFromDatabase;
 

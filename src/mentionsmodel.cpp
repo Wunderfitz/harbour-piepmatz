@@ -30,10 +30,11 @@ const char SETTINGS_LAST_KNOWN_FOLLOWERS[] = "lastKnownFollowers";
 // We generate this amount of named follower entries maximum...
 const int SETTINGS_MAX_NAMED_FOLLOWERS = 25;
 
-MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : settings("harbour-piepmatz", "settings")
+MentionsModel::MentionsModel(TwitterApi *twitterApi, AccountModel &accountModel) : settings("harbour-piepmatz", "settings")
 {
     this->twitterApi = twitterApi;
-    this->screenName = screenName;
+    this->screenName = accountModel.getCurrentAccount().value("screen_name").toString();
+    this->accountModel = &accountModel;
     resetStatus();
     initializeDatabase();
 
@@ -47,6 +48,7 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi, QString &screenName) : sett
     connect(twitterApi, &TwitterApi::followersSuccessful, this, &MentionsModel::handleFollowersSuccessful);
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &MentionsModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &MentionsModel::handleVerifyCredentialsSuccessful);
+    connect(this->accountModel, &AccountModel::accountSwitched, this, &MentionsModel::handleAccountSwitched);
 
 }
 
@@ -193,6 +195,11 @@ void MentionsModel::handleVerifyCredentialsError(const QString &errorMessage)
 {
     qDebug() << "MentionsModel::handleVerifyCredentialsError";
     handleUpdateError(errorMessage);
+}
+
+void MentionsModel::handleAccountSwitched()
+{
+    initializeDatabase();
 }
 
 void MentionsModel::handleUpdateError(const QString &errorMessage)

@@ -135,7 +135,7 @@ Page {
             Button {
                 id: showConversationButton
                 Behavior on opacity { NumberAnimation {} }
-                text: qsTr("Show Conversation")
+                text: qsTr("Show Thread")
                 preferredWidth: Theme.buttonWidthLarge
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: false

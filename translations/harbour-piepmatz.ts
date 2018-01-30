@@ -753,8 +753,8 @@
         <translation>Copy URL to Clipboard</translation>
     </message>
     <message>
-        <source>Show Conversation</source>
-        <translation>Gesprächsfaden anzeigen</translation>
+        <source>Show Thread</source>
+        <translation>Show Thread</translation>
     </message>
 </context>
 <context>

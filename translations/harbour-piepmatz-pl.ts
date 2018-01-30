@@ -753,7 +753,7 @@
         <translation>Kopiuj URL do Schowka</translation>
     </message>
     <message>
-        <source>Show Conversation</source>
+        <source>Show Thread</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
