@@ -417,7 +417,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: "Piepmatz will remain open source software. However, I'd like to ask you for a contribution before you can run Piepmatz. The contribution feature will be added later. If you want to run Piepmatz in the meantime, please <a href=\"mailto:sebastian@ygriega.de\">contact me</a>."
+                text: qsTr("Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I'd like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -427,35 +427,135 @@ Page {
                 onLinkActivated: Qt.openUrlExternally(link)
             }
 
-            Label {
-                id: wagnisIdLabel
-                text: "Wagnis ID: " + wagnis.getId()
-                font.pixelSize: Theme.fontSizeSmall
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It's up to you to decide how much the app is worth to you.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-                visible: false
+                onLinkActivated: Qt.openUrlExternally(link)
             }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("If you've already contributed to Piepmatz, please <a href=\"mailto:sebastian@ygriega.de\">contact me</a> directly.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            ComboBox {
+                id: contributionComboBox
+                label: qsTr("Contribution")
+                description: qsTr("Choose your contribution here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("Piepmatz S - 3,33 €")
+                     }
+                     MenuItem {
+                        text: qsTr("Piepmatz M - 5,55 €")
+                     }
+                     MenuItem {
+                        text: qsTr("Piepmatz L - 7,77 €")
+                     }
+                     MenuItem {
+                        text: qsTr("Piepmatz XL - 9,99 €")
+                     }
+                }
+                currentIndex: 1
+            }
+
             Button {
-                id: showWagnisIdButton
-                text: "Show Wagnis ID"
+                text: qsTr("Purchase Contribution Key")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    showWagnisIdButton.visible = false;
-                    wagnisIdLabel.visible = true;
+                    var payment;
+                    switch (contributionComboBox.currentIndex) {
+                        case 0: payment = "3,33 €"; break;
+                        case 1: payment = "5,55 €"; break;
+                        case 2: payment = "7,77 €"; break;
+                        case 3: payment = "9,99 €"; break;
+                    }
+
+                    console.log("Payment selected: " + payment);
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Validate your contribution key")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Column {
+                width: parent.width
+
+                TextField {
+                    id: contributionKeyTextField
+                    width: parent.width
+                    labelVisible: false
+                    placeholderText: "1234-5678-90ab-cdef"
+                }
+
+                Text {
+                    text: qsTr("Enter the contribution key here")
+                    color: Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
                 }
             }
 
             Button {
-                id: resetRegistrationButton
-                text: "Reset Registration"
+                text: qsTr("Validate Contribution Key")
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    wagnis.resetRegistration();
+                    console.log("Validation requested");
                 }
             }
 

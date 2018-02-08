@@ -28,7 +28,7 @@ public:
     explicit Wagnis(QNetworkAccessManager *manager, const QString &applicationName, const QString applicationVersion, QObject *parent = 0);
     ~Wagnis();
     Q_INVOKABLE QString getId();
-    Q_INVOKABLE QString getNewId();
+    Q_INVOKABLE QString getPocId();
     Q_INVOKABLE QString getCandidateRegistrationData();
     Q_INVOKABLE void registerApplication();
     Q_INVOKABLE void resetRegistration();
@@ -49,7 +49,7 @@ public slots:
 
 private:
 
-    void generateNewId();
+    void generatePocId();
     void generateId();
     QStringList getImeis();
     QString getSerialNumber();
@@ -63,7 +63,7 @@ private:
 
     QString applicationName;
     QString applicationVersion;
-    QString wagnisNewId;
+    QString wagnisPocId;
     QString wagnisId;
     QVariantMap ipInfo;
     QVariantMap validatedRegistration;

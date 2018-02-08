@@ -602,6 +602,66 @@
         <source>Continue Testing</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contribution</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose your contribution here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Purchase Contribution Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate your contribution key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter the contribution key here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Validate Contribution Key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz S - 3,33 €</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz M - 5,55 €</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz L - 7,77 €</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz XL - 9,99 €</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

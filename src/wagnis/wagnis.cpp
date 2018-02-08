@@ -48,9 +48,9 @@ QString Wagnis::getId()
     return this->wagnisId;
 }
 
-QString Wagnis::getNewId()
+QString Wagnis::getPocId()
 {
-    return this->wagnisNewId;
+    return this->wagnisPocId;
 }
 
 QString Wagnis::getCandidateRegistrationData()
@@ -166,7 +166,7 @@ int Wagnis::getRemainingTime()
     return this->remainingSeconds;
 }
 
-void Wagnis::generateNewId()
+void Wagnis::generateId()
 {
 
     // There is no such thing as a reliable unique device ID on SailfishOS. Usually, /etc/machine-id
@@ -209,12 +209,12 @@ void Wagnis::generateNewId()
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
     qDebug() << "[Wagnis] Complete hash: " + uidHash;
-    wagnisNewId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "[Wagnis] ID: " + wagnisNewId;
+    wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
+    qDebug() << "[Wagnis] ID: " + wagnisId;
 
 }
 
-void Wagnis::generateId()
+void Wagnis::generatePocId()
 {
 
     // This is the Wagnis ID used for the Proof-of-Concept
@@ -262,8 +262,8 @@ void Wagnis::generateId()
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
     qDebug() << "[Wagnis PoC] Complete hash: " + uidHash;
-    wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "[Wagnis PoC] ID: " + wagnisId;
+    wagnisPocId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
+    qDebug() << "[Wagnis PoC] ID: " + wagnisPocId;
 }
 
 QStringList Wagnis::getImeis()
