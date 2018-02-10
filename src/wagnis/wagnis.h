@@ -36,6 +36,7 @@ public:
     Q_INVOKABLE bool isRegistered();
     Q_INVOKABLE bool hasFeature(const QString &featureName);
     Q_INVOKABLE void sendSurvey(const QString &answer, const QString &otherId = "");
+    Q_INVOKABLE void getSurvey();
     Q_INVOKABLE QVariantMap getRegistrationData();
     Q_INVOKABLE bool inTestingPeriod();
     Q_INVOKABLE int getRemainingTime();
@@ -44,6 +45,7 @@ signals:
     void registrationError(const QString &errorMessage);
     void registrationValid(const QVariantMap &registrationInformation);
     void registrationInvalid();
+    void surveyRetrieved(const QString &surveyAnswer);
 
 public slots:
 
@@ -78,6 +80,8 @@ private slots:
     void handleSendSurveyError(QNetworkReply::NetworkError error);
     void handleSendSurveyFinished();
     void handleGetApplicationRegistrationError(QNetworkReply::NetworkError error);
+    void handleGetSurveyFinished();
+    void handleGetSurveyError(QNetworkReply::NetworkError error);
 };
 
 #endif // WAGNIS_H

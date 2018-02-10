@@ -27,6 +27,7 @@ Wagnis::Wagnis(QNetworkAccessManager *manager, const QString &applicationName, c
     /* Load config file, and other important initialisation */
     OPENSSL_config(NULL);
 
+    generatePocId();
     generateId();
     readRegistration();
 
@@ -82,7 +83,7 @@ void Wagnis::resetRegistration()
     qDebug() << "Wagnis::resetRegistration";
     QFile registrationFile(getRegistrationFileName());
     if (registrationFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qDebug() << "[Wagnis] Removing registration file from " + registrationFile.fileName();
+        qDebug() << "[Wagnis] Removing registration file from " << registrationFile.fileName();
         registrationFile.remove();
     }
 }
@@ -148,6 +149,22 @@ void Wagnis::sendSurvey(const QString &answer, const QString &otherId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleRegisterApplicationFinished()));
 }
 
+void Wagnis::getSurvey()
+{
+    qDebug() << "Wagnis::getSurvey";
+    QUrl url = QUrl(API_SURVEY);
+    QUrlQuery urlQuery = QUrlQuery();
+    urlQuery.addQueryItem("id", this->wagnisPocId);
+    urlQuery.addQueryItem("application", this->applicationName);
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetSurveyError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetSurveyFinished()));
+}
+
 QVariantMap Wagnis::getRegistrationData()
 {
     qDebug() << "Wagnis::getRegistrationData";
@@ -183,21 +200,21 @@ void Wagnis::generateId()
     QListIterator<QString> imeiIterator(imeis);
     while (imeiIterator.hasNext()) {
         QString imei = imeiIterator.next();
-        qDebug() << "[Wagnis] Using IMEI " + imei + " for the ID";
+        qDebug() << "[Wagnis] Using IMEI for the ID" << imei;
         idHash.addData(imei.toUtf8());
     }
 
     // On devices without cellular connection, there should be a unique serial ID as replacement
     QString serialNumber = getSerialNumber();
     if (!serialNumber.isEmpty()) {
-        qDebug() << "[Wagnis] Using Serial Number " + serialNumber + " for the ID";
+        qDebug() << "[Wagnis] Using Serial Number for the ID" << serialNumber;
         idHash.addData(serialNumber.toUtf8());
     }
 
     // Most devices support Wi-Fi - all networking devices have a MAC address
     QString wifiMacAddress = getWifiMacAddress();
     if (!wifiMacAddress.isEmpty()) {
-        qDebug() << "[Wagnis] Using Wi-Fi MAC address " + wifiMacAddress + " for the ID";
+        qDebug() << "[Wagnis] Using Wi-Fi MAC address for the ID" << wifiMacAddress;
         idHash.addData(wifiMacAddress.toUtf8());
     }
 
@@ -208,9 +225,9 @@ void Wagnis::generateId()
     idHash.result().toHex();
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
-    qDebug() << "[Wagnis] Complete hash: " + uidHash;
+    qDebug() << "[Wagnis] Complete hash: " << uidHash;
     wagnisId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "[Wagnis] ID: " + wagnisId;
+    qDebug() << "[Wagnis] ID: " << wagnisId;
 
 }
 
@@ -227,21 +244,18 @@ void Wagnis::generatePocId()
     QListIterator<QString> imeiIterator(imeis);
     while (imeiIterator.hasNext()) {
         QString imei = imeiIterator.next();
-        qDebug() << "[Wagnis PoC] Using IMEI " + imei + " for the ID";
         idHash.addData(imei.toUtf8());
     }
 
     // On devices without cellular connection, there should be a unique serial ID as replacement
     QString serialNumber = getSerialNumber();
     if (!serialNumber.isEmpty()) {
-        qDebug() << "[Wagnis PoC] Using Serial Number " + serialNumber + " for the ID";
         idHash.addData(serialNumber.toUtf8());
     }
 
     // Most devices support Wi-Fi - all networking devices have a MAC address
     QString wifiMacAddress = getWifiMacAddress();
     if (!wifiMacAddress.isEmpty()) {
-        qDebug() << "[Wagnis PoC] Using Wi-Fi MAC address " + wifiMacAddress + " for the ID";
         idHash.addData(wifiMacAddress.toUtf8());
     }
 
@@ -249,7 +263,6 @@ void Wagnis::generatePocId()
     QFile bluetoothFile(QStringLiteral("/sys/class/bluetooth/hci0/address"));
     if (bluetoothFile.open(QIODevice::ReadOnly)) {
         QString bluetoothMacAddress = QString::fromLocal8Bit(bluetoothFile.readAll().simplified().data());
-        qDebug() << "[Wagnis PoC] Using Bluetooth MAC address " + bluetoothMacAddress + " for the ID";
         idHash.addData(bluetoothMacAddress.toUtf8());
         bluetoothFile.close();
     }
@@ -261,9 +274,9 @@ void Wagnis::generatePocId()
     idHash.result().toHex();
 
     QString uidHash = QString::fromUtf8(idHash.result().toHex());
-    qDebug() << "[Wagnis PoC] Complete hash: " + uidHash;
+    qDebug() << "[Wagnis PoC] Complete hash: " << uidHash;
     wagnisPocId = uidHash.left(4) + "-" + uidHash.mid(4,4) + "-" + uidHash.mid(8,4) + "-" + uidHash.mid(12,4);
-    qDebug() << "[Wagnis PoC] ID: " + wagnisPocId;
+    qDebug() << "[Wagnis PoC] ID: " << wagnisPocId;
 }
 
 QStringList Wagnis::getImeis()
@@ -276,7 +289,7 @@ QStringList Wagnis::getImeis()
     QListIterator<QVariant> imeiResponseIterator(imeiResponseList);
     while (imeiResponseIterator.hasNext()) {
         QList<QVariant> imeiList = imeiResponseIterator.next().toList();
-        qDebug() << "[Wagnis] We found " + QString::number(imeiList.size()) + " IMEI(s).";
+        qDebug() << "[Wagnis] We found IMEI(s)." << QString::number(imeiList.size());
         QListIterator<QVariant> imeiListIterator(imeiList);
         while (imeiListIterator.hasNext()) {
             imeis.append(imeiListIterator.next().toString());
@@ -326,7 +339,7 @@ void Wagnis::readRegistration()
 
     QFile registrationFile(getRegistrationFileName());
     if (registrationFile.exists() && registrationFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "[Wagnis] Reading registration file from " + registrationFile.fileName();
+        qDebug() << "[Wagnis] Reading registration file from " << registrationFile.fileName();
         QByteArray fileRawContent = registrationFile.readAll();
         validateRegistrationData(fileRawContent, false);
         registrationFile.close();
@@ -416,7 +429,7 @@ void Wagnis::validateRegistrationData(const QByteArray &registrationData, const 
             if (saveData) {
                 QFile registrationFile(getRegistrationFileName());
                 if (registrationFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-                    qDebug() << "[Wagnis] Writing registration file to " + registrationFile.fileName();
+                    qDebug() << "[Wagnis] Writing registration file to " << registrationFile.fileName();
                     registrationFile.write(registrationData);
                     registrationFile.close();
                 }
@@ -474,7 +487,7 @@ void Wagnis::handleGetIpInfoFinished()
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
         this->ipInfo = responseObject.toVariantMap();
-        qDebug() << "[Wagnis] Country: " + ipInfo.value("country").toString();
+        qDebug() << "[Wagnis] Country: " << ipInfo.value("country").toString();
     }
 }
 
@@ -528,4 +541,30 @@ void Wagnis::handleGetApplicationRegistrationError(QNetworkReply::NetworkError e
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "Wagnis::handleGetApplicationRegistrationError:" << (int)error << reply->errorString() << reply->readAll();
     emit registrationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
+}
+
+void Wagnis::handleGetSurveyFinished()
+{
+    qDebug() << "Wagnis::handleGetSurveyFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QByteArray surveyReply = reply->readAll();
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(surveyReply);
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        QVariantMap surveyInformation = responseObject.toVariantMap();
+        QString surveyAnswer = surveyInformation.value("survey_answer").toString();
+        qDebug() << "[Wagnis] Survey from last release: " << surveyAnswer;
+        emit surveyRetrieved(surveyAnswer);
+    }
+}
+
+void Wagnis::handleGetSurveyError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleGetSurveyError:" << (int)error << reply->errorString() << reply->readAll();
 }

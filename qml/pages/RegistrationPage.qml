@@ -35,6 +35,7 @@ Page {
             registrationFlickable.visible = true;
             registrationFlickable.opacity = 1;
         }
+        wagnis.getSurvey();
     }
 
     Connections {
@@ -455,6 +456,21 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Connections {
+                target: wagnis
+                onSurveyRetrieved: {
+                    switch (surveyAnswer) {
+                        case "1": contributionComboBox.currentIndex = 3; break;
+                        case "2": contributionComboBox.currentIndex = 3; break;
+                        case "3": contributionComboBox.currentIndex = 2; break;
+                        case "4": contributionComboBox.currentIndex = 1; break;
+                        case "5": contributionComboBox.currentIndex = 0; break;
+                        case "6": contributionComboBox.currentIndex = 0; break;
+                        case "7": contributionComboBox.currentIndex = 0; break;
+                    }
+                }
             }
 
             ComboBox {
