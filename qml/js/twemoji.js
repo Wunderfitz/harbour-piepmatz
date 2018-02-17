@@ -569,7 +569,10 @@ var twemoji = (function (
 
 function emojify(rawText, emojiSize) {
     if (accountModel.getUseEmoji()) {
-        return twemoji.parse(rawText, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: emojiSize });
+        var emojifiedText = twemoji.parse(rawText, { callback: function(icon, options, variant) { return '../js/emoji/' + icon + '.svg'; }, size: emojiSize });
+        // QML has a weird bug. If an ampersand is followed by an HTML tag, the tag is ignored and returned as string
+        // Therefore replacing the ampersand with &amp; in these cases...
+        return emojifiedText.replace("&<img", "&amp;<img");
     } else {
         return rawText;
     }

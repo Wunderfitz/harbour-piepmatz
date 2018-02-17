@@ -30,6 +30,17 @@ Item {
     width: parent.width
     height: parent.height
 
+    Timer {
+        id: screensaverTimer
+        interval: 30000
+        running: false
+        repeat: true
+        triggeredOnStart: true
+        onTriggered: {
+            twitterApi.controlScreenSaver(false);
+        }
+    }
+
     function getTweetVideoPlaceholderImageUrl(tweet) {
         if (tweet.extended_entities) {
             for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
@@ -52,6 +63,15 @@ Item {
             seconds = "0" + seconds;
         }
         return minutes + ":" + seconds;
+    }
+
+    function disableScreensaver() {
+        screensaverTimer.start();
+    }
+
+    function enableScreensaver() {
+        screensaverTimer.stop();
+        twitterApi.controlScreenSaver(true);
     }
 
     Image {
@@ -230,16 +250,16 @@ Item {
                     anchors.fill: parent
                     onClicked: {
                         if (tweetVideo.playbackState === MediaPlayer.PlayingState) {
-                            twitterApi.controlScreenSaver(true);
+                            enableScreensaver();
                             tweetVideo.pause();
                         } else {
-                            twitterApi.controlScreenSaver(false);
+                            disableScreensaver();
                             tweetVideo.play();
                         }
                     }
                 }
                 onStopped: {
-                    twitterApi.controlScreenSaver(true);
+                    enableScreensaver();
                     tweetVideo.visible = false;
                     placeholderImage.visible = true;
                     playButton.visible = true;
@@ -265,7 +285,7 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                twitterApi.controlScreenSaver(false);
+                                disableScreensaver();
                                 tweetVideo.play();
                             }
                         }
@@ -302,9 +322,9 @@ Item {
                 size: BusyIndicatorSize.Medium
                 onVisibleChanged: {
                     if (visible) {
-                        twitterApi.controlScreenSaver(true);
+                        enableScreensaver();
                     } else {
-                        twitterApi.controlScreenSaver(false);
+                        disableScreensaver();
                     }
                 }
             }
