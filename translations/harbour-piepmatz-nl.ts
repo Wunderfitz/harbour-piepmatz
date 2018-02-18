@@ -662,6 +662,30 @@
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Contribution not validated!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart Validation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Thank You!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation type="unfinished">Oké</translation>
+    </message>
 </context>
 <context>
     <name>SettingsPage</name>

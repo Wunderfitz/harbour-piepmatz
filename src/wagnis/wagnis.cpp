@@ -149,6 +149,28 @@ void Wagnis::sendSurvey(const QString &answer, const QString &otherId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleRegisterApplicationFinished()));
 }
 
+void Wagnis::validateContribution(const QString &contributionKey)
+{
+    qDebug() << "Wagnis::validateContribution" << contributionKey;
+    QUrl url = QUrl(API_CONTRIBUTION);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, MIME_TYPE_JSON);
+
+    QJsonObject jsonPayloadObject;
+    jsonPayloadObject.insert("wagnis_id", wagnisId);
+    jsonPayloadObject.insert("application", this->applicationName);
+    jsonPayloadObject.insert("contribution_key", contributionKey);
+
+    QJsonDocument requestDocument(jsonPayloadObject);
+    QByteArray jsonAsByteArray = requestDocument.toJson();
+    request.setHeader(QNetworkRequest::ContentLengthHeader, QByteArray::number(jsonAsByteArray.size()));
+
+    QNetworkReply *reply = manager->post(request, jsonAsByteArray);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleValidateContributionError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleValidateContributionFinished()));
+}
+
 void Wagnis::getSurvey()
 {
     qDebug() << "Wagnis::getSurvey";
@@ -567,4 +589,23 @@ void Wagnis::handleGetSurveyError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "Wagnis::handleGetSurveyError:" << (int)error << reply->errorString() << reply->readAll();
+}
+
+void Wagnis::handleValidateContributionFinished()
+{
+    qDebug() << "Wagnis::handleValidateContributionFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        emit contributionValidationError("Error validating contribution...");
+    } else {
+        emit contributionValidated();
+    }
+}
+
+void Wagnis::handleValidateContributionError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "Wagnis::handleValidateContributionError:" << (int)error << reply->errorString() << reply->readAll();
+    emit contributionValidationError(QString::number((int)error) + "Return code: " + " - " + reply->errorString());
 }

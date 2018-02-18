@@ -19,6 +19,7 @@
 const char MIME_TYPE_JSON[] = "application/json";
 const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/registration.php";
 const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/survey.php";
+const char API_CONTRIBUTION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/contribution.php";
 const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJn498EnLBpy8qSfJ0xyflZA+rqKEtw+\nHESIOu9xCeORLXFn1UZMS+cl7hzf4n4V8BsfEBHSyYyxeNVQR0J+DdcCAwEAAQ==\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
@@ -36,6 +37,7 @@ public:
     Q_INVOKABLE bool isRegistered();
     Q_INVOKABLE bool hasFeature(const QString &featureName);
     Q_INVOKABLE void sendSurvey(const QString &answer, const QString &otherId = "");
+    Q_INVOKABLE void validateContribution(const QString &contributionKey);
     Q_INVOKABLE void getSurvey();
     Q_INVOKABLE QVariantMap getRegistrationData();
     Q_INVOKABLE bool inTestingPeriod();
@@ -46,6 +48,8 @@ signals:
     void registrationValid(const QVariantMap &registrationInformation);
     void registrationInvalid();
     void surveyRetrieved(const QString &surveyAnswer);
+    void contributionValidated();
+    void contributionValidationError(const QString &errorMessage);
 
 public slots:
 
@@ -82,6 +86,8 @@ private slots:
     void handleGetApplicationRegistrationError(QNetworkReply::NetworkError error);
     void handleGetSurveyFinished();
     void handleGetSurveyError(QNetworkReply::NetworkError error);
+    void handleValidateContributionFinished();
+    void handleValidateContributionError(QNetworkReply::NetworkError error);
 };
 
 #endif // WAGNIS_H

@@ -60,6 +60,16 @@ Page {
                 contributionFlickable.opacity = 1;
             }
         }
+        onContributionValidated: {
+            registrationPage.registrationLoading = false;
+            contributionValidFlickable.visible = true;
+            contributionValidFlickable.opacity = 1;
+        }
+        onContributionValidationError: {
+            registrationPage.registrationLoading = false;
+            contributionInvalidFlickable.visible = true;
+            contributionInvalidFlickable.opacity = 1;
+        }
     }
 
 
@@ -553,7 +563,7 @@ Page {
                     id: contributionKeyTextField
                     width: parent.width
                     labelVisible: false
-                    placeholderText: "1234-5678-90ab-cdef"
+                    placeholderText: "Your Contribution Key"
                 }
 
                 Text {
@@ -571,7 +581,10 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    console.log("Validation requested");
+                    wagnis.validateContribution(contributionKeyTextField.text);
+                    registrationPage.registrationLoading = true;
+                    contributionFlickable.opacity = 0;
+                    contributionFlickable.visible = false;
                 }
             }
 
@@ -600,6 +613,140 @@ Page {
                 onClicked: {
                     pageStack.clear();
                     accountModel.isLinked() ? pageStack.push(overviewPage) : pageStack.push(welcomePage)
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+    }
+
+    SilicaFlickable {
+        id: contributionInvalidFlickable
+        anchors.fill: parent
+        contentHeight: contributionInvalidColumn.height
+        Behavior on opacity { NumberAnimation {} }
+        visible: false
+        opacity: 0
+
+        Column {
+            id: contributionInvalidColumn
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            Image {
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                fillMode: Image.PreserveAspectFit
+                width: 1/2 * parent.width
+            }
+
+            InfoLabel {
+                text: qsTr("Contribution not validated!")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Your contribution could not be validated. Please ensure that your device is connected to the Internet and press 'Restart Validation'. In case you have a valid contribution key and it can't be validated, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Button {
+                text: qsTr("Restart Validation")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    contributionInvalidFlickable.opacity = 0;
+                    contributionInvalidFlickable.visible = false;
+                    contributionFlickable.visible = true;
+                    contributionFlickable.opacity = 1;
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+    }
+
+    SilicaFlickable {
+        id: contributionValidFlickable
+        anchors.fill: parent
+        contentHeight: contributionValidColumn.height
+        Behavior on opacity { NumberAnimation {} }
+        visible: false
+        opacity: 0
+
+        Column {
+            id: contributionValidColumn
+            width: parent.width
+            spacing: Theme.paddingLarge
+
+            Image {
+                source: "../../images/" + accountModel.getImagePath() + "piepmatz.svg"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                fillMode: Image.PreserveAspectFit
+                width: 1/2 * parent.width
+            }
+
+            InfoLabel {
+                text: qsTr("Thank You!")
+            }
+
+            Text {
+                wrapMode: Text.Wrap
+                x: Theme.horizontalPageMargin
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                horizontalAlignment: Text.AlignJustify
+                text: qsTr("Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!")
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+                color: Theme.primaryColor
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onLinkActivated: Qt.openUrlExternally(link)
+            }
+
+            Button {
+                text: qsTr("OK")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    wagnis.getApplicationRegistration();
+                    registrationPage.registrationLoading = true;
+                    contributionValidFlickable.opacity = 0;
+                    contributionValidFlickable.visible = false;
                 }
             }
 
