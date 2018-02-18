@@ -237,7 +237,7 @@ Item {
                 }
                 Text {
                     id: profileLocationText
-                    text: profileModel.location
+                    text: Emoji.emojify(profileModel.location, Theme.fontSizeExtraSmall)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                     wrapMode: Text.NoWrap
