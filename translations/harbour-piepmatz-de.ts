@@ -548,7 +548,7 @@
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>Darüber hinaus wird Piepmatz diese Installation automatisch auf meinem Server registrieren wenn Sie auf &apos;Akzeptieren&apos; drücken. Ich respektiere Ihre Privatsphäre. Deswegen werden nur wenige, anonymisierte Daten übertragen: Ein eindeutiges Identifikationsmerkmal für diese Installation und Ihr Land. Ich würde einfach gerne wissen, wie viele Benutzer Piepmatz hat und wo sie herkommen. Wenn Sie damit nicht einverstanden sind, schließen Sie einfach diese Anwendung. Es wurden noch keine Informationen übertragen.</translation>
+        <translation>Darüber hinaus wird Piepmatz diese Installation automatisch auf meinem Server registrieren, wenn Sie auf &apos;Akzeptieren&apos; drücken. Ich respektiere Ihre Privatsphäre. Deswegen werden nur wenige, anonymisierte Daten übertragen: Ein eindeutiges Identifikationsmerkmal für diese Installation und Ihr Land. Ich würde einfach gerne wissen, wie viele Benutzer Piepmatz hat und wo sie herkommen. Wenn Sie damit nicht einverstanden sind, schließen Sie einfach diese Anwendung. Es wurden noch keine Informationen übertragen.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -588,103 +588,103 @@
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Entwicklungsbeitrag</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte leisten Sie einen Beitrag für Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sie können den Beitrag %1 überspringen, wenn Sie Piepmatz zuerst testen wollen.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Test fortsetzen</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Sie bereits einen Beitrag für Piepmatz geleistet haben, &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;kontaktieren Sie mich&lt;/a&gt; bitte direkt.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitrag</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie hier Ihren Beitrag aus</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitragsschlüssel erwerben</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>Validieren Sie Ihren Beitragsschlüssel</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Tragen Sie hier Ihren Beitragsschlüssel ein</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitragsschlüssel validieren</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wenn Sie Ihren Schlüssel bereits auf einem anderen Gerät validiert haben, können Sie ihn für bis zu 3 weitere Geräte verwenden ohne einen neuen Beitrag zu leisten.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz ist und wird Open Source-Software bleiben. Allerdings bitte ich Sie um einen Beitrag für die Unterstützung der Entwicklung von Piepmatz, bevor sie die Anwendung ausführen können. Solch ein Beitrag kann geleistet werden, indem Sie Piepmatz in eine andere Sprache übersetzen, bei der Entwicklung mithelfen, oder indem Sie einen Schlüssel erwerben.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nachdem Sie Ihren Schlüssel erhalten haben - entweder indem Sie ihn käuflich erworben haben, oder durch einen anderen Beitrag - validieren Sie ihn bitte hier.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>Beitrag wurde nicht validiert!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihr Beitrag konnte nicht validiert werden. Bitte stellen Sie sicher, dass Ihr Gerät mit dem Internet verbunden ist und drücken dann auf &apos;Validierung wiederholen&apos;. Wenn Sie einen gültigen Beitragsschlüssel haben und dieser nicht validiert werden kann, wenden Sie sich bitte &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;per E-Mail&lt;/a&gt; an mich.</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Validierung wiederholen</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>Vielen Dank!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ihr Beitrag wurde erfolgreich validiert. Vielen Dank für Ihren Beitrag zur Entwicklung von Piepmatz.</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
+        <translation>Sie haben die Wahl zwischen 4 unterschiedlichen Beiträgen: S, M, L, XL. Unabhängig davon, welche Größe sie wählen, wird der käuflich erworbene Schlüssel die komplette Anwendung freischalten. Sie entscheiden, wieviel die Anwendung Ihnen wert ist.</translation>
     </message>
 </context>
 <context>

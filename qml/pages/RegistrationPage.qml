@@ -443,7 +443,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It's up to you to decide how much the app is worth to you.")
+                text: qsTr("You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It's up to you to decide how much the app is worth to you.")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -563,7 +563,7 @@ Page {
                     id: contributionKeyTextField
                     width: parent.width
                     labelVisible: false
-                    placeholderText: "Your Contribution Key"
+                    placeholderText: "abcd-efgh-1234-5678"
                 }
 
                 Text {

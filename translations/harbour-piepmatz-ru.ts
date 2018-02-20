@@ -661,10 +661,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Contribution not validated!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -687,6 +683,10 @@
     <message>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
+    </message>
+    <message>
+        <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
