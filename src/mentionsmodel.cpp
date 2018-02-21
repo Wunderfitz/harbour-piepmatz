@@ -370,7 +370,7 @@ void MentionsModel::processRawFollowers()
     QStringList currentLastFollowers;
     if (!currentFollowers.isEmpty()) {
         for (int j = 0; j < SETTINGS_MAX_NAMED_FOLLOWERS; j++) {
-            if (currentFollowers.size() < j) {
+            if (j >= currentFollowers.size()) {
                 break;
             }
             QString lastFollower = currentFollowers.at(j).toMap().value("screen_name").toString();
