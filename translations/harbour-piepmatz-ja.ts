@@ -141,7 +141,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
@@ -163,26 +163,26 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1をダウンロードしました</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中（%1%）</translation>
     </message>
 </context>
 <context>
@@ -204,7 +204,7 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
     <message>
         <source>%1: Members</source>
@@ -215,7 +215,7 @@
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
@@ -223,7 +223,7 @@
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>メンバーを表示</translation>
     </message>
     <message>
         <source>Load more tweets</source>
@@ -412,51 +412,51 @@
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>新規リプライ</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいフォロワー</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>新しく%1人にフォローされました！</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>新しいフォロワー</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>フォローされました！</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>フォローされました！</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>新規リツイート</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>%1回リツイートされました！</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>リツイートされました！</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>リスト</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>メンバーになっているリスト</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>リストがみつかりません</translation>
     </message>
     <message>
         <source>Member of</source>
@@ -464,7 +464,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
 </context>
 <context>
@@ -540,7 +540,7 @@
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>確認</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
@@ -592,7 +592,7 @@
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatzの開発に協力してください</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
@@ -600,7 +600,7 @@
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>テストを継続する</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
@@ -691,19 +691,19 @@
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>位置情報を有効にする</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>PiepmatzでのツイートにGPS/GLONASS/Galileo等を使ったジオタグの付与を許可する</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>ロケーション</translation>
     </message>
     <message>
         <source>Images</source>
@@ -856,7 +856,7 @@
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1人のメンバー</translation>
     </message>
 </context>
 <context>
@@ -870,26 +870,26 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>更新</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1をダウンロードしました</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード中（%1%）</translation>
     </message>
 </context>
 <context>
@@ -955,27 +955,27 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>%1日後</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation type="unfinished"></translation>
+        <translation>翌日</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>%1時間後</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation type="unfinished"></translation>
+        <translation>1時間後</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1分後</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation type="unfinished"></translation>
+        <translation>1分後</translation>
     </message>
 </context>
 </TS>

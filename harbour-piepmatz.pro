@@ -62,6 +62,7 @@ TRANSLATIONS += translations/harbour-piepmatz-de.ts \
                 translations/harbour-piepmatz-ja.ts \
                 translations/harbour-piepmatz-nl.ts \
                 translations/harbour-piepmatz-pl.ts \
+                translations/harbour-piepmatz-pt_BR.ts \
                 translations/harbour-piepmatz-ru.ts \
                 translations/harbour-piepmatz-sl.ts \
                 translations/harbour-piepmatz-sv.ts

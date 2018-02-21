@@ -81,19 +81,19 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo progetto utilizza twemoji. Copyright 2017 Twitter, Inc. e altri contributori. Grazie per averlo reso disponibile sotto licenza MIT (codice) e CC-BY 4.0 (grafica)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>twemoji su GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>Questo progetto utilizza QGumboParser. Copyright 2017 Sergey Lagner. Grazie per averlo reso disponibile sotto licenza MIT! QGumboParser utilizza Gumbo. Copyright 2017 di Google. Rilasciato sotto licenza Apache License 2.0.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>QGumboParser su GitHub</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
 </context>
 <context>
@@ -152,7 +152,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
 </context>
 <context>
@@ -163,26 +163,26 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Download</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Download...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download di %1 completato.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Download, %1 completato...</translation>
     </message>
 </context>
 <context>
@@ -204,30 +204,30 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: membri</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: timeline</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra membri</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">Carica altri tweet</translation>
+        <translation>Carica altri tweet</translation>
     </message>
 </context>
 <context>
@@ -408,63 +408,63 @@
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei stato menzionato %1 volte!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuova menzione</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovi follower</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai %1 nuovi follower!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovo follower</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hai un nuovo follower!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>ti segue!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuovi retweet</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei stato ritwittato %1 volte!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sei stato ritwittato!</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Iscritto</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna lista</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation type="unfinished"></translation>
+        <translation>Membro di</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni</translation>
     </message>
 </context>
 <context>
@@ -588,170 +588,170 @@
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Contributo allo sviluppo</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Continua su Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puoi saltare il contributo per %1 se desideri testare Piepmatz prima.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Continua test</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se hai già contribuito a Piepmatz, &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contattami&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Contributo</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli il tuo contributo</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Acquista chiave contribuzione</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>Convalida la tua chiave contribuzione</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserisci chiave contribuzione qui</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Convalida chiave contribuzione</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Se hai già convalidato la tua chiave su un altro dispositivo, puoi riutilizzarla per un massimo di 3 dispositivi aggiuntivi senza la necessità di un altro contributo.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz è e rimarrà open source. Tuttavia, al fine di supportare lo sviluppo di Piepmatz, vorrei chiederti un contributo prima di poterlo eseguire. Tale contributo può essere fatto traducendo Piepmatz in un&apos;altra lingua, aiutando a svilupparlo o semplicemente acquistando una chiave.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dopo aver ricevuto la chiave acquistandola o per altro contributo, convalidala qui per attivare Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>Chiave non convalidata!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>La tua chiave non può essere convalidata. Assicurati che il tuo dispositivo sia connesso a Internet e premi &quot;Riavvia convalida&quot;. Se hai una chiave valida e non può essere convalidata, contattami via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;email&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Riavvia convalida</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>Grazie!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>La chiave è stata convalidata con successo. Grazie mille per il tuo contributo allo sviluppo di Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puoi scegliere tra 4 diversi contributi: S, M, L, XL. Indipendentemente dalla dimensione scelta, la chiave acquistata sbloccherà l&apos;app completa. Spetta a te decidere quanto l&apos;app valga per te.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Impostazioni</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Attiva localizzazione</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>Consenti a Piepmatz di utilizzare il GPS/GLONASS/Galileo per la geolocalizzazione dei tweet</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Localizzazione</translation>
     </message>
     <message>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Immagini</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli lo stile dell&apos;immagine</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standard</translation>
     </message>
     <message>
         <source>Image Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stile immagine</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepfish by @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Account</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Account</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>Scegli l&apos;account attivo</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Accedi con un altro account</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Usa emoji di Twitter</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizza le emoji di Twitter invece che quelle di sistema</translation>
     </message>
 </context>
 <context>
@@ -785,18 +785,18 @@
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Elimina tweet</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminazione tweet</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Conversazione</translation>
     </message>
 </context>
 <context>
@@ -838,7 +838,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostra conversazione</translation>
     </message>
 </context>
 <context>
@@ -852,11 +852,11 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; by %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 membri</translation>
     </message>
 </context>
 <context>
@@ -870,26 +870,26 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Ricarica</translation>
+        <translation>Ricarica</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Download</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Download di %1 completato.</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Download...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Download, %1 completato...</translation>
     </message>
 </context>
 <context>

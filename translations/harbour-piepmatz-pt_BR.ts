@@ -1,188 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<TS version="2.1" language="pt_BR">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>Sobre o Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Un client Twitter pour Sailfish OS.</translation>
+        <translation>Um cliente do Twitter para o Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Par Sebastian J. Wolf</translation>
+        <translation>Por Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Envoyer un e-mail</translation>
+        <translation>Enviar e-mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licence GNU GPLv3</translation>
+        <translation>Licenciado sob GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Sources sur GitHub</translation>
+        <translation>Fontes no GitHub</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Remerciements</translation>
+        <translation>Créditos</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>Ouvrir OAuth pour Qt sur GitHub</translation>
+        <translation>Abra OAuth para Qt no GitHub</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt, par Akos Polster. Merci pour l&apos;avoir rendu disponible selon les termes et conditions de la licence BSD 2-CL. !</translation>
+        <translation>Este projeto usa OAuth para Qt por Akos Polster. Obrigado por disponibilizá-lo sob as condições da licença BSD-2-Clause!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Ce projet utilise twitter-text, par Twitter, Inc. et autres contributeurs, © 2014. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence Apache version 2.0 !</translation>
+        <translation>Este projeto usa o twitter-text. Copyright 2014 Twitter, Inc. e outros contribuidores. Obrigado por disponibilizá-lo sob as condições da Licença Apache, Versão 2.0!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>Ouvir twitter-text sur GitHub</translation>
+        <translation>Abra twitter-texto no GitHub</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Retrouvez-moi sur Twitter</translation>
+        <translation>Encontre-me no Twitter</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>À propos de Twitter</translation>
+        <translation>Sobre o Twitter</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Termos de serviço</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Política de Privacidade</translation>
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation>Ouvrir ipinfo.io</translation>
+        <translation>Abrir ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>Piepmatz utilise ipinfo.io ainsi que le récepteur GPS de votre appareil (si disponible) pour déterminer votre position, ceci afin d&apos;optimiser les tendances + géolocaliser vos Tweets - après avoir obtenu votre autorisation pour le faire, bien évidemment. Si cela vous intéresse, assurez-vous d&apos;activer l&apos;option de localisation dans vos &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Paramètres&lt;/a&gt;.</translation>
+        <translation>Piepmatz usa ipinfo.io e (se disponível) o receptor GPS do seu dispositivo para determinar sua localização. Sua localização é usada para recuperar trends e - somente se você concorda explicitamente - como anexo aos seus tweets. Se você quiser usar sua localização nos tweets, assegure-se de habilitá-lo nas &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;configurações do Twitter.&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation>ID Wagnis :</translation>
+        <translation>Wagnis ID:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation>Afficher l&apos;ID Wagnis</translation>
+        <translation>Mostrar Wagnis ID:</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ce projet utilise twemoji, par Twitter, Inc. et autres contributeurs, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT (code) et de la CC-BY 4.0 (graphisme) !</translation>
+        <translation>Este projeto usa o twemoji. Copyright 2017 Twitter, Inc. e outros contribuidores. Obrigado por torná-lo disponível sob as condições do MIT Licence (programação) e CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Ouvrir twemoji sur GitHub</translation>
+        <translation>Abra o twemoji no GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation>Ce projet utilise QGumboParser, par Sergey Lagner, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT ! Par ailleurs, QGumboParser utilise Gumbo, par Google, © 2017, soumis aux conditions de la licence Apache 2.0.</translation>
+        <translation>Este projeto utiliza o QGumboParser. Copyright 2017 Sergey Lagner. Obrigado por torná-lo disponível sob as condições estabelecidas no MIT License! QGumboParser utiliza Gumbo. Copyright 2017 do Google. Licenciado sob as condições vigentes na Licença Apache 2.0.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation>Ouvrir QGumboParser sur GitHub</translation>
+        <translation>Abra o QGumboParser no GitHub</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>Nombre maximum d&apos;images atteint !</translation>
+        <translation>Número máximo de imagens selecionadas!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre %1 images</translation>
+        <translation>Anexe %1 Imagens</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre une image</translation>
+        <translation>Anexe imagem</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation>Sélectionner les images</translation>
+        <translation>Selecione imagens</translation>
     </message>
 </context>
 <context>
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>Nouveau message à %1</translation>
+        <translation>Nova mensagem para %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>%1 caractère(s) restant(s)</translation>
+        <translation>1% caracteres restantes</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement en cours...</translation>
+        <translation>Carregando...</translation>
     </message>
 </context>
 <context>
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1 : Favoris</translation>
+        <translation>1% Favoritos</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir </translation>
+        <translation>Atualizar</translation>
     </message>
 </context>
 <context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : Abonnés</translation>
+        <translation>%1: Seguidores</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: Abonnements</translation>
+        <translation>%1: Seguindo</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation>Télécharger</translation>
+        <translation>Baixar</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Baixando...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>Baixado de %1 com sucesso.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Baixado, %1% concluído...</translation>
     </message>
 </context>
 <context>
@@ -197,67 +197,67 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Erro</translation>
     </message>
 </context>
 <context>
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation>%1 : Membres</translation>
+        <translation>%1: Membros</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation>%1 : Fil</translation>
+        <translation>%1 Linha do tempo</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation>Afficher les Membres</translation>
+        <translation>Mostrar Membros</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Carregue mais tweets</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement...</translation>
+        <translation>Carregando</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Novo Tweet</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Répondre</translation>
+        <translation>Resposta</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Envoyer la réponse</translation>
+        <translation>Enviar Resposta</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Envoyer le Tweet</translation>
+        <translation>Enviar Tweet</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation>Joindre une image</translation>
+        <translation>Anexar imagens</translation>
     </message>
     <message>
         <source>Retweet</source>
@@ -265,7 +265,7 @@
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>Envoyer le Retweet</translation>
+        <translation>Enviar Retweet</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -273,94 +273,94 @@
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation>Joindre votre emplacement actuel à ce Tweet</translation>
+        <translation>Anexar sua localização atual a este tweet</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Essayer encore une fois</translation>
+        <translation>Tente novamente</translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>Authentification</translation>
+        <translation>Autenticar</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>Sobre o Piepmatz</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Novo Tweet</translation>
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Accueil</translation>
+        <translation>Linha do tempo</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation>Notifications</translation>
+        <translation>Notificações</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Messages</translation>
+        <translation>Mensagens</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation>Profil</translation>
+        <translation>Perfil</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Recherche</translation>
+        <translation>Buscar</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Actualiser</translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Connexion à Twitter...</translation>
+        <translation>Dizendo olá ao Twitter ...</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Chargement du fil...</translation>
+        <translation>Carregando a linha do tempo...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz ne parvient pas à vous connecter !</translation>
+        <translation>Piepmatz não conseguiu fazer login</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet envoyé avec succès !</translation>
+        <translation>Tweet enviado com sucesso!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Rechercher sur Twitter...</translation>
+        <translation>Pesquisar no Twitter...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation>Pas de résultats</translation>
+        <translation>Nenhum resultado encontrado</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez-vous ?</translation>
+        <translation>O que você está procurando?</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>Envoi du Tweet...</translation>
+        <translation>Enviando tweet ...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléchargement, %1% effectué...</translation>
+        <translation>Fazendo upload, %1% concluído </translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Vous</translation>
+        <translation>Você</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>Pas de message direct ces 30 derniers jours</translation>
+        <translation>Nenhuma mensagem direta nos últimos 30 dias</translation>
     </message>
     <message>
         <source>Tweets</source>
@@ -368,114 +368,114 @@
     </message>
     <message>
         <source>Users</source>
-        <translation>Utilisateurs</translation>
+        <translation>Usuários</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Recherche...</translation>
+        <translation>Procurando...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation>Nouvelles mentions</translation>
+        <translation>Novas menções</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>Vous avez été mentionné !</translation>
+        <translation>Você foi mencionado!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation>Nouveaux messages</translation>
+        <translation>Novas Mensagens</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation>Vous avez de nouveaux messages directs !</translation>
+        <translation>Você tem novas mensagens diretas!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Vous avez de nouveaux messages !</translation>
+        <translation>Você tem novas mensagens!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Carregue mais tweets</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>Aucun Tweet trouvé. Abonnez-vous à davantage de personnes pour afficher leurs Tweets dans votre fil !</translation>
+        <translation>Nenhum tweet encontrado. Siga mais pessoas para obter seus tweets em sua linha de tempo!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>Tendances pour %1</translation>
+        <translation>Trends para %1</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation>Vous avez été mentionné %1 fois !</translation>
+        <translation>Você foi mencionado %1 vezes!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation>Nouvelle mention</translation>
+        <translation>Nova menção</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation>Nouveaux abonnés</translation>
+        <translation>Novos seguidores</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation>Vous avez %1 nouveaux abonnés !</translation>
+        <translation>Você tem %1 novos seguidores!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation>Nouvel abonné</translation>
+        <translation>Novo seguidor</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation>Vous avez un nouvel abonné !</translation>
+        <translation>Você tem um novo seguidor!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation>vous suit désormais !</translation>
+        <translation>segue você agora!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation>Nouveaux Retweets</translation>
+        <translation>Novos Retweets</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation>Vous avez été retweeté %1 fois !</translation>
+        <translation>Você foi retweetado %1 vezes!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation>Vous avez été retweeté !</translation>
+        <translation>Você foi retweetado!</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation>Listes</translation>
+        <translation>Listas</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation>Abonné</translation>
+        <translation>Subscrito</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation>Aucune liste trouvée</translation>
+        <translation>Nenhuma lista encontrada</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation>Membre de</translation>
+        <translation>Membro de</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Configurações</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 Abonnements</translation>
+        <translation>%1 Seguindo</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 Abonnés</translation>
+        <translation>%1 Seguidores</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
@@ -483,11 +483,11 @@
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>Inscrit en %1</translation>
+        <translation>Ingressado em %1</translation>
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1 Favoris</translation>
+        <translation>%1 Favoritos</translation>
     </message>
 </context>
 <context>
@@ -501,241 +501,241 @@
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>Ne plus suivre %1</translation>
+        <translation>Deixar de seguir %1</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>Suivre %1</translation>
+        <translation>Seguir %1</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>Vous suivez désormais %1.</translation>
+        <translation>Você segue %1 agora.</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>Vous ne suivez plus %1.</translation>
+        <translation>Você não segue mais %1.</translation>
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation>Envoyer un message direct</translation>
+        <translation>Enviar Mensagem Direta</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiar URL para a Área de Transferência</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Bem-vindo ao Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>Amusez-vous bien avec Piepmatz ! Sebastian J. Wolf</translation>
+        <translation>Divirta-se com o Piepmatz! Sebastian J. Wof</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation>Accepter</translation>
+        <translation>Aceitar</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>Bienvenue sur Piepmatz - un client Twitter pour Sailfish OS ! Piepmatz est un&lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;logiciel libre&lt;/a&gt; soumis aux conditions de la &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licence Publique Générale (GPL) version 3&lt;/a&gt;. En utilisant cette application, vous acceptez en totalité les termes et conditions de cette licence.</translation>
+        <translation>Bem-vindo ao Piepmatz - um cliente do Twitter para o SailfishOS! Piepmatz é &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;um software livre&lt;/a&gt;e licenciado sob as condições da &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licença Pública Geral na versão 3 (GPLv3)&lt;/a&gt;. Ao usar este software, você aceita os termos e condições desta licença.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>En outre, sachez que Piepmatz va automatiquement enregistrer cette installation sur mon serveur après avoir appuyé sur le bouton &quot;Accepter&quot;. Je respecte évidemment votre vie privée ; en plus d&apos;être anonyme, le jeu d&apos;informations transmis sera très limité : un identifiant unique pour cette installation ainsi qu&apos;un pays. Mon objectif est simplement de savoir combien de &quot;Sailors&quot; utilisent Piepmatz et de connaître leurs pays d&apos;origine. Vous n&apos;êtes pas d&apos;accord ? Il suffit simplement de fermer l&apos;application et de la supprimer. Pas d&apos;inquiétudes, aucune donnée n&apos;a pour l&apos;instant été transmise.</translation>
+        <translation>Além disso, o Piepmatz registrará esta instalação automaticamente no meu servidor se você pressionar &apos;Aceitar&apos;. Eu respeito sua privacidade, portanto, apenas anonimato e um conjunto de informações muito limitado serão transmitidos: um identificador exclusivo para esta instalação e seu país. Eu apenas gostaria de saber quantos usuários Piepmatz tem e de onde eles são. Se você não concordar, basta fechar o aplicativo. Nenhuma informação foi transmitida até agora.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation>Engagé pour le logiciel libre</translation>
+        <translation>Comprometido com Software Livre</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation>S&apos;inscrire anonymement</translation>
+        <translation>Registro anônimo</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation>Erreur</translation>
+        <translation>Erro no Registo</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>L&apos;inscription a échoué. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de m&apos;envoyer un &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>O registro falhou. Certifique-se de que seu dispositivo esteja conectado à Internet e pressione &apos;Reiniciar registro&apos;. Caso ainda assim não funcione, entre em contato comigo via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation>Recommencer l&apos;inscription</translation>
+        <translation>Reiniciar Registro</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation>Inscription non valide.</translation>
+        <translation>Registro Inválido</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Le fichier d&apos;inscription de votre appareil est corrompu. La procédure d&apos;inscription doit être renouvelée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de m&apos;envoyer un &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>O arquivo de registro em seu dispositivo está corrompido. O processo de registro precisa ser reiniciado. Certifique-se de que seu dispositivo esteja conectado à Internet e pressione &apos;Reiniciar registro&apos;. Caso o novo registro não seja bem sucedido, entre em contato comigo via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation>Montrer les données d&apos;inscription</translation>
+        <translation>Mostrar Dados de Registro</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Les données ne sont partagées avec personne d&apos;autre. Merci de consulter la &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;notice légale&lt;/a&gt; pour obtenir davantage d&apos;informations sur la façon dont les données sont traitées. Envie de connaître les motivations de l&apos;ID unique et de comprendre sa conception ? Rendez-vous sur ma page&lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;À propos de Wagnis&lt;/a&gt;.</translation>
+        <translation>Os dados não são compartilhados com ninguém. Consulte o &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;aviso legal&lt;/a&gt; para obter informações adicionais sobre como os dados são processados. Para obter detalhes adicionais sobre a razão para isso, a ID única e como ela é gerada, veja minha página &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;sobre o Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation>Contribution</translation>
+        <translation>Contribuição no Desenvolvimento</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation>Merci de contribuer au développement de Piepmatz !</translation>
+        <translation>Por favor contribua com o Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>Vous pouvez sauter l&apos;étape de la contribution pendant %1 si vous souhaitez d&apos;abord tester l&apos;appli.</translation>
+        <translation>Você pode pular a contribuição  %1 caso deseje testar o Piepmatz primeiro.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>Continuer à tester</translation>
+        <translation>Continue Testando</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Dans le cas où vous vous seriez déjà acquitté de votre contribution, merci de m&apos;en faire part directement par &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
+        <translation>Se você já contribuiu com o Piepmatz, por favor &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;me contate&lt;/a&gt; diretamente.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation>Contribution</translation>
+        <translation>Contribuição</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation>Choisissez le montant de votre contribution</translation>
+        <translation>Escolha sua contribuição aqui</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation>Acheter</translation>
+        <translation>Comprar Chave de Contribuição</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation>Activez votre code d&apos;accès</translation>
+        <translation>Valide sua Chave de Contribuição</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation>Entrer le code ici</translation>
+        <translation>Insira a Chave de Contribuição aqui</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation>Valider</translation>
+        <translation>Valide a Chave de Contribuição</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation>Piepmatz S - 3€33</translation>
+        <translation>Piepmatz P - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation>Piepmatz M - 5€55</translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation>Piepmatz L - 7€77</translation>
+        <translation>Piepmatz G - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation>Piepmatz XL - 9€99</translation>
+        <translation>Piepmatz EG - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation>Vous avez déjà activé votre code d&apos;accès sur un autre appareil ? Pas de soucis, il est encore réutilisable 3 fois, de quoi faire plaisir à quelques amis ! Au delà, une nouvelle contribution sera nécessaire.</translation>
+        <translation>Se você já validou sua Chave em outro dispositivo, pode reutilizá-la em até 3 dispositivos adicionais sem necessidade de nova contribuição.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz est une application open source, et le restera toujours. Une contribution de votre part est néanmoins requise avant que vous ne puissiez accéder au service, ceci afin de garantir à l&apos;appli un développement stable et durable. Vous pouvez par exemple traduire Piepmatz dans votre langue, participer à son développement sur GitHub ou tout simplement acheter un code d&apos;accès.</translation>
+        <translation>Piepmatz é e continuará sendo um Software de Código Aberto. Entretanto, no intuito de apoiar o desenvolvimento do app, antes que possa utilizá-lo eu gostaria de pedir a você uma contribuição. Essa contribuição pode ser feita traduzindo o Piepmatz para uma nova língua, ajudando a desenvolvê-lo ou simplesmente comprando uma Chave. </translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Après avoir obtenu un code d&apos;accès via un achat ou tout autre investissement bénéfique pour le développement de Piepmatz, il vous suffit de l&apos;activer ici afin d&apos;accéder au service.</translation>
+        <translation>Após ter recebido sua Chave por tê-la comprado ou mediante outra forma de contribuição, por favor valide-a aqui para executar o Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation>Contribution non validée !</translation>
+        <translation>Contribuição não validada!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Votre contribution n&apos;a pas pu être validée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Revalider&quot;. Merci de m&apos;envoyer un &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; dans le cas où vous posséderiez un code d&apos;accès impossible à valider.</translation>
+        <translation>Sua contribuição não pode ser validada. Por favor confirme que seu dispositivo está conectado a Internet e pressione &apos;Reiniciar Validação&apos;. Caso você tenha uma Chave de Contribuição que não está sendo corretamente validada, contate-me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation>Revalider</translation>
+        <translation>Reiniciar Validação</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation>Merci !</translation>
+        <translation>Obrigado!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation>Votre contribution a été correctement validée. Merci infiniment pour votre participation au bon développement de Piepmatz !</translation>
+        <translation>Sua contribuição foi validada com sucesso. Muito obrigado por contribuir para o desenvolvimento do Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation>OK</translation>
+        <translation>Ok</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation>Vous avez le choix parmi 4 formules : S, M, L ou XL. Le code d&apos;accès obtenu après l&apos;achat déverrouillera intégralement l&apos;application, peu importe la formule choisie. C&apos;est finalement à vous de décider de la valeur de Piepmatz !</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Configurações</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation>Activer la géolocalisation</translation>
+        <translation>Ativar Posicionamento</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation>Autorise Piepmatz à utiliser le GPS et autres services similaires pour géolocaliser vos Tweets</translation>
+        <translation>Permita que o Piepmatz use GPS/GLONASS/Galileo, etc. para a geolocalização do tweet</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Emplacement</translation>
+        <translation>Localização</translation>
     </message>
     <message>
         <source>Images</source>
-        <translation>Images</translation>
+        <translation>Imagens</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation>Choisissez le style actif</translation>
+        <translation>Escolha o estilo de imagem ativo aqui</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation>Standard</translation>
+        <translation>Padrão</translation>
     </message>
     <message>
         <source>Image Style</source>
-        <translation>Style d&apos;image</translation>
+        <translation>Estilo de imagem</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>Piepfish, par @ferlanero</translation>
+        <translation>Piepfish de @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation>Comptes</translation>
+        <translation>Contas</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation>Compte</translation>
+        <translation>Conta</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation>Sélectionnez le compte actif</translation>
+        <translation>Escolha a conta ativa aqui</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -743,75 +743,75 @@
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation>Se connecter avec un autre compte</translation>
+        <translation>Logar com outra Conta</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation>Activer Twitter Emoji</translation>
+        <translation>Usar Emoji do Twitter</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation>Utilise les émojis Twitter au lieu des émojis de Sailfish OS</translation>
+        <translation>Usar Emoji do twitter ao invés do padrão do sistema</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Termos de serviço</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Política de Privacidade</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Abra no navegador</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre au Tweet</translation>
+        <translation>Responder a Tweet</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Retweeter avec commentaire</translation>
+        <translation>Retweet com comentário</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiar URL para a área de transferência</translation>
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation>Supprimer le Tweet</translation>
+        <translation>Apagar Tweet</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation>Suppression du Tweet</translation>
+        <translation>Apagar o tweet</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation>Conversation</translation>
+        <translation>Tópico</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Retweeté par %1</translation>
+        <translation>Retweetado por %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>En réponse à %1</translation>
+        <translation>Em resposta a %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation>Envoyé avec %1</translation>
+        <translation>Tweetado com %1</translation>
     </message>
 </context>
 <context>
@@ -822,23 +822,23 @@
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre</translation>
+        <translation>Responder a Tweet</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Commenter</translation>
+        <translation>Retweet com comentário</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Abra no navegador</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiar URL para a área de transferência</translation>
     </message>
     <message>
         <source>Show Thread</source>
-        <translation>Afficher la conversation</translation>
+        <translation>Mostrar tópico</translation>
     </message>
 </context>
 <context>
@@ -852,67 +852,67 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; par %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; de %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 Membres</translation>
+        <translation>%1 membros</translation>
     </message>
 </context>
 <context>
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien dans le presse-papier</translation>
+        <translation>Copiar URL para a área de transferência</translation>
     </message>
 </context>
 <context>
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Atualizar</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation>Téléchargement</translation>
+        <translation>Baixar</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>Baixado de %1 com sucesso.</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Baixando</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Baixado. %1% completados...</translation>
     </message>
 </context>
 <context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Bem-vindo ao Piepmatz!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>Merci de vous connecter à Twitter pour continuer.</translation>
+        <translation>Faça o login no Twitter para continuar.</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>Se connecter à Twitter</translation>
+        <translation>Faça o login no Twitter</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Pas encore de compte Twitter ? Merci de bien vouloir vous y inscrire avant d&apos;utiliser Piepmatz.</translation>
+        <translation>Se ainda não possui uma conta no Twitter, inscreva-se primeiro.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Inscription à Twitter</translation>
+        <translation>Inscreva-se no Twitter</translation>
     </message>
     <message>
         <source>OK</source>
@@ -920,19 +920,19 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Merci d&apos;indiquer le PIN Twitter : </translation>
+        <translation>Digite o PIN do Twitter:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>Impossible de vous authentifier avec le PIN saisi.</translation>
+        <translation>Não foi possível autenticar você com o PIN inserido.</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>Indiquer à nouveau le PIN</translation>
+        <translation>Digite PIN novamente</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Relancer l&apos;authentification</translation>
+        <translation>Reiniciar a autenticação</translation>
     </message>
 </context>
 <context>
@@ -955,27 +955,27 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation>les %1 jours suivants</translation>
+        <translation>o próximo %1 dias</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation>le jour suivant</translation>
+        <translation>o próximo dia</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>les %1 prochaines heures</translation>
+        <translation>as próximas %1 horas</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation>l&apos;heure suivante</translation>
+        <translation>a próxima hora</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation>les %1 prochaines minutes</translation>
+        <translation>o próximo %1 minutos</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation>la minute suivante</translation>
+        <translation>no próximo minuto</translation>
     </message>
 </context>
 </TS>
