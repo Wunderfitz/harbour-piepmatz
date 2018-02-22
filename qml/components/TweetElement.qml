@@ -251,10 +251,6 @@ Item {
 
                                 width: parent.width
                                 height: parent.height
-                                sourceSize {
-                                    width: parent.width
-                                    height: parent.height
-                                }
                                 fillMode: Image.PreserveAspectCrop
                                 visible: status === Image.Ready ? true : false
                                 opacity: status === Image.Ready ? 1 : 0
@@ -263,7 +259,8 @@ Item {
                                     anchors.fill: parent
                                     onClicked: {
                                         if (referenceMetadata.url) {
-                                            Qt.openUrlExternally(referenceMetadata.url);
+                                            pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": openGraphImage.source, "imageHeight": openGraphImage.sourceSize.height, "imageWidth": openGraphImage.sourceSize.height, "tweet": tweetModel});
+                                            // Qt.openUrlExternally(referenceMetadata.url);
                                         }
                                     }
                                 }
