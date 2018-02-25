@@ -108,6 +108,11 @@ function enhanceText(tweetText, entities, extendedEntities) {
 function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUrl, followEmbeddedTweet) {
     var replacements = [];
 
+    TwitterText.convertUnicodeIndices(tweetText, entities.hashtags);
+    TwitterText.convertUnicodeIndices(tweetText, entities.symbols);
+    TwitterText.convertUnicodeIndices(tweetText, entities.urls);
+    TwitterText.convertUnicodeIndices(tweetText, entities.user_mentions);
+
     // URLs
     for (var i = 0; i < entities.urls.length; i++ ) {
         var tweetId = getTweetId(entities.urls[i].expanded_url);

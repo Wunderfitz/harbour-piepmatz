@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
+import "../js/twitter-text.js" as TwitterText
 
 Item {
 

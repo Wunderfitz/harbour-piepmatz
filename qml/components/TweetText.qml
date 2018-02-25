@@ -21,6 +21,7 @@ import Sailfish.Silica 1.0
 import "../pages"
 import "../js/functions.js" as Functions
 import "../js/twemoji.js" as Emoji
+import "../js/twitter-text.js" as TwitterText
 
 Column {
     id: tweetTextColumn
@@ -30,10 +31,17 @@ Column {
 
     width: parent.width
 
+    function makeTheTextGreatAgain() {
+        var relevantTweet = Functions.getRelevantTweet(tweetTextColumn.tweet);
+        var greatifiedText = relevantTweet.full_text;
+        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), Theme.fontSizeExtraSmall)
+        return greatifiedText;
+    }
+
     Text {
         width: parent.width
         id: tweetContentText
-        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeExtraSmall) : Emoji.emojify(Functions.enhanceText(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Functions.getRelevantTweet(tweetTextColumn.tweet).entities, Functions.getRelevantTweet(tweetTextColumn.tweet).extended_entities), Theme.fontSizeExtraSmall)
+        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeExtraSmall) : makeTheTextGreatAgain()
         font.pixelSize: Theme.fontSizeExtraSmall
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone
