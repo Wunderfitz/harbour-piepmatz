@@ -141,7 +141,7 @@ Page {
                 visible: false
                 opacity: visible ? 1 : 0
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/TweetConversationPage.qml"), {"conversationTweets": tweetPage.conversationTweets })
+                    pageStack.push(Qt.resolvedUrl("../pages/TweetConversationPage.qml"), {"conversationTweets": tweetPage.conversationTweets, "sourceTweetId": tweetPage.myTweetId })
                 }
             }
 

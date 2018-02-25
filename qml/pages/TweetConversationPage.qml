@@ -26,6 +26,7 @@ Page {
     allowedOrientations: Orientation.All
 
     property variant conversationTweets;
+    property variant sourceTweetId;
 
     SilicaFlickable {
         id: tweetConversationContainer
@@ -52,6 +53,7 @@ Page {
                 model: tweetConversationPage.conversationTweets
                 delegate: Tweet {
                     tweetModel: modelData
+                    enabled: modelData.id_str !== sourceTweetId
                 }
 
                 VerticalScrollDecorator {}
