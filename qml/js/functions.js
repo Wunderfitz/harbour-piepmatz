@@ -257,25 +257,29 @@ function getVideoHeight(videoWidth, tweet) {
 }
 
 function getVideoOriginalHeight(tweet) {
+    var originalHeight = 1;
     if (tweet.extended_entities) {
         for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
             if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                return tweet.extended_entities.media[i].video_info.aspect_ratio[1];
+                originalHeight = tweet.extended_entities.media[i].video_info.aspect_ratio[1];
+                break;
             }
         }
     }
-    return 1;
+    return originalHeight;
 }
 
 function getVideoOriginalWidth(tweet) {
+    var originalWidth = 1;
     if (tweet.extended_entities) {
         for (var i = 0; i < tweet.extended_entities.media.length; i++ ) {
             if (tweet.extended_entities.media[i].type === "video" || tweet.extended_entities.media[i].type === "animated_gif") {
-                return tweet.extended_entities.media[i].video_info.aspect_ratio[0];
+                originalWidth = tweet.extended_entities.media[i].video_info.aspect_ratio[0];
+                break;
             }
         }
     }
-    return 1;
+    return originalWidth;
 }
 
 function getTweetUrl(tweetModel) {

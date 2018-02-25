@@ -122,7 +122,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweetVideoComponent.tweet});
+                        pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweet.retweeted_status ? tweet.retweeted_status : tweet});
                     }
                 }
             }
