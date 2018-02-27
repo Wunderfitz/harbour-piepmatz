@@ -576,5 +576,5 @@ function emojify(rawText, emojiSize) {
     }
     // QML has a weird bug. If an ampersand is followed by an HTML tag or a character, the tag is ignored and returned as string or the following string is omitted
     // Therefore replacing the ampersand with &amp; in these cases...
-    return curatedText.replace(/(\&)([\w\<])/g, "&amp;$2");
+    return curatedText.replace(/(\&amp\;|\&(\<|\w+))/g, "&amp;$2");
 }
