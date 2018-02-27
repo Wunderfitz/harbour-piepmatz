@@ -1985,9 +1985,12 @@ void TwitterApi::handleGetSingleTweetFinished()
     QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
     QVariantList relatedTweets;
     for (QGumboNode &tweetNode : tweetNodes) {
-        QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
-        qDebug() << "Found Tweet ID: " << otherTweetId;
-        relatedTweets.append(otherTweetId);
+        QStringList tweetClassList = tweetNode.classList();
+        if (!tweetClassList.contains("promoted-tweet")) {
+            QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
+            qDebug() << "Found Tweet ID: " << otherTweetId;
+            relatedTweets.append(otherTweetId);
+        }
     }
 
     if (!relatedTweets.isEmpty()) {
