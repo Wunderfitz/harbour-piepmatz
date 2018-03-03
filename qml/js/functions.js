@@ -855,6 +855,11 @@ function htmlDecode(input)
             X17E: "ž",
             X17F: "ſ"
         };
+        var integerValue = parseInt(p1);
+        if (!isNaN(integerValue)) {
+            p1 = "X" + integerValue.toString(16);
+        }
+
         var capitalizedUnicode = p1.toUpperCase();
         if (typeof htmlEntitiesUnicode[capitalizedUnicode] === "undefined") {
             return match;
@@ -864,7 +869,9 @@ function htmlDecode(input)
     }
 
     var processedText = input.replace(/\&([a-zA-Z0-9]*)\;/g, replacer);
-    processedText = input.replace(/\&\#([a-zA-Z0-9]*)\;/g, replacerUnicode);
+    processedText = processedText.replace(/\&\#([a-zA-Z0-9]*)\;/g, replacerUnicode);
+
+    console.log(processedText);
 
     return processedText;
 }

@@ -1916,26 +1916,21 @@ void TwitterApi::handleGetOpenGraphFinished()
     QVariantMap openGraphData;
 
     QString resultDocument = QString::fromUtf8(reply->readAll());
-    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
-    QGumboNode root = parsedResult.rootNode();
-    QGumboNodes metaTags = root.getElementsByTagName(HtmlTag::META);
-
-    for (QGumboNode &metaTag : metaTags) {
-        if (metaTag.hasAttribute("property")) {
-            QString propertyAttribute = metaTag.getAttribute("property");
-            if (propertyAttribute == "og:url") {
-                openGraphData.insert("url", metaTag.getAttribute("content"));
-            }
-            if (propertyAttribute == "og:image") {
-                openGraphData.insert("image", metaTag.getAttribute("content"));
-            }
-            if (propertyAttribute == "og:description") {
-                openGraphData.insert("description", metaTag.getAttribute("content"));
-            }
-            if (propertyAttribute == "og:title") {
-                openGraphData.insert("title", metaTag.getAttribute("content"));
-            }
-        }
+    QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (urlRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("url", urlRegex.cap(1));
+    }
+    QRegExp imageRegex("\\<meta\\s+property\\=\\\"og\\:image\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (imageRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("image", imageRegex.cap(1));
+    }
+    QRegExp descriptionRegex("\\<meta\\s+property\\=\\\"og\\:description\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (descriptionRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("description", descriptionRegex.cap(1));
+    }
+    QRegExp titleRegex("\\<meta\\s+property\\=\\\"og\\:title\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
+    if (titleRegex.indexIn(resultDocument) != -1) {
+        openGraphData.insert("title", titleRegex.cap(1));
     }
 
     if (openGraphData.isEmpty()) {
