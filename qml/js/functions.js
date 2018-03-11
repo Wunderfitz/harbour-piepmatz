@@ -64,7 +64,11 @@ function getValidDate(twitterDate) {
 function getTweetId(url) {
     // The QML JS engine sometimes fails to match regex /twitter\.com\/\w+\/status\/(\d+)/g correctly. Therefore doing it differently now...
     if (url.indexOf("twitter.com/") !== -1 && url.indexOf("/status/") !== -1) {
-        return url.substring(url.indexOf("/status/") + 8);
+        var statusId = url.substring(url.indexOf("/status/") + 8);
+        if (statusId.indexOf("?") !== -1) {
+            statusId = statusId.substring(0, statusId.indexOf("?"));
+        }
+        return statusId;
     }
     return null;
 }

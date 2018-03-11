@@ -416,13 +416,18 @@ void TwitterApi::retweetTimeline()
 
 void TwitterApi::showStatus(const QString &statusId)
 {
-    qDebug() << "TwitterApi::showStatus" << statusId;
+    // Very weird, some statusIds contain a query string. Why?
+    QString sanitizedStatus = statusId;
+    if (statusId.contains("?")) {
+        sanitizedStatus = statusId.left(statusId.indexOf("?"));
+    }
+    qDebug() << "TwitterApi::showStatus" << sanitizedStatus;
     QUrl url = QUrl(API_STATUSES_SHOW);
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("trim_user", "false");
-    urlQuery.addQueryItem("id", statusId);
+    urlQuery.addQueryItem("id", sanitizedStatus);
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -431,7 +436,7 @@ void TwitterApi::showStatus(const QString &statusId)
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
-    requestParameters.append(O0RequestParameter(QByteArray("id"), statusId.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("id"), sanitizedStatus.toUtf8()));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowStatusError(QNetworkReply::NetworkError)));
