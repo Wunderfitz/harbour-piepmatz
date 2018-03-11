@@ -1067,6 +1067,12 @@ void TwitterApi::getOpenGraph(const QString &address)
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (Wayland; SailfishOS) Piepmatz");
+    request.setRawHeader(QByteArray("Accept"), QByteArray("text/html,application/xhtml+xml"));
+    request.setRawHeader(QByteArray("Accept-Encoding"), QByteArray("identity"));
+    request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
+    request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
+    request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetOpenGraphError(QNetworkReply::NetworkError)));
