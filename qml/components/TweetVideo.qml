@@ -85,6 +85,15 @@ Item {
         visible: status === Image.Ready ? true : false
     }
 
+    Rectangle {
+        id: placeholderBackground
+        color: "black"
+        opacity: 0.3
+        height: parent.height
+        width: parent.width
+        visible: playButton.visible
+    }
+
     Row {
         width: parent.width
         height: parent.height
@@ -266,6 +275,15 @@ Item {
                     videoComponentLoader.active = false;
                     fullscreenItem.visible = !tweetVideoComponent.fullscreen;
                 }
+            }
+
+            Rectangle {
+                id: videoControlBackground
+                color: "black"
+                opacity: 0.3
+                height: parent.height
+                width: parent.width
+                visible: pausedRow.visible
             }
 
             Row {

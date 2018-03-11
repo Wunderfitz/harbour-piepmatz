@@ -871,7 +871,5 @@ function htmlDecode(input)
     var processedText = input.replace(/\&([a-zA-Z0-9]*)\;/g, replacer);
     processedText = processedText.replace(/\&\#([a-zA-Z0-9]*)\;/g, replacerUnicode);
 
-    console.log(processedText);
-
     return processedText;
 }
