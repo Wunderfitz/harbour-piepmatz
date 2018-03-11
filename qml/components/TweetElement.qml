@@ -46,6 +46,8 @@ Item {
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
 
+    Behavior on height { PropertyAnimation { easing.type: Easing.Linear; duration: 250 } }
+
     Column {
         id: tweetColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )
@@ -227,7 +229,24 @@ Item {
 
                 Component {
                     id: openGraphComponent
+
                     Column {
+                        id: openGraphColumn
+                        Timer {
+                            id: openGraphVisibleTimer
+                            interval: 250
+                            repeat: false
+                            onTriggered: {
+                                openGraphColumn.visible = true;
+                            }
+                        }
+
+                        Component.onCompleted: {
+                            openGraphVisibleTimer.start();
+                        }
+                        visible: false
+                        opacity: visible ? 1 : 0
+                        Behavior on opacity { NumberAnimation {} }
                         spacing: Theme.paddingSmall
                         Separator {
                             width: parent.width
@@ -254,6 +273,7 @@ Item {
                                 fillMode: Image.PreserveAspectCrop
                                 visible: status === Image.Ready ? true : false
                                 opacity: status === Image.Ready ? 1 : 0
+                                Behavior on opacity { NumberAnimation {} }
                                 source: referenceMetadata.image ? referenceMetadata.image : ""
                                 MouseArea {
                                     anchors.fill: parent
@@ -601,7 +621,22 @@ Item {
                     EmbeddedTweet {
                         id: embeddedTweetItem
                         tweetModel: embeddedTweet
-                        visible: hasEmbeddedTweet
+
+                        Timer {
+                            id: embeddedTweetVisibleTimer
+                            interval: 250
+                            repeat: false
+                            onTriggered: {
+                                embeddedTweetItem.visible = true;
+                            }
+                        }
+
+                        Component.onCompleted: {
+                            embeddedTweetVisibleTimer.start();
+                        }
+                        visible: false
+                        opacity: visible ? 1 : 0
+                        Behavior on opacity { NumberAnimation {} }
                     }
                 }
 

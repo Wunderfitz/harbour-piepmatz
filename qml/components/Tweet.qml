@@ -90,4 +90,5 @@ ListItem {
     }
 
     onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": singleTweet.tweetModel });
+
 }

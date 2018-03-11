@@ -648,11 +648,13 @@ Page {
                     visible: homeView.loaded
                     width: parent.width
                     height: parent.height
+                    contentHeight: homeTimelineTweet.height
                     clip: true
 
                     model: timelineModel
 
                     delegate: Tweet {
+                        id: homeTimelineTweet
                         tweetModel: display
                         userId: overviewPage.myUser.id_str
                     }

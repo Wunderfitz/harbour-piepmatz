@@ -1069,7 +1069,6 @@ void TwitterApi::getOpenGraph(const QString &address)
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
     request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (Wayland; SailfishOS) Piepmatz");
     request.setRawHeader(QByteArray("Accept"), QByteArray("text/html,application/xhtml+xml"));
-    request.setRawHeader(QByteArray("Accept-Encoding"), QByteArray("identity"));
     request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
     request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
     request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
