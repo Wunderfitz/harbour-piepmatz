@@ -1925,7 +1925,13 @@ void TwitterApi::handleGetOpenGraphFinished()
 
     QVariantMap openGraphData;
 
-    QString resultDocument = QString::fromUtf8(reply->readAll());
+    QString resultDocument;
+    if (contentTypeHeader.toString().indexOf("charset=iso-8859-1", 0, Qt::CaseInsensitive) != -1) {
+        resultDocument = QString::fromLatin1(reply->readAll());
+    } else {
+        resultDocument = QString::fromUtf8(reply->readAll());
+    }
+
     QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
     if (urlRegex.indexIn(resultDocument) != -1) {
         openGraphData.insert("url", urlRegex.cap(1));
