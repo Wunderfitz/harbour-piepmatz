@@ -205,6 +205,7 @@ Item {
                 Component.onCompleted: {
                     if (tweetVideo.error === MediaPlayer.NoError) {
                         tweetVideo.play();
+                        timeLeftTimer.start();
                     } else {
                         errorText.text = qsTr("Error loading video! " + tweetVideo.errorString)
                         errorTextOverlay.visible = true;
@@ -261,9 +262,11 @@ Item {
                         if (tweetVideo.playbackState === MediaPlayer.PlayingState) {
                             enableScreensaver();
                             tweetVideo.pause();
+                            timeLeftItem.visible = true;
                         } else {
                             disableScreensaver();
                             tweetVideo.play();
+                            timeLeftTimer.start();
                         }
                     }
                 }
@@ -305,6 +308,7 @@ Item {
                             onClicked: {
                                 disableScreensaver();
                                 tweetVideo.play();
+                                timeLeftTimer.start();
                             }
                         }
                     }
@@ -347,12 +351,24 @@ Item {
                 }
             }
 
+            Timer {
+                id: timeLeftTimer
+                repeat: false
+                interval: 2000
+                onTriggered: {
+                    timeLeftItem.visible = false;
+                }
+            }
+
             Item {
+                id: timeLeftItem
                 width: positionText.width + 2 * Theme.paddingMedium
                 height: tweetVideoComponent.fullscreen ? Theme.fontSizeMedium : Theme.fontSizeExtraSmall
                 anchors.bottom: parent.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: tweetVideo.visible
+                opacity: visible ? 1 : 0
+                Behavior on opacity { NumberAnimation {} }
                 Rectangle {
                     id: positionTextOverlay
                     color: "black"
