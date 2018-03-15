@@ -280,61 +280,6 @@ Item {
                 }
             }
 
-            Rectangle {
-                id: videoControlBackground
-                color: "black"
-                opacity: 0.3
-                height: parent.height
-                width: parent.width
-                visible: pausedRow.visible
-            }
-
-            Row {
-                id: pausedRow
-                width: parent.width
-                height: parent.height
-                visible: videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState
-                Item {
-                    height: parent.height
-                    width: tweetVideoComponent.fullscreen ? parent.width : ( parent.width / 2 )
-                    Image {
-                        id: pausedPlayButton
-                        anchors.centerIn: parent
-                        width: Theme.iconSizeLarge
-                        height: Theme.iconSizeLarge
-                        source: "image://theme/icon-l-play"
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                disableScreensaver();
-                                tweetVideo.play();
-                                timeLeftTimer.start();
-                            }
-                        }
-                    }
-                }
-                Item {
-                    id: pausedFullscreenItem
-                    height: parent.height
-                    width: parent.width / 2
-                    visible: !tweetVideoComponent.fullscreen
-                    Image {
-                        id: pausedFullscreenButton
-                        anchors.centerIn: parent
-                        width: Theme.iconSizeLarge
-                        height: Theme.iconSizeLarge
-                        source: "../../images/icon-l-fullscreen.png"
-                        visible: ( videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState ) ? true : false
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweetVideoComponent.tweet});
-                            }
-                        }
-                    }
-                }
-            }
-
             BusyIndicator {
                 id: videoBusyIndicator
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -362,29 +307,99 @@ Item {
 
             Item {
                 id: timeLeftItem
-                width: positionText.width + 2 * Theme.paddingMedium
-                height: tweetVideoComponent.fullscreen ? Theme.fontSizeMedium : Theme.fontSizeExtraSmall
+                width: parent.width
+                height: parent.height
                 anchors.bottom: parent.bottom
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: tweetVideo.visible
                 opacity: visible ? 1 : 0
                 Behavior on opacity { NumberAnimation {} }
+
                 Rectangle {
                     id: positionTextOverlay
                     color: "black"
-                    opacity: 0.5
+                    opacity: 0.3
                     width: parent.width
                     height: parent.height
-                    visible: parent.visible
+                    anchors.bottom: parent.bottom
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    visible: pausedRow.visible
                 }
+
+                Row {
+                    id: pausedRow
+                    width: parent.width
+                    height: parent.height - ( tweetVideoSlider.visible ? tweetVideoSlider.height : 0 ) - ( positionText.visible ? positionText.height : 0 )
+                    visible: videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState
+                    Item {
+                        height: parent.height
+                        width: tweetVideoComponent.fullscreen ? parent.width : ( parent.width / 2 )
+                        Image {
+                            id: pausedPlayButton
+                            anchors.centerIn: parent
+                            width: Theme.iconSizeLarge
+                            height: Theme.iconSizeLarge
+                            source: "image://theme/icon-l-play"
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    disableScreensaver();
+                                    tweetVideo.play();
+                                    timeLeftTimer.start();
+                                }
+                            }
+                        }
+                    }
+                    Item {
+                        id: pausedFullscreenItem
+                        height: parent.height
+                        width: parent.width / 2
+                        visible: !tweetVideoComponent.fullscreen
+                        Image {
+                            id: pausedFullscreenButton
+                            anchors.centerIn: parent
+                            width: Theme.iconSizeLarge
+                            height: Theme.iconSizeLarge
+                            source: "../../images/icon-l-fullscreen.png"
+                            visible: ( videoComponentLoader.active && tweetVideo.playbackState === MediaPlayer.PausedState ) ? true : false
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    pageStack.push(Qt.resolvedUrl("../pages/VideoPage.qml"), {"tweetModel": tweetVideoComponent.tweet});
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Slider {
+                    id: tweetVideoSlider
+                    width: parent.width
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.bottom: positionText.top
+                    minimumValue: 0
+                    maximumValue: tweetVideo.duration
+                    stepSize: 1
+                    value: tweetVideo.position
+                    enabled: tweetVideo.seekable
+                    visible: (tweetVideo.duration > 0)
+                    onReleased: {
+                        tweetVideo.seek(Math.floor(value));
+                        tweetVideo.play();
+                        timeLeftTimer.start();
+                    }
+                    valueText: getTimeString(Math.round((tweetVideo.duration - tweetVideoSlider.value) / 1000))
+                }
+
                 Text {
                     id: positionText
-                    visible: tweetVideo.visible
+                    visible: tweetVideo.visible && tweetVideo.duration === 0
                     color: Theme.primaryColor
                     font.pixelSize: tweetVideoComponent.fullscreen ? Theme.fontSizeSmall : Theme.fontSizeTiny
                     anchors {
-                        verticalCenter: parent.verticalCenter
-                        horizontalCenter: parent.horizontalCenter
+                        bottom: parent.bottom
+                        bottomMargin: Theme.paddingSmall
+                        horizontalCenter: positionTextOverlay.horizontalCenter
                     }
                     wrapMode: Text.Wrap
                     text: ( tweetVideo.duration - tweetVideo.position ) > 0 ? getTimeString(Math.round((tweetVideo.duration - tweetVideo.position) / 1000)) : "-:-"
