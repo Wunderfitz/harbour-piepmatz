@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Een Twitter-cliënt voor Sailfish OS</translation>
+        <translation>Een Twitter-client voor Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>E-mail verzenden</translation>
+        <translation>E-mail versturen</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Dit project maakt gebruik van twitter-text. Auteursrecht 2014 Twitter, Inc. en andere bijdragers. Bedankt om dit beschikbaar te maken onder de Apache-licentie versie 2.0!</translation>
+        <translation>Dit project maakt gebruik van twitter-text. Copyright 2014 Twitter, Inc. en andere bijdragers. Bedankt om dit beschikbaar te maken onder de Apache-licentie versie 2.0!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
@@ -69,31 +69,32 @@
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>Piepmatz maakt gebruik van ipinfo.io en (indien beschikbaar) de GPS-ontvanger van je apparaat om je positie te bepalen, om trends op te halen en - enkel als je dit uitdrukkelijk kiest - je positie aan je tweets toe te voegen. Als je van deze laatste functie gebruik wil maken, schakel deze dan in in je &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-instellingen&lt;/a&gt;.</translation>
+        <translation>Piepmatz maakt gebruik van ipinfo.io en (indien beschikbaar) de GPS-ontvanger van je apparaat om je positie te bepalen, om trends op te halen en - enkel als je dit uitdrukkelijk kiest - je locatie aan je tweets toe te voegen. Als je van deze laatste functie gebruik wil maken, schakel deze dan in in je &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-instellingen&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis-ID:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis-ID weergeven</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit project maakt gebruik van twemoji. Copyright 2017 Twitter, Inc. en andere bijdragers. Bedankt voor het beschikbaar maken onder de voorwaarden van de MIT-licentie (code) en CC-BY 4.0 (grafische elementen)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>twemoji openen op GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dit project maakt gebruik van QGumboParser. Auteursrecht 2017 Sergey Lagner. Bedankt voor het beschikbaar maken onder de voorwaarden van de MIT-licentie!
+QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwaarden van de Apache-licentie 2.0.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>QGumboParser openen op GitHub</translation>
     </message>
 </context>
 <context>
@@ -123,66 +124,66 @@
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>%1 tekens resterend</translation>
+        <translation>%1 resterende tekens</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Bezig met laden...</translation>
     </message>
 </context>
 <context>
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1: favorieten</translation>
+        <translation>%1: Favorieten</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
 </context>
 <context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1: volgers</translation>
+        <translation>%1: Volgers</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: volgend</translation>
+        <translation>%1: Volgend</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloaden</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met downloaden...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloaden van %1 voltooid.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met downloaden, %1% voltooid...</translation>
     </message>
 </context>
 <context>
@@ -204,37 +205,37 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Leden</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Tijdlijn</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>Leden weergeven</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">Meer tweets laden</translation>
+        <translation>Meer tweets laden</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Laden...</translation>
+        <translation>Bezig met laden...</translation>
     </message>
 </context>
 <context>
@@ -249,11 +250,11 @@
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Antwoord verzenden</translation>
+        <translation>Antwoord versturen</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Tweet verzenden</translation>
+        <translation>Tweet versturen</translation>
     </message>
     <message>
         <source>Attach Images</source>
@@ -265,7 +266,7 @@
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>Retweet verzenden</translation>
+        <translation>Retweet versturen</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -273,7 +274,7 @@
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation>Huidige positie toevoegen aan deze tweet</translation>
+        <translation>Huidige locatie toevoegen aan deze tweet</translation>
     </message>
 </context>
 <context>
@@ -324,19 +325,19 @@
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Tijdlijn wordt geladen...</translation>
+        <translation>Bezig met laden van tijdlijn...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz kon je niet inloggen!</translation>
+        <translation>Piepmatz kan je niet inloggen!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet verzonden!</translation>
+        <translation>Tweet verstuurd!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Zoek op Twitter...</translation>
+        <translation>Zoeken op Twitter...</translation>
     </message>
     <message>
         <source>No results found</source>
@@ -348,11 +349,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>Tweet wordt verzonden…</translation>
+        <translation>Bezig met versturen van tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>%1% geüpload…</translation>
+        <translation>Bezig met uploaden, %1% voltooid…</translation>
     </message>
     <message>
         <source>You</source>
@@ -360,7 +361,7 @@
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>Je hebt de voorbije 30 dagen geen privéberichten ontvangen</translation>
+        <translation>Je hebt de afgelopen 30 dagen geen privéberichten ontvangen</translation>
     </message>
     <message>
         <source>Tweets</source>
@@ -372,7 +373,7 @@
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Zoeken...</translation>
+        <translation>Bezig met zoeken...</translation>
     </message>
     <message>
         <source>New Mentions</source>
@@ -380,7 +381,7 @@
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>Je bent vermeld geweest!</translation>
+        <translation>Je bent vermeld!</translation>
     </message>
     <message>
         <source>New Messages</source>
@@ -400,71 +401,71 @@
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>Geen tweets gevonden. Volg meer mensen om hun tweets in je overzicht te zien!</translation>
+        <translation>Geen tweets gevonden. Volg meer mensen om hun tweets op je tijdlijn te zien!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Trends voor %1</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bent %1 keer vermeld!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe vermelding</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe volgers</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt %1 nieuwe volgers!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe volger</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je hebt een nieuwe volger!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>volgt je nu!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieuwe retweets</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bent %1 keer geretweet!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bent geretweet!</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Lijsten</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Geabonneerd</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen lijsten gevonden</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation type="unfinished"></translation>
+        <translation>Lid van</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen</translation>
     </message>
 </context>
 <context>
@@ -517,7 +518,7 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation>Privébericht verzenden</translation>
+        <translation>Privébericht versturen</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -540,218 +541,218 @@
     </message>
     <message>
         <source>Accept</source>
-        <translation>Aanvaarden</translation>
+        <translation>Accepteren</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>Welkom bij Piepmatz - een Twitter-cliënt voor Sailfish OS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;vrije software&lt;/a&gt;, uitgegeven onder de voorwaarden van de &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;GNU GPLv3&lt;/a&gt;. Door gebruik te maken van deze software, ga je akkoord met de voorwaarden van deze licentie.</translation>
+        <translation>Welkom bij Piepmatz - een Twitter-client voor Sailfish OS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;vrije software&lt;/a&gt;, uitgegeven onder de voorwaarden van de &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;GNU GPLv3&lt;/a&gt;. Door gebruik te maken van deze software, ga je akkoord met de voorwaarden van deze licentie.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>Let op: als je op &apos;Aanvaarden&apos; tikt, zal Piepmatz deze installatie automatisch op mijn server registreren. Er zal slechts een beperkte hoeveelheid informatie verzonden worden: een unieke identificatiecode voor deze installatie, en je land. Ik wil gewoonweg weten hoeveel gebruikers Piepmatz heeft en waar ze vandaan komen. Als je dit niet oké vindt, sluit en verwijder Piepmatz dan van je apparaat. Er is nog geen informatie verzonden.</translation>
+        <translation>Let op: als je op &apos;Accepteren&apos; drukt, zal Piepmatz deze installatie automatisch op mijn server registreren. Er zal slechts een beperkte hoeveelheid informatie worden verstuurd: een unieke identificatiecode voor deze installatie en je land van herkomst. Ik wil gewoonweg weten hoeveel gebruikers Piepmatz heeft en waar ze vandaan komen. Als je dit niet oké vindt, sluit en verwijder Piepmatz dan van je apparaat. Er is nu nog geen informatie verstuurd.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Toegewijd aan vrije software</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonieme registratie</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Registratiefout</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>De registratie is mislukt. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnieuw registreren</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>Ongeldige registratie</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Het registratiebestand op je apparaat is beschadigd. Het registratieproces moet opnieuw worden gestart. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Registratiegegevens weergeven</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>De gegevens worden met niemand gedeeld. Bekijk de &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;juridische informatie&lt;/a&gt; om meer te weten te komen over de gegevensverwerking. Bekijk mijn pagina &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;over Wagnis&lt;/a&gt; om meer te weten te komen over mijn motivatie hiervoor en de (generatie van) de unieke ID.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdragen</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Draag bij aan Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kunt het bijdragen voor %1 overslaan als je Piepmatz eerst wilt uitproberen.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Doorgaan met uitproberen</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als je al hebt bijgedragen aan Piepmatz, neem dan &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact&lt;/a&gt; met me op.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdrage</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies je bijdrage</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdragesleutel kopen</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdragesleutel valideren</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Voer hier de bijdragesleutel in</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdragesleutel valideren</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S - €3,33</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M - €5,55</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L - €7,77</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL - €9,99</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als je je sleutel al hebt gevalideerd op een ander apparaat, dan kun je deze nog hergebruiken op 3 apparaten zonder een nieuwe bijdrage te leveren.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz is vrije software en zal dat ook blijven. Om de ontwikkeling te ondersteunen, vraag ik je om een bijdrage voordat je Piepmatz kunt gebruiken. Je kunt bijdragen door Piepmatz te vertalen, te helpen met programmeren of door gewoonweg een sleutel te kopen.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Als je je sleutel hebt ontvangen, valideer deze dan hier om Piepmatz te kunnen gebruiken.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bijdrage niet gevalideerd!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bijdrage kan niet worden gevalideerd. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw valideren&apos;. Als je een geldige sleutel hebt die niet kan worden gevalideerd, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnieuw valideren</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bedankt!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Je bijdrage is gevalideerd. Bedankt voor het bijdragen aan de ontwikkeling van Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">Oké</translation>
+        <translation>Oké</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Je kunt kiezen uit 4 bijdragen: S, M, L of XL. Het maakt niet uit welke je kiest, elke zal de applicatie volledig vrijgeven. Het is aan jou om te bepalen hoeveel de app waard is.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Instellingen</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie inschakelen</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz toestaan om GPS/GLONASS/Galileo, etc. te gebruiken voor het toevoegen van je locatie aan tweets.</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Locatie</translation>
     </message>
     <message>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingen</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies hier de actieve afbeeldingsstijl</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standaard</translation>
     </message>
     <message>
         <source>Image Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingsstijl</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepfish van @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Accounts</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Account</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies hier het actieve account</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Inloggen met een ander account</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitter-emoji gebruiken</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitter-emoji gebruiken i.p.v. het systeemlettertype</translation>
     </message>
 </context>
 <context>
@@ -762,7 +763,7 @@
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Privacybeleid</translation>
+        <translation>Privacyovereenkomst</translation>
     </message>
 </context>
 <context>
@@ -785,18 +786,18 @@
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet verwijderen</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met verwijderen van tweet</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesprek</translation>
     </message>
 </context>
 <context>
@@ -807,7 +808,7 @@
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>Antwoord op %1</translation>
+        <translation>Als antwoord op %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
@@ -838,7 +839,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesprek weergeven</translation>
     </message>
 </context>
 <context>
@@ -852,11 +853,11 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; door %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 leden</translation>
     </message>
 </context>
 <context>
@@ -870,26 +871,26 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Bijwerken</translation>
+        <translation>Verversen</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloaden</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Downloaden van %1 voltooid.</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met downloaden...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met downloaden, %1% voltooid...</translation>
     </message>
 </context>
 <context>
@@ -920,7 +921,7 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Voer de Twitter-PIN in:</translation>
+        <translation>Voer de Twitter-pincode in:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
@@ -932,7 +933,7 @@
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Authenticatie opnieuw beginnen</translation>
+        <translation>Opnieuw authenticeren</translation>
     </message>
 </context>
 <context>
@@ -955,27 +956,27 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>de volgende %1 dagen</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation type="unfinished"></translation>
+        <translation>de volgende dag</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>de volgende %1 uur</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation type="unfinished"></translation>
+        <translation>het volgende uur</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>de volgende %1 minuten</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation type="unfinished"></translation>
+        <translation>de volgende minuut</translation>
     </message>
 </context>
 </TS>

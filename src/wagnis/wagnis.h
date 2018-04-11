@@ -17,10 +17,10 @@
 #include <QJsonDocument>
 
 const char MIME_TYPE_JSON[] = "application/json";
-const char API_REGISTRATION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/registration.php";
+const char API_REGISTRATION[] = "https://werkwolf.eu/wagnis/v1/registration.php";
 const char API_SURVEY[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/survey.php";
-const char API_CONTRIBUTION[] = "https://ssl.webpack.de/ygriega.de/wagnis/v1/contribution.php";
-const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJn498EnLBpy8qSfJ0xyflZA+rqKEtw+\nHESIOu9xCeORLXFn1UZMS+cl7hzf4n4V8BsfEBHSyYyxeNVQR0J+DdcCAwEAAQ==\n-----END PUBLIC KEY-----";
+const char API_CONTRIBUTION[] = "https://werkwolf.eu/wagnis/v1/contribution.php";
+const char PUBLIC_KEY[] = "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqpEDAUc4s/FAIBEhiMXV\ndn9YZNhab8tEB1wOt57muqOFv2YMenLUJSKkph5S2eMI81o3LuFlxEcAGUZucibJ\nYuy4Xbz96nlqmRg5pwd8XBRwVGML2WuEBDGqaXzz/Xjg+KVQbBQSIPSJruKe2kkx\ninm514LnlSVpzs9P4k9/Uc9d7q6C6JBk64UO73Y2PYImG5W8s2eI38EMQt44NgiP\npfxrhFkZNpAg3vJ+U9LhXPePU3XcFiDvcWZS+XCWCYlVVqHAEp5mUTzNy41uMKnI\nXLRvMcLsFuQB8Ojv49MABvUDnfWIRYHeDvIDt50cl7wYKKk2nXEcJ9j5+LAv25X7\nEwIDAQAB\n-----END PUBLIC KEY-----";
 
 class Wagnis : public QObject
 {

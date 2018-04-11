@@ -199,6 +199,7 @@ void MentionsModel::handleVerifyCredentialsError(const QString &errorMessage)
 
 void MentionsModel::handleAccountSwitched()
 {
+    resetStatus();
     initializeDatabase();
 }
 
@@ -236,6 +237,7 @@ void MentionsModel::handleUpdateSuccessful()
 void MentionsModel::resetStatus()
 {
     qDebug() << "MentionsModel::resetStatus";
+    this->settings.sync();
     this->newNamedFollowerCount = 0;
     this->newGeneralFollowerCount = 0;
     this->retweetsCount = 0;

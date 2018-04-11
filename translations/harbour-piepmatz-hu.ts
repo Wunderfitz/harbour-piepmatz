@@ -1,188 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<TS version="2.1" language="hu">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>A Piepmatz névjegye</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Un client Twitter pour Sailfish OS.</translation>
+        <translation>Egy Twitter kliens Sailfish OS-re</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Par Sebastian J. Wolf</translation>
+        <translation>Készítette Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Envoyer un e-mail</translation>
+        <translation>E-mail küldés</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licence GNU GPLv3</translation>
+        <translation>Megjelent a GNU GPLv3 licenc alatt</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Sources sur GitHub</translation>
+        <translation>Forrás a GitHub-on</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Remerciements</translation>
+        <translation>Stáblista</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>Ouvrir OAuth pour Qt sur GitHub</translation>
+        <translation>Az Open OAuth for Qt a GitHub-on</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt, par Akos Polster. Merci pour l&apos;avoir rendu disponible selon les termes et conditions de la licence BSD 2-CL. !</translation>
+        <translation>Ez a projekt az Akos Polster által készített OAuth for Qt-t használja. Köszönet a BSD-2-Clause licenc alatti elérhetőségért!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Ce projet utilise twitter-text, par Twitter, Inc. et autres contributeurs, © 2014. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence Apache version 2.0 !</translation>
+        <translation>Ez a projekt twitter-text-et használ.  A copyright 2014 Twitter,  Inc. és más közreműködőké. Köszönet az Apache License, Version 2.0 feltételei alatti elérhetőségért!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>Ouvir twitter-text sur GitHub</translation>
+        <translation>Twitter-text megnyitása a GitHub-on</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Retrouvez-moi sur Twitter</translation>
+        <translation>Találj meg a Twitteren</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>À propos de Twitter</translation>
+        <translation>A Twitter névjegye</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Felhasználási feltételek</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Adatvédelmi irányelvek</translation>
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation>Ouvrir ipinfo.io</translation>
+        <translation>Ipinfo.io megnyitása</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>Piepmatz utilise ipinfo.io ainsi que le récepteur GPS de votre appareil (si disponible) pour déterminer votre position, ceci afin d&apos;optimiser les tendances + géolocaliser vos Tweets - après avoir obtenu votre autorisation pour le faire, bien évidemment. Si cela vous intéresse, assurez-vous d&apos;activer l&apos;option de localisation dans vos &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Paramètres&lt;/a&gt;.</translation>
+        <translation>A Piepmatz az ipinfo.io-t és (ha elérhető) a készülék GPS vevőjét használja a helyzeted meghatározására. A helyzeted a trendek lekérésére, és - csak ha kifejezetten egyetértesz - a tweetjeid csatolmányaként van használva. Ha szeretnéd a helyzeted használni a tweetekben, bizonyosodj meg róla, hogy engedélyezve van a &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter beállításaidban&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation>ID Wagnis :</translation>
+        <translation>Wagnis ID: </translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation>Afficher l&apos;ID Wagnis</translation>
+        <translation>Wagnis ID megjelenítése</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ce projet utilise twemoji, par Twitter, Inc. et autres contributeurs, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT (code) et de la CC-BY 4.0 (graphisme) !</translation>
+        <translation>Ez a projekt a twemoji-t használja. Szerzői jog 2017 Twitter, Inc. és más közreműködők. Köszönet a MIT Licenc (kódolás) és a CC-BY 4.0 (grafika) feltételei alatti elérhetőségért!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Ouvrir twemoji sur GitHub</translation>
+        <translation>A Twemoji megnyitása a GitHubon</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation>Ce projet utilise QGumboParser, par Sergey Lagner, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT ! Par ailleurs, QGumboParser utilise Gumbo, par Google, © 2017, soumis aux conditions de la licence Apache 2.0.</translation>
+        <translation>Ez a projekt a QGumboParser-t használja. Szerzői jog 2017 Sergey Lagner. Köszönet a MIT Licenc feltételei alatti elérhetőségért! A QGumboParser a Gumbo-t használja. Szerzői jog 2017  Google. Az Apache Licenc 2.0 feltételei alatt licencelve.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation>Ouvrir QGumboParser sur GitHub</translation>
+        <translation>A QGumboParser megnyitása a GitHubon</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>Nombre maximum d&apos;images atteint !</translation>
+        <translation>A kiválasztott képek maximális száma!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre %1 images</translation>
+        <translation>%1 kép csatolása</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre une image</translation>
+        <translation>Kép csatolása</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation>Sélectionner les images</translation>
+        <translation>Képek kijelölése</translation>
     </message>
 </context>
 <context>
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>Nouveau message à %1</translation>
+        <translation>Új üzenet neki: %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>%1 caractère(s) restant(s)</translation>
+        <translation>%1 karakter maradt</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement en cours...</translation>
+        <translation>Töltés...</translation>
     </message>
 </context>
 <context>
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1 : Favoris</translation>
+        <translation>%1: Kedvencek</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir </translation>
+        <translation>Frissítés</translation>
     </message>
 </context>
 <context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : Abonnés</translation>
+        <translation>%1: Követők</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: Abonnements</translation>
+        <translation>%1: Követő</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation>Télécharger</translation>
+        <translation>Letöltés</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Letöltés...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>A(z) %1 letöltése sikerült</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Letöltés, %1% kész...</translation>
     </message>
 </context>
 <context>
@@ -197,75 +197,75 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Hiba</translation>
     </message>
 </context>
 <context>
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation>%1 : Membres</translation>
+        <translation>%1: Tagok</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation>%1 : Fil</translation>
+        <translation>%1: Idővonal</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation>Afficher les Membres</translation>
+        <translation>Tagok megjelenítése</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Több tweet betöltése</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement...</translation>
+        <translation>Töltés...</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Új Tweet</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Répondre</translation>
+        <translation>Válasz</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Envoyer la réponse</translation>
+        <translation>Válasz küldése</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Envoyer le Tweet</translation>
+        <translation>Tweet küldése</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation>Joindre une image</translation>
+        <translation>Képek csatolása</translation>
     </message>
     <message>
         <source>Retweet</source>
-        <translation>Retweet</translation>
+        <translation>Újratweetelés</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>Envoyer le Retweet</translation>
+        <translation>Újratweetelés küldése</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -273,38 +273,38 @@
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation>Joindre votre emplacement actuel à ce Tweet</translation>
+        <translation>Csatold a jelenlegi helyet ehhez a tweethez</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Essayer encore une fois</translation>
+        <translation>Újrapróbálás</translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>Authentification</translation>
+        <translation>Azonosítás</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>A Piepmatz névjegye</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Új Tweet</translation>
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Accueil</translation>
+        <translation>Idővonal</translation>
     </message>
     <message>
         <source>Notifications</source>
-        <translation>Notifications</translation>
+        <translation>Értesítések</translation>
     </message>
     <message>
         <source>Messages</source>
-        <translation>Messages</translation>
+        <translation>Üzenetek</translation>
     </message>
     <message>
         <source>Profile</source>
@@ -312,182 +312,182 @@
     </message>
     <message>
         <source>Search</source>
-        <translation>Recherche</translation>
+        <translation>Keresés</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Actualiser</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Connexion à Twitter...</translation>
+        <translation>A Twitter üdvözlése...</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Chargement du fil...</translation>
+        <translation>Idővonal betöltése...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz ne parvient pas à vous connecter !</translation>
+        <translation>A Piepmatz nem tudott beléptetni!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet envoyé avec succès !</translation>
+        <translation>A tweet elküldése sikerült!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Rechercher sur Twitter...</translation>
+        <translation>Keresés a Twitteren...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation>Pas de résultats</translation>
+        <translation>Nincs eredmény</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez-vous ?</translation>
+        <translation>Mit keresel?</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>Envoi du Tweet...</translation>
+        <translation>Tweet küldése...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléchargement, %1% effectué...</translation>
+        <translation>Feltöltés, %1% kész...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Vous</translation>
+        <translation>Te</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>Pas de message direct ces 30 derniers jours</translation>
+        <translation>Az utóbbi 30 napról nincsenek direkt üzenetek</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation>Tweets</translation>
+        <translation>Tweetek</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation>Utilisateurs</translation>
+        <translation>Felhasználók</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Recherche...</translation>
+        <translation>Keresés...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation>Nouvelles mentions</translation>
+        <translation>Új említések</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>Vous avez été mentionné !</translation>
+        <translation>Megemlítettek!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation>Nouveaux messages</translation>
+        <translation>Új üzenetek</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation>Vous avez de nouveaux messages directs !</translation>
+        <translation>Új direkt üzeneteid vannak!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Vous avez de nouveaux messages !</translation>
+        <translation>Új üzeneteid vannak!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Több tweet betöltése</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>Aucun Tweet trouvé. Abonnez-vous à davantage de personnes pour afficher leurs Tweets dans votre fil !</translation>
+        <translation>Nincsenek tweetek. Kövess több embert, hogy a tweetjeik megjelenjenek az idővonaladon!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>Tendances pour %1</translation>
+        <translation>Trendek erre: %1</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation>Vous avez été mentionné %1 fois !</translation>
+        <translation>Megemlítettek %1 alkalommal!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation>Nouvelle mention</translation>
+        <translation>Új említés</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation>Nouveaux abonnés</translation>
+        <translation>Új követők</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation>Vous avez %1 nouveaux abonnés !</translation>
+        <translation>%1 új követőd van!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation>Nouvel abonné</translation>
+        <translation>Új követő</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation>Vous avez un nouvel abonné !</translation>
+        <translation>Új követőd van!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation>vous suit désormais !</translation>
+        <translation>most követ!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation>Nouveaux Retweets</translation>
+        <translation>Új újratweetelések</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation>Vous avez été retweeté %1 fois !</translation>
+        <translation>Újratweeteltek %1 alkalommal!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation>Vous avez été retweeté !</translation>
+        <translation>Újratweeteltek!</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation>Listes</translation>
+        <translation>Listák</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation>Abonné</translation>
+        <translation>Feliratkozva</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation>Aucune liste trouvée</translation>
+        <translation>Nincsenek listák</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation>Membre de</translation>
+        <translation>Tagja ennek:</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Beállítások</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 Abonnements</translation>
+        <translation>%1 követ</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 Abonnés</translation>
+        <translation>%1 követő</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1 Tweets</translation>
+        <translation>%1 Tweet</translation>
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>Inscrit en %1</translation>
+        <translation>Csatlakozott: %1</translation>
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1 Favoris</translation>
+        <translation>%1 kedvenc</translation>
     </message>
 </context>
 <context>
@@ -501,182 +501,182 @@
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>Ne plus suivre %1</translation>
+        <translation>%1 követésének leállítása</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>Suivre %1</translation>
+        <translation>%1 követése</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>Vous suivez désormais %1.</translation>
+        <translation>Most már követed ezt: %1.</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>Vous ne suivez plus %1.</translation>
+        <translation>Már nem követed ezt: %1.</translation>
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation>Envoyer un message direct</translation>
+        <translation>Direkt üzenet küldése</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>URL másolása a vágólapra</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Üdv a Piepmatz-ban!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>Amusez-vous bien avec Piepmatz ! Sebastian J. Wolf</translation>
+        <translation>Élvezd a Piepmatz-ot! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation>Accepter</translation>
+        <translation>Elfogadás</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>Bienvenue sur Piepmatz - un client Twitter pour Sailfish OS ! Piepmatz est un&lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;logiciel libre&lt;/a&gt; soumis aux conditions de la &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licence Publique Générale (GPL) version 3&lt;/a&gt;. En utilisant cette application, vous acceptez en totalité les termes et conditions de cette licence.</translation>
+        <translation>Üdv a Piepmatz-on - egy Twitter kliens Sailfish OS-re! A Piepmatz &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;szabad szoftver&lt;/a&gt; a &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License 3-as verziója (GPLv3)&lt;/a&gt; alatt jelent meg. A szoftver használatával elfogadod ezen licenc felhasználási feltételeit.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>En outre, sachez que Piepmatz va automatiquement enregistrer cette installation sur mon serveur après avoir appuyé sur le bouton &quot;Accepter&quot;. Je respecte évidemment votre vie privée ; en plus d&apos;être anonyme, le jeu d&apos;informations transmis sera très limité : un identifiant unique + un pays. Mon objectif est simplement de savoir combien de &quot;Sailors&quot; utilisent Piepmatz, ainsi que de connaître leurs pays d&apos;origine. Vous n&apos;êtes pas d&apos;accord ? Pas de problèmes, il suffit simplement de fermer l&apos;application et de la supprimer. Aucune donnée n&apos;a pour l&apos;instant été transmise.</translation>
+        <translation>Ezenfelül, ha megnyomod az &quot;Elfogadás&quot; gombot, a Piepmatz regisztrálni fogja ezt a telepítést a szerveremen. Tiszteletben tartom a magánéletedet, ezért csak anonim,és csak nagyon korlátolt információ lesz elküldve: e telepítés egyedi azonosítója, és az országod. Egyszerűen csak szeretném tudni, hogy hány felhasználója van a Piepmatz-nak, és hogy honnan jönnek. Ha ez számodra nincs rendben, egyszerűen csak zárd be az alkalmazást. Még nem történt információátvitel.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation>Engagé pour le logiciel libre</translation>
+        <translation>Elkötelezve a Szabad Szoftver irányába</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation>S&apos;inscrire anonymement</translation>
+        <translation>Anonim regisztráció</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation>Erreur</translation>
+        <translation>Regisztrációs hiba</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>L&apos;inscription a échoué. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de me contacter par &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>A regisztráció nem sikerült. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Regisztráció újrakezdése&quot; gombot. Ha az újrakezdés nem működik, lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation>Recommencer l&apos;inscription</translation>
+        <translation>Regisztráció újrakezdése</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation>Inscription non valide.</translation>
+        <translation>A regisztráció érvénytelen</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Le fichier d&apos;inscription de votre appareil est corrompu. La procédure d&apos;inscription doit être renouvelée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de me contacter par &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>A készülékeden található regisztrációs fájl sérült. A regisztrációs folyamatot újra kell indítani. Kérlek bizonyosodj meg róla, hogy a készüléked csatlakozik az internethez, és nyomd meg a &apos;Regisztráció újrakezdése&apos;-t. Ha az új regisztráció nem sikerül, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-mailen keresztül&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation>Montrer les données d&apos;inscription</translation>
+        <translation>Regisztrációs adatok megjelenítése</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Vos données ne seront partagées avec personne d&apos;autre. Merci de consulter la &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;notice légale&lt;/a&gt; pour obtenir davantage d&apos;informations sur les données collectées. Envie de connaître les motivations derrière l&apos;ID unique ou d&apos;en comprendre la conception ? Rendez-vous sur ma page&lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;À propos de Wagnis&lt;/a&gt;.</translation>
+        <translation>Az adatok senki mással nincsenek megosztva. További információkért az adatok feldolgozásának mikéntjére vonatkozóan lásd a &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;jogi nyilatkozatot&lt;/a&gt;. Ha többet szeretnél tudni a motivációról, az egyedi azonosítóról illetve annak generálásáról, kérlek olvasd el az oldalamon ezt a részt: &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;a Wagnis-ról&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation>Contribution au développement</translation>
+        <translation>Közreműködés a fejlesztésben</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation>Merci de contribuer à l&apos;avenir de Piepmatz !</translation>
+        <translation>Kérlek járulj hozzá a Piepmatz fejlesztéséhez</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>Vous pouvez sauter l&apos;étape de la contribution pendant %1 si vous souhaitez d&apos;abord tester l&apos;appli.</translation>
+        <translation>Átugorhatod az ehhez való hozzájárulást: %1, ha előbb tesztelni szeretnéd a Piepmatz-t.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>Continuer à tester</translation>
+        <translation>Tesztelés folytatása</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Vous vous êtes déjà acquitté de votre contribution ? Merci de m&apos;en toucher un mot par &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; !</translation>
+        <translation>Ha más hozzájárultál a Piepmatz fejlesztéséhez, kérlek &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;lépj velem&lt;/a&gt; kapcsolatba.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation>Contribution</translation>
+        <translation>Hozzájárulás</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation>Choisissez le montant de votre contribution</translation>
+        <translation>Válaszd ki a hozzájárulásodat</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation>Acheter</translation>
+        <translation>Hozzájárulási kulcs vásárlása</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation>Activez votre code d&apos;accès</translation>
+        <translation>Érvényesítsd a hozzájárulási kulcsodat</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation>Entrer le code ici</translation>
+        <translation>Ide írd be a hozzájárulási kulcsot</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation>Valider</translation>
+        <translation>Hozzájárulási kulcs érvényesítése</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation>Piepmatz S - 3€33</translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation>Piepmatz M - 5€55</translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation>Piepmatz L - 7€77</translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation>Piepmatz XL - 9€99</translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation>Vous avez déjà activé votre code d&apos;accès sur un autre appareil ? Pas de soucis, il est encore réutilisable 3 fois, de quoi faire plaisir à quelques amis ! Au delà, une nouvelle contribution sera nécessaire.</translation>
+        <translation>Ha már érvényesítetted a kulcsod egy másik készüléken, újra használhatod 3 további készüléken anélkül, hogy megint hozzájárulásra lenne szükség.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz est une application open source, et le restera toujours. Une contribution de votre part est néanmoins requise avant que vous ne puissiez accéder au service, ceci afin de garantir à l&apos;appli un développement stable et durable. Vous pouvez par exemple traduire Piepmatz dans votre langue, participer à son développement sur GitHub ou tout simplement acheter un code d&apos;accès.</translation>
+        <translation>A Piepmatz nyílt forráskódú szoftver, és az is marad. Mégis, a Piepmatz fejlesztését támogatandó, szeretnék hozzájárulást kérni, mielőtt futtathatod. A hozzájárulás megtörténhet a Piepmatz más nyelvre fordításával, a fejlesztésben való részvétellel, vagy egyszerűen egy kulcs vásárlásával.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Après avoir obtenu un code d&apos;accès via un achat ou tout autre investissement bénéfique pour le développement de Piepmatz, il vous suffit de l&apos;activer ici afin d&apos;accéder au service.</translation>
+        <translation>Miután megkaptad a kulcsodat vásárlás, vagy más formájú hozzájárulás által, érvényesítsd a kulcsodat itt, a Piepmatz futtatásához.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation>Contribution non validée !</translation>
+        <translation>A hozzájárulás nem érvényesült!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Votre contribution n&apos;a pas pu être validée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Revalider&quot;. Merci de me contacter par &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt; dans le cas où vous posséderiez un code impossible à valider.</translation>
+        <translation>A hozzájárulásodat nem lehetett érvényesíteni. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Érvényesítés újrakezdése&quot; gombot. Ha van egy érvényes kulcsod, és nem lehet érvényesíteni, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation>Revalider</translation>
+        <translation>Érvényesítés újrakezdése</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation>Merci !</translation>
+        <translation>Köszönöm!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation>Votre contribution a été correctement validée. Merci infiniment pour votre participation au bon développement de Piepmatz !</translation>
+        <translation>A hozzájárulásod sikeresen érvényesítve van. Nagyon szépen köszönöm a Piepmatz fejlesztéséhez való hozzájárulásodat!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -684,34 +684,34 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation>Vous avez le choix parmi 4 formules : S, M, L ou XL. Le code d&apos;accès obtenu après l&apos;achat déverrouillera intégralement l&apos;application, peu importe la formule choisie. C&apos;est finalement à vous de décider de la valeur de Piepmatz !</translation>
+        <translation>Négy különböző hozzájárulás közül választhatsz: S, M, L, XL. A választástól függetlenül, a vásárolt kulcs feloldja a teljes alkalmazást. Te döntheted el, hogy neked mennyit ér meg az alkalmazás.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Beállítások</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation>Activer la géolocalisation</translation>
+        <translation>Helyzetmeghatározás engedélyezése</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation>Autorise Piepmatz à utiliser le GPS et autres services similaires pour géolocaliser vos Tweets</translation>
+        <translation>Engedélyezd a Piepmatz-nak, hogy a GPS/GLONASS/Galileo stb. jeleket felhasználja tweet geotagging-re</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Emplacement</translation>
+        <translation>Helyzet</translation>
     </message>
     <message>
         <source>Images</source>
-        <translation>Images</translation>
+        <translation>Képek</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation>Choisissez le style actif</translation>
+        <translation>Válaszd ki itt az aktív képstílust</translation>
     </message>
     <message>
         <source>Standard</source>
@@ -719,23 +719,23 @@
     </message>
     <message>
         <source>Image Style</source>
-        <translation>Style d&apos;image</translation>
+        <translation>Kép stílusa</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>Piepfish, par @ferlanero</translation>
+        <translation>Piepfish @ferlanero által készítve</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation>Comptes</translation>
+        <translation>Fiókok</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation>Compte</translation>
+        <translation>Fiók</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation>Sélectionnez le compte actif</translation>
+        <translation>Válaszd ki az aktív fiókot itt</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -743,75 +743,75 @@
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation>Se connecter avec un autre compte</translation>
+        <translation>Belépés más fiókkal</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation>Activer Twitter Emoji</translation>
+        <translation>Twitter Emoji használata</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation>Utilise les émojis Twitter au lieu des émojis de Sailfish OS</translation>
+        <translation>Használd a Twitter Emoji-t a rendszer betűkészlet helyett</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Felhasználási feltételek</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Adatvédelmi irányelvek</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Megnyitás böngészőben</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre au Tweet</translation>
+        <translation>Válasz a tweetre</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Retweeter avec commentaire</translation>
+        <translation>Újratweetelés hozzászólással</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>URL másolása a vágólapra</translation>
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation>Supprimer le Tweet</translation>
+        <translation>Tweet törlése</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation>Suppression du Tweet</translation>
+        <translation>Tweet törlése</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation>Conversation</translation>
+        <translation>Szál</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Retweeté par %1</translation>
+        <translation>%1 újratweetelte</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>En réponse à %1</translation>
+        <translation>Válaszul erre: %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation>Envoyé avec %1</translation>
+        <translation>Ezzel tweetelve: %1</translation>
     </message>
 </context>
 <context>
@@ -822,23 +822,23 @@
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre</translation>
+        <translation>Válasz a tweetre</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Commenter</translation>
+        <translation>Újratweetelés hozzászólással</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Megnyitás böngészőben</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>URL másolása a vágólapra</translation>
     </message>
     <message>
         <source>Show Thread</source>
-        <translation>Afficher la conversation</translation>
+        <translation>Szál megjelenítése</translation>
     </message>
 </context>
 <context>
@@ -852,67 +852,67 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; par %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; %2 által</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 Membres</translation>
+        <translation>%1 tag</translation>
     </message>
 </context>
 <context>
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien dans le presse-papier</translation>
+        <translation>URL másolása a vágólapra</translation>
     </message>
 </context>
 <context>
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Frissítés</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation>Téléchargement</translation>
+        <translation>Letöltés</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>A(z) %1 letöltése sikerült</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Letöltés...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Letöltés, %1% kész...</translation>
     </message>
 </context>
 <context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Üdv a Piepmatz-ban!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>Merci de vous connecter à Twitter pour continuer.</translation>
+        <translation>Kérlek lépj be a Twitterre a folytatáshoz.</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>Se connecter à Twitter</translation>
+        <translation>Belépés a Twitterre</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Pas encore de compte Twitter ? Merci de bien vouloir vous y inscrire avant d&apos;utiliser Piepmatz.</translation>
+        <translation>Ha még nincs Twitter fiókod, először készíts magadnak.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Inscription à Twitter</translation>
+        <translation>Regisztráció a Twitterre</translation>
     </message>
     <message>
         <source>OK</source>
@@ -920,19 +920,19 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Merci d&apos;indiquer le PIN Twitter : </translation>
+        <translation>Add meg a Twitter PIN-kódot:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>Impossible de vous authentifier avec le PIN saisi.</translation>
+        <translation>Nem lehet azonosítani téged a megadott PIN-nel.</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>Indiquer à nouveau le PIN</translation>
+        <translation>Add meg a PIN-kódot újra</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Relancer l&apos;authentification</translation>
+        <translation>Azonosítás újrakezdése</translation>
     </message>
 </context>
 <context>
@@ -955,27 +955,27 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation>les %1 jours suivants</translation>
+        <translation>a következő %1 nap</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation>le jour suivant</translation>
+        <translation>a következő nap</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>les %1 prochaines heures</translation>
+        <translation>a következő %1 óra</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation>l&apos;heure suivante</translation>
+        <translation>a következő óra</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation>les %1 prochaines minutes</translation>
+        <translation>a következő %1 perc</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation>la minute suivante</translation>
+        <translation>a következő perc</translation>
     </message>
 </context>
 </TS>

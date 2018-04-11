@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Este proyecto usa OAuth para Qt de Akos Polster. ¡Gracias por hacerlo posible bajo las condiciones de la licencia BSD de 2 cláusulas!</translation>
+        <translation>Este proyecto usa OAuth para Qt de Akos Polster. ¡Gracias por ponerlo a disposición bajo las condiciones de la licencia BSD-2-Clause!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Búscame en Twitter</translation>
+        <translation>Encuéntrame en Twitter</translation>
     </message>
     <message>
         <source>About Twitter</source>
@@ -81,19 +81,19 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Este proyecto usa twemoji. Copyright 2017 Twitter, Inc. y otros colaboradores. ¡Gracias por ponerlo a disposición bajo las condiciones de la Licencia MIT (codificación) y CC-BY 4.0 (gráficos)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir twemoji en GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este proyecto usa QGumboParser. Copyright 2017 Sergey Lagner. ¡Gracias por ponerlo a disposiciónbajo las condiciones de la Licencia MIT! QGumboParser usa Gumbo. Copyright 2017 Google. Licencia bajo las condiciones de Apache License 2.0.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir QGumboParser en Github</translation>
     </message>
 </context>
 <context>
@@ -204,30 +204,30 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Actualizar</translation>
+        <translation>Actualizar</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Miembros</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Actualizar</translation>
+        <translation>Actualizar</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Línea de tiempo</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar Miembros</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">Cargar más tuits</translation>
+        <translation>Cargar más tuits</translation>
     </message>
 </context>
 <context>
@@ -380,7 +380,7 @@
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>¡Te han mencionado!</translation>
+        <translation>¡Has sido mencionado!</translation>
     </message>
     <message>
         <source>New Messages</source>
@@ -400,7 +400,7 @@
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>No hay tuits. ¡Sigue a más gente para ver sus tuits en la página de inicio!</translation>
+        <translation>No hay tuits. ¡Sigue a más gente para ver sus tuits en tu página de inicio!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
@@ -408,63 +408,63 @@
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Has sido mencionado %1 veces!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>Nueva mención</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevos seguidores</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Tienes %1 nuevos seguidores!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevo seguidor</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Tienes un nuevo seguidor!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>te sigue ahora!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevos retuits</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Has sido retuiteado %1 veces!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Has sido retuiteado!</translation>
     </message>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listas</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Suscrito</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>No se han encontrado listas</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation type="unfinished"></translation>
+        <translation>Miembro de</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes</translation>
     </message>
 </context>
 <context>
@@ -544,11 +544,11 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>¡Bienvenido a Piepmatz - un cliente de Twitter para SailfishOS! Piepmatz es un &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;programa libre&lt;/a&gt; y está bajo las condiciones de la &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licencia General Pública versión 3 (GPLv3)&lt;/a&gt;. Al usar este programa, estás aceptando los términos y condiciones de esta licencia.</translation>
+        <translation>¡Bienvenido a Piepmatz - un cliente de Twitter para SailfishOS! Piepmatz es &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;software libre&lt;/a&gt; y está bajo las condiciones de la &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licencia General Pública versión 3 (GPLv3)&lt;/a&gt;. Al usar este programa, estás aceptando los términos y condiciones de esta licencia.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>Además, si presionas &apos;Aceptar&apos; Piepmatz registrará esta instalación en mi servidor automáticamente. Respeto tu privacidad, por lo tanto sólo se transferirá un conjunto de información anónima y muy limitada: un identificador único para esta instalación y tu país. Simplemente me gustaría saber cuántos usuarios de Piepmatz hay y de dónde son. Si no estás de acuerdo con esto, simplemente cierra la aplicación. Hasta ahora no se ha tranferido ninguna información.</translation>
+        <translation>Además, si presionas &apos;Aceptar&apos; Piepmatz registrará automáticamente esta instalación en mi servidor. Respeto tu privacidad, por lo tanto sólo se transferirá un conjunto de información anónima y muy limitada: un identificador único para esta instalación y tu país de origen. Me gustaría saber cuántos usuarios de Piepmatz hay y de dónde son. Si no estás de acuerdo con esto, simplemente cierra la aplicación. Hasta ahora no se ha transferido ninguna información.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -576,7 +576,7 @@
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>El fichero de registro de tu dispositivo está corrupto. Es necesario reiniciar el proceso de registro. Asegúrate de que tu dispositivo está conectado a Internet y presiona &apos;Reiniciar registro&apos;. Si el registro da error, contacta conmigo por &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;correo electrónico&lt;/a&gt;</translation>
+        <translation>El fichero de registro de tu dispositivo está corrupto. Es necesario reiniciar el proceso de registro. Asegúrate de que tu dispositivo está conectado a Internet y presiona &apos;Reiniciar registro&apos;. Si el registro falla, contacta conmigo por &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;correo electrónico&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
@@ -584,174 +584,174 @@
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Los datos no se comparten con nadie más. Consulta el &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;aviso legal&lt;/a&gt; para más información sobre cómo se procesan los datos. Para más detalles sobre la motivación de esto, el ID único y cómo se genera, consulta mi página &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;acerca de Wagnis&lt;/a&gt;.</translation>
+        <translation>Los datos no se comparten con nadie más. Consulta el &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;aviso legal&lt;/a&gt; para más información sobre cómo se procesan estos datos. Para más detalles sobre la motivación de esto, el ID único y cómo se genera, consulta mi página &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;acerca de Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayuda al desarrollo</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, ayuda a Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puedes omitir la contribución de %1 si quieres probar antes Piepmatz.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Continuar probando</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si ya has contribuido con Piepmatz, por favor, &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;ponte en contacto conmigo&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Contribución</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>Escoge tu contribución aquí</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprar clave de contribución</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>Validar tu clave</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Introducir la clave aquí</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Validar clave</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Si ya has validado tu clave en otro dispositivo, puedes reutilizarla hasta en 3 dispositivos distintos sin necesidad de realizar otra contribución.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz es y seguirá siendo Software de Código Abierto. Sin embargo, para apoyar el desarrollo de Piepmatz, me gustaría pedir tu colaboración antes de poder ejecutarlo. Esta colaboración se puede hacer traduciendo Piepmatz a otro idioma, ayudando a su desarrollo o simplemente comprando una clave.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Después de recibir tu clave tras haberla comprado o con motivo de algún otro tipo de colaboración, valídala aquí para ejecutar Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Contribución no validada!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Tu contribución no se pudo validar. Por favor, asegúrate de que tu dispositivo está conectado a Internet y presiona &apos;Reiniciar validación&apos;. En caso de que tengas una clave de contribución válida y ésta no pueda ser validada, por favor, ponte en contacto conmigo a través de este &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Reiniciar validación</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>¡Gracias!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tu contribución ha sido validada con éxito. ¡Muchas gracias por ayudar al desarrollo de Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puedes elegir entre 4 contribuciones diferentes: S, M, L, XL. No importa el tamaño que elijas, la clave adquirida desbloqueará Piepmatz completamente. Depende de ti decidir cuánto vale esta aplicación.</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustes</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Habilitar posicionamiento</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>Permite a Piepmatz usar los sistemas GPS/GLONASS/Galileo, etc. para el etiquetado geográfico de Twitter.</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Ubicación</translation>
     </message>
     <message>
         <source>Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Imágenes</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation type="unfinished"></translation>
+        <translation>Elige el estilo de imagen activo aquí</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Estándar</translation>
     </message>
     <message>
         <source>Image Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de imagen</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepfish por @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuentas</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuenta</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>Escoge aquí la cuenta activa</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Iniciar sesión con otra cuenta</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar Twitter Emoji</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation type="unfinished"></translation>
+        <translation>Utilizar Twitter Emoji en lugar de la fuente del sistema</translation>
     </message>
 </context>
 <context>
@@ -785,18 +785,18 @@
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar tuit</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrando tuit</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilo</translation>
     </message>
 </context>
 <context>
@@ -838,7 +838,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar hilo</translation>
     </message>
 </context>
 <context>
@@ -852,11 +852,11 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; por %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 miembros</translation>
     </message>
 </context>
 <context>
@@ -908,7 +908,7 @@
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Si aún no tienes cuenta de Twitter, por favor, regístrate primero.</translation>
+        <translation>Si aún no tienes cuenta de Twitter, por favor, regístrate allí primero.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
@@ -920,7 +920,7 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Por favor, introduce el pin de Twitter:</translation>
+        <translation>Por favor, introduce el PIN de Twitter:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>

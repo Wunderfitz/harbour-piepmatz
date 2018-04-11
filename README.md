@@ -30,16 +30,17 @@ This project uses
 - ipinfo.io to determine your location.
 
 Piepmatz was translated to several languages. Thanks to all contributors!
-- Dutch: [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
+- Dutch: [Heimen Stoffels](https://www.transifex.com/user/profile/Vistaus/), [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
 - Finnish: [Ari Järviö](https://www.transifex.com/user/profile/ari_jarvio/) and [Termitebug](https://www.transifex.com/user/profile/Termitebug/)
 - French: [lutinotmalin](https://www.transifex.com/user/profile/lutinotmalin/), [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
+- Hungarian: [Szabó G.](https://www.transifex.com/user/profile/leoka/)
 - Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/)
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
 - Polish: [atlochowski](https://www.transifex.com/user/profile/atlochowski/)
 - Portuguese (Brazil): [Adriano C.](https://www.transifex.com/user/profile/adrianocolvero/) and [Rafael Vinicius Leite Mendes](https://www.transifex.com/user/profile/marreko/)
 - Russian: [Алексей Дедун](https://www.transifex.com/user/profile/lewa/), [Юрий](https://www.transifex.com/user/profile/iAncelad/) and [Oleg Urzhumtcev](https://www.transifex.com/user/profile/NetBUG/)
 - Slowenian: [Boštjan Štrumbelj](https://www.transifex.com/user/profile/sponka/)
-- Spanish: [Carmen F. B.](https://github.com/carmenfdezb)
+- Spanish: [Fernando Lanero](https://www.transifex.com/user/profile/ferlanero/) and [Carmen F. B.](https://github.com/carmenfdezb)
 - Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
 Code improvements by:

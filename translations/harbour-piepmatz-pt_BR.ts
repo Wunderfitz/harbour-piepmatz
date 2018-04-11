@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Um cliente do Twitter para o Sailfish OS</translation>
+        <translation>Um cliente do Twitter para Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>Abra OAuth para Qt no GitHub</translation>
+        <translation>Abrir OAuth para Qt no GitHub</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>Abra twitter-texto no GitHub</translation>
+        <translation>Abrir twitter-texto no GitHub</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Abra o twemoji no GitHub</translation>
+        <translation>Abrir o twemoji no GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
@@ -93,7 +93,7 @@
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation>Abra o QGumboParser no GitHub</translation>
+        <translation>Abrir o QGumboParser no GitHub</translation>
     </message>
 </context>
 <context>
@@ -182,7 +182,7 @@
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Baixado, %1% concluído...</translation>
+        <translation>Baixando, %1% concluído...</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation>%1 Linha do tempo</translation>
+        <translation>%1 Timeline</translation>
     </message>
     <message>
         <source>Show Members</source>
@@ -296,7 +296,7 @@
     </message>
     <message>
         <source>Timeline</source>
-        <translation>Linha do tempo</translation>
+        <translation>Timeline</translation>
     </message>
     <message>
         <source>Notifications</source>
@@ -324,7 +324,7 @@
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Carregando a linha do tempo...</translation>
+        <translation>Carregando a Timeline...</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
@@ -400,7 +400,7 @@
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>Nenhum tweet encontrado. Siga mais pessoas para obter seus tweets em sua linha de tempo!</translation>
+        <translation>Nenhum tweet encontrado. Siga mais pessoas para obter seus tweets em sua Timeline!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
@@ -552,7 +552,7 @@
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation>Comprometido com Software Livre</translation>
+        <translation>Comprometido com Software Livre </translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
@@ -684,7 +684,7 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Você pode escolher entre 4 diferentes contribuições: P, M, G, EG. Não importa o tamanho escolhido, a chave comprada vai desbloquear a funcionalidade completa do aplicativo. Fica ao seu critério decidir qual o valor que o app tem para você.</translation>
     </message>
 </context>
 <context>
