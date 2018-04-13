@@ -563,8 +563,8 @@
         <translation>Registration Error</translation>
     </message>
     <message>
-        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
+        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -575,16 +575,16 @@
         <translation>Registration Invalid</translation>
     </message>
     <message>
-        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
+        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
         <translation>Show Registration Data</translation>
     </message>
     <message>
-        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</translation>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -603,8 +603,8 @@
         <translation>Continue Testing</translation>
     </message>
     <message>
-        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</translation>
+        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
+        <translation>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -663,8 +663,8 @@
         <translation>Contribution not validated!</translation>
     </message>
     <message>
-        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</translation>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>

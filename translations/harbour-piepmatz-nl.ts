@@ -564,8 +564,8 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Registratiefout</translation>
     </message>
     <message>
-        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>De registratie is mislukt. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
+        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>De registratie is mislukt. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -576,16 +576,16 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Ongeldige registratie</translation>
     </message>
     <message>
-        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Het registratiebestand op je apparaat is beschadigd. Het registratieproces moet opnieuw worden gestart. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
+        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Het registratiebestand op je apparaat is beschadigd. Het registratieproces moet opnieuw worden gestart. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw registreren&apos;. Als dat ook niet werkt, stuur me dan een &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
         <translation>Registratiegegevens weergeven</translation>
     </message>
     <message>
-        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>De gegevens worden met niemand gedeeld. Bekijk de &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;juridische informatie&lt;/a&gt; om meer te weten te komen over de gegevensverwerking. Bekijk mijn pagina &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;over Wagnis&lt;/a&gt; om meer te weten te komen over mijn motivatie hiervoor en de (generatie van) de unieke ID.</translation>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>De gegevens worden met niemand gedeeld. Bekijk de &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;juridische informatie&lt;/a&gt; om meer te weten te komen over de gegevensverwerking. Bekijk mijn pagina &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;over Wagnis&lt;/a&gt; om meer te weten te komen over mijn motivatie hiervoor en de (generatie van) de unieke ID.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -604,8 +604,8 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Doorgaan met uitproberen</translation>
     </message>
     <message>
-        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Als je al hebt bijgedragen aan Piepmatz, neem dan &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact&lt;/a&gt; met me op.</translation>
+        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
+        <translation>Als je al hebt bijgedragen aan Piepmatz, neem dan &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact&lt;/a&gt; met me op.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -664,8 +664,8 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Bijdrage niet gevalideerd!</translation>
     </message>
     <message>
-        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Je bijdrage kan niet worden gevalideerd. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw valideren&apos;. Als je een geldige sleutel hebt die niet kan worden gevalideerd, stuur me dan een &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-mail&lt;/a&gt;.</translation>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Je bijdrage kan niet worden gevalideerd. Zorg ervoor dat je apparaat verbonden is met het internet en druk dan op &apos;Opnieuw valideren&apos;. Als je een geldige sleutel hebt die niet kan worden gevalideerd, stuur me dan een &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Validation</source>

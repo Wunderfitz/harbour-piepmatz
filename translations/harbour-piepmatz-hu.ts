@@ -563,8 +563,8 @@
         <translation>Regisztrációs hiba</translation>
     </message>
     <message>
-        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>A regisztráció nem sikerült. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Regisztráció újrakezdése&quot; gombot. Ha az újrakezdés nem működik, lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
+        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>A regisztráció nem sikerült. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Regisztráció újrakezdése&quot; gombot. Ha az újrakezdés nem működik, lépj velem kapcsolatba &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -575,16 +575,16 @@
         <translation>A regisztráció érvénytelen</translation>
     </message>
     <message>
-        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>A készülékeden található regisztrációs fájl sérült. A regisztrációs folyamatot újra kell indítani. Kérlek bizonyosodj meg róla, hogy a készüléked csatlakozik az internethez, és nyomd meg a &apos;Regisztráció újrakezdése&apos;-t. Ha az új regisztráció nem sikerül, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-mailen keresztül&lt;/a&gt;.</translation>
+        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>A készülékeden található regisztrációs fájl sérült. A regisztrációs folyamatot újra kell indítani. Kérlek bizonyosodj meg róla, hogy a készüléked csatlakozik az internethez, és nyomd meg a &apos;Regisztráció újrakezdése&apos;-t. Ha az új regisztráció nem sikerül, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-mailen keresztül&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
         <translation>Regisztrációs adatok megjelenítése</translation>
     </message>
     <message>
-        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Az adatok senki mással nincsenek megosztva. További információkért az adatok feldolgozásának mikéntjére vonatkozóan lásd a &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;jogi nyilatkozatot&lt;/a&gt;. Ha többet szeretnél tudni a motivációról, az egyedi azonosítóról illetve annak generálásáról, kérlek olvasd el az oldalamon ezt a részt: &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;a Wagnis-ról&lt;/a&gt;.</translation>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>Az adatok senki mással nincsenek megosztva. További információkért az adatok feldolgozásának mikéntjére vonatkozóan lásd a &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;jogi nyilatkozatot&lt;/a&gt;. Ha többet szeretnél tudni a motivációról, az egyedi azonosítóról illetve annak generálásáról, kérlek olvasd el az oldalamon ezt a részt: &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;a Wagnis-ról&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -603,8 +603,8 @@
         <translation>Tesztelés folytatása</translation>
     </message>
     <message>
-        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Ha más hozzájárultál a Piepmatz fejlesztéséhez, kérlek &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;lépj velem&lt;/a&gt; kapcsolatba.</translation>
+        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
+        <translation>Ha más hozzájárultál a Piepmatz fejlesztéséhez, kérlek &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;lépj velem&lt;/a&gt; kapcsolatba.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -663,8 +663,8 @@
         <translation>A hozzájárulás nem érvényesült!</translation>
     </message>
     <message>
-        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>A hozzájárulásodat nem lehetett érvényesíteni. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Érvényesítés újrakezdése&quot; gombot. Ha van egy érvényes kulcsod, és nem lehet érvényesíteni, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>A hozzájárulásodat nem lehetett érvényesíteni. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Érvényesítés újrakezdése&quot; gombot. Ha van egy érvényes kulcsod, és nem lehet érvényesíteni, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
     </message>
     <message>
         <source>Restart Validation</source>

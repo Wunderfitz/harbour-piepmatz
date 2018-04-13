@@ -81,14 +81,14 @@ Page {
             }
 
             Text {
-                text: "<a href=\"mailto:sebastian@ygriega.de\">" + qsTr("Send E-Mail") + "</a>"
+                text: "<a href=\"mailto:contact@werkwolf.eu\">" + qsTr("Send E-Mail") + "</a>"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
 
-                onLinkActivated: Qt.openUrlExternally("mailto:sebastian@ygriega.de")
+                onLinkActivated: Qt.openUrlExternally("mailto:contact@werkwolf.eu")
             }
 
             Text {

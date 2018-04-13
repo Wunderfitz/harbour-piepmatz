@@ -565,8 +565,8 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Registreringsfel</translation>
     </message>
     <message>
-        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registreringen misslyckades. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt;.</translation>
+        <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Registreringen misslyckades. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -577,16 +577,16 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Registrering ogiltig</translation>
     </message>
     <message>
-        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen måste behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt;.</translation>
+        <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen måste behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
         <translation>Visa registreringsdata</translation>
     </message>
     <message>
-        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Data delas inte med någon annan. Läs den &lt;a href=&quot;http://legal.ygriega.de/&quot;&gt;juridiska förklaringen&lt;/a&gt; för mer information om hur data bearbetas. Fler detaljer om motivet till detta, den unika identifikationen och hur den genereras hittar du på min sida &lt;a href=&quot;http://wagnis.ygriega.de/&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
+        <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
+        <translation>Data delas inte med någon annan. Läs den &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;juridiska förklaringen&lt;/a&gt; för mer information om hur data bearbetas. Fler detaljer om motivet till detta, den unika identifikationen och hur den genereras hittar du på min sida &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -605,8 +605,8 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Fortsätt testa</translation>
     </message>
     <message>
-        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>&lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;Kontakta mig&lt;/a&gt; direkt,  om du redan har bidragit till Piepmatz.</translation>
+        <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
+        <translation>&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;Kontakta mig&lt;/a&gt; direkt,  om du redan har bidragit till Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -665,8 +665,8 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Bidraget är inte validerat!</translation>
     </message>
     <message>
-        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Ditt bidrag kunde inte valideras. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om valideringen&quot;. Kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt; om du har en giltig bidragskod som inte kan valideras.</translation>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation>Ditt bidrag kunde inte valideras. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om valideringen&quot;. Kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt; om du har en giltig bidragskod som inte kan valideras.</translation>
     </message>
     <message>
         <source>Restart Validation</source>

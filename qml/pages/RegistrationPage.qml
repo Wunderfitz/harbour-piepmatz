@@ -192,7 +192,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("The data isn't shared with anyone else. Please see the <a href=\"http://legal.ygriega.de/\">legal notice</a> for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page <a href=\"http://wagnis.ygriega.de/\">about Wagnis</a>.")
+                text: qsTr("The data isn't shared with anyone else. Please see the <a href=\"https://werkwolf.eu/terms.html\">legal notice</a> for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page <a href=\"https://werkwolf.eu/terms.html#wagnis\">about Wagnis</a>.")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -282,7 +282,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("Registration failed. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case a restart doesn't work, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                text: qsTr("Registration failed. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case a restart doesn't work, please contact me via <a href=\"mailto:contact@werkwolf.eu\">E-Mail</a>")
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -348,7 +348,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case the new registration isn't successful, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                text: qsTr("The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press 'Restart Registration'. In case the new registration isn't successful, please contact me via <a href=\"mailto:contact@werkwolf.eu\">E-Mail</a>")
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -458,7 +458,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("If you've already contributed to Piepmatz, please <a href=\"mailto:sebastian@ygriega.de\">contact me</a> directly.")
+                text: qsTr("If you've already contributed to Piepmatz, please <a href=\"mailto:contact@werkwolf.eu\">contact me</a> directly.")
                 font.pixelSize: Theme.fontSizeExtraSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
@@ -511,14 +511,27 @@ Page {
                 }
                 onClicked: {
                     var payment;
+                    var purchaseLink;
                     switch (contributionComboBox.currentIndex) {
-                        case 0: payment = "3,33 €"; break;
-                        case 1: payment = "5,55 €"; break;
-                        case 2: payment = "7,77 €"; break;
-                        case 3: payment = "9,99 €"; break;
+                        case 0:
+                            payment = "3,33 €";
+                            purchaseLink = "https://www.digistore24.com/product/214749";
+                            break;
+                        case 1:
+                            payment = "5,55 €";
+                            purchaseLink = "https://www.digistore24.com/product/197703";
+                            break;
+                        case 2:
+                            payment = "7,77 €";
+                            purchaseLink = "https://www.digistore24.com/product/214751";
+                            break;
+                        case 3:
+                            payment = "9,99 €";
+                            purchaseLink = "https://www.digistore24.com/product/214755";
+                            break;
                     }
-
                     console.log("Payment selected: " + payment);
+                    Qt.openUrlExternally(purchaseLink);
                 }
             }
 
@@ -564,6 +577,7 @@ Page {
                     width: parent.width
                     labelVisible: false
                     placeholderText: "abcd-efgh-1234-5678"
+                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
                 }
 
                 Text {
@@ -660,7 +674,7 @@ Page {
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 horizontalAlignment: Text.AlignJustify
-                text: qsTr("Your contribution could not be validated. Please ensure that your device is connected to the Internet and press 'Restart Validation'. In case you have a valid contribution key and it can't be validated, please contact me via <a href=\"mailto:sebastian@ygriega.de\">E-Mail</a>")
+                text: qsTr("Your contribution could not be validated. Please ensure that your device is connected to the Internet and press 'Restart Validation'. In case you have a valid contribution key and it can't be validated, please contact me via <a href=\"mailto:contact@werkwolf.eu\">E-Mail</a>")
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 color: Theme.primaryColor
