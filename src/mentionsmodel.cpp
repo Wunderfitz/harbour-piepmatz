@@ -79,7 +79,13 @@ void MentionsModel::update()
     qDebug() << "MentionsModel::update";
     this->updateInProgress = true;
     twitterApi->mentionsTimeline();
-    twitterApi->retweetTimeline();
+    // Protected accounts don't have retweets and are also not allowed to fetch them
+    // Even if there might be ones from times when the account wasn't protected...
+    if (this->accountModel->getCurrentAccount().value("protected").toBool()) {
+        this->retweetsUpdated = true;
+    } else {
+        twitterApi->retweetTimeline();
+    }
     twitterApi->followers(this->screenName);
     twitterApi->verifyCredentials();
 }
