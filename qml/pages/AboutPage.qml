@@ -81,6 +81,17 @@ Page {
             }
 
             Text {
+                text: "<a href=\"profile://ygriega\">" + qsTr("Find me on Twitter") + "</a>"
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
+
+                onLinkActivated: Functions.handleLink(link);
+            }
+
+            Text {
                 text: "<a href=\"mailto:contact@werkwolf.eu\">" + qsTr("Send E-Mail") + "</a>"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
@@ -91,15 +102,31 @@ Page {
                 onLinkActivated: Qt.openUrlExternally("mailto:contact@werkwolf.eu")
             }
 
+            Separator {
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Qt.AlignHCenter
+            }
+
             Text {
-                text: "<a href=\"profile://ygriega\">" + qsTr("Find me on Twitter") + "</a>"
+                wrapMode: Text.Wrap
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                text: "This product uses <a href=\"https://werkwolf.eu/terms.html#wagnis\">Wagnis</a> and is distributed by <a href=\"https://werkwolf.eu\">WerkWolf OÜ</a>. You can also <a href=\"profile://werkwolf\">find WerkWolf on Twitter</a>."
+                font.pixelSize: Theme.fontSizeSmall
+                linkColor: Theme.highlightColor
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
-                font.pixelSize: Theme.fontSizeSmall
-                linkColor: Theme.highlightColor
-
+                color: Theme.primaryColor
+                textFormat: Text.StyledText
+                horizontalAlignment: Text.AlignHCenter
                 onLinkActivated: Functions.handleLink(link);
+            }
+
+            Separator {
+                width: parent.width
+                color: Theme.primaryColor
+                horizontalAlignment: Qt.AlignHCenter
             }
 
             Label {

@@ -46,3 +46,16 @@
 - Geotagging for tweets (needs to be enabled in your Twitter privacy settings at https://twitter.com/settings/safety)
 - A lot of bugfixes
 - Probably a lot of new bugs
+
+* Sun Apr 15 2018 Sebastian Wolf <sebastian@ygriega.de> 1.0
+- Download media
+- Fullscreen videos
+- Delete your own tweets
+- Notifications for retweets and new followers
+- Lists support
+- Proper linebreak handling in tweets
+- Alternative image style (thanks to ferlanero)
+- Multiple accounts support (see settings)
+- Original Twitter Emojis (can be disabled)
+- Thread support (limited/workaround as there is no API, but works quite well)
+- Payment framework integration
