@@ -27,8 +27,10 @@ PkgConfigBR:
   - Qt5Quick
 
 # Build dependencies without a pkgconfig setup can be listed here
-# PkgBR:
-#   - package-needed-to-build
+PkgBR:
+- openssl-devel
+- qt5-qtdbus-devel
+- qt5-qtpositioning-devel
 
 # Runtime dependencies which are not automatically detected
 Requires:
