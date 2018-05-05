@@ -32,6 +32,10 @@ Page {
         allAccounts = allAccounts.concat(accountModel.getOtherAccounts());
     }
 
+    RemorsePopup {
+        id: removeAccountRemorsePopup
+    }
+
     SilicaFlickable {
         id: aboutContainer
         contentHeight: column.height
@@ -126,6 +130,21 @@ Page {
             }
 
             Button {
+                id: removeAccountButton
+                text: qsTr("Remove current Account")
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+                onClicked: {
+                    removeAccountRemorsePopup.execute(qsTr("Removing account"), function() {
+                        accountModel.removeCurrentAccount();
+                        pageStack.clear();
+                        pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                    } );
+                }
+            }
+
+            Button {
                 id: registerNewAccountButton
                 text: qsTr("Login with other Account")
                 anchors {
@@ -135,6 +154,17 @@ Page {
                     accountModel.registerNewAccount();
                     pageStack.clear();
                     pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                }
+            }
+
+            Label {
+                id: separatorLabel
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
                 }
             }
 

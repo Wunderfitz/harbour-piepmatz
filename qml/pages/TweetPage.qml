@@ -145,6 +145,17 @@ Page {
                 }
             }
 
+            Label {
+                id: separatorLabel
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                font.pixelSize: Theme.fontSizeExtraSmall
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
         }
 
         VerticalScrollDecorator { }

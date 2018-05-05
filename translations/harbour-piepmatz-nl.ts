@@ -762,6 +762,14 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Use animations when additional content is loaded</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Remove current Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Removing account</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
