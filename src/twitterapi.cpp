@@ -27,6 +27,7 @@
 #include <QFile>
 #include <QHttpMultiPart>
 #include <QXmlStreamReader>
+#include <QProcess>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
@@ -1114,6 +1115,20 @@ void TwitterApi::controlScreenSaver(const bool &enabled)
         dbusInterface.call("req_display_blanking_pause");
     }
 
+}
+
+void TwitterApi::handleAdditionalInformation(const QString &additionalInformation)
+{
+    qDebug() << "TwitterApi::handleAdditionalInformation" << additionalInformation;
+    // For now only used to open downloaded files...
+    QStringList argumentsList;
+    argumentsList.append(additionalInformation);
+    bool successfullyStarted = QProcess::startDetached("xdg-open", argumentsList);
+    if (successfullyStarted) {
+        qDebug() << "Successfully opened file " << additionalInformation;
+    } else {
+        qDebug() << "Error opening file " << additionalInformation;
+    }
 }
 
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)

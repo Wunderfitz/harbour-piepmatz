@@ -55,7 +55,7 @@ Page {
 
             onDownloadSuccessful: {
                 persistentNotificationItem.enabled = false;
-                videoNotification.show(qsTr("Download of %1 successful.").arg(fileName));
+                videoNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
             }
 
             onDownloadError: {

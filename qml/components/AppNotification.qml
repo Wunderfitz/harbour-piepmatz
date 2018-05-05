@@ -28,8 +28,9 @@ Item {
     anchors.horizontalCenter: parent.horizontalCenter
     width: parent.width - 2 * Theme.horizontalPageMargin
 
-    function show(message) {
+    function show(message, additionalInformation) {
         notificationTextItem.text = message;
+        notificationTextItem.additionalInformation = additionalInformation;
         notificationTimer.start();
         notificationTextItem.visible = true;
         notificationTextItem.opacity = 1;

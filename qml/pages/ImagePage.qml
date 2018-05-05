@@ -70,7 +70,7 @@ Page {
 
             onDownloadSuccessful: {
                 persistentNotificationItem.enabled = false;
-                imageNotification.show(qsTr("Download of %1 successful.").arg(fileName));
+                imageNotification.show(qsTr("Download of %1 successful.").arg(fileName), filePath);
             }
 
             onDownloadError: {

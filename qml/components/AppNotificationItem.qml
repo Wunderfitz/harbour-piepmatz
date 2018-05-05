@@ -33,6 +33,7 @@ Item {
     Behavior on opacity { NumberAnimation {} }
 
     property string text;
+    property string additionalInformation;
 
     Rectangle {
         id: notificationRectangleBackground
@@ -60,5 +61,13 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         wrapMode: Text.Wrap
         horizontalAlignment: Text.AlignHCenter
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            twitterApi.handleAdditionalInformation(notificationItem.additionalInformation);
+        }
+        visible: additionalInformation ? true : false
     }
 }

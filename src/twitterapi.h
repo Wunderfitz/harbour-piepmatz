@@ -124,6 +124,7 @@ public:
     Q_INVOKABLE void getSingleTweet(const QString &tweetId, const QString &address);
     Q_INVOKABLE void getIpInfo();
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
+    Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
 
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
@@ -181,7 +182,7 @@ signals:
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
-    void downloadSuccessful(const QString &fileName);
+    void downloadSuccessful(const QString &fileName, const QString &filePath);
     void downloadError(const QString &fileName, const QString &errorMessage);
     void downloadStatus(const QString &fileName, int percentCompleted);
     void directMessagesListSuccessful(const QVariantMap &result);

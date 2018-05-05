@@ -38,7 +38,7 @@ void DownloadResponseHandler::handleDownloadFinished()
         qDebug() << "Writing downloaded file to " + downloadedFile.fileName();
         downloadedFile.write(reply->readAll());
         downloadedFile.close();
-        emit twitterApi->downloadSuccessful(fileName);
+        emit twitterApi->downloadSuccessful(fileName, filePath);
     } else {
         emit twitterApi->downloadError(fileName, "Error storing file at " + filePath);
     }
