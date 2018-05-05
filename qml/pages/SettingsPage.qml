@@ -60,7 +60,7 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Images")
+                text: qsTr("Style")
             }
 
             TextSwitch {
@@ -69,6 +69,15 @@ Page {
                 description: qsTr("Use Twitter Emoji instead of system font")
                 onCheckedChanged: {
                     accountModel.setUseEmoji(checked);
+                }
+            }
+
+            TextSwitch {
+                checked: accountModel.getUseLoadingAnimations()
+                text: qsTr("Enable loading animations")
+                description: qsTr("Use animations when additional content is loaded")
+                onCheckedChanged: {
+                    accountModel.setUseLoadingAnimations(checked);
                 }
             }
 

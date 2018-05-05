@@ -54,6 +54,8 @@ public:
     Q_INVOKABLE void setImagePath(const QString &imagePath);
     Q_INVOKABLE bool getUseEmoji();
     Q_INVOKABLE void setUseEmoji(const bool &useEmoji);
+    Q_INVOKABLE bool getUseLoadingAnimations();
+    Q_INVOKABLE void setUseLoadingAnimations(const bool &useAnimations);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();

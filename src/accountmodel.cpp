@@ -29,6 +29,7 @@
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
+const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -161,6 +162,16 @@ bool AccountModel::getUseEmoji()
 void AccountModel::setUseEmoji(const bool &useEmoji)
 {
     settings.setValue(SETTINGS_USE_EMOJI, useEmoji);
+}
+
+bool AccountModel::getUseLoadingAnimations()
+{
+    return settings.value(SETTINGS_USE_LOADING_ANIMATIONS, true).toBool();
+}
+
+void AccountModel::setUseLoadingAnimations(const bool &useAnimations)
+{
+    settings.setValue(SETTINGS_USE_LOADING_ANIMATIONS, useAnimations);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

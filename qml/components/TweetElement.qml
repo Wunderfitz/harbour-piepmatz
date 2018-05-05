@@ -46,7 +46,10 @@ Item {
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
 
-    Behavior on height { PropertyAnimation { easing.type: Easing.Linear; duration: 250 } }
+    Behavior on height {
+        PropertyAnimation { easing.type: Easing.Linear; duration: 250 }
+        enabled: accountModel.getUseLoadingAnimations()
+    }
 
     Column {
         id: tweetColumn

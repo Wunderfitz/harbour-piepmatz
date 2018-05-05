@@ -706,10 +706,6 @@
         <translation>Localizzazione</translation>
     </message>
     <message>
-        <source>Images</source>
-        <translation>Immagini</translation>
-    </message>
-    <message>
         <source>Choose the active image style here</source>
         <translation>Scegli lo stile dell&apos;immagine</translation>
     </message>
@@ -752,6 +748,18 @@
     <message>
         <source>Use Twitter Emoji instead of system font</source>
         <translation>Utilizza le emoji di Twitter invece che quelle di sistema</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable loading animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use animations when additional content is loaded</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

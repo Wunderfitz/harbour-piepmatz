@@ -706,10 +706,6 @@
         <translation>Emplacement</translation>
     </message>
     <message>
-        <source>Images</source>
-        <translation>Images</translation>
-    </message>
-    <message>
         <source>Choose the active image style here</source>
         <translation>Choisissez le style actif</translation>
     </message>
@@ -752,6 +748,18 @@
     <message>
         <source>Use Twitter Emoji instead of system font</source>
         <translation>Utilise les émojis Twitter au lieu des émojis de Sailfish OS</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable loading animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use animations when additional content is loaded</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

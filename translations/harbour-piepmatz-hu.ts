@@ -706,10 +706,6 @@
         <translation>Helyzet</translation>
     </message>
     <message>
-        <source>Images</source>
-        <translation>Képek</translation>
-    </message>
-    <message>
         <source>Choose the active image style here</source>
         <translation>Válaszd ki itt az aktív képstílust</translation>
     </message>
@@ -752,6 +748,18 @@
     <message>
         <source>Use Twitter Emoji instead of system font</source>
         <translation>Használd a Twitter Emoji-t a rendszer betűkészlet helyett</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable loading animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use animations when additional content is loaded</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

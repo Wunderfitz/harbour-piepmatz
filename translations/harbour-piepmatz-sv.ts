@@ -708,10 +708,6 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <translation>Plats</translation>
     </message>
     <message>
-        <source>Images</source>
-        <translation>Bilder</translation>
-    </message>
-    <message>
         <source>Choose the active image style here</source>
         <translation>Välj aktiv bildstil här</translation>
     </message>
@@ -754,6 +750,18 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     <message>
         <source>Use Twitter Emoji instead of system font</source>
         <translation>Använd Twitter-emoji istället för systemteckensnitt</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable loading animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use animations when additional content is loaded</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -707,10 +707,6 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Locatie</translation>
     </message>
     <message>
-        <source>Images</source>
-        <translation>Afbeeldingen</translation>
-    </message>
-    <message>
         <source>Choose the active image style here</source>
         <translation>Kies hier de actieve afbeeldingsstijl</translation>
     </message>
@@ -753,6 +749,18 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <message>
         <source>Use Twitter Emoji instead of system font</source>
         <translation>Twitter-emoji gebruiken i.p.v. het systeemlettertype</translation>
+    </message>
+    <message>
+        <source>Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable loading animations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use animations when additional content is loaded</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
