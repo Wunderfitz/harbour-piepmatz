@@ -321,6 +321,7 @@ Page {
                 directMessagesModel.update();
                 ownListsModel.update();
                 membershipListsModel.update();
+                savedSearchesModel.update();
                 overviewPage.initializationCompleted = true;
                 updateIpInfo();
                 ipInfoUpdater.start();
@@ -1208,6 +1209,19 @@ Page {
                 }
 
                 Connections {
+                    target: savedSearchesModel
+                    onSaveSuccessful: {
+                        overviewNotification.show(qsTr("Search query '%1' saved successfully").arg(query));
+                    }
+                    onSaveError: {
+                        overviewNotification.show(errorMessage);
+                    }
+                    onRemoveError: {
+                        overviewNotification.show(errorMessage);
+                    }
+                }
+
+                Connections {
                     target: trendsModel
                     onTrendsRetrieved: {
                         trendsPlaceText.text = qsTr("Trends for %1").arg(place);
@@ -1227,22 +1241,38 @@ Page {
                     }
                 }
 
-                SearchField {
-                    id: searchField
+                Row {
+                    id: searchFieldRow
                     width: parent.width
-                    placeholderText: qsTr("Search on Twitter...")
-                    anchors {
-                        top: parent.top
+                    height: searchField.height
+
+                    SearchField {
+                        id: searchField
+                        width: parent.width - ( saveSearchButton.visible ? saveSearchButton.width : 0)
+                        placeholderText: qsTr("Search on Twitter...")
+                        anchors {
+                            top: parent.top
+                        }
+
+                        EnterKey.iconSource: "image://theme/icon-m-enter-close"
+                        EnterKey.onClicked: focus = false
+
+                        onTextChanged: {
+                            searchColumn.tweetSearchInTransition = true;
+                            searchColumn.usersSearchInTransition = true;
+                            searchTimer.stop();
+                            searchTimer.start();
+                        }
                     }
 
-                    EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                    EnterKey.onClicked: focus = false
-
-                    onTextChanged: {
-                        searchColumn.tweetSearchInTransition = true;
-                        searchColumn.usersSearchInTransition = true;
-                        searchTimer.stop();
-                        searchTimer.start();
+                    IconButton {
+                        id: saveSearchButton
+                        icon.source: "image://theme/icon-m-add"
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: (searchField.text !== "")
+                        onClicked: {
+                            savedSearchesModel.saveSearch(searchField.text);
+                        }
                     }
                 }
 
@@ -1250,7 +1280,7 @@ Page {
                     id: searchTypeRow
                     width: parent.width
                     height: Theme.fontSizeLarge + Theme.paddingMedium
-                    anchors.top: searchField.bottom
+                    anchors.top: searchFieldRow.bottom
                     anchors.topMargin: Theme.paddingMedium
                     opacity: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || (searchResultsListView.count === 0 && usersSearchResultsListView.count === 0)) ? 0 : 1
                     visible: ( searchColumn.usersSearchInProgress || searchColumn.tweetSearchInProgress || (searchResultsListView.count === 0 && usersSearchResultsListView.count === 0)) ? false : true
@@ -1307,10 +1337,10 @@ Page {
                     id: trendsPlaceRow
                     width: parent.width
                     height: Theme.fontSizeLarge + Theme.paddingMedium
-                    anchors.top: searchField.bottom
+                    anchors.top: searchFieldRow.bottom
                     anchors.topMargin: Theme.paddingMedium
-                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? 1 : 0
-                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? true : false
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === false ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === false ) ? true : false
                     Behavior on opacity { NumberAnimation {} }
                     Text {
                         id: trendsPlaceText
@@ -1321,6 +1351,28 @@ Page {
                         color: Theme.highlightColor
                         textFormat: Text.PlainText
                         anchors.top: parent.top
+                    }
+                }
+
+                Row {
+                    id: savedSearchesRow
+                    width: parent.width
+                    height: Theme.fontSizeLarge + Theme.paddingMedium
+                    anchors.top: searchFieldRow.bottom
+                    anchors.topMargin: Theme.paddingMedium
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === true ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === true ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
+                    Text {
+                        id: savedSearchesText
+                        width: parent.width
+                        font.pixelSize: Theme.fontSizeMedium
+                        font.capitalization: Font.SmallCaps
+                        horizontalAlignment: Text.AlignHCenter
+                        color: Theme.highlightColor
+                        textFormat: Text.PlainText
+                        anchors.top: parent.top
+                        text: qsTr("Saved Searches")
                     }
                 }
 
@@ -1439,8 +1491,8 @@ Page {
                     width: parent.width
                     height: parent.height - searchField.height - searchTypeRow.height - Theme.paddingMedium
                     anchors.horizontalCenter: parent.horizontalCenter
-                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? 1 : 0
-                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) ) ? true : false
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === false ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === false ) ? true : false
                     Behavior on opacity { NumberAnimation {} }
 
                     clip: true
@@ -1482,6 +1534,67 @@ Page {
                         }
                         onClicked: {
                             searchField.text = display.name;
+                        }
+                    }
+
+                    VerticalScrollDecorator {}
+                }
+
+                SilicaListView {
+                    anchors {
+                        top: searchTypeRow.bottom
+                    }
+                    id: savedSearchesListView
+                    width: parent.width
+                    height: parent.height - searchField.height - savedSearchesRow.height - Theme.paddingMedium
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    opacity: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === true ) ? 1 : 0
+                    visible: ( searchField.text === "" && trendsListView.count !== 0 && !( searchColumn.tweetSearchInTransition || searchColumn.usersSearchInTransition ) && searchField.focus === true ) ? true : false
+                    Behavior on opacity { NumberAnimation {} }
+
+                    clip: true
+
+                    model: savedSearchesModel
+                    delegate: ListItem {
+                        id: savedSearchListItem
+                        contentHeight: savedQuery.height
+                        contentWidth: parent.width
+                        menu: ContextMenu {
+                            MenuItem {
+                                onClicked: {
+                                    savedSearchRemorseItem.execute(savedSearchListItem, qsTr("Deleting"), function() { savedSearchesModel.removeSavedSearch(display.id_str); } );
+                                }
+                                text: qsTr("Delete")
+                            }
+                        }
+
+                        RemorseItem {
+                            id: savedSearchRemorseItem
+                        }
+
+                        Row {
+                            id: savedQuery
+                            width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                            height: Theme.fontSizeHuge
+                            spacing: Theme.paddingMedium
+                            anchors {
+                                horizontalCenter: parent.horizontalCenter
+                                verticalCenter: parent.verticalCenter
+                            }
+                            Text {
+                                id: savedQueryText
+                                anchors.verticalCenter: parent.verticalCenter
+                                text: display.query
+                                font.pixelSize: Theme.fontSizeSmall
+                                color: Theme.primaryColor
+                                elide: Text.ElideRight
+                                maximumLineCount: 1
+                                width: parent.width
+                            }
+                        }
+
+                        onClicked: {
+                            searchField.text = display.query;
                         }
                     }
 

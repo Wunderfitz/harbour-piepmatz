@@ -467,6 +467,22 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Settings</source>
         <translation>Instellingen</translation>
     </message>
+    <message>
+        <source>Saved Searches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search query &apos;%1&apos; saved successfully</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Profile</name>

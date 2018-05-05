@@ -71,6 +71,9 @@ const char API_LISTS_LIST[] = "https://api.twitter.com/1.1/lists/list.json";
 const char API_LISTS_MEMBERSHIPS[] = "https://api.twitter.com/1.1/lists/memberships.json";
 const char API_LISTS_MEMBERS[] = "https://api.twitter.com/1.1/lists/members.json";
 const char API_LISTS_STATUSES[] = "https://api.twitter.com/1.1/lists/statuses.json";
+const char API_SAVED_SEARCHES_LIST[] = "https://api.twitter.com/1.1/saved_searches/list.json";
+const char API_SAVED_SEARCHES_CREATE[] = "https://api.twitter.com/1.1/saved_searches/create.json";
+const char API_SAVED_SEARCHES_DESTROY[] = "https://api.twitter.com/1.1/saved_searches/destroy/:id.json";
 
 class TwitterApi : public QObject {
 
@@ -119,6 +122,9 @@ public:
     Q_INVOKABLE void listsMemberships();
     Q_INVOKABLE void listMembers(const QString &listId);
     Q_INVOKABLE void listTimeline(const QString &listId, const QString &maxId = "");
+    Q_INVOKABLE void savedSearches();
+    Q_INVOKABLE void saveSearch(const QString &query);
+    Q_INVOKABLE void destroySavedSearch(const QString &id);
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
     Q_INVOKABLE void getSingleTweet(const QString &tweetId, const QString &address);
@@ -201,6 +207,12 @@ signals:
     void listMembersError(const QString &errorMessage);
     void listTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
     void listTimelineError(const QString &errorMessage);
+    void savedSearchesSuccessful(const QVariantList &result);
+    void savedSearchesError(const QString &errorMessage);
+    void saveSearchSuccessful(const QVariantMap &result);
+    void saveSearchError(const QString &errorMessage);
+    void destroySavedSearchSuccessful(const QVariantMap &result);
+    void destroySavedSearchError(const QString &errorMessage);
 
     void getOpenGraphSuccessful(const QVariantMap &result);
     void getOpenGraphError(const QString &errorMessage);
@@ -284,6 +296,12 @@ private slots:
     void handleListTimelineError(QNetworkReply::NetworkError error);
     void handleListTimelineFinished();
     void handleListTimelineLoadMoreFinished();
+    void handleSavedSearchesError(QNetworkReply::NetworkError error);
+    void handleSavedSearchesFinished();
+    void handleSaveSearchError(QNetworkReply::NetworkError error);
+    void handleSaveSearchFinished();
+    void handleDestroySavedSearchError(QNetworkReply::NetworkError error);
+    void handleDestroySavedSearchFinished();
 
     void handleGetOpenGraphError(QNetworkReply::NetworkError error);
     void handleGetOpenGraphFinished();

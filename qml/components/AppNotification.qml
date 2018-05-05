@@ -30,7 +30,9 @@ Item {
 
     function show(message, additionalInformation) {
         notificationTextItem.text = message;
-        notificationTextItem.additionalInformation = additionalInformation;
+        if (additionalInformation) {
+            notificationTextItem.additionalInformation = additionalInformation;
+        }
         notificationTimer.start();
         notificationTextItem.visible = true;
         notificationTextItem.opacity = 1;

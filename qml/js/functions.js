@@ -35,6 +35,7 @@ function updatePiepmatz() {
     directMessagesModel.update();
     ownListsModel.update();
     membershipListsModel.update();
+    savedSearchesModel.update();
     // Updated via MentionsModel
     // accountModel.verifyCredentials();
 }

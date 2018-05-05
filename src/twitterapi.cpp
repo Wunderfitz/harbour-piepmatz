@@ -1062,6 +1062,55 @@ void TwitterApi::listTimeline(const QString &listId, const QString &maxId)
 
 }
 
+void TwitterApi::savedSearches()
+{
+    qDebug() << "TwitterApi::savedSearches";
+    QUrl url = QUrl(API_SAVED_SEARCHES_LIST);
+    QUrlQuery urlQuery = QUrlQuery();
+    url.setQuery(urlQuery);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSavedSearchesError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSavedSearchesFinished()));
+}
+
+void TwitterApi::saveSearch(const QString &query)
+{
+    qDebug() << "TwitterApi::saveSearch" << query;
+    QUrl url = QUrl(QString(API_SAVED_SEARCHES_CREATE));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    requestParameters.append(O0RequestParameter(QByteArray("query"), query.toUtf8()));
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSaveSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleSaveSearchFinished()));
+}
+
+void TwitterApi::destroySavedSearch(const QString &id)
+{
+    qDebug() << "TwitterApi::destroySavedSearch" << id;
+    QUrl url = QUrl(QString(API_SAVED_SEARCHES_DESTROY).replace(":id", id));
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QByteArray postData = O1::createQueryParameters(requestParameters);
+
+    QNetworkReply *reply = requestor->post(request, requestParameters, postData);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleDestroySavedSearchError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleDestroySavedSearchFinished()));
+}
+
 void TwitterApi::getOpenGraph(const QString &address)
 {
     qDebug() << "TwitterApi::getOpenGraph" << address;
@@ -1908,6 +1957,81 @@ void TwitterApi::handleListTimelineLoadMoreFinished()
         emit listTimelineSuccessful(responseArray.toVariantList(), true);
     } else {
         emit listTimelineError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleSavedSearchesError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleSavedSearchesError:" << (int)error << reply->errorString() << reply->readAll();
+    emit savedSearchesError(reply->errorString());
+}
+
+void TwitterApi::handleSavedSearchesFinished()
+{
+    qDebug() << "TwitterApi::handleSavedSearchesFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isArray()) {
+        QJsonArray responseArray = jsonDocument.array();
+        emit savedSearchesSuccessful(responseArray.toVariantList());
+    } else {
+        emit savedSearchesError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleSaveSearchError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleSaveSearchError:" << (int)error << reply->errorString() << reply->readAll();
+    emit saveSearchError(reply->errorString());
+}
+
+void TwitterApi::handleSaveSearchFinished()
+{
+    qDebug() << "TwitterApi::handleSaveSearchFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit saveSearchSuccessful(responseObject.toVariantMap());
+    } else {
+        emit saveSearchError("Piepmatz couldn't understand Twitter's response!");
+    }
+}
+
+void TwitterApi::handleDestroySavedSearchError(QNetworkReply::NetworkError error)
+{
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    qWarning() << "TwitterApi::handleDestroySavedSearchError:" << (int)error << reply->errorString() << reply->readAll();
+    emit destroySavedSearchError(reply->errorString());
+}
+
+void TwitterApi::handleDestroySavedSearchFinished()
+{
+    qDebug() << "TwitterApi::handleDestroySavedSearchFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        return;
+    }
+
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QJsonObject responseObject = jsonDocument.object();
+        emit destroySavedSearchSuccessful(responseObject.toVariantMap());
+    } else {
+        emit destroySavedSearchError("Piepmatz couldn't understand Twitter's response!");
     }
 }
 
