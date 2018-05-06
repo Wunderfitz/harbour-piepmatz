@@ -20,7 +20,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.0
 import Sailfish.Silica 1.0
-import Nemo.Notifications 1.0
+import org.nemomobile.notifications 1.0
 
 
 import "../components"
