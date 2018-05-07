@@ -95,6 +95,10 @@
         <source>Open QGumboParser on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -167,6 +171,13 @@
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation type="unfinished">タイムライン</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -231,10 +242,24 @@
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">リスト</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>読込み中...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">メッセージ</translation>
     </message>
 </context>
 <context>
@@ -277,6 +302,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished">通知</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -293,26 +325,6 @@
     <message>
         <source>New Tweet</source>
         <translation>新規ツイート</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>タイムライン</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>通知</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>メッセージ</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>プロフィール</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>検索</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -447,10 +459,6 @@
         <translation>リツイートされました！</translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation>リスト</translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation>メンバーになっているリスト</translation>
     </message>
@@ -504,6 +512,13 @@
     <message>
         <source>%1 Favorites</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished">プロフィール</translation>
     </message>
 </context>
 <context>
@@ -701,6 +716,13 @@
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">検索</translation>
     </message>
 </context>
 <context>

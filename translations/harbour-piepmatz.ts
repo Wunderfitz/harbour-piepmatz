@@ -95,6 +95,10 @@
         <source>Open QGumboParser on GitHub</source>
         <translation>Open QGumboParser on GitHub</translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -167,6 +171,13 @@
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation>Timeline</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -231,10 +242,24 @@
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation>Lists</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>Loading...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation>Messages</translation>
     </message>
 </context>
 <context>
@@ -277,6 +302,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation>Notifications</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -293,26 +325,6 @@
     <message>
         <source>New Tweet</source>
         <translation>New Tweet</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>Timeline</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>Notifications</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Messages</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>Profile</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Search</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -447,10 +459,6 @@
         <translation>You have been retweeted!</translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation>Lists</translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation>Subscribed</translation>
     </message>
@@ -468,19 +476,19 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Saved Searches</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Search query &apos;%1&apos; saved successfully</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Deleting</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Delete</translation>
     </message>
 </context>
 <context>
@@ -504,6 +512,13 @@
     <message>
         <source>%1 Favorites</source>
         <translation>%1 Favorites</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation>Profile</translation>
     </message>
 </context>
 <context>
@@ -704,6 +719,13 @@
     </message>
 </context>
 <context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation>Search</translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
@@ -767,23 +789,23 @@
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Style</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Enable loading animations</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Use animations when additional content is loaded</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove current Account</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Removing account</translation>
     </message>
 </context>
 <context>

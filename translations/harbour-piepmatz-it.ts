@@ -95,6 +95,10 @@
         <source>Open QGumboParser on GitHub</source>
         <translation>QGumboParser su GitHub</translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -167,6 +171,13 @@
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation type="unfinished">Timeline</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -231,10 +242,24 @@
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">Liste</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>Caricamento...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">Messaggi</translation>
     </message>
 </context>
 <context>
@@ -277,6 +302,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished">Notifiche</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -293,26 +325,6 @@
     <message>
         <source>New Tweet</source>
         <translation>Nuovo tweet</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>Timeline</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>Notifiche</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Messaggi</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>Profilo</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Cerca</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -447,10 +459,6 @@
         <translation>Sei stato ritwittato!</translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation>Liste</translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation>Iscritto</translation>
     </message>
@@ -504,6 +512,13 @@
     <message>
         <source>%1 Favorites</source>
         <translation>%1 preferiti</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished">Profilo</translation>
     </message>
 </context>
 <context>
@@ -701,6 +716,13 @@
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation>Puoi scegliere tra 4 diversi contributi: S, M, L, XL. Indipendentemente dalla dimensione scelta, la chiave acquistata sbloccherà l&apos;app completa. Spetta a te decidere quanto l&apos;app valga per te.</translation>
+    </message>
+</context>
+<context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Cerca</translation>
     </message>
 </context>
 <context>

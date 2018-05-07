@@ -97,6 +97,10 @@
         <source>Open QGumboParser on GitHub</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -169,6 +173,13 @@
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation type="unfinished">Моя лента</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -233,10 +244,24 @@
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>Загрузка...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">Сообщения</translation>
     </message>
 </context>
 <context>
@@ -279,6 +304,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished">Уведомления</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -295,26 +327,6 @@
     <message>
         <source>New Tweet</source>
         <translation>Создать твит</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>Моя лента</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>Уведомления</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Сообщения</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>Профиль</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Поиск</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -449,10 +461,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -506,6 +514,13 @@
     <message>
         <source>%1 Favorites</source>
         <translation>%1 избранных</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished">Профиль</translation>
     </message>
 </context>
 <context>
@@ -703,6 +718,13 @@
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Поиск</translation>
     </message>
 </context>
 <context>

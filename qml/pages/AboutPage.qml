@@ -111,7 +111,7 @@ Page {
             Text {
                 wrapMode: Text.Wrap
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                text: "This product uses <a href=\"https://werkwolf.eu/terms.html#wagnis\">Wagnis</a> and is distributed by <a href=\"https://werkwolf.eu\">WerkWolf OÜ</a>. You can also <a href=\"profile://werkwolf\">find WerkWolf on Twitter</a>."
+                text: qsTr("This product uses <a href=\"https://werkwolf.eu/terms.html#wagnis\">Wagnis</a> and is distributed by <a href=\"https://werkwolf.eu\">WerkWolf OÜ</a>. You can also <a href=\"profile://werkwolf\">find WerkWolf on Twitter</a>.")
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
                 anchors {

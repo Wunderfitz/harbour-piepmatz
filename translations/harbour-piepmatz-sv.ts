@@ -95,6 +95,10 @@
         <source>Open QGumboParser on GitHub</source>
         <translation>Öppna QGumboParser på GitHub</translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -167,6 +171,13 @@
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation type="unfinished">Tidslinje</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -231,10 +242,24 @@
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">Listor</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>Läser in...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">Meddelanden</translation>
     </message>
 </context>
 <context>
@@ -277,6 +302,13 @@
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished">Aviseringar</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -293,26 +325,6 @@
     <message>
         <source>New Tweet</source>
         <translation>Ny Tweet</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>Tidslinje</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>Aviseringar</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Meddelanden</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>Profil</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Sök</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -447,10 +459,6 @@
         <translation>Du har blivit upprepad!</translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation>Listor</translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation>Prenumererad</translation>
     </message>
@@ -504,6 +512,13 @@
     <message>
         <source>%1 Favorites</source>
         <translation>%1 Favoriter</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished">Profil</translation>
     </message>
 </context>
 <context>
@@ -703,6 +718,13 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation>Du kan välja mellan 4 olika bidrag. S, M, L och XL. Vilken storlek du än väljer, så kommer den köpta bidragskoden att låsa upp den kompletta appen. Det är upp till dig att avgöra hur mycket appen är värd för dig.</translation>
+    </message>
+</context>
+<context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Sök</translation>
     </message>
 </context>
 <context>

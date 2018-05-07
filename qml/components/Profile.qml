@@ -43,7 +43,7 @@ Item {
     }
 
     onProfileModelChanged: {
-        profileHeader.profileModel = profileItem.profileModel;
+        //profileHeader.profileModel = profileItem.profileModel;
         profileTimeline = null;
         twitterApi.userTimeline(profileModel.screen_name);
     }
@@ -68,20 +68,20 @@ Item {
         }
     }
 
-    ProfileHeader {
-        id: profileHeader
-        profileModel: profileModel
-        width: parent.width
-    }
-
     Component {
         id: profileListHeaderComponent
         Column {
             id: profileElementsColumn
 
-            height: profileFollowingRow.height + profileActivityRow.height + profileItemColumn.height + ( 2 * Theme.paddingMedium )
+            height: profileFollowingRow.height + profileHeader.height + profileActivityRow.height + profileItemColumn.height + ( 3 * Theme.paddingMedium )
             width: parent.width
             spacing: Theme.paddingMedium
+
+            ProfileHeader {
+                id: profileHeader
+                profileModel: profileItem.profileModel
+                width: parent.width
+            }
 
             Row {
                 id: profileFollowingRow
@@ -291,10 +291,19 @@ Item {
         opacity: profileTimeline ? 0 : 1
 
         anchors {
-            top: profileHeader.bottom
+            top: parent.top
             bottom: parent.bottom
             left: parent.left
             right: parent.right
+        }
+
+        Rectangle {
+            id: profileTimelineLoadingOverlay
+            color: "black"
+            opacity: 0.4
+            width: parent.width
+            height: parent.height
+            visible: profileTimelineLoadingIndicator.visible
         }
 
         BusyIndicator {
@@ -311,7 +320,7 @@ Item {
         header: profileListHeaderComponent
 
         anchors {
-            top: profileHeader.bottom
+            top: parent.top
             topMargin: Theme.paddingSmall
             bottom: parent.bottom
             left: parent.left

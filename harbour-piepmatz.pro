@@ -121,4 +121,9 @@ DISTFILES += \
     qml/pages/ListTimelinePage.qml \
     qml/pages/ListMembersPage.qml \
     qml/pages/SettingsPage.qml \
-    qml/pages/TweetConversationPage.qml
+    qml/pages/TweetConversationPage.qml \
+    qml/components/NotificationsButton.qml \
+    qml/components/MessagesButton.qml \
+    qml/components/SearchButton.qml \
+    qml/components/ListsButton.qml \
+    qml/components/ProfileButton.qml

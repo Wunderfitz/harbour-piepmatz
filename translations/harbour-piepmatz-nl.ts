@@ -96,6 +96,10 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Open QGumboParser on GitHub</source>
         <translation>QGumboParser openen op GitHub</translation>
     </message>
+    <message>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
@@ -168,6 +172,13 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
 </context>
 <context>
+    <name>HomeTimelineButton</name>
+    <message>
+        <source>Timeline</source>
+        <translation type="unfinished">Tijdlijn</translation>
+    </message>
+</context>
+<context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
@@ -232,10 +243,24 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
 </context>
 <context>
+    <name>ListsButton</name>
+    <message>
+        <source>Lists</source>
+        <translation type="unfinished">Lijsten</translation>
+    </message>
+</context>
+<context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
         <translation>Bezig met laden...</translation>
+    </message>
+</context>
+<context>
+    <name>MessagesButton</name>
+    <message>
+        <source>Messages</source>
+        <translation type="unfinished">Berichten</translation>
     </message>
 </context>
 <context>
@@ -278,6 +303,13 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
 </context>
 <context>
+    <name>NotificationsButton</name>
+    <message>
+        <source>Notifications</source>
+        <translation type="unfinished">Meldingen</translation>
+    </message>
+</context>
+<context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
@@ -294,26 +326,6 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <message>
         <source>New Tweet</source>
         <translation>Nieuwe tweet</translation>
-    </message>
-    <message>
-        <source>Timeline</source>
-        <translation>Tijdlijn</translation>
-    </message>
-    <message>
-        <source>Notifications</source>
-        <translation>Meldingen</translation>
-    </message>
-    <message>
-        <source>Messages</source>
-        <translation>Berichten</translation>
-    </message>
-    <message>
-        <source>Profile</source>
-        <translation>Profiel</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Zoeken</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -448,10 +460,6 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>Je bent geretweet!</translation>
     </message>
     <message>
-        <source>Lists</source>
-        <translation>Lijsten</translation>
-    </message>
-    <message>
         <source>Subscribed</source>
         <translation>Geabonneerd</translation>
     </message>
@@ -505,6 +513,13 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <message>
         <source>%1 Favorites</source>
         <translation>%1 favorieten</translation>
+    </message>
+</context>
+<context>
+    <name>ProfileButton</name>
+    <message>
+        <source>Profile</source>
+        <translation type="unfinished">Profiel</translation>
     </message>
 </context>
 <context>
@@ -702,6 +717,13 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation>Je kunt kiezen uit 4 bijdragen: S, M, L of XL. Het maakt niet uit welke je kiest, elke zal de applicatie volledig vrijgeven. Het is aan jou om te bepalen hoeveel de app waard is.</translation>
+    </message>
+</context>
+<context>
+    <name>SearchButton</name>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished">Zoeken</translation>
     </message>
 </context>
 <context>
