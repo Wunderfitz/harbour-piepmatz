@@ -64,47 +64,6 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Style")
-            }
-
-            TextSwitch {
-                checked: accountModel.getUseEmoji()
-                text: qsTr("Use Twitter Emoji")
-                description: qsTr("Use Twitter Emoji instead of system font")
-                onCheckedChanged: {
-                    accountModel.setUseEmoji(checked);
-                }
-            }
-
-            TextSwitch {
-                checked: accountModel.getUseLoadingAnimations()
-                text: qsTr("Enable loading animations")
-                description: qsTr("Use animations when additional content is loaded")
-                onCheckedChanged: {
-                    accountModel.setUseLoadingAnimations(checked);
-                }
-            }
-
-            ComboBox {
-                id: imagesComboBox
-                label: qsTr("Image Style")
-                currentIndex: (accountModel.getImagePath() === "") ? 0 : 1
-                description: qsTr("Choose the active image style here")
-                menu: ContextMenu {
-                     MenuItem {
-                        text: qsTr("Standard")
-                     }
-                     MenuItem {
-                        text: qsTr("Piepfish by @ferlanero")
-                     }
-                    onActivated: {
-                        var imagePath = ( index === 0 ? "" : "ferlanero/" );
-                        accountModel.setImagePath(imagePath);
-                    }
-                }
-            }
-
-            SectionHeader {
                 text: qsTr("Accounts")
             }
 
@@ -154,6 +113,47 @@ Page {
                     accountModel.registerNewAccount();
                     pageStack.clear();
                     pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Style")
+            }
+
+            TextSwitch {
+                checked: accountModel.getUseEmoji()
+                text: qsTr("Use Twitter Emoji")
+                description: qsTr("Use Twitter Emoji instead of system font")
+                onCheckedChanged: {
+                    accountModel.setUseEmoji(checked);
+                }
+            }
+
+            TextSwitch {
+                checked: accountModel.getUseLoadingAnimations()
+                text: qsTr("Enable loading animations")
+                description: qsTr("Use animations when additional content is loaded")
+                onCheckedChanged: {
+                    accountModel.setUseLoadingAnimations(checked);
+                }
+            }
+
+            ComboBox {
+                id: imagesComboBox
+                label: qsTr("Image Style")
+                currentIndex: (accountModel.getImagePath() === "") ? 0 : 1
+                description: qsTr("Choose the active image style here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("Standard")
+                     }
+                     MenuItem {
+                        text: qsTr("Piepfish by @ferlanero")
+                     }
+                    onActivated: {
+                        var imagePath = ( index === 0 ? "" : "ferlanero/" );
+                        accountModel.setImagePath(imagePath);
+                    }
                 }
             }
 

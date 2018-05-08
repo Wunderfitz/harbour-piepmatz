@@ -1813,12 +1813,16 @@ Page {
                     width: overviewPage.isLandscape ? getNavigationRowSize() : 0
                     height: parent.height
                     visible: overviewPage.isLandscape
+                    property bool squeezed: height < ( ( Theme.iconSizeMedium + Theme.fontSizeTiny ) * 6 ) ? true : false
+
                     Item {
                         id: homeButtonColumnLandscape
                         height: parent.height / 6
                         width: parent.width - Theme.paddingMedium
                         HomeTimelineButton {
                             id: homeTimelineButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
 
@@ -1828,6 +1832,8 @@ Page {
                         width: parent.width - Theme.paddingMedium
                         NotificationsButton {
                             id: notificationsButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
                     Item {
@@ -1836,6 +1842,8 @@ Page {
                         width: parent.width - Theme.paddingMedium
                         MessagesButton {
                             id: messagesButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
                     Item {
@@ -1844,6 +1852,8 @@ Page {
                         width: parent.width - Theme.paddingMedium
                         SearchButton {
                             id: searchButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
 
@@ -1853,6 +1863,8 @@ Page {
                         width: parent.width - Theme.paddingMedium
                         ListsButton {
                             id: listsButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
 
@@ -1862,8 +1874,12 @@ Page {
                         width: parent.width - Theme.paddingMedium
                         ProfileButton {
                             id: profileButtonLandscape
+                            visible: (isActive || !navigationColumn.squeezed)
+                            anchors.verticalCenter: parent.verticalCenter
                         }
                     }
+
+
                 }
             }
 
@@ -1893,6 +1909,7 @@ Page {
                         height: parent.height - Theme.paddingMedium
                         HomeTimelineButton {
                             id: homeTimelineButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
 
@@ -1902,6 +1919,7 @@ Page {
                         height: parent.height - navigationRowSeparator.height
                         NotificationsButton {
                             id: notificationsButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
                     Item {
@@ -1910,6 +1928,7 @@ Page {
                         height: parent.height - navigationRowSeparator.height
                         MessagesButton {
                             id: messagesButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
                     Item {
@@ -1918,6 +1937,7 @@ Page {
                         height: parent.height - navigationRowSeparator.height
                         SearchButton {
                             id: searchButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
 
@@ -1927,6 +1947,7 @@ Page {
                         height: parent.height - navigationRowSeparator.height
                         ListsButton {
                             id: listsButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
 
@@ -1936,6 +1957,7 @@ Page {
                         height: parent.height - navigationRowSeparator.height
                         ProfileButton {
                             id: profileButtonPortrait
+                            anchors.top: parent.top
                         }
                     }
                 }

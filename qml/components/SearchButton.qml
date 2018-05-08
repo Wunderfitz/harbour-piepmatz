@@ -6,7 +6,7 @@ Column {
     id: searchButton
     property bool isActive: false
 
-    anchors.fill: parent
+    width: parent.width
     IconButton {
         id: searchButtonImage
         height: Theme.iconSizeMedium

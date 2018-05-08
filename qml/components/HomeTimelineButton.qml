@@ -6,7 +6,7 @@ Column {
     id: homeTimelineButton
     property bool isActive: false
 
-    anchors.fill: parent
+    width: parent.width
     IconButton {
         id: homeButtonImage
         icon.source: homeTimelineButton.isActive ? "image://theme/icon-m-home?" + Theme.highlightColor : "image://theme/icon-m-home?" + Theme.primaryColor

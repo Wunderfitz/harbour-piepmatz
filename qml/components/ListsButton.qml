@@ -6,7 +6,7 @@ Column {
     id: listsButton
     property bool isActive: false
 
-    anchors.fill: parent
+    width: parent.width
     IconButton {
         id: listsButtonImage
         height: Theme.iconSizeMedium

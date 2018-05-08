@@ -6,7 +6,7 @@ Column {
     id: profileButton
     property bool isActive: false
 
-    anchors.fill: parent
+    width: parent.width
     IconButton {
         id: profileButtonImage
         height: Theme.iconSizeMedium

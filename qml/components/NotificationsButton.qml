@@ -6,7 +6,7 @@ Column {
     id: notificationsButton
     property bool isActive: false
 
-    anchors.fill: parent
+    width: parent.width
     IconButton {
         id: notificationsButtonImage
         icon.source: notificationsButton.isActive ? "image://theme/icon-m-alarm?" + Theme.highlightColor : "image://theme/icon-m-alarm?" + Theme.primaryColor
