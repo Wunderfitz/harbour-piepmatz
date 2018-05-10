@@ -442,6 +442,8 @@ Page {
         id: overviewContainer
         anchors.fill: parent
         visible: false
+        contentHeight: parent.height
+        contentWidth: parent.width
 
         PullDownMenu {
             MenuItem {
@@ -1751,7 +1753,7 @@ Page {
 
                 SlideshowView {
                     id: viewsSlideshow
-                    width: parent.width - ( overviewPage.isLandscape ? getNavigationRowSize() : 0 )
+                    width: parent.width - ( overviewPage.isLandscape ? getNavigationRowSize() + ( 2 * Theme.horizontalPageMargin ) : 0 )
                     height: parent.height
                     itemWidth: width
                     clip: true
@@ -1767,79 +1769,99 @@ Page {
                     }
                 }
 
-                Column {
+                Item {
                     id: navigationColumn
-                    width: overviewPage.isLandscape ? getNavigationRowSize() : 0
+                    width: overviewPage.isLandscape ? getNavigationRowSize() + ( 2 * Theme.horizontalPageMargin ) : 0
                     height: parent.height
                     visible: overviewPage.isLandscape
                     property bool squeezed: height < ( ( Theme.iconSizeMedium + Theme.fontSizeTiny ) * 6 ) ? true : false
 
-                    Item {
-                        id: homeButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        HomeTimelineButton {
-                            id: homeTimelineButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
+                    Separator {
+                        id: navigatorColumnSeparator
+                        width: parent.height
+                        color: Theme.primaryColor
+                        horizontalAlignment: Qt.AlignHCenter
+                        anchors.top: parent.top
+                        anchors.topMargin: Theme.paddingSmall
+                        transform: Rotation { angle: 90 }
                     }
 
-                    Item {
-                        id: notificationsButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        NotificationsButton {
-                            id: notificationsButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
-                    Item {
-                        id: messagesButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        MessagesButton {
-                            id: messagesButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
-                    Item {
-                        id: searchButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        SearchButton {
-                            id: searchButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+                    Column {
 
-                    Item {
-                        id: listsButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        ListsButton {
-                            id: listsButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
-                        }
-                    }
+                        anchors.left: parent.left
+                        anchors.leftMargin: Theme.paddingSmall
+                        anchors.top: parent.top
 
-                    Item {
-                        id: profileButtonColumnLandscape
-                        height: parent.height / 6
-                        width: parent.width - Theme.paddingMedium
-                        ProfileButton {
-                            id: profileButtonLandscape
-                            visible: (isActive || !navigationColumn.squeezed)
-                            anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height
+                        width: parent.width
+
+                        Item {
+                            id: homeButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            HomeTimelineButton {
+                                id: homeTimelineButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
+
+                        Item {
+                            id: notificationsButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            NotificationsButton {
+                                id: notificationsButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                        Item {
+                            id: messagesButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            MessagesButton {
+                                id: messagesButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+                        Item {
+                            id: searchButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            SearchButton {
+                                id: searchButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+
+                        Item {
+                            id: listsButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            ListsButton {
+                                id: listsButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+
+                        Item {
+                            id: profileButtonColumnLandscape
+                            height: parent.height / 6
+                            width: parent.width - Theme.paddingMedium
+                            ProfileButton {
+                                id: profileButtonLandscape
+                                visible: (isActive || !navigationColumn.squeezed)
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
+                        }
+
                     }
 
                 }
-
 
             }
 
