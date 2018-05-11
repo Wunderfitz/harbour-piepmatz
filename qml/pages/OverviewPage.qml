@@ -465,23 +465,32 @@ Page {
             }
         }
 
-        PushUpMenu {
-            MenuItem {
-                text: qsTr("Refresh")
-                onClicked: Functions.updatePiepmatz()
-            }
-            MenuItem {
-                text: qsTr("New Tweet")
-                enabled: overviewPage.tweetInProgress ? false : true
-                onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
-            }
-            MenuItem {
-                text: qsTr("Settings")
-                onClicked: pageStack.push(settingsPage)
-            }
-            MenuItem {
-                text: qsTr("About Piepmatz")
-                onClicked: pageStack.push(aboutPage)
+        Loader {
+            id: pushUpMenuLoader
+            active: overviewPage.isPortrait
+            sourceComponent: pushUpMenuComponent
+        }
+
+        Component {
+            id: pushUpMenuComponent
+            PushUpMenu {
+                MenuItem {
+                    text: qsTr("Refresh")
+                    onClicked: Functions.updatePiepmatz()
+                }
+                MenuItem {
+                    text: qsTr("New Tweet")
+                    enabled: overviewPage.tweetInProgress ? false : true
+                    onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
+                }
+                MenuItem {
+                    text: qsTr("Settings")
+                    onClicked: pageStack.push(settingsPage)
+                }
+                MenuItem {
+                    text: qsTr("About Piepmatz")
+                    onClicked: pageStack.push(aboutPage)
+                }
             }
         }
 
