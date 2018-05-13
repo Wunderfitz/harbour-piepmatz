@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Časovnica</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Sporočila</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Obvestila</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Profil</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -722,7 +722,7 @@
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Iskanje</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -805,6 +805,14 @@
     </message>
     <message>
         <source>Removing account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

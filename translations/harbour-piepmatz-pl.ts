@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ten produkt używa &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagins&lt;/a&gt; i jest dystrybuowany przez &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Możesz znaleźć &lt;a href=&quot;profile://werkwolf&quot;&gt;WerkWolf na Twiterze&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Oś czasu</translation>
+        <translation>Oś czasu</translation>
     </message>
 </context>
 <context>
@@ -245,7 +245,7 @@
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Listy</translation>
+        <translation>Listy</translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Wiadomości</translation>
+        <translation>Wiadomości</translation>
     </message>
 </context>
 <context>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Powiadomienia</translation>
+        <translation>Powiadomienia</translation>
     </message>
 </context>
 <context>
@@ -476,19 +476,19 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapisane wyszukiwania</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Zapytanie &apos;%1&apos; zapisane</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwanie</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń</translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Profil</translation>
+        <translation>Profil</translation>
     </message>
 </context>
 <context>
@@ -679,27 +679,27 @@
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeśli użyłeś/aś już swojego klucza na innym urządzeniu, możesz go użyć na maksymalnie 3 dodatkowych urządzeniach bez potrzeby uiszczania dodatkowej opłaty.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz jest i pozostanie otwartoźródłowym programem. Jednak w celu pomocy w rozwoju Piepmatz, chciałbym Cię prosić o wpłatę zanim będziesz mógł/a uruchomić go. Pomoc może być też udzielona poprzez tłumaczenie Piepmatz na inny język. W zamian za to otrzymasz klucz.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Po otrzymaniu klucza w wyniku opłaty, proszę zweryfikuj go tutaj.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>Opłata nie potwierdzona!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Twoja wpłata nie może zostać potwierdzona. Proszę się upewnić, że urządzenie nie jesy podłączone do internetu i nacisnąć &quot;Uruchom ponownie sprawdzanie&quot;. Jeśli masz ważny klucz i nie może być on zweryfikowany, skontaktuj się ze mną &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;mailowo&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Uruchom ponownie sprawdzanie</translation>
     </message>
     <message>
         <source>Thank You!</source>
@@ -707,7 +707,7 @@
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Twoja opłata została zweryfikowana.  Dziękuję bardzo za twój wkład w rozwój Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -715,14 +715,14 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Możesz wybrać pomiędzy 4 różnymi wielkościami opłaty: S, M, L, XL. Nie ważne, który wiebierzesz, otwrzymany klucz pozwoli w pełni korzystać z aplikacji. Do Ciebie należy decyzja jak dużo jest warta dla Ciebie aplikacja.</translation>
     </message>
 </context>
 <context>
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Wyszukaj</translation>
+        <translation>Wyszukaj</translation>
     </message>
 </context>
 <context>
@@ -789,23 +789,31 @@
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Styl</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz ładowanie animacji</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj animacji, kiedy ładowana jest dodatkowa treść</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń obecne konto</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuwanie konta</translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Włącz nawigację gestami</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Użyj nawigacji gestami aby zmienić kategorie (np. z osi czasu na powiadomienia)</translation>
     </message>
 </context>
 <context>

@@ -57,6 +57,8 @@ public:
     Q_INVOKABLE void setUseEmoji(const bool &useEmoji);
     Q_INVOKABLE bool getUseLoadingAnimations();
     Q_INVOKABLE void setUseLoadingAnimations(const bool &useAnimations);
+    Q_INVOKABLE bool getUseSwipeNavigation();
+    Q_INVOKABLE void setUseSwipeNavigation(const bool &useSwipeNavigation);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -70,6 +72,7 @@ signals:
     void credentialsVerified();
     void verificationError(const QString &errorMessage);
     void imageStyleChanged();
+    void swipeNavigationChanged();
     void accountSwitched();
 
 public slots:

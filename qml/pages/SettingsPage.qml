@@ -51,19 +51,6 @@ Page {
             }
 
             SectionHeader {
-                text: qsTr("Location")
-            }
-
-            TextSwitch {
-                checked: locationInformation.isEnabled()
-                text: qsTr("Enable Positioning")
-                description: qsTr("Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging")
-                onCheckedChanged: {
-                    locationInformation.setEnabled(checked);
-                }
-            }
-
-            SectionHeader {
                 text: qsTr("Accounts")
             }
 
@@ -138,6 +125,15 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: accountModel.getUseSwipeNavigation()
+                text: qsTr("Enable swipe navigation")
+                description: qsTr("Use swipe navigation to switch categories (e.g. from timeline to notifications)")
+                onCheckedChanged: {
+                    accountModel.setUseSwipeNavigation(checked);
+                }
+            }
+
             ComboBox {
                 id: imagesComboBox
                 label: qsTr("Image Style")
@@ -154,6 +150,19 @@ Page {
                         var imagePath = ( index === 0 ? "" : "ferlanero/" );
                         accountModel.setImagePath(imagePath);
                     }
+                }
+            }
+
+            SectionHeader {
+                text: qsTr("Location")
+            }
+
+            TextSwitch {
+                checked: locationInformation.isEnabled()
+                text: qsTr("Enable Positioning")
+                description: qsTr("Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging")
+                onCheckedChanged: {
+                    locationInformation.setEnabled(checked);
                 }
             }
 

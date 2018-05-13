@@ -807,6 +807,14 @@
         <source>Removing account</source>
         <translation>Removing account</translation>
     </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Enable swipe navigation</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Use swipe navigation to switch categories (e.g. from timeline to notifications)</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

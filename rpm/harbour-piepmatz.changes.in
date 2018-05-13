@@ -59,3 +59,11 @@
 - Original Twitter Emojis (can be disabled)
 - Thread support (limited/workaround as there is no API, but works quite well)
 - Payment framework integration
+
+* Sun May 13 2018 Sebastian Wolf <sebastian@ygriega.de> 1.1
+- Support for saved searches
+- Better landscape support
+- Swipe to switch categories (e.g. from timeline to notifications)
+- Option to disable loading animations
+- Tap on download successful notification launches Gallery app
+- Possibility to remove account

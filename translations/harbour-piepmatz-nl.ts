@@ -98,7 +98,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Deze applicatie gebruikt &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; en wordt verspreid door &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Je kunt &lt;a href=&quot;profile://werkwolf&quot;&gt;Werkwolf ook vinden op Twitter&lt;/a&gt;&quot;.</translation>
     </message>
 </context>
 <context>
@@ -175,7 +175,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Tijdlijn</translation>
+        <translation>Tijdlijn</translation>
     </message>
 </context>
 <context>
@@ -246,7 +246,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Lijsten</translation>
+        <translation>Lijsten</translation>
     </message>
 </context>
 <context>
@@ -260,7 +260,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Berichten</translation>
+        <translation>Berichten</translation>
     </message>
 </context>
 <context>
@@ -306,7 +306,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Meldingen</translation>
+        <translation>Meldingen</translation>
     </message>
 </context>
 <context>
@@ -477,19 +477,19 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Opgeslagen zoekopdrachten</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Het opslaan van de zoekopdracht &apos;%1&apos; is gelukt</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met verwijderen</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijderen</translation>
     </message>
 </context>
 <context>
@@ -519,7 +519,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Profiel</translation>
+        <translation>Profiel</translation>
     </message>
 </context>
 <context>
@@ -723,7 +723,7 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Zoeken</translation>
+        <translation>Zoeken</translation>
     </message>
 </context>
 <context>
@@ -790,23 +790,31 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stijl</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Laadanimaties inschakelen</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Animaties gebruiken tijdens het laden van meer inhoud</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidig account verwijderen</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met verwijderen van account</translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Veegnavigatie inschakelen</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Veegnavigatie gebruiken om te wisselen van categorie (bijv. van tijdlijn naar meldingen)</translation>
     </message>
 </context>
 <context>

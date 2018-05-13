@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Este producto usa &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; y es distribuído por &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Puedes &lt;a href=&quot;profile://werkwolf&quot;&gt;encontrar a WerkWolf en Twitter&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Inicio</translation>
+        <translation>Línea de tiempo</translation>
     </message>
 </context>
 <context>
@@ -245,7 +245,7 @@
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Listas</translation>
+        <translation>Listas</translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Mensajes</translation>
+        <translation>Mensajes</translation>
     </message>
 </context>
 <context>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Notificaciones</translation>
+        <translation>Notificaciones</translation>
     </message>
 </context>
 <context>
@@ -476,19 +476,19 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Búsquedas guardadas</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Búsqueda &apos;%1&apos; guardada correctamente</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrando</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Borrar</translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Perfil</translation>
+        <translation>Perfil</translation>
     </message>
 </context>
 <context>
@@ -722,7 +722,7 @@
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Buscar</translation>
+        <translation>Buscar</translation>
     </message>
 </context>
 <context>
@@ -789,23 +789,31 @@
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Activar animaciones durante la carga</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar animaciones cuando se carga contenido adicional</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar la cuenta actual</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminando cuenta</translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Activar navegación por gestos</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Usar la navegación por gestos para cambiar entre categorías (por ejemplo, de la línea de tiempo a las notificaciones)</translation>
     </message>
 </context>
 <context>

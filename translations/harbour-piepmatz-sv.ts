@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Denna produkt använder &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; och är distribuerad av &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Du kan också &lt;a href=&quot;profile://werkwolf&quot;&gt;hitta WerkWolf på Twitter&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Tidslinje</translation>
+        <translation>Tidslinje</translation>
     </message>
 </context>
 <context>
@@ -245,7 +245,7 @@
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Listor</translation>
+        <translation>Listor</translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Meddelanden</translation>
+        <translation>Meddelanden</translation>
     </message>
 </context>
 <context>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Aviseringar</translation>
+        <translation>Aviseringar</translation>
     </message>
 </context>
 <context>
@@ -476,19 +476,19 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Sparade sökningar</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Sökning &quot;%1&quot; sparad</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Tar bort</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort</translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Profil</translation>
+        <translation>Profil</translation>
     </message>
 </context>
 <context>
@@ -597,7 +597,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registreringen misslyckades. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;.</translation>
+        <translation>Registreringen misslyckades. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om en omstart inte hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -609,7 +609,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen måste behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om inte omstarten hjälper, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;.</translation>
+        <translation>Registreringsfilen på din enhet är skadad. Registreringsprocessen behöver startas om. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om registrering&quot;. Om den nya registreringen också misslyckas, kan du kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
@@ -617,7 +617,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Data delas inte med någon annan. Läs den &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;juridiska förklaringen&lt;/a&gt; för mer information om hur data bearbetas. Fler detaljer om motivet till detta, den unika identifikationen och hur den genereras hittar du på min sida &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
+        <translation>Denna data delas inte med någon annan. Se vår &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;juridiska notis&lt;/a&gt; för information om hur data bearbetas. Motivet för detta, den unika ID-koden och hur den genereras, kan du läsa mer om, på min sida &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;om Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -637,7 +637,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;Kontakta mig&lt;/a&gt; direkt,  om du redan har bidragit till Piepmatz.</translation>
+        <translation>&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;Kontakta mig&lt;/a&gt; direkt, om du redan har bidragit till Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -697,7 +697,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Ditt bidrag kunde inte valideras. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om valideringen&quot;. Kontakta mig via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-post&lt;/a&gt; om du har en giltig bidragskod som inte kan valideras.</translation>
+        <translation>Ditt bidrag kunde inte valideras. Tillse att din enhet är ansluten till internet och tryck &quot;Starta om valideringen&quot;. Kontakta mig via &lt;a href=&quot;mailto:sebastian@ygriega.de&quot;&gt;e-post&lt;/a&gt; om du har en giltig bidragskod som inte kan valideras.</translation>
     </message>
     <message>
         <source>Restart Validation</source>
@@ -724,7 +724,7 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Sök</translation>
+        <translation>Sök</translation>
     </message>
 </context>
 <context>
@@ -791,22 +791,30 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stil</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera inläsning av animationer</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd animationer när tilläggsinnehåll läses in</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Ta bort aktuellt konto</translation>
     </message>
     <message>
         <source>Removing account</source>
+        <translation>Tar bort konto</translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

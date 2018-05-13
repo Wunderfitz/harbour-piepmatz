@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Ez a projekt twitter-text-et használ.  A copyright 2014 Twitter,  Inc. és más közreműködőké. Köszönet az Apache License, Version 2.0 feltételei alatti elérhetőségért!</translation>
+        <translation>Ez a projekt twitter-text-et használ.  A szerzői jog 2014 Twitter,  Inc. és más közreműködőké. Köszönet az Apache License, Version 2.0 feltételei alatti elérhetőségért!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ez a termék a &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt;-t használja és a &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; forgalmazza. Megtalálod &lt;a href=&quot;profile://werkwolf&quot;&gt;WerkWolf-ot a Twitteren is&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished">Idővonal</translation>
+        <translation>Idővonal</translation>
     </message>
 </context>
 <context>
@@ -189,7 +189,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>A(z) %1 letöltése sikerült</translation>
+        <translation>A(z) %1 letöltése sikerült.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
@@ -245,7 +245,7 @@
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished">Listák</translation>
+        <translation>Listák</translation>
     </message>
 </context>
 <context>
@@ -259,14 +259,14 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished">Üzenetek</translation>
+        <translation>Üzenetek</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Új Tweet</translation>
+        <translation>Új tweet</translation>
     </message>
     <message>
         <source>Reply</source>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished">Értesítések</translation>
+        <translation>Értesítések</translation>
     </message>
 </context>
 <context>
@@ -324,7 +324,7 @@
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Új Tweet</translation>
+        <translation>Új tweet</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -476,26 +476,26 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Mentett keresések</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>A(z) &apos;%1&apos; keresés sikeresen mentve</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Törlés</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Törlés</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 követ</translation>
+        <translation>%1 követett</translation>
     </message>
     <message>
         <source>%1 Followers</source>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished">Profil</translation>
+        <translation>Profil</translation>
     </message>
 </context>
 <context>
@@ -579,7 +579,7 @@
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>Ezenfelül, ha megnyomod az &quot;Elfogadás&quot; gombot, a Piepmatz regisztrálni fogja ezt a telepítést a szerveremen. Tiszteletben tartom a magánéletedet, ezért csak anonim,és csak nagyon korlátolt információ lesz elküldve: e telepítés egyedi azonosítója, és az országod. Egyszerűen csak szeretném tudni, hogy hány felhasználója van a Piepmatz-nak, és hogy honnan jönnek. Ha ez számodra nincs rendben, egyszerűen csak zárd be az alkalmazást. Még nem történt információátvitel.</translation>
+        <translation>Ezenfelül, ha megnyomod az &quot;Elfogadás&quot; gombot, a Piepmatz regisztrálni fogja ezt a telepítést a szerveremen. Tiszteletben tartom a magánéletedet, ezért csak anonim, és csak nagyon korlátolt információ lesz elküldve: e telepítés egyedi azonosítója, és az országod. Egyszerűen csak szeretném tudni, hogy hány felhasználója van a Piepmatz-nak, és hogy honnan jönnek. Ha ez számodra nem elfogadható, egyszerűen csak zárd be az alkalmazást. Még nem történt információátvitel.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -615,7 +615,7 @@
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Az adatok senki mással nincsenek megosztva. További információkért az adatok feldolgozásának mikéntjére vonatkozóan lásd a &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;jogi nyilatkozatot&lt;/a&gt;. Ha többet szeretnél tudni a motivációról, az egyedi azonosítóról illetve annak generálásáról, kérlek olvasd el az oldalamon ezt a részt: &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;a Wagnis-ról&lt;/a&gt;.</translation>
+        <translation>Az adatok senki mással nincsenek megosztva. További információkért az adatok feldolgozásának mikéntjére vonatkozóan lásd a &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;jogi nyilatkozatot&lt;/a&gt;. Ha többet szeretnél tudni a motivációról, az egyedi azonosítóról illetve annak generálásáról, kérlek olvasd el az oldalamon ezt a részt a &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis-ról&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -627,7 +627,7 @@
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>Átugorhatod az ehhez való hozzájárulást: %1, ha előbb tesztelni szeretnéd a Piepmatz-t.</translation>
+        <translation>Mellőzheted a hozzájárulást ennyi ideig: %1, ha előbb tesztelni szeretnéd a Piepmatz-t.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
@@ -635,7 +635,7 @@
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Ha más hozzájárultál a Piepmatz fejlesztéséhez, kérlek &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;lépj velem&lt;/a&gt; kapcsolatba.</translation>
+        <translation>Ha már hozzájárultál a Piepmatz fejlesztéséhez, kérlek &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;lépj velem kapcsolatba&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -643,7 +643,7 @@
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation>Válaszd ki a hozzájárulásodat</translation>
+        <translation>Válaszd ki a hozzájárulásod mértékét</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
@@ -679,15 +679,15 @@
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation>Ha már érvényesítetted a kulcsod egy másik készüléken, újra használhatod 3 további készüléken anélkül, hogy megint hozzájárulásra lenne szükség.</translation>
+        <translation>Ha már érvényesítetted a kulcsod egy másik készüléken, újra használhatod 3 további készüléken újabb hozzájárulás nélkül.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>A Piepmatz nyílt forráskódú szoftver, és az is marad. Mégis, a Piepmatz fejlesztését támogatandó, szeretnék hozzájárulást kérni, mielőtt futtathatod. A hozzájárulás megtörténhet a Piepmatz más nyelvre fordításával, a fejlesztésben való részvétellel, vagy egyszerűen egy kulcs vásárlásával.</translation>
+        <translation>A Piepmatz nyílt forráskódú szoftver, és az is marad. Mégis, a Piepmatz fejlesztését támogatandó, szeretnék hozzájárulást kérni, mielőtt futtathatod. A hozzájárulás megtörténhet a Piepmatz lefordítása, a fejlesztésben való részvétel, vagy egyszerűen egy kulcs vásárlása által.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Miután megkaptad a kulcsodat vásárlás, vagy más formájú hozzájárulás által, érvényesítsd a kulcsodat itt, a Piepmatz futtatásához.</translation>
+        <translation>Miután vásárlás, vagy más formájú hozzájárulás révén megkaptad a kulcsodat, a Piepmatz futtatásához érvényesítsd azt itt.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
@@ -695,7 +695,7 @@
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>A hozzájárulásodat nem lehetett érvényesíteni. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Érvényesítés újrakezdése&quot; gombot. Ha van egy érvényes kulcsod, és nem lehet érvényesíteni, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail-en&lt;/a&gt; keresztül.</translation>
+        <translation>A hozzájárulásodat nem lehetett érvényesíteni. Kérlek bizonyosodj meg róla, hogy a készüléked kapcsolódik az internethez, és nyomd meg a &quot;Érvényesítés újrakezdése&quot; gombot. Ha van egy érvényes kulcsod, és nem lehet érvényesíteni, kérlek lépj velem kapcsolatba &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-mailen&lt;/a&gt; keresztül.</translation>
     </message>
     <message>
         <source>Restart Validation</source>
@@ -722,7 +722,7 @@
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished">Keresés</translation>
+        <translation>Keresés</translation>
     </message>
 </context>
 <context>
@@ -733,7 +733,7 @@
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation>Helyzetmeghatározás engedélyezése</translation>
+        <translation>Helymeghatározás engedélyezése</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
@@ -757,7 +757,7 @@
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>Piepfish @ferlanero által készítve</translation>
+        <translation>A Piepfish-t @ferlanero készítette</translation>
     </message>
     <message>
         <source>Accounts</source>
@@ -789,23 +789,31 @@
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Stílus</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Animációk betöltésének engedélyezése</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Animációk használata további tartalmak betöltésekor</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelenlegi fiók eltávolítása</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Fiók eltávolítása</translation>
+    </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Lapozásos navigáció engedélyezése</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Lapozásos navigáció használata kategóriaváltáshoz (pl. az idővonalról az értesítésekre)</translation>
     </message>
 </context>
 <context>

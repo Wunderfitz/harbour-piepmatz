@@ -807,6 +807,14 @@
         <source>Removing account</source>
         <translation>Benutzerkonto entfernen</translation>
     </message>
+    <message>
+        <source>Enable swipe navigation</source>
+        <translation>Wisch-Navigation einschalten</translation>
+    </message>
+    <message>
+        <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
+        <translation>Wisch-Navigation verwenden, um die Kategorien zu wechseln (z.B. von Zeitleiste zu Hinweisen)</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

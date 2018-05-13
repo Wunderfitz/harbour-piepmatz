@@ -1,199 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr">
+<TS version="2.1" language="ro_RO">
 <context>
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>Despre Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Un client Twitter pour Sailfish OS.</translation>
+        <translation>Un client Twitter pentru Sailfish OS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Par Sebastian J. Wolf</translation>
+        <translation>De Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Envoyer un e-mail</translation>
+        <translation>Trimite E-mail</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>Licence GNU GPLv3</translation>
+        <translation>Sub licență GNU GPLv3</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Sources sur GitHub</translation>
+        <translation>Surse pe GitHub</translation>
     </message>
     <message>
         <source>Credits</source>
-        <translation>Remerciements</translation>
+        <translation>Multumiri</translation>
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>Ouvrir OAuth pour Qt sur GitHub</translation>
+        <translation>Open Auth for Qt pe GitHub</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt, par Akos Polster. Merci pour l&apos;avoir rendu disponible selon les termes et conditions de la licence BSD 2-CL. !</translation>
+        <translation>Acest proiect folosește OAuth for Qt de Akos Polster. Mulțumiri pentru punerea la dispoziție în condițiile licenței BSD-2-Clause!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Ce projet utilise twitter-text, par Twitter, Inc. et autres contributeurs, © 2014. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence Apache version 2.0 !</translation>
+        <translation>Acest proiect folosește twitter-text. Copyright 2014 Twitter, Inc. și alți contribuitori. Mulțumiri pentru punerea la dispoziție în condițiile licenței Apache, Versiunea 2.0!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>Ouvir twitter-text sur GitHub</translation>
+        <translation>Open twitter-text pe GitHub</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>Retrouvez-moi sur Twitter</translation>
+        <translation>Găsește-mă pe Twitter</translation>
     </message>
     <message>
         <source>About Twitter</source>
-        <translation>À propos de Twitter</translation>
+        <translation>Despre Twitter</translation>
     </message>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Condiții de utilizare</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Politică de confidențialitate</translation>
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation>Ouvrir ipinfo.io</translation>
+        <translation>Deschide ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>Piepmatz utilise ipinfo.io ainsi que le récepteur GPS de votre appareil (si disponible) pour déterminer votre position, ceci afin d&apos;optimiser les tendances + géolocaliser vos Tweets - après avoir obtenu votre autorisation pour le faire, bien évidemment. Si cela vous intéresse, assurez-vous d&apos;activer l&apos;option de localisation dans vos &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Paramètres&lt;/a&gt;.</translation>
+        <translation>Piepmatz folosește ipinfo.io și (dacă e disponibil) receptorul GPS al aparatului ca să-ți determine poziția geografică. Poziția geografică e folosită pentru a găsi tendințe și - doar dacă a fost acceptat în mod explicit - atașată la tweet-urile tale. Dacă vrei să-ți folosești poziția geografică în tweet-uri, asigură-te ca ai activat-o în &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;setările Twitter&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation>ID Wagnis :</translation>
+        <translation>Wagnis ID:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation>Afficher l&apos;ID Wagnis</translation>
+        <translation>Arată Wagnis ID: </translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ce projet utilise twemoji, par Twitter, Inc. et autres contributeurs, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT (code) et de la CC-BY 4.0 (graphisme) !</translation>
+        <translation>Acest proiect folosește twemoji. Copyright 2017 Twitter, Inc. și alți contribuitori. Mulțumiri pentru punerea la dispoziție în condițiile licenței MIT (program) și CC-BY 4.0 (grafica)!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>Ouvrir twemoji sur GitHub</translation>
+        <translation>Open twemoji pe GitHub</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation>Ce projet utilise QGumboParser, par Sergey Lagner, © 2017. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence MIT ! Par ailleurs, QGumboParser utilise Gumbo, par Google, © 2017, soumis aux conditions de la licence Apache 2.0.</translation>
+        <translation>Acest proiect folosește QGumboParser. Copyright 2017 Sergey Lagner. Mulțumiri pentru punerea la dispoziție în condițiile licenței MIT! QGumboParser folosește Gumbo. Copyright 2017 Google. În condițiile licenței Apache 2.0</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation>Ouvrir QGumboParser sur GitHub</translation>
+        <translation>Open QGumboParser pe GitHub</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Cette application utilise &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; et est distribué par &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Vous pouvez aussi &lt;a href=&quot;profile://werkwolf&quot;&gt;trouver WerkWolf sur Twitter&lt;/a&gt;.</translation>
+        <translation>Acest produs folosește &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt;si e distribuit de &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Il poți &lt;a href=&quot;profile://werkwolf&quot;&gt;găsi pe WerkWolf pe Twitter&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>Nombre maximum d&apos;images atteint !</translation>
+        <translation>Numărul maxim de imagini selectat!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
-        <translation>Joindre %1 images</translation>
+        <translation>Atașează %1 Imagini</translation>
     </message>
     <message>
         <source>Attach Image</source>
-        <translation>Joindre une image</translation>
+        <translation>Atașează Imagine</translation>
     </message>
     <message>
         <source>Select Images</source>
-        <translation>Sélectionner les images</translation>
+        <translation>Selecționează Imagini</translation>
     </message>
 </context>
 <context>
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>Nouveau message à %1</translation>
+        <translation>Mesaj nou pentru %1</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>%1 caractère(s) restant(s)</translation>
+        <translation>%1 caractere rămase</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement en cours...</translation>
+        <translation>Se încarcă...</translation>
     </message>
 </context>
 <context>
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1 : Favoris</translation>
+        <translation>%1: Favorite</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir </translation>
+        <translation>Împrospătează</translation>
     </message>
 </context>
 <context>
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1 : Abonnés</translation>
+        <translation>%1: Adepți</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
 </context>
 <context>
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1: Abonnements</translation>
+        <translation>%1 Urmăriți</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
 </context>
 <context>
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation>Fil</translation>
+        <translation>Timeline</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation>Télécharger</translation>
+        <translation>Descarcă</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Se descarcă</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>Descărcarea %1 terminată</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Se descarcă, %1% terminat</translation>
     </message>
 </context>
 <context>
@@ -208,89 +208,89 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>Erreur</translation>
+        <translation>Eroare</translation>
     </message>
 </context>
 <context>
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation>%1 : Membres</translation>
+        <translation>%1: Membri</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation>%1 : Fil</translation>
+        <translation>%1 Cronologie</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation>Afficher les Membres</translation>
+        <translation>Arată membri</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Încarcă mai multe tweet-uri</translation>
     </message>
 </context>
 <context>
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation>Listes</translation>
+        <translation>Liste</translation>
     </message>
 </context>
 <context>
     <name>LoadingIndicator</name>
     <message>
         <source>Loading...</source>
-        <translation>Chargement...</translation>
+        <translation>Se încarcă...</translation>
     </message>
 </context>
 <context>
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation>Messages</translation>
+        <translation>Mesaje</translation>
     </message>
 </context>
 <context>
     <name>NewTweetPage</name>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Tweet nou</translation>
     </message>
     <message>
         <source>Reply</source>
-        <translation>Répondre</translation>
+        <translation>Răspunde</translation>
     </message>
     <message>
         <source>Send Reply</source>
-        <translation>Envoyer la réponse</translation>
+        <translation>Trimite răspuns</translation>
     </message>
     <message>
         <source>Send Tweet</source>
-        <translation>Envoyer le Tweet</translation>
+        <translation>Trimite Tweet</translation>
     </message>
     <message>
         <source>Attach Images</source>
-        <translation>Joindre une image</translation>
+        <translation>Atașează Imagini</translation>
     </message>
     <message>
         <source>Retweet</source>
-        <translation>Retweet</translation>
+        <translation>Retweetează</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>Envoyer le Retweet</translation>
+        <translation>Trimite retweet</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -298,220 +298,220 @@
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation>Joindre votre emplacement actuel à ce Tweet</translation>
+        <translation>Atașează poziția geografică curentă la acest tweet</translation>
     </message>
 </context>
 <context>
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation>Notifications</translation>
+        <translation>Notificări</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Try again</source>
-        <translation>Essayer encore une fois</translation>
+        <translation>Încearcă din nou</translation>
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>Authentification</translation>
+        <translation>Autentifică-te</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
-        <translation>À propos de Piepmatz</translation>
+        <translation>Despre Piepmatz</translation>
     </message>
     <message>
         <source>New Tweet</source>
-        <translation>Nouveau Tweet</translation>
+        <translation>Tweet nou</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Actualiser</translation>
+        <translation>Împrospătează</translation>
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>Connexion à Twitter...</translation>
+        <translation>Spun salut lui Twitter</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>Chargement du fil...</translation>
+        <translation>Încarcă cronologia</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz ne parvient pas à vous connecter !</translation>
+        <translation>Piepmatz n-a reușit sa te conecteze!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
-        <translation>Tweet envoyé avec succès !</translation>
+        <translation>Tweet trimis cu succes!</translation>
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>Rechercher sur Twitter...</translation>
+        <translation>Caută pe Twitter...</translation>
     </message>
     <message>
         <source>No results found</source>
-        <translation>Pas de résultats</translation>
+        <translation>Nici un resultat</translation>
     </message>
     <message>
         <source>What are you looking for?</source>
-        <translation>Que cherchez-vous ?</translation>
+        <translation>Ce cauți?</translation>
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>Envoi du Tweet...</translation>
+        <translation>Trimit Tweet...</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>Téléchargement, %1% effectué...</translation>
+        <translation>Încărcare, %1% terminat...</translation>
     </message>
     <message>
         <source>You</source>
-        <translation>Vous</translation>
+        <translation>Tu</translation>
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>Pas de message direct ces 30 derniers jours</translation>
+        <translation>Nici un mesaj direct în ultimele 30 de zile</translation>
     </message>
     <message>
         <source>Tweets</source>
-        <translation>Tweets</translation>
+        <translation>Tweeturi</translation>
     </message>
     <message>
         <source>Users</source>
-        <translation>Utilisateurs</translation>
+        <translation>Utilizatori</translation>
     </message>
     <message>
         <source>Searching...</source>
-        <translation>Recherche...</translation>
+        <translation>Caut...</translation>
     </message>
     <message>
         <source>New Mentions</source>
-        <translation>Nouvelles mentions</translation>
+        <translation>Mențiuni noi</translation>
     </message>
     <message>
         <source>You have been mentioned!</source>
-        <translation>Vous avez été mentionné !</translation>
+        <translation>Ai fost menționat(ă)!</translation>
     </message>
     <message>
         <source>New Messages</source>
-        <translation>Nouveaux messages</translation>
+        <translation>Mesaje noi</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation>Vous avez de nouveaux messages directs !</translation>
+        <translation>Ai un mesaj direct nou!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Vous avez de nouveaux messages !</translation>
+        <translation>Ai mesaje noi!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation>Charger plus de Tweets</translation>
+        <translation>Încarcă mai multe tweeturi</translation>
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>Aucun Tweet trouvé. Abonnez-vous à davantage de personnes pour afficher leurs Tweets dans votre fil !</translation>
+        <translation>Nici un tweet găsit. Urmărește mai multe persoane ca sa găsești tweeturile lor în cronologia ta!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>Tendances pour %1</translation>
+        <translation>Tendințe pentru %1</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation>Vous avez été mentionné %1 fois !</translation>
+        <translation>Ai fost menționat(ă) de %1 ori!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation>Nouvelle mention</translation>
+        <translation>Menționare nouă</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation>Nouveaux abonnés</translation>
+        <translation>Adepți Noi</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation>Vous avez %1 nouveaux abonnés !</translation>
+        <translation>Ai %1 adepți noi!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation>Nouvel abonné</translation>
+        <translation>Adept Nou</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation>Vous avez un nouvel abonné !</translation>
+        <translation>Ai un adept nou!</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation>vous suit désormais !</translation>
+        <translation>te urmărește acum!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation>Nouveaux Retweets</translation>
+        <translation>Retweeturi noi</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation>Vous avez été retweeté %1 fois !</translation>
+        <translation>Ai fost retweetat de %1 ori!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation>Vous avez été retweeté !</translation>
+        <translation>Ai fost retweetat!</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation>Abonné</translation>
+        <translation>Subscris</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation>Aucune liste trouvée</translation>
+        <translation>Nici o listă găsită</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation>Membre de</translation>
+        <translation>Membru al</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Setări</translation>
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation>Recherches enregistrées</translation>
+        <translation>Căutări salvate</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>Recherche &apos;%1&apos;  sauvegardée avec succès</translation>
+        <translation>Căutarea &apos;%&amp;&apos; salvată cu succes</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Suppression</translation>
+        <translation>Șterg</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>Supprimer</translation>
+        <translation>Șterge</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 Abonnements</translation>
+        <translation>%1 Urmăriți</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1 Abonnés</translation>
+        <translation>%1 Adepți</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1 Tweets</translation>
+        <translation>%1 Tweeturi</translation>
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>Inscrit en %1</translation>
+        <translation>Înscris în %1</translation>
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1 Favoris</translation>
+        <translation>%1 Favorite</translation>
     </message>
 </context>
 <context>
@@ -532,182 +532,182 @@
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>Ne plus suivre %1</translation>
+        <translation>Nu mai urmări pe %1</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>Suivre %1</translation>
+        <translation>Urmărește pe %1</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>Vous suivez désormais %1.</translation>
+        <translation>De acum îl urmărești pe %1.</translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>Vous ne suivez plus %1.</translation>
+        <translation>Nu mai urmărești pe %1.</translation>
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation>Envoyer un message direct</translation>
+        <translation>Trimite un mesaj direct</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiază URL în clipboard</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Bine ai venit în Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>Amusez-vous bien avec Piepmatz ! Sebastian J. Wolf</translation>
+        <translation>Distreaza-te cu Piepmatz! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
-        <translation>Accepter</translation>
+        <translation>Accept</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>Bienvenue sur Piepmatz - un client Twitter pour Sailfish OS ! Piepmatz est un &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;logiciel libre&lt;/a&gt; soumis aux conditions de la &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;Licence Publique Générale (GPL) version 3&lt;/a&gt;. En utilisant cette application, vous acceptez en totalité les termes et conditions de cette licence.</translation>
+        <translation>Bine ai venit în Piepmatz - un client Twitter pentru SalifishOS! Piepmatz este &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;software liber&lt;/a&gt; și licențiat în condițiile &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. Folosind acest software, acceptați termenii și condițiile acestei licențe.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>En outre, sachez que Piepmatz va automatiquement enregistrer cette installation sur mon serveur après avoir appuyé sur le bouton &quot;Accepter&quot;. Je respecte évidemment votre vie privée ; en plus d&apos;être anonyme, le jeu d&apos;informations transmis sera très limité : un identifiant unique + un pays. Mon objectif est simplement de savoir combien de &quot;Sailors&quot; utilisent Piepmatz, ainsi que de connaître leurs pays d&apos;origine. Vous n&apos;êtes pas d&apos;accord ? Pas de problèmes, il suffit simplement de fermer l&apos;application et de la supprimer. Aucune donnée n&apos;a pour l&apos;instant été transmise.</translation>
+        <translation>În plus, Piepmatz va înregistra automat aceasta instalare pe serverul meu dacă apeși &apos;Accept&apos;. Îți respect viata privată, deci doar informații anonimizate și foarte limitate vor fi transmise: un identificator unic pentru această instalație și țara ta. Vrea doar să știu citi utilizatori are Piepmatz și de unde vin. Dacă nu iți convine, poți închide pur și simplu aplicația. Nici o informație nu a fost transmisa pînă în acest moment.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation>Engagé pour le logiciel libre</translation>
+        <translation>Angajat pentru Software Liber</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation>S&apos;inscrire anonymement</translation>
+        <translation>Înregistrare anonimă</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation>Erreur</translation>
+        <translation>Eroare de înregistrare</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>L&apos;inscription a échoué. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de me contacter par &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>Înregistrarea a eșuat. Te rog sa te asiguri că aparatul tău e conectat la Internet și apasă &apos;Reîncepe înregistrarea&apos;. În cazul în care repornirea nu ajută, contactează-mă pe &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation>Recommencer l&apos;inscription</translation>
+        <translation>Reîncepe Înregistrarea</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation>Inscription non valide.</translation>
+        <translation>Înregistrare Nevalidă</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Le fichier d&apos;inscription de votre appareil est corrompu. La procédure d&apos;inscription doit être renouvelée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Recommencer l&apos;inscription&quot;. Merci de me contacter par &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt; si cela ne fonctionnait toujours pas.</translation>
+        <translation>Fișierul de înregistrare de pe aparatul tău e corupt. Procesul de înregistrare trebuie reînceput. Te rog sa te asiguri ca aparatul e conectat la Internet și apasă &apos;Reîncepe Înregistrarea&apos;. În cazul în care noua înregistrare nu reușește, te rog să mă contactezi direct pe &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation>Montrer les données d&apos;inscription</translation>
+        <translation>Arată Datele de Înregistrare</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>Vos données ne seront partagées avec personne d&apos;autre. Merci de consulter la &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;notice légale&lt;/a&gt; pour obtenir davantage d&apos;informations sur les données collectées. Envie de connaître les motivations derrière l&apos;ID unique ou d&apos;en comprendre la conception ? Rendez-vous sur ma page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;À propos de Wagnis&lt;/a&gt;.</translation>
+        <translation>Aceste datele nu sînt partajate cu nimeni altcineva. Te rog să citești &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;nota legală&lt;/a&gt; pentru informații suplimentare despre cum sînt procesate datele. Pentru detalii suplimentare despre motivația pentru acest lucru, ID-ul unic și modul în care acesta este generat, vezi pagina mea &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;despre Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation>Contribution au développement</translation>
+        <translation>Contribuții la Dezvoltare</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation>Merci de contribuer à l&apos;avenir de Piepmatz !</translation>
+        <translation>Te rog sa contribui la Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>Vous pouvez sauter l&apos;étape de la contribution pendant %1 si vous souhaitez d&apos;abord tester l&apos;appli.</translation>
+        <translation>Poți sări contribuția timp de %1 dacă vrei sa testezi Piepmatz înainte.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>Continuer à tester</translation>
+        <translation>Continuă Testarea</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Vous vous êtes déjà acquitté de votre contribution ? Merci de m&apos;en toucher un mot par &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt; !</translation>
+        <translation>Dacă ai contribuit deja la Piepmatz, te rog sa ma &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contactezi&lt;/a&gt; direct.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation>Contribution</translation>
+        <translation>Contribuție</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation>Choisissez le montant de votre contribution</translation>
+        <translation>Alegeți contribuția aici</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation>Acheter</translation>
+        <translation>Cumpăra o cheie de contribuție</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation>Activez votre code d&apos;accès</translation>
+        <translation>Validează-ți cheia de contribuție</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation>Entrer le code ici</translation>
+        <translation>Introdu aici cheia de contribuție</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation>Valider</translation>
+        <translation>Validează cheia de contribuție</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation>Piepmatz S - 3€33</translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation>Piepmatz M - 5€55</translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation>Piepmatz L - 7€77</translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation>Piepmatz XL - 9€99</translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation>Vous avez déjà activé votre code d&apos;accès sur un autre appareil ? Pas de soucis, il est encore réutilisable 3 fois, de quoi faire plaisir à quelques amis ! Au delà, une nouvelle contribution sera nécessaire.</translation>
+        <translation>Dacă ai validat deja cheia pe alt aparat, poți sa o refolosești pe încă alte 3 aparate fără altă contribuție.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz est une application open source, et le restera toujours. Une contribution de votre part est néanmoins requise avant que vous ne puissiez accéder au service, ceci afin de garantir à l&apos;appli un développement stable et durable. Vous pouvez par exemple traduire Piepmatz dans votre langue, participer à son développement sur GitHub ou tout simplement acheter un code d&apos;accès.</translation>
+        <translation>Piepmatz este și va rămîne Open Source Software. Totuși, ca să susții dezvoltarea lui Piepmatz, te-aș ruga să faci o contribuție înainte sa-l lansezi. O contribuție poate fi traducerea în alta limba, sa ajuți la dezvoltare sau pur și simplu cumpărarea unei chei.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Après avoir obtenu un code d&apos;accès via un achat ou tout autre investissement bénéfique pour le développement de Piepmatz, il vous suffit de l&apos;activer ici afin d&apos;accéder au service.</translation>
+        <translation>După ce ai primit cheia fie prin cumpărare, fie pentru o contribuție, validează aici cheia ca sa lansezi Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation>Contribution non validée !</translation>
+        <translation>Contribuție nevalidată!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Votre contribution n&apos;a pas pu être validée. Veuillez vous assurer que l&apos;appareil est bien connecté à Internet et appuyez sur &quot;Revalider&quot;. Merci de me contacter par &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt; dans le cas où vous posséderiez un code impossible à valider.</translation>
+        <translation>Contribuția ta n-a putut fi validată. Te rog să te asiguri că aparatul tău e conectat la Internet și apasă &apos;Relansează Validarea&apos;. În caz că ai o cheie de contribuție validă care nu poate fi validată, contactează-mă pe &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation>Revalider</translation>
+        <translation>Relansează Validarea</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation>Merci !</translation>
+        <translation>Mulțumesc!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation>Votre contribution a été correctement validée. Merci infiniment pour votre participation au bon développement de Piepmatz !</translation>
+        <translation>Contribuția a fost validată cu succes. Mulțumesc foarte mult pentru contribuția ta la Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -715,37 +715,37 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation>Vous avez le choix parmi 4 formules : S, M, L ou XL. Le code d&apos;accès obtenu après l&apos;achat déverrouillera intégralement l&apos;application, peu importe la formule choisie. C&apos;est finalement à vous de décider de la valeur de Piepmatz !</translation>
+        <translation>Poți alege intre 4 contribuții diferite: S, M, L, XL. Orice mărime ai alege, cheia cumpărata va debloca întreaga aplicație. Tu decizi cît de mult valorează aplicația.</translation>
     </message>
 </context>
 <context>
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation>Rechercher</translation>
+        <translation>Căutare</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Paramètres</translation>
+        <translation>Setări</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation>Activer la géolocalisation</translation>
+        <translation>Activează Poziționarea</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation>Autorise Piepmatz à utiliser le GPS et autres services similaires pour géolocaliser vos Tweets</translation>
+        <translation>Permite lui Piematz sa folosească GPS/GLONASS/Galileo etc. ca să &quot;geo-eticheteze&quot; tweeturile</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation>Emplacement</translation>
+        <translation>Locație</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation>Choisissez le style actif</translation>
+        <translation>Alege aici stilul de imagine activă</translation>
     </message>
     <message>
         <source>Standard</source>
@@ -753,23 +753,23 @@
     </message>
     <message>
         <source>Image Style</source>
-        <translation>Style d&apos;image</translation>
+        <translation>Stil de Imagine</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>Piepfish, par @ferlanero</translation>
+        <translation>Piepfish de @ferlanero</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation>Comptes</translation>
+        <translation>Conturi</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation>Compte</translation>
+        <translation>Cont</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation>Sélectionnez le compte actif</translation>
+        <translation>Alege aici contul activ</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -777,103 +777,103 @@
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation>Se connecter avec un autre compte</translation>
+        <translation>Conectare cu alt cont</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation>Activer Twitter Emoji</translation>
+        <translation>Folosește Twitter Emoji</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation>Utilise les émojis Twitter au lieu des émojis de Sailfish OS</translation>
+        <translation>Folosește Twitter Emoji in loc de fonturile sistem</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation>Style</translation>
+        <translation>Stil</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation>Activer le chargement des animations</translation>
+        <translation>Activează încărcarea animațiilor</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation>Utiliser les animations quand le contenu additionnel est chargé</translation>
+        <translation>Folosește animații cînd se încarcă un conținut suplimentar</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation>Retirer le compte actuel</translation>
+        <translation>Șterge contul curent</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation>Retrait du compte</translation>
+        <translation>Șterg contul</translation>
     </message>
     <message>
         <source>Enable swipe navigation</source>
-        <translation>Activer le glissement entre catégories</translation>
+        <translation>Activează navigația prin swipe</translation>
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation>Utiliser un mouvement de glissement latéral pour changer de catégorie (par ex depuis le fil vers les notifications)</translation>
+        <translation>Folosește navigația prin swipe ca să schimbi categoriile (ex. de la timeline la notificări)</translation>
     </message>
 </context>
 <context>
     <name>TextPage</name>
     <message>
         <source>Terms of Service</source>
-        <translation>Conditions de service</translation>
+        <translation>Termenii Serviciului</translation>
     </message>
     <message>
         <source>Privacy Policy</source>
-        <translation>Politique de confidentialité</translation>
+        <translation>Politica de confidențialitate</translation>
     </message>
 </context>
 <context>
     <name>Tweet</name>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Deschide în navigator</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre au Tweet</translation>
+        <translation>Răspunde la Tweet</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Retweeter avec commentaire</translation>
+        <translation>Retweetează cu comentariu</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiază URL în clipboard</translation>
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation>Supprimer le Tweet</translation>
+        <translation>Șterge tweet</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation>Suppression du Tweet</translation>
+        <translation>Se șterge tweetul</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation>Conversation</translation>
+        <translation>Fir</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>Retweeté par %1</translation>
+        <translation>Retweetat de %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>En réponse à %1</translation>
+        <translation>Raspuns lui %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation>Envoyé avec %1</translation>
+        <translation>Tweetat cu %1</translation>
     </message>
 </context>
 <context>
@@ -884,23 +884,23 @@
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation>Répondre</translation>
+        <translation>Răspunde la Tweet</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>Commenter</translation>
+        <translation>Retweetează cu comentariu</translation>
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation>Ouvrir dans le navigateur</translation>
+        <translation>Deschide în navigator</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien</translation>
+        <translation>Copiază URL în clipboard</translation>
     </message>
     <message>
         <source>Show Thread</source>
-        <translation>Afficher la conversation</translation>
+        <translation>Arată firul de discuții</translation>
     </message>
 </context>
 <context>
@@ -914,67 +914,67 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; par %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; de %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 Membres</translation>
+        <translation>%1 membri</translation>
     </message>
 </context>
 <context>
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>Copier le lien dans le presse-papier</translation>
+        <translation>Copiază URL în clipboard</translation>
     </message>
 </context>
 <context>
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation>Rafraîchir</translation>
+        <translation>Împrospătează</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation>Téléchargement</translation>
+        <translation>Descarcă</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>%1 téléchargé avec succès.</translation>
+        <translation>Descărcarea %1 terminată</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Téléchargement...</translation>
+        <translation>Se descarcă</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Téléchargement en cours, %1% terminé...</translation>
+        <translation>Se descarcă, %1% terminat</translation>
     </message>
 </context>
 <context>
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>Bienvenue sur Piepmatz !</translation>
+        <translation>Bine ai venit în Piepmatz!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>Merci de vous connecter à Twitter pour continuer.</translation>
+        <translation>Conectează-te la Twitter ca sa continui</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>Se connecter à Twitter</translation>
+        <translation>Conectare la Twitter</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Pas encore de compte Twitter ? Merci de bien vouloir vous y inscrire avant d&apos;utiliser Piepmatz.</translation>
+        <translation>Dacă nu ai deja un cont Twitter, întîi înregistrează-te .</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Inscription à Twitter</translation>
+        <translation>Înregistrează-te la Twitter</translation>
     </message>
     <message>
         <source>OK</source>
@@ -982,19 +982,19 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>Merci d&apos;indiquer le PIN Twitter : </translation>
+        <translation>Introdu PIN-ul Twitter:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>Impossible de vous authentifier avec le PIN saisi.</translation>
+        <translation>N-am putut sa te autentific cu PIN-ul introdus.</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>Indiquer à nouveau le PIN</translation>
+        <translation>Introdu PIN-ul din nou</translation>
     </message>
     <message>
         <source>Restart authentication</source>
-        <translation>Relancer l&apos;authentification</translation>
+        <translation>Repornește autentificarea</translation>
     </message>
 </context>
 <context>
@@ -1013,31 +1013,31 @@
     </message>
     <message>
         <source>%1K</source>
-        <translation>%1K</translation>
+        <translation>1%K</translation>
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation>les %1 jours suivants</translation>
+        <translation>în următoarele %1 zile</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation>le jour suivant</translation>
+        <translation>ziua următoare</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>les %1 prochaines heures</translation>
+        <translation>în următoarele %1 ore</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation>l&apos;heure suivante</translation>
+        <translation>următoarea oră</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation>les %1 prochaines minutes</translation>
+        <translation>în următoarele %1 minute</translation>
     </message>
     <message>
         <source>the next minute</source>
-        <translation>la minute suivante</translation>
+        <translation>minutul următor</translation>
     </message>
 </context>
 </TS>

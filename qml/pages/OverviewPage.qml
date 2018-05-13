@@ -1760,12 +1760,20 @@ Page {
                     }
                 }
 
+                Connections {
+                    target: accountModel
+                    onSwipeNavigationChanged: {
+                        viewsSlideshow.interactive = accountModel.getUseSwipeNavigation()
+                    }
+                }
+
                 SlideshowView {
                     id: viewsSlideshow
                     width: parent.width - ( overviewPage.isLandscape ? getNavigationRowSize() + ( 2 * Theme.horizontalPageMargin ) : 0 )
                     height: parent.height
                     itemWidth: width
                     clip: true
+                    interactive: accountModel.getUseSwipeNavigation()
                     model: viewsModel
                     onCurrentIndexChanged: {
                         openTab(currentIndex);
