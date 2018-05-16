@@ -42,10 +42,7 @@ int TimelineModel::rowCount(const QModelIndex &) const
 
 QVariant TimelineModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(timelineTweets.value(index.row()));
     }
     return QVariant();

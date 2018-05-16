@@ -20,10 +20,7 @@ int SavedSearchesModel::rowCount(const QModelIndex &) const
 
 QVariant SavedSearchesModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(savedSearches.value(index.row()));
     }
     return QVariant();

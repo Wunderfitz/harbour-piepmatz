@@ -49,7 +49,6 @@ MentionsModel::MentionsModel(TwitterApi *twitterApi, AccountModel &accountModel)
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &MentionsModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &MentionsModel::handleVerifyCredentialsSuccessful);
     connect(this->accountModel, &AccountModel::accountSwitched, this, &MentionsModel::handleAccountSwitched);
-
 }
 
 MentionsModel::~MentionsModel()
@@ -65,10 +64,7 @@ int MentionsModel::rowCount(const QModelIndex &) const
 
 QVariant MentionsModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(mentions.value(index.row()));
     }
     return QVariant();
@@ -297,7 +293,6 @@ void MentionsModel::createFollowersTable(const QStringList &existingTables)
             qDebug() << "Followers table successfully created!";
         } else {
             qDebug() << "Error creating followers table!";
-            return;
         }
     }
 }
@@ -445,7 +440,6 @@ void MentionsModel::getFollowersFromDatabase()
         }
     } else {
         qDebug() << "Error selecting followers from database!";
-        return;
     }
 }
 
