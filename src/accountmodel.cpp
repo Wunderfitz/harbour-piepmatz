@@ -46,10 +46,7 @@ AccountModel::AccountModel()
 }
 
 QVariant AccountModel::data(const QModelIndex &index, int role) const {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(availableAccounts.value(index.row()));
     }
     return QVariant();

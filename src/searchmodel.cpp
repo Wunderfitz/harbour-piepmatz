@@ -34,10 +34,7 @@ int SearchModel::rowCount(const QModelIndex &) const
 
 QVariant SearchModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(searchResults.value(index.row()));
     }
     return QVariant();

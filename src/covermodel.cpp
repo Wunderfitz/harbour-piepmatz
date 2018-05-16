@@ -30,10 +30,7 @@ int CoverModel::rowCount(const QModelIndex &) const
 
 QVariant CoverModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(coverTweets.value(index.row()));
     }
     return QVariant();

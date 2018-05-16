@@ -45,10 +45,7 @@ int ImagesModel::rowCount(const QModelIndex &) const
 
 QVariant ImagesModel::data(const QModelIndex &index, int role) const
 {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == Qt::DisplayRole) {
+    if(index.isValid() && role == Qt::DisplayRole) {
         return QVariant(images.value(index.row()));
     }
     return QVariant();
