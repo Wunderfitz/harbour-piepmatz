@@ -38,7 +38,7 @@ AccountModel::AccountModel()
     , manager(new QNetworkAccessManager(this))
     , settings("harbour-piepmatz", "settings")
 {
-    wagnis = new Wagnis(manager, "harbour-piepmatz", "1.1", this);
+    wagnis = new Wagnis(manager, "harbour-piepmatz", "1.2", this);
     locationInformation = new LocationInformation(this);
 
     obtainEncryptionKey();

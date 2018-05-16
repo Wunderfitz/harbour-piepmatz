@@ -33,6 +33,7 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 - Dutch: [Heimen Stoffels](https://www.transifex.com/user/profile/Vistaus/), [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
 - Finnish: [Ari Järviö](https://www.transifex.com/user/profile/ari_jarvio/) and [Termitebug](https://www.transifex.com/user/profile/Termitebug/)
 - French: [Alain Devarieux](https://www.transifex.com/user/profile/aldevar/), [lutinotmalin](https://www.transifex.com/user/profile/lutinotmalin/), [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
+- Hindi: [Parikshit Pahare](https://www.transifex.com/user/profile/p_pahare/)
 - Hungarian: [Szabó G.](https://www.transifex.com/user/profile/leoka/)
 - Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/)
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)

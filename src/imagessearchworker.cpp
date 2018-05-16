@@ -55,6 +55,11 @@ void ImagesSearchWorker::performSearch()
         QFileInfo fileInformation(picturesDirectoryIterator.next());
         availableImages.append(fileInformation);
     }
+    QDirIterator downloadDirectoryIterator(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation), supportedImageTypes, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
+    while (downloadDirectoryIterator.hasNext()) {
+        QFileInfo fileInformation(downloadDirectoryIterator.next());
+        availableImages.append(fileInformation);
+    }
     QString sdCardDirectory = getSDCardDirectory();
     if (sdCardDirectory != QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)) {
         qDebug() << "Reading pictures from SD card";

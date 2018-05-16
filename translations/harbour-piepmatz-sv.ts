@@ -811,11 +811,11 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>Enable swipe navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktivera svepnavigering</translation>
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation type="unfinished"></translation>
+        <translation>Använd svepnavigering för att växla mellan kategorier (t.ex. från tidslinjen till aviseringar)</translation>
     </message>
 </context>
 <context>

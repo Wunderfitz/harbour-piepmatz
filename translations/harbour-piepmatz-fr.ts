@@ -97,7 +97,7 @@
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Cette application utilise &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; et est distribué par &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Vous pouvez aussi &lt;a href=&quot;profile://werkwolf&quot;&gt;trouver WerkWolf sur Twitter&lt;/a&gt;.</translation>
+        <translation>Cette application utilise &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; et est distribuée par &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Vous pouvez aussi &lt;a href=&quot;profile://werkwolf&quot;&gt;retrouver WerkWolf sur Twitter&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -579,7 +579,7 @@
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>En outre, sachez que Piepmatz va automatiquement enregistrer cette installation sur mon serveur après avoir appuyé sur le bouton &quot;Accepter&quot;. Je respecte évidemment votre vie privée ; en plus d&apos;être anonyme, le jeu d&apos;informations transmis sera très limité : un identifiant unique + un pays. Mon objectif est simplement de savoir combien de &quot;Sailors&quot; utilisent Piepmatz, ainsi que de connaître leurs pays d&apos;origine. Vous n&apos;êtes pas d&apos;accord ? Pas de problèmes, il suffit simplement de fermer l&apos;application et de la supprimer. Aucune donnée n&apos;a pour l&apos;instant été transmise.</translation>
+        <translation>En outre, sachez que Piepmatz enregistrera automatiquement cette installation sur mon serveur après avoir appuyé sur le bouton &quot;Accepter&quot;. Je respecte évidemment votre vie privée ; en plus d&apos;être anonyme, le jeu d&apos;informations transmis sera très limité : un identifiant unique + un pays. Mon objectif est simplement de savoir combien de &quot;Sailors&quot; utilisent Piepmatz à travers le monde. Vous n&apos;êtes pas d&apos;accord ? Pas de problèmes, il suffit simplement de fermer l&apos;application et de la supprimer. Aucune donnée n&apos;a pour l&apos;instant été transmise.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -683,11 +683,11 @@
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz est une application open source, et le restera toujours. Une contribution de votre part est néanmoins requise avant que vous ne puissiez accéder au service, ceci afin de garantir à l&apos;appli un développement stable et durable. Vous pouvez par exemple traduire Piepmatz dans votre langue, participer à son développement sur GitHub ou tout simplement acheter un code d&apos;accès.</translation>
+        <translation>Piepmatz est une application open source, et le restera toujours. Une contribution de votre part est néanmoins nécessaire avant que vous ne puissiez accéder au service, ceci afin de garantir à l&apos;appli un avenir stable et durable. Vous pouvez par exemple traduire Piepmatz dans votre langue, participer à son développement sur GitHub ou tout simplement acheter un code d&apos;accès.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Après avoir obtenu un code d&apos;accès via un achat ou tout autre investissement bénéfique pour le développement de Piepmatz, il vous suffit de l&apos;activer ici afin d&apos;accéder au service.</translation>
+        <translation>Après avoir obtenu un code d&apos;accès via un achat ou tout autre investissement bénéfique pour Piepmatz, il vous suffit de l&apos;activer ici afin d&apos;accéder au service.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
@@ -797,7 +797,7 @@
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation>Utiliser les animations quand le contenu additionnel est chargé</translation>
+        <translation>Utilise des animations lorsque le contenu additionnel est chargé</translation>
     </message>
     <message>
         <source>Remove current Account</source>
@@ -813,7 +813,7 @@
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation>Utiliser un mouvement de glissement latéral pour changer de catégorie (par ex depuis le fil vers les notifications)</translation>
+        <translation>Utilise les mouvements de glissement latéraux pour changer de catégorie (par exemple, depuis le fil vers les notifications)</translation>
     </message>
 </context>
 <context>

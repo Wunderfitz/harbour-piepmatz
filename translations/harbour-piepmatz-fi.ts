@@ -5,7 +5,7 @@
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>Tietoa sovelluksesta Piepmatz</translation>
+        <translation>Tietoja Piepmatzista</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
@@ -65,7 +65,7 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
@@ -145,7 +145,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
 </context>
 <context>
@@ -156,7 +156,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
 </context>
 <context>
@@ -167,25 +167,25 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
 </context>
 <context>
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>Aikajana</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataa</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -215,7 +215,7 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>%1: Members</source>
@@ -226,11 +226,11 @@
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Aikajana</translation>
     </message>
     <message>
         <source>Show Members</source>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilmoitukset</translation>
     </message>
 </context>
 <context>
@@ -424,23 +424,23 @@
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi maininta</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudet seuraajat</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla on %1 uutta seuraajaa!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusi seuraaja</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinulla on uusi seuraaja!</translation>
     </message>
     <message>
         <source>follows you now!</source>
@@ -472,7 +472,7 @@
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Saved Searches</source>
@@ -488,7 +488,7 @@
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista</translation>
     </message>
 </context>
 <context>
@@ -518,7 +518,7 @@
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>Profiili</translation>
     </message>
 </context>
 <context>
@@ -552,18 +552,18 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi URL leikepöydälle</translation>
     </message>
 </context>
 <context>
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation type="unfinished">Tervetuloa Piepmatziin!</translation>
+        <translation>Tervetuloa Piepmatziin!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
@@ -571,7 +571,7 @@
     </message>
     <message>
         <source>Accept</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyväksy</translation>
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
@@ -703,7 +703,7 @@
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiitos!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
@@ -711,7 +711,7 @@
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
@@ -722,18 +722,18 @@
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Etsi</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli paikannus</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
@@ -753,7 +753,7 @@
     </message>
     <message>
         <source>Image Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvatyyli</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
@@ -761,11 +761,11 @@
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilit</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Tili</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
@@ -773,7 +773,7 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Login with other Account</source>
@@ -801,7 +801,7 @@
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista nykyinen tilisi</translation>
     </message>
     <message>
         <source>Removing account</source>
@@ -843,15 +843,15 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopioi URL leikepöydälle</translation>
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Poista tviitti</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistaa tviittiä</translation>
     </message>
 </context>
 <context>
@@ -880,11 +880,11 @@
     <name>TweetPage</name>
     <message>
         <source>Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tviittaa</translation>
     </message>
     <message>
         <source>Reply to Tweet</source>
-        <translation type="unfinished">Vastaa tviittiin</translation>
+        <translation>Vastaa tviittiin</translation>
     </message>
     <message>
         <source>Retweet with Comment</source>
@@ -892,11 +892,11 @@
     </message>
     <message>
         <source>Open in Browser</source>
-        <translation type="unfinished">Avaa selaimessa</translation>
+        <translation>Avaa selaimessa</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopioi URL leikepöydälle</translation>
     </message>
     <message>
         <source>Show Thread</source>
@@ -925,21 +925,21 @@
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopioi URL leikepöydälle</translation>
     </message>
 </context>
 <context>
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">Päivitä</translation>
+        <translation>Päivitä</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataa</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
@@ -947,7 +947,7 @@
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
@@ -1009,11 +1009,11 @@
     </message>
     <message>
         <source>%1M</source>
-        <translation type="unfinished">%1M</translation>
+        <translation>%1M</translation>
     </message>
     <message>
         <source>%1K</source>
-        <translation type="unfinished">%1K</translation>
+        <translation>%1K</translation>
     </message>
     <message>
         <source>the next %1 days</source>
@@ -1037,7 +1037,7 @@
     </message>
     <message>
         <source>the next minute</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraava minuutti</translation>
     </message>
 </context>
 </TS>
