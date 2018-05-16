@@ -19,7 +19,6 @@
 #ifndef MENTIONSMODEL_H
 #define MENTIONSMODEL_H
 
-
 #include <QAbstractListModel>
 #include <QVariantList>
 #include <QSettings>
