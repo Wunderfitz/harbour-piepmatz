@@ -293,7 +293,6 @@ void MentionsModel::createFollowersTable(const QStringList &existingTables)
             qDebug() << "Followers table successfully created!";
         } else {
             qDebug() << "Error creating followers table!";
-            return;
         }
     }
 }
@@ -441,7 +440,6 @@ void MentionsModel::getFollowersFromDatabase()
         }
     } else {
         qDebug() << "Error selecting followers from database!";
-        return;
     }
 }
 
