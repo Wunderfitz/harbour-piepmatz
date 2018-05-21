@@ -1,0 +1,6 @@
+#ifndef O1TWITTERGLOBALS_H
+#define O1TWITTERGLOBALS_H
+const char TWITTER_CLIENT_ID[]                    = "abcdef";
+const char TWITTER_CLIENT_SECRET[]                = "ghijkl";
+const char TWITTER_STORE_DEFAULT_ENCRYPTION_KEY[] = "mnopqr";
+#endif // O1TWITTERGLOBALS_H
