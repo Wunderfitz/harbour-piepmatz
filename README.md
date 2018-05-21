@@ -8,7 +8,9 @@ Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de)
 Licensed under GNU GPLv3
 
 ## Build
-Just use the project file `harbour-piepmatz.pro` to import the sources in your SailfishOS IDE. To build and run Piepmatz or an application which is based on Piepmatz, you need to create the file `harbour-piepmatz/src/o2/o1twitterglobals.h` and enter some constants in the following format:
+Simply clone this repository, but be sure to clone it with `--recursive` as Piepmatz uses Git Submodules.  
+
+Just use the project file `harbour-piepmatz.pro` to import the sources in your SailfishOS IDE. To build and run Piepmatz or an application which is based on Piepmatz, you need to create the file `harbour-piepmatz/src/o2/o1twitterglobals.h` (you can copy the sample from `harbour-piepmatz/src/o2/o1twitterglobals.h.sample`) and enter the required constants in the following format:
 ```
 #ifndef O1TWITTERGLOBALS_H
 #define O1TWITTERGLOBALS_H
@@ -20,6 +22,7 @@ const char TWITTER_STORE_DEFAULT_ENCRYPTION_KEY[] = "mnopqr";
 
 You get the Twitter client ID and client secret as soon as you've registered your own application on [dev.twitter.com](https://dev.twitter.com/). The default encryption key is only used in case Piepmatz is unable to determine a unique encryption key from the user's device. Under normal circumstances, Piepmatz uses an encryption key which was generated automatically. This key is used to encrypt the user's generated Twitter oAuth token (not the username/password!) on the user's device. Please use a password generator to generate the default key for your application.
 
+Piepmatz also needs the package `openssl-devel` to compile properly. You can install it on your build target using the Control Centre in your SailfishOS IDE.
 
 ## Credits
 This project uses
