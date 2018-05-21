@@ -31,7 +31,6 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
-
 TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
     this->manager = manager;
@@ -1558,7 +1557,6 @@ void TwitterApi::handleSearchGeoFinished()
         emit searchGeoError("Piepmatz couldn't understand Twitter's response!");
     }
 }
-
 
 void TwitterApi::handleFavoriteError(QNetworkReply::NetworkError error)
 {
