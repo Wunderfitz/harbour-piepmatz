@@ -86,6 +86,10 @@ Page {
         lostFocusTimer.start();
     }
 
+    function getRemainingDescriptionCharacters(text) {
+        return 420 - TwitterText.getTweetLength(text);
+    }
+
     Timer {
         id: lostFocusTimer
         interval: 200
@@ -451,6 +455,7 @@ Page {
             }
 
             Item {
+                id: attachedImagesItem
                 width: parent.width * 2 / 3
                 height: parent.width * 2 / 3
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -479,6 +484,9 @@ Page {
                             opacity: status === Image.Ready ? 1 : 0
                             Behavior on opacity { NumberAnimation {} }
                         }
+                    }
+                    onCurrentIndexChanged: {
+                        imageDescriptionTextField.text = attachedImagesSlideshow.currentIndex >= 0 ? imagesModel.getImageDescription(attachedImages[attachedImagesSlideshow.currentIndex]) : "";
                     }
                 }
 
@@ -556,6 +564,34 @@ Page {
                     }
                 }
 
+            }
+
+            Column {
+                id: imageDescriptionColumn
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: attachedImagesItem.visible
+                TextArea {
+                    id: imageDescriptionTextField
+                    width: parent.width
+                    font.pixelSize: Theme.fontSizeSmall
+                    placeholderText: qsTr("Image Description")
+                    labelVisible: false
+                    errorHighlight: getRemainingDescriptionCharacters(imageDescriptionTextField.text) < 0
+                    text: attachedImagesSlideshow.currentIndex >= 0 ? imagesModel.getImageDescription(attachedImages[attachedImagesSlideshow.currentIndex]) : ""
+                    onTextChanged: {
+                        imagesModel.setImageDescription(attachedImages[attachedImagesSlideshow.currentIndex], text);
+                    }
+                }
+                Text {
+                    id: descriptionRemainingCharactersText
+                    text: qsTr("%1 characters left").arg(Number(getRemainingDescriptionCharacters(imageDescriptionTextField.text)).toLocaleString(Qt.locale(), "f", 0))
+                    color: descriptionRemainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
+                    font.pixelSize: Theme.fontSizeTiny
+                    font.bold: descriptionRemainingCharactersText.text < 0 ? true : false
+                    anchors.left: parent.left
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                }
             }
 
             VerticalScrollDecorator {}

@@ -300,6 +300,14 @@
         <source>Attach current location to this tweet</source>
         <translation>Gegenwärtigen Aufenthaltsort zu diesem Gezwitscher hinzufügen</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">%1 Zeichen übrig</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

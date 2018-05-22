@@ -300,6 +300,14 @@
         <source>Attach current location to this tweet</source>
         <translation>ツイートに現在地情報を付加</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">残り%1文字</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

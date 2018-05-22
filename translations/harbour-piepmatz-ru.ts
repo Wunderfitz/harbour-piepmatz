@@ -302,6 +302,14 @@
         <source>Attach current location to this tweet</source>
         <translation>Прикрепить локацию к твиту</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">Осталось %1 букв</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

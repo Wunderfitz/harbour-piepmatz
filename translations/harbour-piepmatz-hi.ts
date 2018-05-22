@@ -300,6 +300,14 @@
         <source>Attach current location to this tweet</source>
         <translation>इस tweet पर वर्तमान लाॅकेशन जोङें</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">%1 अक्षर बचे</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

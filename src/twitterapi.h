@@ -41,6 +41,7 @@ const char API_HELP_CONFIGURATION[] = "https://api.twitter.com/1.1/help/configur
 const char API_HELP_PRIVACY[] = "https://api.twitter.com/1.1/help/privacy.json";
 const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
 const char API_MEDIA_UPLOAD[] = "https://upload.twitter.com/1.1/media/upload.json";
+const char API_MEDIA_METADATA_CREATE[] = "https://upload.twitter.com/1.1/media/metadata/create.json";
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
@@ -113,6 +114,7 @@ public:
     Q_INVOKABLE void unretweet(const QString &statusId);
     Q_INVOKABLE void destroyTweet(const QString &statusId);
     Q_INVOKABLE void uploadImage(const QString &fileName);
+    Q_INVOKABLE void uploadImageDescription(const QString &mediaId, const QString &description);
     Q_INVOKABLE void downloadFile(const QString &address, const QString &fileName);
     Q_INVOKABLE void directMessagesList(const QString &cursor = "");
     Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);

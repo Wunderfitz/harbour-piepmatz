@@ -301,6 +301,14 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Attach current location to this tweet</source>
         <translation>Huidige locatie toevoegen aan deze tweet</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">%1 resterende tekens</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

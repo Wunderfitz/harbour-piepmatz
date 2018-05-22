@@ -300,6 +300,14 @@
         <source>Attach current location to this tweet</source>
         <translation>Atașează poziția geografică curentă la acest tweet</translation>
     </message>
+    <message>
+        <source>Image Description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 characters left</source>
+        <translation type="unfinished">%1 caractere rămase</translation>
+    </message>
 </context>
 <context>
     <name>NotificationsButton</name>

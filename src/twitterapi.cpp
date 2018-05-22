@@ -872,6 +872,31 @@ void TwitterApi::uploadImage(const QString &fileName)
     connect(reply, SIGNAL(uploadProgress(qint64,qint64)), imageResponseHandler, SLOT(handleImageUploadProgress(qint64,qint64)));
 }
 
+void TwitterApi::uploadImageDescription(const QString &mediaId, const QString &description)
+{
+    qDebug() << "TwitterApi::uploadImageDescription" << mediaId << description;
+    QUrl url = QUrl(API_MEDIA_METADATA_CREATE);
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_JSON);
+    request.setRawHeader(QByteArray("charset"), QByteArray("UTF-8"));
+
+    QJsonObject alternativeTextObject;
+    alternativeTextObject.insert("text", description);
+    QJsonObject metadataObject;
+    metadataObject.insert("alt_text", alternativeTextObject);
+    metadataObject.insert("media_id", mediaId);
+
+    QJsonDocument requestDocument(metadataObject);
+    QByteArray jsonAsByteArray = requestDocument.toJson();
+    request.setHeader(QNetworkRequest::ContentLengthHeader, QByteArray::number(jsonAsByteArray.size()));
+
+    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
+    QNetworkReply *reply = requestor->post(request, requestParameters, jsonAsByteArray);
+
+    // TODO: Image Metadata Response Handler!!
+
+}
+
 void TwitterApi::downloadFile(const QString &address, const QString &fileName)
 {
     qDebug() << "TwitterApi::downloadFile" << address << fileName;

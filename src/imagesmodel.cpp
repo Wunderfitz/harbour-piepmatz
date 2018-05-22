@@ -82,6 +82,7 @@ void ImagesModel::clearModel()
 {
     qDebug() << "ImagesModel::clearModel";
     this->selectedImages.clear();
+    this->imageDescriptions.clear();
     this->imageProcessor->removeTemporaryFiles();
     this->tweetText.clear();
     this->replyToStatusId.clear();
@@ -111,6 +112,16 @@ void ImagesModel::replyToTweetWithSelectedImages(const QString &text, const QStr
 bool ImagesModel::isTweetWithImagesInProgress()
 {
     return this->tweetWithImagesInProgress;
+}
+
+void ImagesModel::setImageDescription(const QString &fileName, const QString &description)
+{
+    this->imageDescriptions.insert(fileName, description);
+}
+
+QString ImagesModel::getImageDescription(const QString &fileName)
+{
+    return this->imageDescriptions.value(fileName, "");
 }
 
 void ImagesModel::handleSearchFinished()
