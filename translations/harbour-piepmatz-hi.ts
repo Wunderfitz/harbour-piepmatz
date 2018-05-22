@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>GitHub पर Qt के लिये OAuth खोलें</translation>
+        <translation>GitHub पर OAuth for Qt खोलें</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -305,7 +305,7 @@
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation>नोटिफिकेशन</translation>
+        <translation>सूचना</translation>
     </message>
 </context>
 <context>
@@ -532,11 +532,11 @@
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>अनफाॅलो %1</translation>
+        <translation>%1 को अनफाॅलो करें</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>फाॅलो %1</translation>
+        <translation>%1 को फाॅलो करें</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
@@ -683,7 +683,7 @@
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>पीपमेट्ज ओपन सोर्स सॉफ्टवेयर है और  रहेगा । हालांकि, पीपमेट्ज के विकास का समर्थन करने के लिए, मैं तुम्हें एक योगदान के लिए पूछना चाहता हूं इससे पहले कि आप इसे चला सके । इस तरह का योगदान किसी अन्य भाषा में पीपमेट्ज का अनुवाद करके, उसे विकसित करने में मदद या बस एक कुंजी खरीदकर किया जा सकता है ।</translation>
+        <translation>पीपमेट्ज ओपन सोर्स सॉफ्टवेयर है और  रहेगा । हालांकि इससे पहले कि आप इसे चला सके  , पीपमेट्ज के विकास के समर्थन करने के लिए, मैं तुम्हें एक योगदान के लिए पूछना चाहता हूं। इस तरह का योगदान किसी अन्य भाषा में पीपमेट्ज का अनुवाद करके, उसे विकसित करने में मदद या बस एक कुंजी खरीदकर किया जा सकता है ।</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
@@ -813,7 +813,7 @@
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation>स्वाइप नेविगेशन का उपयोग श्रेणियाँ बदलने को ( जैसे टाइमलाइन से नाॅटिफिकैशन )</translation>
+        <translation>स्वाइप नेविगेशन का उपयोग श्रेणियाँ बदलने को ( जैसे टाइमलाइन से सूचना टैब )</translation>
     </message>
 </context>
 <context>
@@ -865,7 +865,7 @@
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>%1 द्वारा Retweet हुआ</translation>
+        <translation>%1 ने Retweet किया</translation>
     </message>
     <message>
         <source>In reply to %1</source>

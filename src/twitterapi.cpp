@@ -346,6 +346,7 @@ void TwitterApi::homeTimeline(const QString &maxId)
         urlQuery.addQueryItem("max_id", maxId);
     }
     urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -354,6 +355,7 @@ void TwitterApi::homeTimeline(const QString &maxId)
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     if (!maxId.isEmpty()) {
         requestParameters.append(O0RequestParameter(QByteArray("max_id"), maxId.toUtf8()));
     }
@@ -376,6 +378,7 @@ void TwitterApi::mentionsTimeline()
     urlQuery.addQueryItem("tweet_mode", "extended");
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -384,6 +387,7 @@ void TwitterApi::mentionsTimeline()
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleMentionsTimelineError(QNetworkReply::NetworkError)));
@@ -399,6 +403,7 @@ void TwitterApi::retweetTimeline()
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("trim_user", "false");
     urlQuery.addQueryItem("count", "10");
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -408,6 +413,7 @@ void TwitterApi::retweetTimeline()
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("10")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetTimelineError(QNetworkReply::NetworkError)));
@@ -428,6 +434,7 @@ void TwitterApi::showStatus(const QString &statusId)
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("trim_user", "false");
     urlQuery.addQueryItem("id", sanitizedStatus);
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -437,6 +444,7 @@ void TwitterApi::showStatus(const QString &statusId)
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("id"), sanitizedStatus.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowStatusError(QNetworkReply::NetworkError)));
@@ -493,22 +501,22 @@ void TwitterApi::userTimeline(const QString &screenName)
     QUrl url = QUrl(API_STATUSES_USER_TIMELINE);
     QUrlQuery urlQuery = QUrlQuery();
     urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("exclude_replies", "false");
     urlQuery.addQueryItem("count", "200");
     urlQuery.addQueryItem("include_rts", "true");
     urlQuery.addQueryItem("exclude_replies", "true");
     urlQuery.addQueryItem("screen_name", screenName);
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
     requestParameters.append(O0RequestParameter(QByteArray("include_rts"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUserTimelineError(QNetworkReply::NetworkError)));
@@ -623,6 +631,7 @@ void TwitterApi::searchTweets(const QString &query)
     urlQuery.addQueryItem("q", searchString);
     urlQuery.addQueryItem("count", "100");
     urlQuery.addQueryItem("include_entities", "true");
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -632,6 +641,7 @@ void TwitterApi::searchTweets(const QString &query)
     requestParameters.append(O0RequestParameter(QByteArray("q"), query.toUtf8()));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("100")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleSearchTweetsError(QNetworkReply::NetworkError)));
@@ -736,6 +746,7 @@ void TwitterApi::favorites(const QString &screenName)
     urlQuery.addQueryItem("count", "200");
     urlQuery.addQueryItem("include_entities", "true");
     urlQuery.addQueryItem("screen_name", screenName);
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -745,6 +756,7 @@ void TwitterApi::favorites(const QString &screenName)
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
     requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFavoritesError(QNetworkReply::NetworkError)));
@@ -1039,6 +1051,7 @@ void TwitterApi::listTimeline(const QString &listId, const QString &maxId)
         urlQuery.addQueryItem("max_id", maxId);
     }
     urlQuery.addQueryItem("count", "200");
+    urlQuery.addQueryItem("include_ext_alt_text", "true");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
@@ -1047,6 +1060,7 @@ void TwitterApi::listTimeline(const QString &listId, const QString &maxId)
     requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
     requestParameters.append(O0RequestParameter(QByteArray("list_id"), listId.toUtf8()));
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
+    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
     if (!maxId.isEmpty()) {
         requestParameters.append(O0RequestParameter(QByteArray("max_id"), maxId.toUtf8()));
     }

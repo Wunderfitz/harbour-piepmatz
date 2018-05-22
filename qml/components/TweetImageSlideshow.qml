@@ -28,6 +28,7 @@ Item {
 
     property variant tweet;
     property bool withArrows : false;
+    property variant imageModel: Functions.getTweetImageModel(tweet.retweeted_status ? tweet.retweeted_status : tweet, tweetImageListModel);
 
     width: parent.width
     height: parent.width * 2 / 3
@@ -43,7 +44,7 @@ Item {
         itemWidth: width
         itemHeight: height
         clip: true
-        model: Functions.getTweetImageModel(tweet.retweeted_status ? tweet.retweeted_status : tweet, tweetImageListModel)
+        model: imageModel
         Behavior on opacity { NumberAnimation {} }
         delegate: Item {
             width: parent.width
@@ -142,6 +143,47 @@ Item {
         anchors.verticalCenter: tweetImageSlideshow.verticalCenter
         source: "image://theme/icon-m-right"
         visible: tweetImageSlideshowItem.withArrows
+    }
+
+    Loader {
+        id: imageDescriptionLoader
+        active: ( tweetImageSlideshow.currentIndex >= 0 ) ? true : false
+        width: parent.width
+        anchors.bottom: tweetImageSlideshow.bottom
+        anchors.bottomMargin: Theme.fontSizeLarge
+        sourceComponent: imageDescriptionComponent
+    }
+
+    Component {
+        id: imageDescriptionComponent
+        Item {
+            id: imageDescriptionItem
+            height: Theme.fontSizeSmall
+            width: parent.width
+            property variant imageMetadata: imageModel.get(tweetImageSlideshow.currentIndex)
+            visible: imageMetadata && imageMetadata.ext_alt_text ? true : false
+            Rectangle {
+                id: tweetImageDescriptionBackground
+                color: "black"
+                opacity: 0.3
+                height: parent.height
+                width: tweetImageSlideshowItem.withArrows ? tweetImageSlideshowItem.width - ( 2 * Theme.fontSizeLarge ) : tweetImageSlideshowItem.width
+                anchors.horizontalCenter: parent.horizontalCenter
+            }
+            Text {
+                width: parent.width - ( 2 * Theme.paddingMedium )
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
+                id: tweetImageDescriptionText
+                text: imageDescriptionItem.visible ? imageDescriptionItem.imageMetadata.ext_alt_text : ""
+                font.pixelSize: Theme.fontSizeTiny
+                color: Theme.primaryColor
+                elide: Text.ElideRight
+                textFormat: Text.StyledText
+                maximumLineCount: 1
+            }
+        }
     }
 
     Row {
