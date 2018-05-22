@@ -33,6 +33,7 @@ ImageProcessor::ImageProcessor()
 void ImageProcessor::setSelectedImages(const QVariantList &selectedImages)
 {
     this->selectedImages.clear();
+    this->fileMappings.clear();
     this->selectedImages.append(selectedImages);
 }
 
@@ -52,6 +53,11 @@ void ImageProcessor::removeTemporaryFiles()
     }
 }
 
+QString ImageProcessor::getFileMapping(const QString &fileName)
+{
+    return this->fileMappings.value(fileName, "");
+}
+
 void ImageProcessor::processImages()
 {
     qDebug() << "ImageProcessor::processImages";
@@ -63,10 +69,13 @@ void ImageProcessor::processImages()
         imageReader.setFileName(selectedImageFileName);
         imageReader.setAutoTransform(true);
         QImage myImage = imageReader.read();
-        QString escapedFileName = getTempDirectory() + "/" + selectedImageFileName.replace("/", "_");
+        QString newImageFileName = selectedImageFileName;
+        QString escapedFileName = getTempDirectory() + "/" + newImageFileName.replace("/", "_");
         qDebug() << "Processing file " + escapedFileName;
         myImage.save(escapedFileName, "JPG");
         this->temporaryFiles.append(escapedFileName);
+        qDebug() << "Image mapping: " << escapedFileName << " - " << selectedImageFileName;
+        this->fileMappings.insert(escapedFileName, selectedImageFileName);
     }
     emit processingComplete();
 }

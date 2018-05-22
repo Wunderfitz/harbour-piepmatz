@@ -21,6 +21,7 @@
 
 #include <QThread>
 #include <QVariantList>
+#include <QMap>
 
 class ImageProcessor : public QThread
 {
@@ -33,6 +34,7 @@ public:
     void setSelectedImages(const QVariantList &selectedImages);
     QVariantList getTemporaryFiles();
     void removeTemporaryFiles();
+    QString getFileMapping(const QString &fileName);
 
 signals:
     void processingComplete();
@@ -40,6 +42,7 @@ signals:
 private:
     QVariantList selectedImages;
     QVariantList temporaryFiles;
+    QMap<QString, QString> fileMappings;
 
     void processImages();
     QString getDirectory(const QString &directoryString);

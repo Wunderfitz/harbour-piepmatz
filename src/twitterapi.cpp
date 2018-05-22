@@ -19,6 +19,7 @@
 #include "twitterapi.h"
 
 #include "imageresponsehandler.h"
+#include "imagemetadataresponsehandler.h"
 #include "downloadresponsehandler.h"
 #include "tweetconversationhandler.h"
 #include "QGumboParser/qgumbodocument.h"
@@ -893,7 +894,11 @@ void TwitterApi::uploadImageDescription(const QString &mediaId, const QString &d
     QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
     QNetworkReply *reply = requestor->post(request, requestParameters, jsonAsByteArray);
 
-    // TODO: Image Metadata Response Handler!!
+    ImageMetadataResponseHandler *imageMetadataResponseHandler = new ImageMetadataResponseHandler(mediaId, this);
+    imageMetadataResponseHandler->setParent(reply);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), imageMetadataResponseHandler, SLOT(handleImageMetadataUploadError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), imageMetadataResponseHandler, SLOT(handleImageMetadataUploadFinished()));
 
 }
 

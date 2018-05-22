@@ -60,10 +60,13 @@ private slots:
     void handleImageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void handleImageUploadError(const QString &fileName, const QString &errorMessage);
     void handleImageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
+    void handleImageDescriptionUploadSuccessful(const QString &mediaId);
+    void handleImageDescriptionUploadError(const QString &mediaId, const QString &errorMessage);
 
 private:
 
     void uploadSelectedImages();
+    void processUploadCompleted();
 
     QVariantList images;
     ImagesSearchWorker *workerThread;
@@ -76,6 +79,7 @@ private:
     qint64 selectedImagesSize;
     QMap<QString, QString> imageDescriptions;
     QMap<QString, QVariantMap> uploadedImages;
+    QVariantList uploadedImageDescriptions;
     QMap<QString, qint64> uploadImagesBytesSent;
     QString tweetText;
     QString replyToStatusId;

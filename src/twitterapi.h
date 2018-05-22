@@ -190,6 +190,8 @@ signals:
     void imageUploadSuccessful(const QString &fileName, const QVariantMap &result);
     void imageUploadError(const QString &fileName, const QString &errorMessage);
     void imageUploadStatus(const QString &fileName, qint64 bytesSent, qint64 bytesTotal);
+    void imageDescriptionUploadSuccessful(const QString &fileName);
+    void imageDescriptionUploadError(const QString &fileName, const QString &errorMessage);
     void downloadSuccessful(const QString &fileName, const QString &filePath);
     void downloadError(const QString &fileName, const QString &errorMessage);
     void downloadStatus(const QString &fileName, int percentCompleted);

@@ -34,6 +34,8 @@ ImagesModel::ImagesModel(TwitterApi *twitterApi)
     connect(twitterApi, SIGNAL(imageUploadSuccessful(QString,QVariantMap)), this, SLOT(handleImageUploadSuccessful(QString,QVariantMap)));
     connect(twitterApi, SIGNAL(imageUploadError(QString,QString)), this, SLOT(handleImageUploadError(QString,QString)));
     connect(twitterApi, SIGNAL(imageUploadStatus(QString,qint64,qint64)), this, SLOT(handleImageUploadStatus(QString,qint64,qint64)));
+    connect(twitterApi, SIGNAL(imageDescriptionUploadSuccessful(QString)), this, SLOT(handleImageDescriptionUploadSuccessful(QString)));
+    connect(twitterApi, SIGNAL(imageDescriptionUploadError(QString,QString)), this, SLOT(handleImageDescriptionUploadError(QString,QString)));
 
     this->twitterApi = twitterApi;
 }
@@ -78,11 +80,36 @@ void ImagesModel::uploadSelectedImages()
     imageProcessor->start();
 }
 
+void ImagesModel::processUploadCompleted()
+{
+    qDebug() << "ImagesModel::processUploadCompleted";
+    qDebug() << "Images uploaded: " << uploadedImages.size() << "/" << selectedImages.size() << ", descriptions: " << uploadedImageDescriptions.size() << "/" << imageDescriptions.size();
+    if (uploadedImages.size() == selectedImages.size() && uploadedImageDescriptions.size() == imageDescriptions.size()) {
+        qDebug() << "Finally sending tweet!";
+        QMapIterator<QString, QVariantMap> uploadedImagesIterator(uploadedImages);
+        QString mediaIds;
+        while (uploadedImagesIterator.hasNext()) {
+            if (!mediaIds.isEmpty()) {
+                mediaIds += ",";
+            }
+            mediaIds += uploadedImagesIterator.next().value().value("media_id_string").toString();
+        }
+        if (replyToStatusId.isEmpty()) {
+            twitterApi->tweetWithImages(tweetText, mediaIds, tweetPlaceId);
+        } else {
+            twitterApi->replyToTweetWithImages(tweetText, replyToStatusId, mediaIds, tweetPlaceId);
+        }
+        this->clearModel();
+        emit uploadCompleted();
+    }
+}
+
 void ImagesModel::clearModel()
 {
     qDebug() << "ImagesModel::clearModel";
     this->selectedImages.clear();
     this->imageDescriptions.clear();
+    this->uploadedImageDescriptions.clear();
     this->imageProcessor->removeTemporaryFiles();
     this->tweetText.clear();
     this->replyToStatusId.clear();
@@ -159,25 +186,14 @@ void ImagesModel::handleImageProcessingComplete()
 
 void ImagesModel::handleImageUploadSuccessful(const QString &fileName, const QVariantMap &result)
 {
-    qDebug() << "ImagesModel::handleImageUploadSuccessful" << fileName << result.value("media_id_string").toString();
+    QString mediaId = result.value("media_id_string").toString();
+    qDebug() << "ImagesModel::handleImageUploadSuccessful" << fileName << mediaId;
     uploadedImages.insert(fileName, result);
-    if (uploadedImages.size() == selectedImages.size()) {
-        QMapIterator<QString, QVariantMap> uploadedImagesIterator(uploadedImages);
-        QString mediaIds;
-        while (uploadedImagesIterator.hasNext()) {
-            if (!mediaIds.isEmpty()) {
-                mediaIds += ",";
-            }
-            mediaIds += uploadedImagesIterator.next().value().value("media_id_string").toString();
-        }
-        if (replyToStatusId.isEmpty()) {
-            twitterApi->tweetWithImages(tweetText, mediaIds, tweetPlaceId);
-        } else {
-            twitterApi->replyToTweetWithImages(tweetText, replyToStatusId, mediaIds, tweetPlaceId);
-        }
-        this->clearModel();
-        emit uploadCompleted();
+    QString originalFile = imageProcessor->getFileMapping(fileName);
+    if (this->imageDescriptions.contains(originalFile)) {
+        twitterApi->uploadImageDescription(mediaId, this->imageDescriptions.value(originalFile, ""));
     }
+    this->processUploadCompleted();
 }
 
 void ImagesModel::handleImageUploadError(const QString &fileName, const QString &errorMessage)
@@ -203,5 +219,20 @@ void ImagesModel::handleImageUploadStatus(const QString &fileName, qint64 bytesS
     qDebug() << "Uploaded bytes: " + QString::number(totalUploadedBytes) + " out of " + QString::number(selectedImagesSize);
     int percentCompleted = 100 * totalUploadedBytes / selectedImagesSize;
     emit uploadProgress(percentCompleted);
+}
+
+void ImagesModel::handleImageDescriptionUploadSuccessful(const QString &mediaId)
+{
+    qDebug() << "ImagesModel::handleImageDescriptionUploadSuccessful" << mediaId;
+    this->uploadedImageDescriptions.append(mediaId);
+    this->processUploadCompleted();
+}
+
+void ImagesModel::handleImageDescriptionUploadError(const QString &mediaId, const QString &errorMessage)
+{
+    qDebug() << "ImagesModel::handleImageDescriptionUploadError" << mediaId;
+    qDebug() << "Error uploading image description: " + errorMessage;
+    this->clearModel();
+    emit uploadFailed(errorMessage);
 }
 
