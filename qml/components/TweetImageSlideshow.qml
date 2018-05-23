@@ -147,7 +147,7 @@ Item {
 
     Loader {
         id: imageDescriptionLoader
-        active: ( tweetImageSlideshow.currentIndex >= 0 ) ? true : false
+        active: ( tweetImageSlideshow.currentIndex >= 0 && accountModel.getDisplayImageDescriptions() ) ? true : false
         width: parent.width
         anchors.bottom: tweetImageSlideshow.bottom
         anchors.bottomMargin: Theme.fontSizeLarge

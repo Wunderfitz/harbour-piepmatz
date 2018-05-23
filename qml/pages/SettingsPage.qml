@@ -134,6 +134,15 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: accountModel.getDisplayImageDescriptions()
+                text: qsTr("Display image descriptions")
+                description: qsTr("Display additional descriptions of tweet images (if available)")
+                onCheckedChanged: {
+                    accountModel.setDisplayImageDescriptions(checked);
+                }
+            }
+
             ComboBox {
                 id: imagesComboBox
                 label: qsTr("Image Style")

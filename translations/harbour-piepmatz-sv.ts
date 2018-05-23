@@ -825,6 +825,14 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation>Använd svepnavigering för att växla mellan kategorier (t.ex. från tidslinjen till aviseringar)</translation>
     </message>
+    <message>
+        <source>Display image descriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display additional descriptions of tweet images (if available)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

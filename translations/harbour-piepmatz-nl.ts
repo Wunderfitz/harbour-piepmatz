@@ -824,6 +824,14 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation>Veegnavigatie gebruiken om te wisselen van categorie (bijv. van tijdlijn naar meldingen)</translation>
     </message>
+    <message>
+        <source>Display image descriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display additional descriptions of tweet images (if available)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

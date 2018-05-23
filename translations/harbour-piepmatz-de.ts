@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildbeschreibung</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 Zeichen übrig</translation>
+        <translation>%1 Zeichen übrig</translation>
     </message>
 </context>
 <context>
@@ -822,6 +822,14 @@
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation>Wisch-Navigation verwenden, um die Kategorien zu wechseln (z.B. von Zeitleiste zu Hinweisen)</translation>
+    </message>
+    <message>
+        <source>Display image descriptions</source>
+        <translation>Bildbeschreibungen anzeigen</translation>
+    </message>
+    <message>
+        <source>Display additional descriptions of tweet images (if available)</source>
+        <translation>Zusätzliche Beschreibungen von Gezwitscher-Bildern anzeigen (wenn verfügbar)</translation>
     </message>
 </context>
 <context>

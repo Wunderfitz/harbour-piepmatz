@@ -31,6 +31,7 @@ const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
 const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 const char SETTINGS_USE_SWIPE_NAVIGATION[] = "settings/useSwipeNavigation";
+const char SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS[] = "settings/displayImageDescriptions";
 
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -198,6 +199,16 @@ void AccountModel::setUseSwipeNavigation(const bool &useSwipeNavigation)
 {
     settings.setValue(SETTINGS_USE_SWIPE_NAVIGATION, useSwipeNavigation);
     emit swipeNavigationChanged();
+}
+
+bool AccountModel::getDisplayImageDescriptions()
+{
+    return settings.value(SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS, true).toBool();
+}
+
+void AccountModel::setDisplayImageDescriptions(const bool &displayImageDescriptions)
+{
+    settings.setValue(SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS, displayImageDescriptions);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

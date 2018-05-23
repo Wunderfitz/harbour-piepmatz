@@ -823,6 +823,14 @@
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
         <translation>Usar la navegación por gestos para cambiar entre categorías (por ejemplo, de la línea de tiempo a las notificaciones)</translation>
     </message>
+    <message>
+        <source>Display image descriptions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Display additional descriptions of tweet images (if available)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

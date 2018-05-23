@@ -59,6 +59,8 @@ public:
     Q_INVOKABLE void setUseLoadingAnimations(const bool &useAnimations);
     Q_INVOKABLE bool getUseSwipeNavigation();
     Q_INVOKABLE void setUseSwipeNavigation(const bool &useSwipeNavigation);
+    Q_INVOKABLE bool getDisplayImageDescriptions();
+    Q_INVOKABLE void setDisplayImageDescriptions(const bool &displayImageDescriptions);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
