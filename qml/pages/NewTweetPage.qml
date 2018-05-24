@@ -486,7 +486,11 @@ Page {
                         }
                     }
                     onCurrentIndexChanged: {
+                        // This is a stupid workaround - at least on 2.1.4 setting an empty string won't change the text.
+                        // Therefore, we need to set a dummy value before, otherwise we have inconsistencies...
+                        imageDescriptionTextField.text = "Image Description";
                         imageDescriptionTextField.text = attachedImagesSlideshow.currentIndex >= 0 ? imagesModel.getImageDescription(attachedImages[attachedImagesSlideshow.currentIndex]) : "";
+                        imageDescriptionTextField.update();
                     }
                 }
 
@@ -571,6 +575,15 @@ Page {
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
                 anchors.horizontalCenter: parent.horizontalCenter
                 visible: attachedImagesItem.visible
+                Timer {
+                    id: imageDescriptionTimer
+                    interval: 500
+                    running: false
+                    onTriggered: {
+                        imagesModel.setImageDescription(attachedImages[attachedImagesSlideshow.currentIndex], imageDescriptionTextField.text);
+                    }
+                }
+
                 TextArea {
                     id: imageDescriptionTextField
                     width: parent.width
@@ -580,7 +593,8 @@ Page {
                     errorHighlight: getRemainingDescriptionCharacters(imageDescriptionTextField.text) < 0
                     text: attachedImagesSlideshow.currentIndex >= 0 ? imagesModel.getImageDescription(attachedImages[attachedImagesSlideshow.currentIndex]) : ""
                     onTextChanged: {
-                        imagesModel.setImageDescription(attachedImages[attachedImagesSlideshow.currentIndex], text);
+                        imageDescriptionTimer.stop();
+                        imageDescriptionTimer.start();
                     }
                 }
                 Text {
