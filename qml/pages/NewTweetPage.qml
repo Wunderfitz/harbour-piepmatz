@@ -180,6 +180,7 @@ Page {
                 visible: attachmentTweet ? false : true
             }
             MenuItem {
+                enabled: enterTweetTextArea.text.length > 0
                 text: replyToStatusId ? qsTr("Send Reply") : ( attachmentTweet ? qsTr("Send Retweet") : qsTr("Send Tweet") )
                 onClicked: {
                     if (replyToStatusId) {

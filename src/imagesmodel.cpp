@@ -143,7 +143,9 @@ bool ImagesModel::isTweetWithImagesInProgress()
 
 void ImagesModel::setImageDescription(const QString &fileName, const QString &description)
 {
-    this->imageDescriptions.insert(fileName, description);
+    if (!description.isEmpty()) {
+        this->imageDescriptions.insert(fileName, description);
+    }
 }
 
 QString ImagesModel::getImageDescription(const QString &fileName)
