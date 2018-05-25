@@ -71,6 +71,29 @@ void ImagesSearchWorker::performSearch()
     } else {
         qDebug() << "No SD card found :(";
     }
+    // Some people store stuff in Adroid directories...
+    QDir androidRoot(QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/android_storage");
+    if (androidRoot.exists()) {
+        qDebug() << "OK, seems that we have some Android stuff on the device...";
+        QDir androidPictures(androidRoot.absolutePath() + "/Pictures");
+        if (androidPictures.exists()) {
+            qDebug() << "Searching Android Pictures folder...";
+            QDirIterator androidPicturesDirectoryIterator(androidPictures.absolutePath(), supportedImageTypes, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
+            while (androidPicturesDirectoryIterator.hasNext()) {
+                QFileInfo fileInformation(androidPicturesDirectoryIterator.next());
+                availableImages.append(fileInformation);
+            }
+        }
+        QDir androidDownload(androidRoot.absolutePath() + "/Download");
+        if (androidDownload.exists()) {
+            qDebug() << "Searching Android Download folder...";
+            QDirIterator androidDownloadDirectoryIterator(androidDownload.absolutePath(), supportedImageTypes, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
+            while (androidDownloadDirectoryIterator.hasNext()) {
+                QFileInfo fileInformation(androidDownloadDirectoryIterator.next());
+                availableImages.append(fileInformation);
+            }
+        }
+    }
     qSort(availableImages.begin(), availableImages.end(), reverseDateTime);
     emit searchFinished();
 }
