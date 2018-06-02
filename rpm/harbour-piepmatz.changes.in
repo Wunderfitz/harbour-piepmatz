@@ -72,3 +72,7 @@
 - Support for image descriptions (accessibility, especially for blind people)
 - Get images also from Downloads directory & from Android Pictures and Download directories
 - Adjustments to tweet thread handling (other user agent) for hopefully better future compatibility
+
+* Sat Jun 02 2018 Sebastian Wolf <sebastian@ygriega.de> 1.2.1
+- Search results: Filter duplicate tweets (caused by retweets)
+- Added incomplete translations for 1.2
