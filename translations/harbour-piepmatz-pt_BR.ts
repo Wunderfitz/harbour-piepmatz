@@ -127,7 +127,7 @@
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>1% caracteres restantes</translation>
+        <translation>%1 caracteres restantes</translation>
     </message>
 </context>
 <context>
@@ -141,7 +141,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>1% Favoritos</translation>
+        <translation>%1: Favoritos</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Descrição de imagem</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">1% caracteres restantes</translation>
+        <translation>%1 caracteres restantes</translation>
     </message>
 </context>
 <context>
@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar descrição de imagens</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar descrições adicionais de imagens no tweet (se disponível)</translation>
     </message>
 </context>
 <context>

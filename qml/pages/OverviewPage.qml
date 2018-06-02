@@ -265,8 +265,6 @@ Page {
                 overviewPage.initializationCompleted = true;
                 updateIpInfo();
                 ipInfoUpdater.start();
-
-                twitterApi.showStatus("998845026947010560");
             }
         }
         onVerificationError: {

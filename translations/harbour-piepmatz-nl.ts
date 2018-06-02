@@ -303,11 +303,11 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingsomschrijving</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 resterende tekens</translation>
+        <translation>%1 resterende tekens</translation>
     </message>
 </context>
 <context>
@@ -826,11 +826,11 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Afbeeldingsomschrijvingen tonen</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Extra omschrijvingen van tweetafbeeldingen tonen (indien beschikbaar)</translation>
     </message>
 </context>
 <context>

@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Opis obrazka</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">Pozostało %1 znaków</translation>
+        <translation>pozostało %1 znaków</translation>
     </message>
 </context>
 <context>
@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl opis obrazka</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wyświetl dodatkowy opis obrazka w tweecie (jeśli dostępny)</translation>
     </message>
 </context>
 <context>

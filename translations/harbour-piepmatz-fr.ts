@@ -37,7 +37,7 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Ce projet utilise OAuth pour Qt, par Akos Polster. Merci pour l&apos;avoir rendu disponible selon les termes et conditions de la licence BSD 2-CL. !</translation>
+        <translation>Ce projet utilise OAuth pour Qt, par Akos Polster. Merci de l&apos;avoir rendu disponible selon les termes et conditions de la licence BSD 2-CL. !</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Description de l&apos;image</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 caractère(s) restant(s)</translation>
+        <translation>%1 caractère(s) restant(s)</translation>
     </message>
 </context>
 <context>
@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la description de l&apos;image</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les descriptions supplémentaires des images du tweet (si disponible)</translation>
     </message>
 </context>
 <context>

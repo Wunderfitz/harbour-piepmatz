@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Képleírás</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 karakter maradt</translation>
+        <translation>%1 karakter maradt</translation>
     </message>
 </context>
 <context>
@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Képleírások megjelenítése</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet képek további leírásainak megjelenítése (ha elérhető)</translation>
     </message>
 </context>
 <context>

@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>छवि विवरण</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 अक्षर बचे</translation>
+        <translation>%1 अक्षर बचे</translation>
     </message>
 </context>
 <context>
@@ -825,11 +825,11 @@
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>छवि विवरण दिखाएं</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweet की छवियों (अगर उपलब्ध) का अतिरिक्त विवरण दिखाएं </translation>
     </message>
 </context>
 <context>

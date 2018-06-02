@@ -1546,7 +1546,24 @@ void TwitterApi::handleSearchTweetsFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
-        emit searchTweetsSuccessful(responseObject.value("statuses").toArray().toVariantList());
+        // We try to remove duplicate tweets which come in due to retweets
+        QJsonArray originalResultsArray = responseObject.value("statuses").toArray();
+        QList<QString> foundStatusIds;
+        QJsonArray resultsArray;
+        for (int i = 0; i < originalResultsArray.size(); i++) {
+            QJsonObject currentObject = originalResultsArray.at(i).toObject();
+            QString currentStatusId;
+            if (currentObject.contains("retweeted_status")) {
+                currentStatusId = currentObject.value("retweeted_status").toObject().value("id_str").toString();
+            } else {
+                currentStatusId = currentObject.value("id_str").toString();
+            }
+            if (!foundStatusIds.contains(currentStatusId)) {
+                resultsArray.append(currentObject);
+                foundStatusIds.append(currentStatusId);
+            }
+        }
+        emit searchTweetsSuccessful(resultsArray.toVariantList());
     } else {
         emit searchTweetsError("Piepmatz couldn't understand Twitter's response!");
     }

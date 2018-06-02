@@ -67,3 +67,8 @@
 - Option to disable loading animations
 - Tap on download successful notification launches Gallery app
 - Possibility to remove account
+
+* Sun May 27 2018 Sebastian Wolf <sebastian@ygriega.de> 1.2
+- Support for image descriptions (accessibility, especially for blind people)
+- Get images also from Downloads directory & from Android Pictures and Download directories
+- Adjustments to tweet thread handling (other user agent) for hopefully better future compatibility

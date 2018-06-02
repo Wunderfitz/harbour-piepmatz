@@ -302,11 +302,11 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Bildbeskrivning</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 tecken kvar</translation>
+        <translation>%1 tecken kvar</translation>
     </message>
 </context>
 <context>
@@ -827,11 +827,11 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa bildbeskrivningar</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa tilläggsbeskrivningar av tweet-bilder (om tillgängliga)</translation>
     </message>
 </context>
 <context>
