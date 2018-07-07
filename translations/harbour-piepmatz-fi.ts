@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>Tekijä: Sebastian J. Wolf</translation>
+        <translation>Tekijältä Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -25,7 +25,7 @@
     </message>
     <message>
         <source>Sources on GitHub</source>
-        <translation>Lähdekoodit Githubista</translation>
+        <translation>Lähdekoodit GitHub&apos;sta</translation>
     </message>
     <message>
         <source>Credits</source>
@@ -37,11 +37,11 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>Tämä projekti käyttää OAuth:ia Qt:lle Akos Polster&apos;in toimesta. Kiitos, että se on saatavana BSD-2-lausekkeen ehtojen mukaisesti!</translation>
+        <translation>Tämä projekti käyttää OAuth:ia Qt:lle Akos Polsterin toimesta. Kiitos, että se on saatavana BSD-2-Clause lisenssin ehtojen mukaisesti!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>Tämä projekti käyttää twitter -tekstiä. Tekijänoikeus 2014 Twitter, Inc. ja muut osallistujat. Kiitos, että se on saatavana Apache-lisenssin version 2.0 mukaan!</translation>
+        <translation>Tämä projekti käyttää twitter-tekstiä. Tekijänoikeus 2014 Twitter, Inc. ja muut osallistujat. Kiitos, että se on saatavana Apache-lisenssin version 2.0 mukaan!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
@@ -69,35 +69,36 @@
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz käyttää ipinfo.io:ta ja (jos saatavilla) laitteesi GPS vastaanotinta määrittämään sijaintisi. Sijaintiasi käytetään trendien hakemiseen ja - vain jos olet ehdottomasti samaa mieltä - twiittiesi liitteenä. Jos haluat käyttää paikannusta twiiteissä, ole hyvä ja varmista että olet sallinut sen sinun 
+&lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter asetuksissa&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Wagnis ID: </translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä Wagnis ID</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää twemoji:tä. Tekinjänoikeus 2017 Twitter, Inc. ja muut avustajat. Kiitos, että se on saatavana saatavana MIT-lisenssin (koodaus) ja CC-BY 4.0 (grafiikka) ehtojen mukaisesti!</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa twemoji on GitHub:ssa</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä projekti käyttää QGumboParser:a. Tekijänoikeus 2014 Twitter, Inc. ja muut avustajat. Kiitos, että se on saatavana MIT-lisenssin ehtojen mukaisesti! QGumboParser käyttää Gumbo:a. Tekijänoikeus 2017 Google. Lisenssoitu Apache Lisenssi 2.0 ehtojen mukaisesti.</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>Avaa QGumboParser GitHub:ssa</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tämä tuote käyttää &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; ja sen on tuottanut &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Voit myös &lt;a href=&quot;profile://werkwolf&quot;&gt;löytää WerkWolf:in Twitterissä&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -141,7 +142,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Suosikit</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -189,11 +190,11 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataus %1 onnistui.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lataa, %1% suoritettu...</translation>
     </message>
 </context>
 <context>
@@ -219,7 +220,7 @@
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Jäsenet</translation>
     </message>
 </context>
 <context>
@@ -234,18 +235,18 @@
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä Jäsenet</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">Lataa lisää tviittejä</translation>
+        <translation>Lataa lisää tviittejä</translation>
     </message>
 </context>
 <context>
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>Listat</translation>
     </message>
 </context>
 <context>
@@ -259,7 +260,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Viestit</translation>
     </message>
 </context>
 <context>
@@ -294,19 +295,19 @@
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitä nykysijainti tähän tviittiin</translation>
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation>Kuvatiedot</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">%1 merkkiä jäljellä</translation>
+        <translation>%1 kirjainta jäljellä</translation>
     </message>
 </context>
 <context>
@@ -408,11 +409,11 @@
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation>Sinulla on uusia yksityisviestejä!</translation>
+        <translation>Sinulle on uusia yksityisviestejä!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>Sinulla on uusia viestejä!</translation>
+        <translation>Sinulle on uusia viestejä!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
@@ -424,11 +425,11 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Trendejä %1</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sinut on mainittu %1 kertaa!</translation>
     </message>
     <message>
         <source>New Mention</source>
@@ -452,31 +453,31 @@
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraa sinua nyt!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>Uusia Uudelleentwiittauksia</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tviittisi on uudelleentviitattu %1 kertaa!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tviittisi on uudelleentviitattu!</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>Tilattu</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>Listoja ei löytynyt</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäsen</translation>
     </message>
     <message>
         <source>Settings</source>
@@ -484,15 +485,15 @@
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>Tallennetut haut</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>Hakulauseke &apos;%1&apos; tallennettu onnistuneesti</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistaa</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -519,7 +520,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: Suosikit</translation>
     </message>
 </context>
 <context>
@@ -575,7 +576,7 @@
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation type="unfinished"></translation>
+        <translation>Pidä hauskaa Piepmatz kanssa! Sebastian J. Wolf</translation>
     </message>
     <message>
         <source>Accept</source>
@@ -583,131 +584,131 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tervetuloa Piepmatz:iin - Twitter asiakas SailfishOS:lle! Piepmatz on &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;ilmainen sovellus&lt;/a&gt; ja on lisenssoitu &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License versio 3 (GPLv3)&lt;/a&gt;lisenssin ehtojen mukaisesti. Käyttämällä tätä sovellusta, hyväksyt tämän käyttöoikeuden ehdot.</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisäksi Piepmatz rekisteröi tämän asennuksen automaattisesti palvelimelleni, jos painat &apos;Hyväksy&apos;. Kunnioitan yksityisyytesi, joten vain anonyymit ja erittäin rajalliset tiedot lähetetään: ainutlaatuinen tunniste tästä asennuksesta ja maastasi. Haluan vain tietää, kuinka monta käyttäjää Piepmatzilla on ja mistä he tulevat. Jos tämä ei ole sinulle sopiva, sulje sovellus. Tähän mennessä tietoja ei ole toimitettu.</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
-        <translation type="unfinished"></translation>
+        <translation>Sitoutunut Vapaaseen Ohjelmistoon</translation>
     </message>
     <message>
         <source>Anonymous Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Anonyymi rekisteröinti</translation>
     </message>
     <message>
         <source>Registration Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekisteröintivirhe</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekisteröityminen epäonnistui. Varmista, että laite on liitetty Internetiin ja paina Käynnistä rekisteröinti uudelleen. Jos uudelleenkäynnistys ei toimi, ota yhteyttä minuun &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-mail:lla&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
-        <translation type="unfinished"></translation>
+        <translation>Käynnistä rekisteröinti uudelleen</translation>
     </message>
     <message>
         <source>Registration Invalid</source>
-        <translation type="unfinished"></translation>
+        <translation>Rekisteröinti on virheellinen</translation>
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Laitteen rekisteröintitiedosto on vioittunut. Rekisteröintiprosessi on käynnistettävä uudelleen. Varmista, että laite on liitetty Internetiin ja paina Käynnistä rekisteröinti uudelleen. Jos uusi rekisteröinti ei onnistu, ota yhteyttä minuun &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-mail:lla&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä rekisteröintitiedot</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tietoja ei jaeta kenenkään muun kanssa. Katso lisätietoja &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;oikeudellisesta ilmoituksesta&lt;/a&gt;, miten tietoja käsitellään. Lisätietoja tästä motivoinnista, ainutkertaisesta tunnuksesta ja siitä, miten sitä syntyy, tutustu sivuuniin &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagniksesta&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Kehitys kontribuutio</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>Ole hyvä ja kontriboi Piepmatziin</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voit ohittaa kontribuution % 1 , jos haluat testata Piepmatzia etukäteen.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>Jatka testausta</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jos olet jo kontriboinnut Piepmatziin, ota &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;minuun yhteyttä&lt;/a&gt; suoraan.</translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontribuutio</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse kontribuutio täällä</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Osta kontribuutio avain</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>Vahvista kontribuutio avain</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>Syötä kontribuutio avain tähän</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>Vahvista kontribuutio avain</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S - 3,33 €</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M - 5,55 €</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L - 7,77 €</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL - 9,99 €</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>Jos olet jo vahvistanut avaimen toisella laitteella, voit käyttää sitä uudelleen enintään 3 lisälaitteella ilman, että tarvitset toisen kontribuution.</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz on ja tulee olemaan avoimen lähdekoodin ohjelmisto. Piepmatzin kehityksen tukemiseksi haluaisin kuitenkin pyytää sinua kontriboimaan, ennen kuin voit suorittaa sen. Tällainen kontribuutio voidaan tehdä muuntamalla Piepmatz toiselle kielelle, kehittämällä sitä tai yksinkertaisesti ostamalla avaimen.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kun olet saanut avaimesi ostamalla sen tai jonkin muun kontribuution, vahvista avaimesi tässä Piepmatzin suorittamiseen.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoitusta ei ole vahvistettu!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoitustasi ei voitu vahvistaa. Varmista, että laite on liitetty Internetiin ja paina &quot;Käynnistä validointi&quot;. Jos sinulla on toimiva lahjoitusnäppäin, mutta sitä ei ole voitu vahvistaa, ota yhteyttä minuun &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;s-postilla&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>Käynnistä lahjoituksen vahvistaminen uudelleen</translation>
     </message>
     <message>
         <source>Thank You!</source>
@@ -715,7 +716,7 @@
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>Lahjoituksesi on vahvistettu onnistuneesti. Paljon kiitoksia sinun panoksestasi Piepmazin kehitykseen!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -723,7 +724,7 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>Voit valita 4 erilaista maksua: S, M, L, XL. Riippumatta siitä, mikä koko valitset, ostettu avain lukitsee koko sovelluksen. Sinun on päätettävä, kuinka paljon sovellus on sinulle hyödyllinen.</translation>
     </message>
 </context>
 <context>
@@ -745,19 +746,19 @@
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli Piepmatzia käyttää GPS / GLONASS / Galileo jne. Twiittien geotagaukseen</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>Sijainti</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse aktiivinen kuvatyyli täältä</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>Standardi</translation>
     </message>
     <message>
         <source>Image Style</source>
@@ -765,7 +766,7 @@
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepfish @ferlanero tekijänä</translation>
     </message>
     <message>
         <source>Accounts</source>
@@ -777,7 +778,7 @@
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>Valitse aktiivinen tili täältä</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -785,27 +786,27 @@
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Kirjaudu sisään toisella tilillä</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä Twitterin Emojia</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä Twitterin Emojia järjestelmän fontin sijasta</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyyli</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>Salli animaatioiden lataus</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä animaatiota kun lisäsisältöä ladataan</translation>
     </message>
     <message>
         <source>Remove current Account</source>
@@ -813,23 +814,23 @@
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan tiliä</translation>
     </message>
     <message>
         <source>Enable swipe navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>Ota pyyhkäisynavigointi käyttöön</translation>
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation type="unfinished"></translation>
+        <translation>Käytä pyykäisynavigointia (esim. aikajanasta ilmoituksiin) vaihtamaan luokkia</translation>
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä kuvan kuvaukset</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä lisäkuvaukset tviitti -kuvista (jos saatavilla)</translation>
     </message>
 </context>
 <context>
@@ -859,7 +860,7 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished">Kopioi URL leikepöydälle</translation>
+        <translation>Kopioi URL leikepöydälle</translation>
     </message>
     <message>
         <source>Delete Tweet</source>
@@ -874,22 +875,22 @@
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Aihe</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Uudelleentviitattu %1 toimeesta</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastauksena %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tviitattu %1 kanssa</translation>
     </message>
 </context>
 <context>
@@ -904,7 +905,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation type="unfinished">Lainaa tviittiä</translation>
+        <translation>Uudelleentviittaa kommentilla</translation>
     </message>
     <message>
         <source>Open in Browser</source>
@@ -916,7 +917,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>Näytä aihe</translation>
     </message>
 </context>
 <context>
@@ -930,18 +931,18 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; by %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 jäseniä</translation>
     </message>
 </context>
 <context>
     <name>User</name>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation type="unfinished">Kopioi URL leikepöydälle</translation>
+        <translation>Kopioi URL leikepöydälle</translation>
     </message>
 </context>
 <context>
@@ -959,7 +960,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 lataaminen onnistui</translation>
     </message>
     <message>
         <source>Downloading...</source>
@@ -967,7 +968,7 @@
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladataan, %1% valmistunut...</translation>
     </message>
 </context>
 <context>
@@ -1033,23 +1034,23 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraavat %1 päivää</translation>
     </message>
     <message>
         <source>the next day</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraava päivä</translation>
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraavat %1 tuntia</translation>
     </message>
     <message>
         <source>the next hour</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraava tunti</translation>
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>seuraavat %1 minuuttia</translation>
     </message>
     <message>
         <source>the next minute</source>

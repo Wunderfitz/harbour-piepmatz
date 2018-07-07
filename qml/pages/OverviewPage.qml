@@ -31,6 +31,123 @@ Page {
 
     id: overviewPage
     allowedOrientations: Orientation.All
+    focus: true
+
+    Keys.onPressed: {
+        handleKeyPressed(event);
+    }
+
+    Keys.onDownPressed: {
+        handleDownPressed();
+    }
+
+    Keys.onUpPressed: {
+        handleUpPressed();
+    }
+
+    function handleKeyPressed(event) {
+        if (event.key === Qt.Key_1 && event.modifiers === Qt.ControlModifier) {
+            handleHomeClicked();
+        }
+        if (event.key === Qt.Key_2 && event.modifiers === Qt.ControlModifier) {
+            handleNotificationsClicked();
+        }
+        if (event.key === Qt.Key_3 && event.modifiers === Qt.ControlModifier) {
+            handleMessagesClicked();
+        }
+        if (event.key === Qt.Key_4 && event.modifiers === Qt.ControlModifier) {
+            handleSearchClicked();
+        }
+        if (event.key === Qt.Key_5 && event.modifiers === Qt.ControlModifier) {
+            handleListsClicked();
+        }
+        if (event.key === Qt.Key_6 && event.modifiers === Qt.ControlModifier) {
+            handleProfileClicked();
+        }
+        if (event.key === Qt.Key_T) {
+            switch (overviewPage.activeTabId) {
+                case 0:
+                    homeListView.scrollToTop();
+                    break;
+                case 1:
+                    mentionsListView.scrollToTop();
+                    break;
+                case 3:
+                    if (searchColumn.usersSearchSelected) {
+                        usersSearchResultsListView.scrollToTop();
+                    } else {
+                        searchResultsListView.scrollToTop();
+                    }
+                    break;
+                default:
+                    // Do nothing;
+            }
+        }
+        if (event.key === Qt.Key_B) {
+            switch (overviewPage.activeTabId) {
+                case 0:
+                    homeListView.scrollToBottom();
+                    break;
+                case 1:
+                    mentionsListView.scrollToBottom();
+                    break;
+                case 3:
+                    if (searchColumn.usersSearchSelected) {
+                        usersSearchResultsListView.scrollToBottom();
+                    } else {
+                        searchResultsListView.scrollToBottom();
+                    }
+                    break;
+                default:
+                    // Do nothing;
+            }
+        }
+    }
+
+    function handleDownPressed() {
+        switch (overviewPage.activeTabId) {
+            case 0:
+                homeListView.flick(0, - overviewPage.height * 2);
+                break;
+            case 1:
+                mentionsListView.flick(0, - overviewPage.height * 2);
+                break;
+            case 3:
+                if (searchColumn.usersSearchSelected) {
+                    usersSearchResultsListView.flick(0, - overviewPage.height * 2);
+                } else {
+                    searchResultsListView.flick(0, - overviewPage.height * 2);
+                }
+                break;
+            default:
+                // Do nothing;
+        }
+    }
+
+    function handleUpPressed() {
+        switch (overviewPage.activeTabId) {
+            case 0:
+                homeListView.flick(0, overviewPage.height * 2);
+                break;
+            case 1:
+                mentionsListView.flick(0, overviewPage.height * 2);
+                break;
+            case 3:
+                if (searchColumn.usersSearchSelected) {
+                    usersSearchResultsListView.flick(0, overviewPage.height * 2);
+                } else {
+                    searchResultsListView.flick(0, overviewPage.height * 2);
+                }
+                break;
+            default:
+                // Do nothing;
+        }
+    }
+
+    function resetFocus() {
+        searchField.focus = false;
+        overviewPage.focus = true;
+    }
 
     function hideAccountVerificationColumn() {
         accountVerificationColumn.opacity = 0;
@@ -87,6 +204,7 @@ Page {
     function handleSearchClicked() {
         if (overviewPage.activeTabId === 3) {
             searchResultsListView.scrollToTop();
+            usersSearchResultsListView.scrollToTop();
         } else {
             viewsSlideshow.opacity = 0;
             slideshowVisibleTimer.goToTab(3);
@@ -591,6 +709,10 @@ Page {
                                 if (!quickScrollAnimating) {
                                     timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
                                 }
+                            }
+
+                            onCurrentIndexChanged: {
+                                timelineModel.setCurrentTweetId(currentItem.tweetModel.id_str);
                             }
 
                             footer: homeTimelineFooterComponent;
@@ -1100,11 +1222,13 @@ Page {
                             onSearchFinished: {
                                 searchColumn.tweetSearchInProgress = false;
                                 searchColumn.tweetSearchInTransition = false;
+                                resetFocus();
                             }
                             onSearchError: {
                                 searchColumn.tweetSearchInProgress = false;
                                 searchColumn.tweetSearchInTransition = false;
                                 overviewNotification.show(errorMessage);
+                                resetFocus();
                             }
                         }
 
@@ -1113,11 +1237,13 @@ Page {
                             onSearchFinished: {
                                 searchColumn.usersSearchInProgress = false;
                                 searchColumn.usersSearchInTransition = false;
+                                resetFocus();
                             }
                             onSearchError: {
                                 searchColumn.usersSearchInProgress = false;
                                 searchColumn.usersSearchInTransition = false;
                                 overviewNotification.show(errorMessage);
+                                resetFocus();
                             }
                         }
 
@@ -1143,7 +1269,7 @@ Page {
 
                         Timer {
                             id: searchTimer
-                            interval: 1000
+                            interval: 1500
                             running: false
                             repeat: false
                             onTriggered: {
@@ -1168,7 +1294,9 @@ Page {
                                 }
 
                                 EnterKey.iconSource: "image://theme/icon-m-enter-close"
-                                EnterKey.onClicked: focus = false
+                                EnterKey.onClicked: {
+                                    resetFocus();
+                                }
 
                                 onTextChanged: {
                                     searchColumn.tweetSearchInTransition = true;
@@ -1447,6 +1575,7 @@ Page {
                                 }
                                 onClicked: {
                                     searchField.text = display.name;
+                                    resetFocus();
                                 }
                             }
 
@@ -1508,6 +1637,7 @@ Page {
 
                                 onClicked: {
                                     searchField.text = display.query;
+                                    resetFocus();
                                 }
                             }
 

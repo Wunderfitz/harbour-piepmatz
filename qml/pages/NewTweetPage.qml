@@ -28,6 +28,11 @@ Page {
     id: newTweetPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant configuration;
     property real progress : 0;
     property bool valid : true;

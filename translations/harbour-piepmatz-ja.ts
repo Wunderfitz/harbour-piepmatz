@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>Open OAuth for Qt プロジェクト</translation>
+        <translation>GitHubの OAuth for Qt プロジェクトを開く</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>Open twitter-text プロジェクト</translation>
+        <translation>GitHubの twitter-text プロジェクトを開く</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHubの twemoji プロジェクトを開く</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
@@ -93,7 +93,7 @@
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>GitHub の QGumboParserを開く</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
@@ -141,7 +141,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: いいね</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -174,7 +174,7 @@
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>タイムライン</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: メンバー</translation>
     </message>
 </context>
 <context>
@@ -230,7 +230,7 @@
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: タイムライン</translation>
     </message>
     <message>
         <source>Show Members</source>
@@ -238,14 +238,14 @@
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">ツイートを読み込む</translation>
+        <translation>更にツイートを読み込む</translation>
     </message>
 </context>
 <context>
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>リスト</translation>
     </message>
 </context>
 <context>
@@ -259,7 +259,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>メッセージ</translation>
     </message>
 </context>
 <context>
@@ -306,14 +306,14 @@
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">残り%1文字</translation>
+        <translation>残り%1文字</translation>
     </message>
 </context>
 <context>
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>通知</translation>
     </message>
 </context>
 <context>
@@ -492,11 +492,11 @@
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>削除中</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>削除</translation>
     </message>
 </context>
 <context>
@@ -519,14 +519,14 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation type="unfinished"></translation>
+        <translation>%1件のいいね</translation>
     </message>
 </context>
 <context>
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>プロフィール</translation>
     </message>
 </context>
 <context>
@@ -691,7 +691,7 @@
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatzはオープンソースソフトウェアであり、今後もそうあり続ける予定です。 しかしながらPiepmatzの開発をサポートするため、様々な協力をお願いしたいと思います。 そのような貢献は、Piepmatzの言語リソースの翻訳や、単純に開発の援助のためにキーを購入したりすることで実現できます。</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>

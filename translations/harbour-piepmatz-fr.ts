@@ -821,15 +821,15 @@
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation>Utilise les mouvements de glissement latéraux pour changer de catégorie (par exemple, depuis le fil vers les notifications)</translation>
+        <translation>Utilise les glissements latéraux pour changer de catégorie (par exemple, depuis le fil vers les notifications)</translation>
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation>Afficher la description de l&apos;image</translation>
+        <translation>Afficher les descriptions de l&apos;image</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation>Afficher les descriptions supplémentaires des images du tweet (si disponible)</translation>
+        <translation>Affiche les descriptions supplémentaires des images du tweet (si disponible)</translation>
     </message>
 </context>
 <context>

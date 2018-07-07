@@ -25,6 +25,11 @@ Page {
     id: profilePage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant profileModel;
     property string profileName;
     property bool loaded : false;

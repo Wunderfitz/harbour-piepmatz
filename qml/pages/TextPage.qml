@@ -25,6 +25,11 @@ Page {
     id: textPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property string contentId;
     property bool loading;
 

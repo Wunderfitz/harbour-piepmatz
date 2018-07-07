@@ -24,6 +24,11 @@ Page {
     id: favoritesPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant favoritesModel;
     property string screenName;
     property string userName;

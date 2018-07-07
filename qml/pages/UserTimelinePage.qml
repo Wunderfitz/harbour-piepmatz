@@ -24,6 +24,11 @@ Page {
     id: userTimelinePage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant userTimelineModel;
     property string screenName;
     property string userName;

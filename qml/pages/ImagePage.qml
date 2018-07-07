@@ -26,6 +26,11 @@ Page {
     id: imagePage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant tweet;
 
     property string imageUrl;

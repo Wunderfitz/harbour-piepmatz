@@ -25,6 +25,17 @@ Page {
     id: aboutPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+    Keys.onDownPressed: {
+        aboutContainer.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        aboutContainer.flick(0, parent.height);
+    }
+
     SilicaFlickable {
         id: aboutContainer
         contentHeight: column.height
@@ -52,7 +63,7 @@ Page {
             }
 
             Label {
-                text: "Piepmatz 1.2.1"
+                text: "Piepmatz 1.2.2"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {

@@ -27,6 +27,11 @@ Page {
     id: conversationPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant conversationModel;
     property variant configuration;
     property string myUserId;

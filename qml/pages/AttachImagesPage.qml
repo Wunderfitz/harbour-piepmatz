@@ -25,6 +25,11 @@ Page {
     id: attachImagesPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     Component.onCompleted: {
         attachImagesPage.searchInProgress = true;
         imagesModel.update();

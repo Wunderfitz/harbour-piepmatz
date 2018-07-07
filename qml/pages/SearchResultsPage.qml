@@ -24,6 +24,11 @@ Page {
     id: searchResultsPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant searchResults;
     property string searchQuery;
     property bool loaded : false;

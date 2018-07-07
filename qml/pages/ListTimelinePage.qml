@@ -24,6 +24,11 @@ Page {
     id: listTimelinePage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant listTimelineModel;
     property string listId;
     property string listName;

@@ -24,6 +24,11 @@ Page {
     id: followersPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant followersModel;
     property string screenName;
     property string userName;

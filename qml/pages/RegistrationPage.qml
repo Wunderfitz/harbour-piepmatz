@@ -25,6 +25,22 @@ Page {
     id: registrationPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onDownPressed: {
+        if (wagnis.isRegistered()) {
+            contributionFlickable.flick(0, - parent.height);
+        } else {
+            registrationFlickable.flick(0, - parent.height);
+        }
+    }
+    Keys.onUpPressed: {
+        if (wagnis.isRegistered()) {
+            contributionFlickable.flick(0, parent.height);
+        } else {
+            registrationFlickable.flick(0, parent.height);
+        }
+    }
+
     property bool registrationLoading : false;
 
     Component.onCompleted: {

@@ -24,6 +24,11 @@ Page {
     id: listMembersPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant listMembersModel;
     property string listId;
     property string listName;

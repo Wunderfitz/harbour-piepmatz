@@ -25,6 +25,11 @@ Page {
     id: tweetConversationPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant conversationTweets;
     property variant sourceTweetId;
 

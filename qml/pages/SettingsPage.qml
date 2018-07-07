@@ -25,6 +25,11 @@ Page {
     id: settingsPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant allAccounts;
 
     Component.onCompleted: {

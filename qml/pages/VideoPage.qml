@@ -26,6 +26,11 @@ Page {
     id: videoPage
     allowedOrientations: Orientation.All
 
+    focus: true
+    Keys.onLeftPressed: {
+        pageStack.pop();
+    }
+
     property variant tweetModel;
 
     property int videoWidth : Functions.getVideoOriginalWidth(videoPage.tweetModel)
