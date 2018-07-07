@@ -28,6 +28,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        listTimelineListView.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        listTimelineListView.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            listTimelineListView.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            listTimelineListView.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant listTimelineModel;
     property string listId;

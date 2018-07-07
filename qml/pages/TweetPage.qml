@@ -29,6 +29,27 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        tweetContainer.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        tweetContainer.flick(0, parent.height);
+    }
+    Keys.onReturnPressed: {
+        if (showConversationButton.visible) {
+            pageStack.push(Qt.resolvedUrl("../pages/TweetConversationPage.qml"), {"conversationTweets": tweetPage.conversationTweets, "sourceTweetId": tweetPage.myTweetId });
+        }
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            tweetContainer.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            tweetContainer.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant tweetModel;
     property string  myTweetId;

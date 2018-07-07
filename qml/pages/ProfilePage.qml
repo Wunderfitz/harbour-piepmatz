@@ -29,10 +29,27 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        profileEntity.scrollDown();
+    }
+    Keys.onUpPressed: {
+        profileEntity.scrollUp();
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            profileEntity.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            profileEntity.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant profileModel;
     property string profileName;
     property bool loaded : false;
+    property variant profileEntity;
 
     Component.onCompleted: {
         if (!profileModel) {
@@ -165,6 +182,10 @@ Page {
             Item {
                 id: profileContent
                 anchors.fill: parent
+                Component.onCompleted: {
+                    profilePage.profileEntity = otherProfile;
+                }
+
                 Profile {
                     id: otherProfile
                     profileModel: profilePage.profileModel

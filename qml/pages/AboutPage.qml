@@ -35,6 +35,17 @@ Page {
     Keys.onUpPressed: {
         aboutContainer.flick(0, parent.height);
     }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            aboutContainer.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            aboutContainer.scrollToBottom();
+            event.accepted = true;
+        }
+    }
+
 
     SilicaFlickable {
         id: aboutContainer

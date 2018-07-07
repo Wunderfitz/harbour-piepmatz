@@ -28,6 +28,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        followersListView.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        followersListView.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            followersListView.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            followersListView.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant followersModel;
     property string screenName;

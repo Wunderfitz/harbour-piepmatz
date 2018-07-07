@@ -28,6 +28,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        listMembersListView.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        listMembersListView.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            listMembersListView.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            listMembersListView.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant listMembersModel;
     property string listId;

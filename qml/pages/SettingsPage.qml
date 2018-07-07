@@ -29,6 +29,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        settingsContainer.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        settingsContainer.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            settingsContainer.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            settingsContainer.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant allAccounts;
 
@@ -42,7 +58,7 @@ Page {
     }
 
     SilicaFlickable {
-        id: aboutContainer
+        id: settingsContainer
         contentHeight: column.height
         anchors.fill: parent
 

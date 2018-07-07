@@ -28,6 +28,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        userTimelineListView.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        userTimelineListView.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            userTimelineListView.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            userTimelineListView.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant userTimelineModel;
     property string screenName;

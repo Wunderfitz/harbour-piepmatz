@@ -28,10 +28,27 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        resultsEntity.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        resultsEntity.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            resultsEntity.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            resultsEntity.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant searchResults;
     property string searchQuery;
     property bool loaded : false;
+    property variant resultsEntity;
 
     Component.onCompleted: {
         if (!searchResults) {
@@ -97,6 +114,10 @@ Page {
                 id: searchResultsComponent
                 Item {
                     id: searchResultsContent
+
+                    Component.onCompleted: {
+                        searchResultsPage.resultsEntity = searchResultsListView;
+                    }
 
                     SilicaListView {
                         anchors.fill: parent

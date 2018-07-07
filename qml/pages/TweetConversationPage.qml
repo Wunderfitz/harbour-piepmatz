@@ -29,6 +29,22 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onDownPressed: {
+        tweetConversationListView.flick(0, - parent.height);
+    }
+    Keys.onUpPressed: {
+        tweetConversationListView.flick(0, parent.height);
+    }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_T) {
+            tweetConversationListView.scrollToTop();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_B) {
+            tweetConversationListView.scrollToBottom();
+            event.accepted = true;
+        }
+    }
 
     property variant conversationTweets;
     property variant sourceTweetId;

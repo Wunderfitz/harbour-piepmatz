@@ -33,6 +33,19 @@ Item {
     opacity: profileModel ? 1 : 0
     Behavior on opacity { NumberAnimation {} }
 
+    function scrollDown() {
+        profileTimelineListView.flick(0, - parent.height);
+    }
+    function scrollUp() {
+        profileTimelineListView.flick(0, parent.height);
+    }
+    function scrollToTop() {
+        profileTimelineListView.scrollToTop();
+    }
+    function scrollToBottom() {
+        profileTimelineListView.scrollToBottom();
+    }
+
     property variant profileModel;
     property variant profileTimeline;
     property bool loadingError : false;

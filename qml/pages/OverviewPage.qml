@@ -34,43 +34,79 @@ Page {
     focus: true
 
     Keys.onPressed: {
-        handleKeyPressed(event);
+        if (overviewPage.initializationCompleted) {
+            handleKeyPressed(event);
+        }
     }
 
     Keys.onDownPressed: {
-        handleDownPressed();
+        if (overviewPage.initializationCompleted) {
+            handleDownPressed();
+        }
     }
 
     Keys.onUpPressed: {
-        handleUpPressed();
+        if (overviewPage.initializationCompleted) {
+            handleUpPressed();
+        }
     }
 
     function handleKeyPressed(event) {
-        if (event.key === Qt.Key_1 && event.modifiers === Qt.ControlModifier) {
+
+        if (!overviewPage.initializationCompleted) {
+            return;
+        }
+
+        if (event.key === Qt.Key_1) {
             handleHomeClicked();
+            event.accepted = true;
         }
-        if (event.key === Qt.Key_2 && event.modifiers === Qt.ControlModifier) {
+        if (event.key === Qt.Key_2) {
             handleNotificationsClicked();
+            event.accepted = true;
         }
-        if (event.key === Qt.Key_3 && event.modifiers === Qt.ControlModifier) {
+        if (event.key === Qt.Key_3) {
             handleMessagesClicked();
+            event.accepted = true;
         }
-        if (event.key === Qt.Key_4 && event.modifiers === Qt.ControlModifier) {
+        if (event.key === Qt.Key_4) {
             handleSearchClicked();
+            event.accepted = true;
         }
-        if (event.key === Qt.Key_5 && event.modifiers === Qt.ControlModifier) {
+        if (event.key === Qt.Key_5) {
             handleListsClicked();
+            event.accepted = true;
         }
-        if (event.key === Qt.Key_6 && event.modifiers === Qt.ControlModifier) {
+        if (event.key === Qt.Key_6) {
             handleProfileClicked();
+            event.accepted = true;
         }
+        if (event.key === Qt.Key_N && !overviewPage.tweetInProgress) {
+            pageStack.push(newTweetPage, {"configuration": overviewPage.configuration});
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_S) {
+            pageStack.push(settingsPage);
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_A) {
+            pageStack.push(aboutPage);
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_R) {
+            Functions.updatePiepmatz();
+            event.accepted = true;
+        }
+
         if (event.key === Qt.Key_T) {
             switch (overviewPage.activeTabId) {
                 case 0:
                     homeListView.scrollToTop();
+                    event.accepted = true;
                     break;
                 case 1:
                     mentionsListView.scrollToTop();
+                    event.accepted = true;
                     break;
                 case 3:
                     if (searchColumn.usersSearchSelected) {
@@ -78,6 +114,11 @@ Page {
                     } else {
                         searchResultsListView.scrollToTop();
                     }
+                    event.accepted = true;
+                    break;
+                case 5:
+                    profileEntity.scrollToTop();
+                    event.accepted = true;
                     break;
                 default:
                     // Do nothing;
@@ -87,9 +128,11 @@ Page {
             switch (overviewPage.activeTabId) {
                 case 0:
                     homeListView.scrollToBottom();
+                    event.accepted = true;
                     break;
                 case 1:
                     mentionsListView.scrollToBottom();
+                    event.accepted = true;
                     break;
                 case 3:
                     if (searchColumn.usersSearchSelected) {
@@ -97,6 +140,11 @@ Page {
                     } else {
                         searchResultsListView.scrollToBottom();
                     }
+                    event.accepted = true;
+                    break;
+                case 5:
+                    profileEntity.scrollToBottom();
+                    event.accepted = true;
                     break;
                 default:
                     // Do nothing;
@@ -119,6 +167,9 @@ Page {
                     searchResultsListView.flick(0, - overviewPage.height * 2);
                 }
                 break;
+            case 5:
+                profileEntity.scrollDown();
+                break;
             default:
                 // Do nothing;
         }
@@ -138,6 +189,9 @@ Page {
                 } else {
                     searchResultsListView.flick(0, overviewPage.height * 2);
                 }
+                break;
+            case 5:
+                profileEntity.scrollUp();
                 break;
             default:
                 // Do nothing;
@@ -219,9 +273,13 @@ Page {
     }
 
     function handleProfileClicked() {
-        viewsSlideshow.opacity = 0;
-        slideshowVisibleTimer.goToTab(5);
-        openTab(5);
+        if (overviewPage.activeTabId === 5) {
+            profileEntity.scrollToTop();
+        } else {
+            viewsSlideshow.opacity = 0;
+            slideshowVisibleTimer.goToTab(5);
+            openTab(5);
+        }
     }
 
     function getLastUserOfConversation(otherUser, conversation) {
@@ -252,6 +310,7 @@ Page {
     property variant configuration;
     property bool tweetInProgress : false;
     property variant ipInfo;
+    property variant profileEntity;
 
     function openTab(tabId) {
 
@@ -1858,15 +1917,24 @@ Page {
 
                         Component {
                             id: profileComponent
-                            Profile {
-                                id: ownProfile
-                                profileModel: accountModel.getCurrentAccount()
 
-                                Connections {
-                                    target: accountModel
-                                    onCredentialsVerified: {
-                                        console.log("Updating profile page...");
-                                        ownProfile.profileModel = accountModel.getCurrentAccount();
+                            Item {
+                                id: profileContent
+                                anchors.fill: parent
+                                Component.onCompleted: {
+                                    overviewPage.profileEntity = ownProfile;
+                                }
+
+                                Profile {
+                                    id: ownProfile
+                                    profileModel: accountModel.getCurrentAccount()
+
+                                    Connections {
+                                        target: accountModel
+                                        onCredentialsVerified: {
+                                            console.log("Updating profile page...");
+                                            ownProfile.profileModel = accountModel.getCurrentAccount();
+                                        }
                                     }
                                 }
                             }
