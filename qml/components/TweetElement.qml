@@ -596,9 +596,9 @@ Item {
 
                 Loader {
                     id: videoLoader
-                    active: Functions.containsVideo(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                    active: !tweetElementItem.isRetweetMention && Functions.containsVideo(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                     width: parent.width
-                    height: Functions.getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                    height: tweetElementItem.isRetweetMention ? 0 : Functions.getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                     sourceComponent: tweetVideoComponent
                 }
 

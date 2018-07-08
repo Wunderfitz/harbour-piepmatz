@@ -155,16 +155,16 @@ Page {
     function handleDownPressed() {
         switch (overviewPage.activeTabId) {
             case 0:
-                homeListView.flick(0, - overviewPage.height * 2);
+                homeListView.flick(0, - overviewPage.height);
                 break;
             case 1:
-                mentionsListView.flick(0, - overviewPage.height * 2);
+                mentionsListView.flick(0, - overviewPage.height);
                 break;
             case 3:
                 if (searchColumn.usersSearchSelected) {
-                    usersSearchResultsListView.flick(0, - overviewPage.height * 2);
+                    usersSearchResultsListView.flick(0, - overviewPage.height);
                 } else {
-                    searchResultsListView.flick(0, - overviewPage.height * 2);
+                    searchResultsListView.flick(0, - overviewPage.height);
                 }
                 break;
             case 5:
@@ -178,16 +178,16 @@ Page {
     function handleUpPressed() {
         switch (overviewPage.activeTabId) {
             case 0:
-                homeListView.flick(0, overviewPage.height * 2);
+                homeListView.flick(0, overviewPage.height);
                 break;
             case 1:
-                mentionsListView.flick(0, overviewPage.height * 2);
+                mentionsListView.flick(0, overviewPage.height);
                 break;
             case 3:
                 if (searchColumn.usersSearchSelected) {
-                    usersSearchResultsListView.flick(0, overviewPage.height * 2);
+                    usersSearchResultsListView.flick(0, overviewPage.height);
                 } else {
-                    searchResultsListView.flick(0, overviewPage.height * 2);
+                    searchResultsListView.flick(0, overviewPage.height);
                 }
                 break;
             case 5:

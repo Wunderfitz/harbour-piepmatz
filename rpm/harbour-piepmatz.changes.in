@@ -76,3 +76,7 @@
 * Sat Jun 02 2018 Sebastian Wolf <sebastian@ygriega.de> 1.2.1
 - Search results: Filter duplicate tweets (caused by retweets)
 - Added incomplete translations for 1.2
+
+* Sun Jul 08 2018 Sebastian Wolf <sebastian@ygriega.de> 1.2.2
+- Keyboard shortcuts for Gemini PDA, TOHKBD...
+- Improved translations for Finnish, Japanese and French
