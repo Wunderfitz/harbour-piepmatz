@@ -150,48 +150,104 @@ Page {
                     // Do nothing;
             }
         }
+        if (event.key === Qt.Key_PageDown) {
+            handlePageDownPressed();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageUp) {
+            handlePageUpPressed();
+            event.accepted = true;
+        }
     }
 
     function handleDownPressed() {
+        handleDownKey(1);
+    }
+
+    function handlePageDownPressed() {
+        handleDownKey(2);
+    }
+
+    function handleUpPressed() {
+        handleUpKey(1);
+    }
+
+    function handlePageUpPressed() {
+        handleUpKey(2);
+    }
+
+    function handleDownKey(speed) {
         switch (overviewPage.activeTabId) {
             case 0:
-                homeListView.flick(0, - overviewPage.height);
+                homeListView.flick(0, - overviewPage.height * speed);
                 break;
             case 1:
-                mentionsListView.flick(0, - overviewPage.height);
+                mentionsListView.flick(0, - overviewPage.height * speed);
                 break;
             case 3:
                 if (searchColumn.usersSearchSelected) {
-                    usersSearchResultsListView.flick(0, - overviewPage.height);
+                    usersSearchResultsListView.flick(0, - overviewPage.height * speed);
                 } else {
-                    searchResultsListView.flick(0, - overviewPage.height);
+                    searchResultsListView.flick(0, - overviewPage.height * speed);
+                }
+                if (savedSearchesListView.visible) {
+                    savedSearchesListView.flick(0, - overviewPage.height * speed);
+                }
+                if (trendsListView.visible) {
+                    trendsListView.flick(0, - overviewPage.height * speed);
                 }
                 break;
             case 5:
-                profileEntity.scrollDown();
+                switch (speed) {
+                    case 1:
+                        profileEntity.scrollDown();
+                        break;
+                    case 2:
+                        profileEntity.pageDown();
+                        break;
+                    default:
+                        profileEntity.scrollDown();
+                        break;
+                }
                 break;
             default:
                 // Do nothing;
         }
     }
 
-    function handleUpPressed() {
+    function handleUpKey(speed) {
         switch (overviewPage.activeTabId) {
             case 0:
-                homeListView.flick(0, overviewPage.height);
+                homeListView.flick(0, overviewPage.height * speed);
                 break;
             case 1:
-                mentionsListView.flick(0, overviewPage.height);
+                mentionsListView.flick(0, overviewPage.height * speed);
                 break;
             case 3:
                 if (searchColumn.usersSearchSelected) {
-                    usersSearchResultsListView.flick(0, overviewPage.height);
+                    usersSearchResultsListView.flick(0, overviewPage.height * speed);
                 } else {
-                    searchResultsListView.flick(0, overviewPage.height);
+                    searchResultsListView.flick(0, overviewPage.height * speed);
+                }
+                if (savedSearchesListView.visible) {
+                    savedSearchesListView.flick(0, overviewPage.height * speed);
+                }
+                if (trendsListView.visible) {
+                    trendsListView.flick(0, overviewPage.height * speed);
                 }
                 break;
             case 5:
-                profileEntity.scrollUp();
+                switch (speed) {
+                    case 1:
+                        profileEntity.scrollUp();
+                        break;
+                    case 2:
+                        profileEntity.pageUp();
+                        break;
+                    default:
+                        profileEntity.scrollUp();
+                        break;
+                }
                 break;
             default:
                 // Do nothing;

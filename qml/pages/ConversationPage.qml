@@ -31,6 +31,9 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onEscapePressed: {
+        pageStack.pop();
+    }
     Keys.onDownPressed: {
         conversationListView.flick(0, - parent.height);
     }
@@ -44,6 +47,14 @@ Page {
         }
         if (event.key === Qt.Key_B) {
             conversationListView.scrollToBottom();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageDown) {
+            conversationListView.flick(0, - parent.height * 2);
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageUp) {
+            conversationListView.flick(0, parent.height * 2);
             event.accepted = true;
         }
     }

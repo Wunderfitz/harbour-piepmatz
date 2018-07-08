@@ -7,6 +7,22 @@ Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de)
 ## License
 Licensed under GNU GPLv3
 
+## Keyboard Shortcuts
+Some Sailfish OS devices feature a physical keyboard. Piepmatz is even easier to use with them using shortcuts:
+- Generic
+-- Up/down: scroll
+-- Page up/down: scroll faster
+-- t/b: Scroll to top / bottom
+-- Left/Esc: Back
+- Only on main screen:
+-- 1-6: Switch tabs (timeline, notifications, search etc.)
+-- n: New tweet
+-- r: Refresh
+-- s: Settings
+-- a: About
+- On tweet details view:
+-- Return/Enter: Display thread
+
 ## Build
 Simply clone this repository, but be sure to clone it with `--recursive` as Piepmatz uses Git Submodules.  
 

@@ -39,6 +39,12 @@ Item {
     function scrollUp() {
         profileTimelineListView.flick(0, parent.height);
     }
+    function pageDown() {
+        profileTimelineListView.flick(0, - parent.height * 2);
+    }
+    function pageUp() {
+        profileTimelineListView.flick(0, parent.height * 2);
+    }
     function scrollToTop() {
         profileTimelineListView.scrollToTop();
     }

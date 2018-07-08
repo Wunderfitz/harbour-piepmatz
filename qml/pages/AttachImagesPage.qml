@@ -29,6 +29,9 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onEscapePressed: {
+        pageStack.pop();
+    }
 
     Component.onCompleted: {
         attachImagesPage.searchInProgress = true;

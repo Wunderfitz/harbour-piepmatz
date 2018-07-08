@@ -29,6 +29,9 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onEscapePressed: {
+        pageStack.pop();
+    }
     Keys.onDownPressed: {
         textContainer.flick(0, - parent.height);
     }
@@ -42,6 +45,14 @@ Page {
         }
         if (event.key === Qt.Key_B) {
             textContainer.scrollToBottom();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageDown) {
+            textContainer.flick(0, - parent.height * 2);
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageUp) {
+            textContainer.flick(0, parent.height * 2);
             event.accepted = true;
         }
     }

@@ -29,6 +29,9 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onEscapePressed: {
+        pageStack.pop();
+    }
     Keys.onDownPressed: {
         profileEntity.scrollDown();
     }
@@ -42,6 +45,14 @@ Page {
         }
         if (event.key === Qt.Key_B) {
             profileEntity.scrollToBottom();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageDown) {
+            profileEntity.pageDown();
+            event.accepted = true;
+        }
+        if (event.key === Qt.Key_PageUp) {
+            profileEntity.pageUp();
             event.accepted = true;
         }
     }

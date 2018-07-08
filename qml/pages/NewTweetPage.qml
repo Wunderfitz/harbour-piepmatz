@@ -32,6 +32,9 @@ Page {
     Keys.onLeftPressed: {
         pageStack.pop();
     }
+    Keys.onEscapePressed: {
+        pageStack.pop();
+    }
 
     property variant configuration;
     property real progress : 0;
