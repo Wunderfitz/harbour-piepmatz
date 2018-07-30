@@ -9,7 +9,7 @@
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>Un client Twitter per Sailfish OS</translation>
+        <translation>Un client Twitter per SailfishOS</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>OAuth per Qt su GitHub</translation>
+        <translation>Apri OAuth per Qt su GitHub</translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>twitter-text su GitHub</translation>
+        <translation>Apri twitter-text su GitHub</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation>Wagnis ID:</translation>
+        <translation>Wagnis ID: </translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
@@ -93,7 +93,7 @@
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation>QGumboParser su GitHub</translation>
+        <translation>Apri QGumboParser su GitHub</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
@@ -181,19 +181,19 @@
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation>Download</translation>
+        <translation>Scarica</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Download...</translation>
+        <translation>Scaricamento...</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download di %1 completato.</translation>
+        <translation>Scaricamento di %1 completato.</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Download, %1 completato...</translation>
+        <translation>Scaricamento, %1% completato...</translation>
     </message>
 </context>
 <context>
@@ -219,7 +219,7 @@
     </message>
     <message>
         <source>%1: Members</source>
-        <translation>%1: membri</translation>
+        <translation>%1: Membri</translation>
     </message>
 </context>
 <context>
@@ -230,7 +230,7 @@
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation>%1: timeline</translation>
+        <translation>%1: Timeline</translation>
     </message>
     <message>
         <source>Show Members</source>
@@ -286,11 +286,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation>Retweet</translation>
+        <translation>Ritwitta</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>Ritwitta</translation>
+        <translation>Invia Retweet</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -298,7 +298,7 @@
     </message>
     <message>
         <source>Attach current location to this tweet</source>
-        <translation>Mostra posizione nel tweet</translation>
+        <translation>Allega posizione al tweet</translation>
     </message>
     <message>
         <source>Image Description</source>
@@ -380,7 +380,7 @@
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>Nessun messaggio negli ultimi 30 giorni</translation>
+        <translation>Nessun messaggio diretto negli ultimi 30 giorni</translation>
     </message>
     <message>
         <source>Tweets</source>
@@ -408,7 +408,7 @@
     </message>
     <message>
         <source>You have new direct messages!</source>
-        <translation>Hai nuovi messaggi!</translation>
+        <translation>Hai nuovi messaggi diretti!</translation>
     </message>
     <message>
         <source>You have new messages!</source>
@@ -488,7 +488,7 @@
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>Ricerca &apos;%1&apos; salvata</translation>
+        <translation>Ricerca &apos;%1&apos; salvata con successo</translation>
     </message>
     <message>
         <source>Deleting</source>
@@ -556,7 +556,7 @@
     </message>
     <message>
         <source>Send Direct Message</source>
-        <translation>Invia messaggio</translation>
+        <translation>Invia messaggio diretto</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -599,11 +599,11 @@
     </message>
     <message>
         <source>Registration Error</source>
-        <translation>Errore registrazione</translation>
+        <translation>Errore di registrazione</translation>
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Registrazione fallita. Assicurati che il dispositivo sia connesso ad internet e clicca su &apos;Riavvia registrazione&apos;. Se il riavvio non dovesse funzionare, contattami via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;</translation>
+        <translation>Registrazione fallita. Assicurati che il dispositivo sia connesso a internet e clicca su &apos;Riavvia registrazione&apos;. Se il riavvio non dovesse funzionare, contattami via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -615,15 +615,15 @@
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>Il file della registrazione sul dispositivo è corrotto. Il processo deve essere ripetuto. Assicurati che il dispositivo sia connesso ad internet e clicca su &apos;Riavvia registrazione&apos;. Se la nuova registrazione non andasse a buon fine, contattami via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt; </translation>
+        <translation>Il file della registrazione sul dispositivo è corrotto. Il processo deve essere ripetuto. Assicurati che il dispositivo sia connesso a internet e clicca su &apos;Riavvia registrazione&apos;. Se la nuova registrazione non andasse a buon fine, contattami via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;e-mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
-        <translation>Mostra dati registrazione</translation>
+        <translation>Mostra dati di registrazione</translation>
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>I dati non sono condivisi con nessun altro. Leggi le &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;note legali&lt;/a&gt; per informazioni su come i dati vengono processati. Per ulteriori informazioni sul perché della raccolta dati, dell&apos;ID univoco e come esso viene generato, leggi &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;informazioni su Wagnis&lt;/a&gt;.</translation>
+        <translation>Questi dati non vengono condivisi con nessun altro. Leggi le &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;note legali&lt;/a&gt; per informazioni su come i dati vengono utilizzati. Per maggiori informazioni sul perché della raccolta dati, dell&apos;ID univoco e come esso viene generato, leggi &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;informazioni su Wagnis&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Development Contribution</source>
@@ -631,19 +631,19 @@
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation>Continua su Piepmatz</translation>
+        <translation>Per favore contribuisci a Piepmatz</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>Puoi saltare il contributo per %1 se desideri testare Piepmatz prima.</translation>
+        <translation>Puoi saltare il contributo per %1 se prima vuoi testare Wunderfitz.</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>Continua test</translation>
+        <translation>Continua a testare</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation>Se hai già contribuito a Piepmatz, &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contattami&lt;/a&gt;.</translation>
+        <translation>Se hai già contribuito a Piepmatz, &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contattami&lt;/a&gt; direttamente.</translation>
     </message>
     <message>
         <source>Contribution</source>
@@ -655,19 +655,19 @@
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation>Acquista chiave contribuzione</translation>
+        <translation>Acquista chiave di contribuzione</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation>Convalida la tua chiave contribuzione</translation>
+        <translation>Convalida la tua chiave di contribuzione</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation>Inserisci chiave contribuzione qui</translation>
+        <translation>Inserisci chiave di contribuzione qui</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation>Convalida chiave contribuzione</translation>
+        <translation>Convalida chiave di contribuzione</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
@@ -691,11 +691,11 @@
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz è e rimarrà open source. Tuttavia, al fine di supportare lo sviluppo di Piepmatz, vorrei chiederti un contributo prima di poterlo eseguire. Tale contributo può essere fatto traducendo Piepmatz in un&apos;altra lingua, aiutando a svilupparlo o semplicemente acquistando una chiave.</translation>
+        <translation>Piepmatz è e rimarrà software libero. Tuttavia, al fine di supportare lo sviluppo di Piepmatz, vorrei chiederti un contributo prima di poterlo eseguire. Tale contributo può essere fatto traducendo Piepmatz in un&apos;altra lingua, aiutando a svilupparlo o semplicemente acquistando una chiave.</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation>Dopo aver ricevuto la chiave acquistandola o per altro contributo, convalidala qui per attivare Piepmatz.</translation>
+        <translation>Dopo aver ricevuto la chiave acquistandola o contribuendo in altro modo, convalidala qui per avviare Piepmatz.</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
@@ -715,7 +715,7 @@
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation>La chiave è stata convalidata con successo. Grazie mille per il tuo contributo allo sviluppo di Piepmatz!</translation>
+        <translation>La tua chiave è stata convalidata con successo. Grazie mille per il tuo contributo allo sviluppo di Piepmatz!</translation>
     </message>
     <message>
         <source>OK</source>
@@ -723,7 +723,7 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation>Puoi scegliere tra 4 diversi contributi: S, M, L, XL. Indipendentemente dalla dimensione scelta, la chiave acquistata sbloccherà l&apos;app completa. Spetta a te decidere quanto l&apos;app valga per te.</translation>
+        <translation>Puoi scegliere tra 4 diversi contributi: S, M, L, XL. Indipendentemente dalla taglia scelta, la chiave acquistata sbloccherà l&apos;app completa. Spetta a te decidere quanto l&apos;app valga per te.</translation>
     </message>
 </context>
 <context>
@@ -801,11 +801,11 @@
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation>Attiva animazioni caricamento</translation>
+        <translation>Attiva animazioni di caricamento</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation>Animazioni durante il caricamento</translation>
+        <translation>Usa animazioni durante il caricamento dei contenuti</translation>
     </message>
     <message>
         <source>Remove current Account</source>
@@ -817,11 +817,11 @@
     </message>
     <message>
         <source>Enable swipe navigation</source>
-        <translation>Attiva navigazione swipe</translation>
+        <translation>Attiva navigazione a scorrimento</translation>
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation>Swipe per navigare tra le categorie (ad es. dalla timeline alle notifiche)</translation>
+        <translation>Scorri per navigare tra le categorie (ad es. dalla timeline alle notifiche)</translation>
     </message>
     <message>
         <source>Display image descriptions</source>
@@ -829,7 +829,7 @@
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation>Mostra descrizione delle immagini nei tweet (se disponibile)</translation>
+        <translation>Mostra la descrizione delle immagini nei tweet (se disponibile)</translation>
     </message>
 </context>
 <context>
@@ -930,7 +930,7 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation>&lt;b&gt;%1&lt;/b&gt; by %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; di %2</translation>
     </message>
     <message>
         <source>%1 members</source>
@@ -955,19 +955,19 @@
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation>Download</translation>
+        <translation>Scarica</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>Download di %1 completato.</translation>
+        <translation>Scaricamento di %1 completato.</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation>Download...</translation>
+        <translation>Scaricamento...</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation>Download, %1 completato...</translation>
+        <translation>Scaricamento, %1% completato...</translation>
     </message>
 </context>
 <context>
@@ -986,11 +986,11 @@
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>Se non hai un account Twitter, registrati prima.</translation>
+        <translation>Se non hai un account Twitter, iscriviti prima.</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
-        <translation>Registrati a Twitter</translation>
+        <translation>Iscriviti a Twitter</translation>
     </message>
     <message>
         <source>OK</source>
