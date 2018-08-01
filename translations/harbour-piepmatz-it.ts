@@ -17,7 +17,7 @@
     </message>
     <message>
         <source>Send E-Mail</source>
-        <translation>Invia e-mail</translation>
+        <translation>Invia email</translation>
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>

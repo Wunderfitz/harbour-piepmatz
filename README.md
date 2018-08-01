@@ -54,7 +54,7 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 - French: [Alain Devarieux](https://www.transifex.com/user/profile/aldevar/), [lutinotmalin](https://www.transifex.com/user/profile/lutinotmalin/), [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
 - Hindi: [Parikshit Pahare](https://www.transifex.com/user/profile/p_pahare/)
 - Hungarian: [Szabó G.](https://www.transifex.com/user/profile/leoka/)
-- Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/), Alessandro Pra
+- Italian: [fravaccaro](https://www.transifex.com/user/profile/ghostofasmile/), Alessandro Pra'
 - Japanese: [helicalgear](https://www.transifex.com/user/profile/helicalgear/)
 - Polish: [atlochowski](https://www.transifex.com/user/profile/atlochowski/)
 - Portuguese (Brazil): [Adriano C.](https://www.transifex.com/user/profile/adrianocolvero/) and [Rafael Vinicius Leite Mendes](https://www.transifex.com/user/profile/marreko/)
