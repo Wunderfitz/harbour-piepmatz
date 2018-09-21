@@ -61,8 +61,8 @@ Item {
             width: parent.width
             id: tweetContentText
             visible: (tweetContentText.text !== "")
-            text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), Theme.fontSizeExtraSmall)
-            font.pixelSize: Theme.fontSizeExtraSmall
+            text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), Theme.fontSizeSmall)
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.primaryColor
             wrapMode: Text.Wrap
             textFormat: Text.StyledText

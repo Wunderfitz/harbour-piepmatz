@@ -158,9 +158,9 @@ Item {
                 Column {
                     Text {
                         id: tweetRetweetedText
-                        font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
+                        font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : Theme.fontSizeExtraSmall
                         color: tweetElementItem.isRetweetMention ? Theme.primaryColor : Theme.secondaryColor
-                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + Emoji.emojify(tweetModel.user.name, Theme.fontSizeTiny) + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
+                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + Emoji.emojify(tweetModel.user.name, Theme.fontSizeExtraSmall) + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
                         textFormat: Text.StyledText
                         visible: tweetModel.retweeted_status ? true : false
                         elide: Text.ElideRight
@@ -184,9 +184,9 @@ Item {
 
                     Text {
                         id: tweetInReplyToText
-                        font.pixelSize: Theme.fontSizeTiny
+                        font.pixelSize: Theme.fontSizeExtraSmall
                         color: Theme.secondaryColor
-                        text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeTiny))
+                        text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeExtraSmall))
                         textFormat: Text.StyledText
                         visible: tweetModel.in_reply_to_user_id_str ? true : false
                         elide: Text.ElideRight
@@ -298,8 +298,8 @@ Item {
                             visible: referenceMetadata.description ? true : false
                             width: parent.width
                             id: openGraphText
-                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), Theme.fontSizeTiny) : ""
-                            font.pixelSize: Theme.fontSizeTiny
+                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), Theme.fontSizeExtraSmall) : ""
+                            font.pixelSize: Theme.fontSizeExtraSmall
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
                             textFormat: Text.StyledText
@@ -318,8 +318,8 @@ Item {
                             visible: referenceMetadata.url ? true : false
                             width: parent.width
                             id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), Theme.fontSizeTiny) + "</a>"
-                            font.pixelSize: Theme.fontSizeTiny
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), Theme.fontSizeExtraSmall) + "</a>"
+                            font.pixelSize: Theme.fontSizeExtraSmall
                             color: Theme.highlightColor
                             wrapMode: Text.Wrap
                             textFormat: Text.StyledText
@@ -579,7 +579,7 @@ Item {
             Column {
                 id: dummyLeftColumn
                 width: parent.width / 6
-                height: Theme.fontSizeTiny
+                height: Theme.fontSizeExtraSmall
             }
 
             Column {

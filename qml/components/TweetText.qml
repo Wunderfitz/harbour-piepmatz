@@ -34,15 +34,15 @@ Column {
     function makeTheTextGreatAgain() {
         var relevantTweet = Functions.getRelevantTweet(tweetTextColumn.tweet);
         var greatifiedText = relevantTweet.full_text;
-        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), Theme.fontSizeExtraSmall);
+        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), Theme.fontSizeSmall);
         return greatifiedText;
     }
 
     Text {
         width: parent.width
         id: tweetContentText
-        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeExtraSmall) : makeTheTextGreatAgain()
-        font.pixelSize: Theme.fontSizeExtraSmall
+        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeSmall) : makeTheTextGreatAgain()
+        font.pixelSize: Theme.fontSizeSmall
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone
         wrapMode: Text.Wrap
