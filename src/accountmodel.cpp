@@ -58,10 +58,10 @@ void AccountModel::initializeEnvironment()
     o1->setStore(settings);
     o1->setClientId(TWITTER_CLIENT_ID);
     o1->setClientSecret(TWITTER_CLIENT_SECRET);
-    connect(o1, SIGNAL(pinRequestError(QString)), this, SLOT(handlePinRequestError(QString)));
-    connect(o1, SIGNAL(pinRequestSuccessful(QUrl)), this, SLOT(handlePinRequestSuccessful(QUrl)));
-    connect(o1, SIGNAL(linkingFailed()), this, SLOT(handleLinkingFailed()));
-    connect(o1, SIGNAL(linkingSucceeded()), this, SLOT(handleLinkingSucceeded()));
+    connect(o1, &O1Twitter::pinRequestError, this, &AccountModel::handlePinRequestError);
+    connect(o1, &O1Twitter::pinRequestSuccessful, this, &AccountModel::handlePinRequestSuccessful);
+    connect(o1, &O1Twitter::linkingFailed, this, &AccountModel::handleLinkingFailed);
+    connect(o1, &O1Twitter::linkingSucceeded, this, &AccountModel::handleLinkingSucceeded);
 
     requestor = new O1Requestor(manager, o1, this);
     twitterApi = new TwitterApi(requestor, manager, wagnis, this);
