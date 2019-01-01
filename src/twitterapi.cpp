@@ -425,8 +425,9 @@ void TwitterApi::showStatus(const QString &statusId)
 {
     // Very weird, some statusIds contain a query string. Why?
     QString sanitizedStatus = statusId;
-    if (statusId.contains("?")) {
-        sanitizedStatus = statusId.left(statusId.indexOf("?"));
+    int qm = statusId.indexOf(QLatin1Char('?'));
+    if (qm >= 0) {
+        sanitizedStatus = statusId.left(qm);
     }
     qDebug() << "TwitterApi::showStatus" << sanitizedStatus;
     QUrl url = QUrl(API_STATUSES_SHOW);

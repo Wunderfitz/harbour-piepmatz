@@ -70,7 +70,7 @@ void ImageProcessor::processImages()
         imageReader.setAutoTransform(true);
         QImage myImage = imageReader.read();
         QString newImageFileName = selectedImageFileName;
-        QString escapedFileName = getTempDirectory() + "/" + newImageFileName.replace("/", "_");
+        QString escapedFileName = getTempDirectory() + QLatin1Char('/') + newImageFileName.replace(QLatin1Char('/'), QLatin1Char('_'));
         qDebug() << "Processing file " + escapedFileName;
         myImage.save(escapedFileName, "JPG");
         this->temporaryFiles.append(escapedFileName);

@@ -90,7 +90,7 @@ void ImagesModel::processUploadCompleted()
         QString mediaIds;
         while (uploadedImagesIterator.hasNext()) {
             if (!mediaIds.isEmpty()) {
-                mediaIds += ",";
+                mediaIds += QLatin1Char(',');
             }
             mediaIds += uploadedImagesIterator.next().value().value("media_id_string").toString();
         }
