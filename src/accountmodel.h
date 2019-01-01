@@ -93,8 +93,8 @@ private:
     QNetworkAccessManager * const manager;
     O1Requestor *requestor;
     TwitterApi *twitterApi;
-    LocationInformation *locationInformation;
-    Wagnis *wagnis;
+    LocationInformation * const locationInformation;
+    Wagnis * const wagnis;
     QSettings settings;
     QVariantList otherAccounts;
 

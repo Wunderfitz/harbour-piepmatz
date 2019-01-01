@@ -37,11 +37,10 @@ AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
     , o1(new O1Twitter(this))
     , manager(new QNetworkAccessManager(this))
+    , locationInformation(new LocationInformation(this))
+    , wagnis(new Wagnis(manager, "harbour-piepmatz", "1.2.3", this))
     , settings("harbour-piepmatz", "settings")
 {
-    wagnis = new Wagnis(manager, "harbour-piepmatz", "1.2.3", this);
-    locationInformation = new LocationInformation(this);
-
     obtainEncryptionKey();
     initializeEnvironment();
 }
