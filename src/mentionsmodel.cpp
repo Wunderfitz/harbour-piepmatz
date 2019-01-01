@@ -433,7 +433,7 @@ void MentionsModel::getFollowersFromDatabase()
             followerAsMap.insert("followed_at", followedAt);
             followerAsMap.insert("verified", false);
             followerAsMap.insert("protected", false);
-            followerAsMap.insert("description", "");
+            followerAsMap.insert("description", QString());
             followerAsMap.insert("is_new_follower", true);
             qDebug() << "Follower: " + followerAsMap.value("id_str").toString() + ", " + followerAsMap.value("name").toString() + ", " + followerAsMap.value("screen_name").toString() + ", " + followerAsMap.value("profile_image_url_https").toString() + ", " + followerAsMap.value("followed_at").toString();
             this->followersFromDatabase.append(followerAsMap);

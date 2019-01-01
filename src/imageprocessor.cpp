@@ -55,7 +55,7 @@ void ImageProcessor::removeTemporaryFiles()
 
 QString ImageProcessor::getFileMapping(const QString &fileName)
 {
-    return this->fileMappings.value(fileName, "");
+    return this->fileMappings.value(fileName, QString());
 }
 
 void ImageProcessor::processImages()

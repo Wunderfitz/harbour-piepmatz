@@ -160,7 +160,7 @@ void AccountModel::switchAccount(const QString &newAccountName)
 
 QString AccountModel::getImagePath()
 {
-    return settings.value(SETTINGS_IMAGE_PATH, "").toString();
+    return settings.value(SETTINGS_IMAGE_PATH, QString()).toString();
 }
 
 void AccountModel::setImagePath(const QString &imagePath)

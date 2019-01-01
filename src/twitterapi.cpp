@@ -619,7 +619,7 @@ void TwitterApi::unfollowUser(const QString &screenName)
 
 void TwitterApi::searchTweets(const QString &query)
 {
-    if (query == "") {
+    if (query.isEmpty()) {
         emit searchTweetsSuccessful(QVariantList());
         return;
     }
@@ -652,7 +652,7 @@ void TwitterApi::searchTweets(const QString &query)
 
 void TwitterApi::searchUsers(const QString &query)
 {
-    if (query == "") {
+    if (query.isEmpty()) {
         emit searchUsersSuccessful(QVariantList());
         return;
     }
