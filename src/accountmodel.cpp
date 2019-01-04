@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -39,7 +39,7 @@ AccountModel::AccountModel()
     , manager(new QNetworkAccessManager(this))
     , settings("harbour-piepmatz", "settings")
 {
-    wagnis = new Wagnis(manager, "harbour-piepmatz", "1.2.3", this);
+    wagnis = new Wagnis(manager, "harbour-piepmatz", "1.3", this);
     locationInformation = new LocationInformation(this);
 
     obtainEncryptionKey();

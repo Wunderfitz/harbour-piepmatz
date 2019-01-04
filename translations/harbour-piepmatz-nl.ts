@@ -80,10 +80,6 @@
         <translation>Wagnis-ID weergeven</translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Dit project maakt gebruik van twemoji. Copyright 2017 Twitter, Inc. en andere bijdragers. Bedankt voor het beschikbaar maken onder de voorwaarden van de MIT-licentie (code) en CC-BY 4.0 (grafische elementen)!</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>twemoji openen op GitHub</translation>
     </message>
@@ -99,6 +95,10 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation>Deze applicatie gebruikt &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; en wordt verspreid door &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Je kunt &lt;a href=&quot;profile://werkwolf&quot;&gt;Werkwolf ook vinden op Twitter&lt;/a&gt;&quot;.</translation>
+    </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>Dit project maakt gebruik van twemoji. Copyright 2018 Twitter, Inc. en andere bijdragers. Bedankt voor het beschikbaar maken onder de voorwaarden van de MIT-licentie (code) en CC-BY 4.0 (grafische elementen)!</translation>
     </message>
 </context>
 <context>

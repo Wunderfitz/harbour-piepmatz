@@ -56,7 +56,8 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 CONFIG += sailfishapp_i18n
 
-TRANSLATIONS += translations/harbour-piepmatz-de.ts \
+TRANSLATIONS += translations/harbour-piepmatz-cs.ts \
+                translations/harbour-piepmatz-de.ts \
                 translations/harbour-piepmatz-es.ts \
                 translations/harbour-piepmatz-fi.ts \
                 translations/harbour-piepmatz-fr.ts \

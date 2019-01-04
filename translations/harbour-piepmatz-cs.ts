@@ -80,10 +80,6 @@
         <translation type="unfinished">Zobrazit Wagnis ID</translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Tento projekt používá twemoji. Copyright 2017 Twitter, Inc. a statní přispěvatelé. Díky za poskytnutí za podmínek MIT Licence (kód) a CC-BY 4.0 (grafika)!</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>Otevři twemoji na GitHub</translation>
     </message>
@@ -98,6 +94,10 @@
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation>Tento produkt používá &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; a je distribuován &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Můžete také &lt;a href=&quot;profile://werkwolf&quot;&gt;najít WerkWolf na Twitteru&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>Tento projekt používá twemoji. Copyright 2018 Twitter, Inc. a statní přispěvatelé. Díky za poskytnutí za podmínek MIT Licence (kód) a CC-BY 4.0 (grafika)!</translation>
     </message>
 </context>
 <context>
