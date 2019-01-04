@@ -57,7 +57,7 @@ void TrendsModel::handleGetIpInfoSuccessful(const QVariantMap &result)
     qDebug() << "TrendsModel::handleGetIpInfoSuccessful";
     this->country = result.value("country").toString();
     QString location = result.value("loc").toString();
-    QStringList locationList = location.split(",");
+    QStringList locationList = location.split(QLatin1Char(','));
     if (locationList.size() == 2) {
         qDebug() << "Getting trends for coordinates lat: " + locationList.value(0) + ", long: " + locationList.value(1);
         twitterApi->placesForTrends(locationList.value(0), locationList.value(1));

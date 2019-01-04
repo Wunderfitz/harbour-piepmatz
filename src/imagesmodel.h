@@ -40,8 +40,8 @@ public:
     Q_INVOKABLE void setSelectedImages(const QVariantList &selectedImages);
     Q_INVOKABLE QVariantList getSelectedImages();
     Q_INVOKABLE void clearModel();
-    Q_INVOKABLE void tweetWithSelectedImages(const QString &text, const QString &placeId = "");
-    Q_INVOKABLE void replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId, const QString &placeId = "");
+    Q_INVOKABLE void tweetWithSelectedImages(const QString &text, const QString &placeId = QString());
+    Q_INVOKABLE void replyToTweetWithSelectedImages(const QString &text, const QString &replyToStatusId, const QString &placeId = QString());
     Q_INVOKABLE bool isTweetWithImagesInProgress();
     Q_INVOKABLE void setImageDescription(const QString &fileName, const QString &description);
     Q_INVOKABLE QString getImageDescription(const QString &fileName);
