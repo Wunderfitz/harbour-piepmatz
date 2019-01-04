@@ -83,7 +83,7 @@ CoverBackground {
 
     Image {
         id: backgroundImage
-        source: "../../images/" + accountModel.getImagePath() + "background.png"
+        source: "../../images/" + accountModel.getImagePath() + "background" + ( Theme.colorScheme ? "-black" : "" ) + ".png"
         anchors {
             verticalCenter: parent.verticalCenter
 
