@@ -90,7 +90,7 @@ void ImagesModel::processUploadCompleted()
         QString mediaIds;
         while (uploadedImagesIterator.hasNext()) {
             if (!mediaIds.isEmpty()) {
-                mediaIds += ",";
+                mediaIds += QLatin1Char(',');
             }
             mediaIds += uploadedImagesIterator.next().value().value("media_id_string").toString();
         }
@@ -150,7 +150,7 @@ void ImagesModel::setImageDescription(const QString &fileName, const QString &de
 
 QString ImagesModel::getImageDescription(const QString &fileName)
 {
-    return this->imageDescriptions.value(fileName, "");
+    return this->imageDescriptions.value(fileName, QString());
 }
 
 void ImagesModel::handleSearchFinished()
@@ -193,7 +193,7 @@ void ImagesModel::handleImageUploadSuccessful(const QString &fileName, const QVa
     uploadedImages.insert(fileName, result);
     QString originalFile = imageProcessor->getFileMapping(fileName);
     if (this->imageDescriptions.contains(originalFile)) {
-        twitterApi->uploadImageDescription(mediaId, this->imageDescriptions.value(originalFile, ""));
+        twitterApi->uploadImageDescription(mediaId, this->imageDescriptions.value(originalFile, QString()));
     }
     this->processUploadCompleted();
 }

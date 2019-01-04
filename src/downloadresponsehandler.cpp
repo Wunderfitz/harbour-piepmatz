@@ -50,7 +50,7 @@ void DownloadResponseHandler::handleDownloadFinished()
         return;
     }
 
-    QString filePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + this->fileName;
+    QString filePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + QLatin1Char('/') + this->fileName;
     QFile downloadedFile(filePath);
     if (downloadedFile.open(QIODevice::WriteOnly)) {
         qDebug() << "Writing downloaded file to " + downloadedFile.fileName();

@@ -59,7 +59,7 @@ void TimelineModel::loadMore()
 {
     qDebug() << "TimelineModel::loadMore";
     emit homeTimelineStartUpdate();
-    QString maxId = "";
+    QString maxId;
     if (!timelineTweets.isEmpty()) {
         QVariantMap lastItem = timelineTweets.last().toMap();
         maxId = lastItem.value("id_str").toString();
