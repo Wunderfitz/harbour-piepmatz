@@ -38,7 +38,7 @@ AccountModel::AccountModel()
     , o1(new O1Twitter(this))
     , manager(new QNetworkAccessManager(this))
     , locationInformation(new LocationInformation(this))
-    , wagnis(new Wagnis(manager, "harbour-piepmatz", "1.3", this))
+    , wagnis(new Wagnis(manager, "harbour-piepmatz", "1.4", this))
     , settings("harbour-piepmatz", "settings")
 {
     obtainEncryptionKey();

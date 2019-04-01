@@ -71,7 +71,8 @@ TRANSLATIONS += translations/harbour-piepmatz-cs.ts \
                 translations/harbour-piepmatz-ro.ts \
                 translations/harbour-piepmatz-ru.ts \
                 translations/harbour-piepmatz-sl.ts \
-                translations/harbour-piepmatz-sv.ts
+                translations/harbour-piepmatz-sv.ts \
+                translations/harbour-piepmatz-zh_cn.ts
 
 gui.files = qml
 gui.path = /usr/share/$${TARGET}
@@ -122,13 +123,5 @@ HEADERS += \
     src/imagemetadataresponsehandler.h
 
 DISTFILES += \
-    qml/pages/VideoPage.qml \
-    qml/pages/ListTimelinePage.qml \
-    qml/pages/ListMembersPage.qml \
-    qml/pages/SettingsPage.qml \
-    qml/pages/TweetConversationPage.qml \
-    qml/components/NotificationsButton.qml \
-    qml/components/MessagesButton.qml \
-    qml/components/SearchButton.qml \
-    qml/components/ListsButton.qml \
-    qml/components/ProfileButton.qml
+    qml/pages/*.qml \
+    qml/components/*.qml

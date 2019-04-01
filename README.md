@@ -49,7 +49,8 @@ This project uses
 - ipinfo.io to determine your location.
 
 Piepmatz was translated to several languages. Thanks to all contributors!
-- Czech: [Jiri Hubacek](https://github.com/qeef)
+- Chinese: [dashinfantry](https://github.com/dashinfantry)
+- Czech: [Jiri Hubacek](https://github.com/qeef), [Jiri Hubacek](https://github.com/qeef)
 - Dutch: [Heimen Stoffels](https://www.transifex.com/user/profile/Vistaus/), [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
 - Finnish: [Ari Järviö](https://www.transifex.com/user/profile/ari_jarvio/) and [Termitebug](https://www.transifex.com/user/profile/Termitebug/)
 - French: [Alain Devarieux](https://www.transifex.com/user/profile/aldevar/), [lutinotmalin](https://www.transifex.com/user/profile/lutinotmalin/), [Sagittarii](https://www.transifex.com/user/profile/Sagittarii/) and [Quent-in](https://github.com/Quent-in)
