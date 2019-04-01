@@ -48,6 +48,7 @@ void ImagesSearchWorker::performSearch()
     availableImages.clear();
     QStringList supportedImageTypes;
     supportedImageTypes.append("*.jpg");
+    supportedImageTypes.append("*.jpeg");
     supportedImageTypes.append("*.gif");
     supportedImageTypes.append("*.png");
     QDirIterator picturesDirectoryIterator(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation), supportedImageTypes, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);
