@@ -22,6 +22,7 @@
 #include "imagemetadataresponsehandler.h"
 #include "downloadresponsehandler.h"
 #include "tweetconversationhandler.h"
+#include "contentextractor.h"
 #include "QGumboParser/qgumbodocument.h"
 #include "QGumboParser/qgumbonode.h"
 #include <QBuffer>
@@ -2151,6 +2152,13 @@ void TwitterApi::handleGetOpenGraphFinished()
     QRegExp titleRegex("\\<meta\\s+property\\=\\\"og\\:title\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
     if (titleRegex.indexIn(resultDocument) != -1) {
         openGraphData.insert("title", titleRegex.cap(1));
+    }
+
+    if (requestAddress == "blubberlutsch.com") {
+        QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
+        QGumboNode root = parsedResult.rootNode();
+
+        ContentExtractor contentExtractor(this, &root);
     }
 
     if (openGraphData.isEmpty()) {

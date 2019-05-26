@@ -42,7 +42,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/membershiplistsmodel.cpp \
     src/tweetconversationhandler.cpp \
     src/savedsearchesmodel.cpp \
-    src/imagemetadataresponsehandler.cpp
+    src/imagemetadataresponsehandler.cpp \
+    src/contentextractor.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -120,7 +121,8 @@ HEADERS += \
     src/membershiplistsmodel.h \
     src/tweetconversationhandler.h \
     src/savedsearchesmodel.h \
-    src/imagemetadataresponsehandler.h
+    src/imagemetadataresponsehandler.h \
+    src/contentextractor.h
 
 DISTFILES += \
     qml/pages/*.qml \
