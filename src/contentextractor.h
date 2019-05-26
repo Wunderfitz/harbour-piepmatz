@@ -22,6 +22,7 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QVariantMap>
 
 #include "QGumboParser/qgumbonode.h"
 
@@ -31,12 +32,21 @@ class ContentExtractor : public QObject
 public:
     explicit ContentExtractor(QObject *parent = nullptr, QGumboNode *rootNode = nullptr);
 
+    QVariantMap parse();
+
 signals:
 
 public slots:
 
 private:
     QGumboNode *rootNode;
+    char _flags;
+    int _maxElemsToParse;
+    int _nbTopCandidates;
+    int _charThreshold;
+    QStringList _classesToPreserve;
+
+    QVariantMap getArticleMetadata();
 
 };
 

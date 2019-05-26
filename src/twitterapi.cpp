@@ -2154,13 +2154,6 @@ void TwitterApi::handleGetOpenGraphFinished()
         openGraphData.insert("title", titleRegex.cap(1));
     }
 
-    if (requestAddress == "blubberlutsch.com") {
-        QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
-        QGumboNode root = parsedResult.rootNode();
-
-        ContentExtractor contentExtractor(this, &root);
-    }
-
     if (openGraphData.isEmpty()) {
         emit getOpenGraphError(requestAddress + " does not contain Open Graph data");
     } else {
@@ -2210,6 +2203,12 @@ void TwitterApi::handleGetSingleTweetFinished()
     QString resultDocument(reply->readAll());
     QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
     QGumboNode root = parsedResult.rootNode();
+
+    // === DEBUG ===
+    ContentExtractor contentExtractor(this, &root);
+    contentExtractor.parse();
+    // === DEBUG ===
+
 
     QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
     QVariantList relatedTweets;
