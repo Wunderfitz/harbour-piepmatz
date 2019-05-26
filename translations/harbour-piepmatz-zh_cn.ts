@@ -92,11 +92,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf Oü&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -603,7 +603,7 @@
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>注册失败。请确保你的设备已连接到网络, 然后点击 "重试？如果几次尝试注册仍不工作, 给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
+        <translation>注册失败。请确保你的设备已连接到网络, 然后点击 &quot;重试？如果几次尝试注册仍不工作, 给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -912,7 +912,7 @@
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
-        <translation>复制网址到剪贴板/translation>
+        <translation>复制网址到剪贴板</translation>
     </message>
     <message>
         <source>Show Thread</source>

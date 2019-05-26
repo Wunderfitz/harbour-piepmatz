@@ -92,13 +92,16 @@ ICONPATH = /usr/share/icons/hicolor
 128.png.path = $${ICONPATH}/128x128/apps/
 128.png.files += icons/128x128/harbour-piepmatz.png
 
+172.png.path = $${ICONPATH}/172x172/apps/
+172.png.files += icons/172x172/harbour-piepmatz.png
+
 256.png.path = $${ICONPATH}/256x256/apps/
 256.png.files += icons/256x256/harbour-piepmatz.png
 
 piepmatz.desktop.path = /usr/share/applications/
 piepmatz.desktop.files = harbour-piepmatz.desktop
 
-INSTALLS += 86.png 108.png 128.png 256.png \
+INSTALLS += 86.png 108.png 128.png 172.png 256.png \
             piepmatz.desktop gui images
 
 HEADERS += \
