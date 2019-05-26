@@ -47,6 +47,7 @@ private:
     QStringList _classesToPreserve;
 
     QVariantMap getArticleMetadata();
+    QString getArticleTitle();
 
 };
 

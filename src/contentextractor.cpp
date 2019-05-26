@@ -98,6 +98,11 @@ QVariantMap ContentExtractor::parse()
 
     QVariantMap metadata = this->getArticleMetadata();
 
+    contentMap.insert("title", metadata.value("title"));
+    contentMap.insert("byline", metadata.value("byline"));
+    contentMap.insert("excerpt", metadata.value("excerpt"));
+    contentMap.insert("siteName", metadata.value("siteName"));
+
     return contentMap;
 }
 
@@ -146,6 +151,10 @@ QVariantMap ContentExtractor::getArticleMetadata()
         if (values.contains("title")) { articleMetadata.insert("title", values.value("title")); }
         if (values.contains("twitter:title")) { articleMetadata.insert("title", values.value("twitter:title")); }
 
+        if (!articleMetadata.contains("title")) {
+            articleMetadata.insert("title", getArticleTitle());
+        }
+
         if (values.contains("dc:creator")) { articleMetadata.insert("byline", values.value("dc:creator")); }
         if (values.contains("dcterm:creator")) { articleMetadata.insert("byline", values.value("dcterm:creator")); }
         if (values.contains("author")) { articleMetadata.insert("byline", values.value("author")); }
@@ -165,4 +174,19 @@ QVariantMap ContentExtractor::getArticleMetadata()
     qDebug() << "[ContentExtractor] Article Metadata: " << articleMetadata;
 
     return articleMetadata;
+}
+
+QString ContentExtractor::getArticleTitle()
+{
+    QString articleTitle;
+
+    QGumboNodes titleNodes = this->rootNode->getElementsByTagName(HtmlTag::TITLE);
+    for (QGumboNode &titleNode : titleNodes) {
+        articleTitle = titleNode.innerText().trimmed();
+        break;
+    }
+
+    // Ommitting the rest for now - splitting the title on demand... Well, not important for now.
+
+    return articleTitle;
 }
