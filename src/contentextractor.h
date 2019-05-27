@@ -22,8 +22,10 @@
 
 #include <QObject>
 #include <QStringList>
+#include <QList>
 #include <QVariantMap>
 
+#include "QGumboParser/HtmlTag.h"
 #include "QGumboParser/qgumbonode.h"
 
 class ContentExtractor : public QObject
@@ -48,6 +50,7 @@ private:
 
     QVariantMap getArticleMetadata();
     QString getArticleTitle();
+    QString getArticleContent();
 
 };
 

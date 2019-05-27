@@ -134,6 +134,22 @@ QGumboNodes QGumboNode::getElementsByClassName(const QString& name) const
     return nodes;
 }
 
+QGumboNodes QGumboNode::getAllElementsForExtractor() const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNodes nodes;
+
+    auto functor = [&nodes](GumboNode* node) {
+        qDebug() << "Current Tag: " << node->v.element.tag;
+        return false;
+    };
+
+    iterateTree(ptr_, functor);
+
+    return nodes;
+}
+
 QGumboNodes QGumboNode::childNodes() const
 {
     Q_ASSERT(ptr_);

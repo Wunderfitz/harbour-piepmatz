@@ -32,6 +32,7 @@ public:
     QGumboNodes getElementById(const QString&) const;
     QGumboNodes getElementsByTagName(HtmlTag) const;
     QGumboNodes getElementsByClassName(const QString&) const;
+    QGumboNodes getAllElementsForExtractor() const;
     QGumboNodes childNodes() const;
     QGumboNodes children() const;
 

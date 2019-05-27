@@ -38,7 +38,7 @@ const int DEFAULT_MAX_ELEMS_TO_PARSE = 0;
 const int DEFAULT_N_TOP_CANDIDATES = 5;
 
 // Element tags to score by default.
-const QStringList DEFAULT_TAGS_TO_SCORE = QStringList() << "SECTION" << "H2" << "H3" << "H4" << "H5" << "H6" << "P" << "TD" << "PRE";
+const QList<HtmlTag> DEFAULT_TAGS_TO_SCORE = QList<HtmlTag>() << HtmlTag::SECTION << HtmlTag::H2 << HtmlTag::H3 << HtmlTag::H4 << HtmlTag::H5 << HtmlTag::H6 << HtmlTag::P << HtmlTag::TD << HtmlTag::PRE;
 
 // The default number of chars an article must have in order to return a result
 const int DEFAULT_CHAR_THRESHOLD = 500;
@@ -57,15 +57,15 @@ const QRegularExpression REGEXP_PREV_LINK = QRegularExpression("/(prev|earl|old|
 const QRegularExpression REGEXP_WHITESPACE = QRegularExpression("/^\\s*$/");
 const QRegularExpression REGEXP_HAS_CONTENT = QRegularExpression("/\\S$/");
 
-const QStringList DIV_TO_P_ELEMS = QStringList() << "A" << "BLOCKQUOTE" << "DL" << "DIV" << "IMG" << "OL" << "P" << "PRE" << "TABLE" << "UL" << "SELECT";
-const QStringList ALTER_TO_DIV_EXCEPTIONS = QStringList() << "DIV" << "ARTICLE" << "SECTION" << "P";
+const QList<HtmlTag> DIV_TO_P_ELEMS = QList<HtmlTag>() << HtmlTag::A << HtmlTag::BLOCKQUOTE << HtmlTag::DL << HtmlTag::DIV << HtmlTag::IMG << HtmlTag::OL << HtmlTag::P << HtmlTag::PRE << HtmlTag::TABLE << HtmlTag::UL << HtmlTag::SELECT;
+const QList<HtmlTag> ALTER_TO_DIV_EXCEPTIONS = QList<HtmlTag>() << HtmlTag::DIV << HtmlTag::ARTICLE << HtmlTag::SECTION << HtmlTag::P;
 const QStringList PRESENTATIONAL_ATTRIBUTES = QStringList() << "align" << "background" << "bgcolor" << "border" << "cellpadding" << "cellspacing" << "frame" << "hspace" << "rules" << "style" << "valign" << "vspace";
-const QStringList DEPRECATED_SIZE_ATTRIBUTE_ELEMS = QStringList() << "TABLE" << "TH" << "TD" << "HR" << "PRE";
-const QStringList PHRASING_ELEMS = QStringList() << "ABBR" << "AUDIO" << "B" << "BDO" << "BR" << "BUTTON" << "CITE" << "CODE" << "DATA" <<
-                                                    "DATALIST" << "DFN" << "EM" << "EMBED" << "I" << "IMG" << "INPUT" << "KBD" << "LABEL" <<
-                                                    "MARK" << "MATH" << "METER" << "NOSCRIPT" << "OBJECT" << "OUTPUT" << "PROGRESS" << "Q" <<
-                                                    "RUBY" << "SAMP" << "SCRIPT" << "SELECT" << "SMALL" << "SPAN" << "STRONG" << "SUB" <<
-                                                    "SUP" << "TEXTAREA" << "TIME" << "VAR" << "WBR";
+const QList<HtmlTag> DEPRECATED_SIZE_ATTRIBUTE_ELEMS = QList<HtmlTag>() << HtmlTag::TABLE << HtmlTag::TH << HtmlTag::TD << HtmlTag::HR << HtmlTag::PRE;
+const QList<HtmlTag> PHRASING_ELEMS = QList<HtmlTag>() << HtmlTag::ABBR << HtmlTag::AUDIO << HtmlTag::B << HtmlTag::BDO << HtmlTag::BR << HtmlTag::BUTTON << HtmlTag::CITE << HtmlTag::CODE << HtmlTag::DATA <<
+                                                          HtmlTag::DATALIST << HtmlTag::DFN << HtmlTag::EM << HtmlTag::EMBED << HtmlTag::I << HtmlTag::IMG << HtmlTag::INPUT << HtmlTag::KBD << HtmlTag::LABEL <<
+                                                          HtmlTag::MARK << HtmlTag::MATH << HtmlTag::METER << HtmlTag::NOSCRIPT << HtmlTag::OBJECT << HtmlTag::OUTPUT << HtmlTag::PROGRESS << HtmlTag::Q <<
+                                                          HtmlTag::RUBY << HtmlTag::SAMP << HtmlTag::SCRIPT << HtmlTag::SELECT << HtmlTag::SMALL << HtmlTag::SPAN << HtmlTag::STRONG << HtmlTag::SUB <<
+                                                          HtmlTag::SUP << HtmlTag::TEXTAREA << HtmlTag::TIME << HtmlTag::VAR << HtmlTag::WBR;
 const QStringList CLASSES_TO_PRESERVE = QStringList() << "page";
 
 ContentExtractor::ContentExtractor(QObject *parent, QGumboNode *rootNode) : QObject(parent)
@@ -97,11 +97,13 @@ QVariantMap ContentExtractor::parse()
     }
 
     QVariantMap metadata = this->getArticleMetadata();
+    QString content = this->getArticleContent();
 
     contentMap.insert("title", metadata.value("title"));
     contentMap.insert("byline", metadata.value("byline"));
     contentMap.insert("excerpt", metadata.value("excerpt"));
     contentMap.insert("siteName", metadata.value("siteName"));
+    contentMap.insert("content", content);
 
     return contentMap;
 }
@@ -178,15 +180,29 @@ QVariantMap ContentExtractor::getArticleMetadata()
 
 QString ContentExtractor::getArticleTitle()
 {
-    QString articleTitle;
+    qDebug() << "ContentExtractor::getArticleMetadata";
 
+    QString articleTitle;
     QGumboNodes titleNodes = this->rootNode->getElementsByTagName(HtmlTag::TITLE);
     for (QGumboNode &titleNode : titleNodes) {
         articleTitle = titleNode.innerText().trimmed();
         break;
     }
-
     // Ommitting the rest for now - splitting the title on demand... Well, not important for now.
-
     return articleTitle;
+}
+
+QString ContentExtractor::getArticleContent()
+{
+    qDebug() << "ContentExtractor::getArticleContent";
+    QString articleContent;
+
+    this->rootNode->getAllElementsForExtractor();
+
+    // If we haven't found the content, we continue with the body content...
+    QGumboNodes bodyTags = this->rootNode->getElementsByTagName(HtmlTag::BODY);
+    for (QGumboNode bodyTag : bodyTags) {
+        articleContent = bodyTag.innerText();
+    }
+    return articleContent;
 }
