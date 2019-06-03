@@ -10,6 +10,7 @@ namespace {
 
 const char* const ID_ATTRIBUTE 		= u8"id";
 const char* const CLASS_ATTRIBUTE 	= u8"class";
+const char* const STYLE_ATTRIBUTE 	= u8"style";
 
 template<typename TFunctor>
 bool iterateTree(GumboNode* node, TFunctor& functor)
@@ -56,6 +57,38 @@ QGumboNode::QGumboNode(GumboNode* node) :
 {
     if (!ptr_)
         throw std::runtime_error("can't create Node from nullptr");
+}
+
+bool QGumboNode::isProbablyVisible() const
+{
+    if (!this->getAttribute("hidden").isEmpty()) {
+        return false;
+    }
+
+    QVariantMap myStyles = this->getStyles();
+    if (!myStyles.isEmpty()) {
+        if (myStyles.value("display") == "none") {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+QVariantMap QGumboNode::getStyles() const
+{
+    QVariantMap myStyles;
+    QString rawStyles = getAttribute(STYLE_ATTRIBUTE);
+    QStringList rawStyleList = rawStyles.split(';');
+    QListIterator<QString> rawStyleListIterator(rawStyleList);
+    while (rawStyleListIterator.hasNext()) {
+        QString nextStyle = rawStyleListIterator.next();
+        QStringList singleStyle = nextStyle.split(':');
+        if (singleStyle.size() == 2) {
+            myStyles.insert(singleStyle.at(0).trimmed(), singleStyle.at(1).trimmed());
+        }
+    }
+    return myStyles;
 }
 
 QGumboNodes QGumboNode::getElementById(const QString& nodeId) const
@@ -142,7 +175,14 @@ QGumboNodes QGumboNode::getAllElementsForExtractor() const
 
     auto functor = [&nodes](GumboNode* node) {
         qDebug() << "Current Tag: " << node->v.element.tag;
-        return false;
+
+        QGumboNode myNode(node);
+        // Remove all invisible nodes...
+        if (!myNode.isProbablyVisible()) {
+            return false;
+        }
+
+        return true;
     };
 
     iterateTree(ptr_, functor);

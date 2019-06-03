@@ -5,6 +5,7 @@
 #include <functional>
 #include "gumbo-parser/src/gumbo.h"
 #include "HtmlTag.h"
+#include <QVariantList>
 
 class QString;
 class QGumboNode;
@@ -41,6 +42,8 @@ public:
 
     bool isElement() const;
     bool hasAttribute(const QString&) const;
+    bool isProbablyVisible() const;
+    QVariantMap getStyles() const;
 
     QString innerText() const;
     QString outerHtml() const;
