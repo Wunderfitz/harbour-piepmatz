@@ -184,6 +184,15 @@ QGumboNodes QGumboNode::children() const
     return nodes;
 }
 
+QGumboNode QGumboNode::parent() const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNode myParent(ptr_->parent);
+
+    return myParent;
+}
+
 int QGumboNode::childElementCount() const
 {
     Q_ASSERT(ptr_);

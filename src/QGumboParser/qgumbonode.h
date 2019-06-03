@@ -35,6 +35,7 @@ public:
     QGumboNodes getAllElementsForExtractor() const;
     QGumboNodes childNodes() const;
     QGumboNodes children() const;
+    QGumboNode  parent() const;
 
     int childElementCount() const;
 
