@@ -42,12 +42,16 @@ public:
 
     bool isElement() const;
     bool hasAttribute(const QString&) const;
+    bool hasParent() const;
+    bool hasAncestorTag(const HtmlTag &htmlTag, const int &maxDepth = 3) const;
     bool isProbablyVisible() const;
+    bool containsContent() const;
     QVariantMap getStyles() const;
 
     QString innerText() const;
     QString outerHtml() const;
     QString getAttribute(const QString&) const;
+    QString getByLine(QString matchString) const;
 
     QGumboAttributes allAttributes() const;
 

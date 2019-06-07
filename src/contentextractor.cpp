@@ -43,20 +43,6 @@ const QList<HtmlTag> DEFAULT_TAGS_TO_SCORE = QList<HtmlTag>() << HtmlTag::SECTIO
 // The default number of chars an article must have in order to return a result
 const int DEFAULT_CHAR_THRESHOLD = 500;
 
-const QRegularExpression REGEXP_UNLIKELY_CANDIDATES = QRegularExpression("/-ad-|ai2html|banner|breadcrumbs|combx|comment|community|cover-wrap|disqus|extra|foot|gdpr|header|legends|menu|related|remark|replies|rss|shoutbox|sidebar|skyscraper|social|sponsor|supplemental|ad-break|agegate|pagination|pager|popup|yom-remote/i");
-const QRegularExpression REGEXP_OK_MAYBE_ITS_A_CANDIDATE = QRegularExpression("/and|article|body|column|main|shadow/i");
-const QRegularExpression REGEXP_POSITIVE = QRegularExpression("/article|body|content|entry|hentry|h-entry|main|page|pagination|post|text|blog|story/i");
-const QRegularExpression REGEXP_NEGATIVE = QRegularExpression("/hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|foot|footer|footnote|gdpr|masthead|media|meta|outbrain|promo|related|scroll|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|tool|widget/i");
-const QRegularExpression REGEXP_EXTRANEOUS = QRegularExpression("/print|archive|comment|discuss|e[\\-]?mail|share|reply|all|login|sign|single|utility/i");
-const QRegularExpression REGEXP_BYLINE = QRegularExpression("/byline|author|dateline|writtenby|p-author/i");
-const QRegularExpression REGEXP_REPLACE_FONTS = QRegularExpression("/<(\\/?)font[^>]*>/gi");
-const QRegularExpression REGEXP_NORMALIZE = QRegularExpression("/\\s{2,}/g");
-const QRegularExpression REGEXP_VIDEOS = QRegularExpression("/\\/\\/(www\\.)?((dailymotion|youtube|youtube-nocookie|player\\.vimeo|v\\.qq)\\.com|(archive|upload\\.wikimedia)\\.org|player\\.twitch\\.tv)/i");
-const QRegularExpression REGEXP_NEXT_LINK = QRegularExpression("/(next|weiter|continue|>([^\\|]|$)|»([^\\|]|$))/i");
-const QRegularExpression REGEXP_PREV_LINK = QRegularExpression("/(prev|earl|old|new|<|«)/i");
-const QRegularExpression REGEXP_WHITESPACE = QRegularExpression("/^\\s*$/");
-const QRegularExpression REGEXP_HAS_CONTENT = QRegularExpression("/\\S$/");
-
 const QList<HtmlTag> DIV_TO_P_ELEMS = QList<HtmlTag>() << HtmlTag::A << HtmlTag::BLOCKQUOTE << HtmlTag::DL << HtmlTag::DIV << HtmlTag::IMG << HtmlTag::OL << HtmlTag::P << HtmlTag::PRE << HtmlTag::TABLE << HtmlTag::UL << HtmlTag::SELECT;
 const QList<HtmlTag> ALTER_TO_DIV_EXCEPTIONS = QList<HtmlTag>() << HtmlTag::DIV << HtmlTag::ARTICLE << HtmlTag::SECTION << HtmlTag::P;
 const QStringList PRESENTATIONAL_ATTRIBUTES = QStringList() << "align" << "background" << "bgcolor" << "border" << "cellpadding" << "cellspacing" << "frame" << "hspace" << "rules" << "style" << "valign" << "vspace";
