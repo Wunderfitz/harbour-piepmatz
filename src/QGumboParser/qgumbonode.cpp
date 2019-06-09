@@ -15,8 +15,6 @@ const char* const STYLE_ATTRIBUTE 	= u8"style";
 
 const QRegularExpression REGEXP_UNLIKELY_CANDIDATES = QRegularExpression("/-ad-|ai2html|banner|breadcrumbs|combx|comment|community|cover-wrap|disqus|extra|foot|gdpr|header|legends|menu|related|remark|replies|rss|shoutbox|sidebar|skyscraper|social|sponsor|supplemental|ad-break|agegate|pagination|pager|popup|yom-remote/i");
 const QRegularExpression REGEXP_OK_MAYBE_ITS_A_CANDIDATE = QRegularExpression("/and|article|body|column|main|shadow/i");
-const QRegularExpression REGEXP_POSITIVE = QRegularExpression("/article|body|content|entry|hentry|h-entry|main|page|pagination|post|text|blog|story/i");
-const QRegularExpression REGEXP_NEGATIVE = QRegularExpression("/hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|foot|footer|footnote|gdpr|masthead|media|meta|outbrain|promo|related|scroll|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|tool|widget/i");
 const QRegularExpression REGEXP_EXTRANEOUS = QRegularExpression("/print|archive|comment|discuss|e[\\-]?mail|share|reply|all|login|sign|single|utility/i");
 const QRegularExpression REGEXP_BYLINE = QRegularExpression("/byline|author|dateline|writtenby|p-author/i");
 const QRegularExpression REGEXP_REPLACE_FONTS = QRegularExpression("/<(\\/?)font[^>]*>/gi");
@@ -512,6 +510,11 @@ void QGumboNode::forEach(std::function<void(const QGumboNode&)> func) const
     };
 
     iterateTree(ptr_, functor);
+}
+
+bool QGumboNode::operator ==(const QGumboNode &other)
+{
+    return this->ptr_ == other.ptr_;
 }
 
 QGumboNode::operator bool() const

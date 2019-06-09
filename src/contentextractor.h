@@ -51,6 +51,9 @@ private:
     QVariantMap getArticleMetadata();
     QString getArticleTitle();
     QString getArticleContent();
+    int getInitialContentScore(const QGumboNode &node);
+    int getClassWeight(const QGumboNode &node);
+    float getLinkDensity(const QGumboNode &node);
 
 };
 

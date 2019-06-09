@@ -6,6 +6,7 @@
 #include "gumbo-parser/src/gumbo.h"
 #include "HtmlTag.h"
 #include <QVariantList>
+#include <QVariantMap>
 
 class QString;
 class QGumboNode;
@@ -59,6 +60,7 @@ public:
     void forEach(std::function<void(const QGumboNode&)>) const;
 
     explicit operator bool() const;
+    bool operator ==(const QGumboNode &other);
 
 private:
     QGumboNode();
@@ -67,6 +69,8 @@ private:
     friend class QGumboDocument;
 private:
     GumboNode* ptr_;
+    QVariantMap additionalAttributes_;
+
 };
 
 #endif // QGUMBONODE_H

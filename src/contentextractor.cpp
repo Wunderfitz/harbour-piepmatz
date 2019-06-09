@@ -21,6 +21,7 @@
 
 #include <QRegularExpression>
 #include <QDebug>
+#include <QtMath>
 
 const char FLAG_STRIP_UNLIKELYS = 0x1;
 const char FLAG_WEIGHT_CLASSES =  0x2;
@@ -39,6 +40,9 @@ const int DEFAULT_N_TOP_CANDIDATES = 5;
 
 // The default number of chars an article must have in order to return a result
 const int DEFAULT_CHAR_THRESHOLD = 500;
+
+const QRegularExpression REGEXP_POSITIVE = QRegularExpression("/article|body|content|entry|hentry|h-entry|main|page|pagination|post|text|blog|story/i");
+const QRegularExpression REGEXP_NEGATIVE = QRegularExpression("/hidden|^hid$| hid$| hid |^hid |banner|combx|comment|com-|contact|foot|footer|footnote|gdpr|masthead|media|meta|outbrain|promo|related|scroll|share|shoutbox|sidebar|skyscraper|sponsor|shopping|tags|tool|widget/i");
 
 const QList<HtmlTag> DIV_TO_P_ELEMS = QList<HtmlTag>() << HtmlTag::A << HtmlTag::BLOCKQUOTE << HtmlTag::DL << HtmlTag::DIV << HtmlTag::IMG << HtmlTag::OL << HtmlTag::P << HtmlTag::PRE << HtmlTag::TABLE << HtmlTag::UL << HtmlTag::SELECT;
 const QList<HtmlTag> ALTER_TO_DIV_EXCEPTIONS = QList<HtmlTag>() << HtmlTag::DIV << HtmlTag::ARTICLE << HtmlTag::SECTION << HtmlTag::P;
@@ -180,7 +184,53 @@ QString ContentExtractor::getArticleContent()
     qDebug() << "ContentExtractor::getArticleContent";
     QString articleContent;
 
-    this->rootNode->getAllElementsForExtractor();
+    // Score all candidate elements and assign value to parent. According to the officical documentation:
+    // A score is determined by things like number of commas, class names, etc. Maybe eventually link density.
+    QGumboNodes nodesForExtractor = this->rootNode->getAllElementsForExtractor();
+    std::vector<QGumboNode> candidates;
+    for (QGumboNode &nodeForExtractor : nodesForExtractor) {
+        QString normalizedInnerText = nodeForExtractor.innerText(true);
+        if (normalizedInnerText.length() < 25) {
+            continue;
+        }
+        QGumboNodes ancestors = nodeForExtractor.ancestors(3);
+        if (ancestors.size() == 0) {
+            continue;
+        }
+
+        int contentScore = 1;
+        contentScore += normalizedInnerText.split(";").size();
+        contentScore += qMin(qFloor(normalizedInnerText.size() / 100), 3);
+
+        int ancestorLevel = 0;
+        for (QGumboNode ancestor : ancestors) {
+            int scoreDivider = 1;
+            if (ancestorLevel == 1) {
+                scoreDivider = 2;
+            }
+            if (ancestorLevel >= 2) {
+                scoreDivider = ancestorLevel * 3;
+            }
+
+            QGumboNode actualAncestor = ancestor;
+            // TODO: Find a proper way how to deal with QGumboNodes with the same GumboNode within
+            // A container class, std:set, something completely different?
+//            int indexOtherAncestor = candidates.indexOf(actualAncestor);
+//            if (indexOtherAncestor != -1) {
+//                nodeContainer = candidates.value(indexOtherAncestor);
+//            }
+//            int ancestorContentScore = nodeContainer.additionalAttributes.value("contentScore").toInt();
+//            ancestorContentScore += contentScore / scoreDivider;
+//            nodeContainer.additionalAttributes.insert("contentScore", ancestorContentScore);
+//            ancestorLevel++;
+//            if (indexOtherAncestor != -1) {
+//                candidates.replace(indexOtherAncestor, nodeContainer);
+//            } else {
+//                candidates.append(nodeContainer);
+//            }
+        }
+
+    }
 
     // If we haven't found the content, we continue with the body content...
     QGumboNodes bodyTags = this->rootNode->getElementsByTagName(HtmlTag::BODY);
@@ -188,4 +238,89 @@ QString ContentExtractor::getArticleContent()
         articleContent = bodyTag.innerText();
     }
     return articleContent;
+}
+
+int ContentExtractor::getInitialContentScore(const QGumboNode &node)
+{
+    int initialContentScore = 0;
+    switch (node.tag()) {
+    case HtmlTag::DIV:
+        initialContentScore += 5;
+        break;
+    case HtmlTag::PRE:
+    case HtmlTag::TD:
+    case HtmlTag::BLOCKQUOTE:
+        initialContentScore += 3;
+        break;
+    case HtmlTag::ADDRESS:
+    case HtmlTag::OL:
+    case HtmlTag::UL:
+    case HtmlTag::DL:
+    case HtmlTag::DD:
+    case HtmlTag::DT:
+    case HtmlTag::LI:
+    case HtmlTag::FORM:
+        initialContentScore -= 3;
+        break;
+    case HtmlTag::H1:
+    case HtmlTag::H2:
+    case HtmlTag::H3:
+    case HtmlTag::H4:
+    case HtmlTag::H5:
+    case HtmlTag::H6:
+    case HtmlTag::HEADER:
+    case HtmlTag::TH:
+        initialContentScore -= 5;
+        break;
+    default:
+        // Nothing at this time...
+        initialContentScore += 0;
+        break;
+    }
+
+    initialContentScore += getClassWeight(node);
+
+    return initialContentScore;
+}
+
+int ContentExtractor::getClassWeight(const QGumboNode &node)
+{
+    int weight = 0;
+
+    // Look for a special classname
+    QStringList nodeClasses = node.classList();
+    QListIterator<QString> classesIterator(nodeClasses);
+    while (classesIterator.hasNext()) {
+        QString singleClass = classesIterator.next();
+        if (REGEXP_NEGATIVE.match(singleClass).hasMatch()) {
+            weight -= 25;
+        }
+        if (REGEXP_POSITIVE.match(singleClass).hasMatch()) {
+            weight += 25;
+        }
+    }
+    QString nodeId = node.id();
+    if (REGEXP_NEGATIVE.match(nodeId).hasMatch()) {
+        weight -= 25;
+    }
+    if (REGEXP_POSITIVE.match(nodeId).hasMatch()) {
+        weight += 25;
+    }
+
+    return weight;
+}
+
+float ContentExtractor::getLinkDensity(const QGumboNode &node)
+{
+    int textLength = node.innerText(true).size();
+    if (textLength == 0) {
+        return 0;
+    }
+    int linkLength = 0;
+    QGumboNodes linkNodes = node.getElementsByTagName(HtmlTag::A);
+    for (QGumboNode linkNode : linkNodes) {
+        linkLength += linkNode.innerText(true).size();
+    }
+
+    return linkLength / textLength;
 }
