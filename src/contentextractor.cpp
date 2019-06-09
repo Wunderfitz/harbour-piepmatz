@@ -37,9 +37,6 @@ const int DEFAULT_MAX_ELEMS_TO_PARSE = 0;
 // tight the competition is among candidates.
 const int DEFAULT_N_TOP_CANDIDATES = 5;
 
-// Element tags to score by default.
-const QList<HtmlTag> DEFAULT_TAGS_TO_SCORE = QList<HtmlTag>() << HtmlTag::SECTION << HtmlTag::H2 << HtmlTag::H3 << HtmlTag::H4 << HtmlTag::H5 << HtmlTag::H6 << HtmlTag::P << HtmlTag::TD << HtmlTag::PRE;
-
 // The default number of chars an article must have in order to return a result
 const int DEFAULT_CHAR_THRESHOLD = 500;
 

@@ -36,6 +36,7 @@ public:
     QGumboNodes getAllElementsForExtractor() const;
     QGumboNodes childNodes() const;
     QGumboNodes children() const;
+    QGumboNodes ancestors(const int &maxDepth = 0) const;
     QGumboNode  parent() const;
 
     int childElementCount() const;
@@ -48,7 +49,7 @@ public:
     bool containsContent() const;
     QVariantMap getStyles() const;
 
-    QString innerText() const;
+    QString innerText(const bool &normalize = false) const;
     QString outerHtml() const;
     QString getAttribute(const QString&) const;
     QString getByLine(QString matchString) const;

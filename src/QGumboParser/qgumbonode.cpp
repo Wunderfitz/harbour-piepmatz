@@ -27,6 +27,9 @@ const QRegularExpression REGEXP_PREV_LINK = QRegularExpression("/(prev|earl|old|
 const QRegularExpression REGEXP_WHITESPACE = QRegularExpression("/^\\s*$/");
 const QRegularExpression REGEXP_HAS_CONTENT = QRegularExpression("/\\S$/");
 
+// Element tags to score by default.
+const QList<HtmlTag> DEFAULT_TAGS_TO_SCORE = QList<HtmlTag>() << HtmlTag::SECTION << HtmlTag::H2 << HtmlTag::H3 << HtmlTag::H4 << HtmlTag::H5 << HtmlTag::H6 << HtmlTag::P << HtmlTag::TD << HtmlTag::PRE;
+
 template<typename TFunctor>
 bool iterateTree(GumboNode* node, TFunctor& functor)
 {
@@ -230,7 +233,11 @@ QGumboNodes QGumboNode::getAllElementsForExtractor() const
             return false;
         }
 
-        return true;
+        if (DEFAULT_TAGS_TO_SCORE.contains(myNode.tag())) {
+            return true;
+        }
+
+        return false;
     };
 
     iterateTree(ptr_, functor);
@@ -272,6 +279,31 @@ QGumboNodes QGumboNode::children() const
     return nodes;
 }
 
+QGumboNodes QGumboNode::ancestors(const int &maxDepth) const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNodes nodes;
+
+    if (!this->hasParent()) {
+        return nodes;
+    }
+    GumboNode *currentNode = ptr_;
+    int currentDepth = 0;
+    while (currentNode->parent != nullptr) {
+        currentDepth++;
+        currentNode = currentNode->parent;
+        if (currentNode->type == GUMBO_NODE_ELEMENT) {
+            nodes.emplace_back(QGumboNode(currentNode));
+        }
+        if (currentDepth == maxDepth) {
+            break;
+        }
+    }
+
+    return nodes;
+}
+
 QGumboNode QGumboNode::parent() const
 {
     Q_ASSERT(ptr_);
@@ -298,7 +330,7 @@ int QGumboNode::childElementCount() const
     return count;
 }
 
-QString QGumboNode::innerText() const
+QString QGumboNode::innerText(const bool &normalize) const
 {
     Q_ASSERT(ptr_);
 
@@ -312,6 +344,10 @@ QString QGumboNode::innerText() const
     };
 
     iterateChildren(ptr_, functor);
+
+    if (normalize) {
+        text = text.trimmed().replace(REGEXP_NORMALIZE, " ");
+    }
 
     return text;
 }
