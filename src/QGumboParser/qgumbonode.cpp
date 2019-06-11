@@ -208,10 +208,12 @@ QGumboNodes QGumboNode::getAllElementsForExtractor() const
 
         // Remove all invisible nodes...
         if (!myNode.isProbablyVisible()) {
+            qDebug() << "Not visible";
             return false;
         }
 
         if (!myNode.getByLine(nodeIdentifier).isEmpty()) {
+            qDebug() << "Byline identified";
             return false;
         }
 
@@ -220,6 +222,7 @@ QGumboNodes QGumboNode::getAllElementsForExtractor() const
                 !myNode.hasAncestorTag(HtmlTag::TABLE) &&
                 myNode.tag() != HtmlTag::BODY &&
                 myNode.tag() != HtmlTag::A) {
+            qDebug() << "Unlikely candidate";
             return false;
         }
 
@@ -228,13 +231,18 @@ QGumboNodes QGumboNode::getAllElementsForExtractor() const
                 myNode.tag() == HtmlTag::H1 || myNode.tag() == HtmlTag::H2 || myNode.tag() == HtmlTag::H3 ||
                 myNode.tag() == HtmlTag::H4 || myNode.tag() == HtmlTag::H5 || myNode.tag() == HtmlTag::H6)
                 && !myNode.containsContent()) {
+            qDebug() << "DIV, SECTION or HEADER without content";
             return false;
         }
 
         if (DEFAULT_TAGS_TO_SCORE.contains(myNode.tag())) {
+            qDebug() << "SUCCESS";
+            qDebug() << myNode.innerText();
+            nodes.emplace_back(myNode);
             return true;
         }
 
+        qDebug() << "Nothing matched, BAD!";
         return false;
     };
 
@@ -348,6 +356,16 @@ QString QGumboNode::innerText(const bool &normalize) const
     }
 
     return text;
+}
+
+QString QGumboNode::hash() const
+{
+    QCryptographicHash myHash(QCryptographicHash::Md5);
+    myHash.addData(this->id().toUtf8());
+    myHash.addData(this->tagName().toUtf8());
+    myHash.addData(this->getAttribute(CLASS_ATTRIBUTE).toUtf8());
+    myHash.addData(this->innerText().toUtf8());
+    return QString(myHash.result().toHex());
 }
 
 QString QGumboNode::outerHtml() const

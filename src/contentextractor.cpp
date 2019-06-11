@@ -187,13 +187,18 @@ QString ContentExtractor::getArticleContent()
     // Score all candidate elements and assign value to parent. According to the officical documentation:
     // A score is determined by things like number of commas, class names, etc. Maybe eventually link density.
     QGumboNodes nodesForExtractor = this->rootNode->getAllElementsForExtractor();
-    std::vector<QGumboNode> candidates;
+    qDebug() << "[Article Content] Elements for extraction: " << nodesForExtractor.size();
+    QGumboNodes candidates;
+    QVariantMap ancestorScores;
     for (QGumboNode &nodeForExtractor : nodesForExtractor) {
         QString normalizedInnerText = nodeForExtractor.innerText(true);
+        qDebug() << "Analyzing: " << normalizedInnerText.left(30) + "...";
+
         if (normalizedInnerText.length() < 25) {
             continue;
         }
         QGumboNodes ancestors = nodeForExtractor.ancestors(3);
+        qDebug() << "Ancestors: " << ancestors.size();
         if (ancestors.size() == 0) {
             continue;
         }
@@ -202,8 +207,11 @@ QString ContentExtractor::getArticleContent()
         contentScore += normalizedInnerText.split(";").size();
         contentScore += qMin(qFloor(normalizedInnerText.size() / 100), 3);
 
+        qDebug() << "Content Score: " << contentScore;
+
         int ancestorLevel = 0;
         for (QGumboNode ancestor : ancestors) {
+            qDebug() << "Ancestor" << ancestorLevel;
             int scoreDivider = 1;
             if (ancestorLevel == 1) {
                 scoreDivider = 2;
@@ -212,24 +220,17 @@ QString ContentExtractor::getArticleContent()
                 scoreDivider = ancestorLevel * 3;
             }
 
-            QGumboNode actualAncestor = ancestor;
-            // TODO: Find a proper way how to deal with QGumboNodes with the same GumboNode within
-            // A container class, std:set, something completely different?
-//            int indexOtherAncestor = candidates.indexOf(actualAncestor);
-//            if (indexOtherAncestor != -1) {
-//                nodeContainer = candidates.value(indexOtherAncestor);
-//            }
-//            int ancestorContentScore = nodeContainer.additionalAttributes.value("contentScore").toInt();
-//            ancestorContentScore += contentScore / scoreDivider;
-//            nodeContainer.additionalAttributes.insert("contentScore", ancestorContentScore);
-//            ancestorLevel++;
-//            if (indexOtherAncestor != -1) {
-//                candidates.replace(indexOtherAncestor, nodeContainer);
-//            } else {
-//                candidates.append(nodeContainer);
-//            }
+            QString ancestorHash = ancestor.hash();
+            int ancestorContentScore = ancestorScores.value(ancestorHash, 0).toInt();
+            ancestorContentScore += contentScore / scoreDivider;
+            ancestorScores.insert(ancestorHash, ancestorContentScore);
+            candidates.emplace_back(ancestor);
+            ancestorLevel++;
         }
+    }
 
+    for (QString key: ancestorScores.keys()) {
+        qDebug() << "MAMPF: " << key << ancestorScores.value(key);
     }
 
     // If we haven't found the content, we continue with the body content...

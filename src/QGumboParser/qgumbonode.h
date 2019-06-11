@@ -7,6 +7,7 @@
 #include "HtmlTag.h"
 #include <QVariantList>
 #include <QVariantMap>
+#include <QCryptographicHash>
 
 class QString;
 class QGumboNode;
@@ -51,6 +52,7 @@ public:
     QVariantMap getStyles() const;
 
     QString innerText(const bool &normalize = false) const;
+    QString hash() const;
     QString outerHtml() const;
     QString getAttribute(const QString&) const;
     QString getByLine(QString matchString) const;
