@@ -179,6 +179,10 @@ QString ContentExtractor::getArticleTitle()
     return articleTitle;
 }
 
+bool scoreLessThan(const QVariant &score1, const QVariant &score2) {
+    return score1.toMap().value("score").toInt() > score2.toMap().value("score").toInt();
+}
+
 QString ContentExtractor::getArticleContent()
 {
     qDebug() << "ContentExtractor::getArticleContent";
@@ -211,7 +215,6 @@ QString ContentExtractor::getArticleContent()
 
         int ancestorLevel = 0;
         for (QGumboNode ancestor : ancestors) {
-            qDebug() << "Ancestor" << ancestorLevel;
             int scoreDivider = 1;
             if (ancestorLevel == 1) {
                 scoreDivider = 2;
@@ -222,15 +225,34 @@ QString ContentExtractor::getArticleContent()
 
             QString ancestorHash = ancestor.hash();
             int ancestorContentScore = ancestorScores.value(ancestorHash, 0).toInt();
+            if (ancestorContentScore == 0) {
+                ancestorContentScore += getInitialContentScore(ancestor);
+            }
             ancestorContentScore += contentScore / scoreDivider;
+            qDebug() << "Node " << ancestorHash << "New score: " << ancestorContentScore << ancestor.tagName();
             ancestorScores.insert(ancestorHash, ancestorContentScore);
             candidates.emplace_back(ancestor);
             ancestorLevel++;
         }
     }
 
+    QVariantList scoresList;
     for (QString key: ancestorScores.keys()) {
-        qDebug() << "MAMPF: " << key << ancestorScores.value(key);
+        QVariantMap singleScore;
+        singleScore.insert("hash", key);
+        singleScore.insert("score", ancestorScores.value(key));
+        scoresList.append(singleScore);
+    }
+    qSort(scoresList.begin(), scoresList.end(), scoreLessThan);
+
+    if (!scoresList.empty()) {
+        QString winnerHash = scoresList.at(0).toMap().value("hash").toString();
+        for (QGumboNode candidate : candidates) {
+            if (candidate.hash() == winnerHash) {
+                qDebug() << "The winner is: " << candidate.tagName() << scoresList.at(0).toMap().value("score").toInt();
+                break;
+            }
+        }
     }
 
     // If we haven't found the content, we continue with the body content...
