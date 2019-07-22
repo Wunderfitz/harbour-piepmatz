@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -22,6 +22,7 @@
 #include "imagemetadataresponsehandler.h"
 #include "downloadresponsehandler.h"
 #include "tweetconversationhandler.h"
+#include "contentextractor.h"
 #include "QGumboParser/qgumbodocument.h"
 #include "QGumboParser/qgumbonode.h"
 #include <QBuffer>
@@ -425,8 +426,9 @@ void TwitterApi::showStatus(const QString &statusId)
 {
     // Very weird, some statusIds contain a query string. Why?
     QString sanitizedStatus = statusId;
-    if (statusId.contains("?")) {
-        sanitizedStatus = statusId.left(statusId.indexOf("?"));
+    int qm = statusId.indexOf(QLatin1Char('?'));
+    if (qm >= 0) {
+        sanitizedStatus = statusId.left(qm);
     }
     qDebug() << "TwitterApi::showStatus" << sanitizedStatus;
     QUrl url = QUrl(API_STATUSES_SHOW);
@@ -618,7 +620,7 @@ void TwitterApi::unfollowUser(const QString &screenName)
 
 void TwitterApi::searchTweets(const QString &query)
 {
-    if (query == "") {
+    if (query.isEmpty()) {
         emit searchTweetsSuccessful(QVariantList());
         return;
     }
@@ -651,7 +653,7 @@ void TwitterApi::searchTweets(const QString &query)
 
 void TwitterApi::searchUsers(const QString &query)
 {
-    if (query == "") {
+    if (query.isEmpty()) {
         emit searchUsersSuccessful(QVariantList());
         return;
     }
@@ -2201,6 +2203,12 @@ void TwitterApi::handleGetSingleTweetFinished()
     QString resultDocument(reply->readAll());
     QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
     QGumboNode root = parsedResult.rootNode();
+
+    // === DEBUG ===
+    ContentExtractor contentExtractor(this, &root);
+    contentExtractor.parse();
+    // === DEBUG ===
+
 
     QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
     QVariantList relatedTweets;

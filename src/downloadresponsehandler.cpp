@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -50,7 +50,7 @@ void DownloadResponseHandler::handleDownloadFinished()
         return;
     }
 
-    QString filePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + "/" + this->fileName;
+    QString filePath = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation) + QLatin1Char('/') + this->fileName;
     QFile downloadedFile(filePath);
     if (downloadedFile.open(QIODevice::WriteOnly)) {
         qDebug() << "Writing downloaded file to " + downloadedFile.fileName();

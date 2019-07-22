@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -48,6 +48,7 @@ void ImagesSearchWorker::performSearch()
     availableImages.clear();
     QStringList supportedImageTypes;
     supportedImageTypes.append("*.jpg");
+    supportedImageTypes.append("*.jpeg");
     supportedImageTypes.append("*.gif");
     supportedImageTypes.append("*.png");
     QDirIterator picturesDirectoryIterator(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation), supportedImageTypes, QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks, QDirIterator::Subdirectories);

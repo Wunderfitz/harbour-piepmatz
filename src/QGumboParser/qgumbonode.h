@@ -5,6 +5,9 @@
 #include <functional>
 #include "gumbo-parser/src/gumbo.h"
 #include "HtmlTag.h"
+#include <QVariantList>
+#include <QVariantMap>
+#include <QCryptographicHash>
 
 class QString;
 class QGumboNode;
@@ -32,23 +35,34 @@ public:
     QGumboNodes getElementById(const QString&) const;
     QGumboNodes getElementsByTagName(HtmlTag) const;
     QGumboNodes getElementsByClassName(const QString&) const;
+    QGumboNodes getAllElementsForExtractor() const;
     QGumboNodes childNodes() const;
     QGumboNodes children() const;
+    QGumboNodes ancestors(const int &maxDepth = 0) const;
+    QGumboNode  parent() const;
 
     int childElementCount() const;
 
     bool isElement() const;
     bool hasAttribute(const QString&) const;
+    bool hasParent() const;
+    bool hasAncestorTag(const HtmlTag &htmlTag, const int &maxDepth = 3) const;
+    bool isProbablyVisible() const;
+    bool containsContent() const;
+    QVariantMap getStyles() const;
 
-    QString innerText() const;
+    QString innerText(const bool &normalize = false) const;
+    QString hash() const;
     QString outerHtml() const;
     QString getAttribute(const QString&) const;
+    QString getByLine(QString matchString) const;
 
     QGumboAttributes allAttributes() const;
 
     void forEach(std::function<void(const QGumboNode&)>) const;
 
     explicit operator bool() const;
+    bool operator ==(const QGumboNode &other);
 
 private:
     QGumboNode();
@@ -57,6 +71,8 @@ private:
     friend class QGumboDocument;
 private:
     GumboNode* ptr_;
+    QVariantMap additionalAttributes_;
+
 };
 
 #endif // QGUMBONODE_H

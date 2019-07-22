@@ -80,10 +80,6 @@
         <translation>Mostrar Wagnis ID:</translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Este projeto usa o twemoji. Copyright 2017 Twitter, Inc. e outros contribuidores. Obrigado por torná-lo disponível sob as condições do MIT Licence (programação) e CC-BY 4.0 (gráficos)!</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>Abrir o twemoji no GitHub</translation>
     </message>
@@ -98,6 +94,10 @@
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation>Este produto usa &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; e é distribuído pela &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Você também pode &lt;a href=&quot;profile://werkwolf&quot;&gt;encontrar o WerkWolf no Twitter&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>Este projeto usa o twemoji. Copyright 2017 Twitter, Inc. e outros contribuidores. Obrigado por torná-lo disponível sob as condições do MIT Licence (programação) e CC-BY 4.0 (gráficos)!</translation>
     </message>
 </context>
 <context>

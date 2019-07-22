@@ -42,7 +42,8 @@ SOURCES += src/harbour-piepmatz.cpp \
     src/membershiplistsmodel.cpp \
     src/tweetconversationhandler.cpp \
     src/savedsearchesmodel.cpp \
-    src/imagemetadataresponsehandler.cpp
+    src/imagemetadataresponsehandler.cpp \
+    src/contentextractor.cpp
 
 OTHER_FILES += qml/harbour-piepmatz.qml \
     qml/pages/CoverPage.qml \
@@ -56,7 +57,8 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
 CONFIG += sailfishapp_i18n
 
-TRANSLATIONS += translations/harbour-piepmatz-de.ts \
+TRANSLATIONS += translations/harbour-piepmatz-cs.ts \
+                translations/harbour-piepmatz-de.ts \
                 translations/harbour-piepmatz-es.ts \
                 translations/harbour-piepmatz-fi.ts \
                 translations/harbour-piepmatz-fr.ts \
@@ -70,7 +72,8 @@ TRANSLATIONS += translations/harbour-piepmatz-de.ts \
                 translations/harbour-piepmatz-ro.ts \
                 translations/harbour-piepmatz-ru.ts \
                 translations/harbour-piepmatz-sl.ts \
-                translations/harbour-piepmatz-sv.ts
+                translations/harbour-piepmatz-sv.ts \
+                translations/harbour-piepmatz-zh_cn.ts
 
 gui.files = qml
 gui.path = /usr/share/$${TARGET}
@@ -89,13 +92,16 @@ ICONPATH = /usr/share/icons/hicolor
 128.png.path = $${ICONPATH}/128x128/apps/
 128.png.files += icons/128x128/harbour-piepmatz.png
 
+172.png.path = $${ICONPATH}/172x172/apps/
+172.png.files += icons/172x172/harbour-piepmatz.png
+
 256.png.path = $${ICONPATH}/256x256/apps/
 256.png.files += icons/256x256/harbour-piepmatz.png
 
 piepmatz.desktop.path = /usr/share/applications/
 piepmatz.desktop.files = harbour-piepmatz.desktop
 
-INSTALLS += 86.png 108.png 128.png 256.png \
+INSTALLS += 86.png 108.png 128.png 172.png 256.png \
             piepmatz.desktop gui images
 
 HEADERS += \
@@ -118,16 +124,9 @@ HEADERS += \
     src/membershiplistsmodel.h \
     src/tweetconversationhandler.h \
     src/savedsearchesmodel.h \
-    src/imagemetadataresponsehandler.h
+    src/imagemetadataresponsehandler.h \
+    src/contentextractor.h
 
 DISTFILES += \
-    qml/pages/VideoPage.qml \
-    qml/pages/ListTimelinePage.qml \
-    qml/pages/ListMembersPage.qml \
-    qml/pages/SettingsPage.qml \
-    qml/pages/TweetConversationPage.qml \
-    qml/components/NotificationsButton.qml \
-    qml/components/MessagesButton.qml \
-    qml/components/SearchButton.qml \
-    qml/components/ListsButton.qml \
-    qml/components/ProfileButton.qml
+    qml/pages/*.qml \
+    qml/components/*.qml

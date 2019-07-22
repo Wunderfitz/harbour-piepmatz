@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>GNU GPLv3  के अन्तर्गत अनुज्ञा प्राप्त </translation>
+        <translation>GNU GPLv3  के अन्तर्गत अनुज्ञा प्राप्त </translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -80,10 +80,6 @@
         <translation>Wagnis ID दिखाएँ</translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>यह प्रोजेक्ट Copyright 2017 Twitter, Inc. and other contributors द्वारा twemoji का उपयोग करता है। इसे  MIT License (coding) and CC-BY 4.0 (graphics) अनुज्ञा की शर्तों पर उपलब्ध कराने हेतु धन्यवाद ।</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>GitHub पर twemoji खोलें</translation>
     </message>
@@ -98,6 +94,10 @@
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation>यह उत्पाद &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; का उपयोग करता है जोकि &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;द्वारा वितरित है  &lt;a href=&quot;profile://werkwolf&quot;&gt; WerkWolf को Twitter पर मिलें &lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>यह प्रोजेक्ट Copyright 2018 Twitter, Inc. and other contributors द्वारा twemoji का उपयोग करता है। इसे  MIT License (coding) and CC-BY 4.0 (graphics) अनुज्ञा की शर्तों पर उपलब्ध कराने हेतु धन्यवाद ।</translation>
     </message>
 </context>
 <context>
@@ -703,7 +703,7 @@
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>आपके योगदान की पुष्टि नहीं की जा सकी । कृपया सुनिश्चित करें कि आपका डिवाइस इंटरनेट से कनेक्टेड है और &apos; पुनरारंभ पुष्टि &apos; दबाएं । अगर आपके पास एक वैध योगदान कुंजी है और उसकी पुष्टि नहीं की जा सकी है तो मुझे &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;ई-मेल&lt;/a&gt;के माध्यम से संपर्क करें </translation>
+        <translation>आपके योगदान की पुष्टि नहीं की जा सकी । कृपया सुनिश्चित करें कि आपका डिवाइस इंटरनेट से कनेक्टेड है और &apos; पुनरारंभ पुष्टि &apos; दबाएं । अगर आपके पास एक वैध योगदान कुंजी है और उसकी पुष्टि नहीं की जा सकी है तो मुझे &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;ई-मेल&lt;/a&gt;के माध्यम से संपर्क करें </translation>
     </message>
     <message>
         <source>Restart Validation</source>

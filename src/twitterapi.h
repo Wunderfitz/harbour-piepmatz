@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -87,12 +87,12 @@ public:
     Q_INVOKABLE void helpConfiguration();
     Q_INVOKABLE void helpPrivacy();
     Q_INVOKABLE void helpTos();
-    Q_INVOKABLE void tweet(const QString &text, const QString &placeId = "");
-    Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId, const QString &placeId = "");
-    Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl, const QString &placeId = "");
-    Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds, const QString &placeId = "");
-    Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds, const QString &placeId = "");
-    Q_INVOKABLE void homeTimeline(const QString &maxId = "");
+    Q_INVOKABLE void tweet(const QString &text, const QString &placeId = QString());
+    Q_INVOKABLE void replyToTweet(const QString &text, const QString &replyToStatusId, const QString &placeId = QString());
+    Q_INVOKABLE void retweetWithComment(const QString &text, const QString &attachmentUrl, const QString &placeId = QString());
+    Q_INVOKABLE void tweetWithImages(const QString &text, const QString &mediaIds, const QString &placeId = QString());
+    Q_INVOKABLE void replyToTweetWithImages(const QString &text, const QString &replyToStatusId, const QString &mediaIds, const QString &placeId = QString());
+    Q_INVOKABLE void homeTimeline(const QString &maxId = QString());
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void retweetTimeline();
     Q_INVOKABLE void userTimeline(const QString &screenName);
@@ -116,14 +116,14 @@ public:
     Q_INVOKABLE void uploadImage(const QString &fileName);
     Q_INVOKABLE void uploadImageDescription(const QString &mediaId, const QString &description);
     Q_INVOKABLE void downloadFile(const QString &address, const QString &fileName);
-    Q_INVOKABLE void directMessagesList(const QString &cursor = "");
+    Q_INVOKABLE void directMessagesList(const QString &cursor = QString());
     Q_INVOKABLE void directMessagesNew(const QString &text, const QString &recipientId);
     Q_INVOKABLE void trends(const QString &placeId);
     Q_INVOKABLE void placesForTrends(const QString &latitude, const QString &longitude);
     Q_INVOKABLE void userLists();
     Q_INVOKABLE void listsMemberships();
     Q_INVOKABLE void listMembers(const QString &listId);
-    Q_INVOKABLE void listTimeline(const QString &listId, const QString &maxId = "");
+    Q_INVOKABLE void listTimeline(const QString &listId, const QString &maxId = QString());
     Q_INVOKABLE void savedSearches();
     Q_INVOKABLE void saveSearch(const QString &query);
     Q_INVOKABLE void destroySavedSearch(const QString &id);

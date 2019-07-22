@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -59,7 +59,7 @@ void TimelineModel::loadMore()
 {
     qDebug() << "TimelineModel::loadMore";
     emit homeTimelineStartUpdate();
-    QString maxId = "";
+    QString maxId;
     if (!timelineTweets.isEmpty()) {
         QVariantMap lastItem = timelineTweets.last().toMap();
         maxId = lastItem.value("id_str").toString();

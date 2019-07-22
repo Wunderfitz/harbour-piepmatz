@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -83,7 +83,7 @@ CoverBackground {
 
     Image {
         id: backgroundImage
-        source: "../../images/" + accountModel.getImagePath() + "background.png"
+        source: "../../images/" + accountModel.getImagePath() + "background" + ( Theme.colorScheme ? "-black" : "" ) + ".png"
         anchors {
             verticalCenter: parent.verticalCenter
 

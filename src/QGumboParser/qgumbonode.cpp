@@ -3,6 +3,7 @@
 #include <QString>
 #include <QDebug>
 #include <QStringList>
+#include <QRegularExpression>
 #include "qgumbonode.h"
 #include "qgumboattribute.h"
 
@@ -10,6 +11,22 @@ namespace {
 
 const char* const ID_ATTRIBUTE 		= u8"id";
 const char* const CLASS_ATTRIBUTE 	= u8"class";
+const char* const STYLE_ATTRIBUTE 	= u8"style";
+
+const QRegularExpression REGEXP_UNLIKELY_CANDIDATES = QRegularExpression("/-ad-|ai2html|banner|breadcrumbs|combx|comment|community|cover-wrap|disqus|extra|foot|gdpr|header|legends|menu|related|remark|replies|rss|shoutbox|sidebar|skyscraper|social|sponsor|supplemental|ad-break|agegate|pagination|pager|popup|yom-remote/i");
+const QRegularExpression REGEXP_OK_MAYBE_ITS_A_CANDIDATE = QRegularExpression("/and|article|body|column|main|shadow/i");
+const QRegularExpression REGEXP_EXTRANEOUS = QRegularExpression("/print|archive|comment|discuss|e[\\-]?mail|share|reply|all|login|sign|single|utility/i");
+const QRegularExpression REGEXP_BYLINE = QRegularExpression("/byline|author|dateline|writtenby|p-author/i");
+const QRegularExpression REGEXP_REPLACE_FONTS = QRegularExpression("/<(\\/?)font[^>]*>/gi");
+const QRegularExpression REGEXP_NORMALIZE = QRegularExpression("/\\s{2,}/g");
+const QRegularExpression REGEXP_VIDEOS = QRegularExpression("/\\/\\/(www\\.)?((dailymotion|youtube|youtube-nocookie|player\\.vimeo|v\\.qq)\\.com|(archive|upload\\.wikimedia)\\.org|player\\.twitch\\.tv)/i");
+const QRegularExpression REGEXP_NEXT_LINK = QRegularExpression("/(next|weiter|continue|>([^\\|]|$)|»([^\\|]|$))/i");
+const QRegularExpression REGEXP_PREV_LINK = QRegularExpression("/(prev|earl|old|new|<|«)/i");
+const QRegularExpression REGEXP_WHITESPACE = QRegularExpression("/^\\s*$/");
+const QRegularExpression REGEXP_HAS_CONTENT = QRegularExpression("/\\S$/");
+
+// Element tags to score by default.
+const QList<HtmlTag> DEFAULT_TAGS_TO_SCORE = QList<HtmlTag>() << HtmlTag::SECTION << HtmlTag::H2 << HtmlTag::H3 << HtmlTag::H4 << HtmlTag::H5 << HtmlTag::H6 << HtmlTag::P << HtmlTag::TD << HtmlTag::PRE;
 
 template<typename TFunctor>
 bool iterateTree(GumboNode* node, TFunctor& functor)
@@ -56,6 +73,47 @@ QGumboNode::QGumboNode(GumboNode* node) :
 {
     if (!ptr_)
         throw std::runtime_error("can't create Node from nullptr");
+}
+
+bool QGumboNode::isProbablyVisible() const
+{
+    if (!this->getAttribute("hidden").isEmpty()) {
+        return false;
+    }
+
+    QVariantMap myStyles = this->getStyles();
+    if (!myStyles.isEmpty()) {
+        if (myStyles.value("display") == "none") {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool QGumboNode::containsContent() const
+{
+    uint childrenSize = this->children().size();
+    return !(this->isElement() &&
+             this->innerText().trimmed().size() == 0 &&
+            (childrenSize = 0 ||
+             childrenSize == this->getElementsByTagName(HtmlTag::BR).size() + this->getElementsByTagName(HtmlTag::HR).size()));
+}
+
+QVariantMap QGumboNode::getStyles() const
+{
+    QVariantMap myStyles;
+    QString rawStyles = getAttribute(STYLE_ATTRIBUTE);
+    QStringList rawStyleList = rawStyles.split(';');
+    QListIterator<QString> rawStyleListIterator(rawStyleList);
+    while (rawStyleListIterator.hasNext()) {
+        QString nextStyle = rawStyleListIterator.next();
+        QStringList singleStyle = nextStyle.split(':');
+        if (singleStyle.size() == 2) {
+            myStyles.insert(singleStyle.at(0).trimmed(), singleStyle.at(1).trimmed());
+        }
+    }
+    return myStyles;
 }
 
 QGumboNodes QGumboNode::getElementById(const QString& nodeId) const
@@ -134,6 +192,65 @@ QGumboNodes QGumboNode::getElementsByClassName(const QString& name) const
     return nodes;
 }
 
+QGumboNodes QGumboNode::getAllElementsForExtractor() const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNodes nodes;
+
+    auto functor = [&nodes](GumboNode* node) {
+        QGumboNode myNode(node);
+
+        qDebug() << "Current Tag: " << node->v.element.tag;
+        QString nodeIdentifier = myNode.getAttribute(CLASS_ATTRIBUTE) + " " + myNode.id();
+        qDebug() << "Current Node Identifier: " << nodeIdentifier;
+
+
+        // Remove all invisible nodes...
+        if (!myNode.isProbablyVisible()) {
+            qDebug() << "Not visible";
+            return false;
+        }
+
+        if (!myNode.getByLine(nodeIdentifier).isEmpty()) {
+            qDebug() << "Byline identified";
+            return false;
+        }
+
+        if (REGEXP_UNLIKELY_CANDIDATES.match(nodeIdentifier).hasMatch() &&
+                !REGEXP_OK_MAYBE_ITS_A_CANDIDATE.match(nodeIdentifier).hasMatch() &&
+                !myNode.hasAncestorTag(HtmlTag::TABLE) &&
+                myNode.tag() != HtmlTag::BODY &&
+                myNode.tag() != HtmlTag::A) {
+            qDebug() << "Unlikely candidate";
+            return false;
+        }
+
+        // Remove DIV, SECTION and HEADER nodes without content
+        if ((myNode.tag() == HtmlTag::DIV || myNode.tag() == HtmlTag::SECTION || myNode.tag() == HtmlTag::HEADER ||
+                myNode.tag() == HtmlTag::H1 || myNode.tag() == HtmlTag::H2 || myNode.tag() == HtmlTag::H3 ||
+                myNode.tag() == HtmlTag::H4 || myNode.tag() == HtmlTag::H5 || myNode.tag() == HtmlTag::H6)
+                && !myNode.containsContent()) {
+            qDebug() << "DIV, SECTION or HEADER without content";
+            return false;
+        }
+
+        if (DEFAULT_TAGS_TO_SCORE.contains(myNode.tag())) {
+            qDebug() << "SUCCESS";
+            qDebug() << myNode.innerText();
+            nodes.emplace_back(myNode);
+            return true;
+        }
+
+        qDebug() << "Nothing matched, BAD!";
+        return false;
+    };
+
+    iterateTree(ptr_, functor);
+
+    return nodes;
+}
+
 QGumboNodes QGumboNode::childNodes() const
 {
     Q_ASSERT(ptr_);
@@ -168,6 +285,40 @@ QGumboNodes QGumboNode::children() const
     return nodes;
 }
 
+QGumboNodes QGumboNode::ancestors(const int &maxDepth) const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNodes nodes;
+
+    if (!this->hasParent()) {
+        return nodes;
+    }
+    GumboNode *currentNode = ptr_;
+    int currentDepth = 0;
+    while (currentNode->parent != nullptr) {
+        currentDepth++;
+        currentNode = currentNode->parent;
+        if (currentNode->type == GUMBO_NODE_ELEMENT) {
+            nodes.emplace_back(QGumboNode(currentNode));
+        }
+        if (currentDepth == maxDepth) {
+            break;
+        }
+    }
+
+    return nodes;
+}
+
+QGumboNode QGumboNode::parent() const
+{
+    Q_ASSERT(ptr_);
+
+    QGumboNode myParent(ptr_->parent);
+
+    return myParent;
+}
+
 int QGumboNode::childElementCount() const
 {
     Q_ASSERT(ptr_);
@@ -185,7 +336,7 @@ int QGumboNode::childElementCount() const
     return count;
 }
 
-QString QGumboNode::innerText() const
+QString QGumboNode::innerText(const bool &normalize) const
 {
     Q_ASSERT(ptr_);
 
@@ -200,7 +351,21 @@ QString QGumboNode::innerText() const
 
     iterateChildren(ptr_, functor);
 
+    if (normalize) {
+        text = text.trimmed().replace(REGEXP_NORMALIZE, " ");
+    }
+
     return text;
+}
+
+QString QGumboNode::hash() const
+{
+    QCryptographicHash myHash(QCryptographicHash::Md5);
+    myHash.addData(this->id().toUtf8());
+    myHash.addData(this->tagName().toUtf8());
+    myHash.addData(this->getAttribute(CLASS_ATTRIBUTE).toUtf8());
+    myHash.addData(this->innerText().toUtf8());
+    return QString(myHash.result().toHex());
 }
 
 QString QGumboNode::outerHtml() const
@@ -284,6 +449,28 @@ bool QGumboNode::hasAttribute(const QString& name) const
     return attr != nullptr;
 }
 
+bool QGumboNode::hasParent() const
+{
+    return ptr_->parent != nullptr;
+}
+
+bool QGumboNode::hasAncestorTag(const HtmlTag &htmlTag, const int &maxDepth) const
+{
+    int depth = 0;
+    QGumboNode currentNode = *this;
+    while (currentNode.hasParent()) {
+      if (maxDepth > 0 && depth > maxDepth) {
+          return false;
+      }
+      if (currentNode.parent().tag() == htmlTag) {
+          return true;
+      }
+      currentNode = currentNode.parent();
+      depth++;
+    }
+    return false;
+}
+
 QString QGumboNode::getAttribute(const QString& attrName) const
 {
     if (attrName.isEmpty())
@@ -295,6 +482,25 @@ QString QGumboNode::getAttribute(const QString& attrName) const
         return QString::fromUtf8(attr->value);
 
     return QString();
+}
+
+QString QGumboNode::getByLine(QString matchString) const
+{
+    QString byLine;
+
+    QString attributeRel = this->getAttribute("rel");
+    QString attributeItemprop = this->getAttribute("itemprop");
+
+    QString textContent = this->innerText();
+    if (textContent.isEmpty() || textContent.trimmed().size() > 100) {
+        return byLine;
+    }
+
+    if (attributeRel == "author" || (!attributeItemprop.isEmpty() && attributeItemprop.contains("author")) || REGEXP_BYLINE.match(matchString).hasMatch()) {
+      byLine = textContent.trimmed();
+    }
+
+    return byLine;
 }
 
 QGumboAttributes QGumboNode::allAttributes() const
@@ -322,6 +528,11 @@ void QGumboNode::forEach(std::function<void(const QGumboNode&)> func) const
     };
 
     iterateTree(ptr_, functor);
+}
+
+bool QGumboNode::operator ==(const QGumboNode &other)
+{
+    return this->ptr_ == other.ptr_;
 }
 
 QGumboNode::operator bool() const

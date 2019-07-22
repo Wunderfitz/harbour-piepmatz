@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -167,7 +167,19 @@ function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUr
         }
     }
 
-    return tweetText.replace(new RegExp("\r?\n", "g"), "<br>");
+    tweetText = tweetText.replace(new RegExp("\r?\n", "g"), "<br>");
+
+    var spaceRegex = /\s{2,}/g;
+    function spaceReplacer(match, p1, offset, string) {
+        var replaceString = "";
+        for (var i = 0; i < match.length; i++) {
+            replaceString += "&nbsp;";
+        }
+        return replaceString;
+    }
+    tweetText = tweetText.replace(spaceRegex, spaceReplacer);
+
+    return tweetText;
 }
 
 function handleLink(link) {

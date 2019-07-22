@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017-18 Sebastian J. Wolf
+    Copyright (C) 2017-19 Sebastian J. Wolf
 
     This file is part of Piepmatz.
 
@@ -93,8 +93,8 @@ private:
     QNetworkAccessManager * const manager;
     O1Requestor *requestor;
     TwitterApi *twitterApi;
-    LocationInformation *locationInformation;
-    Wagnis *wagnis;
+    LocationInformation * const locationInformation;
+    Wagnis * const wagnis;
     QSettings settings;
     QVariantList otherAccounts;
 

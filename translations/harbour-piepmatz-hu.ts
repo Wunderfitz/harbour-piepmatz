@@ -80,10 +80,6 @@
         <translation>Wagnis ID megjelenítése</translation>
     </message>
     <message>
-        <source>This project uses twemoji. Copyright 2017 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>Ez a projekt a twemoji-t használja. Szerzői jog 2017 Twitter, Inc. és más közreműködők. Köszönet a MIT Licenc (kódolás) és a CC-BY 4.0 (grafika) feltételei alatti elérhetőségért!</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>A Twemoji megnyitása a GitHubon</translation>
     </message>
@@ -98,6 +94,10 @@
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
         <translation>Ez a termék a &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt;-t használja és a &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; forgalmazza. Megtalálod &lt;a href=&quot;profile://werkwolf&quot;&gt;WerkWolf-ot a Twitteren is&lt;/a&gt;.</translation>
+    </message>
+    <message>
+        <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
+        <translation>Ez a projekt a twemoji-t használja. Szerzői jog 2018 Twitter, Inc. és más közreműködők. Köszönet a MIT Licenc (kódolás) és a CC-BY 4.0 (grafika) feltételei alatti elérhetőségért!</translation>
     </message>
 </context>
 <context>
