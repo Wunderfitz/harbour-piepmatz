@@ -176,9 +176,16 @@ Item {
                 pixelSize: Theme.fontSizeSmall
                 bold: true
             }
-            color: Theme.primaryColor
+            color: Theme.hightlightColor
             elide: Text.ElideRight
             width: parent.width
+            MouseArea {
+                enabled: !profileItem.loadingError
+                anchors.fill: parent
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"initialText": "@"+profileModel.screen_name});
+                }
+            }
         }
     }
 

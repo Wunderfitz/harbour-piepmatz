@@ -49,6 +49,7 @@ Page {
     property variant ipInfo;
     property variant place;
     property bool geoEnabled;
+    property alias initialText: enterTweetTextArea.text;
 
     function parseText(text) {
         var parsingResult = TwitterText.parseTweet(text);
