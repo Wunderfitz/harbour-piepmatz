@@ -61,6 +61,8 @@ public:
     Q_INVOKABLE void setUseSwipeNavigation(const bool &useSwipeNavigation);
     Q_INVOKABLE bool getDisplayImageDescriptions();
     Q_INVOKABLE void setDisplayImageDescriptions(const bool &displayImageDescriptions);
+    Q_INVOKABLE QString getFontSize();
+    Q_INVOKABLE void setFontSize(const QString &fontSize);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();

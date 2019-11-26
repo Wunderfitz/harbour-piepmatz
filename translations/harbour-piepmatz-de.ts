@@ -839,6 +839,22 @@
         <source>Display additional descriptions of tweet images (if available)</source>
         <translation>Zusätzliche Beschreibungen von Gezwitscher-Bildern anzeigen (wenn verfügbar)</translation>
     </message>
+    <message>
+        <source>Font Size</source>
+        <translation>Schriftgröße</translation>
+    </message>
+    <message>
+        <source>Choose the font size here</source>
+        <translation>Wählen Sie hier die Schriftgröße aus</translation>
+    </message>
+    <message>
+        <source>Normal (Piepmatz default)</source>
+        <translation>Normal (Piepmatz-Standard)</translation>
+    </message>
+    <message>
+        <source>Large (Sailfish OS default)</source>
+        <translation>Groß (Sailfish OS-Standard)</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

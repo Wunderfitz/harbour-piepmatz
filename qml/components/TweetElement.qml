@@ -42,6 +42,9 @@ Item {
     property bool extendedMode : false;
     property bool withSeparator : true;
     property bool isRetweetMention : false;
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeTiny : Theme.fontSizeExtraSmall) ;
+    property string infoTextFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
+    property string infoIconFontSize: Theme.fontSizeMedium;
 
     width: parent.width
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
@@ -166,9 +169,9 @@ Item {
                 Column {
                     Text {
                         id: tweetRetweetedText
-                        font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : Theme.fontSizeTiny
+                        font.pixelSize: tweetElementItem.isRetweetMention ? Theme.fontSizeExtraSmall : componentFontSize
                         color: tweetElementItem.isRetweetMention ? Theme.primaryColor : Theme.secondaryColor
-                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + Emoji.emojify(tweetModel.user.name, Theme.fontSizeTiny) + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
+                        text: qsTr("Retweeted by %1").arg(( tweetElementItem.isRetweetMention ? "<b>" : "" ) + Emoji.emojify(tweetModel.user.name, componentFontSize) + ( tweetElementItem.isRetweetMention ? "</b>" : "" ))
                         textFormat: Text.StyledText
                         visible: tweetModel.retweeted_status ? true : false
                         elide: Text.ElideRight
@@ -192,9 +195,9 @@ Item {
 
                     Text {
                         id: tweetInReplyToText
-                        font.pixelSize: Theme.fontSizeTiny
+                        font.pixelSize: componentFontSize
                         color: Theme.secondaryColor
-                        text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeTiny))
+                        text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), componentFontSize))
                         textFormat: Text.StyledText
                         visible: tweetModel.in_reply_to_status_id_str ? true : false
                         elide: Text.ElideRight
@@ -217,9 +220,9 @@ Item {
 
                     Text {
                         id: tweetDirectText
-                        font.pixelSize: Theme.fontSizeTiny
+                        font.pixelSize: componentFontSize
                         color: Theme.secondaryColor
-                        text: qsTr("Tweet to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeTiny))
+                        text: qsTr("Tweet to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), componentFontSize))
                         textFormat: Text.StyledText
                         visible: (tweetModel.in_reply_to_user_id_str && !tweetModel.in_reply_to_status_id_str) ? true : false
                         elide: Text.ElideRight
@@ -331,8 +334,8 @@ Item {
                             visible: referenceMetadata.description ? true : false
                             width: parent.width
                             id: openGraphText
-                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), Theme.fontSizeTiny) : ""
-                            font.pixelSize: Theme.fontSizeTiny
+                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), componentFontSize) : ""
+                            font.pixelSize: componentFontSize
                             color: Theme.primaryColor
                             wrapMode: Text.Wrap
                             textFormat: Text.StyledText
@@ -351,8 +354,8 @@ Item {
                             visible: referenceMetadata.url ? true : false
                             width: parent.width
                             id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), Theme.fontSizeTiny) + "</a>"
-                            font.pixelSize: Theme.fontSizeTiny
+                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), componentFontSize) + "</a>"
+                            font.pixelSize: componentFontSize
                             color: Theme.highlightColor
                             wrapMode: Text.Wrap
                             textFormat: Text.StyledText
@@ -488,8 +491,9 @@ Item {
                         height: parent.height
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
+                            width: parent.width
                             id: tweetDateText
-                            font.pixelSize: Theme.fontSizeExtraSmall
+                            font.pixelSize: infoTextFontSize
                             color: Theme.secondaryColor
                             text:  Format.formatDate(Functions.getValidDate(tweetModel.retweeted_status ? tweetModel.retweeted_status.created_at : tweetModel.created_at), Formatter.DurationElapsed)
                             elide: Text.ElideRight
@@ -509,8 +513,8 @@ Item {
                                 id: tweetRetweetedCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" ) : ( tweetModel.retweeted ? ( "image://theme/icon-s-retweet?" + Theme.highlightColor ) : "image://theme/icon-s-retweet" )
-                                width: Theme.fontSizeMedium
-                                height: Theme.fontSizeMedium
+                                width: infoIconFontSize
+                                height: infoIconFontSize
                                 opacity: Functions.getRelevantTweet(tweetModel).user.protected ? 0.2 : 1
                                 MouseArea {
                                     anchors.fill: parent
@@ -535,7 +539,7 @@ Item {
                             enabled: !Functions.getRelevantTweet(tweetModel).user.protected
                             Text {
                                 id: tweetRetweetedCountText
-                                font.pixelSize: Theme.fontSizeExtraSmall
+                                font.pixelSize: infoTextFontSize
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.retweeted ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.retweeted ? Theme.highlightColor : Theme.secondaryColor )
                                 text: Functions.getShortenedCount(Functions.getRetweetCount(tweetModel))
@@ -558,8 +562,8 @@ Item {
                                 id: tweetFavoritesCountImage
                                 anchors.right: parent.right
                                 source: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" ) : ( tweetModel.favorited ? ( "image://theme/icon-s-favorite?" + Theme.highlightColor ) : "image://theme/icon-s-favorite" )
-                                width: Theme.fontSizeMedium
-                                height: Theme.fontSizeMedium
+                                width: infoIconFontSize
+                                height: infoIconFontSize
                                 MouseArea {
                                     anchors.fill: parent
                                     onClicked: {
@@ -582,7 +586,7 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             Text {
                                 id: tweetFavoritesCountText
-                                font.pixelSize: Theme.fontSizeExtraSmall
+                                font.pixelSize: infoTextFontSize
                                 anchors.left: parent.left
                                 color: tweetModel.retweeted_status ? ( tweetModel.retweeted_status.favorited ? Theme.highlightColor : Theme.secondaryColor ) : ( tweetModel.favorited ? Theme.highlightColor : Theme.secondaryColor )
                                 text: Functions.getShortenedCount(Functions.getFavoritesCount(tweetModel))

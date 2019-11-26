@@ -840,6 +840,22 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Display additional descriptions of tweet images (if available)</source>
         <translation>Extra omschrijvingen van tweetafbeeldingen tonen (indien beschikbaar)</translation>
     </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the font size here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal (Piepmatz default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Large (Sailfish OS default)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

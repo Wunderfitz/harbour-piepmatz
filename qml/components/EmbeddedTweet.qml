@@ -29,6 +29,7 @@ Item {
 
     property variant tweetModel;
     property bool withReferenceUrl : true;
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
 
     width: parent.width
     height: embeddedTweetColumn.height
@@ -61,8 +62,8 @@ Item {
             width: parent.width
             id: tweetContentText
             visible: (tweetContentText.text !== "")
-            text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), Theme.fontSizeExtraSmall)
-            font.pixelSize: Theme.fontSizeExtraSmall
+            text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), componentFontSize)
+            font.pixelSize: componentFontSize
             color: Theme.primaryColor
             wrapMode: Text.Wrap
             textFormat: Text.StyledText

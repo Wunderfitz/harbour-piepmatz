@@ -32,6 +32,7 @@ const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
 const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 const char SETTINGS_USE_SWIPE_NAVIGATION[] = "settings/useSwipeNavigation";
 const char SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS[] = "settings/displayImageDescriptions";
+const char SETTINGS_FONT_SIZE[] = "settings/fontSize";
 
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -208,6 +209,16 @@ bool AccountModel::getDisplayImageDescriptions()
 void AccountModel::setDisplayImageDescriptions(const bool &displayImageDescriptions)
 {
     settings.setValue(SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS, displayImageDescriptions);
+}
+
+QString AccountModel::getFontSize()
+{
+    return settings.value(SETTINGS_FONT_SIZE, "piepmatz").toString();
+}
+
+void AccountModel::setFontSize(const QString &fontSize)
+{
+    settings.setValue(SETTINGS_FONT_SIZE, fontSize);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

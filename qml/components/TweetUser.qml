@@ -29,13 +29,15 @@ Row {
     id: tweetUserRow
     width: parent.width
     spacing: Theme.paddingSmall
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
+    property string iconFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeSmall : Theme.fontSizeMedium) ;
 
     Text {
         id: tweetUserNameText
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: componentFontSize
         font.bold: true
         color: Theme.primaryColor
-        text: Emoji.emojify(tweetUser.name, Theme.fontSizeExtraSmall)
+        text: Emoji.emojify(tweetUser.name, componentFontSize)
         textFormat: Text.StyledText
         elide: Text.ElideRight
         maximumLineCount: 1
@@ -59,8 +61,8 @@ Row {
         id: tweetUserVerifiedImage
         source: "image://theme/icon-s-installed"
         visible: tweetUser.verified
-        width: Theme.fontSizeSmall
-        height: Theme.fontSizeSmall
+        width: iconFontSize
+        height: iconFontSize
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -73,8 +75,8 @@ Row {
         id: tweetUserProtectedImage
         source: "image://theme/icon-s-secure"
         visible: tweetUser.protected
-        width: Theme.fontSizeSmall
-        height: Theme.fontSizeSmall
+        width: iconFontSize
+        height: iconFontSize
         MouseArea {
             anchors.fill: parent
             onClicked: {
@@ -85,7 +87,7 @@ Row {
 
     Text {
         id: tweetUserHandleText
-        font.pixelSize: Theme.fontSizeExtraSmall
+        font.pixelSize: componentFontSize
         width: parent.width - ( tweetUserVerifiedImage.visible ? tweetUserVerifiedImage.width : 0 ) - ( tweetUserProtectedImage.visible ? tweetUserProtectedImage.width : 0 ) - tweetUserNameText.width - ( 2 * Theme.paddingSmall )
         color: Theme.secondaryColor
         anchors.bottom: tweetUserNameText.bottom

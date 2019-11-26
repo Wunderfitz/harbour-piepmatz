@@ -27,6 +27,7 @@ Column {
     id: tweetTextColumn
     property variant tweet;
     property bool truncateText : false;
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
     visible: (tweetContentText.text !== "")
 
     width: parent.width
@@ -34,15 +35,15 @@ Column {
     function makeTheTextGreatAgain() {
         var relevantTweet = Functions.getRelevantTweet(tweetTextColumn.tweet);
         var greatifiedText = relevantTweet.full_text;
-        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), Theme.fontSizeExtraSmall);
+        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), componentFontSize);
         return greatifiedText;
     }
 
     Text {
         width: parent.width
         id: tweetContentText
-        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, Theme.fontSizeExtraSmall) : makeTheTextGreatAgain()
-        font.pixelSize: Theme.fontSizeExtraSmall
+        text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, componentFontSize) : makeTheTextGreatAgain()
+        font.pixelSize: componentFontSize
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone
         wrapMode: Text.Wrap

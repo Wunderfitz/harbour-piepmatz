@@ -194,6 +194,25 @@ Page {
                 }
             }
 
+            ComboBox {
+                id: fontSizeComboBox
+                label: qsTr("Font Size")
+                currentIndex: (accountModel.getFontSize() === "piepmatz") ? 0 : 1
+                description: qsTr("Choose the font size here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("Normal (Piepmatz default)")
+                     }
+                     MenuItem {
+                        text: qsTr("Large (Sailfish OS default)")
+                     }
+                    onActivated: {
+                        var fontSize = ( index === 0 ? "piepmatz" : "sailfish" );
+                        accountModel.setFontSize(fontSize);
+                    }
+                }
+            }
+
             SectionHeader {
                 text: qsTr("Location")
             }

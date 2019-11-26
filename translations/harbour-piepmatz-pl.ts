@@ -572,7 +572,7 @@
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ZaTweetuj do %1</translation>
     </message>
 </context>
 <context>
@@ -838,6 +838,22 @@
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
         <translation>Wyświetl dodatkowy opis obrazka w tweecie (jeśli dostępny)</translation>
+    </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the font size here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal (Piepmatz default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Large (Sailfish OS default)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

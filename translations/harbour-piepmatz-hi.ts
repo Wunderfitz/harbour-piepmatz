@@ -839,6 +839,22 @@
         <source>Display additional descriptions of tweet images (if available)</source>
         <translation>Tweet की छवियों (अगर उपलब्ध) का अतिरिक्त विवरण दिखाएं </translation>
     </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the font size here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal (Piepmatz default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Large (Sailfish OS default)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
