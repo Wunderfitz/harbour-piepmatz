@@ -566,6 +566,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>URL in die Zwischenablage kopieren</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation>@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation>Gezwitscher an %1</translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>

@@ -566,6 +566,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>Kopiuj URL do Schowka</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation type="unfinished">@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>

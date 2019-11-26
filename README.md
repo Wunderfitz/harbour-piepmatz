@@ -69,3 +69,4 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 Code improvements by:
 - [Rolf Eike Beer](https://github.com/DerDakon) 
 - [Kay Stenschke](https://github.com/kstenschke)
+- [Björn Bidar](https://github.com/Thaodan)

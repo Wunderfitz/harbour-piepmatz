@@ -133,6 +133,7 @@ Page {
             twitterApi.showStatus(replyToStatusId);
         }
         imagesModel.clearModel();
+        enterTweetTextArea.cursorPosition = enterTweetTextArea.text.length;
     }
 
     Connections {
@@ -284,7 +285,6 @@ Page {
                         atMentioningTimer.stop();
                         atMentioningTimer.start();
                     }
-
                     errorHighlight: !newTweetPage.valid
                 }
 

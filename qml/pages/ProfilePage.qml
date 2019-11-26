@@ -162,6 +162,12 @@ Page {
                         }
                     }
                     MenuItem {
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl("../pages/NewTweetPage.qml"), {"initialText": qsTr("@%1 ").arg(profilePage.profileModel.screen_name)});
+                        }
+                        text: qsTr("Tweet to %1").arg(profilePage.profileModel.name)
+                    }
+                    MenuItem {
                         text: qsTr("Refresh")
                         onClicked: {
                             profilePage.loaded = false;

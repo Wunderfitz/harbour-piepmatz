@@ -567,6 +567,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>Kopioi URL leikepöydälle</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation type="unfinished">@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>

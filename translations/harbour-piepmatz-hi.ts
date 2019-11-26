@@ -566,6 +566,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>क्लीपबोर्ड पर URL की नकल करें</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation type="unfinished">@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>

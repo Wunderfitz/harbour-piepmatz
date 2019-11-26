@@ -73,7 +73,7 @@ TRANSLATIONS += translations/harbour-piepmatz-cs.ts \
                 translations/harbour-piepmatz-ru.ts \
                 translations/harbour-piepmatz-sl.ts \
                 translations/harbour-piepmatz-sv.ts \
-                translations/harbour-piepmatz-zh_cn.ts
+                translations/harbour-piepmatz-zh_CN.ts
 
 gui.files = qml
 gui.path = /usr/share/$${TARGET}

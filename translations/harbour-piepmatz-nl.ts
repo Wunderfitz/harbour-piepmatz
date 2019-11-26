@@ -567,6 +567,14 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Copy URL to Clipboard</source>
         <translation>URL kopiëren naar klembord</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation type="unfinished">@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>
