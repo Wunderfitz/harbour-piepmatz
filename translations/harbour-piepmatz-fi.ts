@@ -892,6 +892,10 @@
         <source>Tweeted with %1</source>
         <translation>Tviitattu %1 kanssa</translation>
     </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetPage</name>

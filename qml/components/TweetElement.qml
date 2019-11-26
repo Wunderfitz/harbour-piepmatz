@@ -81,7 +81,15 @@ Item {
                 Image {
                     id: tweetInReplyToImage
                     source: "image://theme/icon-s-repost"
-                    visible: tweetModel.in_reply_to_user_id_str ? true : false
+                    visible: tweetModel.in_reply_to_status_id_str ? true : false
+                    anchors.right: parent.right
+                    width: Theme.fontSizeExtraSmall
+                    height: Theme.fontSizeExtraSmall
+                }
+                Image {
+                    id: tweetDirectImage
+                    source: "image://theme/icon-s-message"
+                    visible: (tweetModel.in_reply_to_user_id_str && !tweetModel.in_reply_to_status_id_str) ? true : false
                     anchors.right: parent.right
                     width: Theme.fontSizeExtraSmall
                     height: Theme.fontSizeExtraSmall
@@ -188,7 +196,32 @@ Item {
                         color: Theme.secondaryColor
                         text: qsTr("In reply to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeTiny))
                         textFormat: Text.StyledText
-                        visible: tweetModel.in_reply_to_user_id_str ? true : false
+                        visible: tweetModel.in_reply_to_status_id_str ? true : false
+                        elide: Text.ElideRight
+                        maximumLineCount: 1
+                        width: tweetContentColumn.width
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileName": Functions.getScreenNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions)});
+                            }
+                        }
+                        onTruncatedChanged: {
+                            // There is obviously a bug in QML in truncating text with images.
+                            // We simply remove Emojis then...
+                            if (truncated) {
+                                text = text.replace(/\<img [^>]+\/\>/g, "");
+                            }
+                        }
+                    }
+
+                    Text {
+                        id: tweetDirectText
+                        font.pixelSize: Theme.fontSizeTiny
+                        color: Theme.secondaryColor
+                        text: qsTr("Tweet to %1").arg(Emoji.emojify(Functions.getUserNameById(tweetModel.in_reply_to_user_id, tweetModel.user, tweetModel.entities.user_mentions), Theme.fontSizeTiny))
+                        textFormat: Text.StyledText
+                        visible: (tweetModel.in_reply_to_user_id_str && !tweetModel.in_reply_to_status_id_str) ? true : false
                         elide: Text.ElideRight
                         maximumLineCount: 1
                         width: tweetContentColumn.width

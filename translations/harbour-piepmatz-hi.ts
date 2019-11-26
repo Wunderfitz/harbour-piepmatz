@@ -891,6 +891,10 @@
         <source>Tweeted with %1</source>
         <translation>Tweet %1  के प्रति</translation>
     </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetPage</name>

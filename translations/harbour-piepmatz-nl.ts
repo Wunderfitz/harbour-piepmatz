@@ -892,6 +892,10 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Tweeted with %1</source>
         <translation>Getweet met %1</translation>
     </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetPage</name>

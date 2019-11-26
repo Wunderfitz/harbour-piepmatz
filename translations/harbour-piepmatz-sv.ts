@@ -893,6 +893,10 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
         <source>Tweeted with %1</source>
         <translation>Twittrad med %1</translation>
     </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetPage</name>
