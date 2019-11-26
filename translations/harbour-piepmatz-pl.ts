@@ -901,7 +901,7 @@
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>ZaTweetuj do %1</translation>
     </message>
 </context>
 <context>
