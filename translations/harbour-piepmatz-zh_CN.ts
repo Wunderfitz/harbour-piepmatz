@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_cn">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>AboutPage</name>
     <message>
@@ -13,7 +13,7 @@
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>由Sebastian J. Wolf开发</translation>
+        <translation>由 Sebastian J. Wolf开发</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -21,7 +21,7 @@
     </message>
     <message>
         <source>Licensed under GNU GPLv3</source>
-        <translation>在GNU GPLv3许可证下开发</translation>
+        <translation>在 GNU GPLv3 许可协议下开发</translation>
     </message>
     <message>
         <source>Sources on GitHub</source>
@@ -33,23 +33,23 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>GitHub上的Open OAuth for Qt </translation>
+        <translation>GitHub上的 Open OAuth for Qt </translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>该项目使用 Akos Polster开发的 OAuth for Qt。感谢让它在BSD-2-Clause许可证下运作!</translation>
+        <translation>该项目使用 Akos Polster 开发的 OAuth for Qt。感谢让它在 BSD-2-Clause 许可证下运作!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>该项目使用twitter-text。版权 2014 Twitter, Inc.和其它贡献者。 感谢使它能够在Apache 许可证, 2.0版本下运作!</translation>
+        <translation>该项目使用 twitter-text。版权 2014 Twitter, Inc.及其它贡献者。感谢使它能够在，Apache 许可证2.0版本下运作!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>GitHub上的Open twitter-text</translation>
+        <translation>GitHub 上的 Open twitter-text</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>在Twitter上找我</translation>
+        <translation>你可以在 Twitter 上找我</translation>
     </message>
     <message>
         <source>About Twitter</source>
@@ -65,39 +65,41 @@
     </message>
     <message>
         <source>Open ipinfo.io</source>
-        <translation>打开ipinfo.io</translation>
+        <translation>打开 ipinfo.io</translation>
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>piepmatz 使用 ipinfo. io和你设备中的GPS接收器（如果可用）来确定你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上公布你的位置, 请确保在你的设备上启用了它 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</translation>
+        <translation>piepmatz 使用 ipinfo. io 和你设备中的GPS接收器（如果可用）来确定你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上公布你的位置, 请确保在你的设备上启用了它 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
-        <translation>Wagnis账号:</translation>
+
+        <translation>Wagnis 账号:</translation>
     </message>
     <message>
         <source>Show Wagnis ID</source>
-        <translation>显示Wagnis账号</translation>
+        <translation>显示 Wagnis 账号</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>在Github 打开 twemoji</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+该项目使用QGumboParser，Sergey Lagner 2017 版权所有。感谢使它在 MIT 许可协议下可用! QGumboParser 使用 Gumbo, Google  2017 版权所有。在 Apache 许可协议下使用。</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>在Github 打开 QGumboParser</translation>
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation type="unfinished"></translation>
+        <translation>该项目使用 twemoji, Twitter, Inc.  2018 及其他贡献者版权所有。感谢使得它在 MIT 许可协议 (代码部分)及CC-BY 4.0 (图像部分)可用!</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>该项目使用 &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; 在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; 下分发。你也可以 &lt;a href=&quot;profile://werkwolf&quot;&gt; 在 Twitter 找到WerkWolf &lt;/a&gt; 。</translation>
     </message>
 </context>
 <context>
@@ -127,14 +129,14 @@
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>剩余%1个字符</translation>
+        <translation>剩余 %1个字符</translation>
     </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
         <source>Loading...</source>
-        <translation>载入中...</translation>
+        <translation>载入中……</translation>
     </message>
 </context>
 <context>
@@ -145,7 +147,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
 </context>
 <context>
@@ -156,7 +158,7 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
 </context>
 <context>
@@ -167,33 +169,33 @@
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
 </context>
 <context>
     <name>HomeTimelineButton</name>
     <message>
         <source>Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>时间线</translation>
     </message>
 </context>
 <context>
     <name>ImagePage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>下载</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在下载……</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>成功下载 %1 。 </translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在下载, 已完成 %1% …… </translation>
     </message>
 </context>
 <context>
@@ -215,37 +217,37 @@
     <name>ListMembersPage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <source>%1: Members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: 个成员</translation>
     </message>
 </context>
 <context>
     <name>ListTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <source>%1: Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>%1: 时间线</translation>
     </message>
     <message>
         <source>Show Members</source>
-        <translation type="unfinished"></translation>
+        <translation>显示成员</translation>
     </message>
     <message>
         <source>Load more tweets</source>
-        <translation type="unfinished">载入更多推文</translation>
+        <translation>载入更多推文</translation>
     </message>
 </context>
 <context>
     <name>ListsButton</name>
     <message>
         <source>Lists</source>
-        <translation type="unfinished"></translation>
+        <translation>列表</translation>
     </message>
 </context>
 <context>
@@ -259,7 +261,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>消息</translation>
     </message>
 </context>
 <context>
@@ -286,11 +288,11 @@
     </message>
     <message>
         <source>Retweet</source>
-        <translation>Retwee</translation>
+        <translation>转推</translation>
     </message>
     <message>
         <source>Send Retweet</source>
-        <translation>发送Retwee</translation>
+        <translation>发出转推</translation>
     </message>
     <message>
         <source>@%1</source>
@@ -302,18 +304,18 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation type="unfinished"></translation>
+        <translation >图片描述</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation type="unfinished">剩余%1字符</translation>
+        <translation>剩余 %1个字符</translation>
     </message>
 </context>
 <context>
     <name>NotificationsButton</name>
     <message>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>通知</translation>
     </message>
 </context>
 <context>
@@ -324,7 +326,7 @@
     </message>
     <message>
         <source>Authenticate</source>
-        <translation>鉴权</translation>
+        <translation>授权</translation>
     </message>
     <message>
         <source>About Piepmatz</source>
@@ -340,15 +342,15 @@
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>问候Twitter中...</translation>
+        <translation>正在问候Twitter ……</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
-        <translation>载入时间线中...</translation>
+        <translation>正在载入时间线……</translation>
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz不能登录你的账户 !</translation>
+        <translation>Piepmatz不能登录你的账户!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
@@ -356,7 +358,7 @@
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>在Twitte搜索r</translation>
+        <translation>在Twitte搜索……</translation>
     </message>
     <message>
         <source>No results found</source>
@@ -372,7 +374,7 @@
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>升级中, 已完成%1% ...</translation>
+        <translation>升级中, 已完成 %1% ……</translation>
     </message>
     <message>
         <source>You</source>
@@ -392,7 +394,7 @@
     </message>
     <message>
         <source>Searching...</source>
-        <translation>搜索中...</translation>
+        <translation>搜索中……</translation>
     </message>
     <message>
         <source>New Mentions</source>
@@ -428,82 +430,82 @@
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>你已被提及 %1 次!</translation>
     </message>
     <message>
         <source>New Mention</source>
-        <translation type="unfinished"></translation>
+        <translation>新提及</translation>
     </message>
     <message>
         <source>New Followers</source>
-        <translation type="unfinished"></translation>
+        <translation>新关注者</translation>
     </message>
     <message>
         <source>You have %1 new followers!</source>
-        <translation type="unfinished"></translation>
+        <translation>你有 %1 新关注者!</translation>
     </message>
     <message>
         <source>New Follower</source>
-        <translation type="unfinished"></translation>
+        <translation>新关注者</translation>
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation type="unfinished"></translation>
+        <translation>你有一个新关注者</translation>
     </message>
     <message>
         <source>follows you now!</source>
-        <translation type="unfinished"></translation>
+        <translation>正在关注你!</translation>
     </message>
     <message>
         <source>New Retweets</source>
-        <translation type="unfinished"></translation>
+        <translation>新转推</translation>
     </message>
     <message>
         <source>You have been retweeted %1 times!</source>
-        <translation type="unfinished"></translation>
+        <translation>你已转推 %1 次!</translation>
     </message>
     <message>
         <source>You have been retweeted!</source>
-        <translation type="unfinished"></translation>
+        <translation>你已转推!</translation>
     </message>
     <message>
         <source>Subscribed</source>
-        <translation type="unfinished"></translation>
+        <translation>订阅</translation>
     </message>
     <message>
         <source>No lists found</source>
-        <translation type="unfinished"></translation>
+        <translation>没有找到新列表</translation>
     </message>
     <message>
         <source>Member of</source>
-        <translation type="unfinished"></translation>
+        <translation>成员of</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <source>Saved Searches</source>
-        <translation type="unfinished"></translation>
+        <translation>保存的搜索</translation>
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>已成功搜索及保存 %1</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished"></translation>
+        <translation>正在删除</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除</translation>
     </message>
 </context>
 <context>
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1正在关注的</translation>
+        <translation>%1正在关注</translation>
     </message>
     <message>
         <source>%1 Followers</source>
@@ -515,18 +517,18 @@
     </message>
     <message>
         <source>Joined in %1</source>
-        <translation>已加入%1</translation>
+        <translation>已加入 %1</translation>
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1收藏</translation>
+        <translation>%1个收藏</translation>
     </message>
 </context>
 <context>
     <name>ProfileButton</name>
     <message>
         <source>Profile</source>
-        <translation type="unfinished"></translation>
+        <translation>个人简介</translation>
     </message>
 </context>
 <context>
@@ -540,19 +542,19 @@
     <name>ProfilePage</name>
     <message>
         <source>Unfollow %1</source>
-        <translation>取消关注%1</translation>
+        <translation>取消关注 %1</translation>
     </message>
     <message>
         <source>Follow %1</source>
-        <translation>关注%1</translation>
+        <translation>关注 %1</translation>
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>你正关注%1.</translation>
+        <translation>你正关注 %1 </translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>您不再关注% 1</translation>
+        <translation>你不再关注 % 1</translation>
     </message>
     <message>
         <source>Send Direct Message</source>
@@ -575,7 +577,7 @@
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>祝你和Piepmatz玩得开心!Sebastian J. Wolf</translation>
+        <translation>祝你和Piepmatz玩得开心! Sebastian J. Wolf 敬上</translation>
     </message>
     <message>
         <source>Accept</source>
@@ -583,11 +585,10 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>欢迎来到Piepmatz! - 一个旗鱼系统Twitter客户端! Piepmatz is  —&lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;открытое программное обеспечение&lt;/a&gt; и лицензирован на основании &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;GPLv3&lt;/a&gt;. Используя это ПО, вы соглашаетесь с условиями лицензии (GPSv3).</translation>
-    </message>
+        <translation>欢迎来到 Piepmatz——一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;通用公共许可协议3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可协议的各项条款。</message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>当点击按钮时, Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？我会尊重你的隐私, 因此我只在非常有限的范围内提供匿名信息: 安装的唯一标识符是您的设备和您所在国家/地区生成的随机数。作者只想知道应用程序的用户数量和他们在哪里。如果这不适合你, 只需关闭此位置的应用程序, 到目前为止, 信息还没有传输到任何地方。</translation>
+        <translation>当点击按钮时, Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？我会尊重你的隐私, 因为我只在非常有限的范围内提供匿名信息: 安装的唯一标识符是你的设备和你所在国家/地区生成的随机数。作者只想知道应用程序的用户数量和他们的所在地。如果你无法接受, 只需关闭此应用程序, 到目前为止, 信息还没有传输到任何地方。</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -603,7 +604,7 @@
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>注册失败。请确保你的设备已连接到网络, 然后点击 &quot;重试？如果几次尝试注册仍不工作, 给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
+        <translation>注册失败。请确保你的设备已连接到网络, 然后点击重新注册，如果几次尝试注册仍不工作, 请给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -623,213 +624,214 @@
     </message>
     <message>
         <source>The data isn&apos;t shared with anyone else. Please see the &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt; for additional information how the data is processed. For additional details about the motivation for this, the unique ID and how it is generated please see my page &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt;.</source>
-        <translation>数据不会透露给第三方。Please see the&lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;уведомлении о приватности&lt;/a&gt; доступно больше информации про обработку данных. Дополнительно о том, зачем это нужно и как работает уникальный идентификатор, см. &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt;.</translation>
+        <translation>数据不会分享给任何人，你可以参阅下方网站 &lt;a href=&quot;https://werkwolf.eu/terms.html&quot;&gt;legal notice&lt;/a&gt;  以查看更多数据处理过程的信息。关于更多信息及唯一的ID以及这样做的目的，请查看我的网页 &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;about Wagnis&lt;/a&gt; 。</translation>
     </message>
     <message>
         <source>Development Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>开发捐献</translation>
     </message>
     <message>
         <source>Please contribute to Piepmatz</source>
-        <translation type="unfinished"></translation>
+        <translation>请对 Piepmatz 做点捐献</translation>
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你想跳过捐赠 %1 ，如果你想先试试再说。</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation type="unfinished"></translation>
+        <translation>继续测试</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你已捐赠 Piepmatz, 请直接 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; </translation>
     </message>
     <message>
         <source>Contribution</source>
-        <translation type="unfinished"></translation>
+        <translation>捐赠</translation>
     </message>
     <message>
         <source>Choose your contribution here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择你的捐赠</translation>
     </message>
     <message>
         <source>Purchase Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>购买捐赠密钥</translation>
     </message>
     <message>
         <source>Validate your contribution key</source>
-        <translation type="unfinished"></translation>
+        <translation>使用你的捐赠密钥以激活</translation>
     </message>
     <message>
         <source>Enter the contribution key here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此输入捐赠密钥</translation>
     </message>
     <message>
         <source>Validate Contribution Key</source>
-        <translation type="unfinished"></translation>
+        <translation>激活捐赠密钥</translation>
     </message>
     <message>
         <source>Piepmatz S - 3,33 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz S-3.33 欧元</translation>
     </message>
     <message>
         <source>Piepmatz M - 5,55 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz M 5.55 欧元</translation>
     </message>
     <message>
         <source>Piepmatz L - 7,77 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz L 7.77欧元</translation>
     </message>
     <message>
         <source>Piepmatz XL - 9,99 €</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz XL -9.99 欧元</translation>
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你已经在另一个设备上激活了你的密钥，那么你可以将其重复使用最多3个额外的设备，而不需要再次捐赠。</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz 是一个会继续保持开源的软件。然而，为了支持 Piepmatz 的开发，在你运行它之前，我想请您你提供一些帮助。这种贡献可以通过将 Piepmatz 翻译成另一种语言、帮助开发它或购买密钥来实现。</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
-        <translation type="unfinished"></translation>
+        <translation>在通过购买或新的捐赠收到你的密钥之后，请激活你的密钥以运行 Piepmatz 。</translation>
     </message>
     <message>
         <source>Contribution not validated!</source>
-        <translation type="unfinished"></translation>
+        <translation>未能验证捐赠!</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>
+​无法验证你的捐赠，请确保你的设备连接到网络并且按下重新激活按钮。如果你有一个有效的捐赠密钥却无法激活成功，请通过下方电子邮件和我取得联系 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Restart Validation</source>
-        <translation type="unfinished"></translation>
+        <translation>重新激活</translation>
     </message>
     <message>
         <source>Thank You!</source>
-        <translation type="unfinished"></translation>
+        <translation>感谢你!</translation>
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation type="unfinished"></translation>
+        <translation>你的捐赠已成功激活。非常感谢你支持 Piepmatz 的来发。</translation>
     </message>
     <message>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>你可以选择4种不同的捐赠形式：S、M、L、XL。无论您你选择何种大小，都能通过购买密钥解锁整个应用程序。应用程序对你的价值大小完全由你决定。</translation>
     </message>
 </context>
 <context>
     <name>SearchButton</name>
     <message>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>搜索</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>设置</translation>
     </message>
     <message>
         <source>Enable Positioning</source>
-        <translation type="unfinished"></translation>
+        <translation>启用位置服务</translation>
     </message>
     <message>
         <source>Allow Piepmatz to use GPS/GLONASS/Galileo etc. for tweet geotagging</source>
-        <translation type="unfinished"></translation>
+        <translation>允许 Piepmatz 使用 GPS/北斗/GLONASS/Galileo 等卫星服务以获取地理位置</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="unfinished"></translation>
+        <translation>位置</translation>
     </message>
     <message>
         <source>Choose the active image style here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择图片类型</translation>
     </message>
     <message>
         <source>Standard</source>
-        <translation type="unfinished"></translation>
+        <translation>标准</translation>
     </message>
     <message>
         <source>Image Style</source>
-        <translation type="unfinished"></translation>
+        <translation>图片类型</translation>
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation type="unfinished"></translation>
+        <translation>ferlanero 制作的 Piepfish</translation>
     </message>
     <message>
         <source>Accounts</source>
-        <translation type="unfinished"></translation>
+        <translation>账户</translation>
     </message>
     <message>
         <source>Account</source>
-        <translation type="unfinished"></translation>
+        <translation>账户</translation>
     </message>
     <message>
         <source>Choose the active account here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择使用的账户</translation>
     </message>
     <message>
         <source>@%1</source>
-        <translation type="unfinished">@%1</translation>
+        <translation>@%1</translation>
     </message>
     <message>
         <source>Login with other Account</source>
-        <translation type="unfinished"></translation>
+        <translation>用其它 Twitter 账户登录</translation>
     </message>
     <message>
         <source>Use Twitter Emoji</source>
-        <translation type="unfinished"></translation>
+        <translation>使用 Twitter 表情</translation>
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation type="unfinished"></translation>
+        <translation>使用Twitter 表情而非系统自带</translation>
     </message>
     <message>
         <source>Style</source>
-        <translation type="unfinished"></translation>
+        <translation>风格</translation>
     </message>
     <message>
         <source>Enable loading animations</source>
-        <translation type="unfinished"></translation>
+        <translation>打开记载动画</translation>
     </message>
     <message>
         <source>Use animations when additional content is loaded</source>
-        <translation type="unfinished"></translation>
+        <translation>加载更多内容时使用动画</translation>
     </message>
     <message>
         <source>Remove current Account</source>
-        <translation type="unfinished"></translation>
+        <translation>移除当前账户</translation>
     </message>
     <message>
         <source>Removing account</source>
-        <translation type="unfinished"></translation>
+        <translation>正在移除帐户</translation>
     </message>
     <message>
         <source>Enable swipe navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>打开滑动导航</translation>
     </message>
     <message>
         <source>Use swipe navigation to switch categories (e.g. from timeline to notifications)</source>
-        <translation type="unfinished"></translation>
+        <translation>使用滑动导航以切换分类（例如从时间线到通知）</translation>
     </message>
     <message>
         <source>Display image descriptions</source>
-        <translation type="unfinished"></translation>
+        <translation>显示图片描述</translation>
     </message>
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
-        <translation type="unfinished"></translation>
+        <translation>如果可用，则显示推文图片的附加描述</translation>
     </message>
 </context>
 <context>
@@ -855,7 +857,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>以评论Retweet</translation>
+        <translation>转推并评论</translation>
     </message>
     <message>
         <source>Copy URL to Clipboard</source>
@@ -863,33 +865,33 @@
     </message>
     <message>
         <source>Delete Tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>删除推文</translation>
     </message>
     <message>
         <source>Deleting tweet</source>
-        <translation type="unfinished"></translation>
+        <translation>正在删除推文</translation>
     </message>
 </context>
 <context>
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>帖子</translation>
     </message>
 </context>
 <context>
     <name>TweetElement</name>
     <message>
         <source>Retweeted by %1</source>
-        <translation>已重新tweet%1</translation>
+        <translation>已转推 %1</translation>
     </message>
     <message>
         <source>In reply to %1</source>
-        <translation>在回复%1</translation>
+        <translation>回复 %1</translation>
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation>重新tweete%1</translation>
+        <translation>转推 %1</translation>
     </message>
     <message>
         <source>Tweet to %1</source>
@@ -908,7 +910,7 @@
     </message>
     <message>
         <source>Retweet with Comment</source>
-        <translation>以评论重新tweet </translation>
+        <translation>转推并评论 </translation>
     </message>
     <message>
         <source>Open in Browser</source>
@@ -920,7 +922,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation type="unfinished"></translation>
+        <translation>显示帖子</translation>
     </message>
 </context>
 <context>
@@ -934,11 +936,11 @@
     <name>TwitterList</name>
     <message>
         <source>&lt;b&gt;%1&lt;/b&gt; by %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; by %2</translation>
     </message>
     <message>
         <source>%1 members</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 成员</translation>
     </message>
 </context>
 <context>
@@ -952,26 +954,26 @@
     <name>UserTimelinePage</name>
     <message>
         <source>Refresh</source>
-        <translation type="unfinished">刷新</translation>
+        <translation>刷新</translation>
     </message>
 </context>
 <context>
     <name>VideoPage</name>
     <message>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>下载</translation>
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation type="unfinished"></translation>
+        <translation>成功下载 %1 。</translation>
     </message>
     <message>
         <source>Downloading...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在下载……</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在下载,已完成 %1% ……</translation>
     </message>
 </context>
 <context>
@@ -998,19 +1000,19 @@
     </message>
     <message>
         <source>OK</source>
-        <translation>好的</translation>
+        <translation>确定</translation>
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>请输入TwitterPIN:</translation>
+        <translation>请输入Twitter PIN:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>无法用你输入的PIN验证</translation>
+        <translation>无法用你输入的 PIN 验证</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
-        <translation>再次输入PIN</translation>
+        <translation>请再次输入 PIN</translation>
     </message>
     <message>
         <source>Restart authentication</source>
@@ -1037,7 +1039,7 @@
     </message>
     <message>
         <source>the next %1 days</source>
-        <translation>接下来的%1天</translation>
+        <translation>接下来 %1 天</translation>
     </message>
     <message>
         <source>the next day</source>
@@ -1045,7 +1047,7 @@
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>接下来的%1小时</translation>
+        <translation>接下来 %1 小时</translation>
     </message>
     <message>
         <source>the next hour</source>
@@ -1053,7 +1055,7 @@
     </message>
     <message>
         <source>the next %1 minutes</source>
-        <translation>接下来的%1分钟</translation>
+        <translation>接下来 %1 分钟</translation>
     </message>
     <message>
         <source>the next minute</source>
