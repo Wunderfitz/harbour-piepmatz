@@ -5,15 +5,15 @@
     <name>AboutPage</name>
     <message>
         <source>About Piepmatz</source>
-        <translation>关于Piepmatz</translation>
+        <translation>关于 Piepmatz</translation>
     </message>
     <message>
         <source>A Twitter client for Sailfish OS</source>
-        <translation>一个旗鱼系统Twitter客户端</translation>
+        <translation>一个旗鱼系统 Twitter 客户端</translation>
     </message>
     <message>
         <source>By Sebastian J. Wolf</source>
-        <translation>由 Sebastian J. Wolf开发</translation>
+        <translation>由 Sebastian J. Wolf 开发</translation>
     </message>
     <message>
         <source>Send E-Mail</source>
@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>GitHub上的 Open OAuth for Qt </translation>
+        <translation>GitHub 上的 Open OAuth for Qt </translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -41,7 +41,7 @@
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>该项目使用 twitter-text。版权 2014 Twitter, Inc.及其它贡献者。感谢使它能够在，Apache 许可证2.0版本下运作!</translation>
+        <translation>该项目使用 twitter-text。版权 2014 Twitter, Inc.及其它贡献者。感谢使它能够在 Apache 许可证2.0版本下运作!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
@@ -49,7 +49,7 @@
     </message>
     <message>
         <source>Find me on Twitter</source>
-        <translation>你可以在 Twitter 上找我</translation>
+        <translation>你可以在 Twitter 上找到我</translation>
     </message>
     <message>
         <source>About Twitter</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>piepmatz 使用 ipinfo. io 和你设备中的GPS接收器（如果可用）来确定你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上公布你的位置, 请确保在你的设备上启用了它 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</translation>
+        <translation>piepmatz 使用 ipinfo. io 和你设备中的 GPS 接收器（如果可用）来确定你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上发布你的位置, 请确保在你的设备上启用了它 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt; 。</translation>
     </message>
     <message>
         <source>Wagnis ID: </source>
@@ -87,7 +87,7 @@
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
         <translation>
-该项目使用QGumboParser，Sergey Lagner 2017 版权所有。感谢使它在 MIT 许可协议下可用! QGumboParser 使用 Gumbo, Google  2017 版权所有。在 Apache 许可协议下使用。</translation>
+该项目使用 QGumboParser Sergey Lagner 2017 版权所有。感谢使它在 MIT 许可协议下可用! QGumboParser 使用 Gumbo, Google  2017 版权所有。在 Apache 许可协议下使用。</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
@@ -95,11 +95,11 @@
     </message>
     <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
-        <translation>该项目使用 twemoji, Twitter, Inc.  2018 及其他贡献者版权所有。感谢使得它在 MIT 许可协议 (代码部分)及CC-BY 4.0 (图像部分)可用!</translation>
+        <translation>该项目使用 twemoji, Twitter, Inc.  2018 及其他贡献者版权所有。感谢使得它在 MIT 许可协议 (代码部分)及 CC-BY 4.0 (图像部分)可用!</translation>
     </message>
     <message>
         <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>该项目使用 &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; 在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; 下分发。你也可以 &lt;a href=&quot;profile://werkwolf&quot;&gt; 在 Twitter 找到WerkWolf &lt;/a&gt; 。</translation>
+        <translation>该项目使用 &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; 在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; 下分发。你也可以 &lt;a href=&quot;profile://werkwolf&quot;&gt; 在 Twitter 找到 WerkWolf &lt;/a&gt; 。</translation>
     </message>
 </context>
 <context>
@@ -125,11 +125,11 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>%1新信息</translation>
+        <translation>%1 新信息</translation>
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>剩余 %1个字符</translation>
+        <translation>剩余 %1 个字符</translation>
     </message>
 </context>
 <context>
@@ -342,7 +342,7 @@
     </message>
     <message>
         <source>Saying hello to Twitter...</source>
-        <translation>正在问候Twitter ……</translation>
+        <translation>正在打开 Twitter ……</translation>
     </message>
     <message>
         <source>Loading timeline...</source>
@@ -358,7 +358,7 @@
     </message>
     <message>
         <source>Search on Twitter...</source>
-        <translation>在Twitte搜索……</translation>
+        <translation>在 Twitter 搜索……</translation>
     </message>
     <message>
         <source>No results found</source>
@@ -505,15 +505,15 @@
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1正在关注</translation>
+        <translation>%1 正在关注</translation>
     </message>
     <message>
         <source>%1 Followers</source>
-        <translation>%1关注者</translation>
+        <translation>%1 关注者</translation>
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1推文</translation>
+        <translation>%1 推文</translation>
     </message>
     <message>
         <source>Joined in %1</source>
@@ -521,7 +521,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1个收藏</translation>
+        <translation>%1 个收藏</translation>
     </message>
 </context>
 <context>
@@ -573,11 +573,11 @@
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>欢迎来到Piepmatz!</translation>
+        <translation>欢迎来到 Piepmatz!</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>祝你和Piepmatz玩得开心! Sebastian J. Wolf 敬上</translation>
+        <translation>祝你和 Piepmatz 玩得开心! Sebastian J. Wolf 敬上</translation>
     </message>
     <message>
         <source>Accept</source>
@@ -616,7 +616,7 @@
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>设备上的注册文件已损坏。需要重新启动注册过程。请确保你的设备已连接到互联网&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
+        <translation>设备上的注册文件已损坏。需要重新启动注册过程。请确保你的设备已连接到互联网 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
@@ -959,8 +959,7 @@
 </context>
 <context>
     <name>VideoPage</name>
-    <message>
-        <source>Download</source>
+    <message        <source>Download</source>
         <translation>下载</translation>
     </message>
     <message>
