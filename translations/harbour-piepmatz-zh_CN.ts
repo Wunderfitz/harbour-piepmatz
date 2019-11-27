@@ -73,7 +73,6 @@
     </message>
     <message>
         <source>Wagnis ID: </source>
-
         <translation>Wagnis 账号:</translation>
     </message>
     <message>
@@ -304,7 +303,7 @@
     </message>
     <message>
         <source>Image Description</source>
-        <translation >图片描述</translation>
+        <translation>图片描述</translation>
     </message>
     <message>
         <source>%1 characters left</source>
@@ -568,6 +567,14 @@
         <source>Copy URL to Clipboard</source>
         <translation>复制网址到剪贴板</translation>
     </message>
+    <message>
+        <source>@%1 </source>
+        <translation type="unfinished">@%1 </translation>
+    </message>
+    <message>
+        <source>Tweet to %1</source>
+        <translation type="unfinished">发推到 %1</translation>
+    </message>
 </context>
 <context>
     <name>RegistrationPage</name>
@@ -585,7 +592,8 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>欢迎来到 Piepmatz —— 一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt; 通用公共许可证3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可证的各项条款。</message>
+        <translation>欢迎来到 Piepmatz —— 一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt; 通用公共许可证3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可证的各项条款。</translation>
+    </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
         <translation>当点击按钮时，Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？放心，我会尊重你的隐私，因为我只在非常有限的范围内传输匿名信息: 安装的唯一标识符是基于你的设备和你所在国家/地区生成的随机数。作者只想知道软件的用户数量和他们的所在地。如果你无法接受, 只需关闭此软件，到目前为止, 信息还没有传输到任何地方。</translation>
@@ -703,11 +711,6 @@
         <translation>未能验证捐赠!</translation>
     </message>
     <message>
-        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-M丨ail&lt;/a&gt;</source>
-        <translation>
-​无法验证你的捐赠，请确保你的设备已连接到网络并且按下重启激活按钮。如果你有一个有效的捐赠密钥却无法激活成功，请通过下方电子邮件和我取得联系 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
-    </message>
-    <message>
         <source>Restart Validation</source>
         <translation>重新激活</translation>
     </message>
@@ -726,6 +729,10 @@
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
         <translation>你可以选择4种不同的捐赠形式：S、M、L、XL。无论你选择何种金额的捐赠，都能通过购买密钥解锁整个软件。本软件对你的价值大小完全由你决定。</translation>
+    </message>
+    <message>
+        <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -832,6 +839,22 @@
     <message>
         <source>Display additional descriptions of tweet images (if available)</source>
         <translation>如果可用，则显示推文图片附加描述</translation>
+    </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the font size here</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Normal (Piepmatz default)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Large (Sailfish OS default)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -960,7 +983,7 @@
 <context>
     <name>VideoPage</name>
     <message>
-<source>Download</source>
+        <source>Download</source>
         <translation>下载</translation>
     </message>
     <message>
