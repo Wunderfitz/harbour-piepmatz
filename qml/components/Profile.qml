@@ -55,6 +55,8 @@ Item {
     property variant profileModel;
     property variant profileTimeline;
     property bool loadingError : false;
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
+    property string iconFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeSmall : Theme.fontSizeMedium) ;
 
     Component.onCompleted: {
         console.log("Profile Model called for " + profileModel.id_str + ": " + profileModel.screen_name);
@@ -69,6 +71,19 @@ Item {
 
     AppNotification {
         id: notification
+    }
+
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeExtraSmall;
+                iconFontSize = Theme.fontSizeSmall;
+            } else {
+                componentFontSize = Theme.fontSizeSmall;
+                iconFontSize = Theme.fontSizeMedium;
+            }
+        }
     }
 
     Connections {
@@ -112,7 +127,7 @@ Item {
                 Text {
                     id: profileFriendsText
                     text: qsTr("%1 Following").arg(Number(profileModel.friends_count).toLocaleString(Qt.locale(), "f", 0))
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     color: Theme.highlightColor
                     font.underline: !profileItem.loadingError
                     wrapMode: Text.Wrap
@@ -127,13 +142,13 @@ Item {
                 Text {
                     id: profileFollowingSeparatorText
                     text: "|"
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     color: Theme.primaryColor
                 }
                 Text {
                     id: profileFollowersText
                     text: qsTr("%1 Followers").arg(Number(profileModel.followers_count).toLocaleString(Qt.locale(), "f", 0))
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     color: Theme.highlightColor
                     font.underline: !profileItem.loadingError
                     wrapMode: Text.Wrap
@@ -157,7 +172,7 @@ Item {
                 Text {
                     id: profileTweetsText
                     text: qsTr("%1 Tweets").arg(Number(profileModel.statuses_count).toLocaleString(Qt.locale(), "f", 0))
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     font.underline: !profileItem.loadingError
                     color: Theme.highlightColor
                     MouseArea {
@@ -171,13 +186,13 @@ Item {
                 Text {
                     id: profileActivitySeparatorText
                     text: "|"
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     color: Theme.primaryColor
                 }
                 Text {
                     id: profileFavoritesText
                     text: qsTr("%1 Favorites").arg(Number(profileModel.favourites_count).toLocaleString(Qt.locale(), "f", 0))
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     font.underline: !profileItem.loadingError
                     color: Theme.highlightColor
                     MouseArea {
@@ -206,8 +221,8 @@ Item {
 
                     Text {
                         id: profileDescriptionText
-                        text: Emoji.emojify(TwitterText.autoLink(profileModel.description, { usernameIncludeSymbol : true }), Theme.fontSizeExtraSmall)
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        text: Emoji.emojify(TwitterText.autoLink(profileModel.description, { usernameIncludeSymbol : true }), componentFontSize)
+                        font.pixelSize: componentFontSize
                         color: Theme.primaryColor
                         wrapMode: Text.Wrap
                         width: parent.width
@@ -230,7 +245,7 @@ Item {
                     Text {
                         id: profileJoinedText
                         text: qsTr("Joined in %1").arg(Functions.getValidDate(profileModel.created_at).toLocaleDateString(Qt.locale(), "MMMM yyyy"))
-                        font.pixelSize: Theme.fontSizeExtraSmall
+                        font.pixelSize: componentFontSize
                         color: Theme.primaryColor
                         wrapMode: Text.NoWrap
                         elide: Text.ElideRight
@@ -251,13 +266,13 @@ Item {
                         Image {
                             id: profileLocationImage
                             source: "image://theme/icon-m-location"
-                            width: Theme.fontSizeSmall
-                            height: Theme.fontSizeSmall
+                            width: iconFontSize
+                            height: iconFontSize
                         }
                         Text {
                             id: profileLocationText
-                            text: Emoji.emojify(profileModel.location, Theme.fontSizeExtraSmall)
-                            font.pixelSize: Theme.fontSizeExtraSmall
+                            text: Emoji.emojify(profileModel.location, componentFontSize)
+                            font.pixelSize: componentFontSize
                             color: Theme.primaryColor
                             wrapMode: Text.NoWrap
                             anchors.verticalCenter: parent.verticalCenter
@@ -272,13 +287,13 @@ Item {
                         Image {
                             id: profileUrlImage
                             source: "image://theme/icon-m-link"
-                            width: Theme.fontSizeSmall
-                            height: Theme.fontSizeSmall
+                            width: iconFontSize
+                            height: iconFontSize
                         }
                         Text {
                             id: profileUrlText
                             text: profileModel.entities.url ? ("<a href=\"" + profileModel.entities.url.urls[0].url + "\">" + profileModel.entities.url.urls[0].display_url + "</a>") : ""
-                            font.pixelSize: Theme.fontSizeExtraSmall
+                            font.pixelSize: componentFontSize
                             color: Theme.primaryColor
                             wrapMode: Text.NoWrap
                             anchors.verticalCenter: parent.verticalCenter

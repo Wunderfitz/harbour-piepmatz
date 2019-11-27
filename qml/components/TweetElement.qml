@@ -54,6 +54,19 @@ Item {
         enabled: accountModel.getUseLoadingAnimations()
     }
 
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeTiny;
+                infoTextFontSize = Theme.fontSizeExtraSmall;
+            } else {
+                componentFontSize = Theme.fontSizeExtraSmall;
+                infoTextFontSize = Theme.fontSizeSmall;
+            }
+        }
+    }
+
     Column {
         id: tweetColumn
         width: parent.width - ( 2 * Theme.horizontalPageMargin )

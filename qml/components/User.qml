@@ -29,6 +29,18 @@ ListItem {
     id: singleUser
 
     property variant userModel;
+    property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
+
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeExtraSmall;
+            } else {
+                componentFontSize = Theme.fontSizeSmall;
+            }
+        }
+    }
 
     contentHeight: userRow.height + userSeparator.height + 2 * Theme.paddingMedium
     contentWidth: parent.width
@@ -142,7 +154,7 @@ ListItem {
                 Text {
                     id: userDescriptionText
                     text: Emoji.emojify(TwitterText.autoLink(userModel.description, { usernameIncludeSymbol : true }), Theme.fontSizeExtraSmall)
-                    font.pixelSize: Theme.fontSizeExtraSmall
+                    font.pixelSize: componentFontSize
                     color: Theme.primaryColor
                     wrapMode: Text.Wrap
                     width: parent.width

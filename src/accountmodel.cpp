@@ -219,6 +219,7 @@ QString AccountModel::getFontSize()
 void AccountModel::setFontSize(const QString &fontSize)
 {
     settings.setValue(SETTINGS_FONT_SIZE, fontSize);
+    emit fontSizeChanged(fontSize);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

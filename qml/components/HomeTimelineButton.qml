@@ -5,8 +5,8 @@ import Sailfish.Silica 1.0
 Column {
     id: homeTimelineButton
     property bool isActive: false
-
     width: parent.width
+
     IconButton {
         id: homeButtonImage
         icon.source: homeTimelineButton.isActive ? "image://theme/icon-m-home?" + Theme.highlightColor : "image://theme/icon-m-home?" + Theme.primaryColor
@@ -20,6 +20,7 @@ Column {
         }
 
     }
+
     Label {
         id: homeButtonText
         text: qsTr("Timeline")
@@ -34,4 +35,6 @@ Column {
             onClicked: handleHomeClicked();
         }
     }
+
+
 }

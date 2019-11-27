@@ -78,6 +78,7 @@ signals:
     void imageStyleChanged();
     void swipeNavigationChanged();
     void accountSwitched();
+    void fontSizeChanged(const QString &fontSize);
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);

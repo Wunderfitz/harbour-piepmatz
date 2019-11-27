@@ -32,6 +32,19 @@ Row {
     property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
     property string iconFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeSmall : Theme.fontSizeMedium) ;
 
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeExtraSmall;
+                iconFontSize = Theme.fontSizeSmall;
+            } else {
+                componentFontSize = Theme.fontSizeSmall;
+                iconFontSize = Theme.fontSizeMedium;
+            }
+        }
+    }
+
     Text {
         id: tweetUserNameText
         font.pixelSize: componentFontSize

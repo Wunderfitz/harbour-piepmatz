@@ -31,6 +31,17 @@ Item {
     property bool withReferenceUrl : true;
     property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
 
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeExtraSmall;
+            } else {
+                componentFontSize = Theme.fontSizeSmall;
+            }
+        }
+    }
+
     width: parent.width
     height: embeddedTweetColumn.height
 

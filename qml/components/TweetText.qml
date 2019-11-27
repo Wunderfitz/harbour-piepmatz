@@ -32,6 +32,17 @@ Column {
 
     width: parent.width
 
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                componentFontSize = Theme.fontSizeExtraSmall;
+            } else {
+                componentFontSize = Theme.fontSizeSmall;
+            }
+        }
+    }
+
     function makeTheTextGreatAgain() {
         var relevantTweet = Functions.getRelevantTweet(tweetTextColumn.tweet);
         var greatifiedText = relevantTweet.full_text;

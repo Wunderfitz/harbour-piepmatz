@@ -507,6 +507,9 @@ Page {
                 verificationFailedColumn.opacity = 1;
             }
         }
+        onFontSizeChanged: {
+
+        }
     }
 
     Connections {

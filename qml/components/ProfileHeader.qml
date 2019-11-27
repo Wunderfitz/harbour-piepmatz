@@ -30,6 +30,19 @@ Item {
     width: parent.width
     height: ((profilePictureColumn.y + profilePictureColumn.height) > (profileOverviewColumn.y + profileOverviewColumn.height) ? (profilePictureColumn.y + profilePictureColumn.height) : (profileOverviewColumn.y + profileOverviewColumn.height)) + Theme.paddingSmall
 
+    Connections {
+        target: accountModel
+        onFontSizeChanged: {
+            if (fontSize === "piepmatz") {
+                profileNameText.font.pixelSize = Theme.fontSizeMedium;
+                profileScreenNameText.font.pixelSize = Theme.fontSizeSmall;
+            } else {
+                profileNameText.font.pixelSize = Theme.fontSizeLarge;
+                profileScreenNameText.font.pixelSize = Theme.fontSizeMedium;
+            }
+        }
+    }
+
     Item {
         id: profileBackgroundItem
         width: parent.width
@@ -152,7 +165,7 @@ Item {
             id: profileNameText
             text: Emoji.emojify(profileModel.name, Theme.fontSizeMedium)
             font {
-                pixelSize: Theme.fontSizeMedium
+                pixelSize: accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeMedium : Theme.fontSizeLarge
                 bold: true
             }
             color: Theme.primaryColor
@@ -173,7 +186,7 @@ Item {
             id: profileScreenNameText
             text: qsTr("@%1").arg(profileModel.screen_name)
             font {
-                pixelSize: Theme.fontSizeSmall
+                pixelSize: accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeSmall : Theme.fontSizeMedium
                 bold: true
             }
             color: Theme.primaryColor
