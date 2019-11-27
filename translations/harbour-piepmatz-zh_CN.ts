@@ -37,15 +37,15 @@
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
-        <translation>该项目使用 Akos Polster 开发的 OAuth for Qt。感谢让它在 BSD-2-Clause 许可证下运作!</translation>
+        <translation>该项目使用 Akos Polster 开发的 OAuth for Qt。感谢使它能够在 BSD-2-Clause 许可证下运作!</translation>
     </message>
     <message>
         <source>This project uses twitter-text. Copyright 2014 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the Apache License, Version 2.0!</source>
-        <translation>该项目使用 twitter-text。版权 2014 Twitter, Inc.及其它贡献者。感谢使它能够在 Apache 许可证2.0版本下运作!</translation>
+        <translation>该项目使用 twitter-text 。版权所以 2014 Twitter, Inc.及其它贡献者。感谢使它能够在 Apache 2.0 许可证条款下可用!</translation>
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>GitHub 上的 Open twitter-text</translation>
+        <translation>在 Github 打开，twitter-text</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -82,7 +82,7 @@
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
-        <translation>在Github 打开 twemoji</translation>
+        <translation>在 Github 打开 twemoji</translation>
     </message>
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
@@ -154,7 +154,7 @@
     <name>FollowersPage</name>
     <message>
         <source>%1: Followers</source>
-        <translation>%1:关注者</translation>
+        <translation>%1:，关注者</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -165,7 +165,7 @@
     <name>FriendsPage</name>
     <message>
         <source>%1: Following</source>
-        <translation>%1关注中</translation>
+        <translation>%1: 关注中</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -191,7 +191,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>成功下载 %1 。 </translation>
+        <translation>成功下载 %1 。</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
@@ -308,7 +308,7 @@
     </message>
     <message>
         <source>%1 characters left</source>
-        <translation>剩余 %1个字符</translation>
+        <translation>剩余 %1 个字符</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>Piepmatz could not log you in!</source>
-        <translation>Piepmatz不能登录你的账户!</translation>
+        <translation>Piepmatz 不能登录到你的账户!</translation>
     </message>
     <message>
         <source>Tweet sent successfully!</source>
@@ -370,11 +370,11 @@
     </message>
     <message>
         <source>Sending tweet...</source>
-        <translation>发送推文在</translation>
+        <translation>正在发送推文……</translation>
     </message>
     <message>
         <source>Uploading, %1% completed...</source>
-        <translation>升级中, 已完成 %1% ……</translation>
+        <translation>正在升级, 已完成 %1% ……</translation>
     </message>
     <message>
         <source>You</source>
@@ -382,7 +382,7 @@
     </message>
     <message>
         <source>No direct messages in the last 30 days</source>
-        <translation>在过去30天内, 你没有收到个人消息</translation>
+        <translation>在过去30天内, 你没有收到私信</translation>
     </message>
     <message>
         <source>Tweets</source>
@@ -585,10 +585,10 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>欢迎来到 Piepmatz——一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;通用公共许可协议3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可协议的各项条款。</message>
+        <translation>欢迎来到 Piepmatz —— 一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;通用公共许可协议3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可协议的各项条款。</message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>当点击按钮时, Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？我会尊重你的隐私, 因为我只在非常有限的范围内提供匿名信息: 安装的唯一标识符是你的设备和你所在国家/地区生成的随机数。作者只想知道应用程序的用户数量和他们的所在地。如果你无法接受, 只需关闭此应用程序, 到目前为止, 信息还没有传输到任何地方。</translation>
+        <translation>当点击按钮时, Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？放心，我会尊重你的隐私, 因为我只在非常有限的范围内提供匿名信息: 安装的唯一标识符是你的设备和你所在国家/地区生成的随机数。作者只想知道应用程序的用户数量和他们的所在地。如果你无法接受, 只需关闭此应用程序, 到目前为止, 信息还没有传输到任何地方。</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -717,7 +717,7 @@
     </message>
     <message>
         <source>Your contribution was successfully validated. Thank you very much for your contribution to the development of Piepmatz!</source>
-        <translation>你的捐赠已成功激活。非常感谢你支持 Piepmatz 的来发。</translation>
+        <translation>你的捐赠已成功激活。非常感谢你支持 Piepmatz 的开发。</translation>
     </message>
     <message>
         <source>OK</source>
@@ -795,7 +795,7 @@
     </message>
     <message>
         <source>Use Twitter Emoji instead of system font</source>
-        <translation>使用Twitter 表情而非系统自带</translation>
+        <translation>使用 Twitter 表情替换系统自带表情</translation>
     </message>
     <message>
         <source>Style</source>
@@ -891,11 +891,11 @@
     </message>
     <message>
         <source>Tweeted with %1</source>
-        <translation>转推 %1</translation>
+        <translation>发推 %1</translation>
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>发推到 %1</translation>
     </message>
 </context>
 <context>
@@ -959,7 +959,8 @@
 </context>
 <context>
     <name>VideoPage</name>
-    <message        <source>Download</source>
+    <message>
+<source>Download</source>
         <translation>下载</translation>
     </message>
     <message>
@@ -979,19 +980,19 @@
     <name>WelcomePage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>欢迎来到Piepmatz!</translation>
+        <translation>欢迎来到 Piepmatz!</translation>
     </message>
     <message>
         <source>Please login to Twitter to continue.</source>
-        <translation>请登录Twitter以继续。</translation>
+        <translation>请登录 Twitter 以继续。</translation>
     </message>
     <message>
         <source>Log in to Twitter</source>
-        <translation>登录到Twitter</translation>
+        <translation>登录到 Twitter</translation>
     </message>
     <message>
         <source>If you don&apos;t have a Twitter account yet, please sign up first.</source>
-        <translation>如果你还没有Twitter账户请先注册。</translation>
+        <translation>如果你还没有 Twitter 账户请先注册。</translation>
     </message>
     <message>
         <source>Sign up for Twitter</source>
@@ -1003,11 +1004,11 @@
     </message>
     <message>
         <source>Please enter the Twitter PIN:</source>
-        <translation>请输入Twitter PIN:</translation>
+        <translation>请输入 Twitter PIN:</translation>
     </message>
     <message>
         <source>Unable to authenticate you with the entered PIN.</source>
-        <translation>无法用你输入的 PIN 验证</translation>
+        <translation>无法用你输入的 PIN 进行验证</translation>
     </message>
     <message>
         <source>Enter PIN again</source>
