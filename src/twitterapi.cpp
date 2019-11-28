@@ -30,6 +30,7 @@
 #include <QHttpMultiPart>
 #include <QXmlStreamReader>
 #include <QProcess>
+#include <QTextCodec>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
@@ -2128,15 +2129,18 @@ void TwitterApi::handleGetOpenGraphFinished()
         return;
     }
 
-    QVariantMap openGraphData;
-
-    QString resultDocument;
-    if (contentTypeHeader.toString().indexOf("charset=iso-8859-1", 0, Qt::CaseInsensitive) != -1) {
-        resultDocument = QString::fromLatin1(reply->readAll());
-    } else {
-        resultDocument = QString::fromUtf8(reply->readAll());
+    QString charset = "UTF-8";
+    QRegExp charsetRegex("charset\\s*\\=[\\s\\\"\\\']*([^\\s\\\"\\\'\\,>]*)");
+    if (charsetRegex.indexIn(contentTypeHeader.toString()) != -1) {
+        charset = charsetRegex.cap(1).toUpper();
+        qDebug() << "Open Graph Charset for " << requestAddress << ": " << charset;
     }
 
+    QByteArray rawDocument = reply->readAll();
+    QTextCodec *codec = QTextCodec::codecForName(charset.toUtf8());
+    QString resultDocument = codec->toUnicode(rawDocument);
+
+    QVariantMap openGraphData;
     QRegExp urlRegex("\\<meta\\s+property\\=\\\"og\\:url\\\"\\s+content\\=\\\"([^\\\"]+)\\\"");
     if (urlRegex.indexIn(resultDocument) != -1) {
         openGraphData.insert("url", urlRegex.cap(1));

@@ -26,6 +26,9 @@ ApplicationWindow
 
     id: appWindow
 
+    property bool isWifi: accountModel.isWiFi();
+    property string linkPreviewMode: accountModel.getLinkPreviewMode();
+
     Component {
         id: aboutPage
         AboutPage {}
