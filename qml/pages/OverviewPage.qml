@@ -367,6 +367,7 @@ Page {
     property bool tweetInProgress : false;
     property variant ipInfo;
     property variant profileEntity;
+    property bool isWifi: accountModel.isWiFi();
 
     function openTab(tabId) {
 
@@ -507,8 +508,8 @@ Page {
                 verificationFailedColumn.opacity = 1;
             }
         }
-        onFontSizeChanged: {
-
+        onConnectionTypeChanged: {
+            overviewPage.isWifi = isWifi;
         }
     }
 

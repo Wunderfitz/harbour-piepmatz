@@ -63,6 +63,7 @@ public:
     Q_INVOKABLE void setDisplayImageDescriptions(const bool &displayImageDescriptions);
     Q_INVOKABLE QString getFontSize();
     Q_INVOKABLE void setFontSize(const QString &fontSize);
+    Q_INVOKABLE bool isWiFi();
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -79,6 +80,7 @@ signals:
     void swipeNavigationChanged();
     void accountSwitched();
     void fontSizeChanged(const QString &fontSize);
+    void connectionTypeChanged(const bool &isWifi);
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);
@@ -87,6 +89,7 @@ public slots:
     void handleLinkingSucceeded();
     void handleVerifyCredentialsSuccessful(const QVariantMap &result);
     void handleVerifyCredentialsError(const QString &errorMessage);
+    void handleNetworkConfigurationChanged(const QNetworkConfiguration &config);
 
 private:
     QList<QVariantMap> availableAccounts;

@@ -26,6 +26,7 @@
 #include <QUuid>
 #include <QDir>
 #include <QStandardPaths>
+#include <QNetworkConfiguration>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
@@ -70,6 +71,8 @@ void AccountModel::initializeEnvironment()
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
+
+    connect(networkConfigurationManager, &QNetworkConfigurationManager::configurationChanged, this, &AccountModel::handleNetworkConfigurationChanged);
 }
 
 void AccountModel::obtainPinUrl()
@@ -222,6 +225,21 @@ void AccountModel::setFontSize(const QString &fontSize)
     emit fontSizeChanged(fontSize);
 }
 
+bool AccountModel::isWiFi()
+{
+    QList<QNetworkConfiguration> activeConfigurations = networkConfigurationManager->allConfigurations(QNetworkConfiguration::Active);
+    QListIterator<QNetworkConfiguration> configurationIterator(activeConfigurations);
+    while (configurationIterator.hasNext()) {
+        QNetworkConfiguration activeConfiguration = configurationIterator.next();
+        if (activeConfiguration.bearerType() == QNetworkConfiguration::BearerWLAN || activeConfiguration.bearerType() == QNetworkConfiguration::BearerEthernet) {
+            qDebug() << "[AccountModel] WiFi ON!";
+            return true;
+        }
+    }
+    qDebug() << "[AccountModel] WiFi OFF!";
+    return false;
+}
+
 TwitterApi *AccountModel::getTwitterApi()
 {
     return this->twitterApi;
@@ -272,6 +290,12 @@ void AccountModel::handleVerifyCredentialsSuccessful(const QVariantMap &result)
 void AccountModel::handleVerifyCredentialsError(const QString &errorMessage)
 {
     emit verificationError(errorMessage);
+}
+
+void AccountModel::handleNetworkConfigurationChanged(const QNetworkConfiguration &config)
+{
+    qDebug() << "Network configuration changed: " << config.bearerTypeName() << config.state();
+    emit connectionTypeChanged(this->isWiFi());
 }
 
 void AccountModel::obtainEncryptionKey()
