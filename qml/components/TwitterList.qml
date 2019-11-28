@@ -67,10 +67,6 @@ ListItem {
                         source: Functions.findBiggerImage(listModel.user.profile_image_url_https)
                         width: parent.width
                         height: parent.height
-                        sourceSize {
-                            width: parent.width
-                            height: parent.height
-                        }
                         visible: false
                     }
 

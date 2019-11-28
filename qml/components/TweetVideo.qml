@@ -79,8 +79,6 @@ Item {
         source: getTweetVideoPlaceholderImageUrl(tweet.retweeted_status ? tweet.retweeted_status : tweet)
         width: parent.width
         height: parent.height
-        sourceSize.width: parent.width
-        sourceSize.height: parent.height
         fillMode: Image.PreserveAspectCrop
         visible: status === Image.Ready ? true : false
     }

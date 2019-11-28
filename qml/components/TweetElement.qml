@@ -122,10 +122,6 @@ Item {
                         source: Functions.findBiggerImage(tweetModel.retweeted_status ? ( tweetElementItem.isRetweetMention ? tweetModel.user.profile_image_url_https : tweetModel.retweeted_status.user.profile_image_url_https ) : tweetModel.user.profile_image_url_https )
                         width: parent.width
                         height: parent.height
-                        sourceSize {
-                            width: parent.width
-                            height: parent.height
-                        }
                         visible: false
                     }
 

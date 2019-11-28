@@ -487,8 +487,6 @@ Page {
                             height: parent.height
                             autoTransform: true
                             asynchronous: true
-                            sourceSize.width: parent.width
-                            sourceSize.height: parent.height
                             fillMode: Image.PreserveAspectCrop
                             visible: status === Image.Ready ? true : false
                             opacity: status === Image.Ready ? 1 : 0

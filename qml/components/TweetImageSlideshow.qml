@@ -55,8 +55,6 @@ Item {
                 source: media_url_https
                 width: parent.width
                 height: parent.height
-                sourceSize.width: parent.width
-                sourceSize.height: parent.height
                 fillMode: Image.PreserveAspectCrop
                 visible: status === Image.Ready ? true : false
                 opacity: status === Image.Ready ? 1 : 0
