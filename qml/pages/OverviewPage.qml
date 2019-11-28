@@ -368,6 +368,7 @@ Page {
     property variant ipInfo;
     property variant profileEntity;
     property bool isWifi: accountModel.isWiFi();
+    property string linkPreviewMode: accountModel.getLinkPreviewMode();
 
     function openTab(tabId) {
 
@@ -510,6 +511,9 @@ Page {
         }
         onConnectionTypeChanged: {
             overviewPage.isWifi = isWifi;
+        }
+        onLinkPreviewModeChanged: {
+            overviewPage.linkPreviewMode = linkPreviewMode;
         }
     }
 

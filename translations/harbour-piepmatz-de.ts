@@ -855,6 +855,30 @@
         <source>Large (Sailfish OS default)</source>
         <translation>Groß (Sailfish OS-Standard)</translation>
     </message>
+    <message>
+        <source>Behavior</source>
+        <translation>Verhalten</translation>
+    </message>
+    <message>
+        <source>Link Preview</source>
+        <translation>Link-Vorschau</translation>
+    </message>
+    <message>
+        <source>Choose the link preview mode here</source>
+        <translation>Wählen Sie hier den Link-Vorschau-Modus aus</translation>
+    </message>
+    <message>
+        <source>Always</source>
+        <translation>Immer</translation>
+    </message>
+    <message>
+        <source>Only on WiFi</source>
+        <translation>Nur im WLAN</translation>
+    </message>
+    <message>
+        <source>Never</source>
+        <translation>Niemals</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

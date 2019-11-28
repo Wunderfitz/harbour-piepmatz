@@ -214,6 +214,32 @@ Page {
             }
 
             SectionHeader {
+                text: qsTr("Behavior")
+            }
+
+            ComboBox {
+                id: linkPreviewComboBox
+                label: qsTr("Link Preview")
+                currentIndex: (accountModel.getLinkPreviewMode() === "always") ? 0 : ( (accountModel.getLinkPreviewMode() === "wifiOnly" ? 1 : 2 ) )
+                description: qsTr("Choose the link preview mode here")
+                menu: ContextMenu {
+                     MenuItem {
+                        text: qsTr("Always")
+                     }
+                     MenuItem {
+                        text: qsTr("Only on WiFi")
+                     }
+                     MenuItem {
+                        text: qsTr("Never")
+                     }
+                    onActivated: {
+                        var linkPreviewMode = ( index === 0 ? "always" : ( index === 1 ? "wifiOnly" : "never" ) );
+                        accountModel.setLinkPreviewMode(linkPreviewMode);
+                    }
+                }
+            }
+
+            SectionHeader {
                 text: qsTr("Location")
             }
 

@@ -64,6 +64,8 @@ public:
     Q_INVOKABLE QString getFontSize();
     Q_INVOKABLE void setFontSize(const QString &fontSize);
     Q_INVOKABLE bool isWiFi();
+    Q_INVOKABLE QString getLinkPreviewMode();
+    Q_INVOKABLE void setLinkPreviewMode(const QString &linkPreviewMode);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -81,6 +83,7 @@ signals:
     void accountSwitched();
     void fontSizeChanged(const QString &fontSize);
     void connectionTypeChanged(const bool &isWifi);
+    void linkPreviewModeChanged(const QString &linkPreviewMode);
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);

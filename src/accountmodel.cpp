@@ -34,6 +34,7 @@ const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 const char SETTINGS_USE_SWIPE_NAVIGATION[] = "settings/useSwipeNavigation";
 const char SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS[] = "settings/displayImageDescriptions";
 const char SETTINGS_FONT_SIZE[] = "settings/fontSize";
+const char SETTINGS_LINK_PREVIEW_MODE[] = "settings/linkPreviewMode";
 
 AccountModel::AccountModel()
     : networkConfigurationManager(new QNetworkConfigurationManager(this))
@@ -238,6 +239,17 @@ bool AccountModel::isWiFi()
     }
     qDebug() << "[AccountModel] WiFi OFF!";
     return false;
+}
+
+QString AccountModel::getLinkPreviewMode()
+{
+    return settings.value(SETTINGS_LINK_PREVIEW_MODE, "always").toString();
+}
+
+void AccountModel::setLinkPreviewMode(const QString &linkPreviewMode)
+{
+    settings.setValue(SETTINGS_LINK_PREVIEW_MODE, linkPreviewMode);
+    emit linkPreviewModeChanged(linkPreviewMode);
 }
 
 TwitterApi *AccountModel::getTwitterApi()

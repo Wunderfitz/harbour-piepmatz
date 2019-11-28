@@ -130,7 +130,7 @@ function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUr
             var url_replacement = "<a href=\"" + entities.urls[i].expanded_url + "\">" + entities.urls[i].display_url + "</a>";
             replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, url_replacement));
             // TODO: Could fail in case of multiple references. Well, let's see what happens :D
-            if (withReferenceUrl && overviewPage.isWifi) {
+            if (withReferenceUrl && ( overviewPage.linkPreviewMode === "always" || ( overviewPage.linkPreviewMode === "wifiOnly" && overviewPage.isWifi ) ) ) {
                 referenceUrl = entities.urls[i].expanded_url;
                 twitterApi.getOpenGraph(entities.urls[i].expanded_url);
             }
