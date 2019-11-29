@@ -376,7 +376,7 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.bottom: positionText.top
                     minimumValue: 0
-                    maximumValue: tweetVideo.duration
+                    maximumValue: tweetVideo.duration ? tweetVideo.duration : 0
                     stepSize: 1
                     value: tweetVideo.position
                     enabled: tweetVideo.seekable
