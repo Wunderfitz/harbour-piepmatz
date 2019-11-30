@@ -84,5 +84,13 @@
 * Fri Jan 04 2019 Sebastian Wolf <sebastian@ygriega.de> 1.3
 - Support for Emoji 11.0 (finally a superhero/villain emoji ;) )
 - Added Czech translation (thanks to Jiri Hubacek)
-- Updated Italian translation (thanks to Alessandro Pra)
+- Updated Italian translation (thanks to Alessandro Pra')
 - Code quality improvements (thanks to Rolf Eike Beer)
+
+* Sat Nov 30 2019 Sebastian Wolf <sebastian@ygriega.de> 1.4
+- Support for Emoji 12.0 (e.g. yawning face, orangutan, sloth, skunk, otter...)
+- Dedicated support for direct tweet to other users (thanks to Thaodan for the work)
+- New setting to adjust font size (for those who want the standard SFOS large font size...)
+- New link preview setting: Always load (as previously), only on WiFi connection, never load (in case you want to save data traffic)
+- Images are no longer reloaded on orientation change (will save data traffic, might consume a little more RAM on your device)
+- Wagnis is removed

@@ -43,7 +43,7 @@
 #include "ownlistsmodel.h"
 #include "membershiplistsmodel.h"
 #include "savedsearchesmodel.h"
-#include "wagnis/wagnis.h"
+//#include "wagnis/wagnis.h"
 
 int main(int argc, char *argv[])
 {
@@ -60,8 +60,8 @@ int main(int argc, char *argv[])
     LocationInformation *locationInformation = accountModel.getLocationInformation();
     context->setContextProperty("locationInformation", locationInformation);
 
-    Wagnis *wagnis = accountModel.getWagnis();
-    context->setContextProperty("wagnis", wagnis);
+//    Wagnis *wagnis = accountModel.getWagnis();
+//    context->setContextProperty("wagnis", wagnis);
 
     TimelineModel timelineModel(twitterApi);
     context->setContextProperty("timelineModel", &timelineModel);

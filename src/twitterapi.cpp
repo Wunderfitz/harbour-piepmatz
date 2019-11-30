@@ -34,20 +34,21 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
-TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
+//TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
+TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
     this->manager = manager;
-    this->wagnis = wagnis;
+    //this->wagnis = wagnis;
 }
 
 void TwitterApi::verifyCredentials()
 {
     qDebug() << "TwitterApi::verifyCredentials";
 
-    if (!wagnis->hasFeature("contribution") && wagnis->getRemainingTime() == 0) {
-        emit verifyCredentialsError("You haven't completed the registration process!");
-        return;
-    }
+//    if (!wagnis->hasFeature("contribution") && wagnis->getRemainingTime() == 0) {
+//        emit verifyCredentialsError("You haven't completed the registration process!");
+//        return;
+//    }
 
     QUrl url = QUrl(API_ACCOUNT_VERIFY_CREDENTIALS);
     QNetworkRequest request(url);

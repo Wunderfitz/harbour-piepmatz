@@ -72,14 +72,6 @@
         <translation>पीपमेट्ज ipinfo.io अथवा GPS ( अगर उपलब्ध )का उपयोग आपकी लाॅकेशन पता करने के लिए करता है जिससे ट्रेन्ड्स खोजा जाता है अगर आप अपने tweets लाॅकेशन जोङना चाहते हैं तो इसे  &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter सेटिन्ग्स&lt;/a&gt; पर सक्षम करें।</translation>
     </message>
     <message>
-        <source>Wagnis ID: </source>
-        <translation>Wagnis ID: </translation>
-    </message>
-    <message>
-        <source>Show Wagnis ID</source>
-        <translation>Wagnis ID दिखाएँ</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>GitHub पर twemoji खोलें</translation>
     </message>
@@ -92,12 +84,12 @@
         <translation>GitHub पर QGumboParser खोलें</translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>यह उत्पाद &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; का उपयोग करता है जोकि &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;द्वारा वितरित है  &lt;a href=&quot;profile://werkwolf&quot;&gt; WerkWolf को Twitter पर मिलें &lt;/a&gt;.</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>यह प्रोजेक्ट Copyright 2018 Twitter, Inc. and other contributors द्वारा twemoji का उपयोग करता है। इसे  MIT License (coding) and CC-BY 4.0 (graphics) अनुज्ञा की शर्तों पर उपलब्ध कराने हेतु धन्यवाद ।</translation>
+    </message>
+    <message>
+        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

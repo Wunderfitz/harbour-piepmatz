@@ -72,14 +72,6 @@
         <translation>Piepmatz maakt gebruik van ipinfo.io en (indien beschikbaar) de GPS-ontvanger van je apparaat om je positie te bepalen, om trends op te halen en - enkel als je dit uitdrukkelijk kiest - je locatie aan je tweets toe te voegen. Als je van deze laatste functie gebruik wil maken, schakel deze dan in in je &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter-instellingen&lt;/a&gt;.</translation>
     </message>
     <message>
-        <source>Wagnis ID: </source>
-        <translation>Wagnis-ID:</translation>
-    </message>
-    <message>
-        <source>Show Wagnis ID</source>
-        <translation>Wagnis-ID weergeven</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>twemoji openen op GitHub</translation>
     </message>
@@ -93,12 +85,12 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <translation>QGumboParser openen op GitHub</translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Deze applicatie gebruikt &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; en wordt verspreid door &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Je kunt &lt;a href=&quot;profile://werkwolf&quot;&gt;Werkwolf ook vinden op Twitter&lt;/a&gt;&quot;.</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Dit project maakt gebruik van twemoji. Copyright 2018 Twitter, Inc. en andere bijdragers. Bedankt voor het beschikbaar maken onder de voorwaarden van de MIT-licentie (code) en CC-BY 4.0 (grafische elementen)!</translation>
+    </message>
+    <message>
+        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

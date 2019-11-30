@@ -64,7 +64,8 @@ ApplicationWindow
         SettingsPage {}
     }
 
-    initialPage: ( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage
+    //initialPage: ( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage
+    initialPage: accountModel.isLinked() ? overviewPage : welcomePage
     cover: Qt.resolvedUrl("pages/CoverPage.qml")
     allowedOrientations: defaultAllowedOrientations
 

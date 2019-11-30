@@ -102,7 +102,8 @@ Page {
                         console.log("Account " + allAccounts[index] + " was selected");
                         accountModel.switchAccount(allAccounts[index]);
                         pageStack.clear();
-                        pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                        //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                        pageStack.push(accountModel.isLinked() ? overviewPage : welcomePage);
                     }
                 }
             }
@@ -117,7 +118,8 @@ Page {
                     removeAccountRemorsePopup.execute(qsTr("Removing account"), function() {
                         accountModel.removeCurrentAccount();
                         pageStack.clear();
-                        pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                        //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                        pageStack.push(accountModel.isLinked() ? overviewPage : welcomePage);
                     } );
                 }
             }
@@ -131,7 +133,8 @@ Page {
                 onClicked: {
                     accountModel.registerNewAccount();
                     pageStack.clear();
-                    pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                    //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
+                    pageStack.push(accountModel.isLinked() ? overviewPage : welcomePage);
                 }
             }
 

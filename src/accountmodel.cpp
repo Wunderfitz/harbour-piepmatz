@@ -41,7 +41,7 @@ AccountModel::AccountModel()
     , o1(new O1Twitter(this))
     , manager(new QNetworkAccessManager(this))
     , locationInformation(new LocationInformation(this))
-    , wagnis(new Wagnis(manager, "harbour-piepmatz", "1.4", this))
+    //, wagnis(new Wagnis(manager, "harbour-piepmatz", "1.4", this))
     , settings("harbour-piepmatz", "settings")
 {
     obtainEncryptionKey();
@@ -67,7 +67,8 @@ void AccountModel::initializeEnvironment()
     connect(o1, &O1Twitter::linkingSucceeded, this, &AccountModel::handleLinkingSucceeded);
 
     requestor = new O1Requestor(manager, o1, this);
-    twitterApi = new TwitterApi(requestor, manager, wagnis, this);
+    //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
+    twitterApi = new TwitterApi(requestor, manager, this);
     readOtherAccounts();
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
@@ -262,10 +263,10 @@ LocationInformation *AccountModel::getLocationInformation()
     return this->locationInformation;
 }
 
-Wagnis *AccountModel::getWagnis()
-{
-    return this->wagnis;
-}
+//Wagnis *AccountModel::getWagnis()
+//{
+//    return this->wagnis;
+//}
 
 void AccountModel::handlePinRequestError(const QString &errorMessage)
 {

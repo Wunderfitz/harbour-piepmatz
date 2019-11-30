@@ -30,7 +30,7 @@
 #include "o1requestor.h"
 #include "twitterapi.h"
 #include "locationinformation.h"
-#include "wagnis/wagnis.h"
+//#include "wagnis/wagnis.h"
 
 class AccountModel : public QAbstractListModel
 {
@@ -69,7 +69,7 @@ public:
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
-    Wagnis *getWagnis();
+    //Wagnis *getWagnis();
 
 signals:
     void pinRequestError(const QString &errorMessage);
@@ -103,7 +103,7 @@ private:
     O1Requestor *requestor;
     TwitterApi *twitterApi;
     LocationInformation * const locationInformation;
-    Wagnis * const wagnis;
+    //Wagnis * const wagnis;
     QSettings settings;
     QVariantList otherAccounts;
 

@@ -72,14 +72,6 @@
         <translation>A Piepmatz az ipinfo.io-t és (ha elérhető) a készülék GPS vevőjét használja a helyzeted meghatározására. A helyzeted a trendek lekérésére, és - csak ha kifejezetten egyetértesz - a tweetjeid csatolmányaként van használva. Ha szeretnéd a helyzeted használni a tweetekben, bizonyosodj meg róla, hogy engedélyezve van a &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter beállításaidban&lt;/a&gt;.</translation>
     </message>
     <message>
-        <source>Wagnis ID: </source>
-        <translation>Wagnis ID: </translation>
-    </message>
-    <message>
-        <source>Show Wagnis ID</source>
-        <translation>Wagnis ID megjelenítése</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>A Twemoji megnyitása a GitHubon</translation>
     </message>
@@ -92,12 +84,12 @@
         <translation>A QGumboParser megnyitása a GitHubon</translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Ez a termék a &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt;-t használja és a &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; forgalmazza. Megtalálod &lt;a href=&quot;profile://werkwolf&quot;&gt;WerkWolf-ot a Twitteren is&lt;/a&gt;.</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Ez a projekt a twemoji-t használja. Szerzői jog 2018 Twitter, Inc. és más közreműködők. Köszönet a MIT Licenc (kódolás) és a CC-BY 4.0 (grafika) feltételei alatti elérhetőségért!</translation>
+    </message>
+    <message>
+        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

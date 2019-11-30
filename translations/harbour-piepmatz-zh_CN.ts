@@ -72,14 +72,6 @@
         <translation>piepmatz 使用 ipinfo. io 和你设备中的 GPS 接收器（如果可用)以获取你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上发布你的位置, 请确保已在你的设备上启用 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt; 。</translation>
     </message>
     <message>
-        <source>Wagnis ID: </source>
-        <translation>Wagnis 账号:</translation>
-    </message>
-    <message>
-        <source>Show Wagnis ID</source>
-        <translation>显示 Wagnis 账号</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>在 Github 打开 twemoji</translation>
     </message>
@@ -97,8 +89,8 @@
         <translation>该项目使用 twemoji, Twitter, Inc. 2018 及其他贡献者版权所有。感谢使它在 MIT 许可证 (代码部分)及 CC-BY 4.0 (图像部分)下可用!</translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>该项目使用 &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; 在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; 下分发。你也可以 &lt;a href=&quot;profile://werkwolf&quot;&gt; 在 Twitter 找到 WerkWolf &lt;/a&gt; 。</translation>
+        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

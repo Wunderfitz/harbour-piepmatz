@@ -72,14 +72,6 @@
         <translation>Piepmatz používá ipinfo.io a (pokud možno) GPS přijímač Vašeho zařízení pro získání Vaší polohy. Vaše poloha se používá pro získání trendů a - pouze pokud explicitně souhlasíte - jako příloha k Vašim tweetům. Pokud chcete používat Vaší polohu ve tweetech, přesvědčte se, prosím, že ji máte povolenou ve Vašem &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Nastavení Twitteru&lt;/a&gt;.</translation>
     </message>
     <message>
-        <source>Wagnis ID: </source>
-        <translation type="unfinished">Wagnis ID: </translation>
-    </message>
-    <message>
-        <source>Show Wagnis ID</source>
-        <translation type="unfinished">Zobrazit Wagnis ID</translation>
-    </message>
-    <message>
         <source>Open twemoji on GitHub</source>
         <translation>Otevři twemoji na GitHub</translation>
     </message>
@@ -92,12 +84,12 @@
         <translation>Otevři QGumboParser na GitHub</translation>
     </message>
     <message>
-        <source>This product uses &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; and is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Tento produkt používá &lt;a href=&quot;https://werkwolf.eu/terms.html#wagnis&quot;&gt;Wagnis&lt;/a&gt; a je distribuován &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Můžete také &lt;a href=&quot;profile://werkwolf&quot;&gt;najít WerkWolf na Twitteru&lt;/a&gt;.</translation>
-    </message>
-    <message>
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Tento projekt používá twemoji. Copyright 2018 Twitter, Inc. a statní přispěvatelé. Díky za poskytnutí za podmínek MIT Licence (kód) a CC-BY 4.0 (grafika)!</translation>
+    </message>
+    <message>
+        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
