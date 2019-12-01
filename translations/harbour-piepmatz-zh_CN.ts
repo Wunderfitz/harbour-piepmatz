@@ -33,7 +33,7 @@
     </message>
     <message>
         <source>Open OAuth for Qt on GitHub</source>
-        <translation>GitHub 上的 Open OAuth for Qt </translation>
+        <translation>在 GitHub 打开 OAuth for Qt </translation>
     </message>
     <message>
         <source>This project uses OAuth for Qt by Akos Polster. Thanks for making it available under the conditions of the BSD-2-Clause license!</source>
@@ -69,7 +69,7 @@
     </message>
     <message>
         <source>Piepmatz uses ipinfo.io and (if available) the GPS receiver of your device to determine your location. Your location is used to retrieve trends and - only if you explicitly agree - as attachment to your tweets. If you want to use your location in tweets, please ensure to have it enabled in your &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt;.</source>
-        <translation>piepmatz 使用 ipinfo. io 和你设备中的 GPS 接收器（如果可用)以获取你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为你推文的附件。如果你想在推文上发布你的位置, 请确保已在你的设备上启用 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt; 。</translation>
+        <translation>Piepmatz 使用 ipinfo. io 和你设备中的 GPS 接收器（如果可用)以获取你的位置。你的位置将被用来检索趋势, 只有在你明确同意的情况下, 才会作为推文的附件。如果你想在推文上发布你的位置, 请确保已在你的设备上启用 &lt;a href=&quot;https://twitter.com/settings/safety&quot;&gt;Twitter settings&lt;/a&gt; 。</translation>
     </message>
     <message>
         <source>Open twemoji on GitHub</source>
@@ -78,7 +78,7 @@
     <message>
         <source>This project uses QGumboParser. Copyright 2017 Sergey Lagner. Thanks for making it available under the conditions of the MIT License! QGumboParser uses Gumbo. Copyright 2017 by Google. Licensed under the conditions of the Apache License 2.0.</source>
         <translation>
-该项目使用 QGumboParser ，Sergey Lagner 2017 版权所有。感谢使它在 MIT 许可证下可用! QGumboParser 使用 Gumbo，Google 2017 版权所有。在 Apache 许可证下使用。</translation>
+该项目使用 QGumboParser ，Sergey Lagner 2017 版权所有。感谢使它在 MIT 许可证下可用! QGumboParser 使用 Gumbo，Google 2017 版权所有，采用 Apache 许可证条款。</translation>
     </message>
     <message>
         <source>Open QGumboParser on GitHub</source>
@@ -90,14 +90,14 @@
     </message>
     <message>
         <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>该产品在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. 下分发。你也可以在Twitter 找到 WerkWolf &lt;a href=&quot;profile://werkwolf&quot;&gt; &lt;/a&gt; 。</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>已达到选取照片的最大数字!</translation>
+        <translation>选取的图片已达到最大数量!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
@@ -182,7 +182,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>成功下载 %1 。</translation>
+        <translation>已成功下载 %1 。</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
@@ -201,7 +201,7 @@
     </message>
     <message>
         <source>Error</source>
-        <translation>出错</translation>
+        <translation>错误</translation>
     </message>
 </context>
 <context>
@@ -413,7 +413,7 @@
     </message>
     <message>
         <source>No tweets found. Follow more people to get their tweets in your timeline!</source>
-        <translation>没有发现推文。关注更多人以在你的时间线获取他们的推文!</translation>
+        <translation>没有发现推文。关注更多人以从你的时间线获取他们的推文!</translation>
     </message>
     <message>
         <source>Trends for %1</source>
@@ -481,7 +481,7 @@
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>已成功搜索及保存 %1</translation>
+        <translation>已成功搜索及保存  &apos;%1&apo</translation>
     </message>
     <message>
         <source>Deleting</source>
@@ -561,11 +561,11 @@
     </message>
     <message>
         <source>@%1 </source>
-        <translation type="unfinished">@%1 </translation>
+        <translation>@%1 </translation>
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished">发推到 %1</translation>
+        <translation>发推到 %1</translation>
     </message>
 </context>
 <context>
@@ -576,7 +576,7 @@
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>祝你和 Piepmatz 玩得开心! Sebastian J. Wolf 敬上</translation>
+        <translation>祝你使用 Piepmatz 愉快! Sebastian J. Wolf 敬上</translation>
     </message>
     <message>
         <source>Accept</source>
@@ -584,11 +584,11 @@
     </message>
     <message>
         <source>Welcome to Piepmatz - a Twitter client for SailfishOS! Piepmatz is &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt;free software&lt;/a&gt; and licensed under the conditions of the &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt;General Public License in version 3 (GPLv3)&lt;/a&gt;. By using this software, you accept the terms and conditions of this license.</source>
-        <translation>欢迎来到 Piepmatz —— 一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt; 通用公共许可证3 (GPLv3)&lt;/a&gt; 。使用该软件即代表你接受该许可证的各项条款。</translation>
+        <translation>欢迎来到 Piepmatz —— 一个旗鱼系统 Twitter 客户端! Piepmatz 是 &lt;a href=&quot;https://www.gnu.org/philosophy/free-sw&quot;&gt; 自由软件 &lt;/a&gt;  在此条款之下 &lt;a href=&quot;https://www.gnu.org/licenses/gpl.html&quot;&gt; 通用公共许可证3 (GPLv3) &lt;/a&gt; 。使用该软件即代表你接受该许可证的各项条款。</translation>
     </message>
     <message>
         <source>Moreover, Piepmatz will register this installation automatically on my server if you press &apos;Accept&apos;. I respect your privacy, therefore only anonymous and a very limited set of information will be transmitted: a unique identifer for this installation and your country. I simply would like to know how many users Piepmatz has and where they come from. If this is not OK for you, simply close the application. No information has been transmitted so far.</source>
-        <translation>当点击按钮时，Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？放心，我会尊重你的隐私，因为我只在非常有限的范围内传输匿名信息: 安装的唯一标识符是基于你的设备和你所在国家/地区生成的随机数。作者只想知道软件的用户数量和他们的所在地。如果你无法接受, 只需关闭此软件，到目前为止, 信息还没有传输到任何地方。</translation>
+        <translation>当点击按钮时，Piepmatz 会自动将你的本次安装情况登记到作者的服务器上。是否接受？请放心，我会尊重你的隐私，因为我只在非常有限的范围内传输匿名信息: 安装的唯一标识符是基于你的设备和你所在国家/地区生成的随机数。作者只想知道软件的用户数量和他们的所在地。如果你无法接受, 只需关闭此软件，到目前为止, 信息还没有传输到任何地方。</translation>
     </message>
     <message>
         <source>Committed to Free Software</source>
@@ -604,7 +604,7 @@
     </message>
     <message>
         <source>Registration failed. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case a restart doesn&apos;t work, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>注册失败。请确保你的设备已连接到网络, 然后点击重新注册，如果几次尝试注册仍不工作, 请给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
+        <translation>注册失败。请确保你的设备已连接到网络, 然后点击 &apos;重启激活验证&apos; 。 如果几次尝试注册仍不工作, 请给我发电子邮件 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt;.</translation>
     </message>
     <message>
         <source>Restart Registration</source>
@@ -616,7 +616,7 @@
     </message>
     <message>
         <source>The registration file on your device is corrupt. The registration process needs to be restarted. Please ensure that your device is connected to the Internet and press &apos;Restart Registration&apos;. In case the new registration isn&apos;t successful, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation>设备上的注册文件已损坏。需要重新启动注册过程。请确保你的设备已连接到互联网 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt; 。</translation>
+        <translation>设备上的注册文件已损坏。需要重新启动注册流程。请确保你的设备已连接到互联网 &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;э-почту&lt;/a&gt; 。</translation>
     </message>
     <message>
         <source>Show Registration Data</source>
@@ -636,11 +636,11 @@
     </message>
     <message>
         <source>You can skip the contribution for %1 if you want to test Piepmatz before.</source>
-        <translation>如果你想跳过捐赠 %1 ，如果你想先试试再说。</translation>
+        <translation>你可以跳过跳过捐赠 %1，如果你想先试用 Piepmatz 。</translation>
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>继续测试</translation>
+        <translation>继续试用</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
@@ -688,11 +688,11 @@
     </message>
     <message>
         <source>If you have already validated your key on another device, you can reuse it for up to 3 additional devices without the need of another contribution.</source>
-        <translation>如果你已经在另一个设备上激活了你的密钥，那么你可以将其重复使用最多3个额外的设备，而不需要再次捐赠。</translation>
+        <translation>如果你已经在另一个设备上激活了你的密钥，那么你可以最多将其在3个额外设备上使用，而无需再次捐赠。</translation>
     </message>
     <message>
         <source>Piepmatz is and will remain Open Source Software. However, in order to support the development of Piepmatz, I&apos;d like to ask you for a contribution before you can run it. Such a contribution can be made by translating Piepmatz to another language, help developing it or simply by purchasing a key.</source>
-        <translation>Piepmatz 是一个持续保持开源的软件。然而，为了支持 Piepmatz 的开发，在你运行它之前，我想请你提供一些帮助。这种贡献可以通过将 Piepmatz 翻译成另一种语言、帮助开发它或购买密钥来实现。</translation>
+        <translation>Piepmatz 是一个持续保持开源的软件。然而，为了支持 Piepmatz 的开发，在你运行它之前，我想请你提供一些帮助。这种贡献可以是将 Piepmatz 翻译成另一种语言、帮助它的开发或购买密钥</translation>
     </message>
     <message>
         <source>After you have received your key by purchasing it or for another contribution, please validate your key here to run Piepmatz.</source>
@@ -720,11 +720,11 @@
     </message>
     <message>
         <source>You have the choice between 4 different contributions: S, M, L, XL. No matter which size you choose, the purchased key will unlock the complete application. It&apos;s up to you to decide how much the app is worth to you.</source>
-        <translation>你可以选择4种不同的捐赠形式：S、M、L、XL。无论你选择何种金额的捐赠，都能通过购买密钥解锁整个软件。本软件对你的价值大小完全由你决定。</translation>
+        <translation>你可以选择4种不同形式的捐赠：S、M、L、XL。无论你选择何种金额的捐赠，都能通过购买密钥解锁整个软件。本软件对你的价值大小完全由你决定。</translation>
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>无法激活你的捐赠，请确保你的设备已连接到互联网然后点击&apos;重启激活验证&apos; 。如果你有一个有效捐赠却无法激活软件，请通过下方邮箱地址与我取得联系。I&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -766,7 +766,7 @@
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>ferlanero 制作的 Piepfish</translation>
+        <translation>@ferlanero 制作的 Piepfish</translation>
     </message>
     <message>
         <source>Accounts</source>
@@ -834,43 +834,43 @@
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>字体大小</translation>
     </message>
     <message>
         <source>Choose the font size here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择字体大小</translation>
     </message>
     <message>
         <source>Normal (Piepmatz default)</source>
-        <translation type="unfinished"></translation>
+        <translation>正常（Piepmatz 默认）</translation>
     </message>
     <message>
         <source>Large (Sailfish OS default)</source>
-        <translation type="unfinished"></translation>
+        <translation>大号（旗鱼系统默认）</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>行为</translation>
     </message>
     <message>
         <source>Link Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>链接预览</translation>
     </message>
     <message>
         <source>Choose the link preview mode here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择链接预览模式</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>总是</translation>
     </message>
     <message>
         <source>Only on WiFi</source>
-        <translation type="unfinished"></translation>
+        <translation>仅 WiFi</translation>
     </message>
     <message>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>从不</translation>
     </message>
 </context>
 <context>
@@ -979,7 +979,7 @@
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 成员</translation>
+        <translation>%1 位成员</translation>
     </message>
 </context>
 <context>
@@ -1086,7 +1086,7 @@
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>%1 后</translation>
+        <translation>%1 小时后</translation>
     </message>
     <message>
         <source>the next hour</source>
