@@ -89,7 +89,7 @@
     </message>
     <message>
         <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezt a terméket a &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; forgalmazza. Megtalálhatod &lt;a href=&quot;profile://werkwolf&quot;&gt; WerkWolf-ot a Twitteren is&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -560,11 +560,11 @@
     </message>
     <message>
         <source>@%1 </source>
-        <translation type="unfinished">@%1 </translation>
+        <translation>@%1 </translation>
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweetelj neki: %1</translation>
     </message>
 </context>
 <context>
@@ -833,43 +833,43 @@
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Betűméret</translation>
     </message>
     <message>
         <source>Choose the font size here</source>
-        <translation type="unfinished"></translation>
+        <translation>Itt válaszd ki a betűméretet</translation>
     </message>
     <message>
         <source>Normal (Piepmatz default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Normális (alapértelmezett a Piepmatz-ban)</translation>
     </message>
     <message>
         <source>Large (Sailfish OS default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Nagy (alapértelemzett a Sailfish OS-ben)</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>Viselkedés</translation>
     </message>
     <message>
         <source>Link Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Hivatkozás előnézet</translation>
     </message>
     <message>
         <source>Choose the link preview mode here</source>
-        <translation type="unfinished"></translation>
+        <translation>Itt válaszd ki a hivatkozások előnézeti módját</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Mindig</translation>
     </message>
     <message>
         <source>Only on WiFi</source>
-        <translation type="unfinished"></translation>
+        <translation>Csak wifi-n</translation>
     </message>
     <message>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Soha</translation>
     </message>
 </context>
 <context>
@@ -933,7 +933,7 @@
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Tweetelj neki: %1</translation>
     </message>
 </context>
 <context>
