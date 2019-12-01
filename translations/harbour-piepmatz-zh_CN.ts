@@ -90,14 +90,14 @@
     </message>
     <message>
         <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>该产品在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. 下分发。你也可以在Twitter 找到 WerkWolf &lt;a href=&quot;profile://werkwolf&quot;&gt; &lt;/a&gt; 。</translation>
     </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
     <message>
         <source>Maximum number of images selected!</source>
-        <translation>已达到选取照片的最大数字!</translation>
+        <translation>选取的图片已达到最大数量!</translation>
     </message>
     <message>
         <source>Attach %1 Images</source>
@@ -182,7 +182,7 @@
     </message>
     <message>
         <source>Download of %1 successful.</source>
-        <translation>成功下载 %1 。</translation>
+        <translation>已成功下载 %1 。</translation>
     </message>
     <message>
         <source>Downloading, %1% completed...</source>
@@ -481,7 +481,7 @@
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>已成功搜索及保存 %1</translation>
+        <translation>已成功搜索及保存  &apos;%1&apo</translation>
     </message>
     <message>
         <source>Deleting</source>
@@ -561,11 +561,11 @@
     </message>
     <message>
         <source>@%1 </source>
-        <translation type="unfinished">@%1 </translation>
+        <translation>@%1 </translation>
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished">发推到 %1</translation>
+        <translation>发推到 %1</translation>
     </message>
 </context>
 <context>
@@ -640,7 +640,7 @@
     </message>
     <message>
         <source>Continue Testing</source>
-        <translation>继续测试</translation>
+        <translation>继续试用</translation>
     </message>
     <message>
         <source>If you&apos;ve already contributed to Piepmatz, please &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;contact me&lt;/a&gt; directly.</source>
@@ -724,7 +724,7 @@
     </message>
     <message>
         <source>Your contribution could not be validated. Please ensure that your device is connected to the Internet and press &apos;Restart Validation&apos;. In case you have a valid contribution key and it can&apos;t be validated, please contact me via &lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>无法激活你的捐赠，请确保你的设备已连接到互联网并且按下&apos;重启激活验证&apos; 。如果你有一个有效捐赠缺无法激活软件，请通过下方邮箱地址与我取得联系。I&lt;a href=&quot;mailto:contact@werkwolf.eu&quot;&gt;E-Mail&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -766,7 +766,7 @@
     </message>
     <message>
         <source>Piepfish by @ferlanero</source>
-        <translation>ferlanero 制作的 Piepfish</translation>
+        <translation>@ferlanero 制作的 Piepfish</translation>
     </message>
     <message>
         <source>Accounts</source>
@@ -834,43 +834,43 @@
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>字体大小</translation>
     </message>
     <message>
         <source>Choose the font size here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择字体大小</translation>
     </message>
     <message>
         <source>Normal (Piepmatz default)</source>
-        <translation type="unfinished"></translation>
+        <translation>正常（Piepmatz 默认）</translation>
     </message>
     <message>
         <source>Large (Sailfish OS default)</source>
-        <translation type="unfinished"></translation>
+        <translation>大号（旗鱼系统默认）</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>行为</translation>
     </message>
     <message>
         <source>Link Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>链接预览</translation>
     </message>
     <message>
         <source>Choose the link preview mode here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择链接预览模式</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>总是</translation>
     </message>
     <message>
         <source>Only on WiFi</source>
-        <translation type="unfinished"></translation>
+        <translation>仅 WiFi</translation>
     </message>
     <message>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>从不</translation>
     </message>
 </context>
 <context>
@@ -979,7 +979,7 @@
     </message>
     <message>
         <source>%1 members</source>
-        <translation>%1 成员</translation>
+        <translation>%1 位成员</translation>
     </message>
 </context>
 <context>
@@ -1086,7 +1086,7 @@
     </message>
     <message>
         <source>the next %1 hours</source>
-        <translation>%1 后</translation>
+        <translation>%1 小时后</translation>
     </message>
     <message>
         <source>the next hour</source>
