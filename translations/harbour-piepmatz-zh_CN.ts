@@ -45,7 +45,7 @@
     </message>
     <message>
         <source>Open twitter-text on GitHub</source>
-        <translation>在 Github 打开twitter-text</translation>
+        <translation>在 Github 打开 twitter-text</translation>
     </message>
     <message>
         <source>Find me on Twitter</source>
@@ -441,7 +441,7 @@
     </message>
     <message>
         <source>You have a new follower!</source>
-        <translation>你有一个新关注者</translation>
+        <translation>你有一位新关注者</translation>
     </message>
     <message>
         <source>follows you now!</source>
