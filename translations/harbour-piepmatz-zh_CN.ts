@@ -481,7 +481,7 @@
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>已成功搜索及保存  &apos;%1&apo</translation>
+        <translation>已成功搜索及保存  &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Deleting</source>
