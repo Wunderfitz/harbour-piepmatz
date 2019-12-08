@@ -89,7 +89,7 @@
     </message>
     <message>
         <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>To oprogramowanie jest dystrybuowane przez &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. Możesz także &lt;a href=&quot;profile://werkwolf&quot;&gt;znaleźć WerkWolf na Twitterze&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
@@ -560,11 +560,11 @@
     </message>
     <message>
         <source>@%1 </source>
-        <translation type="unfinished">@%1 </translation>
+        <translation>@%1 </translation>
     </message>
     <message>
         <source>Tweet to %1</source>
-        <translation type="unfinished">ZaTweetuj do %1</translation>
+        <translation>ZaTweetuj do %1</translation>
     </message>
 </context>
 <context>
@@ -833,43 +833,43 @@
     </message>
     <message>
         <source>Font Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar czcionki</translation>
     </message>
     <message>
         <source>Choose the font size here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz rozmiar czcionki</translation>
     </message>
     <message>
         <source>Normal (Piepmatz default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Normalny (standardowy dla Piepmatz)</translation>
     </message>
     <message>
         <source>Large (Sailfish OS default)</source>
-        <translation type="unfinished"></translation>
+        <translation>Duży (standardowy dla SailfishOS)</translation>
     </message>
     <message>
         <source>Behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>Zachowanie</translation>
     </message>
     <message>
         <source>Link Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Podgląd odnośnika</translation>
     </message>
     <message>
         <source>Choose the link preview mode here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz podgląd odnośnika</translation>
     </message>
     <message>
         <source>Always</source>
-        <translation type="unfinished"></translation>
+        <translation>Zawsze</translation>
     </message>
     <message>
         <source>Only on WiFi</source>
-        <translation type="unfinished"></translation>
+        <translation>Tylko dla WiFi</translation>
     </message>
     <message>
         <source>Never</source>
-        <translation type="unfinished"></translation>
+        <translation>Nigdy</translation>
     </message>
 </context>
 <context>
