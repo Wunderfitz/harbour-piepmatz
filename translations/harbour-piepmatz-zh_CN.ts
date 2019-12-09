@@ -469,7 +469,7 @@
     </message>
     <message>
         <source>Member of</source>
-        <translation>成员of</translation>
+        <translation>成员 of</translation>
     </message>
     <message>
         <source>Settings</source>
