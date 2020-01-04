@@ -133,8 +133,9 @@ void TwitterApi::handleVerifyCredentialsSuccessful()
 void TwitterApi::handleVerifyCredentialsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleVerifyCredentialsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit verifyCredentialsError(reply->errorString());
+    qWarning() << "TwitterApi::handleVerifyCredentialsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit verifyCredentialsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleAccountSettingsSuccessful()
@@ -157,8 +158,9 @@ void TwitterApi::handleAccountSettingsSuccessful()
 void TwitterApi::handleAccountSettingsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleAccountSettingsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit accountSettingsError(reply->errorString());
+    qWarning() << "TwitterApi::handleAccountSettingsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit accountSettingsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleHelpConfigurationSuccessful()
@@ -181,8 +183,9 @@ void TwitterApi::handleHelpConfigurationSuccessful()
 void TwitterApi::handleHelpConfigurationError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleHelpConfigurationError:" << (int)error << reply->errorString() << reply->readAll();
-    emit helpConfigurationError(reply->errorString());
+    qWarning() << "TwitterApi::handleHelpConfigurationError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit helpConfigurationError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleHelpPrivacySuccessful()
@@ -205,8 +208,9 @@ void TwitterApi::handleHelpPrivacySuccessful()
 void TwitterApi::handleHelpPrivacyError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleHelpPrivacyError:" << (int)error << reply->errorString() << reply->readAll();
-    emit helpPrivacyError(reply->errorString());
+    qWarning() << "TwitterApi::handleHelpPrivacyError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit helpPrivacyError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleHelpTosSuccessful()
@@ -229,8 +233,9 @@ void TwitterApi::handleHelpTosSuccessful()
 void TwitterApi::handleHelpTosError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleHelpTosError:" << (int)error << reply->errorString() << reply->readAll();
-    emit helpTosError(reply->errorString());
+    qWarning() << "TwitterApi::handleHelpTosError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit helpTosError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::tweet(const QString &text, const QString &placeId)
@@ -1233,11 +1238,31 @@ void TwitterApi::handleAdditionalInformation(const QString &additionalInformatio
     }
 }
 
+QVariantMap TwitterApi::parseErrorResponse(const QString &errorText, const QByteArray &responseText)
+{
+    qDebug() << "TwitterApi::parseErrorResponse" << errorText << responseText;
+    QVariantMap errorResponse;
+    errorResponse.insert("message", errorText);
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(responseText);
+    if (jsonDocument.isObject()) {
+        QJsonValue errorsValue = jsonDocument.object().value("errors");
+        if (errorsValue.isArray()) {
+            foreach (const QJsonValue &errorsValue, errorsValue.toArray()) {
+                QJsonObject errorElementObject = errorsValue.toObject();
+                errorResponse.insert("code", QString::number(errorElementObject.value("code").toInt()));
+                errorResponse.insert("message", errorElementObject.value("message").toString());
+            }
+        }
+    }
+    return errorResponse;
+}
+
 void TwitterApi::handleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleTweetError:" << (int)error << reply->errorString() << reply->readAll();
-    emit tweetError(reply->errorString());
+    qWarning() << "TwitterApi::handleTweetError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit tweetError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleTweetFinished()
@@ -1261,8 +1286,9 @@ void TwitterApi::handleTweetFinished()
 void TwitterApi::handleHomeTimelineError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleHomeTimelineError:" << (int)error << reply->errorString() << reply->readAll();
-    emit homeTimelineError(reply->errorString());
+    qWarning() << "TwitterApi::handleHomeTimelineError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit homeTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleHomeTimelineFinished()
@@ -1304,8 +1330,9 @@ void TwitterApi::handleHomeTimelineLoadMoreFinished()
 void TwitterApi::handleMentionsTimelineError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleMentionsTimelineError:" << (int)error << reply->errorString() << reply->readAll();
-    emit mentionsTimelineError(reply->errorString());
+    qWarning() << "TwitterApi::handleMentionsTimelineError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit mentionsTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleMentionsTimelineFinished()
@@ -1329,8 +1356,9 @@ void TwitterApi::handleMentionsTimelineFinished()
 void TwitterApi::handleRetweetTimelineError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleRetweetTimelineError:" << (int)error << reply->errorString() << reply->readAll();
-    emit mentionsTimelineError(reply->errorString());
+    qWarning() << "TwitterApi::handleRetweetTimelineError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit mentionsTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleRetweetTimelineFinished()
@@ -1354,8 +1382,9 @@ void TwitterApi::handleRetweetTimelineFinished()
 void TwitterApi::handleUserTimelineError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleUserTimelineError:" << (int)error << reply->errorString() << reply->readAll();
-    emit userTimelineError(reply->errorString());
+    qWarning() << "TwitterApi::handleUserTimelineError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit userTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleUserTimelineFinished()
@@ -1379,8 +1408,9 @@ void TwitterApi::handleUserTimelineFinished()
 void TwitterApi::handleFollowersError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleFollowersError:" << (int)error << reply->errorString() << reply->readAll();
-    emit followersError(reply->errorString());
+    qWarning() << "TwitterApi::handleFollowersError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit followersError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleFollowersFinished()
@@ -1404,8 +1434,9 @@ void TwitterApi::handleFollowersFinished()
 void TwitterApi::handleFriendsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleFriendsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit friendsError(reply->errorString());
+    qWarning() << "TwitterApi::handleFriendsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit friendsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleFriendsFinished()
@@ -1429,8 +1460,9 @@ void TwitterApi::handleFriendsFinished()
 void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleShowStatusError:" << (int)error << reply->errorString() << reply->readAll();
-    emit showStatusError(reply->errorString());
+    qWarning() << "TwitterApi::handleShowStatusError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit showStatusError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleShowStatusFinished()
@@ -1454,8 +1486,9 @@ void TwitterApi::handleShowStatusFinished()
 void TwitterApi::handleShowUserError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleShowUserError:" << (int)error << reply->errorString() << reply->readAll();
-    emit showUserError(reply->errorString());
+    qWarning() << "TwitterApi::handleShowUserError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit showUserError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleShowUserFinished()
@@ -1479,8 +1512,9 @@ void TwitterApi::handleShowUserFinished()
 void TwitterApi::handleFollowUserError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleFollowUserError:" << (int)error << reply->errorString() << reply->readAll();
-    emit followUserError(reply->errorString());
+    qWarning() << "TwitterApi::handleFollowUserError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit followUserError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleFollowUserFinished()
@@ -1507,8 +1541,9 @@ void TwitterApi::handleFollowUserFinished()
 void TwitterApi::handleUnfollowUserError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleUnfollowUserError:" << (int)error << reply->errorString() << reply->readAll();
-    emit unfollowUserError(reply->errorString());
+    qWarning() << "TwitterApi::handleUnfollowUserError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit unfollowUserError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleUnfollowUserFinished()
@@ -1535,8 +1570,9 @@ void TwitterApi::handleUnfollowUserFinished()
 void TwitterApi::handleSearchTweetsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleSearchTweetsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit searchTweetsError(reply->errorString());
+    qWarning() << "TwitterApi::handleSearchTweetsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit searchTweetsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleSearchTweetsFinished()
@@ -1577,8 +1613,9 @@ void TwitterApi::handleSearchTweetsFinished()
 void TwitterApi::handleSearchUsersError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleSearchUsersError:" << (int)error << reply->errorString() << reply->readAll();
-    emit searchUsersError(reply->errorString());
+    qWarning() << "TwitterApi::handleSearchUsersError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit searchUsersError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleSearchUsersFinished()
@@ -1602,8 +1639,9 @@ void TwitterApi::handleSearchUsersFinished()
 void TwitterApi::handleSearchGeoError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleSearchGeoError:" << (int)error << reply->errorString() << reply->readAll();
-    emit searchGeoError(reply->errorString());
+    qWarning() << "TwitterApi::handleSearchGeoError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit searchGeoError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleSearchGeoFinished()
@@ -1627,8 +1665,9 @@ void TwitterApi::handleSearchGeoFinished()
 void TwitterApi::handleFavoriteError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleFavoriteError:" << (int)error << reply->errorString() << reply->readAll();
-    emit favoriteError(reply->errorString());
+    qWarning() << "TwitterApi::handleFavoriteError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit favoriteError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleFavoriteFinished()
@@ -1652,8 +1691,9 @@ void TwitterApi::handleFavoriteFinished()
 void TwitterApi::handleUnfavoriteError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleUnfavoriteError:" << (int)error << reply->errorString() << reply->readAll();
-    emit unfavoriteError(reply->errorString());
+    qWarning() << "TwitterApi::handleUnfavoriteError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit unfavoriteError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleUnfavoriteFinished()
@@ -1677,8 +1717,9 @@ void TwitterApi::handleUnfavoriteFinished()
 void TwitterApi::handleFavoritesError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleFavoritesError:" << (int)error << reply->errorString() << reply->readAll();
-    emit favoritesError(reply->errorString());
+    qWarning() << "TwitterApi::handleFavoritesError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit favoritesError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleFavoritesFinished()
@@ -1702,8 +1743,9 @@ void TwitterApi::handleFavoritesFinished()
 void TwitterApi::handleRetweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleRetweetError:" << (int)error << reply->errorString() << reply->readAll();
-    emit retweetError(reply->errorString());
+    qWarning() << "TwitterApi::handleRetweetError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit retweetError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleRetweetFinished()
@@ -1764,8 +1806,9 @@ void TwitterApi::handleRetweetsForFinished()
 void TwitterApi::handleUnretweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleUnretweetError:" << (int)error << reply->errorString() << reply->readAll();
-    emit unretweetError(reply->errorString());
+    qWarning() << "TwitterApi::handleUnretweetError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit unretweetError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleUnretweetFinished()
@@ -1789,8 +1832,9 @@ void TwitterApi::handleUnretweetFinished()
 void TwitterApi::handleDestroyError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleDestroyError:" << (int)error << reply->errorString() << reply->readAll();
-    emit destroyError(reply->errorString());
+    qWarning() << "TwitterApi::handleDestroyError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit destroyError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleDestroyFinished()
@@ -1814,8 +1858,9 @@ void TwitterApi::handleDestroyFinished()
 void TwitterApi::handleDirectMessagesListError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleDirectMessagesListError:" << (int)error << reply->errorString() << reply->readAll();
-    emit directMessagesListError(reply->errorString());
+    qWarning() << "TwitterApi::handleDirectMessagesListError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit directMessagesListError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleDirectMessagesListFinished()
@@ -1839,8 +1884,9 @@ void TwitterApi::handleDirectMessagesListFinished()
 void TwitterApi::handleDirectMessagesNewError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleDirectMessagesNewError:" << (int)error << reply->errorString() << reply->readAll();
-    emit directMessagesNewError(reply->errorString());
+    qWarning() << "TwitterApi::handleDirectMessagesNewError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit directMessagesNewError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleDirectMessagesNewFinished()
@@ -1864,8 +1910,9 @@ void TwitterApi::handleDirectMessagesNewFinished()
 void TwitterApi::handleTrendsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleTrendsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit trendsError(reply->errorString());
+    qWarning() << "TwitterApi::handleTrendsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit trendsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleTrendsFinished()
@@ -1889,8 +1936,9 @@ void TwitterApi::handleTrendsFinished()
 void TwitterApi::handlePlacesForTrendsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handlePlacesForTrendsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit placesForTrendsError(reply->errorString());
+    qWarning() << "TwitterApi::handlePlacesForTrendsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit placesForTrendsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handlePlacesForTrendsFinished()
@@ -1914,8 +1962,9 @@ void TwitterApi::handlePlacesForTrendsFinished()
 void TwitterApi::handleUserListsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleUserListsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit userListsError(reply->errorString());
+    qWarning() << "TwitterApi::handleUserListsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit userListsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleUserListsFinished()
@@ -1939,8 +1988,9 @@ void TwitterApi::handleUserListsFinished()
 void TwitterApi::handleListsMembershipsError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleListsMembershipsError:" << (int)error << reply->errorString() << reply->readAll();
-    emit listsMembershipsError(reply->errorString());
+    qWarning() << "TwitterApi::handleListsMembershipsError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit listsMembershipsError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleListsMembershipsFinished()
@@ -1964,8 +2014,9 @@ void TwitterApi::handleListsMembershipsFinished()
 void TwitterApi::handleListMembersError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleListsMembersError:" << (int)error << reply->errorString() << reply->readAll();
-    emit listMembersError(reply->errorString());
+    qWarning() << "TwitterApi::handleListsMembersError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit listMembersError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleListMembersFinished()
@@ -1989,8 +2040,9 @@ void TwitterApi::handleListMembersFinished()
 void TwitterApi::handleListTimelineError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleListTimelineError:" << (int)error << reply->errorString() << reply->readAll();
-    emit listTimelineError(reply->errorString());
+    qWarning() << "TwitterApi::handleListTimelineError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit listTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleListTimelineFinished()
@@ -2032,8 +2084,9 @@ void TwitterApi::handleListTimelineLoadMoreFinished()
 void TwitterApi::handleSavedSearchesError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleSavedSearchesError:" << (int)error << reply->errorString() << reply->readAll();
-    emit savedSearchesError(reply->errorString());
+    qWarning() << "TwitterApi::handleSavedSearchesError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit savedSearchesError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleSavedSearchesFinished()
@@ -2057,8 +2110,9 @@ void TwitterApi::handleSavedSearchesFinished()
 void TwitterApi::handleSaveSearchError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleSaveSearchError:" << (int)error << reply->errorString() << reply->readAll();
-    emit saveSearchError(reply->errorString());
+    qWarning() << "TwitterApi::handleSaveSearchError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit saveSearchError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleSaveSearchFinished()
@@ -2082,8 +2136,9 @@ void TwitterApi::handleSaveSearchFinished()
 void TwitterApi::handleDestroySavedSearchError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleDestroySavedSearchError:" << (int)error << reply->errorString() << reply->readAll();
-    emit destroySavedSearchError(reply->errorString());
+    qWarning() << "TwitterApi::handleDestroySavedSearchError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit destroySavedSearchError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleDestroySavedSearchFinished()
@@ -2107,8 +2162,9 @@ void TwitterApi::handleDestroySavedSearchFinished()
 void TwitterApi::handleGetOpenGraphError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleGetOpenGraphFinished:" << (int)error << reply->errorString() << reply->readAll();
-    emit getOpenGraphError(reply->errorString());
+    qWarning() << "TwitterApi::handleGetOpenGraphFinished:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit getOpenGraphError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleGetOpenGraphFinished()
@@ -2186,7 +2242,8 @@ void TwitterApi::handleGetOpenGraphFinished()
 void TwitterApi::handleGetSingleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleGetSingleTweetError:" << (int)error << reply->errorString() << reply->readAll();
+    qWarning() << "TwitterApi::handleGetSingleTweetError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
 }
 
 void TwitterApi::handleGetSingleTweetFinished()
@@ -2256,8 +2313,9 @@ void TwitterApi::handleTweetConversationReceived(QString tweetId, QVariantList r
 void TwitterApi::handleGetIpInfoError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleGetIpInfoError:" << (int)error << reply->errorString() << reply->readAll();
-    emit getIpInfoError(reply->errorString());
+    qWarning() << "TwitterApi::handleGetIpInfoError:" << (int)error << reply->errorString();
+    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    emit getIpInfoError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleGetIpInfoFinished()

@@ -135,6 +135,8 @@ public:
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
     Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
 
+    Q_INVOKABLE QVariantMap parseErrorResponse(const QString &errorText, const QByteArray &responseText);
+
 signals:
     void verifyCredentialsSuccessful(const QVariantMap &result);
     void verifyCredentialsError(const QString &errorMessage);
