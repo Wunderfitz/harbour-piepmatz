@@ -87,10 +87,6 @@
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Ez a projekt a twemoji-t használja. Szerzői jog 2018 Twitter, Inc. és más közreműködők. Köszönet a MIT Licenc (kódolás) és a CC-BY 4.0 (grafika) feltételei alatti elérhetőségért!</translation>
     </message>
-    <message>
-        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>Ezt a terméket a &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt; forgalmazza. Megtalálhatod &lt;a href=&quot;profile://werkwolf&quot;&gt; WerkWolf-ot a Twitteren is&lt;/a&gt;.</translation>
-    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>

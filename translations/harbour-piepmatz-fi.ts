@@ -88,10 +88,6 @@
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>Tämä projekti käyttää twemoji:tä. Tekinjänoikeus 2018 Twitter, Inc. ja muut avustajat. Kiitos, että se on saatavana saatavana MIT-lisenssin (koodaus) ja CC-BY 4.0 (grafiikka) ehtojen mukaisesti!</translation>
     </message>
-    <message>
-        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>

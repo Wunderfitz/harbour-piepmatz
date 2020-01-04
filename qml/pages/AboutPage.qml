@@ -83,7 +83,7 @@ Page {
             }
 
             Label {
-                text: "Piepmatz 1.4.1"
+                text: "Piepmatz 1.5"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {
@@ -123,36 +123,14 @@ Page {
             }
 
             Text {
-                text: "<a href=\"mailto:contact@werkwolf.eu\">" + qsTr("Send E-Mail") + "</a>"
+                text: "<a href=\"mailto:sebastian@ygriega.de\">" + qsTr("Send E-Mail") + "</a>"
                 anchors {
                     horizontalCenter: parent.horizontalCenter
                 }
                 font.pixelSize: Theme.fontSizeSmall
                 linkColor: Theme.highlightColor
 
-                onLinkActivated: Qt.openUrlExternally("mailto:contact@werkwolf.eu")
-            }
-
-            Separator {
-                width: parent.width
-                color: Theme.primaryColor
-                horizontalAlignment: Qt.AlignHCenter
-            }
-
-            Text {
-                wrapMode: Text.Wrap
-                width: parent.width - ( 2 * Theme.horizontalPageMargin )
-                //text: qsTr("This product uses <a href=\"https://werkwolf.eu/terms.html#wagnis\">Wagnis</a> and is distributed by <a href=\"https://werkwolf.eu\">WerkWolf OÜ</a>. You can also <a href=\"profile://werkwolf\">find WerkWolf on Twitter</a>.")
-                text: qsTr("This product is distributed by <a href=\"https://werkwolf.eu\">WerkWolf OÜ</a>. You can also <a href=\"profile://werkwolf\">find WerkWolf on Twitter</a>.")
-                font.pixelSize: Theme.fontSizeSmall
-                linkColor: Theme.highlightColor
-                anchors {
-                    horizontalCenter: parent.horizontalCenter
-                }
-                color: Theme.primaryColor
-                textFormat: Text.StyledText
-                horizontalAlignment: Text.AlignHCenter
-                onLinkActivated: Functions.handleLink(link);
+                onLinkActivated: Qt.openUrlExternally("mailto:sebastian@ygriega.de")
             }
 
             Separator {

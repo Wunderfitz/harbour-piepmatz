@@ -31,6 +31,7 @@
 #include <QXmlStreamReader>
 #include <QProcess>
 #include <QTextCodec>
+#include <QRegularExpression>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
@@ -2125,17 +2126,27 @@ void TwitterApi::handleGetOpenGraphFinished()
     if (!contentTypeHeader.isValid()) {
         return;
     }
+    qDebug() << "Open Graph content type header: " << contentTypeHeader.toString();
     if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
         qDebug() << requestAddress + " is not HTML, not checking Open Graph data...";
         return;
     }
 
     QString charset = "UTF-8";
-    QRegExp charsetRegex("charset\\s*\\=[\\s\\\"\\\']*([^\\s\\\"\\\'\\,>]*)");
-    if (charsetRegex.indexIn(contentTypeHeader.toString()) != -1) {
-        charset = charsetRegex.cap(1).toUpper();
-        qDebug() << "Open Graph Charset for " << requestAddress << ": " << charset;
+    QRegularExpression charsetRegularExpression("charset\\s*\\=[\\s\\\"\\\']*([^\\s\\\"\\\'\\,>]*)");
+    QRegularExpressionMatchIterator matchIterator = charsetRegularExpression.globalMatch(contentTypeHeader.toString());
+    QStringList availableCharsets;
+    while (matchIterator.hasNext()) {
+        QRegularExpressionMatch nextMatch = matchIterator.next();
+        QString currentCharset = nextMatch.captured(1).toUpper();
+        qDebug() << "Available Open Graph charset: " << currentCharset;
+        availableCharsets.append(currentCharset);
     }
+    if (availableCharsets.size() > 0 && !availableCharsets.contains("UTF-8")) {
+        // If we haven't received the requested UTF-8, we simply use the last one which we received in the header
+        charset = availableCharsets.last();
+    }
+    qDebug() << "Open Graph Charset for " << requestAddress << ": " << charset;
 
     QByteArray rawDocument = reply->readAll();
     QTextCodec *codec = QTextCodec::codecForName(charset.toUtf8());

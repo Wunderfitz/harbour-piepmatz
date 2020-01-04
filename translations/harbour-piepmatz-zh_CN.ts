@@ -88,10 +88,6 @@
         <source>This project uses twemoji. Copyright 2018 Twitter, Inc. and other contributors. Thanks for making it available under the conditions of the MIT License (coding) and CC-BY 4.0 (graphics)!</source>
         <translation>该项目使用 twemoji, Twitter, Inc. 2018 及其他贡献者版权所有。感谢使它在 MIT 许可证 (代码部分)及 CC-BY 4.0 (图像部分)下可用!</translation>
     </message>
-    <message>
-        <source>This product is distributed by &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. You can also &lt;a href=&quot;profile://werkwolf&quot;&gt;find WerkWolf on Twitter&lt;/a&gt;.</source>
-        <translation>该产品在 &lt;a href=&quot;https://werkwolf.eu&quot;&gt;WerkWolf OÜ&lt;/a&gt;. 下分发。你也可以在Twitter 找到 WerkWolf &lt;a href=&quot;profile://werkwolf&quot;&gt; &lt;/a&gt; 。</translation>
-    </message>
 </context>
 <context>
     <name>AttachImagesPage</name>
