@@ -83,7 +83,7 @@ Item {
 
             Column {
                 id: tweetAuthorColumn
-                width: parent.width / 6
+                width: tweetModel.fakeTweet ? 0 : ( parent.width / 6 )
                 height: parent.width / 6
                 spacing: Theme.paddingSmall
                 Image {
@@ -171,7 +171,7 @@ Item {
 
             Column {
                 id: tweetContentColumn
-                width: parent.width * 5 / 6 - Theme.horizontalPageMargin
+                width: tweetModel.fakeTweet ? ( parent.width - Theme.horizontalPageMargin ) : ( parent.width * 5 / 6 - Theme.horizontalPageMargin )
 
                 spacing: Theme.paddingSmall
 
@@ -256,7 +256,7 @@ Item {
                 TweetUser {
                     id: tweetUserRow
                     tweetUser: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
-                    visible: !tweetElementItem.isRetweetMention
+                    visible: !tweetElementItem.isRetweetMention && !tweetModel.fakeTweet
                 }
 
                 TweetText {
@@ -392,7 +392,7 @@ Item {
                 Row {
                     id: tweetSourceRow
                     width: parent.width
-                    visible: tweetElement.extendedMode
+                    visible: tweetElement.extendedMode && !tweetModel.fakeTweet
                     spacing: Theme.paddingSmall
                     Text {
                         id: tweetSourceText
@@ -432,6 +432,7 @@ Item {
                     width: parent.width
                     height: Theme.fontSizeLarge
                     spacing: Theme.paddingSmall
+                    visible: !tweetModel.fakeTweet
 
                     Connections {
                         target: twitterApi

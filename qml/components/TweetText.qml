@@ -55,6 +55,7 @@ Column {
         id: tweetContentText
         text: tweetTextColumn.truncateText ? Emoji.emojify(Functions.getRelevantTweet(tweetTextColumn.tweet).full_text, componentFontSize) : makeTheTextGreatAgain()
         font.pixelSize: componentFontSize
+        font.italic: tweetTextColumn.tweet.fakeTweet ? true : false
         color: Theme.primaryColor
         elide: tweetTextColumn.truncateText ? Text.ElideRight : Text.ElideNone
         wrapMode: Text.Wrap

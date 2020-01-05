@@ -1462,7 +1462,34 @@ void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleShowStatusError:" << (int)error << reply->errorString();
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
-    emit showStatusError(parsedErrorResponse.value("message").toString());
+    qDebug() << "Tweet couldn't be loaded for URL " << reply->request().url().toString() << ", errors: " << parsedErrorResponse;
+    // emit showStatusError(parsedErrorResponse.value("message").toString());
+    QVariantMap fakeTweet;
+    QUrlQuery urlQuery(reply->request().url());
+    fakeTweet.insert("fakeTweet", true);
+    QVariantMap fakeUser;
+    fakeUser.insert("name", "");
+    fakeUser.insert("verified", false);
+    fakeUser.insert("protected", false);
+    fakeUser.insert("profile_image_url_https", "");
+    fakeTweet.insert("user", fakeUser);
+    fakeTweet.insert("source", "Piepmatz");
+    fakeTweet.insert("retweeted", false);
+    fakeTweet.insert("favorited", false);
+    QVariantMap fakeEntities;
+    QVariantList fakeHashtags;
+    fakeEntities.insert("hashtags", fakeHashtags);
+    QVariantList fakeSymbols;
+    fakeEntities.insert("symbols", fakeSymbols);
+    QVariantList fakeUrls;
+    fakeEntities.insert("urls", fakeUrls);
+    QVariantList fakeMentions;
+    fakeEntities.insert("user_mentions", fakeMentions);
+    fakeTweet.insert("entities", fakeEntities);
+    fakeTweet.insert("created_at", "Sun Jan 05 13:05:00 +0000 2020");
+    fakeTweet.insert("id_str", urlQuery.queryItemValue("id"));
+    fakeTweet.insert("full_text", parsedErrorResponse.value("message").toString());
+    emit showStatusSuccessful(fakeTweet);
 }
 
 void TwitterApi::handleShowStatusFinished()
@@ -2278,8 +2305,8 @@ void TwitterApi::handleGetSingleTweetFinished()
     QGumboNode root = parsedResult.rootNode();
 
     // === DEBUG ===
-    ContentExtractor contentExtractor(this, &root);
-    contentExtractor.parse();
+    // ContentExtractor contentExtractor(this, &root);
+    // contentExtractor.parse();
     // === DEBUG ===
 
 

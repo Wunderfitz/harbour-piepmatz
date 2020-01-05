@@ -67,6 +67,7 @@ Item {
         TweetUser {
             id: tweetUserRow
             tweetUser: tweetModel.retweeted_status ? tweetModel.retweeted_status.user : tweetModel.user
+            visible: !tweetModel.fakeTweet
         }
 
         Text {
@@ -75,6 +76,7 @@ Item {
             visible: (tweetContentText.text !== "")
             text: Emoji.emojify(Functions.enhanceTweetText(Functions.getRelevantTweet(tweetModel).full_text, Functions.getRelevantTweet(tweetModel).entities, Functions.getRelevantTweet(tweetModel).extended_entities, withReferenceUrl, false), componentFontSize)
             font.pixelSize: componentFontSize
+            font.italic: tweetModel.fakeTweet ? true : false
             color: Theme.primaryColor
             wrapMode: Text.Wrap
             textFormat: Text.StyledText
