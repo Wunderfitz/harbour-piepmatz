@@ -413,7 +413,7 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>% 1 趋势</translation>
+        <translation>%1 趋势</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
