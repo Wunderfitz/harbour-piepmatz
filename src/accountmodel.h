@@ -61,11 +61,16 @@ public:
     Q_INVOKABLE void setUseSwipeNavigation(const bool &useSwipeNavigation);
     Q_INVOKABLE bool getDisplayImageDescriptions();
     Q_INVOKABLE void setDisplayImageDescriptions(const bool &displayImageDescriptions);
+    Q_INVOKABLE bool getUseSecretIdentity();
+    Q_INVOKABLE void setUseSecretIdentity(const bool &useSecretIdentity);
+    Q_INVOKABLE QString getSecretIdentityName();
+    Q_INVOKABLE void setSecretIdentityName(const QString &secretIdentityName);
     Q_INVOKABLE QString getFontSize();
     Q_INVOKABLE void setFontSize(const QString &fontSize);
     Q_INVOKABLE bool isWiFi();
     Q_INVOKABLE QString getLinkPreviewMode();
     Q_INVOKABLE void setLinkPreviewMode(const QString &linkPreviewMode);
+    Q_INVOKABLE bool hasSecretIdentity();
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -106,10 +111,13 @@ private:
     //Wagnis * const wagnis;
     QSettings settings;
     QVariantList otherAccounts;
+    bool secretIdentity;
+    O1Requestor *secretIdentityRequestor = nullptr;
 
     void obtainEncryptionKey();
     void initializeEnvironment();
     void readOtherAccounts();
+    void initializeSecretIdentity();
 
 };
 

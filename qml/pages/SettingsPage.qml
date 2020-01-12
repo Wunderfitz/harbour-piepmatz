@@ -58,10 +58,17 @@ Page {
     }
 
     property variant allAccounts;
+    property variant otherAccounts;
 
     Component.onCompleted: {
         allAccounts = [ accountModel.getCurrentAccount().screen_name ];
         allAccounts = allAccounts.concat(accountModel.getOtherAccounts());
+        otherAccounts = accountModel.getOtherAccounts();
+        for (var i = 0; i < otherAccounts.length; i++) {
+            if (otherAccounts[i] === accountModel.getSecretIdentityName()) {
+                secretIdentityComboBox.currentIndex = i;
+            }
+        }
     }
 
     RemorsePopup {
@@ -135,6 +142,37 @@ Page {
                     pageStack.clear();
                     //pageStack.push(( wagnis.isRegistered() && wagnis.hasFeature("contribution") ) ? (accountModel.isLinked() ? overviewPage : welcomePage) : registrationPage);
                     pageStack.push(accountModel.isLinked() ? overviewPage : welcomePage);
+                }
+            }
+
+            TextSwitch {
+                id: secretIdentitySwitch
+                checked: accountModel.getUseSecretIdentity()
+                text: qsTr("Use Secret Identity")
+                description: qsTr("Use secret identity to display blocked Twitter content")
+                onCheckedChanged: {
+                    accountModel.setUseSecretIdentity(checked);
+                }
+                enabled: allAccounts.length
+            }
+
+            ComboBox {
+                id: secretIdentityComboBox
+                label: qsTr("Secret Identity")
+                currentIndex: 0
+                description: qsTr("Choose the secret identity here")
+                enabled: secretIdentitySwitch.checked
+                menu: ContextMenu {
+                    Repeater {
+                        model: otherAccounts
+                        delegate: MenuItem {
+                            text: qsTr("@%1").arg(modelData)
+                        }
+                    }
+                    onActivated: {
+                        console.log("Account " + otherAccounts[index] + " was selected as secret identity");
+                        accountModel.setSecretIdentityName(otherAccounts[index]);
+                    }
                 }
             }
 

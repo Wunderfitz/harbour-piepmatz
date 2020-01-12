@@ -32,6 +32,8 @@ const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
 const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 const char SETTINGS_USE_SWIPE_NAVIGATION[] = "settings/useSwipeNavigation";
+const char SETTINGS_USE_SECRET_IDENTITY[] = "settings/useSecretIdentity";
+const char SETTINGS_SECRET_IDENTITY_NAME[] = "settings/secretIdentityName";
 const char SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS[] = "settings/displayImageDescriptions";
 const char SETTINGS_FONT_SIZE[] = "settings/fontSize";
 const char SETTINGS_LINK_PREVIEW_MODE[] = "settings/linkPreviewMode";
@@ -66,10 +68,14 @@ void AccountModel::initializeEnvironment()
     connect(o1, &O1Twitter::linkingFailed, this, &AccountModel::handleLinkingFailed);
     connect(o1, &O1Twitter::linkingSucceeded, this, &AccountModel::handleLinkingSucceeded);
 
-    requestor = new O1Requestor(manager, o1, this);
-    //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
-    twitterApi = new TwitterApi(requestor, manager, this);
+    secretIdentity = false;
     readOtherAccounts();
+    requestor = new O1Requestor(manager, o1, this);
+    if (this->getUseSecretIdentity()) {
+        this->initializeSecretIdentity();
+    }
+    //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
+    twitterApi = new TwitterApi(requestor, manager, secretIdentityRequestor, this);
 
     connect(twitterApi, &TwitterApi::verifyCredentialsError, this, &AccountModel::handleVerifyCredentialsError);
     connect(twitterApi, &TwitterApi::verifyCredentialsSuccessful, this, &AccountModel::handleVerifyCredentialsSuccessful);
@@ -113,7 +119,7 @@ void AccountModel::unlink()
 
 QVariantMap AccountModel::getCurrentAccount()
 {
-    qDebug() << "AccountModel::getCurrentAccount" << this->availableAccounts.value(0).value("screen_name").toString();
+    //qDebug() << "AccountModel::getCurrentAccount" << this->availableAccounts.value(0).value("screen_name").toString();
     return this->availableAccounts.value(0);
 }
 
@@ -216,6 +222,26 @@ void AccountModel::setDisplayImageDescriptions(const bool &displayImageDescripti
     settings.setValue(SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS, displayImageDescriptions);
 }
 
+bool AccountModel::getUseSecretIdentity()
+{
+    return settings.value(SETTINGS_USE_SECRET_IDENTITY, false).toBool();
+}
+
+void AccountModel::setUseSecretIdentity(const bool &useSecretIdentity)
+{
+    settings.setValue(SETTINGS_USE_SECRET_IDENTITY, useSecretIdentity);
+}
+
+QString AccountModel::getSecretIdentityName()
+{
+    return settings.value(SETTINGS_SECRET_IDENTITY_NAME, "").toString();
+}
+
+void AccountModel::setSecretIdentityName(const QString &secretIdentityName)
+{
+    settings.setValue(SETTINGS_SECRET_IDENTITY_NAME, secretIdentityName);
+}
+
 QString AccountModel::getFontSize()
 {
     return settings.value(SETTINGS_FONT_SIZE, "piepmatz").toString();
@@ -251,6 +277,11 @@ void AccountModel::setLinkPreviewMode(const QString &linkPreviewMode)
 {
     settings.setValue(SETTINGS_LINK_PREVIEW_MODE, linkPreviewMode);
     emit linkPreviewModeChanged(linkPreviewMode);
+}
+
+bool AccountModel::hasSecretIdentity()
+{
+    return this->secretIdentity;
 }
 
 TwitterApi *AccountModel::getTwitterApi()
@@ -378,6 +409,28 @@ void AccountModel::readOtherAccounts()
             qDebug() << "Found other account: " + accountFileMatcher.cap(1);
             this->otherAccounts.append(accountFileMatcher.cap(1));
         }
+    }
+}
+
+void AccountModel::initializeSecretIdentity()
+{
+    qDebug() << "AccountModel::initializeSecretIdentity";
+    QString secretIdentity = this->getSecretIdentityName();
+    qDebug() << "Using secret identity " << secretIdentity;
+    QString accountFileName = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + secretIdentity + ".conf";
+    qDebug() << "Using file name " << accountFileName;
+    QSettings *secretIdentitySettings = new QSettings(accountFileName, QSettings::IniFormat, this);
+    O0SettingsStore *secretIdentitySettingsStore = new O0SettingsStore(secretIdentitySettings, encryptionKey, this);
+    O1Twitter *o1SecretIdentity = new O1Twitter(this);
+    o1SecretIdentity->setStore(secretIdentitySettingsStore);
+    o1SecretIdentity->setClientId(TWITTER_CLIENT_ID);
+    o1SecretIdentity->setClientSecret(TWITTER_CLIENT_SECRET);
+    if (o1SecretIdentity->linked()) {
+        qDebug() << "Secret identity successfully initialized!";
+        secretIdentityRequestor = new O1Requestor(manager, o1SecretIdentity, this);
+        secretIdentity = true;
+    } else {
+        qDebug() << "ERROR initializing secret identity!";
     }
 }
 

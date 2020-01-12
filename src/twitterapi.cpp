@@ -36,9 +36,10 @@
 #include <QtDBus/QDBusInterface>
 
 //TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
-TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent) : QObject(parent) {
+TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent) {
     this->requestor = requestor;
     this->manager = manager;
+    this->secretIdentityRequestor = secretIdentityRequestor;
     //this->wagnis = wagnis;
 }
 
@@ -430,7 +431,7 @@ void TwitterApi::retweetTimeline()
     connect(reply, SIGNAL(finished()), this, SLOT(handleRetweetTimelineFinished()));
 }
 
-void TwitterApi::showStatus(const QString &statusId)
+void TwitterApi::showStatus(const QString &statusId, const bool &useSecretIdentity)
 {
     // Very weird, some statusIds contain a query string. Why?
     QString sanitizedStatus = statusId;
@@ -456,7 +457,14 @@ void TwitterApi::showStatus(const QString &statusId)
     requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("id"), sanitizedStatus.toUtf8()));
     requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
-    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    QNetworkReply *reply;
+    if (useSecretIdentity && secretIdentityRequestor != nullptr) {
+        request.setRawHeader(HEADER_NO_RECURSION, "X");
+        reply = secretIdentityRequestor->get(request, requestParameters);
+    } else {
+        reply = requestor->get(request, requestParameters);
+    }
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleShowStatusError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowStatusFinished()));
@@ -506,7 +514,7 @@ void TwitterApi::showUserById(const QString &userId)
     connect(reply, SIGNAL(finished()), this, SLOT(handleShowUserFinished()));
 }
 
-void TwitterApi::userTimeline(const QString &screenName)
+void TwitterApi::userTimeline(const QString &screenName, const bool &useSecretIdentity)
 {
     qDebug() << "TwitterApi::userTimeline" << screenName;
     QUrl url = QUrl(API_STATUSES_USER_TIMELINE);
@@ -528,7 +536,14 @@ void TwitterApi::userTimeline(const QString &screenName)
     requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
     requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
     requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
-    QNetworkReply *reply = requestor->get(request, requestParameters);
+
+    QNetworkReply *reply;
+    if (useSecretIdentity && secretIdentityRequestor != nullptr) {
+        request.setRawHeader(HEADER_NO_RECURSION, "X");
+        reply = secretIdentityRequestor->get(request, requestParameters);
+    } else {
+        reply = requestor->get(request, requestParameters);
+    }
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleUserTimelineError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleUserTimelineFinished()));
@@ -562,7 +577,7 @@ void TwitterApi::followers(const QString &screenName)
     connect(reply, SIGNAL(finished()), this, SLOT(handleFollowersFinished()));
 }
 
-void TwitterApi::friends(const QString &screenName)
+void TwitterApi::friends(const QString &screenName, const QString &cursor)
 {
     qDebug() << "TwitterApi::friends" << screenName;
     QUrl url = QUrl(API_FRIENDS_LIST);
@@ -572,6 +587,9 @@ void TwitterApi::friends(const QString &screenName)
     urlQuery.addQueryItem("count", "200");
     urlQuery.addQueryItem("skip_status", "true");
     urlQuery.addQueryItem("include_user_entities", "true");
+    if (cursor != "") {
+        urlQuery.addQueryItem("cursor", cursor);
+    }
 
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
@@ -583,6 +601,9 @@ void TwitterApi::friends(const QString &screenName)
     requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
     requestParameters.append(O0RequestParameter(QByteArray("skip_status"), QByteArray("true")));
     requestParameters.append(O0RequestParameter(QByteArray("include_user_entities"), QByteArray("true")));
+    if (cursor != "") {
+        requestParameters.append(O0RequestParameter(QByteArray("cursor"), cursor.toUtf8()));
+    }
 
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
@@ -1384,7 +1405,19 @@ void TwitterApi::handleUserTimelineError(QNetworkReply::NetworkError error)
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleUserTimelineError:" << (int)error << reply->errorString();
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
-    emit userTimelineError(parsedErrorResponse.value("message").toString());
+    QUrlQuery urlQuery(reply->request().url());
+    if (reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
+        qDebug() << "Probably a secret identity response...";
+    } else {
+        qDebug() << "Standard response...";
+    }
+    // We use the secret identity if it exists, if we were blocked and if the previous request wasn't already a secret request
+    if (secretIdentityRequestor != nullptr && parsedErrorResponse.value("code") == "136" && !reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
+        qDebug() << "Using secret identity for user " << urlQuery.queryItemValue("screen_name");
+        this->userTimeline(urlQuery.queryItemValue("screen_name"), true);
+    } else {
+        emit userTimelineError(parsedErrorResponse.value("message").toString());
+    }
 }
 
 void TwitterApi::handleUserTimelineFinished()
@@ -1464,38 +1497,54 @@ void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
     qDebug() << "Tweet couldn't be loaded for URL " << reply->request().url().toString() << ", errors: " << parsedErrorResponse;
     // emit showStatusError(parsedErrorResponse.value("message").toString());
-    QVariantMap fakeTweet;
     QUrlQuery urlQuery(reply->request().url());
-    fakeTweet.insert("fakeTweet", true);
-    QVariantMap fakeUser;
-    fakeUser.insert("name", "");
-    fakeUser.insert("verified", false);
-    fakeUser.insert("protected", false);
-    fakeUser.insert("profile_image_url_https", "");
-    fakeTweet.insert("user", fakeUser);
-    fakeTweet.insert("source", "Piepmatz");
-    fakeTweet.insert("retweeted", false);
-    fakeTweet.insert("favorited", false);
-    QVariantMap fakeEntities;
-    QVariantList fakeHashtags;
-    fakeEntities.insert("hashtags", fakeHashtags);
-    QVariantList fakeSymbols;
-    fakeEntities.insert("symbols", fakeSymbols);
-    QVariantList fakeUrls;
-    fakeEntities.insert("urls", fakeUrls);
-    QVariantList fakeMentions;
-    fakeEntities.insert("user_mentions", fakeMentions);
-    fakeTweet.insert("entities", fakeEntities);
-    fakeTweet.insert("created_at", "Sun Jan 05 13:05:00 +0000 2020");
-    fakeTweet.insert("id_str", urlQuery.queryItemValue("id"));
-    fakeTweet.insert("full_text", parsedErrorResponse.value("message").toString());
-    emit showStatusSuccessful(fakeTweet);
+    if (reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
+        qDebug() << "Probably a secret identity response...";
+    } else {
+        qDebug() << "Standard response...";
+    }
+    // We use the secret identity if it exists, if we were blocked and if the previous request wasn't already a secret request
+    if (secretIdentityRequestor != nullptr && parsedErrorResponse.value("code") == "136" && !reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
+        qDebug() << "Using secret identity for tweet " << urlQuery.queryItemValue("id");
+        this->showStatus(urlQuery.queryItemValue("id"), true);
+    } else {
+        QVariantMap fakeTweet;
+        fakeTweet.insert("fakeTweet", true);
+        QVariantMap fakeUser;
+        fakeUser.insert("name", "");
+        fakeUser.insert("verified", false);
+        fakeUser.insert("protected", false);
+        fakeUser.insert("profile_image_url_https", "");
+        fakeTweet.insert("user", fakeUser);
+        fakeTweet.insert("source", "Piepmatz");
+        fakeTweet.insert("retweeted", false);
+        fakeTweet.insert("favorited", false);
+        QVariantMap fakeEntities;
+        QVariantList fakeHashtags;
+        fakeEntities.insert("hashtags", fakeHashtags);
+        QVariantList fakeSymbols;
+        fakeEntities.insert("symbols", fakeSymbols);
+        QVariantList fakeUrls;
+        fakeEntities.insert("urls", fakeUrls);
+        QVariantList fakeMentions;
+        fakeEntities.insert("user_mentions", fakeMentions);
+        fakeTweet.insert("entities", fakeEntities);
+        fakeTweet.insert("created_at", "Sun Jan 05 13:05:00 +0000 2020");
+        fakeTweet.insert("id_str", urlQuery.queryItemValue("id"));
+        fakeTweet.insert("full_text", parsedErrorResponse.value("message").toString());
+        emit showStatusSuccessful(fakeTweet);
+    }
 }
 
 void TwitterApi::handleShowStatusFinished()
 {
     qDebug() << "TwitterApi::handleShowStatusFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    if (reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
+        qDebug() << "Probably a secret identity response...";
+    } else {
+        qDebug() << "Standard response...";
+    }
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
         return;

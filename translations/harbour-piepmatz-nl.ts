@@ -868,6 +868,22 @@ QGumboParser gebruikt Gumbo, Copyright 2017 Google. Gelicenseerd onder de voorwa
         <source>Never</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Use Secret Identity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use secret identity to display blocked Twitter content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Secret Identity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose the secret identity here</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

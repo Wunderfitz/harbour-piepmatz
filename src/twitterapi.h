@@ -76,12 +76,14 @@ const char API_SAVED_SEARCHES_LIST[] = "https://api.twitter.com/1.1/saved_search
 const char API_SAVED_SEARCHES_CREATE[] = "https://api.twitter.com/1.1/saved_searches/create.json";
 const char API_SAVED_SEARCHES_DESTROY[] = "https://api.twitter.com/1.1/saved_searches/destroy/:id.json";
 
+const char HEADER_NO_RECURSION[] = "X-Piepmatz-No-Recursion";
+
 class TwitterApi : public QObject {
 
     Q_OBJECT
 public:
     //TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent = 0);
-    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, QObject* parent = 0);
+    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor* secretIdentityRequestor = 0, QObject* parent = 0);
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void accountSettings();
@@ -96,10 +98,10 @@ public:
     Q_INVOKABLE void homeTimeline(const QString &maxId = QString());
     Q_INVOKABLE void mentionsTimeline();
     Q_INVOKABLE void retweetTimeline();
-    Q_INVOKABLE void userTimeline(const QString &screenName);
+    Q_INVOKABLE void userTimeline(const QString &screenName, const bool &useSecretIdentity = false);
     Q_INVOKABLE void followers(const QString &screenName);
-    Q_INVOKABLE void friends(const QString &screenName);
-    Q_INVOKABLE void showStatus(const QString &statusId);
+    Q_INVOKABLE void friends(const QString &screenName, const QString &cursor = 0);
+    Q_INVOKABLE void showStatus(const QString &statusId, const bool &useSecretIdentity = false);
     Q_INVOKABLE void showUser(const QString &screenName);
     Q_INVOKABLE void showUserById(const QString &userId);
     Q_INVOKABLE void followUser(const QString &screenName);
@@ -229,6 +231,7 @@ signals:
 
 private:
     O1Requestor *requestor;
+    O1Requestor *secretIdentityRequestor;
     QNetworkAccessManager *manager;
     //Wagnis *wagnis;
 

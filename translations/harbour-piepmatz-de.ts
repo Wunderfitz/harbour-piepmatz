@@ -867,6 +867,22 @@
         <source>Never</source>
         <translation>Niemals</translation>
     </message>
+    <message>
+        <source>Use Secret Identity</source>
+        <translation>Geheimidentität nutzen</translation>
+    </message>
+    <message>
+        <source>Use secret identity to display blocked Twitter content</source>
+        <translation>Geheimidentität nutzen um blockierte Twitter-Inhalte anzuzeigen</translation>
+    </message>
+    <message>
+        <source>Secret Identity</source>
+        <translation>Geheimidentität</translation>
+    </message>
+    <message>
+        <source>Choose the secret identity here</source>
+        <translation>Wählen Sie die Geheimidentität hier</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>
