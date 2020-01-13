@@ -149,7 +149,7 @@ Page {
                 id: secretIdentitySwitch
                 checked: accountModel.getUseSecretIdentity()
                 text: qsTr("Use Secret Identity")
-                description: qsTr("Use secret identity to display blocked Twitter content")
+                description: qsTr("Use secret identity to display blocked Twitter content. Please restart Piepmatz to apply changes.")
                 onCheckedChanged: {
                     accountModel.setUseSecretIdentity(checked);
                 }

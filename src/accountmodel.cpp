@@ -68,12 +68,10 @@ void AccountModel::initializeEnvironment()
     connect(o1, &O1Twitter::linkingFailed, this, &AccountModel::handleLinkingFailed);
     connect(o1, &O1Twitter::linkingSucceeded, this, &AccountModel::handleLinkingSucceeded);
 
-    secretIdentity = false;
     readOtherAccounts();
     requestor = new O1Requestor(manager, o1, this);
-    if (this->getUseSecretIdentity()) {
-        this->initializeSecretIdentity();
-    }
+    this->initializeSecretIdentity();
+
     //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     twitterApi = new TwitterApi(requestor, manager, secretIdentityRequestor, this);
 
@@ -415,22 +413,26 @@ void AccountModel::readOtherAccounts()
 void AccountModel::initializeSecretIdentity()
 {
     qDebug() << "AccountModel::initializeSecretIdentity";
-    QString secretIdentity = this->getSecretIdentityName();
-    qDebug() << "Using secret identity " << secretIdentity;
-    QString accountFileName = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + secretIdentity + ".conf";
-    qDebug() << "Using file name " << accountFileName;
-    QSettings *secretIdentitySettings = new QSettings(accountFileName, QSettings::IniFormat, this);
-    O0SettingsStore *secretIdentitySettingsStore = new O0SettingsStore(secretIdentitySettings, encryptionKey, this);
-    O1Twitter *o1SecretIdentity = new O1Twitter(this);
-    o1SecretIdentity->setStore(secretIdentitySettingsStore);
-    o1SecretIdentity->setClientId(TWITTER_CLIENT_ID);
-    o1SecretIdentity->setClientSecret(TWITTER_CLIENT_SECRET);
-    if (o1SecretIdentity->linked()) {
-        qDebug() << "Secret identity successfully initialized!";
-        secretIdentityRequestor = new O1Requestor(manager, o1SecretIdentity, this);
-        secretIdentity = true;
-    } else {
-        qDebug() << "ERROR initializing secret identity!";
+    secretIdentity = false;
+    secretIdentityRequestor = nullptr;
+    if (this->getUseSecretIdentity()) {
+        QString secretIdentity = this->getSecretIdentityName();
+        qDebug() << "Using secret identity " << secretIdentity;
+        QString accountFileName = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + secretIdentity + ".conf";
+        qDebug() << "Using file name " << accountFileName;
+        QSettings *secretIdentitySettings = new QSettings(accountFileName, QSettings::IniFormat, this);
+        O0SettingsStore *secretIdentitySettingsStore = new O0SettingsStore(secretIdentitySettings, encryptionKey, this);
+        O1Twitter *o1SecretIdentity = new O1Twitter(this);
+        o1SecretIdentity->setStore(secretIdentitySettingsStore);
+        o1SecretIdentity->setClientId(TWITTER_CLIENT_ID);
+        o1SecretIdentity->setClientSecret(TWITTER_CLIENT_SECRET);
+        if (o1SecretIdentity->linked()) {
+            qDebug() << "Secret identity successfully initialized!";
+            secretIdentityRequestor = new O1Requestor(manager, o1SecretIdentity, this);
+            secretIdentity = true;
+        } else {
+            qDebug() << "ERROR initializing secret identity!";
+        }
     }
 }
 
