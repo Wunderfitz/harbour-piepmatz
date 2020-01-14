@@ -869,19 +869,19 @@
     </message>
     <message>
         <source>Use Secret Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Użyj Tajnej Tożsamości</translation>
     </message>
     <message>
         <source>Secret Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>Tajna tożsamość</translation>
     </message>
     <message>
         <source>Choose the secret identity here</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz Tajną tożsamość</translation>
     </message>
     <message>
         <source>Use secret identity to display blocked Twitter content. Please restart Piepmatz to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>Używaj tajnej tożsamości, aby wyświetlać blokowane treści Twittera. Zrestartuj Piepmatz aby wprowadzić zmiany.</translation>
     </message>
 </context>
 <context>
