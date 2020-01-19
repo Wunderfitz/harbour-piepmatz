@@ -248,7 +248,7 @@
     <name>MessagesButton</name>
     <message>
         <source>Messages</source>
-        <translation>消息</translation>
+        <translation>私信</translation>
     </message>
 </context>
 <context>
@@ -393,7 +393,7 @@
     </message>
     <message>
         <source>New Messages</source>
-        <translation>新消息</translation>
+        <translation>新私信</translation>
     </message>
     <message>
         <source>You have new direct messages!</source>
@@ -401,7 +401,7 @@
     </message>
     <message>
         <source>You have new messages!</source>
-        <translation>你有新消息!</translation>
+        <translation>你有新私信!</translation>
     </message>
     <message>
         <source>Load more tweets</source>
@@ -413,7 +413,7 @@
     </message>
     <message>
         <source>Trends for %1</source>
-        <translation>% 1 趋势</translation>
+        <translation>%1 趋势</translation>
     </message>
     <message>
         <source>You have been mentioned %1 times!</source>
@@ -477,7 +477,7 @@
     </message>
     <message>
         <source>Search query &apos;%1&apos; saved successfully</source>
-        <translation>已成功搜索及保存  &apos;%1&apos;</translation>
+        <translation>已成功搜索及保存 &apos;%1&apos;</translation>
     </message>
     <message>
         <source>Deleting</source>
@@ -492,7 +492,7 @@
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 正在关注</translation>
+        <translation>%1 位正在关注</translation>
     </message>
     <message>
         <source>%1 Followers</source>
@@ -500,7 +500,7 @@
     </message>
     <message>
         <source>%1 Tweets</source>
-        <translation>%1 推文</translation>
+        <translation>%1 条推文</translation>
     </message>
     <message>
         <source>Joined in %1</source>
