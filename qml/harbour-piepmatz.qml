@@ -30,6 +30,7 @@ ApplicationWindow
     property string linkPreviewMode: accountModel.getLinkPreviewMode();
 
     property string currentStatusInProgress;
+    signal errorParsingUrl(string errorMessage);
 
     Connections {
         target: dBusAdaptor
@@ -39,7 +40,7 @@ ApplicationWindow
                 console.log("Probably we have a Twitter link...");
                 var userRegex = /https\:\/\/\w*\.*twitter\.com\/(\w+)/;
                 var userResult = url.match(userRegex);
-                var statusRegex = /https\:\/\/\w*\.*twitter\.com\/\w+\/status\/(\w+)/;
+                var statusRegex = /https\:\/\/\w*\.*twitter\.com\/[\w\/]+\/status\/(\w+)/;
                 var statusResult = url.match(statusRegex);
                 if (statusResult) {
                     console.log("Opening tweet " + statusResult[1]);
@@ -48,9 +49,11 @@ ApplicationWindow
                 } else if (userResult) {
                     console.log("Opening profile for user " + userResult[1]);
                     pageStack.push(Qt.resolvedUrl("pages/ProfilePage.qml"), {"profileName": userResult[1] });
+                } else {
+                    appWindow.errorParsingUrl("Unable to open URL!");
                 }
             } else {
-                console.log("EVIL LINK!");
+                appWindow.errorParsingUrl("Unable to open URL!");
             }
             appWindow.activate();
         }

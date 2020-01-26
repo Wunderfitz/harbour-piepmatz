@@ -546,6 +546,13 @@ Page {
     }
 
     Connections {
+        target: appWindow
+        onErrorParsingUrl: {
+            overviewNotification.show(errorMessage);
+        }
+    }
+
+    Connections {
         target: imagesModel
         onUploadStarted: {
             overviewPage.tweetInProgress = true;
