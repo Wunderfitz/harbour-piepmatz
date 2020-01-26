@@ -43,6 +43,7 @@
 #include "ownlistsmodel.h"
 #include "membershiplistsmodel.h"
 #include "savedsearchesmodel.h"
+#include "dbusadaptor.h"
 //#include "wagnis/wagnis.h"
 
 int main(int argc, char *argv[])
@@ -59,6 +60,9 @@ int main(int argc, char *argv[])
 
     LocationInformation *locationInformation = accountModel.getLocationInformation();
     context->setContextProperty("locationInformation", locationInformation);
+
+    DBusAdaptor *dBusAdaptor = accountModel.getDBusAdaptor();
+    context->setContextProperty("dBusAdaptor", dBusAdaptor);
 
 //    Wagnis *wagnis = accountModel.getWagnis();
 //    context->setContextProperty("wagnis", wagnis);

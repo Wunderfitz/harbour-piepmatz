@@ -27,6 +27,8 @@
 #include <QDir>
 #include <QStandardPaths>
 #include <QNetworkConfiguration>
+#include <QTextStream>
+#include <QProcess>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
@@ -71,6 +73,7 @@ void AccountModel::initializeEnvironment()
     readOtherAccounts();
     requestor = new O1Requestor(manager, o1, this);
     this->initializeSecretIdentity();
+    this->initializeOpenWith();
 
     //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     twitterApi = new TwitterApi(requestor, manager, secretIdentityRequestor, this);
@@ -292,6 +295,11 @@ LocationInformation *AccountModel::getLocationInformation()
     return this->locationInformation;
 }
 
+DBusAdaptor *AccountModel::getDBusAdaptor()
+{
+    return this->dbusInterface->getDBusAdaptor();
+}
+
 //Wagnis *AccountModel::getWagnis()
 //{
 //    return this->wagnis;
@@ -434,6 +442,54 @@ void AccountModel::initializeSecretIdentity()
             qDebug() << "ERROR initializing secret identity!";
         }
     }
+}
+
+void AccountModel::initializeOpenWith()
+{
+    qDebug() << "AccountModel::initializeOpenWith";
+    QString desktopFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-piepmatz-open-url.desktop";
+    QFile desktopFile(desktopFilePath);
+    if (!desktopFile.exists()) {
+        qDebug() << "Creating Open-With file at " << desktopFile.fileName();
+        if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream fileOut(&desktopFile);
+            fileOut.setCodec("UTF-8");
+            fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
+            fileOut << QString("Type=Application").toUtf8() << "\n";
+            fileOut << QString("Name=Piepmatz").toUtf8() << "\n";
+            fileOut << QString("Icon=harbour-piepmatz").toUtf8() << "\n";
+            fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
+            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Service=de.ygriega.piepmatz").toUtf8() << "\n";
+            fileOut << QString("X-Maemo-Method=de.ygriega.piepmatz.openUrl").toUtf8() << "\n";
+            fileOut << QString("Hidden=true;").toUtf8() << "\n";
+            fileOut.flush();
+            desktopFile.close();
+            QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+        }
+    }
+    QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
+    QDir dbusPath(dbusPathName);
+    if (!dbusPath.exists()) {
+        qDebug() << "Creating D-Bus directory " << dbusPathName;
+        dbusPath.mkpath(dbusPathName);
+    }
+    QString dbusServiceFileName = dbusPathName + "/de.ygriega.piepmatz.service";
+    QFile dbusServiceFile(dbusServiceFileName);
+    if (!dbusServiceFile.exists()) {
+        qDebug() << "Creating D-Bus service file at " << dbusServiceFile.fileName();
+        if (dbusServiceFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream fileOut(&dbusServiceFile);
+            fileOut.setCodec("UTF-8");
+            fileOut << QString("[D-BUS Service]").toUtf8() << "\n";
+            fileOut << QString("Name=de.ygriega.piepmatz").toUtf8() << "\n";
+            fileOut << QString("Exec=/usr/bin/invoker -s --type=silica-qt5 /usr/bin/harbour-piepmatz").toUtf8() << "\n";
+            fileOut.flush();
+            dbusServiceFile.close();
+        }
+    }
+
+    this->dbusInterface = new DBusInterface(this);
 }
 
 int AccountModel::rowCount(const QModelIndex&) const {

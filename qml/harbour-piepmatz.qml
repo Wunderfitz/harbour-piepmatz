@@ -29,6 +29,47 @@ ApplicationWindow
     property bool isWifi: accountModel.isWiFi();
     property string linkPreviewMode: accountModel.getLinkPreviewMode();
 
+    property string currentStatusInProgress;
+
+    Connections {
+        target: dBusAdaptor
+        onPleaseOpenUrl: {
+            var twitterRegex = /https\:\/\/\w*\.*twitter\.com\//;
+            if (url.match(twitterRegex)) {
+                console.log("Probably we have a Twitter link...");
+                var userRegex = /https\:\/\/\w*\.*twitter\.com\/(\w+)/;
+                var userResult = url.match(userRegex);
+                var statusRegex = /https\:\/\/\w*\.*twitter\.com\/\w+\/status\/(\w+)/;
+                var statusResult = url.match(statusRegex);
+                if (statusResult) {
+                    console.log("Opening tweet " + statusResult[1]);
+                    currentStatusInProgress = statusResult[1];
+                    twitterApi.showStatus(currentStatusInProgress);
+                } else if (userResult) {
+                    console.log("Opening profile for user " + userResult[1]);
+                    pageStack.push(Qt.resolvedUrl("pages/ProfilePage.qml"), {"profileName": userResult[1] });
+                }
+            } else {
+                console.log("EVIL LINK!");
+            }
+            appWindow.activate();
+        }
+    }
+
+    Connections {
+        target: twitterApi
+        onShowStatusSuccessful: {
+            console.log("Received tweet " + result.id_str);
+            if (result.id_str === currentStatusInProgress) {
+                pageStack.push(Qt.resolvedUrl("pages/TweetPage.qml"), {"tweetModel": result });
+                currentStatusInProgress = "";
+            }
+        }
+        onShowStatusError: {
+            currentStatusInProgress = "";
+        }
+    }
+
     Component {
         id: aboutPage
         AboutPage {}

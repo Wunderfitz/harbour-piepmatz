@@ -30,6 +30,8 @@
 #include "o1requestor.h"
 #include "twitterapi.h"
 #include "locationinformation.h"
+#include "dbusinterface.h"
+#include "dbusadaptor.h"
 //#include "wagnis/wagnis.h"
 
 class AccountModel : public QAbstractListModel
@@ -74,6 +76,7 @@ public:
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
+    DBusAdaptor *getDBusAdaptor();
     //Wagnis *getWagnis();
 
 signals:
@@ -113,11 +116,13 @@ private:
     QVariantList otherAccounts;
     bool secretIdentity;
     O1Requestor *secretIdentityRequestor = nullptr;
+    DBusInterface *dbusInterface;
 
     void obtainEncryptionKey();
     void initializeEnvironment();
     void readOtherAccounts();
     void initializeSecretIdentity();
+    void initializeOpenWith();
 
 };
 
