@@ -35,6 +35,7 @@ const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
 const char SETTINGS_USE_LOADING_ANIMATIONS[] = "settings/useLoadingAnimations";
 const char SETTINGS_USE_SWIPE_NAVIGATION[] = "settings/useSwipeNavigation";
 const char SETTINGS_USE_SECRET_IDENTITY[] = "settings/useSecretIdentity";
+const char SETTINGS_USE_OPEN_WITH[] = "settings/useOpenWith";
 const char SETTINGS_SECRET_IDENTITY_NAME[] = "settings/secretIdentityName";
 const char SETTINGS_DISPLAY_IMAGE_DESCRIPTIONS[] = "settings/displayImageDescriptions";
 const char SETTINGS_FONT_SIZE[] = "settings/fontSize";
@@ -73,7 +74,12 @@ void AccountModel::initializeEnvironment()
     readOtherAccounts();
     requestor = new O1Requestor(manager, o1, this);
     this->initializeSecretIdentity();
-    this->initializeOpenWith();
+    if (this->getUseOpenWith()) {
+        this->initializeOpenWith();
+    } else {
+        this->removeOpenWith();
+    }
+    this->dbusInterface = new DBusInterface(this);
 
     //twitterApi = new TwitterApi(requestor, manager, wagnis, this);
     twitterApi = new TwitterApi(requestor, manager, secretIdentityRequestor, this);
@@ -231,6 +237,21 @@ bool AccountModel::getUseSecretIdentity()
 void AccountModel::setUseSecretIdentity(const bool &useSecretIdentity)
 {
     settings.setValue(SETTINGS_USE_SECRET_IDENTITY, useSecretIdentity);
+}
+
+bool AccountModel::getUseOpenWith()
+{
+    return settings.value(SETTINGS_USE_OPEN_WITH, true).toBool();
+}
+
+void AccountModel::setUseOpenWith(const bool &useOpenWith)
+{
+    settings.setValue(SETTINGS_USE_OPEN_WITH, useOpenWith);
+    if (useOpenWith) {
+        this->initializeOpenWith();
+    } else {
+        this->removeOpenWith();
+    }
 }
 
 QString AccountModel::getSecretIdentityName()
@@ -488,8 +509,14 @@ void AccountModel::initializeOpenWith()
             dbusServiceFile.close();
         }
     }
+}
 
-    this->dbusInterface = new DBusInterface(this);
+void AccountModel::removeOpenWith()
+{
+    qDebug() << "AccountModel::removeOpenWith";
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-piepmatz-open-url.desktop");
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services/de.ygriega.piepmatz.service");
+    QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
 }
 
 int AccountModel::rowCount(const QModelIndex&) const {

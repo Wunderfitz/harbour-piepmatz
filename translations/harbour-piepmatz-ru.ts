@@ -885,6 +885,14 @@
         <source>Use secret identity to display blocked Twitter content. Please restart Piepmatz to apply changes.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Integrate Piepmatz into open-with menu of Sailfish OS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

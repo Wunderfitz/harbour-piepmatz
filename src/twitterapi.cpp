@@ -2332,8 +2332,10 @@ void TwitterApi::handleGetSingleTweetFinished()
     }
 
     QString requestAddress = reply->request().url().toString();
+    qDebug() << "Processing response for tweet page " << requestAddress;
 
     QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
+    qDebug() << "Content type header " << contentTypeHeader.toString();
     if (!contentTypeHeader.isValid()) {
         qDebug() << "Content Type response header is invalid, unable to check for conversation!";
         return;

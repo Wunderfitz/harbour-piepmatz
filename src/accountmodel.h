@@ -65,6 +65,8 @@ public:
     Q_INVOKABLE void setDisplayImageDescriptions(const bool &displayImageDescriptions);
     Q_INVOKABLE bool getUseSecretIdentity();
     Q_INVOKABLE void setUseSecretIdentity(const bool &useSecretIdentity);
+    Q_INVOKABLE bool getUseOpenWith();
+    Q_INVOKABLE void setUseOpenWith(const bool &useOpenWith);
     Q_INVOKABLE QString getSecretIdentityName();
     Q_INVOKABLE void setSecretIdentityName(const QString &secretIdentityName);
     Q_INVOKABLE QString getFontSize();
@@ -123,6 +125,7 @@ private:
     void readOtherAccounts();
     void initializeSecretIdentity();
     void initializeOpenWith();
+    void removeOpenWith();
 
 };
 

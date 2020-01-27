@@ -883,6 +883,14 @@
         <source>Use secret identity to display blocked Twitter content. Please restart Piepmatz to apply changes.</source>
         <translation>Geheimidentität nutzen, um blockierte Twitter-Inhalte anzuzeigen. Bitte starten Sie Piepmatz neu, um Änderungen zu übernehmen.</translation>
     </message>
+    <message>
+        <source>Open-with menu integration</source>
+        <translation>Integration im Öffnen-Mit-Menü</translation>
+    </message>
+    <message>
+        <source>Integrate Piepmatz into open-with menu of Sailfish OS</source>
+        <translation>Piepmatz im Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

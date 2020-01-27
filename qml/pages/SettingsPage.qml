@@ -280,6 +280,15 @@ Page {
                 }
             }
 
+            TextSwitch {
+                checked: accountModel.getUseOpenWith()
+                text: qsTr("Open-with menu integration")
+                description: qsTr("Integrate Piepmatz into open-with menu of Sailfish OS")
+                onCheckedChanged: {
+                    accountModel.setUseOpenWith(checked);
+                }
+            }
+
             SectionHeader {
                 text: qsTr("Location")
             }
