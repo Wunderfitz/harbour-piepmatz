@@ -97,3 +97,11 @@
 
 * Sun Dec 08 2019 Sebastian Wolf <sebastian@ygriega.de> 1.4.1
 - Updated translations (Hungarian, Chinese, Polish)
+
+* Sun Feb 02 2020 Sebastian Wolf <sebastian@ygriega.de> 1.5
+- Open with-Piepmatz: Open Piepmatz directly from your events view or any other app which references Twitter content
+- Secret Identity (check out the settings page for details about this secret feature ;))
+- Show detailed information about deleted & blocked tweets (mainly for retweets with comments)
+- Fix for broken charsets in link previews (once again :/)
+- Fix for broken thread display (still no official API, let's see how long it will work)
+- Fix ?xxx file name suffixes for file downloads
