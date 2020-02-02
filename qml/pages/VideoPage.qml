@@ -68,7 +68,7 @@ Page {
 
             onDownloadError: {
                 persistentNotificationItem.enabled = false;
-                imageNotification.show(errorMessage);
+                videoNotification.show(errorMessage);
             }
 
             onDownloadStatus: {
