@@ -885,11 +885,11 @@
     </message>
     <message>
         <source>Integrate Piepmatz into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>Zintegruj Piepmatz z menu otwórz za pomocą Sailfish OS</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>Integracja z menu otwórz za pomocą</translation>
     </message>
 </context>
 <context>
