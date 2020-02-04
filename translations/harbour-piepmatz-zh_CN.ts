@@ -870,27 +870,27 @@
     </message>
     <message>
         <source>Use Secret Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>使用加密身份</translation>
     </message>
     <message>
         <source>Secret Identity</source>
-        <translation type="unfinished"></translation>
+        <translation>加密身份</translation>
     </message>
     <message>
         <source>Choose the secret identity here</source>
-        <translation type="unfinished"></translation>
+        <translation>在此选择加密身份</translation>
     </message>
     <message>
         <source>Use secret identity to display blocked Twitter content. Please restart Piepmatz to apply changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>使用加密身份以显示被封锁的推文。请重启 Piepmatz 以生效。</translation>
     </message>
     <message>
         <source>Integrate Piepmatz into open-with menu of Sailfish OS</source>
-        <translation type="unfinished"></translation>
+        <translation>整合 Piepmatz 到旗鱼系统打开方式菜单</translation>
     </message>
     <message>
         <source>Open-with menu integration</source>
-        <translation type="unfinished"></translation>
+        <translation>打开方式菜单整合</translation>
     </message>
 </context>
 <context>
