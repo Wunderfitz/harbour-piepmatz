@@ -33,8 +33,8 @@ DirectMessagesModel::DirectMessagesModel(TwitterApi *twitterApi) : settings("har
     connect(twitterApi, &TwitterApi::directMessagesListSuccessful, this, &DirectMessagesModel::handleDirectMessagesListSuccessful);
     connect(twitterApi, &TwitterApi::directMessagesNewError, this, &DirectMessagesModel::handleDirectMessagesNewError);
     connect(twitterApi, &TwitterApi::directMessagesNewSuccessful, this, &DirectMessagesModel::handleDirectMessagesNewSuccessful);
-    connect(twitterApi, &TwitterApi::showUserError, this, &DirectMessagesModel::handleShowUserError);
-    connect(twitterApi, &TwitterApi::showUserSuccessful, this, &DirectMessagesModel::handleShowUserSuccessful);
+    connect(twitterApi, &TwitterApi::showUserByIdError, this, &DirectMessagesModel::handleShowUserError);
+    connect(twitterApi, &TwitterApi::showUserByIdSuccessful, this, &DirectMessagesModel::handleShowUserSuccessful);
 }
 
 int DirectMessagesModel::rowCount(const QModelIndex &) const

@@ -168,6 +168,8 @@ signals:
     void showStatusError(const QString &errorMessage);
     void showUserSuccessful(const QVariantMap &result);
     void showUserError(const QString &errorMessage);
+    void showUserByIdSuccessful(const QVariantMap &result);
+    void showUserByIdError(const QString &errorMessage);
     void followUserSuccessful(const QVariantMap &result);
     void followUserError(const QString &errorMessage);
     void unfollowUserSuccessful(const QVariantMap &result);
@@ -265,6 +267,8 @@ private slots:
     void handleShowStatusFinished();
     void handleShowUserError(QNetworkReply::NetworkError error);
     void handleShowUserFinished();
+    void handleShowUserByIdError(QNetworkReply::NetworkError error);
+    void handleShowUserByIdFinished();
     void handleFollowUserError(QNetworkReply::NetworkError error);
     void handleFollowUserFinished();
     void handleUnfollowUserError(QNetworkReply::NetworkError error);
