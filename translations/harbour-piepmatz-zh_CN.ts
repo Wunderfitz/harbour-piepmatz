@@ -935,7 +935,7 @@
     <name>TweetConversationPage</name>
     <message>
         <source>Thread</source>
-        <translation>帖子</translation>
+        <translation>回复</translation>
     </message>
 </context>
 <context>
@@ -981,7 +981,7 @@
     </message>
     <message>
         <source>Show Thread</source>
-        <translation>显示帖子</translation>
+        <translation>显示回复</translation>
     </message>
 </context>
 <context>
