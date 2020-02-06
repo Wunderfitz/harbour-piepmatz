@@ -468,6 +468,17 @@ void AccountModel::initializeSecretIdentity()
 void AccountModel::initializeOpenWith()
 {
     qDebug() << "AccountModel::initializeOpenWith";
+
+    qDebug() << "Checking standard open URL file...";
+    QString openUrlFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/open-url.desktop";
+    if (QFile::exists(openUrlFilePath)) {
+        qDebug() << "Standard open URL file exists, good!";
+    } else {
+        qDebug() << "Copying standard open URL file to " << openUrlFilePath;
+        QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
+        QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    }
+
     QString desktopFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-piepmatz-open-url.desktop";
     QFile desktopFile(desktopFilePath);
     if (!desktopFile.exists()) {
