@@ -105,3 +105,8 @@
 - Fix for broken charsets in link previews (once again :/)
 - Fix for broken thread display (still no official API, let's see how long it will work)
 - Fix ?xxx file name suffixes for file downloads
+
+* Thu Feb 06 2020 Sebastian Wolf <sebastian@ygriega.de> 1.5.1
+- Fix: Ignore deleted user in direct messages
+- Fix: Disable complete open URL takeover on some devices
+- Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)
