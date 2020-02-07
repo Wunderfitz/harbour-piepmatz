@@ -218,8 +218,13 @@ void DirectMessagesModel::handleShowUserError(const QString &errorMessage)
         // Not so pretty, but we only send an error message now. In the future, we need to return the user ID as well...
         QRegExp regex("user_id\\=(\\d+)");
         if (errorMessage.contains(regex)) {
+            qDebug() << "Removing user " << regex.cap(1);
             invalidUsers.append(regex.cap(1));
             involvedUsers.removeAll(regex.cap(1));
+            if (users.size() == involvedUsers.size()) {
+                qDebug() << "DirectMessagesModel::handleShowUserError" << "After this error, all users are hydrated, we can compile the messages list!";
+                compileContacts();
+            }
         } else {
             emit updateMessagesError(errorMessage);
         }
