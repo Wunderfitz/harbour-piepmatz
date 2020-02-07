@@ -130,7 +130,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1: 收藏</translation>
+        <translation>%1: 个喜欢</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -508,7 +508,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1 个收藏</translation>
+        <translation>%1 个喜欢</translation>
     </message>
 </context>
 <context>
