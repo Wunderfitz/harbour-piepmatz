@@ -130,7 +130,7 @@
     <name>FavoritesPage</name>
     <message>
         <source>%1: Favorites</source>
-        <translation>%1: 收藏</translation>
+        <translation>%1: 个喜欢</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -508,7 +508,7 @@
     </message>
     <message>
         <source>%1 Favorites</source>
-        <translation>%1 个收藏</translation>
+        <translation>%1 个喜欢</translation>
     </message>
 </context>
 <context>
@@ -537,11 +537,11 @@
     </message>
     <message>
         <source>You follow %1 now.</source>
-        <translation>你正关注 %1 </translation>
+        <translation>你正关注 %1 。 </translation>
     </message>
     <message>
         <source>You don&apos;t follow %1 anymore.</source>
-        <translation>你不再关注 % 1</translation>
+        <translation>你不再关注 %1 。</translation>
     </message>
     <message>
         <source>Send Direct Message</source>
@@ -568,11 +568,11 @@
     <name>RegistrationPage</name>
     <message>
         <source>Welcome to Piepmatz!</source>
-        <translation>欢迎来到 Piepmatz!</translation>
+        <translation>欢迎来到 Piepmatz ！</translation>
     </message>
     <message>
         <source>Have fun with Piepmatz! Sebastian J. Wolf</source>
-        <translation>祝你使用 Piepmatz 愉快! Sebastian J. Wolf 敬上</translation>
+        <translation>祝你使用 Piepmatz 愉快！ Sebastian J. Wolf 敬上</translation>
     </message>
     <message>
         <source>Accept</source>
