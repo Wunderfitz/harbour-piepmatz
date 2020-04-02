@@ -53,7 +53,8 @@ OTHER_FILES += qml/harbour-piepmatz.qml \
     rpm/harbour-piepmatz.spec \
     rpm/harbour-piepmatz.yaml \
     translations/*.ts \
-    harbour-piepmatz.desktop
+    harbour-piepmatz.desktop \
+    db/emojis.db
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 
