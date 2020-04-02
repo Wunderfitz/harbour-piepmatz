@@ -50,7 +50,7 @@ Item {
     height: tweetRow.height + tweetAdditionalRow.height + tweetSeparator.height + 3 * Theme.paddingMedium
 
     Behavior on height {
-        PropertyAnimation { easing.type: Easing.Linear; duration: 250 }
+        PropertyAnimation { easing.type: Easing.OutBack; duration: 200 }
         enabled: accountModel.getUseLoadingAnimations()
     }
 

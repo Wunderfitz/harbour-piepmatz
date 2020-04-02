@@ -241,7 +241,7 @@ Page {
             spacing: Theme.paddingSmall
 
             PageHeader {
-                title: replyToStatusId ? qsTr("Reply") : ( attachmentTweet ? qsTr("Retweet") : qsTr("New Tweet") )
+                title: ( replyToStatusId ? qsTr("Reply") : ( attachmentTweet ? qsTr("Retweet") : qsTr("New Tweet") ) ) + " " + qsTr("@%1").arg(accountModel.getCurrentAccount().screen_name)
             }
 
             Connections {
