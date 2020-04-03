@@ -40,9 +40,11 @@ Column {
     Label {
         id: listsButtonText
         text: qsTr("Lists")
-        font.pixelSize: Theme.fontSizeTiny * 7 / 8
+        font.pixelSize: Theme.fontSizeTiny * 4 / 5
         color: listsButton.isActive ? Theme.highlightColor : Theme.primaryColor
-        truncationMode: TruncationMode.Fade
+        truncationMode: TruncationMode.Elide
+        width: parent.width - Theme.paddingSmall
+        horizontalAlignment: Text.AlignHCenter
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
