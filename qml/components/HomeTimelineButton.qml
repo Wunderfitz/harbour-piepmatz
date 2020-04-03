@@ -45,6 +45,7 @@ Column {
         font.pixelSize: Theme.fontSizeTiny * 4 / 5
         color: homeTimelineButton.isActive ? Theme.highlightColor : Theme.primaryColor
         truncationMode: TruncationMode.Elide
+        elide: Text.ElideRight
         width: parent.width - Theme.paddingSmall
         horizontalAlignment: Text.AlignHCenter
         anchors {
