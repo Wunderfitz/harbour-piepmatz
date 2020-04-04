@@ -33,6 +33,7 @@
 #include "o1requestor.h"
 #include "o0requestparameter.h"
 #include "o0globals.h"
+#include "emojisearchworker.h"
 //#include "wagnis/wagnis.h"
 
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";

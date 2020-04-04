@@ -51,6 +51,7 @@ AccountModel::AccountModel()
 {
     obtainEncryptionKey();
     initializeEnvironment();
+    connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 }
 
 QVariant AccountModel::data(const QModelIndex &index, int role) const {
@@ -532,4 +533,21 @@ void AccountModel::removeOpenWith()
 
 int AccountModel::rowCount(const QModelIndex&) const {
     return availableAccounts.size();
+}
+
+void AccountModel::handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList)
+{
+    qDebug() << "TwitterApi::handleEmojiSearchCompleted" << queryString;
+    emit emojiSearchSuccessful(resultList);
+
+}
+
+void AccountModel::searchEmoji(const QString &queryString)
+{
+    qDebug() << "TwitterApi::searchEmoji" << queryString;
+    while (this->emojiSearchWorker.isRunning()) {
+        this->emojiSearchWorker.requestInterruption();
+    }
+    this->emojiSearchWorker.setParameters(queryString);
+    this->emojiSearchWorker.start();
 }

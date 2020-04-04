@@ -45,6 +45,7 @@ Page {
     property bool replyToTweetLoaded;
     property bool withImages : false;
     property variant atMentionProposals;
+    property variant emojiProposals;
     property variant attachedImages;
     property variant ipInfo;
     property variant place;
@@ -83,6 +84,11 @@ Page {
             twitterApi.searchUsers(currentWord);
         } else {
             newTweetPage.atMentionProposals = null;
+        }
+        if (currentWord.length > 1 && currentWord.charAt(0) === ':') {
+            accountModel.searchEmoji(currentWord.substring(1));
+        } else {
+            newTweetPage.emojiProposals = null;
         }
     }
 
@@ -141,6 +147,13 @@ Page {
         onImagesSelected: {
             newTweetPage.withImages = true;
             newTweetPage.attachedImages = imagesModel.getSelectedImages();
+        }
+    }
+
+    Connections {
+        target: accountModel
+        onEmojiSearchSuccessful: {
+            newTweetPage.emojiProposals = result;
         }
     }
 
@@ -427,6 +440,59 @@ Page {
                                     onClicked: {
                                         replaceAtMentioning(enterTweetTextArea.text, enterTweetTextArea.cursorPosition, qsTr("@%1").arg(modelData.screen_name));
                                         atMentionProposals = null;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+            Column {
+                id: emojiColumn
+                width: parent.width - ( 2 * Theme.horizontalPageMargin )
+                anchors.horizontalCenter: parent.horizontalCenter
+                visible: emojiProposals ? ( emojiProposals.length > 0 ? true : false ) : false
+                opacity: emojiProposals ? ( emojiProposals.length > 0 ? 1 : 0 ) : 0
+                Behavior on opacity { NumberAnimation {} }
+                spacing: Theme.paddingMedium
+
+                Flickable {
+                    width: parent.width
+                    height: emojiResultRow.height + Theme.paddingSmall
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    contentWidth: emojiResultRow.width
+                    clip: true
+                    Row {
+                        id: emojiResultRow
+                        spacing: Theme.paddingMedium
+                        Repeater {
+                            model: emojiProposals
+
+                            Item {
+                                height: singleEmojiRow.height
+                                width: singleEmojiRow.width
+
+                                Row {
+                                    id: singleEmojiRow
+                                    spacing: Theme.paddingSmall
+
+                                    Image {
+                                        id: emojiPicture
+                                        source: "../js/emoji/" + modelData.file_name
+                                        width: Theme.fontSizeLarge
+                                        height: Theme.fontSizeLarge
+                                    }
+
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: {
+                                        replaceAtMentioning(enterTweetTextArea.text, enterTweetTextArea.cursorPosition, modelData.emoji);
+                                        emojiProposals = null;
                                     }
                                 }
                             }

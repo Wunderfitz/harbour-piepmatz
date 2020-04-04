@@ -75,6 +75,7 @@ public:
     Q_INVOKABLE QString getLinkPreviewMode();
     Q_INVOKABLE void setLinkPreviewMode(const QString &linkPreviewMode);
     Q_INVOKABLE bool hasSecretIdentity();
+    Q_INVOKABLE void searchEmoji(const QString &queryString);
 
     TwitterApi *getTwitterApi();
     LocationInformation *getLocationInformation();
@@ -94,6 +95,7 @@ signals:
     void fontSizeChanged(const QString &fontSize);
     void connectionTypeChanged(const bool &isWifi);
     void linkPreviewModeChanged(const QString &linkPreviewMode);
+    void emojiSearchSuccessful(const QVariantList &result);
 
 public slots:
     void handlePinRequestError(const QString &errorMessage);
@@ -103,6 +105,7 @@ public slots:
     void handleVerifyCredentialsSuccessful(const QVariantMap &result);
     void handleVerifyCredentialsError(const QString &errorMessage);
     void handleNetworkConfigurationChanged(const QNetworkConfiguration &config);
+    void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
 
 private:
     QList<QVariantMap> availableAccounts;
@@ -119,6 +122,7 @@ private:
     bool secretIdentity;
     O1Requestor *secretIdentityRequestor = nullptr;
     DBusInterface *dbusInterface;
+    EmojiSearchWorker emojiSearchWorker;
 
     void obtainEncryptionKey();
     void initializeEnvironment();
