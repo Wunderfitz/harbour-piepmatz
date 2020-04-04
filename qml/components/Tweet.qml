@@ -30,6 +30,7 @@ ListItem {
     property string userId : accountModel.getCurrentAccount().id_str;
     property bool isRetweetMention : false;
 
+    width: parent.width
     contentHeight: tweetElement.height
     contentWidth: parent.width
 

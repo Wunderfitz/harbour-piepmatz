@@ -54,18 +54,15 @@ Row {
         textFormat: Text.StyledText
         elide: Text.ElideRight
         maximumLineCount: 1
-        width: if (tweetUser.name.length > 25) { parent.width / 2 }
         MouseArea {
             anchors.fill: parent
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("../pages/ProfilePage.qml"), {"profileModel": tweetUser});
             }
         }
-        onTruncatedChanged: {
-            // There is obviously a bug in QML in truncating text with images.
-            // We simply remove Emojis then...
-            if (truncated) {
-                text = text.replace(/\<img [^>]+\/\>/g, "");
+        onPaintedWidthChanged: {
+            if ( parent.width > 0 && paintedWidth >= parent.width ) {
+                width = parent.width;
             }
         }
     }

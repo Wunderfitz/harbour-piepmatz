@@ -62,8 +62,7 @@ Page {
 
     SilicaFlickable {
         id: tweetConversationContainer
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
 
         Column {
             anchors.fill: parent
@@ -76,8 +75,7 @@ Page {
             SilicaListView {
                 id: tweetConversationListView
 
-                anchors.left: parent.left
-                anchors.right: parent.right
+                width: parent.width
                 height: parent.height - tweetConversationHeader.height
 
                 clip: true

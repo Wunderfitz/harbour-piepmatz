@@ -256,7 +256,7 @@ void MentionsModel::initializeDatabase()
     qDebug() << "MentionsModel::initializeDatabase";
     QString databaseDirectory = getDirectory(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz");
     QString databaseFilePath = databaseDirectory + "/cache.db";
-    database = QSqlDatabase::addDatabase("QSQLITE");
+    database = QSqlDatabase::addDatabase("QSQLITE", "cache");
     database.setDatabaseName(databaseFilePath);
     if (database.open()) {
         qDebug() << "SQLite database " + databaseFilePath + " successfully opened";
