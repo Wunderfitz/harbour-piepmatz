@@ -83,7 +83,7 @@ Page {
             }
 
             Label {
-                text: "Piepmatz 1.5.2"
+                text: "Piepmatz 1.6"
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: Theme.fontSizeExtraLarge
                 anchors {

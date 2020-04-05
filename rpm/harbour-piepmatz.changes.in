@@ -110,3 +110,9 @@
 - Fix: Ignore deleted user in direct messages
 - Fix: Disable complete open URL takeover on some devices
 - Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)
+
+* Sun Apr 05 2020 Sebastian Wolf <sebastian@ygriega.de> 1.6
+- Emoji search during tweet creation. Use :<keyword> to search for emojis to use them in your tweet.
+- Add user handle in tweet creation screen
+- Display user names in tweets more elegantly
+- Fix: Elide button texts when too long (e.g. timeline, notifications etc.)
