@@ -103,7 +103,7 @@ Item {
                 anchors.centerIn: parent
                 width: Theme.iconSizeLarge
                 height: Theme.iconSizeLarge
-                source: "image://theme/icon-l-play"
+                source: "image://theme/icon-l-play?white"
                 visible: placeholderImage.status === Image.Ready ? true : false
                 MouseArea {
                     anchors.fill: parent
@@ -337,7 +337,7 @@ Item {
                             anchors.centerIn: parent
                             width: Theme.iconSizeLarge
                             height: Theme.iconSizeLarge
-                            source: "image://theme/icon-l-play"
+                            source: "image://theme/icon-l-play?white"
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
