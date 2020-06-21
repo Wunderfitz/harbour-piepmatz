@@ -1208,7 +1208,7 @@ void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-    // request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (Wayland; SailfishOS) Piepmatz (Not Firefox/52.0)");
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (MeeGo; NokiaN9) AppleWebKit/534.13 (KHTML, like Gecko) NokiaBrowser/8.5.0 Mobile Safari/534.13");
     request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
     request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
     request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
@@ -2387,12 +2387,12 @@ void TwitterApi::handleGetSingleTweetFinished()
     // === DEBUG ===
 
 
-    QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
+    QGumboNodes tweetNodes = root.getElementsByClassName("tweet-text");
     QVariantList relatedTweets;
     for (QGumboNode &tweetNode : tweetNodes) {
         QStringList tweetClassList = tweetNode.classList();
         if (!tweetClassList.contains("promoted-tweet")) {
-            QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
+            QString otherTweetId = tweetNode.getAttribute("data-id");
             if (!otherTweetId.isEmpty()) {
                 qDebug() << "Found Tweet ID: " << otherTweetId;
                 relatedTweets.append(otherTweetId);

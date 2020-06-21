@@ -116,3 +116,7 @@
 - Add user handle in tweet creation screen
 - Display user names in tweets more elegantly
 - Fix: Elide button texts when too long (e.g. timeline, notifications etc.)
+
+* Sun Jun 21 2020 Sebastian Wolf <sebastian@ygriega.de> 1.6.1
+- Fix tweet thread support (let's see how long it will last ;))
+- Force white play button for videos - needed in light ambiences
