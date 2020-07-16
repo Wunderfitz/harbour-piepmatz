@@ -169,7 +169,7 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/TextPage.qml"), {"contentId": "tos"});
+                    Qt.openUrlExternally("https://twitter.com/tos")
                 }
             }
 
@@ -180,7 +180,7 @@ Page {
                     horizontalCenter: parent.horizontalCenter
                 }
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("../pages/TextPage.qml"), {"contentId": "privacy"});
+                    Qt.openUrlExternally("https://twitter.com/privacy")
                 }
             }
 
