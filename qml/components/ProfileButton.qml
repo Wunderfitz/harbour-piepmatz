@@ -29,7 +29,7 @@ Column {
         id: profileButtonImage
         height: Theme.iconSizeMedium
         width: Theme.iconSizeMedium
-        icon.source: profileButton.isActive ? "image://theme/icon-m-person?" + Theme.highlightColor : "image://theme/icon-m-person?" + Theme.primaryColor
+        icon.source: profileButton.isActive ? "image://theme/icon-m-contact?" + Theme.highlightColor : "image://theme/icon-m-contact?" + Theme.primaryColor
         anchors {
             horizontalCenter: parent.horizontalCenter
         }
