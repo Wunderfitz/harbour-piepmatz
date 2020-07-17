@@ -120,3 +120,8 @@
 * Sun Jun 21 2020 Sebastian Wolf <sebastian@ygriega.de> 1.6.1
 - Fix tweet thread support (let's see how long it will last ;))
 - Force white play button for videos - needed in light ambiences
+
+* Fri Jul 17 2020 Sebastian Wolf <sebastian@ygriega.de> 1.7
+- Support for Emoji 13.0 - e.g. Dodo, pinched fingers, fondue and much more (hey, it's World Emoji Day today!)
+- Changed Twitter ToS and privacy policy links in about screen - API was broken
+- Changed profile button icon
