@@ -125,3 +125,6 @@
 - Support for Emoji 13.0 - e.g. Dodo, pinched fingers, fondue and much more (hey, it's World Emoji Day today!)
 - Changed Twitter ToS and privacy policy links in about screen - API was broken
 - Changed profile button icon
+
+* Fri Sep 25 2020 Sebastian Wolf <sebastian@ygriega.de> 1.7.1
+- Fix crash in case of unsupported HTML charset. Kudos to Lukáš Karas!
