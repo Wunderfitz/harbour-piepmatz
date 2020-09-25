@@ -2307,6 +2307,10 @@ void TwitterApi::handleGetOpenGraphFinished()
 
     QByteArray rawDocument = reply->readAll();
     QTextCodec *codec = QTextCodec::codecForName(charset.toUtf8());
+    if (codec == nullptr){
+      emit getOpenGraphError(requestAddress + " unsupported Charset: " + charset);
+      return;
+    }
     QString resultDocument = codec->toUnicode(rawDocument);
 
     QVariantMap openGraphData;
