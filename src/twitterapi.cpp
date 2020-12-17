@@ -18,6 +18,7 @@
 */
 #include "twitterapi.h"
 
+#include "o2/o1twitterglobals.h"
 #include "imageresponsehandler.h"
 #include "imagemetadataresponsehandler.h"
 #include "downloadresponsehandler.h"
@@ -1205,17 +1206,26 @@ void TwitterApi::getOpenGraph(const QString &address)
 void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
 {
     qDebug() << "TwitterApi::getSingleTweet" << tweetId << address;
-    QUrl url = QUrl(address);
+    QUrl url = QUrl("https://api.twitter.com/2/tweets/" + tweetId + "?tweet.fields=conversation_id");
     QNetworkRequest request(url);
-    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-    request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (MeeGo; NokiaN9) AppleWebKit/534.13 (KHTML, like Gecko) NokiaBrowser/8.5.0 Mobile Safari/534.13");
-    request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
-    request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
-    request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
+    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + QString(TWITTER_BEARER_TOKEN).toUtf8()));
+
     QNetworkReply *reply = manager->get(request);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetSingleTweetError(QNetworkReply::NetworkError)));
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetSingleTweetFinished()));
+}
+
+void TwitterApi::getTweetConversation(const QString &conversationId)
+{
+    qDebug() << "TwitterApi::getTweetConversation" << conversationId;
+    QUrl url = QUrl("https://api.twitter.com/2/tweets/search/recent?query=conversation_id:" + conversationId + "&max_results=100&tweet.fields=created_at,conversation_id&expansions=referenced_tweets.id");
+    QNetworkRequest request(url);
+    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + QString(TWITTER_BEARER_TOKEN).toUtf8()));
+
+    QNetworkReply *reply = manager->get(request);
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetTweetConversationFinished()));
+
 }
 
 void TwitterApi::getIpInfo()
@@ -2361,56 +2371,106 @@ void TwitterApi::handleGetSingleTweetFinished()
         return;
     }
 
-    QString requestAddress = reply->request().url().toString();
-    qDebug() << "Processing response for tweet page " << requestAddress;
-
-    QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
-    qDebug() << "Content type header " << contentTypeHeader.toString();
-    if (!contentTypeHeader.isValid()) {
-        qDebug() << "Content Type response header is invalid, unable to check for conversation!";
-        return;
-    }
-    if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
-        qDebug() << requestAddress + " is not HTML, not checking tweet result data...";
-        return;
-    }
-
-    QRegExp tweetIdRegex("status\\/(\\d+)");
-    QString currentTweetId;
-    if (tweetIdRegex.indexIn(requestAddress) != -1) {
-        currentTweetId = tweetIdRegex.cap(1);
-    }
-
-    QString resultDocument(reply->readAll());
-    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
-    QGumboNode root = parsedResult.rootNode();
-
-    // === DEBUG ===
-    // ContentExtractor contentExtractor(this, &root);
-    // contentExtractor.parse();
-    // === DEBUG ===
-
-
-    QGumboNodes tweetNodes = root.getElementsByClassName("tweet-text");
-    QVariantList relatedTweets;
-    for (QGumboNode &tweetNode : tweetNodes) {
-        QStringList tweetClassList = tweetNode.classList();
-        if (!tweetClassList.contains("promoted-tweet")) {
-            QString otherTweetId = tweetNode.getAttribute("data-id");
-            if (!otherTweetId.isEmpty()) {
-                qDebug() << "Found Tweet ID: " << otherTweetId;
-                relatedTweets.append(otherTweetId);
-            }
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+    if (jsonDocument.isObject()) {
+        QString conversationId = jsonDocument.object().value("data").toObject().value("conversation_id").toString();
+        if (!conversationId.isEmpty()) {
+            qDebug() << "Found conversation with ID: " << conversationId;
+            this->getTweetConversation(conversationId);
         }
     }
 
-    if (!relatedTweets.isEmpty()) {
-        qDebug() << "Found other tweets, let's build a conversation!";
-        TweetConversationHandler *conversationHandler = new TweetConversationHandler(this, currentTweetId, relatedTweets, this);
-        connect(conversationHandler, SIGNAL(tweetConversationCompleted(QString, QVariantList)), this, SLOT(handleTweetConversationReceived(QString, QVariantList)));
-        conversationHandler->buildConversation();
+}
+
+void traverseConversation(QString &conversationId, QString rootId, QVariantList &relatedTweets, QVariantMap &conversationTweets) {
+    if (!rootId.isEmpty() && !relatedTweets.contains(rootId)) {
+        qDebug() << "[Conversation] Adding tweet to conversation, ID" << rootId;
+        relatedTweets.append(rootId);
+    }
+    QListIterator<QVariant> conversationIterator(conversationTweets.values());
+    while (conversationIterator.hasNext()) {
+        QVariantMap currentTweet = conversationIterator.next().toMap();
+        if (currentTweet.value("parent_id").toString() == rootId) {
+            QString newRootId = currentTweet.value("id").toString();
+            if (!relatedTweets.contains(newRootId)) {
+                qDebug() << "[Conversation] Adding tweet to conversation, ID" << newRootId;
+                relatedTweets.append(newRootId);
+                qDebug() << "[Conversation] Traversing hierarchy with ID " << newRootId;
+                traverseConversation(conversationId, newRootId, relatedTweets, conversationTweets);
+            }
+        }
+    }
+}
+
+void TwitterApi::handleGetTweetConversationFinished()
+{
+    qDebug() << "TwitterApi::handleGetTweetConversationFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        qDebug() << "getTweetConversationError! " << reply->errorString();
+        return;
     }
 
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
+
+    qDebug().noquote() << jsonDocument.toJson(QJsonDocument::Indented);
+
+    if (jsonDocument.isObject()) {
+        QVariantList conversationData = jsonDocument.object().value("data").toArray().toVariantList();
+        QListIterator<QVariant> conversationIterator(conversationData);
+        QVariantMap conversationTweets;
+        QList<QString> rootIds;
+        QString conversationId;
+        while (conversationIterator.hasNext()) {
+            QVariantMap singleTweet = conversationIterator.next().toMap();
+            conversationId = singleTweet.value("conversation_id").toString();
+            QString currentTweetId = singleTweet.value("id").toString();
+
+            qDebug() << "[Conversation] Processing tweet ID" << currentTweetId;
+
+            bool isReply = false;
+            QVariantList referencedTweets = singleTweet.value("referenced_tweets").toList();
+            if (!referencedTweets.isEmpty()) {
+                QListIterator<QVariant> referenceIterator(referencedTweets);
+                while (referenceIterator.hasNext()) {
+                    QVariantMap singleReference = referenceIterator.next().toMap();
+                    if (singleReference.value("type").toString() == "replied_to") {
+                        isReply = true;
+                        QString inReplyToId = singleReference.value("id").toString();
+                        singleTweet.insert("parent_id", inReplyToId);
+                        if (!rootIds.contains(inReplyToId)) {
+                            qDebug() << "[Conversation] Adding root candidate with ID" << inReplyToId;
+                            rootIds.append(inReplyToId);
+                        }
+                    }
+                }
+            }
+
+            if (isReply && rootIds.contains(currentTweetId)) {
+                qDebug() << "[Conversation] Removing root candidate with ID" << currentTweetId;
+                rootIds.removeAll(currentTweetId);
+            }
+
+            conversationTweets.insert(currentTweetId, singleTweet);
+        }
+
+        QVariantList relatedTweets;
+        QListIterator<QString> rootIdIterator(rootIds);
+        while (rootIdIterator.hasNext()) {
+            QString rootId = rootIdIterator.next();
+            qDebug() << "[Conversation] Processing root ID" << rootId;
+            traverseConversation(conversationId, rootId, relatedTweets, conversationTweets);
+        }
+
+        if (relatedTweets.size() > 1) {
+            qDebug() << "[Conversation] Found other tweets, let's build a conversation!";
+            TweetConversationHandler *conversationHandler = new TweetConversationHandler(this, conversationId, relatedTweets, this);
+            connect(conversationHandler, SIGNAL(tweetConversationCompleted(QString, QVariantList)), this, SLOT(handleTweetConversationReceived(QString, QVariantList)));
+            conversationHandler->buildConversation();
+        }
+
+    }
 }
 
 void TwitterApi::handleTweetConversationReceived(QString tweetId, QVariantList receivedTweets)
