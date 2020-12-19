@@ -892,6 +892,18 @@
         <source>Open-with menu integration</source>
         <translation>打开方式菜单整合</translation>
     </message>
+    <message>
+        <source>Developer Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Twitter API Bearer Token</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The Developer Mode gives you access to special features such as Twitter thread support that can&apos;t be switched on by default due to rate limiting or other restrictions. See the &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt; for details.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

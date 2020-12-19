@@ -313,6 +313,34 @@ Page {
                 }
             }
 
+            SectionHeader {
+                text: qsTr("Developer Mode")
+            }
+
+            TextField {
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                label: qsTr("Twitter API Bearer Token")
+                placeholderText: label
+                text: twitterApi.getBearerToken()
+                onTextChanged: {
+                    twitterApi.setBearerToken(text);
+                }
+            }
+
+            Label {
+                x: Theme.horizontalPageMargin
+                width: parent.width  - ( 2 * Theme.horizontalPageMargin )
+                text: qsTr("The Developer Mode gives you access to special features such as Twitter thread support that can't be switched on by default due to rate limiting or other restrictions. See the <a href=\"https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode\">README</a> for details.")
+                font.pixelSize: Theme.fontSizeExtraSmall
+                linkColor: Theme.highlightColor
+                wrapMode: Text.Wrap
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+
+                onLinkActivated: Functions.handleLink(link);
+            }
+
             VerticalScrollDecorator {}
         }
 

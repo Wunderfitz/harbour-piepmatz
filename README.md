@@ -1,14 +1,19 @@
 # Piepmatz
+
 Piepmatz is a Twitter client for Sailfish OS
 
 ## Author
+
 Sebastian J. Wolf [sebastian@ygriega.de](mailto:sebastian@ygriega.de)
 
 ## License
+
 Licensed under GNU GPLv3
 
 ## Keyboard Shortcuts
+
 Some Sailfish OS devices feature a physical keyboard. Piepmatz is even easier to use with them using shortcuts:
+
 - Generic
   - Up/down: scroll
   - Page up/down: scroll faster
@@ -22,11 +27,17 @@ Some Sailfish OS devices feature a physical keyboard. Piepmatz is even easier to
   - a: About
 - On tweet details view:
   - Return/Enter: Display thread
+  
+## Developer Mode
+
+Some features of Piepmatz such as the support for Twitter threads are only available in the developer mode. Reasons for that can be that the respective API features are not yet productively available (developer preview), they are rate limited or require a paid contract with Twitter. In order to enable it you need to set a valid Twitter API Bearer token in the settings of Piepmatz. A valid Twitter API Bearer token can be obtained by creating an account in the [Twitter Developer Portal](https://developer.twitter.com/), registering a project and an application and by creating credentials for this application. Please see the [Getting Started](https://developer.twitter.com/en/docs/getting-started) documentation for details.
 
 ## Build
+
 Simply clone this repository, but be sure to clone it with `--recursive` as Piepmatz uses Git Submodules.  
 
 Just use the project file `harbour-piepmatz.pro` to import the sources in your SailfishOS IDE. To build and run Piepmatz or an application which is based on Piepmatz, you need to create the file `harbour-piepmatz/src/o2/o1twitterglobals.h` (you can copy the sample from `harbour-piepmatz/src/o2/o1twitterglobals.h.sample`) and enter the required constants in the following format:
+
 ```
 #ifndef O1TWITTERGLOBALS_H
 #define O1TWITTERGLOBALS_H
@@ -41,7 +52,9 @@ You get the Twitter client ID and client secret as soon as you've registered you
 Piepmatz also needs the package `openssl-devel` to compile properly. You can install it on your build target using the Control Centre in your SailfishOS IDE.
 
 ## Credits
+
 This project uses
+
 - OAuth for Qt, by Akos Polster. Available on [GitHub.com](https://github.com/pipacs/o2) - Thanks for making it available under the conditions of the BSD-2-Clause license! Details about the license of OAuth for Qt in [its license file](src/o2/LICENSE).
 - twitter-text, copyright 2017 Twitter, Inc and other contributors. Available on [GitHub.com](https://github.com/twitter/twitter-text) - Thanks for making it available under the conditions of the Apache License, Version 2.0!  Details about the license of twitter-text in [its license file](qml/js/LICENSE-twitter-text).
 - Emoji parsing and artwork by [Twitter Emoji (Twemoji)](http://twitter.github.io/twemoji/), copyright 2018 Twitter, Inc and other contributors, Code licensed under the [MIT License](http://opensource.org/licenses/MIT), Graphics licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
@@ -49,6 +62,7 @@ This project uses
 - ipinfo.io to determine your location.
 
 Piepmatz was translated to several languages. Thanks to all contributors!
+
 - Chinese: [dashinfantry](https://github.com/dashinfantry)
 - Czech: [Jiri Hubacek](https://github.com/qeef), [Jiri Hubacek](https://github.com/qeef)
 - Dutch: [Heimen Stoffels](https://www.transifex.com/user/profile/Vistaus/), [Nathan Follens](https://www.transifex.com/user/profile/pljmn/) and [d9h02f](https://github.com/d9h02f)
@@ -67,6 +81,7 @@ Piepmatz was translated to several languages. Thanks to all contributors!
 - Swedish: [Åke Engelbrektson](https://github.com/eson57)
 
 Code improvements by:
+
 - [Rolf Eike Beer](https://github.com/DerDakon) 
 - [Kay Stenschke](https://github.com/kstenschke)
 - [Björn Bidar](https://github.com/Thaodan)

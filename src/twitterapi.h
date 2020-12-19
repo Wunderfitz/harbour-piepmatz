@@ -28,6 +28,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QSettings>
 #include <QVariantMap>
 #include <QVariantList>
 #include "o1requestor.h"
@@ -84,7 +85,7 @@ class TwitterApi : public QObject {
     Q_OBJECT
 public:
     //TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent = 0);
-    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor* secretIdentityRequestor = 0, QObject* parent = 0);
+    TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor* secretIdentityRequestor = 0, QObject *parent = 0);
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void accountSettings();
@@ -137,7 +138,10 @@ public:
     Q_INVOKABLE void getTweetConversation(const QString &conversationId);
     Q_INVOKABLE void getIpInfo();
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
-    Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);
+    Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);    
+
+    Q_INVOKABLE QString getBearerToken();
+    Q_INVOKABLE void setBearerToken(const QString &bearerToken);
 
     Q_INVOKABLE QVariantMap parseErrorResponse(const QString &errorText, const QByteArray &responseText);
 
@@ -233,10 +237,13 @@ signals:
     void getIpInfoSuccessful(const QVariantMap &result);
     void getIpInfoError(const QString &errorMessage);
 
+    void bearerTokenChanged(const QString &bearerToken);
+
 private:
     O1Requestor *requestor;
     O1Requestor *secretIdentityRequestor;
     QNetworkAccessManager *manager;
+    QSettings twitterSettings;
     //Wagnis *wagnis;
 
 private slots:

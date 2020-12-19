@@ -891,6 +891,18 @@
         <source>Integrate Piepmatz into open-with menu of Sailfish OS</source>
         <translation>Piepmatz im Öffnen-Mit-Menü von Sailfish OS integrieren</translation>
     </message>
+    <message>
+        <source>Developer Mode</source>
+        <translation>Entwicklermodus</translation>
+    </message>
+    <message>
+        <source>Twitter API Bearer Token</source>
+        <translation>Twitter API-Bearer Token</translation>
+    </message>
+    <message>
+        <source>The Developer Mode gives you access to special features such as Twitter thread support that can&apos;t be switched on by default due to rate limiting or other restrictions. See the &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt; for details.</source>
+        <translation>Der Entwicklermodus ermöglicht Ihnen den Zugang zu speziellen Funktionen wie der Unterstützung von Twitter-Gesprächsfäden, die aufgrund von Begrenzungen der API nicht standardmäßig eingeschaltet werden können. Weitere Details dazu finden Sie in der &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt;.</translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

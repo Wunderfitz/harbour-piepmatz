@@ -18,7 +18,6 @@
 */
 #include "twitterapi.h"
 
-#include "o2/o1twitterglobals.h"
 #include "imageresponsehandler.h"
 #include "imagemetadataresponsehandler.h"
 #include "downloadresponsehandler.h"
@@ -36,8 +35,10 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
+const char SETTINGS_BEARER_TOKEN[] = "twitterSettings/bearerToken";
+
 //TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
-TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent) {
+TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent), twitterSettings("harbour-piepmatz", "twitterSettings") {
     this->requestor = requestor;
     this->manager = manager;
     this->secretIdentityRequestor = secretIdentityRequestor;
@@ -1206,9 +1207,16 @@ void TwitterApi::getOpenGraph(const QString &address)
 void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
 {
     qDebug() << "TwitterApi::getSingleTweet" << tweetId << address;
+
+    QString bearerToken = this->getBearerToken();
+    if (bearerToken.isEmpty()) {
+        qDebug() << "TwitterApi::getSingleTweet: No OAuth2 Bearer token, aborting!";
+        return;
+    }
+
     QUrl url = QUrl("https://api.twitter.com/2/tweets/" + tweetId + "?tweet.fields=conversation_id");
     QNetworkRequest request(url);
-    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + QString(TWITTER_BEARER_TOKEN).toUtf8()));
+    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + bearerToken.toUtf8()));
 
     QNetworkReply *reply = manager->get(request);
 
@@ -1219,9 +1227,16 @@ void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
 void TwitterApi::getTweetConversation(const QString &conversationId)
 {
     qDebug() << "TwitterApi::getTweetConversation" << conversationId;
-    QUrl url = QUrl("https://api.twitter.com/2/tweets/search/recent?query=conversation_id:" + conversationId + "&max_results=100&tweet.fields=created_at,conversation_id&expansions=referenced_tweets.id");
+
+    QString bearerToken = this->getBearerToken();
+    if (bearerToken.isEmpty()) {
+        qDebug() << "TwitterApi::getTweetConversation: No OAuth2 Bearer token, aborting!";
+        return;
+    }
+
+    QUrl url = QUrl("https://api.twitter.com/2/tweets/search/recent?query=conversation_id:" + conversationId + "&max_results=50&tweet.fields=created_at,conversation_id,author_id&expansions=referenced_tweets.id");
     QNetworkRequest request(url);
-    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + QString(TWITTER_BEARER_TOKEN).toUtf8()));
+    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + bearerToken.toUtf8()));
 
     QNetworkReply *reply = manager->get(request);
     connect(reply, SIGNAL(finished()), this, SLOT(handleGetTweetConversationFinished()));
@@ -1267,6 +1282,18 @@ void TwitterApi::handleAdditionalInformation(const QString &additionalInformatio
     } else {
         qDebug() << "Error opening file " << additionalInformation;
     }
+}
+
+QString TwitterApi::getBearerToken()
+{
+    return twitterSettings.value(SETTINGS_BEARER_TOKEN, "").toString();
+}
+
+void TwitterApi::setBearerToken(const QString &bearerToken)
+{
+    qDebug() << "TwitterApi::setBearerToken" << bearerToken;
+    twitterSettings.setValue(SETTINGS_BEARER_TOKEN, bearerToken);
+    emit bearerTokenChanged(bearerToken);
 }
 
 QVariantMap TwitterApi::parseErrorResponse(const QString &errorText, const QByteArray &responseText)
@@ -2414,18 +2441,32 @@ void TwitterApi::handleGetTweetConversationFinished()
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
 
-    qDebug().noquote() << jsonDocument.toJson(QJsonDocument::Indented);
+    //qDebug().noquote() << jsonDocument.toJson();
 
     if (jsonDocument.isObject()) {
-        QVariantList conversationData = jsonDocument.object().value("data").toArray().toVariantList();
+        QVariantMap responseObject = jsonDocument.object().toVariantMap();
+        QVariantList conversationData = responseObject.value("data").toList();
+        qDebug() << "[Conversation] Found tweet count" << conversationData.size();
+        QVariantList includedTweets = responseObject.value("includes").toMap().value("tweets").toList();
+        qDebug() << "[Conversation] Included tweet count" << includedTweets.size();
+        conversationData.append(includedTweets);
+        qDebug() << "[Conversation] Entire tweet count" << conversationData.size();
+
+        qDebug().noquote() << QJsonDocument::fromVariant(conversationData).toJson();
+
         QListIterator<QVariant> conversationIterator(conversationData);
         QVariantMap conversationTweets;
         QList<QString> rootIds;
         QString conversationId;
+        QString conversationAuthorId;
         while (conversationIterator.hasNext()) {
             QVariantMap singleTweet = conversationIterator.next().toMap();
             conversationId = singleTweet.value("conversation_id").toString();
             QString currentTweetId = singleTweet.value("id").toString();
+
+            if (currentTweetId == conversationId) {
+                conversationAuthorId = singleTweet.value("author_id").toString();
+            }
 
             qDebug() << "[Conversation] Processing tweet ID" << currentTweetId;
 
@@ -2456,6 +2497,38 @@ void TwitterApi::handleGetTweetConversationFinished()
         }
 
         QVariantList relatedTweets;
+        if (rootIds.size() == 1 && rootIds.at(0) == conversationId) {
+            qDebug() << "[Conversation] Single root tweet is conversation root - checking for thread by original author" << rootIds.at(0);
+            relatedTweets.append(rootIds.at(0));
+            QString currentTweetId = rootIds.at(0);
+            conversationIterator.toFront();
+            QString childTweetId;
+            while (conversationIterator.hasNext()) {
+                QVariantMap singleTweet = conversationIterator.next().toMap();
+                if (singleTweet.value("author_id").toString() != conversationAuthorId) {
+                    continue;
+                }
+                childTweetId.clear();
+                QVariantList referencedTweets = singleTweet.value("referenced_tweets").toList();
+                if (!referencedTweets.isEmpty()) {
+                    QListIterator<QVariant> referenceIterator(referencedTweets);
+                    while (referenceIterator.hasNext()) {
+                        QVariantMap singleReference = referenceIterator.next().toMap();
+                        if (singleReference.value("type").toString() == "replied_to" && singleReference.value("id").toString() == currentTweetId) {
+                            childTweetId = singleTweet.value("id").toString();
+                            break;
+                        }
+                    }
+                }
+                if (!childTweetId.isEmpty()) {
+                    qDebug() << "[Conversation] Child tweet from original author found, continuing thread construction:" << childTweetId;
+                    relatedTweets.append(childTweetId);
+                    currentTweetId = childTweetId;
+                    conversationIterator.toFront();
+                }
+            }
+        }
+
         QListIterator<QString> rootIdIterator(rootIds);
         while (rootIdIterator.hasNext()) {
             QString rootId = rootIdIterator.next();
