@@ -112,7 +112,7 @@
     <name>ConversationPage</name>
     <message>
         <source>New message to %1</source>
-        <translation>%1 则新信息</translation>
+        <translation>%1 则新消息</translation>
     </message>
     <message>
         <source>%1 characters left</source>
@@ -492,7 +492,7 @@
     <name>Profile</name>
     <message>
         <source>%1 Following</source>
-        <translation>%1 位正在关注</translation>
+        <translation>%1 正在关注</translation>
     </message>
     <message>
         <source>%1 Followers</source>
@@ -894,15 +894,15 @@
     </message>
     <message>
         <source>Developer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>开发者模式</translation>
     </message>
     <message>
         <source>Twitter API Bearer Token</source>
-        <translation type="unfinished"></translation>
+        <translation>Twitter API 持有凭证</translation>
     </message>
     <message>
         <source>The Developer Mode gives you access to special features such as Twitter thread support that can&apos;t be switched on by default due to rate limiting or other restrictions. See the &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt; for details.</source>
-        <translation type="unfinished"></translation>
+        <translation>开发者模式让你可以使用特殊功能，如 Twitter 留言支持，由于速率限制或其他限制，默认情况下无法打开。你可以参阅此处 &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt; 以获取详情。</translation>
     </message>
     <message>
         <source>Enable Developer Mode</source>
