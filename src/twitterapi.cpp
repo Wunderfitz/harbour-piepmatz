@@ -35,6 +35,7 @@
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
+const char SETTINGS_DEVELOPER_MODE[] = "twitterSettings/developerMode";
 const char SETTINGS_BEARER_TOKEN[] = "twitterSettings/bearerToken";
 
 //TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
@@ -1193,7 +1194,7 @@ void TwitterApi::getOpenGraph(const QString &address)
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
-    //request.setHeader(QNetworkRequest::UserAgentHeader, "Mozilla/5.0 (Wayland; SailfishOS) Piepmatz (Not Firefox/52.0)");
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Piepmatz Bot (Sailfish OS)");
     request.setRawHeader(QByteArray("Accept"), QByteArray("text/html,application/xhtml+xml"));
     request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
     request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
@@ -1298,6 +1299,18 @@ void TwitterApi::handleAdditionalInformation(const QString &additionalInformatio
     } else {
         qDebug() << "Error opening file " << additionalInformation;
     }
+}
+
+bool TwitterApi::getDeveloperMode()
+{
+    return twitterSettings.value(SETTINGS_DEVELOPER_MODE, false).toBool();
+}
+
+void TwitterApi::setDeveloperMode(const bool enableDeveloperMode)
+{
+    qDebug() << "TwitterApi::setDeveloperMode" << enableDeveloperMode;
+    twitterSettings.setValue(SETTINGS_DEVELOPER_MODE, enableDeveloperMode);
+    emit developerModeChanged(enableDeveloperMode);
 }
 
 QString TwitterApi::getBearerToken()
@@ -2527,7 +2540,7 @@ void TwitterApi::handleGetTweetConversationFinished()
         conversationData.append(includedTweets);
         qDebug() << "[Conversation] Entire tweet count" << conversationData.size();
 
-        qDebug().noquote() << QJsonDocument::fromVariant(conversationData).toJson();
+        // qDebug().noquote() << QJsonDocument::fromVariant(conversationData).toJson();
 
         QListIterator<QVariant> conversationIterator(conversationData);
         QVariantMap conversationTweets;

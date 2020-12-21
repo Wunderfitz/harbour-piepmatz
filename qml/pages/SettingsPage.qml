@@ -317,11 +317,22 @@ Page {
                 text: qsTr("Developer Mode")
             }
 
+            TextSwitch {
+                id: switchDeveloperMode
+                checked: twitterApi.getDeveloperMode()
+                text: qsTr("Enable Developer Mode")
+                description: qsTr("Piepmatz may use developer preview/untested features if Bearer token is set")
+                onCheckedChanged: {
+                    twitterApi.setDeveloperMode(checked);
+                }
+            }
+
             TextField {
                 width: parent.width  - ( 2 * Theme.horizontalPageMargin )
                 label: qsTr("Twitter API Bearer Token")
                 placeholderText: label
                 text: twitterApi.getBearerToken()
+                enabled: switchDeveloperMode.checked
                 onTextChanged: {
                     twitterApi.setBearerToken(text);
                 }

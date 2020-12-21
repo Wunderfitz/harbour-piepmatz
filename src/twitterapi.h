@@ -141,6 +141,8 @@ public:
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
     Q_INVOKABLE void handleAdditionalInformation(const QString &additionalInformation);    
 
+    Q_INVOKABLE bool getDeveloperMode();
+    Q_INVOKABLE void setDeveloperMode(const bool enableDeveloperMode);
     Q_INVOKABLE QString getBearerToken();
     Q_INVOKABLE void setBearerToken(const QString &bearerToken);
 
@@ -239,6 +241,7 @@ signals:
     void getIpInfoError(const QString &errorMessage);
 
     void bearerTokenChanged(const QString &bearerToken);
+    void developerModeChanged(const bool developerModel);
 
 private:
     O1Requestor *requestor;

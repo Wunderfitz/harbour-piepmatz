@@ -132,3 +132,8 @@
 * Sun Dec 20 2020 Sebastian Wolf <sebastian@ygriega.de> 1.8
 - Migrated Twitter thread support to developer mode, using rate-limited Twitter API v2, users need own Bearer token from the Twitter Developer Portal to make it work
 - Fix escaped ampersand in URLs, removed QML bug workaround as no longer reproducible, thanks to fuchsmich for reporting that!
+
+* Mon Dec 21 2020 Sebastian Wolf <sebastian@ygriega.de> 1.8.1
+- A glimmer of hope for threads without developer mode, bots still seem to get an HTML view for tweets
+- That also brings back Open Graph previews for tweets :)
+- Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)

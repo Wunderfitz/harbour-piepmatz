@@ -905,6 +905,14 @@
         <source>The Developer Mode gives you access to special features such as Twitter thread support that can&apos;t be switched on by default due to rate limiting or other restrictions. See the &lt;a href=&quot;https://github.com/Wunderfitz/harbour-piepmatz/blob/master/README.md#developer-mode&quot;&gt;README&lt;/a&gt; for details.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Enable Developer Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Piepmatz may use developer preview/untested features if Bearer token is set</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextPage</name>

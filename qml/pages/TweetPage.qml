@@ -83,7 +83,11 @@ Page {
             twitterApi.showStatus(replyToStatusId);
         }
         myTweetId = Functions.getRelevantTweet(tweetModel).id_str;
-        twitterApi.getSingleTweet(myTweetId, Functions.getTweetUrl(tweetModel));
+        if (twitterApi.getDeveloperMode()) {
+            twitterApi.getSingleTweetWithConversationId(myTweetId);
+        } else {
+            twitterApi.getSingleTweet(myTweetId, Functions.getTweetUrl(tweetModel));
+        }
     }
 
     Connections {
