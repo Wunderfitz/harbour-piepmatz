@@ -1208,6 +1208,23 @@ void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
 {
     qDebug() << "TwitterApi::getSingleTweet" << tweetId << address;
 
+    QUrl url = QUrl(address);
+    QNetworkRequest request(url);
+    request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+    request.setHeader(QNetworkRequest::UserAgentHeader, "Piepmatz Bot (Sailfish OS)");
+    request.setRawHeader(QByteArray("Accept-Charset"), QByteArray("utf-8"));
+    request.setRawHeader(QByteArray("Connection"), QByteArray("close"));
+    request.setRawHeader(QByteArray("Cache-Control"), QByteArray("max-age=0"));
+    QNetworkReply *reply = manager->get(request);
+
+    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetSingleTweetError(QNetworkReply::NetworkError)));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetSingleTweetFinished()));
+}
+
+void TwitterApi::getSingleTweetWithConversationId(const QString &tweetId)
+{
+    qDebug() << "TwitterApi::getSingleTweetWithConversationId" << tweetId;
+
     QString bearerToken = this->getBearerToken();
     if (bearerToken.isEmpty()) {
         qDebug() << "TwitterApi::getSingleTweet: No OAuth2 Bearer token, aborting!";
@@ -1220,8 +1237,7 @@ void TwitterApi::getSingleTweet(const QString &tweetId, const QString &address)
 
     QNetworkReply *reply = manager->get(request);
 
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleGetSingleTweetError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleGetSingleTweetFinished()));
+    connect(reply, SIGNAL(finished()), this, SLOT(handleGetSingleTweetWithConversationIdFinished()));
 }
 
 void TwitterApi::getTweetConversation(const QString &conversationId)
@@ -2385,7 +2401,12 @@ void TwitterApi::handleGetSingleTweetError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleGetSingleTweetError:" << (int)error << reply->errorString();
-    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
+    QString requestAddress = reply->request().url().toString();
+    qDebug() << "TwitterApi::handleGetSingleTweetError, request address:" << requestAddress;
+    QString requestTweetId = requestAddress.mid(requestAddress.indexOf("/status/") + 8);
+    qDebug() << "TwitterApi::handleGetSingleTweetError, request status ID:" << requestTweetId;
+    qDebug() << "TwitterApi::handleGetSingleTweetError, trying with Twitter APIv2";
+    this->getSingleTweetWithConversationId(requestTweetId);
 }
 
 void TwitterApi::handleGetSingleTweetFinished()
@@ -2398,6 +2419,61 @@ void TwitterApi::handleGetSingleTweetFinished()
         return;
     }
 
+    QString requestAddress = reply->request().url().toString();
+    qDebug() << "Processing response for tweet page " << requestAddress;
+
+    QVariant contentTypeHeader = reply->header(QNetworkRequest::ContentTypeHeader);
+    qDebug() << "Content type header " << contentTypeHeader.toString();
+    if (!contentTypeHeader.isValid()) {
+        qDebug() << "Content Type response header is invalid, unable to check for conversation!";
+        return;
+    }
+    if (contentTypeHeader.toString().indexOf("text/html", 0, Qt::CaseInsensitive) == -1) {
+        qDebug() << requestAddress + " is not HTML, not checking tweet result data...";
+        return;
+    }
+
+    QRegExp tweetIdRegex("status\\/(\\d+)");
+    QString currentTweetId;
+    if (tweetIdRegex.indexIn(requestAddress) != -1) {
+        currentTweetId = tweetIdRegex.cap(1);
+    }
+
+    QString resultDocument(reply->readAll());
+    QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
+    QGumboNode root = parsedResult.rootNode();
+
+    QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
+    QVariantList relatedTweets;
+    for (QGumboNode &tweetNode : tweetNodes) {
+        QStringList tweetClassList = tweetNode.classList();
+        if (!tweetClassList.contains("promoted-tweet")) {
+            QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
+            if (!otherTweetId.isEmpty()) {
+                qDebug() << "Found Tweet ID: " << otherTweetId;
+                relatedTweets.append(otherTweetId);
+            }
+        }
+    }
+
+    if (!relatedTweets.isEmpty()) {
+        qDebug() << "Found other tweets, let's build a conversation!";
+        TweetConversationHandler *conversationHandler = new TweetConversationHandler(this, currentTweetId, relatedTweets, this);
+        connect(conversationHandler, SIGNAL(tweetConversationCompleted(QString, QVariantList)), this, SLOT(handleTweetConversationReceived(QString, QVariantList)));
+        conversationHandler->buildConversation();
+    }
+}
+
+void TwitterApi::handleGetSingleTweetWithConversationIdFinished()
+{
+    qDebug() << "TwitterApi::handleGetSingleTweetWithConversationIdFinished";
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    reply->deleteLater();
+    if (reply->error() != QNetworkReply::NoError) {
+        qDebug() << "getSingleTweetWithConversationIdError! " << reply->errorString();
+        return;
+    }
+
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QString conversationId = jsonDocument.object().value("data").toObject().value("conversation_id").toString();
@@ -2406,7 +2482,6 @@ void TwitterApi::handleGetSingleTweetFinished()
             this->getTweetConversation(conversationId);
         }
     }
-
 }
 
 void traverseConversation(QString &conversationId, QString rootId, QVariantList &relatedTweets, QVariantMap &conversationTweets) {

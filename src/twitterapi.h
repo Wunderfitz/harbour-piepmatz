@@ -135,6 +135,7 @@ public:
 
     Q_INVOKABLE void getOpenGraph(const QString &address);
     Q_INVOKABLE void getSingleTweet(const QString &tweetId, const QString &address);
+    Q_INVOKABLE void getSingleTweetWithConversationId(const QString &tweetId);
     Q_INVOKABLE void getTweetConversation(const QString &conversationId);
     Q_INVOKABLE void getIpInfo();
     Q_INVOKABLE void controlScreenSaver(const bool &enabled);
@@ -330,6 +331,7 @@ private slots:
     void handleGetOpenGraphFinished();
     void handleGetSingleTweetError(QNetworkReply::NetworkError error);
     void handleGetSingleTweetFinished();
+    void handleGetSingleTweetWithConversationIdFinished();
     void handleGetTweetConversationFinished();
     void handleTweetConversationReceived(QString tweetId, QVariantList receivedTweets);
     void handleGetIpInfoError(QNetworkReply::NetworkError error);
