@@ -906,11 +906,11 @@
     </message>
     <message>
         <source>Enable Developer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>启用开发者模式</translation>
     </message>
     <message>
         <source>Piepmatz may use developer preview/untested features if Bearer token is set</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz 会使用开发者模式开启预览/未测试功能，如果设置了持有者 API 。</translation>
     </message>
 </context>
 <context>
