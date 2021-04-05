@@ -1191,6 +1191,13 @@ void TwitterApi::destroySavedSearch(const QString &id)
 void TwitterApi::getOpenGraph(const QString &address)
 {
     qDebug() << "TwitterApi::getOpenGraph" << address;
+    if (address.startsWith("https://meet.jit.cloud/")) {
+        // Other party closes connection before establishing it properly - causes segmentation fault that can't be circumvented (why?)
+        // Error: Client network socket disconnected before secure TLS connection was established
+        // See https://github.com/Wunderfitz/harbour-piepmatz/issues/105
+        qDebug() << "Issues with this URL, not invoking Open Graph query";
+        return;
+    }
     QUrl url = QUrl(address);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
