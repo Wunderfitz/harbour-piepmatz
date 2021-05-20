@@ -905,11 +905,11 @@
     </message>
     <message>
         <source>Enable Developer Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Włącz tryb dewelopera</translation>
     </message>
     <message>
         <source>Piepmatz may use developer preview/untested features if Bearer token is set</source>
-        <translation type="unfinished"></translation>
+        <translation>Piepmatz może używać funcji deweloperskich/nieprzetestowanych funkcji jeśli Bearer token jest ustawiony</translation>
     </message>
 </context>
 <context>
