@@ -27,7 +27,6 @@ PkgConfigBR:
   - Qt5Quick
   - Qt5DBus
   - Qt5Positioning
-  - openssl
 
 # Build dependencies without a pkgconfig setup can be listed here
 # PkgBR:
@@ -35,8 +34,7 @@ PkgConfigBR:
 
 # Runtime dependencies which are not automatically detected
 Requires:
-  - sailfishsilica-qt5 >= 0.10.9 
-  - libcrypto.so.10
+  - sailfishsilica-qt5 >= 0.10.9
 
 # All installed files
 Files:

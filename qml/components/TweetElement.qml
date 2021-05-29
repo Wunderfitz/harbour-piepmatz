@@ -42,6 +42,7 @@ Item {
     property bool extendedMode : false;
     property bool withSeparator : true;
     property bool isRetweetMention : false;
+    property bool isScrolling: false;
     property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeTiny : Theme.fontSizeExtraSmall) ;
     property string infoTextFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
     property string infoIconFontSize: Theme.fontSizeMedium;
@@ -86,29 +87,53 @@ Item {
                 width: tweetModel.fakeTweet ? 0 : ( parent.width / 6 )
                 height: parent.width / 6
                 spacing: Theme.paddingSmall
-                Image {
-                    id: tweetRetweetedImage
-                    source: "image://theme/icon-s-retweet"
-                    visible: tweetModel.retweeted_status ? true : false
-                    anchors.right: parent.right
-                    width: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+
+                Loader {
+                    asynchronous: true
+                    active: tweetModel.retweeted_status ? true : false
+                    width: active ? (tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall) : 0
                     height: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
-                }
-                Image {
-                    id: tweetInReplyToImage
-                    source: "image://theme/icon-s-repost"
-                    visible: tweetModel.in_reply_to_status_id_str ? true : false
                     anchors.right: parent.right
-                    width: Theme.fontSizeExtraSmall
-                    height: Theme.fontSizeExtraSmall
+                    sourceComponent: Component {
+                        Image {
+                            id: tweetRetweetedImage
+                            source: "image://theme/icon-s-retweet"
+                            width: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                            height: tweetElementItem.isRetweetMention ? Theme.fontSizeSmall : Theme.fontSizeExtraSmall
+                        }
+                    }
                 }
-                Image {
-                    id: tweetDirectImage
-                    source: "image://theme/icon-s-message"
-                    visible: (tweetModel.in_reply_to_user_id_str && !tweetModel.in_reply_to_status_id_str) ? true : false
-                    anchors.right: parent.right
-                    width: Theme.fontSizeExtraSmall
+
+                Loader {
+                    asynchronous: true
+                    active: tweetModel.in_reply_to_status_id_str ? true : false
+                    width: active ? Theme.fontSizeExtraSmall : 0
                     height: Theme.fontSizeExtraSmall
+                    anchors.right: parent.right
+                    sourceComponent: Component {
+                        Image {
+                            id: tweetInReplyToImage
+                            source: "image://theme/icon-s-repost"
+                            width: Theme.fontSizeExtraSmall
+                            height: Theme.fontSizeExtraSmall
+                        }
+                    }
+                }
+
+                Loader {
+                    asynchronous: true
+                    active: (tweetModel.in_reply_to_user_id_str && !tweetModel.in_reply_to_status_id_str) ? true : false
+                    width: active ? Theme.fontSizeExtraSmall : 0
+                    height: Theme.fontSizeExtraSmall
+                    anchors.right: parent.right
+                    sourceComponent: Component {
+                        Image {
+                            id: tweetDirectImage
+                            source: "image://theme/icon-s-message"
+                            width: Theme.fontSizeExtraSmall
+                            height: Theme.fontSizeExtraSmall
+                        }
+                    }
                 }
 
                 Item {
@@ -165,7 +190,6 @@ Item {
                         image: tweetAuthorPicture
                         withPercentage: false
                     }
-
                 }
             }
 
@@ -275,118 +299,105 @@ Item {
                     }
                 }
 
-                Component {
-                    id: openGraphComponent
+                Loader {
+                    id: openGraphLoader
+                    active: !tweetElementItem.isScrolling && tweetElementItem.hasReference
+                    asynchronous: true
+                    width: parent.width
+                    onLoaded: {
+                        openGraphLoader.active = tweetElementItem.hasReference;
+                    }
 
-                    Column {
-                        id: openGraphColumn
-                        Timer {
-                            id: openGraphVisibleTimer
-                            interval: 250
-                            repeat: false
-                            onTriggered: {
-                                openGraphColumn.visible = true;
-                            }
-                        }
+                    sourceComponent: Component {
 
-                        Component.onCompleted: {
-                            openGraphVisibleTimer.start();
-                        }
-                        visible: false
-                        opacity: visible ? 1 : 0
-                        Behavior on opacity { NumberAnimation {} }
-                        spacing: Theme.paddingSmall
-                        Separator {
-                            width: parent.width
-                            color: Theme.primaryColor
-                            horizontalAlignment: Qt.AlignHCenter
-                        }
-
-                        Item {
-                            id: openGraphImageItem
-                            width: parent.width
-                            height: parent.width * 2 / 3
-                            visible: referenceMetadata.image ? true : false
-                            Image {
-                                id: openGraphImage
-
-                                onStatusChanged: {
-                                    if (status === Image.Error) {
-                                        openGraphImageItem.visible = false;
-                                    }
-                                }
-
+                        Column {
+                            id: openGraphColumn
+                            spacing: Theme.paddingSmall
+                            Separator {
                                 width: parent.width
-                                height: parent.height
-                                fillMode: Image.PreserveAspectCrop
-                                visible: status === Image.Ready ? true : false
-                                opacity: status === Image.Ready ? 1 : 0
-                                Behavior on opacity { NumberAnimation {} }
-                                source: referenceMetadata.image ? referenceMetadata.image : ""
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if (referenceMetadata.url) {
-                                            pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": openGraphImage.source, "imageHeight": openGraphImage.sourceSize.height, "imageWidth": openGraphImage.sourceSize.height, "tweet": tweetModel});
-                                            // Qt.openUrlExternally(referenceMetadata.url);
+                                color: Theme.primaryColor
+                                horizontalAlignment: Qt.AlignHCenter
+                            }
+
+                            Item {
+                                id: openGraphImageItem
+                                width: parent.width
+                                height: parent.width * 2 / 3
+                                visible: referenceMetadata.image ? true : false
+                                Image {
+                                    id: openGraphImage
+
+                                    onStatusChanged: {
+                                        if (status === Image.Error) {
+                                            openGraphImageItem.visible = false;
+                                        }
+                                    }
+
+                                    width: parent.width
+                                    height: parent.height
+                                    fillMode: Image.PreserveAspectCrop
+                                    visible: status === Image.Ready ? true : false
+                                    opacity: status === Image.Ready ? 1 : 0
+                                    Behavior on opacity { NumberAnimation {} }
+                                    source: referenceMetadata.image ? referenceMetadata.image : ""
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        onClicked: {
+                                            if (referenceMetadata.url) {
+                                                pageStack.push(Qt.resolvedUrl("../pages/ImagePage.qml"), {"imageUrl": openGraphImage.source, "imageHeight": openGraphImage.sourceSize.height, "imageWidth": openGraphImage.sourceSize.height, "tweet": tweetModel});
+                                                // Qt.openUrlExternally(referenceMetadata.url);
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            ImageProgressIndicator {
-                                image: openGraphImage
-                                withPercentage: false
-                            }
-                        }
-
-                        Text {
-                            visible: referenceMetadata.description ? true : false
-                            width: parent.width
-                            id: openGraphText
-                            text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), componentFontSize) : ""
-                            font.pixelSize: componentFontSize
-                            color: Theme.primaryColor
-                            wrapMode: Text.Wrap
-                            textFormat: Text.StyledText
-                            maximumLineCount: 4
-                            elide: Text.ElideRight
-                            onTruncatedChanged: {
-                                // There is obviously a bug in QML in truncating text with images.
-                                // We simply remove Emojis then...
-                                if (truncated) {
-                                    text = text.replace(/\<img [^>]+\/\>/g, "");
+                                ImageProgressIndicator {
+                                    image: openGraphImage
+                                    withPercentage: false
                                 }
                             }
-                        }
 
-                        Text {
-                            visible: referenceMetadata.url ? true : false
-                            width: parent.width
-                            id: openGraphLink
-                            text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), componentFontSize) + "</a>"
-                            font.pixelSize: componentFontSize
-                            color: Theme.highlightColor
-                            wrapMode: Text.Wrap
-                            textFormat: Text.StyledText
-                            onLinkActivated: {
-                                Functions.handleLink(link);
+                            Text {
+                                visible: referenceMetadata.description ? true : false
+                                width: parent.width
+                                id: openGraphText
+                                text: referenceMetadata.description ? Emoji.emojify(Functions.htmlDecode(referenceMetadata.description), componentFontSize) : ""
+                                font.pixelSize: componentFontSize
+                                color: Theme.primaryColor
+                                wrapMode: Text.Wrap
+                                textFormat: Text.StyledText
+                                maximumLineCount: 4
+                                elide: Text.ElideRight
+                                onTruncatedChanged: {
+                                    // There is obviously a bug in QML in truncating text with images.
+                                    // We simply remove Emojis then...
+                                    if (truncated) {
+                                        text = text.replace(/\<img [^>]+\/\>/g, "");
+                                    }
+                                }
                             }
-                            linkColor: Theme.highlightColor
-                        }
 
-                        Separator {
-                            width: parent.width
-                            color: Theme.primaryColor
-                            horizontalAlignment: Qt.AlignHCenter
+                            Text {
+                                visible: referenceMetadata.url ? true : false
+                                width: parent.width
+                                id: openGraphLink
+                                text: "<a href=\"" + referenceMetadata.url + "\">" + Emoji.emojify(Functions.htmlDecode(referenceMetadata.title), componentFontSize) + "</a>"
+                                font.pixelSize: componentFontSize
+                                color: Theme.highlightColor
+                                wrapMode: Text.Wrap
+                                textFormat: Text.StyledText
+                                onLinkActivated: {
+                                    Functions.handleLink(link);
+                                }
+                                linkColor: Theme.highlightColor
+                            }
+
+                            Separator {
+                                width: parent.width
+                                color: Theme.primaryColor
+                                horizontalAlignment: Qt.AlignHCenter
+                            }
                         }
                     }
-                }
-
-                Loader {
-                    id: openGraphLoader
-                    active: tweetElementItem.hasReference
-                    width: parent.width
-                    sourceComponent: openGraphComponent
                 }
 
                 Row {
@@ -635,24 +646,31 @@ Item {
 
                 spacing: Theme.paddingSmall
 
-                TweetImageSlideshow {
-                    id: tweetImageSlideshow
-                    visible: !tweetElementItem.isRetweetMention && Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
-                    tweet: tweetModel
+                Loader {
+                    id: imageLoader
+                    asynchronous: true
+                    active: !tweetElementItem.isRetweetMention && Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                    width: parent.width
+                    height: active ? (parent.width * 2 / 3) : 0
+                    sourceComponent: Component {
+                        TweetImageSlideshow {
+                            id: tweetImageSlideshow
+                            visible: !tweetElementItem.isRetweetMention && Functions.hasImage(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
+                            tweet: tweetModel
+                        }
+                    }
                 }
 
                 Loader {
                     id: videoLoader
+                    asynchronous: true
                     active: !tweetElementItem.isRetweetMention && Functions.containsVideo(tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
                     width: parent.width
                     height: tweetElementItem.isRetweetMention ? 0 : Functions.getVideoHeight(parent.width, tweetModel.retweeted_status ? tweetModel.retweeted_status : tweetModel)
-                    sourceComponent: tweetVideoComponent
-                }
-
-                Component {
-                    id: tweetVideoComponent
-                    TweetVideo {
-                        tweet: tweetModel
+                    sourceComponent: Component {
+                        TweetVideo {
+                            tweet: tweetModel
+                        }
                     }
                 }
 
@@ -666,35 +684,20 @@ Item {
                     }
                 }
 
-                Component {
-                    id: embeddedTweetComponent
-                    EmbeddedTweet {
-                        id: embeddedTweetItem
-                        tweetModel: embeddedTweet
-
-                        Timer {
-                            id: embeddedTweetVisibleTimer
-                            interval: 250
-                            repeat: false
-                            onTriggered: {
-                                embeddedTweetItem.visible = true;
-                            }
-                        }
-
-                        Component.onCompleted: {
-                            embeddedTweetVisibleTimer.start();
-                        }
-                        visible: false
-                        opacity: visible ? 1 : 0
-                        Behavior on opacity { NumberAnimation {} }
-                    }
-                }
-
                 Loader {
                     id: embeddedTweetLoader
-                    active: hasEmbeddedTweet
+                    active: hasEmbeddedTweet && !tweetElementItem.isScrolling
+                    asynchronous: true
                     width: parent.width
-                    sourceComponent: embeddedTweetComponent
+                    onLoaded: {
+                        embeddedTweetLoader.active = hasEmbeddedTweet;
+                    }
+                    sourceComponent: Component {
+                        EmbeddedTweet {
+                            id: embeddedTweetItem
+                            tweetModel: embeddedTweet
+                        }
+                    }
                 }
             }
         }
