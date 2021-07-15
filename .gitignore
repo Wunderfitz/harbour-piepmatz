@@ -35,6 +35,3 @@ Makefile*
 
 # QtCtreator CMake
 CMakeLists.txt.user
-
-# Twitter client secrets
-src/o2/o1twitterglobals.h

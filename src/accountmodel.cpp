@@ -72,8 +72,6 @@ void AccountModel::initializeEnvironment()
 {
     O0SettingsStore *settings = new O0SettingsStore(encryptionKey);
     o1->setStore(settings);
-    o1->setClientId(this->twitterClientId);
-    o1->setClientSecret(this->twitterClientSecret);
     connect(o1, &O1Twitter::pinRequestError, this, &AccountModel::handlePinRequestError);
     connect(o1, &O1Twitter::pinRequestSuccessful, this, &AccountModel::handlePinRequestSuccessful);
     connect(o1, &O1Twitter::linkingFailed, this, &AccountModel::handleLinkingFailed);
@@ -423,7 +421,7 @@ void AccountModel::obtainEncryptionKey()
     }
     QUuid uid(encryptionKey); //make sure this can be made into a valid QUUid
     if (uid.isNull()) {
-         encryptionKey = QString(TWITTER_STORE_DEFAULT_ENCRYPTION_KEY);
+         encryptionKey = QString(twitter_store_default_encryption_key);
     }
     qDebug() << "Using encryption key: " + encryptionKey;
 }
@@ -461,8 +459,8 @@ void AccountModel::initializeSecretIdentity()
         O0SettingsStore *secretIdentitySettingsStore = new O0SettingsStore(secretIdentitySettings, encryptionKey, this);
         O1Twitter *o1SecretIdentity = new O1Twitter(this);
         o1SecretIdentity->setStore(secretIdentitySettingsStore);
-        o1SecretIdentity->setClientId(TWITTER_CLIENT_ID);
-        o1SecretIdentity->setClientSecret(TWITTER_CLIENT_SECRET);
+        o1SecretIdentity->setClientId(twitter_client_id);
+        o1SecretIdentity->setClientSecret(twitter_client_secret);
         if (o1SecretIdentity->linked()) {
             qDebug() << "Secret identity successfully initialized!";
             secretIdentityRequestor = new O1Requestor(manager, o1SecretIdentity, this);
@@ -593,7 +591,7 @@ void AccountModel::handleEmojiSearchCompleted(const QString &queryString, const 
 
 void AccountModel::obtainTwitterSecrets()
 {
-    if (QString(TWITTER_CLIENT_ID).isEmpty()) {
+    if (QString(twitter_client_id).isEmpty()) {
         char *sailfishConsumerKey = NULL;
         qDebug() << "Retrieving Twitter consumer key from Sailfish key database...";
         int consumerKeyReturnCode = SailfishKeyProvider_storedKey("twitter", "twitter-sync", "consumer_key", &sailfishConsumerKey);
@@ -602,10 +600,10 @@ void AccountModel::obtainTwitterSecrets()
         free(sailfishConsumerKey);
     } else {
         qDebug() << "This build comes with an own Twitter client ID, good!";
-        this->twitterClientId = QString(TWITTER_CLIENT_ID);
+        this->twitterClientId = QString(twitter_client_id);
     }
 
-    if (QString(TWITTER_CLIENT_SECRET).isEmpty()) {
+    if (QString(twitter_client_secret).isEmpty()) {
         char *sailfishConsumerSecret = NULL;
         qDebug() << "Retrieving Twitter consumer secret from Sailfish key database...";
         int consumerSecretReturnCode = SailfishKeyProvider_storedKey("twitter", "twitter-sync", "consumer_secret", &sailfishConsumerSecret);
@@ -614,7 +612,7 @@ void AccountModel::obtainTwitterSecrets()
         free(sailfishConsumerSecret);
     } else {
         qDebug() << "This build comes with an own Twitter client secret, good!";
-        this->twitterClientSecret = QString(TWITTER_CLIENT_SECRET);
+        this->twitterClientSecret = QString(twitter_client_secret);
     }
 
 }
