@@ -7,8 +7,7 @@ Name:       harbour-piepmatz
 Summary:    Piepmatz is a Twitter client for Sailfish OS
 Version:    1.13
 Release:    2
-Group:      Qt/Qt
-License:    LICENSE
+License:    GPLv3
 URL:        http://werkwolf.de/
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 0.10.9
