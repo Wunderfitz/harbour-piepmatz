@@ -13,9 +13,14 @@ qtHaveModule(qml): QT *= qml
    warning("TWITTER_CLIENT_SECRET has to be defined to build o2 with twitter support")
 }
 
-!defined(TWITTER_STORE_DEFAULT_ENCRYPTION_KEY) {
-   warning("TWITTER_DEFAULT_ENCRYPTION_KEY has to be defined to build o2 with twitter support")
+!exists($$shadowed($$_PRO_FILE_PWD_)/o2_default_encryption_key) {
+   system(sh \
+   -c \
+   \'cat /proc/sys/kernel/random/uuid| sed -e "s/-//g" > $$shadowed($$_PRO_FILE_PWD_)/o2_default_encryption_key\')
 }
+
+TWITTER_STORE_DEFAULT_ENCRYPTION_KEY = \
+    $$system(cat $$shadowed($$_PRO_FILE_PWD_)/o2_default_encryption_key)
 
 QMAKE_SUBSTITUTES = $$PWD/o1twitterglobals.h.in
 

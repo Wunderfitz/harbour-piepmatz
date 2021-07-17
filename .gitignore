@@ -35,3 +35,6 @@ Makefile*
 
 # QtCtreator CMake
 CMakeLists.txt.user
+
+# TWITTER_STORE_DEFAULT_ENCRYPTION_KEY
+o2_default_encryption_key
