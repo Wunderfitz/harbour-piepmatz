@@ -31,10 +31,12 @@ Piepmatz is a Twitter client for Sailfish OS
 
 %build
 
-%qtc_qmake5 
+%qtc_qmake5 \
+          %{?piepmatz_twitter_client_id: TWITTER_CLIENT_ID=%{piepmatz_twitter_client_id}} \
+          %{?piepmatz_twitter_client_secret: TWITTER_CLIENT_SECRET=%{piepmatz_twitter_client_secret}}
+
 
 %qtc_make %{?_smp_mflags}
-
 
 %install
 %qmake5_install
