@@ -36,7 +36,6 @@ Page {
         pageStack.pop();
     }
 
-    property variant configuration;
     property real progress : 0;
     property bool valid : true;
     property variant attachmentTweet;

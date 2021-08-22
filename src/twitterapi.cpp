@@ -78,19 +78,6 @@ void TwitterApi::accountSettings()
     connect(reply, SIGNAL(finished()), this, SLOT(handleAccountSettingsSuccessful()));
 }
 
-void TwitterApi::helpConfiguration()
-{
-    qDebug() << "TwitterApi::helpConfiguration";
-    QUrl url = QUrl(API_HELP_CONFIGURATION);
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    QNetworkReply *reply = requestor->get(request, requestParameters);
-
-    connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHelpConfigurationError(QNetworkReply::NetworkError)));
-    connect(reply, SIGNAL(finished()), this, SLOT(handleHelpConfigurationSuccessful()));
-}
-
 void TwitterApi::helpPrivacy()
 {
     qDebug() << "TwitterApi::helpPrivacy";
@@ -165,34 +152,6 @@ void TwitterApi::handleAccountSettingsError(QNetworkReply::NetworkError error)
     qWarning() << "TwitterApi::handleAccountSettingsError:" << (int)error << reply->errorString();
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
     emit accountSettingsError(parsedErrorResponse.value("message").toString());
-}
-
-void TwitterApi::handleHelpConfigurationSuccessful()
-{
-    qDebug() << "TwitterApi::handleHelpConfigurationSuccessful";
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    reply->deleteLater();
-    if (reply->error() != QNetworkReply::NoError) {
-        return;
-    }
-
-    QByteArray rawResponse = reply->readAll();
-    QJsonDocument jsonDocument = QJsonDocument::fromJson(rawResponse);
-    qDebug().noquote() << "KONFIGURATION: " << reply->rawHeaderPairs() << rawResponse;
-    // qDebug().noquote() << "CONFIGURATION: " << jsonDocument.toJson(QJsonDocument::Indented);
-    if (jsonDocument.isObject()) {
-        emit helpConfigurationSuccessful(jsonDocument.object().toVariantMap());
-    } else {
-        emit helpConfigurationError("Piepmatz couldn't understand Twitter's response! (Help Configuration)");
-    }
-}
-
-void TwitterApi::handleHelpConfigurationError(QNetworkReply::NetworkError error)
-{
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    qWarning() << "TwitterApi::handleHelpConfigurationError:" << (int)error << reply->errorString();
-    QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
-    emit helpConfigurationError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleHelpPrivacySuccessful()

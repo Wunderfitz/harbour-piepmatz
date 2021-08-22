@@ -60,11 +60,10 @@ Page {
     }
 
     property variant conversationModel;
-    property variant configuration;
     property string myUserId;
     property bool loaded : true;
 
-    function getRemainingCharacters(text, configuration) {
+    function getRemainingCharacters(text) {
         return 10000 - TwitterText.getTweetLength(text);
     }
 
@@ -218,7 +217,7 @@ Page {
                         }
                         Text {
                             id: remainingCharactersText
-                            text: qsTr("%1 characters left").arg(Number(getRemainingCharacters(newMessageTextField.text, conversationPage.configuration)).toLocaleString(Qt.locale(), "f", 0))
+                            text: qsTr("%1 characters left").arg(Number(getRemainingCharacters(newMessageTextField.text)).toLocaleString(Qt.locale(), "f", 0))
                             color: remainingCharactersText.text < 0 ? Theme.highlightColor : Theme.primaryColor
                             font.pixelSize: Theme.fontSizeTiny
                             font.bold: remainingCharactersText.text < 0 ? true : false

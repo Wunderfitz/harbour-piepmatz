@@ -39,7 +39,6 @@
 
 const char API_ACCOUNT_VERIFY_CREDENTIALS[] = "https://api.twitter.com/1.1/account/verify_credentials.json";
 const char API_ACCOUNT_SETTINGS[] = "https://api.twitter.com/1.1/account/settings.json";
-const char API_HELP_CONFIGURATION[] = "https://api.twitter.com/1.1/help/configuration.json";
 const char API_HELP_PRIVACY[] = "https://api.twitter.com/1.1/help/privacy.json";
 const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
 const char API_MEDIA_UPLOAD[] = "https://upload.twitter.com/1.1/media/upload.json";
@@ -89,7 +88,6 @@ public:
 
     Q_INVOKABLE void verifyCredentials();
     Q_INVOKABLE void accountSettings();
-    Q_INVOKABLE void helpConfiguration();
     Q_INVOKABLE void helpPrivacy();
     Q_INVOKABLE void helpTos();
     Q_INVOKABLE void tweet(const QString &text, const QString &placeId = QString());
@@ -153,8 +151,6 @@ signals:
     void verifyCredentialsError(const QString &errorMessage);
     void accountSettingsSuccessful(const QVariantMap &result);
     void accountSettingsError(const QString &errorMessage);
-    void helpConfigurationSuccessful(const QVariantMap &result);
-    void helpConfigurationError(const QString &errorMessage);
     void helpPrivacySuccessful(const QVariantMap &result);
     void helpPrivacyError(const QString &errorMessage);
     void helpTosSuccessful(const QVariantMap &result);
@@ -255,8 +251,6 @@ private slots:
     void handleVerifyCredentialsError(QNetworkReply::NetworkError error);
     void handleAccountSettingsSuccessful();
     void handleAccountSettingsError(QNetworkReply::NetworkError error);
-    void handleHelpConfigurationSuccessful();
-    void handleHelpConfigurationError(QNetworkReply::NetworkError error);
     void handleHelpPrivacySuccessful();
     void handleHelpPrivacyError(QNetworkReply::NetworkError error);
     void handleHelpTosSuccessful();

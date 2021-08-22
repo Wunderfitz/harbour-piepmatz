@@ -82,7 +82,7 @@ Page {
             event.accepted = true;
         }
         if (event.key === Qt.Key_N && !overviewPage.tweetInProgress) {
-            pageStack.push(newTweetPage, {"configuration": overviewPage.configuration});
+            pageStack.push(newTweetPage);
             event.accepted = true;
         }
         if (event.key === Qt.Key_S) {
@@ -363,7 +363,6 @@ Page {
     property int activeTabId: 0;
     property variant myUser;
     property bool initializationCompleted : false;
-    property variant configuration;
     property bool tweetInProgress : false;
     property variant ipInfo;
     property variant profileEntity;
@@ -485,7 +484,6 @@ Page {
                 overviewColumn.visible = true;
                 overviewColumn.opacity = 1;
                 openTab(0);
-                twitterApi.helpConfiguration();
                 timelineModel.update();
                 mentionsModel.update();
                 notificationsColumn.updateInProgress = true;
@@ -525,13 +523,6 @@ Page {
             overviewNotification.show(qsTr("Tweet sent successfully!"));
             accountModel.verifyCredentials();
             overviewPage.tweetInProgress = false;
-        }
-        onHelpConfigurationSuccessful: {
-            overviewPage.configuration = result;
-            console.log(overviewPage.configuration.short_url_length_https);
-        }
-        onHelpConfigurationError: {
-            overviewNotification.show(errorMessage);
         }
         onImageUploadStatus: {
             console.log(fileName + " - sent " + bytesSent + " bytes out of " + bytesTotal);
@@ -703,7 +694,7 @@ Page {
             MenuItem {
                 text: qsTr("New Tweet")
                 enabled: overviewPage.tweetInProgress ? false : true
-                onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
+                onClicked: pageStack.push(newTweetPage)
             }
             MenuItem {
                 text: qsTr("Refresh")
@@ -727,7 +718,7 @@ Page {
                 MenuItem {
                     text: qsTr("New Tweet")
                     enabled: overviewPage.tweetInProgress ? false : true
-                    onClicked: pageStack.push(newTweetPage, {"configuration": overviewPage.configuration})
+                    onClicked: pageStack.push(newTweetPage)
                 }
                 MenuItem {
                     text: qsTr("Settings")
@@ -1103,7 +1094,7 @@ Page {
                                 contentWidth: parent.width
 
                                 onClicked: {
-                                    pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str, "configuration": overviewPage.configuration });
+                                    pageStack.push(Qt.resolvedUrl("../pages/ConversationPage.qml"), { "conversationModel" : display, "myUserId": overviewPage.myUser.id_str });
                                 }
 
                                 Column {
