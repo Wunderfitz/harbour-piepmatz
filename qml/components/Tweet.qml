@@ -29,7 +29,6 @@ ListItem {
     property variant tweetModel;
     property string userId : accountModel.getCurrentAccount().id_str;
     property bool isRetweetMention : false;
-    property bool isScrolling: false
 
     width: parent.width
     contentHeight: tweetElement.height
@@ -89,7 +88,6 @@ ListItem {
         id: tweetElement
         tweetModel: singleTweet.tweetModel
         isRetweetMention: singleTweet.isRetweetMention
-        isScrolling: singleTweet.isScrolling
     }
 
     onClicked: pageStack.push(Qt.resolvedUrl("../pages/TweetPage.qml"), {"tweetModel": singleTweet.tweetModel });
