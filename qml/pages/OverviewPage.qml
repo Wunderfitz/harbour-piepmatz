@@ -821,32 +821,21 @@ Page {
                             contentHeight: homeTimelineTweet.height
                             clip: true
 
-                            property bool isScrolling: false
-
                             model: timelineModel
 
                             delegate: Tweet {
                                 id: homeTimelineTweet
                                 tweetModel: display
                                 userId: overviewPage.myUser.id_str
-                                isScrolling: homeListView.isScrolling
-                            }
-
-                            onMovementStarted: {
-                                isScrolling = true;
                             }
 
                             onMovementEnded: {
-                                isScrolling = false;
                                 timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
                             }
 
                             onQuickScrollAnimatingChanged: {
                                 if (!quickScrollAnimating) {
-                                    isScrolling = false;
                                     timelineModel.setCurrentTweetId(homeListView.itemAt(homeListView.contentX, ( homeListView.contentY + Math.round(overviewPage.height / 2))).tweetModel.id_str);
-                                } else {
-                                    isScrolling = true;
                                 }
                             }
 
