@@ -137,3 +137,9 @@
 - A glimmer of hope for threads without developer mode, bots still seem to get an HTML view for tweets
 - That also brings back Open Graph previews for tweets :)
 - Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)
+
+* Wed Aug 25 2021 Sebastian Wolf <sebastian@ygriega.de> 1.9
+- Initial support for Emoji 13.1 (some issues though) - e.g. face in clouds, face with spiral eyes, bearded people etc.
+- Removed Twitter configuration retrieval (API deprecated, caused error message at startup)
+- Removed obsolete openssl/libcrypto dependency
+- Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)
