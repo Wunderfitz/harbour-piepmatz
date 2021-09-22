@@ -492,7 +492,7 @@ void AccountModel::initializeOpenWith()
             fileOut << QString("Name=Piepmatz").toUtf8() << "\n";
             fileOut << QString("Icon=harbour-piepmatz").toUtf8() << "\n";
             fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
-            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;").toUtf8() << "\n";
+            fileOut << QString("MimeType=x-url-handler/*twitter.com;").toUtf8() << "\n";
             fileOut << QString("X-Maemo-Service=de.ygriega.piepmatz").toUtf8() << "\n";
             fileOut << QString("X-Maemo-Method=de.ygriega.piepmatz.openUrl").toUtf8() << "\n";
             fileOut << QString("Hidden=true;").toUtf8() << "\n";
