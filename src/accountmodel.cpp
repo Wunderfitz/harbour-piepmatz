@@ -29,6 +29,7 @@
 #include <QNetworkConfiguration>
 #include <QTextStream>
 #include <QProcess>
+#include <QSysInfo>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
@@ -470,36 +471,78 @@ void AccountModel::initializeOpenWith()
 {
     qDebug() << "AccountModel::initializeOpenWith";
 
-    qDebug() << "Checking standard open URL file...";
-    QString openUrlFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/open-url.desktop";
-    if (QFile::exists(openUrlFilePath)) {
-        qDebug() << "Standard open URL file exists, good!";
+    const QStringList sailfishOSVersion = QSysInfo::productVersion().split(".");
+    int sailfishOSMajorVersion = sailfishOSVersion.value(0).toInt();
+    int sailfishOSMinorVersion = sailfishOSVersion.value(1).toInt();
+
+    const QString applicationsLocation(QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    const QString openUrlFilePath(applicationsLocation + "/open-url.desktop");
+    if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 2 )) {
+        if (QFile::exists(openUrlFilePath)) {
+            qDebug() << "Standard open URL file exists, good!";
+        } else {
+            qDebug() << "Copying standard open URL file to " << openUrlFilePath;
+            QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
+        }
     } else {
-        qDebug() << "Copying standard open URL file to " << openUrlFilePath;
-        QFile::copy("/usr/share/applications/open-url.desktop", openUrlFilePath);
-        QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+        if (QFile::exists(openUrlFilePath)) {
+            qDebug() << "Old open URL file exists, that needs to go away...!";
+            QFile::remove(openUrlFilePath);
+            QProcess::startDetached("update-desktop-database " + applicationsLocation);
+        }
+        // Something special for Verla...
+        if (sailfishOSMajorVersion == 4 && sailfishOSMinorVersion == 2) {
+            qDebug() << "Creating open URL file at " << openUrlFilePath;
+            QFile openUrlFile(openUrlFilePath);
+            if (openUrlFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+                QTextStream fileOut(&openUrlFile);
+                fileOut.setCodec("UTF-8");
+                fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
+                fileOut << QString("Type=Application").toUtf8() << "\n";
+                fileOut << QString("Name=Browser").toUtf8() << "\n";
+                fileOut << QString("Icon=icon-launcher-browser").toUtf8() << "\n";
+                fileOut << QString("NoDisplay=true").toUtf8() << "\n";
+                fileOut << QString("X-MeeGo-Logical-Id=sailfish-browser-ap-name").toUtf8() << "\n";
+                fileOut << QString("X-MeeGo-Translation-Catalog=sailfish-browser").toUtf8() << "\n";
+                fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;").toUtf8() << "\n";
+                fileOut << QString("X-Maemo-Service=org.sailfishos.browser.ui").toUtf8() << "\n";
+                fileOut << QString("X-Maemo-Object-Path=/ui").toUtf8() << "\n";
+                fileOut << QString("X-Maemo-Method=org.sailfishos.browser.ui.openUrl").toUtf8() << "\n";
+                fileOut.flush();
+                openUrlFile.close();
+                QProcess::startDetached("update-desktop-database " + applicationsLocation);
+            }
+        }
     }
 
     QString desktopFilePath = QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation) + "/harbour-piepmatz-open-url.desktop";
     QFile desktopFile(desktopFilePath);
-    if (!desktopFile.exists()) {
-        qDebug() << "Creating Open-With file at " << desktopFile.fileName();
-        if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            QTextStream fileOut(&desktopFile);
-            fileOut.setCodec("UTF-8");
-            fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
-            fileOut << QString("Type=Application").toUtf8() << "\n";
-            fileOut << QString("Name=Piepmatz").toUtf8() << "\n";
-            fileOut << QString("Icon=harbour-piepmatz").toUtf8() << "\n";
-            fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
-            fileOut << QString("MimeType=x-url-handler/*twitter.com;").toUtf8() << "\n";
-            fileOut << QString("X-Maemo-Service=de.ygriega.piepmatz").toUtf8() << "\n";
-            fileOut << QString("X-Maemo-Method=de.ygriega.piepmatz.openUrl").toUtf8() << "\n";
-            fileOut << QString("Hidden=true;").toUtf8() << "\n";
-            fileOut.flush();
-            desktopFile.close();
-            QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
+    if (desktopFile.exists()) {
+        qDebug() << "Piepmatz open-with file existing, removing...";
+        desktopFile.remove();
+        QProcess::startDetached("update-desktop-database " + applicationsLocation);
+    }
+    qDebug() << "Creating Open-With file at " << desktopFile.fileName();
+    if (desktopFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream fileOut(&desktopFile);
+        fileOut.setCodec("UTF-8");
+        fileOut << QString("[Desktop Entry]").toUtf8() << "\n";
+        fileOut << QString("Type=Application").toUtf8() << "\n";
+        fileOut << QString("Name=Piepmatz").toUtf8() << "\n";
+        fileOut << QString("Icon=harbour-piepmatz").toUtf8() << "\n";
+        fileOut << QString("NotShowIn=X-MeeGo;").toUtf8() << "\n";
+        if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 1 )) {
+            fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;").toUtf8() << "\n";
+        } else {
+            fileOut << QString("MimeType=x-url-handler/twitter.com;").toUtf8() << "\n";
         }
+        fileOut << QString("X-Maemo-Service=de.ygriega.piepmatz").toUtf8() << "\n";
+        fileOut << QString("X-Maemo-Method=de.ygriega.piepmatz.openUrl").toUtf8() << "\n";
+        fileOut << QString("Hidden=true;").toUtf8() << "\n";
+        fileOut.flush();
+        desktopFile.close();
+        QProcess::startDetached("update-desktop-database " + QStandardPaths::writableLocation(QStandardPaths::ApplicationsLocation));
     }
     QString dbusPathName = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/dbus-1/services";
     QDir dbusPath(dbusPathName);
