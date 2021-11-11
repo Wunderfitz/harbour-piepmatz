@@ -143,3 +143,7 @@
 - Removed Twitter configuration retrieval (API deprecated, caused error message at startup)
 - Removed obsolete openssl/libcrypto dependency
 - Updated translations for Chinese and Polish (thanks to dashinfantry and atlochowski)
+
+* Thu Nov 11 2021 Sebastian Wolf <sebastian@ygriega.de> 1.10
+- Enhanced open-with support, only coming up with twitter.com links from now
+- Fix: Normal URLs couldn't be opened anymore with the browser on SFOS 4.2
