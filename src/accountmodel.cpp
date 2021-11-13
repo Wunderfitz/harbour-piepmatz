@@ -535,7 +535,7 @@ void AccountModel::initializeOpenWith()
         if (sailfishOSMajorVersion < 4 || ( sailfishOSMajorVersion == 4 && sailfishOSMinorVersion < 1 )) {
             fileOut << QString("MimeType=text/html;x-scheme-handler/http;x-scheme-handler/https;").toUtf8() << "\n";
         } else {
-            fileOut << QString("MimeType=x-url-handler/twitter.com;").toUtf8() << "\n";
+            fileOut << QString("MimeType=x-url-handler/twitter.com;x-url-handler/mobile.twitter.com;x-url-handler/m.twitter.com;").toUtf8() << "\n";
         }
         fileOut << QString("X-Maemo-Service=de.ygriega.piepmatz").toUtf8() << "\n";
         fileOut << QString("X-Maemo-Method=de.ygriega.piepmatz.openUrl").toUtf8() << "\n";
