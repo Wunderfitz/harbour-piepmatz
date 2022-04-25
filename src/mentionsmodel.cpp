@@ -30,7 +30,7 @@ const char SETTINGS_LAST_KNOWN_FOLLOWERS[] = "lastKnownFollowers";
 // We generate this amount of named follower entries maximum...
 const int SETTINGS_MAX_NAMED_FOLLOWERS = 25;
 
-MentionsModel::MentionsModel(TwitterApi *twitterApi, AccountModel &accountModel) : settings("harbour-piepmatz", "settings")
+MentionsModel::MentionsModel(TwitterApi *twitterApi, AccountModel &accountModel) : settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat)
 {
     this->twitterApi = twitterApi;
     this->screenName = accountModel.getCurrentAccount().value("screen_name").toString();
@@ -254,7 +254,7 @@ void MentionsModel::resetStatus()
 void MentionsModel::initializeDatabase()
 {
     qDebug() << "MentionsModel::initializeDatabase";
-    QString databaseDirectory = getDirectory(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz");
+    QString databaseDirectory = getDirectory(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz");
     QString databaseFilePath = databaseDirectory + "/cache.db";
     database = QSqlDatabase::addDatabase("QSQLITE", "cache");
     database.setDatabaseName(databaseFilePath);

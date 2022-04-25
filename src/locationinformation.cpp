@@ -19,10 +19,11 @@
 #include "locationinformation.h"
 
 #include <QDebug>
+#include <QStandardPaths>
 
 const char SETTINGS_POSITIONING[] = "settings/positioning";
 
-LocationInformation::LocationInformation(QObject *parent) : QObject(parent), settings("harbour-piepmatz", "settings")
+LocationInformation::LocationInformation(QObject *parent) : QObject(parent), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat)
 {
     qDebug() << "Initializing location services...";
     source = QGeoPositionInfoSource::createDefaultSource(this);

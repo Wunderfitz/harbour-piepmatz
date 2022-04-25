@@ -32,6 +32,7 @@
 #include <QProcess>
 #include <QTextCodec>
 #include <QRegularExpression>
+#include <QStandardPaths>
 #include <QtDBus/QDBusConnection>
 #include <QtDBus/QDBusInterface>
 
@@ -39,7 +40,7 @@ const char SETTINGS_DEVELOPER_MODE[] = "twitterSettings/developerMode";
 const char SETTINGS_BEARER_TOKEN[] = "twitterSettings/bearerToken";
 
 //TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
-TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent), twitterSettings("harbour-piepmatz", "twitterSettings") {
+TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent), twitterSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/twitterSettings.conf") {
     this->requestor = requestor;
     this->manager = manager;
     this->secretIdentityRequestor = secretIdentityRequestor;

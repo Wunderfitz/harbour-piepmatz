@@ -48,8 +48,11 @@ AccountModel::AccountModel()
     , manager(new QNetworkAccessManager(this))
     , locationInformation(new LocationInformation(this))
     //, wagnis(new Wagnis(manager, "harbour-piepmatz", "1.4", this))
-    , settings("harbour-piepmatz", "settings")
+    , settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat)
 {
+    for (QString key : settings.allKeys()) {
+        qDebug() << "Key:" << key << ", value:" << settings.value(key);
+    }
     obtainEncryptionKey();
     initializeEnvironment();
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
@@ -140,9 +143,9 @@ QVariantList AccountModel::getOtherAccounts()
 void AccountModel::registerNewAccount()
 {
     qDebug() << "AccountModel::registerNewAccount";
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
     emit accountSwitched();
     this->initializeEnvironment();
 }
@@ -150,15 +153,15 @@ void AccountModel::registerNewAccount()
 void AccountModel::removeCurrentAccount()
 {
     qDebug() << "AccountModel::removeCurrentAccount";
-    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf");
-    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf");
-    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db");
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf");
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf");
+    QFile::remove(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache.db");
     if (!this->otherAccounts.isEmpty()) {
         // We also move to another account...
         QString newAccountName = this->otherAccounts.value(0).toString();
-        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf");
-        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf");
-        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db");
+        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf");
+        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf");
+        QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache.db");
     }
     emit accountSwitched();
     this->initializeEnvironment();
@@ -167,13 +170,13 @@ void AccountModel::removeCurrentAccount()
 void AccountModel::switchAccount(const QString &newAccountName)
 {
     qDebug() << "AccountModel::switchAccount" << newAccountName;
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings-" + this->availableAccounts.value(0).value("screen_name").toString() + ".conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache.db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache-" + this->availableAccounts.value(0).value("screen_name").toString() + ".db");
 
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz.conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf");
-    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz/cache.db");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings-" + newAccountName + ".conf", QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf");
+    QFile::rename(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache-" + newAccountName + ".db", QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/de.ygriega/piepmatz/cache.db");
     emit accountSwitched();
     this->initializeEnvironment();
 
@@ -426,7 +429,7 @@ void AccountModel::readOtherAccounts()
 {
     qDebug() << "AccountModel::readOtherAccounts";
     this->otherAccounts.clear();
-    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz";
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz";
     QDir configDirectory(configPath);
     QStringList nameFilter("*.conf");
     QStringList accountFiles = configDirectory.entryList(nameFilter);
@@ -449,7 +452,7 @@ void AccountModel::initializeSecretIdentity()
     if (this->getUseSecretIdentity()) {
         QString secretIdentity = this->getSecretIdentityName();
         qDebug() << "Using secret identity " << secretIdentity;
-        QString accountFileName = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/harbour-piepmatz-" + secretIdentity + ".conf";
+        QString accountFileName = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz-" + secretIdentity + ".conf";
         qDebug() << "Using file name " << accountFileName;
         QSettings *secretIdentitySettings = new QSettings(accountFileName, QSettings::IniFormat, this);
         O0SettingsStore *secretIdentitySettingsStore = new O0SettingsStore(secretIdentitySettings, encryptionKey, this);

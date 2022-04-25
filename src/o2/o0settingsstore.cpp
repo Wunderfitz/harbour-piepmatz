@@ -1,5 +1,6 @@
 #include <QCryptographicHash>
 #include <QByteArray>
+#include <QStandardPaths>
 
 #include "o0settingsstore.h"
 
@@ -9,7 +10,7 @@ static quint64 getHash(const QString &encryptionKey) {
 
 O0SettingsStore::O0SettingsStore(const QString &encryptionKey, QObject *parent):
     O0AbstractStore(parent), crypt_(getHash(encryptionKey)) {
-    settings_ = new QSettings(this);
+    settings_ = new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/harbour-piepmatz.conf", QSettings::NativeFormat, this);
 }
 
 O0SettingsStore::O0SettingsStore(QSettings *settings, const QString &encryptionKey, QObject *parent):

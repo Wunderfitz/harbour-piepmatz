@@ -21,10 +21,11 @@
 #include <QListIterator>
 #include <QMutableListIterator>
 #include <QRegExp>
+#include <QStandardPaths>
 
 const char SETTINGS_LAST_MESSAGE[] = "messages/lastId";
 
-DirectMessagesModel::DirectMessagesModel(TwitterApi *twitterApi) : settings("harbour-piepmatz", "settings")
+DirectMessagesModel::DirectMessagesModel(TwitterApi *twitterApi) : settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat)
 {
     this->twitterApi = twitterApi;
     this->incrementalUpdate = false;

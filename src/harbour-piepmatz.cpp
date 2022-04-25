@@ -26,6 +26,7 @@
 #include <QtQml>
 #include <QQmlContext>
 #include <QGuiApplication>
+#include <QDebug>
 
 #include "o1.h"
 #include "o1twitter.h"
@@ -46,12 +47,95 @@
 #include "dbusadaptor.h"
 //#include "wagnis/wagnis.h"
 
+void migrateSettings() {
+    const QStringList sailfishOSVersion = QSysInfo::productVersion().split(".");
+    int sailfishOSMajorVersion = sailfishOSVersion.value(0).toInt();
+    int sailfishOSMinorVersion = sailfishOSVersion.value(1).toInt();
+    if ((sailfishOSMajorVersion == 4 && sailfishOSMinorVersion >= 4) || sailfishOSMajorVersion > 4) {
+        qDebug() << "Checking if we need to migrate settings...";
+        QSettings settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat);
+        if (settings.contains("migrated")) {
+            return;
+        }
+        QSettings oldSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz/settings.conf", QSettings::NativeFormat);
+        const QStringList oldKeys = oldSettings.allKeys();
+        if (oldKeys.isEmpty()) {
+            return;
+        }
+        qDebug() << "SailfishOS >= 4.4 and old configuration file detected, migrating settings to new location...";
+        for (const QString &key : oldKeys) {
+            settings.setValue(key, oldSettings.value(key));
+        }
+
+        QDir oldConfigLocation(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/harbour-piepmatz");
+        qDebug() << "Old config directory: " + oldConfigLocation.path();
+        if (oldConfigLocation.exists()) {
+            qDebug() << "Old configuration files detected, migrating files to new location...";
+            const int oldConfigPathLength = oldConfigLocation.absolutePath().length();
+            QString configLocationPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz";
+            QDir configLocation(configLocationPath);
+            if (!configLocation.exists()) {
+                configLocation.mkpath(configLocationPath);
+            }
+            QDirIterator oldConfigIterator(oldConfigLocation, QDirIterator::Subdirectories);
+            while (oldConfigIterator.hasNext()) {
+                oldConfigIterator.next();
+                QFileInfo currentFileInfo = oldConfigIterator.fileInfo();
+                if (!currentFileInfo.isHidden() && currentFileInfo.fileName() != "settings.conf") {
+                    const QString subPath = currentFileInfo.absoluteFilePath().mid(oldConfigPathLength);
+                    const QString targetPath = configLocationPath + subPath;
+                    if (currentFileInfo.isDir()) {
+                        qDebug() << "Creating new directory " + targetPath;
+                        configLocation.mkpath(targetPath);
+                    } else if(currentFileInfo.isFile()) {
+                        qDebug() << "Copying file to " + targetPath;
+                        QFile::copy(currentFileInfo.absoluteFilePath(), targetPath);
+                    }
+                }
+            }
+        }
+
+        QDir oldDataLocation(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/harbour-piepmatz");
+        qDebug() << "Old data directory: " + oldDataLocation.path();
+        if (oldDataLocation.exists()) {
+            qDebug() << "Old data files detected, migrating files to new location...";
+            const int oldDataPathLength = oldDataLocation.absolutePath().length();
+            QString dataLocationPath = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+            QDir dataLocation(dataLocationPath);
+            if (!dataLocation.exists()) {
+                dataLocation.mkpath(dataLocationPath);
+            }
+            QDirIterator oldDataIterator(oldDataLocation, QDirIterator::Subdirectories);
+            while (oldDataIterator.hasNext()) {
+                oldDataIterator.next();
+                QFileInfo currentFileInfo = oldDataIterator.fileInfo();
+                if (!currentFileInfo.isHidden()) {
+                    const QString subPath = currentFileInfo.absoluteFilePath().mid(oldDataPathLength);
+                    const QString targetPath = dataLocationPath + subPath;
+                    if (currentFileInfo.isDir()) {
+                        qDebug() << "Creating new directory " + targetPath;
+                        dataLocation.mkpath(targetPath);
+                    } else if(currentFileInfo.isFile()) {
+                        qDebug() << "Copying file to " + targetPath;
+                        QFile::copy(currentFileInfo.absoluteFilePath(), targetPath);
+                    }
+                }
+            }
+        }
+
+        settings.setValue("migrated", true);
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
     QScopedPointer<QQuickView> view(SailfishApp::createView());
 
     QQmlContext *context = view.data()->rootContext();
+
+    migrateSettings();
+
     AccountModel accountModel;
     context->setContextProperty("accountModel", &accountModel);
 

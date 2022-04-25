@@ -19,11 +19,12 @@
 #include "timelinemodel.h"
 
 #include <QListIterator>
+#include <QStandardPaths>
 
 const char SETTINGS_CURRENT_TWEET[] = "tweets/currentId";
 
 TimelineModel::TimelineModel(TwitterApi *twitterApi)
-    : coverModel(new CoverModel(this)), settings("harbour-piepmatz", "settings")
+    : coverModel(new CoverModel(this)), settings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/settings.conf", QSettings::NativeFormat)
 {
     this->twitterApi = twitterApi;
 
