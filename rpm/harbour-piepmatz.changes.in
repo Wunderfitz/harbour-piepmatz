@@ -150,3 +150,7 @@
 
 * Sat Nov 13 2021 Sebastian Wolf <sebastian@ygriega.de> 1.10.1
 - Open-with support now includes m.twitter.com and mobile.twitter.com
+
+* Wed Apr 27 2022 Sebastian Wolf <sebastian@ygriega.de> 1.11
+- Emoji 14.0 support
+- Adjustments to SFOS 4.4 - SailJail profile, configuration migration
