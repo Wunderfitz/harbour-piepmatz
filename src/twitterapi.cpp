@@ -2426,14 +2426,22 @@ void TwitterApi::handleGetSingleTweetFinished()
     QGumboDocument parsedResult = QGumboDocument::parse(resultDocument);
     QGumboNode root = parsedResult.rootNode();
 
-    QGumboNodes tweetNodes = root.getElementsByClassName("tweet");
     QVariantList relatedTweets;
-    for (QGumboNode &tweetNode : tweetNodes) {
-        QStringList tweetClassList = tweetNode.classList();
-        if (!tweetClassList.contains("promoted-tweet")) {
-            QString otherTweetId = tweetNode.getAttribute("data-tweet-id");
-            if (!otherTweetId.isEmpty()) {
-                qDebug() << "Found Tweet ID: " << otherTweetId;
+
+    QGumboNodes metaNodes = root.getElementsByTagName(HtmlTag::META);
+    for (QGumboNode &metaNode : metaNodes) {
+        if (!metaNode.hasAttribute("itemProp")) {
+            continue;
+        }
+        if (metaNode.getAttribute("itemProp") != "url") {
+            continue;
+        }
+        QString tweetUrlCandidate = metaNode.getAttribute("content");
+        QRegExp contentTweetIdRegex("status\\/(\\d+)$");
+        if (contentTweetIdRegex.indexIn(tweetUrlCandidate) != -1) {
+            QString otherTweetId = contentTweetIdRegex.cap(1);
+            qDebug() << "Found Tweet ID: " << otherTweetId;
+            if (!relatedTweets.contains(otherTweetId)) {
                 relatedTweets.append(otherTweetId);
             }
         }
