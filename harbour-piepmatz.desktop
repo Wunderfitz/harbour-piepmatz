@@ -6,6 +6,6 @@ Exec=harbour-piepmatz
 Name=Piepmatz
 
 [X-Sailjail]
-Permissions=Audio;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;UserDirs;Videos
+Permissions=Audio;Documents;Downloads;Internet;Location;MediaIndexing;Microphone;Music;Pictures;PublicDir;RemovableMedia;UserDirs;Videos
 OrganizationName=de.ygriega
 ApplicationName=piepmatz

@@ -154,3 +154,7 @@
 * Wed Apr 27 2022 Sebastian Wolf <sebastian@ygriega.de> 1.11
 - Emoji 14.0 support
 - Adjustments to SFOS 4.4 - SailJail profile, configuration migration
+
+* Sun Jun 26 2022 Sebastian Wolf <sebastian@ygriega.de> 1.12
+- Fix thread support
+- Add removable media permission to SailJail profile
