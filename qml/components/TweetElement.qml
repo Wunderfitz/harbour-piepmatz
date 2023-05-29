@@ -281,7 +281,7 @@ Item {
                         textFormat: Text.StyledText
                         maximumLineCount: 3
                         onLinkActivated: {
-                            Functions.handleLink(link);
+                            pageStack.push(Qt.resolvedUrl("../pages/TweetWebViewPage.qml"), { "tweetUrl": link });
                         }
                         linkColor: Theme.highlightColor
                     }

@@ -13,6 +13,7 @@
 TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp c++11
+PKGCONFIG += qt5embedwidget
 
 QT += core dbus positioning sql
 
@@ -137,4 +138,5 @@ HEADERS += \
 
 DISTFILES += \
     qml/pages/*.qml \
-    qml/components/*.qml
+    qml/components/*.qml \
+    qml/pages/TweetWebViewPage.qml
