@@ -975,6 +975,10 @@
         <source>Tweet to %1</source>
         <translation>ZaTweetuj do %1</translation>
     </message>
+    <message>
+        <source>Additional content. &lt;a href=&quot;%1&quot;&gt;Show more...&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TweetPage</name>

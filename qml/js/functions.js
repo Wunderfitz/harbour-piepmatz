@@ -122,9 +122,14 @@ function enhanceTweetText(tweetText, entities, extendedEntities, withReferenceUr
     for (var i = 0; i < entities.urls.length; i++ ) {
         var tweetId = getTweetId(entities.urls[i].expanded_url);
         if (tweetId !== null && followEmbeddedTweet) {
-            // Remove tweet URLs - will become embedded tweets...
-            embeddedTweetId = tweetId;
-            twitterApi.showStatus(tweetId);
+            if (tweetId === tweetElementItem.tweetId) {
+                blueTweet = true;
+                blueTweetUrl = entities.urls[i].expanded_url;
+            } else {
+                // Remove tweet URLs - will become embedded tweets...
+                embeddedTweetId = tweetId;
+                twitterApi.showStatus(tweetId);
+            }
             replacements.push(new Replacement(entities.urls[i].indices[0], entities.urls[i].indices[1], entities.urls[i].url, ""));
         } else {
             var url_replacement = "<a href=\"" + entities.urls[i].expanded_url + "\">" + entities.urls[i].display_url + "</a>";

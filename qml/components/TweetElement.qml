@@ -36,6 +36,8 @@ Item {
     property string embeddedTweetId;
     property variant embeddedTweet;
     property bool hasEmbeddedTweet : false;
+    property bool blueTweet : false;
+    property string blueTweetUrl;
     property string referenceUrl;
     property variant referenceMetadata;
     property bool hasReference : false;
@@ -263,6 +265,33 @@ Item {
                     id: tweetContentText
                     tweet: tweetModel
                     truncateText: tweetElementItem.isRetweetMention
+                }
+
+                Component {
+                    id: blueTweetComponent
+                    Text {
+                        width: parent.width
+                        id: blueTweetText
+                        text: qsTr("Additional content. <a href=\"%1\">Show more...</a>").arg(blueTweetUrl)
+                        font.pixelSize: infoTextFontSize
+                        font.italic: true
+                        color: Theme.primaryColor
+                        elide: Text.ElideRight
+                        wrapMode: Text.Wrap
+                        textFormat: Text.StyledText
+                        maximumLineCount: 3
+                        onLinkActivated: {
+                            Functions.handleLink(link);
+                        }
+                        linkColor: Theme.highlightColor
+                    }
+                }
+
+                Loader {
+                    id: blueTweetLoader
+                    active: blueTweet
+                    width: parent.width
+                    sourceComponent: blueTweetComponent
                 }
 
                 Connections {
@@ -696,6 +725,7 @@ Item {
                     width: parent.width
                     sourceComponent: embeddedTweetComponent
                 }
+
             }
         }
     }
