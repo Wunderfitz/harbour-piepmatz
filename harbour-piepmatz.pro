@@ -13,7 +13,7 @@
 TARGET = harbour-piepmatz
 
 CONFIG += sailfishapp c++11
-PKGCONFIG += qt5embedwidget
+PKGCONFIG += qt5embedwidget libsailfishkeyprovider
 
 QT += core dbus positioning sql
 

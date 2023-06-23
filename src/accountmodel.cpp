@@ -30,6 +30,7 @@
 #include <QTextStream>
 #include <QProcess>
 #include <QSysInfo>
+#include <libsailfishkeyprovider/sailfishkeyprovider.h>
 
 const char SETTINGS_IMAGE_PATH[] = "settings/imagePath";
 const char SETTINGS_USE_EMOJI[] = "settings/useEmojis";
@@ -53,7 +54,9 @@ AccountModel::AccountModel()
     for (QString key : settings.allKeys()) {
         qDebug() << "Key:" << key << ", value:" << settings.value(key);
     }
+
     obtainEncryptionKey();
+    obtainTwitterSecrets();
     initializeEnvironment();
     connect(&emojiSearchWorker, SIGNAL(searchCompleted(QString, QVariantList)), this, SLOT(handleEmojiSearchCompleted(QString, QVariantList)));
 }
@@ -69,8 +72,8 @@ void AccountModel::initializeEnvironment()
 {
     O0SettingsStore *settings = new O0SettingsStore(encryptionKey);
     o1->setStore(settings);
-    o1->setClientId(TWITTER_CLIENT_ID);
-    o1->setClientSecret(TWITTER_CLIENT_SECRET);
+    o1->setClientId(this->twitterClientId);
+    o1->setClientSecret(this->twitterClientSecret);
     connect(o1, &O1Twitter::pinRequestError, this, &AccountModel::handlePinRequestError);
     connect(o1, &O1Twitter::pinRequestSuccessful, this, &AccountModel::handlePinRequestSuccessful);
     connect(o1, &O1Twitter::linkingFailed, this, &AccountModel::handleLinkingFailed);
@@ -585,6 +588,34 @@ void AccountModel::handleEmojiSearchCompleted(const QString &queryString, const 
 {
     qDebug() << "TwitterApi::handleEmojiSearchCompleted" << queryString;
     emit emojiSearchSuccessful(resultList);
+
+}
+
+void AccountModel::obtainTwitterSecrets()
+{
+    if (QString(TWITTER_CLIENT_ID).isEmpty()) {
+        char *sailfishConsumerKey = NULL;
+        qDebug() << "Retrieving Twitter consumer key from Sailfish key database...";
+        int consumerKeyReturnCode = SailfishKeyProvider_storedKey("twitter", "twitter-sync", "consumer_key", &sailfishConsumerKey);
+        qDebug() << "Twitter consumer key retrieval return code " << consumerKeyReturnCode;
+        this->twitterClientId = QString(sailfishConsumerKey);
+        free(sailfishConsumerKey);
+    } else {
+        qDebug() << "This build comes with an own Twitter client ID, good!";
+        this->twitterClientId = QString(TWITTER_CLIENT_ID);
+    }
+
+    if (QString(TWITTER_CLIENT_SECRET).isEmpty()) {
+        char *sailfishConsumerSecret = NULL;
+        qDebug() << "Retrieving Twitter consumer secret from Sailfish key database...";
+        int consumerSecretReturnCode = SailfishKeyProvider_storedKey("twitter", "twitter-sync", "consumer_secret", &sailfishConsumerSecret);
+        qDebug() << "Twitter consumer secret retrieval return code " << consumerSecretReturnCode;
+        this->twitterClientSecret = QString(sailfishConsumerSecret);
+        free(sailfishConsumerSecret);
+    } else {
+        qDebug() << "This build comes with an own Twitter client secret, good!";
+        this->twitterClientSecret = QString(TWITTER_CLIENT_SECRET);
+    }
 
 }
 

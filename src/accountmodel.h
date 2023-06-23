@@ -108,6 +108,8 @@ public slots:
     void handleEmojiSearchCompleted(const QString &queryString, const QVariantList &resultList);
 
 private:
+    QString twitterClientId;
+    QString twitterClientSecret;
     QList<QVariantMap> availableAccounts;
     QNetworkConfigurationManager * const networkConfigurationManager;
     QString encryptionKey;
@@ -124,6 +126,7 @@ private:
     DBusInterface *dbusInterface;
     EmojiSearchWorker emojiSearchWorker;
 
+    void obtainTwitterSecrets();
     void obtainEncryptionKey();
     void initializeEnvironment();
     void readOtherAccounts();
