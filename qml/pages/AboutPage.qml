@@ -92,6 +92,16 @@ Page {
             }
 
             Label {
+                text: "Alive or Undead Edition"
+                horizontalAlignment: Text.AlignHCenter
+                font.pixelSize: Theme.fontSizeLarge
+                font.italic: true
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                }
+            }
+
+            Label {
                 wrapMode: Text.Wrap
                 x: Theme.horizontalPageMargin
                 width: parent.width - ( 2 * Theme.horizontalPageMargin )
