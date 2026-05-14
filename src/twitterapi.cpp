@@ -416,23 +416,22 @@ void TwitterApi::showStatus(const QString &statusId, const bool &useSecretIdenti
         sanitizedStatus = statusId.left(qm);
     }
     qDebug() << "TwitterApi::showStatus" << sanitizedStatus;
-    QUrl url = QUrl(API_STATUSES_SHOW);
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("include_entities", "true");
-    urlQuery.addQueryItem("trim_user", "false");
-    urlQuery.addQueryItem("id", sanitizedStatus);
-    urlQuery.addQueryItem("include_ext_alt_text", "true");
+
+    QUrl url = QUrl(QString(API_V2_TWEETS_BASE) + sanitizedStatus);
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id");
+    urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
+    urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
-    requestParameters.append(O0RequestParameter(QByteArray("id"), sanitizedStatus.toUtf8()));
-    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id")));
+    requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
+    requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
 
     QNetworkReply *reply;
     if (useSecretIdentity && secretIdentityRequestor != nullptr) {
@@ -1793,7 +1792,9 @@ void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
     qDebug() << "Tweet couldn't be loaded for URL " << reply->request().url().toString() << ", errors: " << parsedErrorResponse;
     // emit showStatusError(parsedErrorResponse.value("message").toString());
-    QUrlQuery urlQuery(reply->request().url());
+    // Extract tweet ID from v2 URL path: https://api.x.com/2/tweets/{id}?...
+    QString requestPath = reply->request().url().path();
+    QString tweetId = requestPath.mid(requestPath.lastIndexOf('/') + 1);
     if (reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
         qDebug() << "Probably a secret identity response...";
     } else {
@@ -1801,8 +1802,8 @@ void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
     }
     // We use the secret identity if it exists, if we were blocked and if the previous request wasn't already a secret request
     if (secretIdentityRequestor != nullptr && parsedErrorResponse.value("code") == "136" && !reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
-        qDebug() << "Using secret identity for tweet " << urlQuery.queryItemValue("id");
-        this->showStatus(urlQuery.queryItemValue("id"), true);
+        qDebug() << "Using secret identity for tweet " << tweetId;
+        this->showStatus(tweetId, true);
     } else {
         QVariantMap fakeTweet;
         fakeTweet.insert("fakeTweet", true);
@@ -1826,7 +1827,7 @@ void TwitterApi::handleShowStatusError(QNetworkReply::NetworkError error)
         fakeEntities.insert("user_mentions", fakeMentions);
         fakeTweet.insert("entities", fakeEntities);
         fakeTweet.insert("created_at", "Sun Jan 05 13:05:00 +0000 2020");
-        fakeTweet.insert("id_str", urlQuery.queryItemValue("id"));
+        fakeTweet.insert("id_str", tweetId);
         fakeTweet.insert("full_text", parsedErrorResponse.value("message").toString());
         emit showStatusSuccessful(fakeTweet);
     }
@@ -1836,11 +1837,6 @@ void TwitterApi::handleShowStatusFinished()
 {
     qDebug() << "TwitterApi::handleShowStatusFinished";
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    if (reply->request().hasRawHeader(HEADER_NO_RECURSION)) {
-        qDebug() << "Probably a secret identity response...";
-    } else {
-        qDebug() << "Standard response...";
-    }
     reply->deleteLater();
     if (reply->error() != QNetworkReply::NoError) {
         return;
@@ -1849,7 +1845,34 @@ void TwitterApi::handleShowStatusFinished()
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
         QJsonObject responseObject = jsonDocument.object();
-        emit showStatusSuccessful(responseObject.toVariantMap());
+        QJsonObject tweetData = responseObject.value("data").toObject();
+        if (tweetData.isEmpty()) {
+            emit showStatusError("Piepmatz couldn't understand Twitter's response! (Show Status)");
+            return;
+        }
+
+        QJsonObject includes = responseObject.value("includes").toObject();
+
+        QVariantMap usersById;
+        for (const QJsonValue &val : includes.value("users").toArray()) {
+            QJsonObject user = val.toObject();
+            usersById.insert(user.value("id").toString(), normalizeUserV2(user));
+        }
+
+        QVariantMap mediaByKey;
+        for (const QJsonValue &val : includes.value("media").toArray()) {
+            QJsonObject media = val.toObject();
+            mediaByKey.insert(media.value("media_key").toString(), media.toVariantMap());
+        }
+
+        QVariantMap tweetsById;
+        for (const QJsonValue &val : includes.value("tweets").toArray()) {
+            QJsonObject tweet = val.toObject();
+            tweetsById.insert(tweet.value("id").toString(), tweet.toVariantMap());
+        }
+
+        QVariantMap normalizedTweet = normalizeTweetV2(tweetData, usersById, mediaByKey, tweetsById);
+        emit showStatusSuccessful(normalizedTweet);
     } else {
         emit showStatusError("Piepmatz couldn't understand Twitter's response! (Show Status)");
     }
