@@ -1431,6 +1431,17 @@ QVariantMap TwitterApi::normalizeMediaV2(const QJsonObject &media)
 
     if (mediaType == "photo") {
         v1Media.insert("media_url_https", media.value("url").toString());
+        int width = media.value("width").toInt();
+        int height = media.value("height").toInt();
+        if (width > 0 && height > 0) {
+            QVariantMap largeSize;
+            largeSize.insert("w", width);
+            largeSize.insert("h", height);
+            largeSize.insert("resize", "fit");
+            QVariantMap sizes;
+            sizes.insert("large", largeSize);
+            v1Media.insert("sizes", sizes);
+        }
     } else {
         v1Media.insert("media_url_https", media.value("preview_image_url").toString());
         QVariantMap videoInfo;
