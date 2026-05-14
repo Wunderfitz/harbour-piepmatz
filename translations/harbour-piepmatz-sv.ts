@@ -1010,6 +1010,13 @@ Jag vill bara veta hur många användare Piepmatz har och var de kommer ifrån. 
     </message>
 </context>
 <context>
+    <name>TweetText</name>
+    <message>
+        <source>&lt;a href=&quot;note_tweet&quot;&gt;Show more...&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TweetUser</name>
     <message>
         <source>@%1</source>

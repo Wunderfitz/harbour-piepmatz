@@ -27,6 +27,7 @@ Column {
     id: tweetTextColumn
     property variant tweet;
     property bool truncateText : false;
+    property bool noteTweetExpanded: false;
     property string componentFontSize: ( accountModel.getFontSize() === "piepmatz" ? Theme.fontSizeExtraSmall : Theme.fontSizeSmall) ;
     visible: (tweetContentText.text !== "")
 
@@ -45,9 +46,9 @@ Column {
 
     function makeTheTextGreatAgain() {
         var relevantTweet = Functions.getRelevantTweet(tweetTextColumn.tweet);
-        var greatifiedText = relevantTweet.full_text;
-        greatifiedText = Emoji.emojify(Functions.enhanceText(greatifiedText, relevantTweet.entities, relevantTweet.extended_entities), componentFontSize);
-        return greatifiedText;
+        var tweetText = (tweetTextColumn.noteTweetExpanded && relevantTweet.note_tweet) ? relevantTweet.note_tweet : relevantTweet.full_text;
+        var entities = (tweetTextColumn.noteTweetExpanded && relevantTweet.note_tweet_entities) ? relevantTweet.note_tweet_entities : relevantTweet.entities;
+        return Emoji.emojify(Functions.enhanceText(tweetText, entities, relevantTweet.extended_entities), componentFontSize);
     }
 
     Text {
@@ -65,6 +66,23 @@ Column {
             Functions.handleLink(link);
         }
         linkColor: Theme.highlightColor
+    }
+
+    Text {
+        id: noteTweetShowMore
+        property var relevantTweet: Functions.getRelevantTweet(tweetTextColumn.tweet)
+        visible: !tweetTextColumn.truncateText && !tweetTextColumn.noteTweetExpanded
+                 && !!relevantTweet.note_tweet
+                 && relevantTweet.note_tweet.length > relevantTweet.full_text.length
+        width: parent.width
+        text: qsTr("<a href=\"note_tweet\">Show more...</a>")
+        font.pixelSize: componentFontSize
+        color: Theme.primaryColor
+        textFormat: Text.StyledText
+        linkColor: Theme.highlightColor
+        onLinkActivated: {
+            tweetTextColumn.noteTweetExpanded = true;
+        }
     }
 }
 

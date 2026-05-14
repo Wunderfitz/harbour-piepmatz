@@ -326,7 +326,7 @@ void TwitterApi::homeTimeline(const QString &paginationToken)
 
     QUrl url = QUrl(QString(API_V2_HOME_TIMELINE_BASE) + myUserId + "/timelines/reverse_chronological");
     QUrlQuery urlQuery;
-    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id");
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
     urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
     urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
     urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
@@ -339,7 +339,7 @@ void TwitterApi::homeTimeline(const QString &paginationToken)
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
     QList<O0RequestParameter> requestParameters;
-    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id")));
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet")));
     requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
     requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
     requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
@@ -419,7 +419,7 @@ void TwitterApi::showStatus(const QString &statusId, const bool &useSecretIdenti
 
     QUrl url = QUrl(QString(API_V2_TWEETS_BASE) + sanitizedStatus);
     QUrlQuery urlQuery;
-    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id");
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
     urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
     urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
     urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
@@ -428,7 +428,7 @@ void TwitterApi::showStatus(const QString &statusId, const bool &useSecretIdenti
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
     QList<O0RequestParameter> requestParameters;
-    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id")));
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet")));
     requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
     requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
     requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
@@ -1531,6 +1531,14 @@ QVariantMap TwitterApi::normalizeTweetV2(const QJsonObject &tweet, const QVarian
         v1Entities.insert("symbols", QVariantList());
     }
     v1Tweet.insert("entities", v1Entities);
+
+    if (tweet.contains("note_tweet")) {
+        QJsonObject noteTweet = tweet.value("note_tweet").toObject();
+        v1Tweet.insert("note_tweet", noteTweet.value("text").toString());
+        if (noteTweet.contains("entities")) {
+            v1Tweet.insert("note_tweet_entities", normalizeEntitiesV2(noteTweet.value("entities").toObject(), usersById));
+        }
+    }
 
     if (tweet.contains("attachments")) {
         QJsonArray mediaKeys = tweet.value("attachments").toObject().value("media_keys").toArray();
