@@ -1565,6 +1565,39 @@ QVariantMap TwitterApi::normalizeTweetV2(const QJsonObject &tweet, const QVarian
             QVariantMap extendedEntities;
             extendedEntities.insert("media", v1MediaList);
             v1Tweet.insert("extended_entities", extendedEntities);
+
+            // Find the pic.twitter.com/pic.x.com URL in entities.urls, remove it from the
+            // rendered link list, and wire its t.co URL + indices onto each media item so
+            // that enhanceTweetText() blanks it out from the tweet text.
+            QVariantMap v1EntitiesMutable = v1Tweet.value("entities").toMap();
+            QVariantList v1Urls = v1EntitiesMutable.value("urls").toList();
+            QString picUrl;
+            QVariantList picIndices;
+            QVariantList filteredUrls;
+            for (const QVariant &uv : v1Urls) {
+                QVariantMap u = uv.toMap();
+                QString displayUrl = u.value("display_url").toString();
+                if (picUrl.isEmpty() && (displayUrl.startsWith("pic.twitter.com") || displayUrl.startsWith("pic.x.com"))) {
+                    picUrl = u.value("url").toString();
+                    picIndices = u.value("indices").toList();
+                } else {
+                    filteredUrls.append(u);
+                }
+            }
+            if (!picUrl.isEmpty()) {
+                v1EntitiesMutable.insert("urls", filteredUrls);
+                v1Tweet.insert("entities", v1EntitiesMutable);
+                QVariantList updatedMedia;
+                for (const QVariant &mv : v1MediaList) {
+                    QVariantMap mediaItem = mv.toMap();
+                    mediaItem.insert("url", picUrl);
+                    mediaItem.insert("indices", picIndices);
+                    updatedMedia.append(mediaItem);
+                }
+                QVariantMap updatedExtended;
+                updatedExtended.insert("media", updatedMedia);
+                v1Tweet.insert("extended_entities", updatedExtended);
+            }
         }
     }
 
