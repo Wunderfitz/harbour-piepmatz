@@ -44,7 +44,7 @@ const char API_HELP_TOS[] = "https://api.twitter.com/1.1/help/tos.json";
 const char API_MEDIA_UPLOAD[] = "https://upload.twitter.com/1.1/media/upload.json";
 const char API_MEDIA_METADATA_CREATE[] = "https://upload.twitter.com/1.1/media/metadata/create.json";
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
-const char API_STATUSES_HOME_TIMELINE[] = "https://api.twitter.com/1.1/statuses/home_timeline.json";
+const char API_V2_HOME_TIMELINE_BASE[] = "https://api.x.com/2/users/";
 const char API_STATUSES_MENTIONS_TIMELINE[] = "https://api.twitter.com/1.1/statuses/mentions_timeline.json";
 const char API_STATUSES_RETWEET_TIMELINE[] = "https://api.twitter.com/1.1/statuses/retweets_of_me.json";
 const char API_FOLLOWERS_LIST[] = "https://api.twitter.com/1.1/followers/list.json";
@@ -143,6 +143,8 @@ public:
     Q_INVOKABLE void setDeveloperMode(const bool enableDeveloperMode);
     Q_INVOKABLE QString getBearerToken();
     Q_INVOKABLE void setBearerToken(const QString &bearerToken);
+    Q_INVOKABLE QString getMyUserId();
+    Q_INVOKABLE void setMyUserId(const QString &userId);
 
     Q_INVOKABLE QVariantMap parseErrorResponse(const QString &errorText, const QByteArray &responseText);
 
@@ -157,7 +159,7 @@ signals:
     void helpTosError(const QString &errorMessage);
     void tweetSuccessful(const QVariantMap &result);
     void tweetError(const QString &errorMessage);
-    void homeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
+    void homeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate, const QString &nextToken);
     void homeTimelineError(const QString &errorMessage);
     void mentionsTimelineSuccessful(const QVariantList &result);
     void mentionsTimelineError(const QString &errorMessage);
@@ -245,6 +247,12 @@ private:
     QNetworkAccessManager *manager;
     QSettings twitterSettings;
     //Wagnis *wagnis;
+
+    QVariantList normalizeV2TimelineResponse(const QJsonObject &responseObj, QString &nextToken);
+    QVariantMap normalizeTweetV2(const QJsonObject &tweet, const QVariantMap &usersById, const QVariantMap &mediaByKey, const QVariantMap &tweetsById);
+    QVariantMap normalizeUserV2(const QJsonObject &user);
+    QVariantMap normalizeEntitiesV2(const QJsonObject &v2Entities, const QVariantMap &usersById);
+    QVariantMap normalizeMediaV2(const QJsonObject &media);
 
 private slots:
     void handleVerifyCredentialsSuccessful();

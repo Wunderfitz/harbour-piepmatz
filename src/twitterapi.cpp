@@ -38,6 +38,7 @@
 
 const char SETTINGS_DEVELOPER_MODE[] = "twitterSettings/developerMode";
 const char SETTINGS_BEARER_TOKEN[] = "twitterSettings/bearerToken";
+const char SETTINGS_MY_USER_ID[] = "twitterSettings/myUserId";
 
 //TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, Wagnis *wagnis, QObject* parent) : QObject(parent) {
 TwitterApi::TwitterApi(O1Requestor* requestor, QNetworkAccessManager *manager, O1Requestor *secretIdentityRequestor, QObject* parent) : QObject(parent), twitterSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/de.ygriega/piepmatz/twitterSettings.conf", QSettings::NativeFormat) {
@@ -312,39 +313,48 @@ void TwitterApi::replyToTweetWithImages(const QString &text, const QString &repl
     connect(reply, SIGNAL(finished()), this, SLOT(handleTweetFinished()));
 }
 
-void TwitterApi::homeTimeline(const QString &maxId)
+void TwitterApi::homeTimeline(const QString &paginationToken)
 {
-    qDebug() << "TwitterApi::homeTimeline" << maxId;
-    QUrl url = QUrl(API_STATUSES_HOME_TIMELINE);
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("exclude_replies", "false");
-    if (!maxId.isEmpty()) {
-        urlQuery.addQueryItem("max_id", maxId);
+    qDebug() << "TwitterApi::homeTimeline paginationToken:" << paginationToken;
+
+    QString myUserId = getMyUserId();
+    if (myUserId.isEmpty()) {
+        qWarning() << "TwitterApi::homeTimeline: user ID not set, cannot build v2 URL";
+        emit homeTimelineError("User ID not available for timeline request. Please verify credentials first.");
+        return;
     }
-    urlQuery.addQueryItem("count", "200");
-    urlQuery.addQueryItem("include_ext_alt_text", "true");
+
+    QUrl url = QUrl(QString(API_V2_HOME_TIMELINE_BASE) + myUserId + "/timelines/reverse_chronological");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id");
+    urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
+    urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
+    urlQuery.addQueryItem("max_results", "10");
+    if (!paginationToken.isEmpty()) {
+        urlQuery.addQueryItem("pagination_token", paginationToken);
+    }
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("exclude_replies"), QByteArray("false")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
-    if (!maxId.isEmpty()) {
-        requestParameters.append(O0RequestParameter(QByteArray("max_id"), maxId.toUtf8()));
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id")));
+    requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
+    requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
+    requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("10")));
+    if (!paginationToken.isEmpty()) {
+        requestParameters.append(O0RequestParameter(QByteArray("pagination_token"), paginationToken.toUtf8()));
     }
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
-    if (maxId.isEmpty()) {
+    if (paginationToken.isEmpty()) {
         connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineFinished()));
     } else {
         connect(reply, SIGNAL(finished()), this, SLOT(handleHomeTimelineLoadMoreFinished()));
     }
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleHomeTimelineError(QNetworkReply::NetworkError)));
-
 }
 
 void TwitterApi::mentionsTimeline()
@@ -1295,6 +1305,254 @@ void TwitterApi::setBearerToken(const QString &bearerToken)
     emit bearerTokenChanged(bearerToken);
 }
 
+QString TwitterApi::getMyUserId()
+{
+    return twitterSettings.value(SETTINGS_MY_USER_ID, "").toString();
+}
+
+void TwitterApi::setMyUserId(const QString &userId)
+{
+    qDebug() << "TwitterApi::setMyUserId" << userId;
+    twitterSettings.setValue(SETTINGS_MY_USER_ID, userId);
+}
+
+QVariantList TwitterApi::normalizeV2TimelineResponse(const QJsonObject &responseObj, QString &nextToken)
+{
+    QVariantList result;
+
+    QJsonObject includes = responseObj.value("includes").toObject();
+
+    QVariantMap usersById;
+    for (const QJsonValue &val : includes.value("users").toArray()) {
+        QJsonObject user = val.toObject();
+        QString userId = user.value("id").toString();
+        usersById.insert(userId, normalizeUserV2(user));
+    }
+
+    QVariantMap mediaByKey;
+    for (const QJsonValue &val : includes.value("media").toArray()) {
+        QJsonObject media = val.toObject();
+        mediaByKey.insert(media.value("media_key").toString(), media.toVariantMap());
+    }
+
+    QVariantMap tweetsById;
+    for (const QJsonValue &val : includes.value("tweets").toArray()) {
+        QJsonObject tweet = val.toObject();
+        tweetsById.insert(tweet.value("id").toString(), tweet.toVariantMap());
+    }
+
+    nextToken = responseObj.value("meta").toObject().value("next_token").toString();
+
+    for (const QJsonValue &val : responseObj.value("data").toArray()) {
+        QVariantMap v1Tweet = normalizeTweetV2(val.toObject(), usersById, mediaByKey, tweetsById);
+        if (!v1Tweet.isEmpty()) {
+            result.append(v1Tweet);
+        }
+    }
+
+    return result;
+}
+
+QVariantMap TwitterApi::normalizeUserV2(const QJsonObject &user)
+{
+    QVariantMap v1User;
+    QString userId = user.value("id").toString();
+    v1User.insert("id_str", userId);
+    v1User.insert("id", userId.toLongLong());
+    v1User.insert("name", user.value("name").toString());
+    v1User.insert("screen_name", user.value("username").toString());
+    QString profileImageUrl = user.value("profile_image_url").toString();
+    v1User.insert("profile_image_url_https", profileImageUrl);
+    v1User.insert("profile_image_url", profileImageUrl);
+    v1User.insert("verified", user.value("verified").toBool());
+    v1User.insert("protected", user.value("protected").toBool());
+    v1User.insert("description", user.value("description").toString());
+    if (user.contains("public_metrics")) {
+        QJsonObject metrics = user.value("public_metrics").toObject();
+        v1User.insert("followers_count", metrics.value("followers_count").toInt());
+        v1User.insert("friends_count", metrics.value("following_count").toInt());
+        v1User.insert("statuses_count", metrics.value("tweet_count").toInt());
+    }
+    return v1User;
+}
+
+QVariantMap TwitterApi::normalizeEntitiesV2(const QJsonObject &v2Entities, const QVariantMap &usersById)
+{
+    QVariantMap v1Entities;
+
+    QVariantList hashtags;
+    for (const QJsonValue &hv : v2Entities.value("hashtags").toArray()) {
+        QJsonObject h = hv.toObject();
+        QVariantMap ht;
+        ht.insert("text", h.value("tag").toString());
+        ht.insert("indices", QVariantList() << h.value("start").toInt() << h.value("end").toInt());
+        hashtags.append(ht);
+    }
+    v1Entities.insert("hashtags", hashtags);
+
+    QVariantList mentions;
+    for (const QJsonValue &mv : v2Entities.value("mentions").toArray()) {
+        QJsonObject m = mv.toObject();
+        QVariantMap mention;
+        mention.insert("screen_name", m.value("username").toString());
+        QString mentionId = m.value("id").toString();
+        mention.insert("id_str", mentionId);
+        mention.insert("id", mentionId.toLongLong());
+        if (usersById.contains(mentionId)) {
+            mention.insert("name", usersById.value(mentionId).toMap().value("name"));
+        }
+        mention.insert("indices", QVariantList() << m.value("start").toInt() << m.value("end").toInt());
+        mentions.append(mention);
+    }
+    v1Entities.insert("user_mentions", mentions);
+
+    QVariantList urls;
+    for (const QJsonValue &uv : v2Entities.value("urls").toArray()) {
+        QJsonObject u = uv.toObject();
+        QVariantMap url;
+        url.insert("url", u.value("url").toString());
+        url.insert("expanded_url", u.value("expanded_url").toString());
+        url.insert("display_url", u.value("display_url").toString());
+        url.insert("indices", QVariantList() << u.value("start").toInt() << u.value("end").toInt());
+        urls.append(url);
+    }
+    v1Entities.insert("urls", urls);
+
+    v1Entities.insert("symbols", QVariantList());
+
+    return v1Entities;
+}
+
+QVariantMap TwitterApi::normalizeMediaV2(const QJsonObject &media)
+{
+    QVariantMap v1Media;
+    QString mediaType = media.value("type").toString();
+    v1Media.insert("type", mediaType);
+    v1Media.insert("id_str", media.value("media_key").toString());
+
+    if (mediaType == "photo") {
+        v1Media.insert("media_url_https", media.value("url").toString());
+    } else {
+        v1Media.insert("media_url_https", media.value("preview_image_url").toString());
+        QVariantMap videoInfo;
+        int width = media.value("width").toInt();
+        int height = media.value("height").toInt();
+        if (width > 0 && height > 0) {
+            videoInfo.insert("aspect_ratio", QVariantList() << width << height);
+        }
+        QVariantList variants;
+        for (const QVariant &vv : media.value("variants").toArray().toVariantList()) {
+            QVariantMap variant = vv.toMap();
+            QVariantMap v1Variant;
+            v1Variant.insert("content_type", variant.value("content_type"));
+            v1Variant.insert("url", variant.value("url"));
+            if (variant.contains("bit_rate")) {
+                v1Variant.insert("bitrate", variant.value("bit_rate"));
+            }
+            variants.append(v1Variant);
+        }
+        videoInfo.insert("variants", variants);
+        v1Media.insert("video_info", videoInfo);
+    }
+
+    if (media.contains("alt_text")) {
+        v1Media.insert("ext_alt_text", media.value("alt_text").toString());
+    }
+    v1Media.insert("url", "");
+    v1Media.insert("indices", QVariantList() << 0 << 0);
+
+    return v1Media;
+}
+
+QVariantMap TwitterApi::normalizeTweetV2(const QJsonObject &tweet, const QVariantMap &usersById, const QVariantMap &mediaByKey, const QVariantMap &tweetsById)
+{
+    QVariantMap v1Tweet;
+
+    QString tweetId = tweet.value("id").toString();
+    v1Tweet.insert("id_str", tweetId);
+    v1Tweet.insert("id", tweetId.toLongLong());
+    v1Tweet.insert("full_text", tweet.value("text").toString());
+    v1Tweet.insert("text", tweet.value("text").toString());
+
+    // Pass ISO 8601 date through as-is; getValidDate() in QML handles both formats
+    v1Tweet.insert("created_at", tweet.value("created_at").toString());
+
+    QString authorId = tweet.value("author_id").toString();
+    if (usersById.contains(authorId)) {
+        v1Tweet.insert("user", usersById.value(authorId));
+    }
+
+    if (tweet.contains("public_metrics")) {
+        QJsonObject metrics = tweet.value("public_metrics").toObject();
+        v1Tweet.insert("favorite_count", metrics.value("like_count").toInt());
+        v1Tweet.insert("retweet_count", metrics.value("retweet_count").toInt());
+        v1Tweet.insert("reply_count", metrics.value("reply_count").toInt());
+        v1Tweet.insert("quote_count", metrics.value("quote_count").toInt());
+    }
+
+    // Per-user interaction state is not provided by the v2 timeline
+    v1Tweet.insert("favorited", false);
+    v1Tweet.insert("retweeted", false);
+
+    if (tweet.contains("in_reply_to_user_id")) {
+        QString replyUserId = tweet.value("in_reply_to_user_id").toString();
+        v1Tweet.insert("in_reply_to_user_id_str", replyUserId);
+        v1Tweet.insert("in_reply_to_user_id", replyUserId.toLongLong());
+    }
+
+    if (tweet.contains("referenced_tweets")) {
+        for (const QJsonValue &refVal : tweet.value("referenced_tweets").toArray()) {
+            QJsonObject ref = refVal.toObject();
+            QString refType = ref.value("type").toString();
+            QString refId = ref.value("id").toString();
+
+            if (tweetsById.contains(refId)) {
+                QJsonObject refTweet = QJsonObject::fromVariantMap(tweetsById.value(refId).toMap());
+                QVariantMap normalizedRef = normalizeTweetV2(refTweet, usersById, mediaByKey, tweetsById);
+                if (refType == "retweeted") {
+                    v1Tweet.insert("retweeted_status", normalizedRef);
+                } else if (refType == "quoted") {
+                    v1Tweet.insert("quoted_status", normalizedRef);
+                }
+            }
+            if (refType == "replied_to") {
+                v1Tweet.insert("in_reply_to_status_id_str", refId);
+                v1Tweet.insert("in_reply_to_status_id", refId.toLongLong());
+            }
+        }
+    }
+
+    QVariantMap v1Entities;
+    if (tweet.contains("entities")) {
+        v1Entities = normalizeEntitiesV2(tweet.value("entities").toObject(), usersById);
+    } else {
+        v1Entities.insert("hashtags", QVariantList());
+        v1Entities.insert("user_mentions", QVariantList());
+        v1Entities.insert("urls", QVariantList());
+        v1Entities.insert("symbols", QVariantList());
+    }
+    v1Tweet.insert("entities", v1Entities);
+
+    if (tweet.contains("attachments")) {
+        QJsonArray mediaKeys = tweet.value("attachments").toObject().value("media_keys").toArray();
+        QVariantList v1MediaList;
+        for (const QJsonValue &mkVal : mediaKeys) {
+            QString mediaKey = mkVal.toString();
+            if (mediaByKey.contains(mediaKey)) {
+                QJsonObject media = QJsonObject::fromVariantMap(mediaByKey.value(mediaKey).toMap());
+                v1MediaList.append(normalizeMediaV2(media));
+            }
+        }
+        if (!v1MediaList.isEmpty()) {
+            QVariantMap extendedEntities;
+            extendedEntities.insert("media", v1MediaList);
+            v1Tweet.insert("extended_entities", extendedEntities);
+        }
+    }
+
+    return v1Tweet;
+}
+
 QVariantMap TwitterApi::parseErrorResponse(const QString &errorText, const QByteArray &responseText)
 {
     qDebug() << "TwitterApi::parseErrorResponse" << errorText << responseText;
@@ -1358,9 +1616,10 @@ void TwitterApi::handleHomeTimelineFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        emit homeTimelineSuccessful(responseArray.toVariantList(), false);
+    if (jsonDocument.isObject()) {
+        QString nextToken;
+        QVariantList tweets = normalizeV2TimelineResponse(jsonDocument.object(), nextToken);
+        emit homeTimelineSuccessful(tweets, false, nextToken);
     } else {
         emit homeTimelineError("Piepmatz couldn't understand Twitter's response! (Home Timeline)");
     }
@@ -1376,9 +1635,10 @@ void TwitterApi::handleHomeTimelineLoadMoreFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        emit homeTimelineSuccessful(responseArray.toVariantList(), true);
+    if (jsonDocument.isObject()) {
+        QString nextToken;
+        QVariantList tweets = normalizeV2TimelineResponse(jsonDocument.object(), nextToken);
+        emit homeTimelineSuccessful(tweets, true, nextToken);
     } else {
         emit homeTimelineError("Piepmatz couldn't understand Twitter's response! (Timeline load more)");
     }

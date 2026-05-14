@@ -361,6 +361,7 @@ void AccountModel::handleVerifyCredentialsSuccessful(const QVariantMap &result)
     beginResetModel();
     availableAccounts.clear();
     availableAccounts.append(result);
+    twitterApi->setMyUserId(result.value("id_str").toString());
     endResetModel();
     emit credentialsVerified();
 }

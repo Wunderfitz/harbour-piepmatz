@@ -48,11 +48,12 @@ signals:
     void homeTimelineEndReached();
 
 public slots:
-    void handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate);
+    void handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate, const QString &nextToken);
     void handleHomeTimelineError(const QString &errorMessage);
 
 private:
     QVariantList timelineTweets;
+    QString nextPaginationToken;
     QSettings settings;
     TwitterApi *twitterApi;
 

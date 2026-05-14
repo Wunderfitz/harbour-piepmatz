@@ -59,13 +59,12 @@ void TimelineModel::update()
 void TimelineModel::loadMore()
 {
     qDebug() << "TimelineModel::loadMore";
-    emit homeTimelineStartUpdate();
-    QString maxId;
-    if (!timelineTweets.isEmpty()) {
-        QVariantMap lastItem = timelineTweets.last().toMap();
-        maxId = lastItem.value("id_str").toString();
+    if (nextPaginationToken.isEmpty()) {
+        emit homeTimelineEndReached();
+        return;
     }
-    twitterApi->homeTimeline(maxId);
+    emit homeTimelineStartUpdate();
+    twitterApi->homeTimeline(nextPaginationToken);
 }
 
 void TimelineModel::setCurrentTweetId(const QString &tweetId)
@@ -74,26 +73,27 @@ void TimelineModel::setCurrentTweetId(const QString &tweetId)
     settings.setValue(SETTINGS_CURRENT_TWEET, tweetId);
 }
 
-void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate)
+void TimelineModel::handleHomeTimelineSuccessful(const QVariantList &result, const bool incrementalUpdate, const QString &nextToken)
 {
-    qDebug() << "TimelineModel::handleHomeTimelineSuccessful";
+    qDebug() << "TimelineModel::handleHomeTimelineSuccessful nextToken:" << nextToken;
+    nextPaginationToken = nextToken;
     beginResetModel();
     if (incrementalUpdate) {
         qDebug() << "User wanted to load more tweets for the timeline";
-        if (result.size() > 1) {
-            QVariantList incrementalUpdateResult = result;
-            incrementalUpdateResult.removeFirst();
-            timelineTweets.append(incrementalUpdateResult);
-        } else {
+        if (!result.isEmpty()) {
+            timelineTweets.append(result);
+        }
+        if (nextToken.isEmpty()) {
             emit homeTimelineEndReached();
         }
     } else {
         qDebug() << "Complete timeline update";
-        if (result.isEmpty()) {
-            emit homeTimelineEndReached();
-        } else {
-            timelineTweets.clear();
+        timelineTweets.clear();
+        if (!result.isEmpty()) {
             timelineTweets.append(result);
+        }
+        if (result.isEmpty() || nextToken.isEmpty()) {
+            emit homeTimelineEndReached();
         }
     }
     endResetModel();

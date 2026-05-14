@@ -59,6 +59,11 @@ function findBiggerImage(url) {
 }
 
 function getValidDate(twitterDate) {
+    // API v2 returns ISO 8601 (e.g. "2023-01-01T12:34:56.000Z"), parseable directly
+    if (twitterDate.indexOf('T') !== -1) {
+        return new Date(twitterDate);
+    }
+    // API v1 format: "Mon Jan 01 00:00:00 +0000 2023"
     return new Date(twitterDate.replace(/^(\w+) (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/,"$1, $2 $3 $5 $4 GMT"));
 }
 
