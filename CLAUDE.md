@@ -8,6 +8,7 @@ SailfishOS mobile Twitter client built with Qt (C++ + QML). Migrating from Twitt
 |---|---|
 | Home timeline (`/timelines/reverse_chronological`) | Done |
 | Single tweet (`statuses/show.json` → `/2/tweets/:id`) | Done |
+| Mentions timeline (`statuses/mentions_timeline.json` → `/2/users/:id/mentions`) | Done |
 
 ## Migration pattern
 
@@ -15,5 +16,6 @@ SailfishOS mobile Twitter client built with Qt (C++ + QML). Migrating from Twitt
 - Secret identity support (`secretIdentityRequestor`) must be preserved: on error code 136 (blocked), retry with `secretIdentityRequestor->get()` and `HEADER_NO_RECURSION` to prevent infinite recursion. The ID must be extracted from the v2 URL path (last path segment) rather than from a query parameter as in v1
 - v2 base URLs use `api.x.com`, constants defined in `twitterapi.h`
 - v2 responses are normalized to v1-compatible `QVariantMap` structure via `normalizeTweetV2()`, `normalizeUserV2()`, `normalizeEntitiesV2()`, `normalizeMediaV2()` in `twitterapi.cpp`
+- Default `max_results` for v2 timeline endpoints is `10`
 - QML signal interface (`showStatusSuccessful`, etc.) and data format remain unchanged — no QML changes needed when migrating a backend call
 - `getValidDate()` in `qml/js/functions.js` handles both ISO 8601 (v2) and v1 date formats

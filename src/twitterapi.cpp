@@ -360,21 +360,31 @@ void TwitterApi::homeTimeline(const QString &paginationToken)
 void TwitterApi::mentionsTimeline()
 {
     qDebug() << "TwitterApi::mentionsTimeline";
-    QUrl url = QUrl(API_STATUSES_MENTIONS_TIMELINE);
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("include_entities", "true");
-    urlQuery.addQueryItem("count", "200");
-    urlQuery.addQueryItem("include_ext_alt_text", "true");
+
+    QString myUserId = getMyUserId();
+    if (myUserId.isEmpty()) {
+        qWarning() << "TwitterApi::mentionsTimeline: user ID not set, cannot build v2 URL";
+        emit mentionsTimelineError("User ID not available for mentions request. Please verify credentials first.");
+        return;
+    }
+
+    QUrl url = QUrl(QString(API_V2_MENTIONS_TIMELINE_BASE) + myUserId + "/mentions");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
+    urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
+    urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
+    urlQuery.addQueryItem("max_results", "10");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet")));
+    requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
+    requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
+    requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("10")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleMentionsTimelineError(QNetworkReply::NetworkError)));
@@ -1713,9 +1723,10 @@ void TwitterApi::handleMentionsTimelineFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        emit mentionsTimelineSuccessful(responseArray.toVariantList());
+    if (jsonDocument.isObject()) {
+        QString nextToken;
+        QVariantList tweets = normalizeV2TimelineResponse(jsonDocument.object(), nextToken);
+        emit mentionsTimelineSuccessful(tweets);
     } else {
         emit mentionsTimelineError("Piepmatz couldn't understand Twitter's response! (Mentions Timeline)");
     }
