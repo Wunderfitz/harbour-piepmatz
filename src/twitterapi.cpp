@@ -547,25 +547,25 @@ void TwitterApi::userTimeline(const QString &screenName, const bool &useSecretId
 void TwitterApi::followers(const QString &screenName)
 {
     qDebug() << "TwitterApi::followers" << screenName;
-    QUrl url = QUrl(API_FOLLOWERS_LIST);
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("screen_name", screenName);
-    urlQuery.addQueryItem("count", "200");
-    urlQuery.addQueryItem("skip_status", "true");
-    urlQuery.addQueryItem("include_user_entities", "true");
 
+    QString myUserId = getMyUserId();
+    if (myUserId.isEmpty()) {
+        qWarning() << "TwitterApi::followers: user ID not set, cannot build v2 URL";
+        emit followersError("User ID not available for followers request. Please verify credentials first.");
+        return;
+    }
+
+    QUrl url = QUrl(QString(API_V2_USERS_BASE) + myUserId + "/followers");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
+    urlQuery.addQueryItem("max_results", "100");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("screen_name"), screenName.toUtf8()));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("200")));
-    requestParameters.append(O0RequestParameter(QByteArray("skip_status"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_user_entities"), QByteArray("true")));
-
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
+    requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("100")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleFollowersError(QNetworkReply::NetworkError)));
@@ -1827,8 +1827,13 @@ void TwitterApi::handleFollowersFinished()
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
     if (jsonDocument.isObject()) {
-        QJsonObject responseObject = jsonDocument.object();
-        emit followersSuccessful(responseObject.toVariantMap());
+        QVariantList userList;
+        for (const QJsonValue &val : jsonDocument.object().value("data").toArray()) {
+            userList.append(normalizeUserV2(val.toObject()));
+        }
+        QVariantMap result;
+        result.insert("users", userList);
+        emit followersSuccessful(result);
     } else {
         emit followersError("Piepmatz couldn't understand Twitter's response! (Followers)");
     }

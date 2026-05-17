@@ -46,7 +46,6 @@ const char API_MEDIA_METADATA_CREATE[] = "https://upload.twitter.com/1.1/media/m
 const char API_STATUSES_UPDATE[] = "https://api.twitter.com/1.1/statuses/update.json";
 const char API_V2_USERS_BASE[] = "https://api.x.com/2/users/";
 const char API_V2_TWEETS_BASE[] = "https://api.x.com/2/tweets/";
-const char API_FOLLOWERS_LIST[] = "https://api.twitter.com/1.1/followers/list.json";
 const char API_FRIENDS_LIST[] = "https://api.twitter.com/1.1/friends/list.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
