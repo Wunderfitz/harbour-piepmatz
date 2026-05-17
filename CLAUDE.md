@@ -9,6 +9,7 @@ SailfishOS mobile Twitter client built with Qt (C++ + QML). Migrating from Twitt
 | Home timeline (`/timelines/reverse_chronological`) | Done |
 | Single tweet (`statuses/show.json` → `/2/tweets/:id`) | Done |
 | Mentions timeline (`statuses/mentions_timeline.json` → `/2/users/:id/mentions`) | Done |
+| Retweet timeline (`statuses/retweets_of_me.json` → `/2/users/:id/tweets`) | Done |
 
 ## Migration pattern
 

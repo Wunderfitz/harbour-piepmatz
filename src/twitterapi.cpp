@@ -394,23 +394,33 @@ void TwitterApi::mentionsTimeline()
 void TwitterApi::retweetTimeline()
 {
     qDebug() << "TwitterApi::retweetTimeline";
-    QUrl url = QUrl(API_STATUSES_RETWEET_TIMELINE);
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("include_entities", "true");
-    urlQuery.addQueryItem("trim_user", "false");
-    urlQuery.addQueryItem("count", "10");
-    urlQuery.addQueryItem("include_ext_alt_text", "true");
+
+    QString myUserId = getMyUserId();
+    if (myUserId.isEmpty()) {
+        qWarning() << "TwitterApi::retweetTimeline: user ID not set, cannot build v2 URL";
+        emit retweetTimelineError("User ID not available for retweet timeline request. Please verify credentials first.");
+        return;
+    }
+
+    QUrl url = QUrl(QString(API_V2_USER_TWEETS_BASE) + myUserId + "/tweets");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
+    urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
+    urlQuery.addQueryItem("media.fields", "media_key,type,url,preview_image_url,alt_text,width,height,variants");
+    urlQuery.addQueryItem("max_results", "10");
+    urlQuery.addQueryItem("exclude", "replies,retweets");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_entities"), QByteArray("true")));
-    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("10")));
-    requestParameters.append(O0RequestParameter(QByteArray("include_ext_alt_text"), QByteArray("true")));
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("tweet.fields"), QByteArray("id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet")));
+    requestParameters.append(O0RequestParameter(QByteArray("expansions"), QByteArray("author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys")));
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
+    requestParameters.append(O0RequestParameter(QByteArray("media.fields"), QByteArray("media_key,type,url,preview_image_url,alt_text,width,height,variants")));
+    requestParameters.append(O0RequestParameter(QByteArray("max_results"), QByteArray("10")));
+    requestParameters.append(O0RequestParameter(QByteArray("exclude"), QByteArray("replies,retweets")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetTimelineError(QNetworkReply::NetworkError)));
@@ -1737,7 +1747,7 @@ void TwitterApi::handleRetweetTimelineError(QNetworkReply::NetworkError error)
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     qWarning() << "TwitterApi::handleRetweetTimelineError:" << (int)error << reply->errorString();
     QVariantMap parsedErrorResponse = parseErrorResponse(reply->errorString(), reply->readAll());
-    emit mentionsTimelineError(parsedErrorResponse.value("message").toString());
+    emit retweetTimelineError(parsedErrorResponse.value("message").toString());
 }
 
 void TwitterApi::handleRetweetTimelineFinished()
@@ -1750,9 +1760,17 @@ void TwitterApi::handleRetweetTimelineFinished()
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        emit retweetTimelineSuccessful(responseArray.toVariantList());
+    if (jsonDocument.isObject()) {
+        QString nextToken;
+        QVariantList allTweets = normalizeV2TimelineResponse(jsonDocument.object(), nextToken);
+        QVariantList retweetedTweets;
+        for (const QVariant &v : allTweets) {
+            QVariantMap tweet = v.toMap();
+            if (tweet.value("retweet_count").toInt() > 0) {
+                retweetedTweets.append(tweet);
+            }
+        }
+        emit retweetTimelineSuccessful(retweetedTweets);
     } else {
         emit retweetTimelineError("Piepmatz couldn't understand Twitter's response! (Retweet Timeline)");
     }
