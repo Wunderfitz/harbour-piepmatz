@@ -324,7 +324,7 @@ void TwitterApi::homeTimeline(const QString &paginationToken)
         return;
     }
 
-    QUrl url = QUrl(QString(API_V2_HOME_TIMELINE_BASE) + myUserId + "/timelines/reverse_chronological");
+    QUrl url = QUrl(QString(API_V2_USERS_BASE) + myUserId + "/timelines/reverse_chronological");
     QUrlQuery urlQuery;
     urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
     urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
@@ -368,7 +368,7 @@ void TwitterApi::mentionsTimeline()
         return;
     }
 
-    QUrl url = QUrl(QString(API_V2_MENTIONS_TIMELINE_BASE) + myUserId + "/mentions");
+    QUrl url = QUrl(QString(API_V2_USERS_BASE) + myUserId + "/mentions");
     QUrlQuery urlQuery;
     urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
     urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
@@ -402,7 +402,7 @@ void TwitterApi::retweetTimeline()
         return;
     }
 
-    QUrl url = QUrl(QString(API_V2_USER_TWEETS_BASE) + myUserId + "/tweets");
+    QUrl url = QUrl(QString(API_V2_USERS_BASE) + myUserId + "/tweets");
     QUrlQuery urlQuery;
     urlQuery.addQueryItem("tweet.fields", "id,text,created_at,author_id,entities,referenced_tweets,attachments,public_metrics,in_reply_to_user_id,note_tweet");
     urlQuery.addQueryItem("expansions", "author_id,referenced_tweets.id,referenced_tweets.id.author_id,attachments.media_keys");
