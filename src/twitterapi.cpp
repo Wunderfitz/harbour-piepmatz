@@ -809,22 +809,16 @@ void TwitterApi::retweet(const QString &statusId)
 
 void TwitterApi::retweetsFor(const QString &statusId)
 {
-    qDebug() << "TwitterApi::retweetUsers" << statusId;
-    QUrl url = QUrl(QString(API_STATUSES_RETWEETS_FOR).replace(":id", statusId));
-    QUrlQuery urlQuery = QUrlQuery();
-    urlQuery.addQueryItem("tweet_mode", "extended");
-    urlQuery.addQueryItem("count", "21");
-    urlQuery.addQueryItem("trim_user", "false");
-
+    qDebug() << "TwitterApi::retweetsFor" << statusId;
+    QUrl url = QUrl(QString(API_V2_TWEETS_BASE) + statusId + "/retweeted_by");
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem("user.fields", "id,name,username,profile_image_url,verified,protected,description,public_metrics");
     url.setQuery(urlQuery);
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, O2_MIME_TYPE_XFORM);
 
-    QList<O0RequestParameter> requestParameters = QList<O0RequestParameter>();
-    requestParameters.append(O0RequestParameter(QByteArray("tweet_mode"), QByteArray("extended")));
-    requestParameters.append(O0RequestParameter(QByteArray("count"), QByteArray("21")));
-    requestParameters.append(O0RequestParameter(QByteArray("trim_user"), QByteArray("false")));
-
+    QList<O0RequestParameter> requestParameters;
+    requestParameters.append(O0RequestParameter(QByteArray("user.fields"), QByteArray("id,name,username,profile_image_url,verified,protected,description,public_metrics")));
     QNetworkReply *reply = requestor->get(request, requestParameters);
 
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(handleRetweetsForError(QNetworkReply::NetworkError)));
@@ -2270,13 +2264,14 @@ void TwitterApi::handleRetweetFinished()
 void TwitterApi::handleRetweetsForError(QNetworkReply::NetworkError error)
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    // Path: /2/tweets/{statusId}/retweeted_by
     QString requestPath = reply->request().url().path();
-    QRegExp statusRegex("(\\d+)\\.json");
+    QRegExp statusRegex("/2/tweets/(\\d+)/retweeted_by");
     QString statusId;
     if (statusRegex.indexIn(requestPath) != -1) {
         statusId = statusRegex.cap(1);
     }
-    qWarning() << "TwitterApi::handleRetweetUsersError:" << (int)error << reply->errorString() << reply->readAll() << statusId;
+    qWarning() << "TwitterApi::handleRetweetsForError:" << (int)error << reply->errorString() << statusId;
     emit retweetsForError(statusId, reply->errorString());
 }
 
@@ -2288,17 +2283,41 @@ void TwitterApi::handleRetweetsForFinished()
     if (reply->error() != QNetworkReply::NoError) {
         return;
     }
+    // Path: /2/tweets/{statusId}/retweeted_by
     QString requestPath = reply->request().url().path();
-    QRegExp statusRegex("(\\d+)\\.json");
+    QRegExp statusRegex("/2/tweets/(\\d+)/retweeted_by");
     QString statusId;
     if (statusRegex.indexIn(requestPath) != -1) {
         statusId = statusRegex.cap(1);
     }
 
+    // Build the retweeted_status stub so QML can identify these as retweets of our tweet
+    QString myUserId = getMyUserId();
+    QVariantMap myUserStub;
+    myUserStub.insert("id_str", myUserId);
+    QVariantMap retweetedStatusStub;
+    retweetedStatusStub.insert("id_str", statusId);
+    retweetedStatusStub.insert("user", myUserStub);
+
+    QLocale englishLocale(QLocale::English);
+    QString nowString = englishLocale.toString(QDateTime::currentDateTimeUtc(), "ddd MMM dd HH:mm:ss +0000 yyyy");
+
     QJsonDocument jsonDocument = QJsonDocument::fromJson(reply->readAll());
-    if (jsonDocument.isArray()) {
-        QJsonArray responseArray = jsonDocument.array();
-        emit retweetsForSuccessful(statusId, responseArray.toVariantList());
+    if (jsonDocument.isObject()) {
+        QVariantList retweetObjects;
+        for (const QJsonValue &val : jsonDocument.object().value("data").toArray()) {
+            QJsonObject user = val.toObject();
+            QVariantMap syntheticRetweet;
+            // id_str encodes both the original tweet and the retweeter for stable tracking
+            syntheticRetweet.insert("id_str", statusId + "_" + user.value("id").toString());
+            syntheticRetweet.insert("created_at", nowString);
+            syntheticRetweet.insert("user", normalizeUserV2(user));
+            syntheticRetweet.insert("retweeted_status", retweetedStatusStub);
+            syntheticRetweet.insert("retweeted", false);
+            syntheticRetweet.insert("favorited", false);
+            retweetObjects.append(syntheticRetweet);
+        }
+        emit retweetsForSuccessful(statusId, retweetObjects);
     } else {
         emit retweetsForError(statusId, "Piepmatz couldn't understand Twitter's response! (Retweets for)");
     }

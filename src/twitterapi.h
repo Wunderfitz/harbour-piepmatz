@@ -51,7 +51,6 @@ const char API_FRIENDS_LIST[] = "https://api.twitter.com/1.1/friends/list.json";
 const char API_STATUSES_SHOW[] = "https://api.twitter.com/1.1/statuses/show.json";
 const char API_STATUSES_USER_TIMELINE[] = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 const char API_STATUSES_RETWEET[] = "https://api.twitter.com/1.1/statuses/retweet/:id.json";
-const char API_STATUSES_RETWEETS_FOR[] = "https://api.twitter.com/1.1/statuses/retweets/:id.json";
 const char API_STATUSES_UNRETWEET[] = "https://api.twitter.com/1.1/statuses/unretweet/:id.json";
 const char API_STATUSES_DESTROY[] = "https://api.twitter.com/1.1/statuses/destroy/:id.json";
 const char API_USERS_SHOW[] = "https://api.twitter.com/1.1/users/show.json";
